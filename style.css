@@ -280,7 +280,19 @@ footer.site-footer a { color: var(--ink-2); }
   .layout { grid-template-columns: 1fr; }
   body.reading-mode .layout { grid-template-columns: 1fr; }
   body.reading-mode .sidebar { display: block; }
-  .sidebar { position: fixed; top: var(--header-h); left: 0; bottom: 0; width: min(280px, 86vw); height: auto; z-index: 60; transform: translateX(-102%); transition: transform .18s ease; border-right: 1px solid var(--line); background: var(--bg-2); box-shadow: var(--shadow); padding-top: 12px; }
+  .sidebar {
+    position: fixed; top: var(--header-h); left: 0; bottom: 0;
+    width: min(280px, 86vw);
+    /* Фиксированная высота по вьюпорту: контент меню прокручивается внутри,
+       а не «съедается» высотой страницы (баг со скроллом на мобильных). */
+    height: calc(100vh - var(--header-h));
+    height: calc(100dvh - var(--header-h));
+    max-height: calc(100dvh - var(--header-h));
+    overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain;
+    z-index: 60; transform: translateX(-102%); transition: transform .18s ease;
+    border-right: 1px solid var(--line); background: var(--bg-2); box-shadow: var(--shadow);
+    padding-top: 12px; padding-bottom: calc(32px + env(safe-area-inset-bottom, 0px));
+  }
   .drawer-head { display: flex; }
   .drawer-open .sidebar { transform: none; }
   /* Меню работает и без JavaScript: кнопка ведёт на #sidebar. */
