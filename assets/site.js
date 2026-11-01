@@ -61,12 +61,21 @@
     }
   }
   if (menuButton) {
-    menuButton.addEventListener("click", function () {
+    menuButton.addEventListener("click", function (event) {
+      // Ссылка #sidebar — резервный путь без JS; с JS используем доступный drawer.
+      event.preventDefault();
       if (isMobile()) { setDrawer(!document.body.classList.contains("drawer-open")); }
       else { setDrawer(false); }
     });
   }
-  if (backdrop) { backdrop.addEventListener("click", function () { setDrawer(false); }); }
+  if (backdrop) {
+    backdrop.addEventListener("click", function (event) {
+      event.preventDefault();
+      setDrawer(false);
+      // Убираем возможный #sidebar из адресной строки (резервный режим).
+      if (window.location.hash === "#sidebar") { history.replaceState(null, "", location.pathname + location.search); }
+    });
+  }
   if (!isMobile() && store.get("sidebar") === "collapsed") { document.body.classList.add("reading-mode"); }
   if (menuButton && !isMobile()) { menuButton.setAttribute("aria-expanded", document.body.classList.contains("reading-mode") ? "false" : "true"); }
   document.addEventListener("keydown", function (event) {

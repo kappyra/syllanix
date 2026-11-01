@@ -283,6 +283,13 @@ footer.site-footer a { color: var(--ink-2); }
   .sidebar { position: fixed; top: var(--header-h); left: 0; bottom: 0; width: min(280px, 86vw); height: auto; z-index: 60; transform: translateX(-102%); transition: transform .18s ease; border-right: 1px solid var(--line); background: var(--bg-2); box-shadow: var(--shadow); padding-top: 12px; }
   .drawer-head { display: flex; }
   .drawer-open .sidebar { transform: none; }
+  /* Меню работает и без JavaScript: кнопка ведёт на #sidebar. */
+  #sidebar:target { transform: none; }
+  body:has(#sidebar:target) .drawer-backdrop { display: block; }
+  body:has(#sidebar:target) { overflow: hidden; }
+  .icon-btn { width: 44px; height: 44px; }
+  .icon-btn, .sidebar a, .pager-card, .header-nav a { touch-action: manipulation; }
+  .sidebar { padding-top: calc(12px + env(safe-area-inset-top, 0px)); }
   .header-nav { display: none; }
   main { width: min(100% - 1.5rem, calc(var(--measure) + 2rem)); padding-top: 16px; }
   .pager { grid-template-columns: 1fr; }
