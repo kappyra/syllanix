@@ -1,0 +1,10 @@
+Artifact: third-party tool license copies
+Tool: Graphify (PyPI package `graphifyy`, CLI `graphify`)
+Version pinned: 0.9.100
+Repository: https://github.com/Graphify-Labs/graphify
+Commit: f5155badddaa3286c78a51653791131e9e2e4d29
+License: Apache-2.0 (see LICENSE); MIT for parts (see LICENSE-MIT); NOTICE
+Copied by: Syllanix harness (Lead) for license compliance evidence
+Date: 2026-11-01
+Install source: official PyPI distribution via `uv tool install graphifyy==0.9.100`
+Files: LICENSE, LICENSE-MIT, NOTICE (verbatim copies from the pinned commit)

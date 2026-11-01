@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Первая программа: вычисления и вывод — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details open><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-02-first-program.html" aria-current="page">02. Первая программа: вычисления и вывод</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-02-first-program.html#что-вы-сможете-после-этой-главы">2.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-02-first-program.html#expressions-statements">2.2. Программа, выражение и инструкция</a></li>
+<li><a href="ch-02-first-program.html#arithmetic">2.3. Арифметические операторы</a></li>
+<li><a href="ch-02-first-program.html#print">2.4. print: как показать результат</a></li>
+<li><a href="ch-02-first-program.html#strings">2.5. Строки и их соединение</a></li>
+<li><a href="ch-02-first-program.html#comments">2.6. Комментарии</a></li>
+<li><a href="ch-02-first-program.html#errors">2.7. Две категории ошибок</a></li>
+<li><a href="ch-02-first-program.html#execution">2.8. Как исполняется программа</a></li>
+<li><a href="ch-02-first-program.html#mistakes">2.9. Типичные ошибки начинающих</a></li>
+<li><a href="ch-02-first-program.html#упражнения">2.10. Упражнения</a></li>
+<li><a href="ch-02-first-program.html#проверка-понимания">2.11. Проверка понимания</a></li>
+<li><a href="ch-02-first-program.html#что-дальше">2.12. Что дальше</a></li>
+</ol></details></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 1. Начало</span><span class="sep">›</span><span>Глава 2</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Начало · глава 2</p>
+<h1 id="первая-программа-вычисления-и-вывод">Первая программа: вычисления и вывод</h1>
+<p class="chapter-summary">Выражения, арифметика, строки, print и первые ошибки — на запускаемых примерах.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#что-вы-сможете-после-этой-главы"><span class="toc-number">2.1</span> Что вы сможете после этой главы</a></li>
+<li class="level-2"><a href="#expressions-statements"><span class="toc-number">2.2</span> Программа, выражение и инструкция</a></li>
+<li class="level-2"><a href="#arithmetic"><span class="toc-number">2.3</span> Арифметические операторы</a></li>
+<li class="level-2"><a href="#print"><span class="toc-number">2.4</span> print: как показать результат</a></li>
+<li class="level-2"><a href="#strings"><span class="toc-number">2.5</span> Строки и их соединение</a></li>
+<li class="level-2"><a href="#comments"><span class="toc-number">2.6</span> Комментарии</a></li>
+<li class="level-2"><a href="#errors"><span class="toc-number">2.7</span> Две категории ошибок</a></li>
+<li class="level-2"><a href="#execution"><span class="toc-number">2.8</span> Как исполняется программа</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">2.9</span> Типичные ошибки начинающих</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">2.10</span> Упражнения</a></li>
+<li class="level-2"><a href="#проверка-понимания"><span class="toc-number">2.11</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#что-дальше"><span class="toc-number">2.12</span> Что дальше</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#углубление-отрицательные-числа">Углубление: отрицательные числа</a></li>
+<li class="level-3"><a href="#почему-нельзя-сложить-строку-и-число">Почему нельзя сложить строку и число</a></li>
+<li class="level-3"><a href="#ex-ch02-01">1. Арифметика вручную и на компьютере</a></li>
+<li class="level-3"><a href="#ex-ch02-02">2. Прогнозирование вывода</a></li>
+<li class="level-3"><a href="#ex-ch02-03">3. Исправление синтаксической ошибки</a></li>
+<li class="level-3"><a href="#ex-ch02-04">4. Соединение строк</a></li>
+<li class="level-3"><a href="#ex-ch02-05">5. Целое или дробное</a></li>
+<li class="level-3"><a href="#ex-ch02-06">6. Три строки</a></li>
+<li class="level-3"><a href="#ex-ch02-07">7. Ошибка времени выполнения</a></li>
+<li class="level-3"><a href="#ex-ch02-08">8. Деление на ноль</a></li>
+<li class="level-3"><a href="#ex-ch02-09">9. Формат вывода</a></li>
+<li class="level-3"><a href="#ex-ch02-10">10. Мини-задача: стоимость заказа</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>Программирование начинается не с синтаксиса, а с результата: вы пишете текст,
+интерпретатор его исполняет, вы видите, что получилось. В этой главе вы
+напишете и запустите свои первые программы, научитесь вычислять значения,
+выводить их на экран и понимать сообщения об ошибках. Все примеры в книге
+запускаются на Python 3.14 и проверяются автоматически, поэтому вы можете
+повторить каждый из них и получить ровно тот результат, который показан.</p>
+<h2 id="что-вы-сможете-после-этой-главы"><span class="h-number">2.1</span> Что вы сможете после этой главы</h2>
+<ul>
+<li>записывать вычисления и понимать, в каком порядке они выполняются;</li>
+<li>различать выражение и инструкцию;</li>
+<li>выводить значения в терминал и управлять форматом вывода;</li>
+<li>соединять строки и понимать, почему это работает не всегда;</li>
+<li>отличать синтаксическую ошибку от ошибки времени выполнения и читать
+соответствующие сообщения.</li>
+</ul>
+<h2 id="expressions-statements"><span class="h-number">2.2</span> Программа, выражение и инструкция</h2>
+<p><strong>Программа</strong> — это последовательность инструкций, которые интерпретатор
+исполняет сверху вниз, одна за другой. Самая маленькая единица вычисления —
+<strong>выражение</strong>: часть программы, которая вычисляется в значение.</p>
+<div class="highlight"><pre><code class="language-python"><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span>
+</code></pre></div>
+<p>Здесь <code>2</code> и <code>3</code> — <strong>операнды</strong>, а <code>+</code> — <strong>оператор</strong>. Всё вместе — выражение,
+значение которого равно <code>5</code>. Само по себе такое выражение в файле ничего не
+покажет: его результат будет вычислен и отброшен. Чтобы результат стал виден,
+нужна <strong>инструкция</strong> — единица исполнения, которая что-то делает: выводит
+значение, связывает имя, повторяет блок кода.</p>
+<p>Важное различие, к которому мы будем возвращаться:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Понятие</th>
+<th>Что это</th>
+<th>Пример</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>выражение</td>
+<td>вычисляется в значение</td>
+<td><code>2 + 3</code>, <code>&quot;текст&quot;</code>, <code>7 // 2</code></td>
+</tr>
+<tr>
+<td>инструкция</td>
+<td>выполняется, не обязана давать значение</td>
+<td><code>print(2 + 3)</code>, <code>import os</code></td>
+</tr>
+</tbody>
+</table>
+</div><p>В Python грань не всегда заметна: <code>print(2 + 3)</code> — это инструкция-выражение,
+внутри которой вычисляется выражение <code>2 + 3</code>, а затем вызывается функция
+<code>print</code>. Пока достаточно запомнить: выражение отвечает на вопрос «сколько?»,
+инструкция — на вопрос «что сделать?».</p>
+<h2 id="arithmetic"><span class="h-number">2.3</span> Арифметические операторы</h2>
+<p>Python умеет вычислять арифметику так, как вы ожидаете, с одним важным
+уточнением: привычный знак деления <code>/</code> всегда даёт число с плавающей точкой (float).</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">-</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">6</span> <span class="o">*</span> <span class="mi">7</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">7</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">7</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">7</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>5
+6
+42
+3.5
+3
+1
+1024
+</code></pre>
+<p>Разберём операторы:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Оператор</th>
+<th>Название</th>
+<th>Что делает</th>
+<th>Пример</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>+</code></td>
+<td>сложение</td>
+<td>сумма чисел или соединение строк</td>
+<td><code>2 + 3</code> → <code>5</code></td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>вычитание</td>
+<td>разность</td>
+<td><code>10 - 4</code> → <code>6</code></td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>умножение</td>
+<td>произведение</td>
+<td><code>6 * 7</code> → <code>42</code></td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>деление</td>
+<td>всегда число с плавающей точкой</td>
+<td><code>7 / 2</code> → <code>3.5</code></td>
+</tr>
+<tr>
+<td><code>//</code></td>
+<td>целочисленное деление</td>
+<td>сколько целых раз делитель помещается</td>
+<td><code>7 // 2</code> → <code>3</code></td>
+</tr>
+<tr>
+<td><code>%</code></td>
+<td>остаток</td>
+<td>что осталось после целочисленного деления</td>
+<td><code>7 % 2</code> → <code>1</code></td>
+</tr>
+<tr>
+<td><code>**</code></td>
+<td>возведение в степень</td>
+<td>левый операнд в степень правого</td>
+<td><code>2 ** 10</code> → <code>1024</code></td>
+</tr>
+</tbody>
+</table>
+</div><p>Обратите внимание: <code>7 / 2</code> даёт <code>3.5</code>, а не <code>3</code>. В Python 3 деление всегда
+возвращает число с плавающей точкой, даже если делится нацело: <code>10 / 2</code> равно
+<code>5.0</code>. Если нужен именно целый результат, используйте <code>//</code>.</p>
+<p>Целочисленное деление и остаток удобно представлять как раскладку предметов по
+корзинам.</p>
+<p><figure class="figure"><img src="illustrations/ch-02-division.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h3 id="углубление-отрицательные-числа">Углубление: отрицательные числа</h3>
+<p>Для положительных чисел <code>//</code> и <code>%</code> интуитивны. С отрицательными всё
+аккуратнее: целочисленное деление округляет результат вниз, к меньшему числу,
+а остаток сохраняет знак делителя.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="o">-</span><span class="mi">7</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="o">-</span><span class="mi">7</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>-4
+1
+</code></pre>
+<p>Проверка: <code>-4 * 2 + 1 = -7</code>. Это правило языка Python, а не особенность
+конкретной реализации. Подробнее о числах — в следующей главе.</p>
+<h2 id="print"><span class="h-number">2.4</span> print: как показать результат</h2>
+<p><code>print</code> — встроенная функция, которая выводит значения в стандартный поток
+вывода (обычно в терминал) и добавляет перевод строки. Ей можно передать
+несколько значений через запятую: по умолчанию они разделяются пробелом.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="s2">"Python"</span><span class="p">,</span> <span class="s2">"3.14"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Python"</span><span class="p">,</span> <span class="s2">"3.14"</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">" — "</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"без перевода строки"</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"— и вот продолжение"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>Python 3.14
+Python — 3.14
+без перевода строки— и вот продолжение
+</code></pre>
+<p>Параметры <code>sep</code> и <code>end</code> управляют форматом:</p>
+<ul>
+<li><code>sep</code> — строка-разделитель между значениями (по умолчанию один пробел);</li>
+<li><code>end</code> — строка, добавляемая после последнего значения (по умолчанию <code>&quot;\n&quot;</code>).</li>
+</ul>
+<p>Обратите внимание на третий пример: <code>end=&quot;&quot;</code> убрал перевод строки, поэтому
+следующий вывод продолжился в той же строке. Это стандартный приём, когда
+нужно собрать вывод «в строчку».</p>
+<h2 id="strings"><span class="h-number">2.5</span> Строки и их соединение</h2>
+<p><strong>Строка</strong> — это текст в кавычках. Python принимает одинарные и двойные
+кавычки; главное — чтобы открывающая и закрывающая совпадали.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="s2">"Python"</span> <span class="o">+</span> <span class="s2">" "</span> <span class="o">+</span> <span class="s2">"3.14"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'одинарные кавычки тоже работают'</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>Python 3.14
+одинарные кавычки тоже работают
+</code></pre>
+<p>Оператор <code>+</code> для строк означает <strong>конкатенацию</strong> (соединение строк): результат —
+новая строка, составленная из двух.</p>
+<h3 id="почему-нельзя-сложить-строку-и-число">Почему нельзя сложить строку и число</h3>
+<p>Интуитивно хочется написать <code>&quot;версия: &quot; + 3.14</code>, но Python откажется: строка
+и число — значения разных типов, и правило «плюс» для них не определено.</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="s2">"версия: "</span> <span class="o">+</span> <span class="mf">3.14</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>TypeError: can only concatenate str (not &quot;float&quot;) to str
+</code></pre>
+<p>Сообщение говорит буквально: «можно соединять только str, а не float».
+Правильный способ — привести число к строке. Это делается функцией <code>str</code>,
+которую мы подробно разберём в главе 4, а пока запомните саму идею:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="s2">"версия: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="mf">3.14</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>версия: 3.14
+</code></pre>
+<h2 id="comments"><span class="h-number">2.6</span> Комментарии</h2>
+<p>Комментарий начинается с символа <code>#</code> и продолжается до конца строки.
+Интерпретатор его игнорирует: комментарии нужны людям.</p>
+<div class="highlight"><pre><code class="language-python"><span class="c1"># Это комментарий: чему посвящён расчёт</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># комментарий может стоять и после кода</span>
+</code></pre></div>
+<p>Хороший комментарий объясняет <strong>зачем</strong>, а не <strong>что</strong>: код уже показывает,
+что происходит. Комментарий вроде <code># прибавляем 2</code> бесполезен; комментарий
+<code># цена указана в копейках, поэтому делим на 100</code> — полезен.</p>
+<h2 id="errors"><span class="h-number">2.7</span> Две категории ошибок</h2>
+<p>Ошибки — не признак того, что «не дано». Это информация: интерпретатор точно
+говорит, где и что не так. В самом начале важно различать два вида.</p>
+<p><strong>Синтаксическая ошибка</strong> (<code>SyntaxError</code>) возникает при разборе кода. Код не
+соответствует грамматике языка, поэтому программа не запускается вовсе.</p>
+<pre class="text"><code>  File &quot;program.py&quot;, line 1
+    print(&quot;привет&quot;
+         ^
+SyntaxError: &#x27;(&#x27; was never closed
+</code></pre>
+<p><strong>Ошибка времени выполнения</strong> возникает, когда код синтаксически верен, но
+операция невозможна. Программа начинает исполняться и прерывается на
+проблемной инструкции.</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">/</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>ZeroDivisionError: division by zero
+</code></pre>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">//</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>ZeroDivisionError: division by zero
+</code></pre>
+<p>Разница принципиальна: синтаксическую ошибку видно до запуска, и она всегда
+затрагивает весь файл. Ошибка времени выполнения зависит от данных: тот же код
+с другим делителем может сработать.</p>
+<p>Текст сообщения зависит от версии Python: в 3.14 все операции деления на ноль
+сообщают <code>division by zero</code>, а в версиях до 3.14 для <code>//</code> и <code>%</code> было
+<code>integer division or modulo by zero</code>. Поэтому ориентируйтесь на <strong>тип</strong>
+исключения (<code>ZeroDivisionError</code>), а не на текст сообщения: он может меняться
+между версиями.</p>
+<h2 id="execution"><span class="h-number">2.8</span> Как исполняется программа</h2>
+<p>Полезно представлять путь от текста до результата.</p>
+<p><figure class="figure"><img src="illustrations/ch-02-execution-flow.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Три этапа объясняют поведение, которое вы уже наблюдали:</p>
+<ol>
+<li><strong>Разбор.</strong> Интерпретатор проверяет синтаксис. Если текст не соответствует
+грамматике, вы получаете <code>SyntaxError</code> и программа не запускается.</li>
+<li><strong>Байткод.</strong> Код превращается во внутренние инструкции — байткод. Это
+деталь реализации CPython, о ней мы поговорим в главе 42.</li>
+<li><strong>Исполнение.</strong> Интерпретатор выполняет инструкции сверху вниз. Именно на
+этом этапе возникают ошибки времени выполнения.</li>
+</ol>
+<p>Из этого следует практическое правило: <strong>сообщение об ошибке читают сверху
+вниз</strong>, но самое важное обычно в конце — тип ошибки и её описание, а строки
+выше показывают, где это произошло.</p>
+<h2 id="mistakes"><span class="h-number">2.9</span> Типичные ошибки начинающих</h2>
+<ol>
+<li><strong>Ждать целый результат от <code>/</code>.</strong> <code>10 / 2</code> — это <code>5.0</code>, а не <code>5</code>.
+Используйте <code>//</code>, если нужен целый результат.</li>
+<li><strong>Соединять строку и число через <code>+</code>.</strong> Нужна явная строка: <code>str(число)</code>.</li>
+<li><strong>Забыть закрыть скобку или кавычку.</strong> Это <code>SyntaxError</code>; редактор обычно
+подсказывает место.</li>
+<li><strong>Путать <code>=</code> и <code>==</code>.</strong> <code>=</code> связывает имя со значением, <code>==</code> сравнивает.
+Сравнение появится в главе 4, но не перепутать их важно уже сейчас.</li>
+<li><strong>Игнорировать текст ошибки.</strong> В нём указаны и место, и причина; читать
+полезнее, чем сразу менять код наугад.</li>
+</ol>
+<h2 id="упражнения"><span class="h-number">2.10</span> Упражнения</h2>
+<h3 id="ex-ch02-01">1. Арифметика вручную и на компьютере</h3>
+<p>Вычислите в уме, затем проверьте программой: <code>17 // 5</code>, <code>17 % 5</code>,
+<code>2 ** 8</code>, <code>7 / 2</code>. Объясните, почему результаты <code>17 // 5</code> и <code>17 % 5</code> связаны
+равенством <code>17 = 5 * 3 + 2</code>.</p>
+<h3 id="ex-ch02-02">2. Прогнозирование вывода</h3>
+<p>Что выведет <code>print(3, 4, sep=&quot;+&quot;)</code>? А <code>print(3, 4)</code>? Запишите оба ответа,
+затем проверьте.</p>
+<h3 id="ex-ch02-03">3. Исправление синтаксической ошибки</h3>
+<p>Программа не запускается:</p>
+<pre class="text"><code>print(&quot;Python
+</code></pre>
+<p>Объясните, в чём ошибка, и напишите исправленный вариант.</p>
+<h3 id="ex-ch02-04">4. Соединение строк</h3>
+<p>Напишите программу, которая выводит одну строку
+<code>Python — это язык</code>, используя только строковые литералы и оператор <code>+</code>.</p>
+<h3 id="ex-ch02-05">5. Целое или дробное</h3>
+<p>Почему <code>print(10 / 2)</code> выводит <code>5.0</code>, а не <code>5</code>? Как получить именно <code>5</code>?
+Ответьте текстом и подтвердите примером.</p>
+<h3 id="ex-ch02-06">6. Три строки</h3>
+<p>Напишите программу, которая выводит три строки: название языка, версию и
+девиз книги. Используйте три отдельных вызова <code>print</code>.</p>
+<h3 id="ex-ch02-07">7. Ошибка времени выполнения</h3>
+<p>Следующий код падает:</p>
+<div class="highlight"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="s2">"итог: "</span> <span class="o">+</span> <span class="mi">42</span><span class="p">)</span>
+</code></pre></div>
+<p>Определите тип ошибки, объясните причину и исправьте код двумя способами:
+через <code>str(...)</code> и через <code>sep</code> у <code>print</code>.</p>
+<h3 id="ex-ch02-08">8. Деление на ноль</h3>
+<p>Что произойдёт при выполнении <code>print(5 // 0)</code>? Какой тип исключения будет
+поднят? Сравните с <code>print(5 / 0)</code>: одинаково ли сообщение в Python 3.14 и как
+оно менялось в версиях до 3.14?</p>
+<h3 id="ex-ch02-09">9. Формат вывода</h3>
+<p>Напишите одну инструкцию <code>print</code> с тремя значениями — <code>2026</code>, <code>&quot;Python&quot;</code>,
+<code>&quot;3.14&quot;</code> — так, чтобы вывод был ровно таким:</p>
+<pre class="text"><code>2026 | Python | 3.14
+</code></pre>
+<h3 id="ex-ch02-10">10. Мини-задача: стоимость заказа</h3>
+<p>Три товара стоят по 250 рублей. Скидка составляет 10 %. Напишите программу
+из одной или нескольких инструкций <code>print</code>, которая вычисляет и выводит итог
+в целых рублях, без переменных: используйте только числа и арифметические
+операторы. Объясните, как вы получили целое число.</p>
+<h2 id="проверка-понимания"><span class="h-number">2.11</span> Проверка понимания</h2>
+<ol>
+<li>Чем выражение отличается от инструкции? Приведите по два примера.</li>
+<li>Почему <code>7 / 2</code> и <code>7 // 2</code> дают разные значения? Что означает каждое?</li>
+<li>Что делает <code>sep</code> и чем он отличается от <code>end</code>?</li>
+<li>Почему <code>&quot;текст&quot; + 5</code> — ошибка, а <code>&quot;текст&quot; + str(5)</code> — нет?</li>
+<li>Чем <code>SyntaxError</code> отличается от <code>ZeroDivisionError</code> по моменту
+возникновения и по последствиям?</li>
+<li>На каком этапе исполнения появляется ошибка времени выполнения?</li>
+</ol>
+<h2 id="что-дальше"><span class="h-number">2.12</span> Что дальше</h2>
+<p>Вы научились вычислять и выводить, но пока не умеете хранить промежуточные
+результаты. В следующей главе появятся имена, объекты и типы — механизм,
+который превращает отдельные вычисления в настоящую программу.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-01-introduction.html"><span class="pager-label">← Назад</span><span class="pager-title">Зачем Python и как устроена эта книга</span></a><a class="pager-card next" rel="next" href="ch-03-values-names-objects.html"><span class="pager-label">Далее:</span><span class="pager-title">Значения, имена, объекты и типы</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

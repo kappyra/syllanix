@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Визуализация данных — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-56-dataviz.html" aria-current="page">56. Визуализация данных</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-56-dataviz.html#что-вы-сможете-после-этой-главы">56.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-56-dataviz.html#why">56.2. Зачем визуализация</a></li>
+<li><a href="ch-56-dataviz.html#anatomy">56.3. Из чего состоит график</a></li>
+<li><a href="ch-56-dataviz.html#types">56.4. Выбор типа диаграммы</a></li>
+<li><a href="ch-56-dataviz.html#matplotlib">56.5. matplotlib: фигура и оси</a></li>
+<li><a href="ch-56-dataviz.html#plot-kinds">56.6. Четыре базовых графика</a></li>
+<li><a href="ch-56-dataviz.html#axes">56.7. Оси, подписи и легенда</a></li>
+<li><a href="ch-56-dataviz.html#honesty">56.8. Честность графика</a></li>
+<li><a href="ch-56-dataviz.html#practice">56.9. Практика: от данных к графику</a></li>
+<li><a href="ch-56-dataviz.html#export">56.10. Экспорт рисунка</a></li>
+<li><a href="ch-56-dataviz.html#table">56.11. Когда лучше таблица</a></li>
+<li><a href="ch-56-dataviz.html#mistakes">56.12. Типичные ошибки</a></li>
+<li><a href="ch-56-dataviz.html#упражнения">56.13. Упражнения</a></li>
+<li><a href="ch-56-dataviz.html#check">56.14. Проверка понимания</a></li>
+<li><a href="ch-56-dataviz.html#links">56.15. Связи</a></li>
+</ol></details></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 11. Профессиональная практика и прикладные темы</span><span class="sep">›</span><span>Глава 56</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Профессиональная практика и прикладные темы · глава 56</p>
+<h1 id="визуализация-данных">Визуализация данных</h1>
+<p class="chapter-summary">Как превращать данные в понятные графики: выбор типа диаграммы, оси, подписи, честность и экспорт.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#что-вы-сможете-после-этой-главы"><span class="toc-number">56.1</span> Что вы сможете после этой главы</a></li>
+<li class="level-2"><a href="#why"><span class="toc-number">56.2</span> Зачем визуализация</a></li>
+<li class="level-2"><a href="#anatomy"><span class="toc-number">56.3</span> Из чего состоит график</a></li>
+<li class="level-2"><a href="#types"><span class="toc-number">56.4</span> Выбор типа диаграммы</a></li>
+<li class="level-2"><a href="#matplotlib"><span class="toc-number">56.5</span> matplotlib: фигура и оси</a></li>
+<li class="level-2"><a href="#plot-kinds"><span class="toc-number">56.6</span> Четыре базовых графика</a></li>
+<li class="level-2"><a href="#axes"><span class="toc-number">56.7</span> Оси, подписи и легенда</a></li>
+<li class="level-2"><a href="#honesty"><span class="toc-number">56.8</span> Честность графика</a></li>
+<li class="level-2"><a href="#practice"><span class="toc-number">56.9</span> Практика: от данных к графику</a></li>
+<li class="level-2"><a href="#export"><span class="toc-number">56.10</span> Экспорт рисунка</a></li>
+<li class="level-2"><a href="#table"><span class="toc-number">56.11</span> Когда лучше таблица</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">56.12</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">56.13</span> Упражнения</a></li>
+<li class="level-2"><a href="#check"><span class="toc-number">56.14</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#links"><span class="toc-number">56.15</span> Связи</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#столбцы-сравнение-категорий">Столбцы: сравнение категорий</a></li>
+<li class="level-3"><a href="#гистограмма-распределение">Гистограмма: распределение</a></li>
+<li class="level-3"><a href="#точечный-график-связь-величин">Точечный график: связь величин</a></li>
+<li class="level-3"><a href="#линия-с-двумя-сериями-и-легендой">Линия с двумя сериями и легендой</a></li>
+<li class="level-3"><a href="#шаг-1-прочитать-csv">Шаг 1. Прочитать CSV</a></li>
+<li class="level-3"><a href="#шаг-2-агрегировать-и-упорядочить">Шаг 2. Агрегировать и упорядочить</a></li>
+<li class="level-3"><a href="#шаг-3-нарисовать">Шаг 3. Нарисовать</a></li>
+<li class="level-3"><a href="#ex-ch56-01">1. Вопрос и форма</a></li>
+<li class="level-3"><a href="#ex-ch56-02">2. Анатомия графика</a></li>
+<li class="level-3"><a href="#ex-ch56-03">3. Подготовка данных</a></li>
+<li class="level-3"><a href="#ex-ch56-04">4. Обрезанная шкала</a></li>
+<li class="level-3"><a href="#ex-ch56-05">5. Гистограмма</a></li>
+<li class="level-3"><a href="#ex-ch56-06">6. Две серии</a></li>
+<li class="level-3"><a href="#ex-ch56-07">7. Честность</a></li>
+<li class="level-3"><a href="#ex-ch56-08">8. Корреляция и причина</a></li>
+<li class="level-3"><a href="#ex-ch56-09">9. Экспорт</a></li>
+<li class="level-3"><a href="#ex-ch56-10">10. Мини-задача: отчёт по месяцам</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>Таблица с сотней чисел честна и почти бесполезна: закономерность в ней есть,
+но увидеть её трудно. График показывает ту же информацию иначе — глаз сразу
+замечает рост, провал, выброс или разброс. Визуализация не украшение отчёта, а
+инструмент мышления: иногда именно она делает проблему очевидной. Эта глава о
+том, как строить графики, которые не врут, и как выбирать форму под вопрос, а
+не под привычку.</p>
+<h2 id="что-вы-сможете-после-этой-главы"><span class="h-number">56.1</span> Что вы сможете после этой главы</h2>
+<p>К концу главы вы сможете делать следующее.</p>
+<ul>
+<li>выбирать тип диаграммы под вопрос: динамика, сравнение, распределение,
+связь, части целого;</li>
+<li>объяснять анатомию графика: данные, оси, единицы, подписи, легенда,
+источник;</li>
+<li>строить графики через <code>matplotlib</code> с объектной моделью <code>Figure</code>/<code>Axes</code>;</li>
+<li>замечать нечестные графики: обрезанную шкалу, неуказанные единицы,
+сравнение несравнимого, путаницу корреляции с причинностью;</li>
+<li>готовить данные для графика отдельно от рисования и проверять эту
+подготовку тестами;</li>
+<li>экспортировать рисунок в PNG или SVG с нужным разрешением.</li>
+</ul>
+<h2 id="why"><span class="h-number">56.2</span> Зачем визуализация</h2>
+<p><strong>Визуализация данных</strong> — представление данных графиком или диаграммой, чтобы
+читатель увидел закономерность быстрее, чем в таблице. У глаза есть сильная
+сторона: он мгновенно сравнивает длины, положения и наклоны. У таблицы —
+другая: она хранит точные значения. Хороший отчёт использует обе.</p>
+<p>График решает четыре задачи.</p>
+<ol>
+<li><strong>Динамика.</strong> Как менялась величина во времени: росла, падала, колебалась.</li>
+<li><strong>Сравнение.</strong> Какая категория больше и насколько.</li>
+<li><strong>Распределение.</strong> Где центр значений и насколько велик разброс; есть ли
+выбросы.</li>
+<li><strong>Связь.</strong> Меняются ли две величины согласованно.</li>
+</ol>
+<p>Есть и пятая задача — части целого, но с ней чаще всего ошибаются, поэтому о
+ней отдельно.</p>
+<p><figure class="figure"><img src="illustrations/ch-56-chart-types.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h2 id="anatomy"><span class="h-number">56.3</span> Из чего состоит график</h2>
+<p>График — это не картинка, а утверждение о данных. У него есть обязательные
+части, без которых утверждение становится двусмысленным.</p>
+<ul>
+<li><strong>Данные.</strong> Что именно изображено: одна серия или несколько, за какой
+период, в каких единицах.</li>
+<li><strong>Тип диаграммы.</strong> Форма, соответствующая вопросу.</li>
+<li><strong>Оси.</strong> Горизонтальная и вертикальная, с подписями и единицами измерения.</li>
+<li><strong>Деления и диапазон.</strong> Откуда начинается шкала и какой шаг между делениями.</li>
+<li><strong>Заголовок.</strong> Что и за какой период показано.</li>
+<li><strong>Легенда.</strong> Что означает каждая серия, если их несколько.</li>
+<li><strong>Источник.</strong> Откуда данные и когда они собраны.</li>
+</ul>
+<p><figure class="figure"><img src="illustrations/ch-56-chart-anatomy.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Пропущенная часть почти всегда превращается в вопрос читателя. Нет единиц —
+непонятно, рубли это или тысячи рублей. Нет периода — непонятно, к чему
+относятся числа. Нет источника — невозможно проверить.</p>
+<h2 id="types"><span class="h-number">56.4</span> Выбор типа диаграммы</h2>
+<p><strong>Типы диаграмм</strong> — формы представления данных, каждая из которых отвечает на
+свой вопрос. Выбор делают по вопросу, а не по внешнему виду.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Вопрос</th>
+<th>Тип</th>
+<th>Почему</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>как меняется во времени</td>
+<td>линия</td>
+<td>порядок точек задан, важна форма изменения</td>
+</tr>
+<tr>
+<td>как сравнить категории</td>
+<td>столбцы</td>
+<td>длина столбца сравнивается точно</td>
+</tr>
+<tr>
+<td>как распределены значения</td>
+<td>гистограмма</td>
+<td>показывает частоты по интервалам</td>
+</tr>
+<tr>
+<td>насколько велик разброс</td>
+<td>ящик с усами</td>
+<td>видны медиана, квартили и выбросы</td>
+</tr>
+<tr>
+<td>есть ли связь двух величин</td>
+<td>точки</td>
+<td>видна общая тенденция и выбросы</td>
+</tr>
+<tr>
+<td>из каких частей состоит целое</td>
+<td>столбцы или стек</td>
+<td>доли читаются точнее, чем сектора</td>
+</tr>
+</tbody>
+</table>
+</div><p>Круговая диаграмма — частая ошибка начинающих. Угол сектора человек сравнивает
+хуже, чем длину, а при близких долях разница вообще не видна. Если доли почти
+равны, круговая диаграмма создаёт ложное впечатление одинаковости.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">shares</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"A"</span><span class="p">:</span> <span class="mi">27</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">:</span> <span class="mi">24</span><span class="p">}</span>
+<span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">shares</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="n">percent</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">value</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="n">total</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">shares</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"доли, %:"</span><span class="p">,</span> <span class="n">percent</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"разница между максимумом и минимумом:"</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">percent</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">percent</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">"п.п."</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>доли, %: {&#x27;A&#x27;: 27.0, &#x27;B&#x27;: 25.0, &#x27;C&#x27;: 24.0, &#x27;D&#x27;: 24.0}
+разница между максимумом и минимумом: 3.0 п.п.
+</code></pre>
+<p>Разница три процентных пункта: на глаз сектора почти неотличимы, а столбцы с
+подписанными значениями покажут её честно.</p>
+<h2 id="matplotlib"><span class="h-number">56.5</span> matplotlib: фигура и оси</h2>
+<p><strong>matplotlib</strong> — библиотека построения графиков для Python: фигуры, оси,
+линии, столбцы, подписи и сохранение в файл. Она не входит в стандартную
+библиотеку, поэтому её устанавливают как зависимость проекта:</p>
+<pre class="text"><code>$ uv add matplotlib
+</code></pre>
+<p>Внутри matplotlib есть две модели работы. Простая, через <code>pyplot</code>, действует
+на «текущую фигуру» и удобна для быстрых экспериментов. Основная, объектная,
+работает с явными объектами: <code>Figure</code> — весь рисунок, <code>Axes</code> — область с
+осями и данными. Для кода, который живёт дольше одного скрипта, используют
+вторую: она предсказуема, потому что не зависит от глобального состояния.</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">months</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"янв"</span><span class="p">,</span> <span class="s2">"фев"</span><span class="p">,</span> <span class="s2">"мар"</span><span class="p">,</span> <span class="s2">"апр"</span><span class="p">,</span> <span class="s2">"май"</span><span class="p">,</span> <span class="s2">"июн"</span><span class="p">]</span>
+<span class="n">revenue</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1200</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="mi">2100</span><span class="p">,</span> <span class="mi">1800</span><span class="p">,</span> <span class="mi">2400</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">months</span><span class="p">,</span> <span class="n">revenue</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"#33557a"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Выручка по месяцам, первое полугодие 2026"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Месяц"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Выручка, тыс. ₽"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">"y"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">"revenue.png"</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">"tight"</span><span class="p">)</span>
+</code></pre></div>
+<p>Разберём строки. <code>plt.subplots()</code> возвращает фигуру и оси; <code>ax.plot</code> рисует
+линию с маркерами; <code>set_*</code> задают подписи и диапазон; <code>grid</code> добавляет сетку
+по горизонтали; <code>tight_layout</code> убирает обрезанные подписи; <code>savefig</code>
+сохраняет результат. Обратите внимание на <code>set_ylim(bottom=0)</code>: для столбцов
+и площадей нулевая линия обязательна, иначе длины искажаются.</p>
+<h2 id="plot-kinds"><span class="h-number">56.6</span> Четыре базовых графика</h2>
+<p>Одни и те же данные можно показать по-разному, и форма должна отвечать на
+вопрос. Ниже — четыре типовых случая.</p>
+<h3 id="столбцы-сравнение-категорий">Столбцы: сравнение категорий</h3>
+<div class="highlight"><pre><code class="language-python"><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">months</span><span class="p">,</span> <span class="n">revenue</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"#33557a"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Выручка по месяцам"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Выручка, тыс. ₽"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Месяц"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">revenue</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">value</span> <span class="o">+</span> <span class="mi">40</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">"center"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</code></pre></div>
+<p>Подписи значений над столбцами избавляют читателя от необходимости оценивать
+высоту на глаз — для небольших наборов данных это хорошая практика.</p>
+<h3 id="гистограмма-распределение">Гистограмма: распределение</h3>
+<div class="highlight"><pre><code class="language-python"><span class="n">durations</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">47</span><span class="p">,</span> <span class="mi">52</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">durations</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">61</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"white"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Распределение времени доставки"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Время, мин"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Число заказов"</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</code></pre></div>
+<p>Гистограмма показывает, как значения распределены по интервалам. Это не
+столбцы сравнения категорий: интервалы упорядочены, а высота означает частоту.
+Число интервалов влияет на вид — слишком крупные скрывают структуру, слишком
+мелкие показывают шум.</p>
+<p>Посчитаем частоты без matplotlib, чтобы проверить данные до рисования.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">47</span><span class="p">,</span> <span class="mi">52</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">histogram</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">width</span><span class="p">):</span>
+    <span class="n">bins</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">value</span> <span class="o">//</span> <span class="n">width</span> <span class="o">*</span> <span class="n">width</span>
+        <span class="n">bins</span><span class="p">[</span><span class="n">start</span><span class="p">]</span> <span class="o">=</span> <span class="n">bins</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">bins</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"границы и частоты:"</span><span class="p">,</span> <span class="n">histogram</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"всего значений:"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>границы и частоты: [(10, 4), (20, 4), (30, 2), (40, 3), (50, 1)]
+всего значений: 14
+</code></pre>
+<h3 id="точечный-график-связь-величин">Точечный график: связь величин</h3>
+<div class="highlight"><pre><code class="language-python"><span class="n">hours</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">60</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">68</span><span class="p">,</span> <span class="mi">75</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">hours</span><span class="p">,</span> <span class="n">scores</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Подготовка и результат"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Часы подготовки"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Баллы"</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</code></pre></div>
+<p>Точки показывают пары значений. По ним видна общая тенденция, разброс и
+отдельные выбросы — но не доказательство причины: связь двух величин сама по
+себе ничего не говорит о том, что одна вызывает другую.</p>
+<h3 id="линия-с-двумя-сериями-и-легендой">Линия с двумя сериями и легендой</h3>
+<div class="highlight"><pre><code class="language-python"><span class="n">fact</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1200</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="mi">2100</span><span class="p">,</span> <span class="mi">1800</span><span class="p">,</span> <span class="mi">2400</span><span class="p">]</span>
+<span class="n">plan</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1100</span><span class="p">,</span> <span class="mi">1300</span><span class="p">,</span> <span class="mi">1400</span><span class="p">,</span> <span class="mi">1900</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2100</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">months</span><span class="p">,</span> <span class="n">fact</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Факт"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">months</span><span class="p">,</span> <span class="n">plan</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"s"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"План"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Факт и план по месяцам"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Месяц"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Выручка, тыс. ₽"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">"Серия"</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">"upper left"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">"y"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</code></pre></div>
+<p>Две серии на одном графике сравнимы, только если это одни и те же единицы и
+один и тот же период. Легенда обязательна: без неё читатель не знает, какая
+линия что означает.</p>
+<h2 id="axes"><span class="h-number">56.7</span> Оси, подписи и легенда</h2>
+<p><strong>Оси и подписи графика</strong> — подписи осей, единицы, заголовок, легенда, диапазон
+и деления. Без них график вводит в заблуждение, даже если данные верны.</p>
+<p>Правила, которые закрывают большинство проблем.</p>
+<ol>
+<li><strong>Единицы в подписи оси.</strong> «Выручка, тыс. ₽» лучше, чем «Выручка».</li>
+<li><strong>Диапазон оси осознан.</strong> Для столбцов нижняя граница — ноль. Для линий
+можно начать выше нуля, если это явно видно на шкале.</li>
+<li><strong>Заголовок отвечает на вопрос.</strong> «Выручка по месяцам, первое полугодие
+2026» лучше, чем «График».</li>
+<li><strong>Легенда только при нескольких сериях.</strong> Одна серия объясняется подписью
+оси.</li>
+<li><strong>Деления читаемы.</strong> Десять делений на сантиметр — шум; три-пять —
+ориентир.</li>
+<li><strong>Источник и период.</strong> Кто и когда собрал данные.</li>
+</ol>
+<p>Данные для графика удобно готовить отдельно от рисования. Тогда подготовку
+можно проверить тестом, а рисование заменить или убрать.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">rows</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">"month"</span><span class="p">:</span> <span class="s2">"янв"</span><span class="p">,</span> <span class="s2">"revenue"</span><span class="p">:</span> <span class="mi">1200</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"month"</span><span class="p">:</span> <span class="s2">"фев"</span><span class="p">,</span> <span class="s2">"revenue"</span><span class="p">:</span> <span class="mi">1500</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"month"</span><span class="p">:</span> <span class="s2">"мар"</span><span class="p">,</span> <span class="s2">"revenue"</span><span class="p">:</span> <span class="mi">900</span><span class="p">},</span>
+<span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">monthly_series</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">"month"</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">],</span> <span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">"revenue"</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">]</span>
+
+<span class="n">months</span><span class="p">,</span> <span class="n">revenue</span> <span class="o">=</span> <span class="n">monthly_series</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"подписи:"</span><span class="p">,</span> <span class="n">months</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"значения:"</span><span class="p">,</span> <span class="n">revenue</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"длины совпадают:"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">months</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">revenue</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>подписи: [&#x27;янв&#x27;, &#x27;фев&#x27;, &#x27;мар&#x27;]
+значения: [1200, 1500, 900]
+длины совпадают: True
+</code></pre>
+<p>Функция <code>monthly_series</code> ничего не знает о matplotlib: она превращает данные в
+две последовательности. Тест проверяет её без установки библиотеки, а
+рисование получает готовые списки.</p>
+<h2 id="honesty"><span class="h-number">56.8</span> Честность графика</h2>
+<p><strong>Честность графика</strong> — отсутствие искажений: подходящий диапазон оси, честное
+сравнение, указание источника и неопределённости. График может быть
+формально правильным и при этом создавать ложное впечатление — это и есть
+нечестная визуализация.</p>
+<p>Посмотрим, как обрезанная шкала меняет восприятие. Три магазина с выручкой
+98, 100 и 103 тыс. ₽ выглядят почти одинаково, но если начать ось с 95,
+разница превращается в «в разы».</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">98</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">103</span><span class="p">]</span>
+<span class="n">baseline</span> <span class="o">=</span> <span class="mi">95</span>
+<span class="n">heights</span> <span class="o">=</span> <span class="p">[</span><span class="n">value</span> <span class="o">-</span> <span class="n">baseline</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"фактические значения:"</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"высоты при базе 0:"</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"высоты при базе 95:"</span><span class="p">,</span> <span class="n">heights</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"отношение значений:"</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"отношение высот при базе 95:"</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">heights</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="n">heights</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>фактические значения: [98, 100, 103]
+высоты при базе 0: [98, 100, 103]
+высоты при базе 95: [3, 5, 8]
+отношение значений: 1.051
+отношение высот при базе 95: 2.7
+</code></pre>
+<p>Значения отличаются на 5 %, а столбцы при обрезанной оси — в 2,7 раза. Для
+столбцов длина кодирует величину, поэтому нулевая линия обязательна.</p>
+<p>Другие распространённые искажения:</p>
+<ul>
+<li><strong>Двойная ось Y.</strong> Две шкалы на одном графике позволяют подогнать любую
+«впечатляющую» корреляцию; без сильной причины так делать не стоит.</li>
+<li><strong>Трёхмерные диаграммы.</strong> Перспектива искажает длины и площади.</li>
+<li><strong>Круговая диаграмма с близкими долями.</strong> Сектора неразличимы, а сумма
+должна быть 100 %.</li>
+<li><strong>Выбранный период.</strong> Можно показать «рост» за удачные месяцы, скрыв
+предыдущий спад.</li>
+<li><strong>Среднее без разброса.</strong> Одно число скрывает, что половина значений сильно
+отличается от него.</li>
+<li><strong>Корреляция как причина.</strong> Согласованный рост двух величин не доказывает,
+что одна вызвала другую.</li>
+</ul>
+<h2 id="practice"><span class="h-number">56.9</span> Практика: от данных к графику</h2>
+<p>Разделим работу на три шага: прочитать данные, агрегировать, нарисовать. Так
+каждый шаг проверяется отдельно, а рисование можно заменить.</p>
+<h3 id="шаг-1-прочитать-csv">Шаг 1. Прочитать CSV</h3>
+<p>Читаем строки как записи с именованными полями и сразу приводим числа к <code>int</code>:
+дальше с ними работают как со значениями, а не как с текстом.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
+
+<span class="n">raw</span> <span class="o">=</span> <span class="s2">"""month,revenue</span>
+<span class="s2">2026-01,1200</span>
+<span class="s2">2026-02,1500</span>
+<span class="s2">2026-03,900</span>
+<span class="s2">2026-04,2100</span>
+<span class="s2">2026-05,1800</span>
+<span class="s2">2026-06,2400</span>
+<span class="s2">"""</span>
+<span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">raw</span><span class="p">))</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">"month"</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s2">"month"</span><span class="p">],</span> <span class="s2">"revenue"</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"revenue"</span><span class="p">])}</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"месяцев:"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"выручка:"</span><span class="p">,</span> <span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">"revenue"</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">])</span>
+<span class="n">best</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s2">"revenue"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"лучший месяц:"</span><span class="p">,</span> <span class="n">best</span><span class="p">[</span><span class="s2">"month"</span><span class="p">],</span> <span class="n">best</span><span class="p">[</span><span class="s2">"revenue"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"рост к январю:"</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">rows</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">"revenue"</span><span class="p">]</span> <span class="o">/</span> <span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"revenue"</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>месяцев: 6
+выручка: [1200, 1500, 900, 2100, 1800, 2400]
+лучший месяц: 2026-06 2400
+рост к январю: 2.0
+</code></pre>
+<h3 id="шаг-2-агрегировать-и-упорядочить">Шаг 2. Агрегировать и упорядочить</h3>
+<p>Часто перед графиком нужно посчитать итоги по категориям и отсортировать их —
+столбцы читаются лучше, когда упорядочены.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">totals</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"март"</span><span class="p">:</span> <span class="mi">900</span><span class="p">,</span> <span class="s2">"январь"</span><span class="p">:</span> <span class="mi">1200</span><span class="p">,</span> <span class="s2">"февраль"</span><span class="p">:</span> <span class="mi">1500</span><span class="p">}</span>
+<span class="n">ordered</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">totals</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"по убыванию:"</span><span class="p">,</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">ordered</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"значения:"</span><span class="p">,</span> <span class="p">[</span><span class="n">value</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">ordered</span><span class="p">])</span>
+</code></pre></div>
+<pre class="output"><code>по убыванию: [&#x27;февраль&#x27;, &#x27;январь&#x27;, &#x27;март&#x27;]
+значения: [1500, 1200, 900]
+</code></pre>
+<h3 id="шаг-3-нарисовать">Шаг 3. Нарисовать</h3>
+<p>Рисование получает готовые списки и не занимается ни чтением файлов, ни
+сортировкой — только оформлением.</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">titles</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"февраль"</span><span class="p">,</span> <span class="s2">"январь"</span><span class="p">,</span> <span class="s2">"март"</span><span class="p">]</span>
+<span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1500</span><span class="p">,</span> <span class="mi">1200</span><span class="p">,</span> <span class="mi">900</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">titles</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"#33557a"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Выручка по месяцам, тыс. ₽"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Выручка, тыс. ₽"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">"monthly.svg"</span><span class="p">)</span>
+</code></pre></div>
+<p>Данные можно брать и из JSON — например, если описание графика приходит из
+конфигурации отчёта.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+<span class="n">raw</span> <span class="o">=</span> <span class="s1">'{"title": "Выручка по месяцам", "x": ["янв", "фев", "мар"], "series": [{"name": "факт", "values": [1200, 1500, 900]}, {"name": "план", "values": [1100, 1300, 1400]}]}'</span>
+<span class="n">spec</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"заголовок:"</span><span class="p">,</span> <span class="n">spec</span><span class="p">[</span><span class="s2">"title"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"категорий:"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">spec</span><span class="p">[</span><span class="s2">"x"</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"серий:"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">spec</span><span class="p">[</span><span class="s2">"series"</span><span class="p">]))</span>
+<span class="k">for</span> <span class="n">series</span> <span class="ow">in</span> <span class="n">spec</span><span class="p">[</span><span class="s2">"series"</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">series</span><span class="p">[</span><span class="s2">"name"</span><span class="p">],</span> <span class="nb">sum</span><span class="p">(</span><span class="n">series</span><span class="p">[</span><span class="s2">"values"</span><span class="p">]))</span>
+</code></pre></div>
+<pre class="output"><code>заголовок: Выручка по месяцам
+категорий: 3
+серий: 2
+факт 3600
+план 3800
+</code></pre>
+<p>Рисование по такому описанию — один цикл по сериям:</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">spec</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">"chart.json"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">series</span> <span class="ow">in</span> <span class="n">spec</span><span class="p">[</span><span class="s2">"series"</span><span class="p">]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">spec</span><span class="p">[</span><span class="s2">"x"</span><span class="p">],</span> <span class="n">series</span><span class="p">[</span><span class="s2">"values"</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">series</span><span class="p">[</span><span class="s2">"name"</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">spec</span><span class="p">[</span><span class="s2">"title"</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Месяц"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Выручка, тыс. ₽"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">"Серия"</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">"chart.png"</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">"tight"</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="export"><span class="h-number">56.10</span> Экспорт рисунка</h2>
+<p><strong>Экспорт рисунка</strong> — сохранение графика в файл с достаточным разрешением и
+встраивание в документ или презентацию. Формат выбирают по назначению.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Формат</th>
+<th>Когда подходит</th>
+<th>Что важно</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PNG</td>
+<td>презентации, веб, скриншоты</td>
+<td>разрешение <code>dpi</code>, размер в пикселях</td>
+</tr>
+<tr>
+<td>SVG</td>
+<td>отчёты, документы, масштабирование</td>
+<td>векторный, текст остаётся текстом</td>
+</tr>
+<tr>
+<td>PDF</td>
+<td>печать и публикация</td>
+<td>векторный, встраивается в PDF-отчёт</td>
+</tr>
+</tbody>
+</table>
+</div><p>Практические параметры:</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">"chart.png"</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">"tight"</span><span class="p">)</span>   <span class="c1"># печать</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">"chart.svg"</span><span class="p">)</span>                                 <span class="c1"># масштабирование без потерь</span>
+</code></pre></div>
+<p><code>dpi</code> задаёт число точек на дюйм: 150 достаточно для экрана, 300 — для печати.
+<code>bbox_inches=&quot;tight&quot;</code> убирает лишние поля и обрезанные подписи. Для отчётов
+формат SVG предпочтительнее: он остаётся чётким при любом масштабе, а текст в
+нём можно выделить. Для слайдов и мессенджеров удобнее PNG, потому что он
+открывается везде.</p>
+<h2 id="table"><span class="h-number">56.11</span> Когда лучше таблица</h2>
+<p>График не всегда лучше таблицы. Таблица выигрывает, когда:</p>
+<ul>
+<li>значений мало (пять-десять) и нужны точные числа;</li>
+<li>читатель будет искать конкретное значение, а не сравнивать форму;</li>
+<li>важна доступность: таблицу читают программы экранного доступа;</li>
+<li>данные нужно скопировать или проверить;</li>
+<li>значения несопоставимы по природе, и общая шкала введёт в заблуждение.</li>
+</ul>
+<p>Хороший отчёт часто содержит и график, и таблицу: график показывает
+закономерность, таблица даёт точные значения для проверки.</p>
+<h2 id="mistakes"><span class="h-number">56.12</span> Типичные ошибки</h2>
+<ol>
+<li><strong>Обрезанная ось у столбцов.</strong> Длины перестают быть пропорциональны
+значениям, и разница выглядит драматичнее, чем есть.</li>
+<li><strong>Нет единиц измерения.</strong> «Выручка» без «тыс. ₽» читается неверно.</li>
+<li><strong>Нет периода и источника.</strong> График невозможно ни понять, ни проверить.</li>
+<li><strong>Круговая диаграмма для близких долей.</strong> Сектора неразличимы, сравнение
+невозможно.</li>
+<li><strong>Две серии в разных единицах на одной оси.</strong> Сравнение бессмысленно;
+нужны две оси с явной оговоркой или два графика.</li>
+<li><strong>Гистограмма вместо столбцов.</strong> Гистограмма показывает распределение, а
+не сравнение категорий.</li>
+<li><strong>Корреляция как причина.</strong> Согласованный рост не доказывает влияние.</li>
+<li><strong>Рисование без проверки данных.</strong> Ошибка в агрегации попадёт на график и
+станет убедительной картинкой.</li>
+<li><strong>Слишком много линий на одном графике.</strong> Больше трёх-четырёх серий глаз
+не различает; лучше несколько графиков.</li>
+</ol>
+<h2 id="упражнения"><span class="h-number">56.13</span> Упражнения</h2>
+<h3 id="ex-ch56-01">1. Вопрос и форма</h3>
+<p>Для каждого вопроса выберите тип диаграммы и объясните: (а) как менялась
+посещаемость по неделям; (б) сколько студентов в каждой из пяти групп; (в)
+как распределены оценки за экзамен; (г) связаны ли часы подготовки и балл;
+(д) какую долю бюджета занимает каждая из четырёх статей.</p>
+<h3 id="ex-ch56-02">2. Анатомия графика</h3>
+<p>Дан график без подписей: по оси Y числа от 0 до 3000, по оси X шесть
+категорий, две линии. Перечислите, каких элементов не хватает, и объясните,
+какой вопрос возникнет у читателя из-за каждого пропуска.</p>
+<h3 id="ex-ch56-03">3. Подготовка данных</h3>
+<p>Дан список строк вида <code>&quot;2026-03,1200&quot;</code>. Напишите функцию, которая возвращает
+два списка: месяцы и значения. Проверьте, что длины совпадают и что значения
+преобразованы в <code>int</code>. Библиотеку matplotlib не используйте.</p>
+<h3 id="ex-ch56-04">4. Обрезанная шкала</h3>
+<p>Значения: 240, 250, 260. Постройте мысленно два варианта столбцов: с нулевой
+линией и с нижней границей 230. Во сколько раз визуально отличаются крайние
+столбцы в каждом варианте? Объясните, какой вариант честнее и почему.</p>
+<h3 id="ex-ch56-05">5. Гистограмма</h3>
+<p>Дан список времён доставки: 12, 15, 18, 18, 21, 24, 24, 27, 30, 35, 41, 44,
+47, 52. Посчитайте частоты для интервалов по 10 минут без matplotlib и
+объясните, как изменится вид гистограммы при интервале 5 минут.</p>
+<h3 id="ex-ch56-06">6. Две серии</h3>
+<p>Даны фактические значения по месяцам и план. Напишите функцию, которая
+возвращает список отклонений «факт минус план» и список процентов выполнения
+плана. Объясните, почему для графика достаточно первого списка, а для
+отчёта — второго.</p>
+<h3 id="ex-ch56-07">7. Честность</h3>
+<p>Найдите три ошибки в описании графика: «График показывает, что выручка выросла
+на 300 % за месяц; ось Y начинается с 950; данные за март; единицы не
+указаны; вторая линия — количество сотрудников». Что нужно исправить?</p>
+<h3 id="ex-ch56-08">8. Корреляция и причина</h3>
+<p>Данные показывают, что продажи мороженого и число утоплений растут
+одновременно. Сформулируйте два объяснения, при которых одна величина не
+служит причиной другой, и предложите, какие данные помогли бы разобраться.</p>
+<h3 id="ex-ch56-09">9. Экспорт</h3>
+<p>Вам нужно вставить график в PDF-отчёт и в презентацию. Какой формат выбрать
+для каждого случая и какие параметры указать? Объясните разницу между
+растровым и векторным форматами.</p>
+<h3 id="ex-ch56-10">10. Мини-задача: отчёт по месяцам</h3>
+<p>Дан CSV с колонками <code>month,revenue,plan</code>. Напишите конвейер: прочитать данные,
+посчитать отклонение от плана, упорядочить месяцы по времени, подготовить две
+серии для графика. Нарисуйте линию факта и пунктир плана, добавьте заголовок,
+подписи осей с единицами, легенду и нулевую линию. Сохраните в PNG и SVG.</p>
+<h2 id="check"><span class="h-number">56.14</span> Проверка понимания</h2>
+<ol>
+<li>Какие четыре задачи решает график и как им соответствуют типы диаграмм?</li>
+<li>Перечислите обязательные элементы графика и объясните, что произойдёт при
+пропуске каждого.</li>
+<li>Почему для столбцов нулевая линия обязательна, а для линий — нет?</li>
+<li>Чем объектная модель <code>Figure</code>/<code>Axes</code> удобнее <code>pyplot</code>?</li>
+<li>Почему данные для графика стоит готовить отдельной функцией?</li>
+<li>В чём разница между PNG и SVG и когда что выбирать?</li>
+<li>Когда таблица лучше графика?</li>
+<li>Почему корреляция не доказывает причинность и как это влияет на подписи
+графика?</li>
+</ol>
+<h2 id="links"><span class="h-number">56.15</span> Связи</h2>
+<p>Глава опирается на работу с коллекциями из глав 12–18, на чтение CSV и JSON из
+главы 19 и на управление зависимостями из главы 33: matplotlib — сторонняя
+библиотека, поэтому её установку и версии фиксируют так же, как любую другую
+зависимость. Сортировка и ключи из главы 23 нужны для упорядочивания
+категорий, а функции из главы 7 — для отделения подготовки данных от
+рисования. Интерфейс на tkinter из главы 55 показывает, как встроить график в
+окно приложения.</p>
+<p>Глава завершает книгу: после неё остаются проекты из глав 46–48 и
+самостоятельная практика. Визуализация соединяет три вещи, которые книга
+разбирала по отдельности: данные, код и читателя. График, который честно
+показывает закономерность и не скрывает ограничений, — такой же результат
+инженерной работы, как тесты и понятный интерфейс.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-55-tkinter.html"><span class="pager-label">← Назад</span><span class="pager-title">Графический интерфейс на tkinter</span></a><a class="pager-card next" rel="next" href="afterword.html"><span class="pager-label">Далее:</span><span class="pager-title">Что дальше: практика и проекты</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

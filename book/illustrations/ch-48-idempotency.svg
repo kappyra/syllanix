@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 320" role="img"
+     aria-labelledby="idc idcd" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="idc">Идемпотентность при повторах</title>
+  <desc id="idcd">Слева неидемпотентная операция: повтор POST на создание задачи создаёт дубликаты. Справа идемпотентная операция: тот же ключ запроса распознаётся, и повтор возвращает прежний результат, не создавая второй записи.</desc>
+
+  <text x="26" y="32" font-size="17" font-weight="bold" fill="#1d3550">Повтор запроса: почему ключ идемпотентности важен</text>
+
+  <rect x="24" y="60" width="368" height="236" rx="10" fill="#fdf1f1" stroke="#8c2f2f" stroke-width="2"/>
+  <text x="208" y="88" text-anchor="middle" font-size="14" font-weight="bold" fill="#6b2020">Без ключа: два запроса — две задачи</text>
+  <text x="46" y="120" font-size="12.5" fill="#6b2020">POST /tasks  {"title": "Купить хлеб"}</text>
+  <text x="46" y="146" font-size="12.5" fill="#6b2020">→ создана задача 1</text>
+  <text x="46" y="184" font-size="12.5" fill="#6b2020">POST /tasks  {"title": "Купить хлеб"}</text>
+  <text x="46" y="210" font-size="12.5" fill="#6b2020">→ создана задача 2 (дубликат!)</text>
+  <text x="46" y="252" font-size="12" fill="#8c2f2f">Сеть могла потерять ответ —</text>
+  <text x="46" y="272" font-size="12" fill="#8c2f2f">клиент повторил запрос.</text>
+
+  <rect x="420" y="60" width="374" height="236" rx="10" fill="#eef7ef" stroke="#2f6b3a" stroke-width="2"/>
+  <text x="607" y="88" text-anchor="middle" font-size="14" font-weight="bold" fill="#204a28">С ключом: повтор безопасен</text>
+  <text x="442" y="120" font-size="12.5" fill="#204a28">POST /tasks</text>
+  <text x="442" y="142" font-size="12.5" fill="#204a28">Idempotency-Key: 7f3a</text>
+  <text x="442" y="166" font-size="12.5" fill="#204a28">→ создана задача 1</text>
+  <text x="442" y="204" font-size="12.5" fill="#204a28">POST /tasks  (тот же ключ 7f3a)</text>
+  <text x="442" y="230" font-size="12.5" fill="#204a28">→ возвращена задача 1, дубликата нет</text>
+  <text x="442" y="272" font-size="12" fill="#2f6b3a">Сервер помнит результат по ключу.</text>
+</svg>

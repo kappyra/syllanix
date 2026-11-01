@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 400" role="img"
+     aria-labelledby="ttl13b desc13b" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl13b">Что делают методы append, insert и pop: список до и после вызова</title>
+  <desc id="desc13b">Три строки показывают состояние списка до и после вызова метода. append(4) добавляет элемент в конец: было 1, 2, 3 — стало 1, 2, 3, 4. insert(1, 9) вставляет 9 на позицию 1 и сдвигает остальные вправо: было 1, 2, 3 — стало 1, 9, 2, 3. pop() удаляет последний элемент и возвращает его: было 1, 2, 3 — стало 1, 2, возвращённое значение 3. Все три метода изменяют список на месте.</desc>
+
+  <text x="30" y="32" font-size="17" font-weight="bold" fill="#1d3550">Методы, которые меняют список на месте</text>
+
+  <text x="300" y="62" font-size="13" font-weight="bold" fill="#33557a">до вызова</text>
+  <text x="540" y="62" font-size="13" font-weight="bold" fill="#33557a">после вызова</text>
+
+  <!-- строка 1: append -->
+  <text x="30" y="100" font-size="14" font-weight="bold" fill="#1d3550" font-family="'DejaVu Sans Mono', monospace">append(4)</text>
+  <text x="30" y="120" font-size="12" fill="#33557a">добавить в конец</text>
+  <rect x="300" y="80" width="46" height="44" rx="6" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="323" y="108" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3550">1</text>
+  <rect x="352" y="80" width="46" height="44" rx="6" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="375" y="108" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3550">2</text>
+  <rect x="404" y="80" width="46" height="44" rx="6" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="427" y="108" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3550">3</text>
+  <line x1="460" y1="102" x2="492" y2="102" stroke="#33557a" stroke-width="2"/>
+  <polygon points="500,102 490,97 490,107" fill="#33557a"/>
+  <rect x="510" y="80" width="46" height="44" rx="6" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="533" y="108" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3550">1</text>
+  <rect x="562" y="80" width="46" height="44" rx="6" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="585" y="108" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3550">2</text>
+  <rect x="614" y="80" width="46" height="44" rx="6" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="637" y="108" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3550">3</text>
+  <rect x="666" y="80" width="46" height="44" rx="6" fill="#eaf3ea" stroke="#3c6b47" stroke-width="2.5"/>
+  <text x="689" y="108" text-anchor="middle" font-size="15" font-weight="bold" fill="#254a2d">4</text>
+
+  <!-- строка 2: insert -->
+  <text x="30" y="200" font-size="14" font-weight="bold" fill="#1d3550" font-family="'DejaVu Sans Mono', monospace">insert(1, 9)</text>
+  <text x="30" y="220" font-size="12" fill="#33557a">вставить на позицию 1</text>
+  <rect x="300" y="180" width="46" height="44" rx="6" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="323" y="208" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3550">1</text>
+  <rect x="352" y="180" width="46" height="44" rx="6" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="375" y="208" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3550">2</text>
+  <rect x="404" y="180" width="46" height="44" rx="6" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="427" y="208" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3550">3</text>
+  <line x1="460" y1="202" x2="492" y2="202" stroke="#33557a" stroke-width="2"/>
+  <polygon points="500,202 490,197 490,207" fill="#33557a"/>
+  <rect x="510" y="180" width="46" height="44" rx="6" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="533" y="208" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3550">1</text>
+  <rect x="562" y="180" width="46" height="44" rx="6" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2.5"/>
+  <text x="585" y="208" text-anchor="middle" font-size="15" font-weight="bold" fill="#4b3a16">9</text>
+  <rect x="614" y="180" width="46" height="44" rx="6" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="637" y="208" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3550">2</text>
+  <rect x="666" y="180" width="46" height="44" rx="6" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="689" y="208" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3550">3</text>
+
+  <!-- строка 3: pop -->
+  <text x="30" y="300" font-size="14" font-weight="bold" fill="#1d3550" font-family="'DejaVu Sans Mono', monospace">pop()</text>
+  <text x="30" y="320" font-size="12" fill="#33557a">удалить и вернуть последний</text>
+  <rect x="300" y="280" width="46" height="44" rx="6" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="323" y="308" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3550">1</text>
+  <rect x="352" y="280" width="46" height="44" rx="6" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="375" y="308" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3550">2</text>
+  <rect x="404" y="280" width="46" height="44" rx="6" fill="#fdf1f1" stroke="#8a2b2b" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <text x="427" y="308" text-anchor="middle" font-size="15" font-weight="bold" fill="#8a2b2b">3</text>
+  <line x1="460" y1="302" x2="492" y2="302" stroke="#33557a" stroke-width="2"/>
+  <polygon points="500,302 490,297 490,307" fill="#33557a"/>
+  <rect x="510" y="280" width="46" height="44" rx="6" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="533" y="308" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3550">1</text>
+  <rect x="562" y="280" width="46" height="44" rx="6" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="585" y="308" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3550">2</text>
+  <text x="620" y="300" font-size="13" fill="#8a2b2b">возвращает 3</text>
+  <text x="620" y="318" font-size="12" fill="#8a2b2b">(значение, а не None)</text>
+
+  <line x1="30" y1="360" x2="735" y2="360" stroke="#c9c2b4" stroke-width="1.5"/>
+  <text x="30" y="384" font-size="13" fill="#4b3a16">Все эти методы возвращают None, кроме pop: он возвращает удалённый элемент.</text>
+</svg>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 440" role="img"
+     aria-labelledby="t35he d35he" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="t35he">HTTP-обмен: запрос клиента, ответ сервера и группы кодов состояния</title>
+  <desc id="d35he">Клиент отправляет запрос: метод GET, путь, параметры и заголовки. Сервер отвечает кодом состояния, заголовками и телом. Ниже показаны три группы кодов: 2xx означает успех, 4xx — ошибка клиента, 5xx — ошибка сервера. Для 4xx повторять запрос бессмысленно, для 5xx и сетевых таймаутов повтор с задержкой иногда оправдан, а тело ответа проверяется в любом случае.</desc>
+  <defs>
+    <marker id="arr35b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#33557a"/>
+    </marker>
+    <marker id="arr35g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2f7a45"/>
+    </marker>
+  </defs>
+
+  <text x="24" y="30" font-size="17" font-weight="bold" fill="#1d3550">HTTP-обмен: запрос, ответ и коды состояния</text>
+
+  <rect x="80" y="52" width="180" height="52" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="170" y="84" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3550">Клиент</text>
+
+  <rect x="440" y="52" width="180" height="52" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="530" y="84" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3550">Сервер</text>
+
+  <line x1="170" y1="104" x2="170" y2="270" stroke="#33557a" stroke-width="1.5" stroke-dasharray="5 5"/>
+  <line x1="530" y1="104" x2="530" y2="270" stroke="#33557a" stroke-width="1.5" stroke-dasharray="5 5"/>
+
+  <line x1="176" y1="126" x2="524" y2="126" stroke="#33557a" stroke-width="2.5" marker-end="url(#arr35b)"/>
+  <text x="350" y="120" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#1d3550">GET /v1/items?limit=5</text>
+  <text x="350" y="146" text-anchor="middle" font-size="12" fill="#33557a">Accept: application/json</text>
+  <text x="350" y="164" text-anchor="middle" font-size="12" fill="#33557a">Authorization: Bearer &lt;токен&gt;</text>
+
+  <line x1="524" y1="210" x2="176" y2="210" stroke="#2f7a45" stroke-width="2.5" marker-end="url(#arr35g)"/>
+  <text x="350" y="204" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#1f5c33">200 OK</text>
+  <text x="350" y="230" text-anchor="middle" font-size="12" fill="#33557a">Content-Type: application/json</text>
+  <text x="350" y="248" text-anchor="middle" font-size="12" fill="#33557a">тело: [{"id": 1, "name": "заметка"}]</text>
+
+  <rect x="36" y="282" width="220" height="106" rx="10" fill="#e8f5ec" stroke="#2f7a45" stroke-width="2"/>
+  <text x="52" y="308" font-size="14" font-weight="bold" fill="#1f5c33">2xx — успех</text>
+  <text x="52" y="332" font-size="12" fill="#1f5c33">200 OK, 201 Created</text>
+  <text x="52" y="354" font-size="12" fill="#1f5c33">тело нужно проверить:</text>
+  <text x="52" y="374" font-size="12" fill="#1f5c33">успех ≠ верные данные</text>
+
+  <rect x="278" y="282" width="220" height="106" rx="10" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="294" y="308" font-size="14" font-weight="bold" fill="#4b3a16">4xx — ошибка клиента</text>
+  <text x="294" y="332" font-size="12" fill="#4b3a16">400, 401, 404, 429</text>
+  <text x="294" y="354" font-size="12" fill="#4b3a16">повторять бессмысленно:</text>
+  <text x="294" y="374" font-size="12" fill="#4b3a16">исправьте запрос или доступ</text>
+
+  <rect x="520" y="282" width="224" height="106" rx="10" fill="#fdecea" stroke="#a33a2c" stroke-width="2"/>
+  <text x="536" y="308" font-size="14" font-weight="bold" fill="#7a2b20">5xx — ошибка сервера</text>
+  <text x="536" y="332" font-size="12" fill="#7a2b20">500, 502, 503</text>
+  <text x="536" y="354" font-size="12" fill="#7a2b20">иногда помогает повтор</text>
+  <text x="536" y="374" font-size="12" fill="#7a2b20">с задержкой и лимитом</text>
+
+  <text x="390" y="420" text-anchor="middle" font-size="12.5" fill="#33557a">Таймаут задаётся на каждый запрос: без него ожидание может длиться бесконечно</text>
+</svg>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 460" role="img"
+     aria-labelledby="ttl23m desc23m" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl23m">map, filter и включение: преобразование и отбор элементов</title>
+  <desc id="desc23m">Для списка 1, 2, 3, 4 map с функцией удвоения даёт итератор 2, 4, 6, 8; filter с проверкой чётности даёт итератор 2, 4; включение с условием и удвоением даёт новый список 4, 8. map и filter возвращают итераторы и требуют list, включение сразу даёт список.</desc>
+
+  <text x="32" y="32" font-size="17" font-weight="bold" fill="#1d3550">Одна задача — три записи: numbers = [1, 2, 3, 4]</text>
+
+  <!-- map -->
+  <rect x="24" y="52" width="228" height="286" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="138" y="76" text-anchor="middle" font-size="13" font-weight="bold" fill="#1d3550">map: преобразовать все</text>
+  <text x="44" y="104" font-size="11" fill="#33557a" font-family="'DejaVu Sans Mono', monospace">map(lambda x: x * 2,</text>
+  <text x="44" y="122" font-size="11" fill="#33557a" font-family="'DejaVu Sans Mono', monospace">    numbers)</text>
+
+  <rect x="44" y="138" width="188" height="40" rx="7" fill="#ffffff" stroke="#33557a" stroke-width="1.5"/>
+  <text x="138" y="163" text-anchor="middle" font-size="13" fill="#1d3550">1, 2, 3, 4</text>
+  <line x1="138" y1="178" x2="138" y2="198" stroke="#33557a" stroke-width="2"/>
+  <polygon points="138,198 132,187 144,187" fill="#33557a"/>
+  <rect x="44" y="202" width="188" height="40" rx="7" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="1.5"/>
+  <text x="138" y="227" text-anchor="middle" font-size="13" fill="#4b3a16">2, 4, 6, 8</text>
+  <text x="138" y="266" text-anchor="middle" font-size="11" font-weight="bold" fill="#8a3030">это итератор, не список</text>
+  <text x="138" y="286" text-anchor="middle" font-size="11" fill="#5a6b7d">len 4 → len 4</text>
+  <text x="138" y="308" text-anchor="middle" font-size="11" fill="#5a6b7d">нужно list(...)</text>
+
+  <!-- filter -->
+  <rect x="266" y="52" width="228" height="286" rx="10" fill="#fdf3f1" stroke="#8a3030" stroke-width="2"/>
+  <text x="380" y="76" text-anchor="middle" font-size="13" font-weight="bold" fill="#8a3030">filter: отобрать по условию</text>
+  <text x="286" y="104" font-size="11" fill="#8a3030" font-family="'DejaVu Sans Mono', monospace">filter(lambda x: x % 2 == 0,</text>
+  <text x="286" y="122" font-size="11" fill="#8a3030" font-family="'DejaVu Sans Mono', monospace">    numbers)</text>
+
+  <rect x="286" y="138" width="188" height="40" rx="7" fill="#ffffff" stroke="#8a3030" stroke-width="1.5"/>
+  <text x="380" y="163" text-anchor="middle" font-size="13" fill="#1d3550">1, 2, 3, 4</text>
+  <line x1="380" y1="178" x2="380" y2="198" stroke="#8a3030" stroke-width="2"/>
+  <polygon points="380,198 374,187 386,187" fill="#8a3030"/>
+  <rect x="286" y="202" width="188" height="40" rx="7" fill="#ffffff" stroke="#8a3030" stroke-width="1.5"/>
+  <text x="380" y="227" text-anchor="middle" font-size="13" fill="#8a3030">2, 4</text>
+  <text x="380" y="266" text-anchor="middle" font-size="11" font-weight="bold" fill="#8a3030">это итератор, не список</text>
+  <text x="380" y="286" text-anchor="middle" font-size="11" fill="#5a6b7d">len 4 → len 2</text>
+  <text x="380" y="308" text-anchor="middle" font-size="11" fill="#5a6b7d">тоже нужно list(...)</text>
+
+  <!-- comprehension -->
+  <rect x="508" y="52" width="228" height="286" rx="10" fill="#f1f8f2" stroke="#2f6b3f" stroke-width="2"/>
+  <text x="622" y="76" text-anchor="middle" font-size="13" font-weight="bold" fill="#2f6b3f">включение: сразу список</text>
+  <text x="528" y="104" font-size="11" fill="#2f6b3f" font-family="'DejaVu Sans Mono', monospace">[x * 2 for x in numbers</text>
+  <text x="528" y="122" font-size="11" fill="#2f6b3f" font-family="'DejaVu Sans Mono', monospace"> if x % 2 == 0]</text>
+
+  <rect x="528" y="138" width="188" height="40" rx="7" fill="#ffffff" stroke="#2f6b3f" stroke-width="1.5"/>
+  <text x="622" y="163" text-anchor="middle" font-size="13" fill="#1d3550">1, 2, 3, 4</text>
+  <line x1="622" y1="178" x2="622" y2="198" stroke="#2f6b3f" stroke-width="2"/>
+  <polygon points="622,198 616,187 628,187" fill="#2f6b3f"/>
+  <rect x="528" y="202" width="188" height="40" rx="7" fill="#ffffff" stroke="#2f6b3f" stroke-width="1.5"/>
+  <text x="622" y="227" text-anchor="middle" font-size="13" fill="#2f6b3f">4, 8</text>
+  <text x="622" y="266" text-anchor="middle" font-size="11" font-weight="bold" fill="#2f6b3f">готовый список</text>
+  <text x="622" y="286" text-anchor="middle" font-size="11" fill="#5a6b7d">len 4 → len 2</text>
+  <text x="622" y="308" text-anchor="middle" font-size="11" fill="#5a6b7d">отбор и преобразование вместе</text>
+
+  <!-- вывод -->
+  <rect x="24" y="350" width="712" height="56" rx="9" fill="#ffffff" stroke="#5a6b7d" stroke-width="2"/>
+  <text x="40" y="372" font-size="12" fill="#1d3550">map преобразует каждый элемент, filter отбрасывает по условию,</text>
+  <text x="40" y="392" font-size="12" fill="#1d3550">включение умеет и то, и другое и сразу даёт список.</text>
+
+  <text x="32" y="422" font-size="12" fill="#5a6b7d">Итератор из map/filter одноразовый: после первого прохода он пуст.</text>
+  <text x="32" y="442" font-size="12" fill="#5a6b7d">Готовая функция лучше лямбды: map(str, items), map(abs, numbers).</text>
+</svg>

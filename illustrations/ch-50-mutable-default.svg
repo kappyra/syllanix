@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 470" role="img"
+     aria-labelledby="ttl50a desc50a" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl50a">Ловушка изменяемого значения по умолчанию: один список на все вызовы</title>
+  <desc id="desc50a">Функция с аргументом items=[] создаёт список один раз при определении. Первый вызов add(1) добавляет единицу и возвращает [1]. Второй вызов add(2) видит тот же список и возвращает [1, 2], потому что объект по умолчанию сохраняется в функции. Исправление: значение по умолчанию None, а новый список создаётся внутри функции, поэтому каждый вызов получает [1] и [2] соответственно.</desc>
+
+  <text x="30" y="32" font-size="17" font-weight="bold" fill="#1d3550">Изменяемое значение по умолчанию</text>
+
+  <!-- код -->
+  <rect x="30" y="52" width="470" height="42" rx="8" fill="#f4f4f0" stroke="#b9b3a5" stroke-width="2"/>
+  <text x="44" y="79" font-size="14" fill="#1d3550" font-family="'DejaVu Sans Mono', monospace">def add(item, items=[]):</text>
+  <text x="520" y="79" font-size="12" fill="#4b3a16">аргумент вычисляется один раз</text>
+
+  <!-- объект по умолчанию -->
+  <rect x="250" y="112" width="280" height="56" rx="9" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2.5"/>
+  <text x="390" y="136" text-anchor="middle" font-size="14" font-weight="bold" fill="#4b3a16">список по умолчанию: []</text>
+  <text x="390" y="156" text-anchor="middle" font-size="12" fill="#4b3a16">создан один раз и хранится в функции</text>
+
+  <line x1="390" y1="94" x2="390" y2="112" stroke="#8a6a2f" stroke-width="2"/>
+  <line x1="390" y1="168" x2="390" y2="186" stroke="#8a6a2f" stroke-width="2"/>
+  <line x1="160" y1="186" x2="620" y2="186" stroke="#8a6a2f" stroke-width="2"/>
+  <line x1="160" y1="186" x2="160" y2="204" stroke="#8a6a2f" stroke-width="2"/>
+  <polygon points="160,212 155,202 165,202" fill="#8a6a2f"/>
+  <line x1="620" y1="186" x2="620" y2="204" stroke="#8a6a2f" stroke-width="2"/>
+  <polygon points="620,212 615,202 625,202" fill="#8a6a2f"/>
+
+  <!-- вызовы -->
+  <rect x="60" y="214" width="200" height="48" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="160" y="244" text-anchor="middle" font-size="14" fill="#1d3550" font-family="'DejaVu Sans Mono', monospace">add(1)</text>
+  <rect x="520" y="214" width="200" height="48" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="620" y="244" text-anchor="middle" font-size="14" fill="#1d3550" font-family="'DejaVu Sans Mono', monospace">add(2)</text>
+
+  <text x="160" y="288" text-anchor="middle" font-size="15" font-weight="bold" fill="#8a2b2b">вернул [1]</text>
+  <text x="620" y="288" text-anchor="middle" font-size="15" font-weight="bold" fill="#8a2b2b">вернул [1, 2]</text>
+  <text x="390" y="288" text-anchor="middle" font-size="12" fill="#8a2b2b">данные первого вызова видны во втором</text>
+
+  <line x1="30" y1="312" x2="750" y2="312" stroke="#c9c2b4" stroke-width="1.5"/>
+
+  <!-- исправление -->
+  <text x="30" y="338" font-size="15" font-weight="bold" fill="#254a2d">Исправление: items=None</text>
+  <rect x="30" y="350" width="330" height="86" rx="9" fill="#eaf3ea" stroke="#3c6b47" stroke-width="2"/>
+  <text x="46" y="376" font-size="13" fill="#254a2d" font-family="'DejaVu Sans Mono', monospace">if items is None:</text>
+  <text x="62" y="398" font-size="13" fill="#254a2d" font-family="'DejaVu Sans Mono', monospace">items = []</text>
+  <text x="46" y="422" font-size="12" fill="#254a2d">новый список создаётся внутри вызова</text>
+
+  <text x="390" y="376" font-size="13" fill="#254a2d">add(1) → [1]</text>
+  <text x="390" y="400" font-size="13" fill="#254a2d">add(2) → [2]</text>
+  <text x="390" y="424" font-size="12" fill="#254a2d">вызовы больше не влияют друг на друга</text>
+</svg>

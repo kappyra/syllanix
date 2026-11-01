@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Проект: HTTP API и база данных — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-47-project-api.html" aria-current="page">47. Проект: HTTP API и база данных</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-47-project-api.html#зачем-этот-проект">47.1. Зачем этот проект</a></li>
+<li><a href="ch-47-project-api.html#что-должно-получиться">47.2. Что должно получиться</a></li>
+<li><a href="ch-47-project-api.html#rest-ресурсы-и-методы">47.3. REST: ресурсы и методы</a></li>
+<li><a href="ch-47-project-api.html#путь-запроса">47.4. Путь запроса</a></li>
+<li><a href="ch-47-project-api.html#коды-состояния">47.5. Коды состояния</a></li>
+<li><a href="ch-47-project-api.html#валидация-полезной-нагрузки">47.6. Валидация полезной нагрузки</a></li>
+<li><a href="ch-47-project-api.html#хранилище-sqlite">47.7. Хранилище: SQLite</a></li>
+<li><a href="ch-47-project-api.html#обработчик-и-маршрутизация">47.8. Обработчик и маршрутизация</a></li>
+<li><a href="ch-47-project-api.html#промышленный-вариант-fastapi">47.9. Промышленный вариант: FastAPI</a></li>
+<li><a href="ch-47-project-api.html#тесты-api">47.10. Тесты API</a></li>
+<li><a href="ch-47-project-api.html#безопасность-и-типичные-ошибки">47.11. Безопасность и типичные ошибки</a></li>
+<li><a href="ch-47-project-api.html#упражнения">47.12. Упражнения</a></li>
+<li><a href="ch-47-project-api.html#проверка-понимания">47.13. Проверка понимания</a></li>
+<li><a href="ch-47-project-api.html#что-дальше">47.14. Что дальше</a></li>
+</ol></details></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 10. Проекты</span><span class="sep">›</span><span>Глава 47</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Проекты · глава 47</p>
+<h1 id="проект-http-api-и-база-данных">Проект: HTTP API и база данных</h1>
+<p class="chapter-summary">Полный проект: REST API, SQLite, валидация запросов, коды состояния, тесты и запуск.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#зачем-этот-проект"><span class="toc-number">47.1</span> Зачем этот проект</a></li>
+<li class="level-2"><a href="#что-должно-получиться"><span class="toc-number">47.2</span> Что должно получиться</a></li>
+<li class="level-2"><a href="#rest-ресурсы-и-методы"><span class="toc-number">47.3</span> REST: ресурсы и методы</a></li>
+<li class="level-2"><a href="#путь-запроса"><span class="toc-number">47.4</span> Путь запроса</a></li>
+<li class="level-2"><a href="#коды-состояния"><span class="toc-number">47.5</span> Коды состояния</a></li>
+<li class="level-2"><a href="#валидация-полезной-нагрузки"><span class="toc-number">47.6</span> Валидация полезной нагрузки</a></li>
+<li class="level-2"><a href="#хранилище-sqlite"><span class="toc-number">47.7</span> Хранилище: SQLite</a></li>
+<li class="level-2"><a href="#обработчик-и-маршрутизация"><span class="toc-number">47.8</span> Обработчик и маршрутизация</a></li>
+<li class="level-2"><a href="#промышленный-вариант-fastapi"><span class="toc-number">47.9</span> Промышленный вариант: FastAPI</a></li>
+<li class="level-2"><a href="#тесты-api"><span class="toc-number">47.10</span> Тесты API</a></li>
+<li class="level-2"><a href="#безопасность-и-типичные-ошибки"><span class="toc-number">47.11</span> Безопасность и типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">47.12</span> Упражнения</a></li>
+<li class="level-2"><a href="#проверка-понимания"><span class="toc-number">47.13</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#что-дальше"><span class="toc-number">47.14</span> Что дальше</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#ex-ch47-01">1. Контракт API</a></li>
+<li class="level-3"><a href="#ex-ch47-02">2. Валидация</a></li>
+<li class="level-3"><a href="#ex-ch47-03">3. Коды состояния</a></li>
+<li class="level-3"><a href="#ex-ch47-04">4. SQL-инъекция</a></li>
+<li class="level-3"><a href="#ex-ch47-05">5. Транзакции</a></li>
+<li class="level-3"><a href="#ex-ch47-06">6. Тесты ошибок</a></li>
+<li class="level-3"><a href="#ex-ch47-07">7. Ограничение размера</a></li>
+<li class="level-3"><a href="#ex-ch47-08">8. Ошибки без утечек</a></li>
+<li class="level-3"><a href="#ex-ch47-09">9. Пагинация</a></li>
+<li class="level-3"><a href="#ex-ch47-10">10. Мини-релиз API</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>В предыдущем проекте задачи хранились в файле на одной машине. Теперь та же
+предметная область превращается в <strong>HTTP API</strong>: клиентом становится программа
+на другом компьютере, данные хранятся в базе, а запросы приходят одновременно.
+Это меняет требования: нужны контракт (что и как вызывается), коды состояния,
+валидация недоверенного ввода и защита от ошибок, которые нельзя показать
+пользователю.</p>
+<h2 id="зачем-этот-проект"><span class="h-number">47.1</span> Зачем этот проект</h2>
+<p>API — самая распространённая форма взаимодействия между системами: мобильное
+приложение общается с сервером, сервисы — друг с другом, скрипты — с
+внешними платформами. Навык «спроектировать понятный HTTP-интерфейс и не
+потерять данные при сбоях» универсален: он остаётся, даже если меняется язык
+или фреймворк.</p>
+<p>Проект учит трём вещам, которых не было в CLI:</p>
+<ol>
+<li><strong>Контракт.</strong> Клиент не видит ваш код; он видит только URL, методы, коды
+ответа и формат данных.</li>
+<li><strong>Недоверенный ввод.</strong> Всё, что приходит по сети, может быть чем угодно.</li>
+<li><strong>Одновременность и сохранность.</strong> База данных, транзакции, блокировки.</li>
+</ol>
+<h2 id="что-должно-получиться"><span class="h-number">47.2</span> Что должно получиться</h2>
+<p>REST API для задач:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Метод и путь</th>
+<th>Действие</th>
+<th>Успех</th>
+<th>Ошибки</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET /tasks</code></td>
+<td>список задач</td>
+<td><code>200</code> + массив</td>
+<td><code>500</code></td>
+</tr>
+<tr>
+<td><code>POST /tasks</code></td>
+<td>создать задачу</td>
+<td><code>201</code> + объект</td>
+<td><code>400</code>, <code>422</code></td>
+</tr>
+<tr>
+<td><code>GET /tasks/{id}</code></td>
+<td>одна задача</td>
+<td><code>200</code> + объект</td>
+<td><code>404</code></td>
+</tr>
+<tr>
+<td><code>PATCH /tasks/{id}</code></td>
+<td>изменить</td>
+<td><code>200</code> + объект</td>
+<td><code>400</code>, <code>404</code>, <code>422</code></td>
+</tr>
+<tr>
+<td><code>DELETE /tasks/{id}</code></td>
+<td>удалить</td>
+<td><code>204</code> без тела</td>
+<td><code>404</code></td>
+</tr>
+</tbody>
+</table>
+</div><p>Формат задачи: <code>{&quot;id&quot;: 1, &quot;title&quot;: &quot;Купить хлеб&quot;, &quot;done&quot;: false}</code>.
+Ошибка: <code>{&quot;error&quot;: &quot;сообщение&quot;}</code>. Код <code>422</code> означает, что тело не прошло
+валидацию; <code>400</code> — что запрос синтаксически корректен, но противоречит правилам
+(например, недопустимый переход состояния).</p>
+<p>Нефункциональные требования:</p>
+<ul>
+<li>валидация тела запроса до бизнес-логики;</li>
+<li>параметризованные SQL-запросы (никакой конкатенации);</li>
+<li>понятные коды состояния и отсутствие стектрейсов в ответах;</li>
+<li>тесты на успешные и ошибочные сценарии;</li>
+<li>запуск одной командой и воспроизводимое окружение.</li>
+</ul>
+<h2 id="rest-ресурсы-и-методы"><span class="h-number">47.3</span> REST: ресурсы и методы</h2>
+<p><strong>REST API</strong> — стиль, в котором адресами служат <strong>ресурсы</strong> (<code>/tasks</code>,
+<code>/tasks/3</code>), а действие выражается методом HTTP: <code>GET</code> читает, <code>POST</code>
+создаёт, <code>PATCH</code> изменяет, <code>DELETE</code> удаляет. Путь описывает <strong>что</strong>, метод —
+<strong>что с этим сделать</strong>. Такая схема предсказуема: клиент может догадаться об
+устройстве API, не читая документацию целиком.</p>
+<p>Хороший контракт обладает свойствами:</p>
+<ul>
+<li><strong>ресурсы во множественном числе</strong>: <code>/tasks</code>, а не <code>/getTasks</code>;</li>
+<li><strong>никаких глаголов в пути</strong>: действие — это метод, а не <code>/tasks/create</code>;</li>
+<li><strong>стабильные идентификаторы</strong>: <code>/tasks/3</code>, а не <code>/tasks?title=...</code>;</li>
+<li><strong>одинаковые ошибки</strong>: формат <code>{&quot;error&quot;: ...}</code> во всех конечных точках.</li>
+</ul>
+<p><strong>Конечная точка</strong> (endpoint) — сочетание пути и метода. <code>GET /tasks</code> и
+<code>POST /tasks</code> — разные конечные точки с разным поведением.</p>
+<h2 id="путь-запроса"><span class="h-number">47.4</span> Путь запроса</h2>
+<p><figure class="figure"><img src="illustrations/ch-47-request-path.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Порядок обработки принципиален:</p>
+<ol>
+<li><strong>Маршрутизация</strong> — по методу и пути выбрать обработчик.</li>
+<li><strong>Валидация</strong> — проверить, что тело и параметры вообще допустимы.</li>
+<li><strong>Бизнес-логика</strong> — применить правила (например, название не пустое).</li>
+<li><strong>Хранилище</strong> — прочитать или изменить данные.</li>
+<li><strong>Ответ</strong> — сформировать код состояния и тело.</li>
+</ol>
+<p>Валидация стоит <strong>до</strong> бизнес-логики: бессмысленно проверять уникальность
+названия, если в поле <code>title</code> пришёл массив. Ранний отказ экономит работу и
+упрощает ошибки.</p>
+<h2 id="коды-состояния"><span class="h-number">47.5</span> Коды состояния</h2>
+<p><figure class="figure"><img src="illustrations/ch-47-statuses.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><strong>Статус ответа</strong> (код состояния, HTTP status) — часть контракта, а не
+украшение. Правила:</p>
+<ul>
+<li><code>2xx</code> — операция выполнена; <code>201</code> при создании ресурса, <code>204</code> при успехе без
+тела;</li>
+<li><code>4xx</code> — клиент ошибся: неверные данные (<code>400</code>), нет ресурса (<code>404</code>),
+отсутствует или недействительна аутентификация (<code>401</code>), аутентификация есть,
+но прав нет (<code>403</code>);</li>
+<li><code>5xx</code> — ошибся сервер; клиент не должен получать внутренние детали.</li>
+</ul>
+<p>Практическая ошибка новичков — возвращать <code>200</code> с полем <code>{&quot;error&quot;: ...}</code>.
+Это ломает клиентов, которые ориентируются на код, и мониторинг, который
+считает долю <code>5xx</code>. Код состояния должен соответствовать смыслу.</p>
+<h2 id="валидация-полезной-нагрузки"><span class="h-number">47.6</span> Валидация полезной нагрузки</h2>
+<p><strong>Полезная нагрузка</strong> (payload) — тело запроса. Валидация — первая и самая
+дешёвая граница между недоверенным миром и вашим кодом; за ней остаются
+аутентификация, права и ограничения базы.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ValidationError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">parse_task_payload</span><span class="p">(</span><span class="n">raw</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">json</span><span class="o">.</span><span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"тело запроса не JSON: </span><span class="si">{</span><span class="n">exc</span><span class="o">.</span><span class="n">msg</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s2">"ожидался объект JSON"</span><span class="p">)</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"title"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s2">"поле title обязательно и должно быть строкой"</span><span class="p">)</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">title</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">title</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s2">"поле title обязательно и должно быть непустой строкой"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">title</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s2">"поле title длиннее 200 символов"</span><span class="p">)</span>
+    <span class="n">done</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"done"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">done</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s2">"поле done должно быть true или false"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">"title"</span><span class="p">:</span> <span class="n">title</span><span class="p">,</span> <span class="s2">"done"</span><span class="p">:</span> <span class="n">done</span><span class="p">}</span>
+
+<span class="n">cases</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">'{"title": "  Купить хлеб "}'</span><span class="p">,</span>
+    <span class="s1">'{"title": ""}'</span><span class="p">,</span>
+    <span class="s2">"[]"</span><span class="p">,</span>
+    <span class="s2">"not json"</span><span class="p">,</span>
+    <span class="s1">'{"title": "Новая", "done": "false"}'</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="k">for</span> <span class="n">raw</span> <span class="ow">in</span> <span class="p">(</span><span class="n">case</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">for</span> <span class="n">case</span> <span class="ow">in</span> <span class="n">cases</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"ok:"</span><span class="p">,</span> <span class="n">parse_task_payload</span><span class="p">(</span><span class="n">raw</span><span class="p">))</span>
+    <span class="k">except</span> <span class="n">ValidationError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"400:"</span><span class="p">,</span> <span class="n">exc</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>ok: {&#x27;title&#x27;: &#x27;Купить хлеб&#x27;, &#x27;done&#x27;: False}
+400: поле title обязательно и должно быть непустой строкой
+400: ожидался объект JSON
+400: тело запроса не JSON: Expecting value
+400: поле done должно быть true или false
+</code></pre>
+<p>Обратите внимание на порядок: сначала проверяется, что тело вообще
+JSON, затем — что это объект, затем — типы полей. Каждая проверка даёт
+конкретное сообщение, потому что клиенту нужно понимать, что исправить.
+<code>done</code> проверяется через <code>isinstance</code>, а не через <code>bool(...)</code>: иначе строка
+<code>&quot;false&quot;</code> превратилась бы в <code>True</code> и валидация пропустила бы неверный тип.</p>
+<h2 id="хранилище-sqlite"><span class="h-number">47.7</span> Хранилище: SQLite</h2>
+<p><strong>SQLite</strong> — встроенная база данных: один файл, не нужен сервер. Стандартная
+библиотека <code>sqlite3</code> даёт всё необходимое. Ключевое правило — <strong>параметризация</strong>
+запросов: значения передаются отдельно от текста SQL.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">tmp_dir</span><span class="p">:</span>
+    <span class="n">db_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tmp_dir</span><span class="p">)</span> <span class="o">/</span> <span class="s2">"tasks.db"</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">db_path</span><span class="p">)</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">row_factory</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Row</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        CREATE TABLE tasks (</span>
+<span class="sd">            id INTEGER PRIMARY KEY AUTOINCREMENT,</span>
+<span class="sd">            title TEXT NOT NULL,</span>
+<span class="sd">            done INTEGER NOT NULL DEFAULT 0</span>
+<span class="sd">        )</span>
+<span class="sd">        """</span>
+    <span class="p">)</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"INSERT INTO tasks (title) VALUES (?)"</span><span class="p">,</span> <span class="p">(</span><span class="s2">"Купить хлеб"</span><span class="p">,))</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"INSERT INTO tasks (title) VALUES (?)"</span><span class="p">,</span> <span class="p">(</span><span class="s2">"Написать главу"</span><span class="p">,))</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"SELECT id, title, done FROM tasks ORDER BY id"</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">row</span><span class="p">))</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+<pre class="output"><code>{&#x27;id&#x27;: 1, &#x27;title&#x27;: &#x27;Купить хлеб&#x27;, &#x27;done&#x27;: 0}
+{&#x27;id&#x27;: 2, &#x27;title&#x27;: &#x27;Написать главу&#x27;, &#x27;done&#x27;: 0}
+</code></pre>
+<p>Параметризация <code>VALUES (?)</code> — не стилистическая мелочь, а защита: значение с
+кавычками или <code>; DROP TABLE tasks</code> останется значением и не станет частью
+SQL-кода. Подстановка через f-строку в SQL — учебная ошибка, которая в
+промышленном коде называется <strong>SQL-инъекцией</strong> (глава 36).</p>
+<p>Соберём доступ к таблице в репозиторий: HTTP-обработчики будут вызывать его
+методы, а не работать с <code>sqlite3</code> напрямую. Это тот же паттерн «репозиторий» из
+главы 44, и он же делает хранилище подменяемым в тестах.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TaskRepository</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">db_path</span><span class="p">,</span> <span class="n">check_same_thread</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_conn</span><span class="o">.</span><span class="n">row_factory</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Row</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="w">            </span><span class="sd">"""</span>
+<span class="sd">            CREATE TABLE IF NOT EXISTS tasks (</span>
+<span class="sd">                id INTEGER PRIMARY KEY AUTOINCREMENT,</span>
+<span class="sd">                title TEXT NOT NULL,</span>
+<span class="sd">                done INTEGER NOT NULL DEFAULT 0</span>
+<span class="sd">            )</span>
+<span class="sd">            """</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_row</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Row</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">"id"</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s2">"id"</span><span class="p">],</span> <span class="s2">"title"</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s2">"title"</span><span class="p">],</span> <span class="s2">"done"</span><span class="p">:</span> <span class="nb">bool</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"done"</span><span class="p">])}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">done</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="n">cursor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+            <span class="s2">"INSERT INTO tasks (title, done) VALUES (?, ?)"</span><span class="p">,</span> <span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">done</span><span class="p">))</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="n">task</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cursor</span><span class="o">.</span><span class="n">lastrowid</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">task</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="n">task</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">all</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"SELECT id, title, done FROM tasks ORDER BY id"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_row</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+            <span class="s2">"SELECT id, title, done FROM tasks WHERE id = ?"</span><span class="p">,</span> <span class="p">(</span><span class="n">task_id</span><span class="p">,)</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_row</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">if</span> <span class="n">row</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">done</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">cursor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+            <span class="s2">"UPDATE tasks SET title = ?, done = ? WHERE id = ?"</span><span class="p">,</span>
+            <span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">done</span><span class="p">),</span> <span class="n">task_id</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">task_id</span><span class="p">)</span> <span class="k">if</span> <span class="n">cursor</span><span class="o">.</span><span class="n">rowcount</span> <span class="k">else</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">cursor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"DELETE FROM tasks WHERE id = ?"</span><span class="p">,</span> <span class="p">(</span><span class="n">task_id</span><span class="p">,))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">cursor</span><span class="o">.</span><span class="n">rowcount</span> <span class="o">&gt;</span> <span class="mi">0</span>
+
+
+<span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">tmp_dir</span><span class="p">:</span>
+    <span class="n">repository</span> <span class="o">=</span> <span class="n">TaskRepository</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">tmp_dir</span><span class="p">)</span> <span class="o">/</span> <span class="s2">"tasks.db"</span><span class="p">)</span>
+    <span class="n">first</span> <span class="o">=</span> <span class="n">repository</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Купить хлеб"</span><span class="p">)</span>
+    <span class="n">repository</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Написать главу"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"все:"</span><span class="p">,</span> <span class="n">repository</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"одна:"</span><span class="p">,</span> <span class="n">repository</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">first</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"изменена:"</span><span class="p">,</span> <span class="n">repository</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">first</span><span class="p">[</span><span class="s2">"id"</span><span class="p">],</span> <span class="s2">"Купить хлеб и молоко"</span><span class="p">,</span> <span class="kc">True</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"удалена вторая:"</span><span class="p">,</span> <span class="n">repository</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"после удаления:"</span><span class="p">,</span> <span class="n">repository</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>все: [{&#x27;id&#x27;: 1, &#x27;title&#x27;: &#x27;Купить хлеб&#x27;, &#x27;done&#x27;: False}, {&#x27;id&#x27;: 2, &#x27;title&#x27;: &#x27;Написать главу&#x27;, &#x27;done&#x27;: False}]
+одна: {&#x27;id&#x27;: 1, &#x27;title&#x27;: &#x27;Купить хлеб&#x27;, &#x27;done&#x27;: False}
+изменена: {&#x27;id&#x27;: 1, &#x27;title&#x27;: &#x27;Купить хлеб и молоко&#x27;, &#x27;done&#x27;: True}
+удалена вторая: True
+после удаления: [{&#x27;id&#x27;: 1, &#x27;title&#x27;: &#x27;Купить хлеб и молоко&#x27;, &#x27;done&#x27;: True}]
+</code></pre>
+<p><strong>Транзакции</strong>: <code>conn.commit()</code> фиксирует изменения, <code>conn.rollback()</code> (или
+выход из <code>with conn:</code>) отменяет их. Если создание задачи требует двух
+изменений, они должны применяться вместе — иначе база останется в
+противоречивом состоянии.</p>
+<h2 id="обработчик-и-маршрутизация"><span class="h-number">47.8</span> Обработчик и маршрутизация</h2>
+<p>Минимальный HTTP-сервер есть в стандартной библиотеке. Он подходит для
+понимания механизма, но не для промышленной эксплуатации: нет асинхронности,
+сложной маршрутизации, готовой валидации.</p>
+<p>Ниже — <code>server.py</code>; <code>storage.py</code> содержит <code>TaskRepository</code> из предыдущего
+раздела, а <code>validation.py</code> — <code>ValidationError</code> и <code>parse_task_payload</code>.</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">http.server</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseHTTPRequestHandler</span><span class="p">,</span> <span class="n">HTTPServer</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">storage</span><span class="w"> </span><span class="kn">import</span> <span class="n">TaskRepository</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">validation</span><span class="w"> </span><span class="kn">import</span> <span class="n">ValidationError</span><span class="p">,</span> <span class="n">parse_task_payload</span>
+
+<span class="n">repository</span> <span class="o">=</span> <span class="n">TaskRepository</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">"tasks.db"</span><span class="p">))</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TasksHandler</span><span class="p">(</span><span class="n">BaseHTTPRequestHandler</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">do_GET</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">==</span> <span class="s2">"/tasks"</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_send_json</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="n">repository</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
+            <span class="k">return</span>
+        <span class="n">task_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task_id</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">task_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_send_json</span><span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="p">{</span><span class="s2">"error"</span><span class="p">:</span> <span class="s2">"не найдено"</span><span class="p">})</span>
+            <span class="k">return</span>
+        <span class="n">task</span> <span class="o">=</span> <span class="n">repository</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">task_id</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">task</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_send_json</span><span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="p">{</span><span class="s2">"error"</span><span class="p">:</span> <span class="s2">"задача не найдена"</span><span class="p">})</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_send_json</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="n">task</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">do_POST</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">!=</span> <span class="s2">"/tasks"</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_send_json</span><span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="p">{</span><span class="s2">"error"</span><span class="p">:</span> <span class="s2">"не найдено"</span><span class="p">})</span>
+            <span class="k">return</span>
+        <span class="n">length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"Content-Length"</span><span class="p">,</span> <span class="s2">"0"</span><span class="p">))</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">payload</span> <span class="o">=</span> <span class="n">parse_task_payload</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rfile</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">length</span><span class="p">))</span>
+        <span class="k">except</span> <span class="n">ValidationError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_send_json</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="p">{</span><span class="s2">"error"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">)})</span>
+            <span class="k">return</span>
+        <span class="n">task</span> <span class="o">=</span> <span class="n">repository</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">payload</span><span class="p">[</span><span class="s2">"title"</span><span class="p">],</span> <span class="n">payload</span><span class="p">[</span><span class="s2">"done"</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_send_json</span><span class="p">(</span><span class="mi">201</span><span class="p">,</span> <span class="n">task</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_task_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">prefix</span> <span class="o">=</span> <span class="s2">"/tasks/"</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">prefix</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">raw</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">prefix</span><span class="p">):]</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span> <span class="k">if</span> <span class="n">raw</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span> <span class="k">else</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_send_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">status</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">body</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">send_response</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">send_header</span><span class="p">(</span><span class="s2">"Content-Type"</span><span class="p">,</span> <span class="s2">"application/json; charset=utf-8"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">send_header</span><span class="p">(</span><span class="s2">"Content-Length"</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end_headers</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">HTTPServer</span><span class="p">((</span><span class="s2">"127.0.0.1"</span><span class="p">,</span> <span class="mi">8000</span><span class="p">),</span> <span class="n">TasksHandler</span><span class="p">)</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
+</code></pre></div>
+<p>Для краткости здесь показаны чтение и создание; удаление и изменение удобнее
+разобрать на FastAPI, где маршрутизация уже готова. Важно другое: обработчики
+вызывают <code>TaskRepository</code>, поэтому данные живут в SQLite, а не в глобальном
+списке.</p>
+<p>Запуск и проверка:</p>
+<pre class="text"><code>$ python server.py &amp;
+$ sleep 1
+$ curl -s http://127.0.0.1:8000/tasks
+[{&quot;id&quot;: 1, &quot;title&quot;: &quot;Купить хлеб&quot;, &quot;done&quot;: false}]
+$ curl -s -X POST http://127.0.0.1:8000/tasks -d &#x27;{&quot;title&quot;: &quot;Новая&quot;}&#x27; -H &quot;Content-Type: application/json&quot;
+{&quot;id&quot;: 2, &quot;title&quot;: &quot;Новая&quot;, &quot;done&quot;: false}
+$ curl -s -o /dev/null -w &quot;%{http_code}\n&quot; -X POST http://127.0.0.1:8000/tasks -d &#x27;{&quot;title&quot;: &quot;&quot;}&#x27;
+400
+$ kill %1
+</code></pre>
+<p>Сервер занимает терминал, поэтому <code>&amp;</code> отправляет его в фон, а <code>kill %1</code>
+останавливает после проверки. Пример запускается отдельно от книги; тесты ниже
+проверяют те же обработчики и хранилище без сети.</p>
+<h2 id="промышленный-вариант-fastapi"><span class="h-number">47.9</span> Промышленный вариант: FastAPI</h2>
+<p><strong>Веб-фреймворк</strong> берёт на себя маршрутизацию, разбор запросов, сериализацию
+ответов и валидацию. В Python часто выбирают <strong>FastAPI</strong>: он использует
+аннотации типов из главы 31 и автоматически проверяет данные.</p>
+<p>Код выше — это модули <code>validation.py</code> (разбор payload) и <code>storage.py</code>
+(<code>TaskRepository</code>). Ниже — <code>app.py</code>, который связывает их с HTTP. Тот же
+<code>TaskRepository</code> можно подставить в минимальный сервер.</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span><span class="p">,</span> <span class="n">HTTPException</span><span class="p">,</span> <span class="n">Request</span><span class="p">,</span> <span class="n">Response</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">RequestValidationError</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.responses</span><span class="w"> </span><span class="kn">import</span> <span class="n">JSONResponse</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">field_validator</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">storage</span><span class="w"> </span><span class="kn">import</span> <span class="n">TaskRepository</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">"Tasks API"</span><span class="p">)</span>
+<span class="n">repository</span> <span class="o">=</span> <span class="n">TaskRepository</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"TASKS_DB"</span><span class="p">,</span> <span class="s2">"tasks.db"</span><span class="p">))</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TaskIn</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">min_length</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">done</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="nd">@field_validator</span><span class="p">(</span><span class="s2">"title"</span><span class="p">)</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">title_must_not_be_blank</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">value</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"поле title обязательно"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">value</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TaskPatch</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">done</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@field_validator</span><span class="p">(</span><span class="s2">"title"</span><span class="p">)</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">title_must_not_be_blank</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">value</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"поле title обязательно"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">value</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TaskOut</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">done</span><span class="p">:</span> <span class="nb">bool</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">exception_handler</span><span class="p">(</span><span class="n">RequestValidationError</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">validation_handler</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="n">exc</span><span class="p">:</span> <span class="n">RequestValidationError</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">JSONResponse</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">JSONResponse</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">422</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="p">{</span><span class="s2">"error"</span><span class="p">:</span> <span class="s2">"неверные данные запроса"</span><span class="p">})</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"/tasks"</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="nb">list</span><span class="p">[</span><span class="n">TaskOut</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">list_tasks</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">TaskOut</span><span class="p">]:</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">TaskOut</span><span class="p">(</span><span class="o">**</span><span class="n">task</span><span class="p">)</span> <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">repository</span><span class="o">.</span><span class="n">all</span><span class="p">()]</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/tasks"</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">TaskOut</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="mi">201</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_task</span><span class="p">(</span><span class="n">payload</span><span class="p">:</span> <span class="n">TaskIn</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TaskOut</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">TaskOut</span><span class="p">(</span><span class="o">**</span><span class="n">repository</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">payload</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="n">payload</span><span class="o">.</span><span class="n">done</span><span class="p">))</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"/tasks/</span><span class="si">{task_id}</span><span class="s2">"</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">TaskOut</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_task</span><span class="p">(</span><span class="n">task_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TaskOut</span><span class="p">:</span>
+    <span class="n">task</span> <span class="o">=</span> <span class="n">repository</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">task_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">task</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">404</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="s2">"задача не найдена"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">TaskOut</span><span class="p">(</span><span class="o">**</span><span class="n">task</span><span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="s2">"/tasks/</span><span class="si">{task_id}</span><span class="s2">"</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">TaskOut</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_task</span><span class="p">(</span><span class="n">task_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">payload</span><span class="p">:</span> <span class="n">TaskPatch</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TaskOut</span><span class="p">:</span>
+    <span class="n">current</span> <span class="o">=</span> <span class="n">repository</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">task_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">current</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">404</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="s2">"задача не найдена"</span><span class="p">)</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">payload</span><span class="o">.</span><span class="n">title</span> <span class="k">if</span> <span class="n">payload</span><span class="o">.</span><span class="n">title</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">current</span><span class="p">[</span><span class="s2">"title"</span><span class="p">]</span>
+    <span class="n">done</span> <span class="o">=</span> <span class="n">payload</span><span class="o">.</span><span class="n">done</span> <span class="k">if</span> <span class="n">payload</span><span class="o">.</span><span class="n">done</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">current</span><span class="p">[</span><span class="s2">"done"</span><span class="p">]</span>
+    <span class="n">changed</span> <span class="o">=</span> <span class="n">repository</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">task_id</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">done</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">changed</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">404</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="s2">"задача не найдена"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">TaskOut</span><span class="p">(</span><span class="o">**</span><span class="n">changed</span><span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"/tasks/</span><span class="si">{task_id}</span><span class="s2">"</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="mi">204</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">delete_task</span><span class="p">(</span><span class="n">task_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">repository</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">task_id</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">404</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="s2">"задача не найдена"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">204</span><span class="p">)</span>
+</code></pre></div>
+<p>Что даёт фреймворк:</p>
+<ul>
+<li>валидация тела по типу <code>TaskIn</code> — автоматически, до вызова функции;</li>
+<li><code>422</code> при неверных данных — автоматически; <code>400</code> — если вы поднимаете его
+явно для семантических ошибок;</li>
+<li>документация API (<code>/docs</code>) генерируется из типов;</li>
+<li>асинхронные обработчики (<code>async def</code>) — для операций ввода-вывода.</li>
+</ul>
+<p>Что остаётся вашей ответственностью: бизнес-логика, транзакции, доступ к
+данным, аутентификация, обработка исключений и отсутствие утечек внутренних
+деталей. Фреймворк не проектирует контракт за вас.</p>
+<h2 id="тесты-api"><span class="h-number">47.10</span> Тесты API</h2>
+<p>Тестируются три группы сценариев: успех, ошибка клиента, границы.</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"TASKS_DB"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">":memory:"</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.testclient</span><span class="w"> </span><span class="kn">import</span> <span class="n">TestClient</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">app</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">TestClient</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_create_and_get</span><span class="p">():</span>
+    <span class="n">created</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/tasks"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Купить хлеб"</span><span class="p">})</span>
+    <span class="k">assert</span> <span class="n">created</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">201</span>
+    <span class="n">task_id</span> <span class="o">=</span> <span class="n">created</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"id"</span><span class="p">]</span>
+
+    <span class="n">fetched</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">"/tasks/</span><span class="si">{</span><span class="n">task_id</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">fetched</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+    <span class="k">assert</span> <span class="n">fetched</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"title"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Купить хлеб"</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_list_contains_created_task</span><span class="p">():</span>
+    <span class="n">created</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/tasks"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"title"</span><span class="p">:</span> <span class="s2">"В списке"</span><span class="p">})</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="n">listed</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"/tasks"</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">listed</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+    <span class="k">assert</span> <span class="nb">any</span><span class="p">(</span><span class="n">task</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]</span> <span class="o">==</span> <span class="n">created</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]</span> <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">listed</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_patch_changes_title_and_done</span><span class="p">():</span>
+    <span class="n">created</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/tasks"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Черновик"</span><span class="p">})</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="n">changed</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">"/tasks/</span><span class="si">{</span><span class="n">created</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Готово"</span><span class="p">,</span> <span class="s2">"done"</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+    <span class="p">)</span>
+    <span class="k">assert</span> <span class="n">changed</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+    <span class="k">assert</span> <span class="n">changed</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"title"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Готово"</span>
+    <span class="k">assert</span> <span class="n">changed</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"done"</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">True</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_empty_title_rejected</span><span class="p">():</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/tasks"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"title"</span><span class="p">:</span> <span class="s2">""</span><span class="p">})</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">422</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_too_long_title_rejected</span><span class="p">():</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/tasks"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"title"</span><span class="p">:</span> <span class="s2">"я"</span> <span class="o">*</span> <span class="mi">201</span><span class="p">})</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">422</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_unknown_task_returns_404</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"/tasks/999999"</span><span class="p">)</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">404</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_delete_returns_204</span><span class="p">():</span>
+    <span class="n">created</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/tasks"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"title"</span><span class="p">:</span> <span class="s2">"временная"</span><span class="p">})</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="sa">f</span><span class="s2">"/tasks/</span><span class="si">{</span><span class="n">created</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">204</span>
+    <span class="k">assert</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">"/tasks/</span><span class="si">{</span><span class="n">created</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">404</span>
+</code></pre></div>
+<pre class="text"><code>$ python -m pytest -q
+.......                                                                  [100%]
+7 passed in 0.31s
+</code></pre>
+<h2 id="безопасность-и-типичные-ошибки"><span class="h-number">47.11</span> Безопасность и типичные ошибки</h2>
+<ol>
+<li><strong>Конкатенация SQL.</strong> Приводит к SQL-инъекции; только параметры.</li>
+<li><strong>Возврат стектрейса клиенту.</strong> Раскрывает устройство системы; логируйте
+внутри, отдавайте нейтральное сообщение и <code>500</code>.</li>
+<li><strong><code>200</code> вместо <code>4xx/5xx</code>.</strong> Ломает клиентов и мониторинг.</li>
+<li><strong>Доверие к <code>Content-Length</code> без ограничения.</strong> Огромное тело может
+исчерпать память; нужен лимит.</li>
+<li><strong>Отсутствие таймаутов.</strong> Внешний вызов без таймаута подвешивает сервер.</li>
+<li><strong>Секреты в коде.</strong> Только переменные окружения или хранилище секретов.</li>
+<li><strong>Изменяемое глобальное состояние вместо базы.</strong> <code>TASKS = [...]</code> из первых
+версий примера — учебное упрощение: после перезапуска данные исчезнут. В
+собранном варианте состояние живёт в SQLite и переживает перезапуск.</li>
+</ol>
+<h2 id="упражнения"><span class="h-number">47.12</span> Упражнения</h2>
+<h3 id="ex-ch47-01">1. Контракт API</h3>
+<p>Опишите таблицей контракт для ресурса <code>notes</code>: методы, пути, коды ответов,
+формат ошибок. Почему <code>GET /notes/3</code> лучше, чем <code>GET /notes?id=3</code>?</p>
+<h3 id="ex-ch47-02">2. Валидация</h3>
+<p>Добавьте в <code>parse_task_payload</code> проверку необязательного поля <code>priority</code> со
+значениями <code>low</code>, <code>normal</code>, <code>high</code>. Какое значение использовать по умолчанию и
+какой код вернуть при неверном?</p>
+<h3 id="ex-ch47-03">3. Коды состояния</h3>
+<p>Для каждой ситуации укажите код: (а) задача создана; (б) задачи с таким <code>id</code>
+нет; (в) тело запроса — не JSON; (г) база недоступна; (д) удаление прошло
+успешно.</p>
+<h3 id="ex-ch47-04">4. SQL-инъекция</h3>
+<p>Объясните, почему <code>&quot;SELECT * FROM tasks WHERE title = '&quot; + title + &quot;'&quot;</code> опасно.
+Приведите пример вредоносного <code>title</code> и покажите, как параметризация решает
+проблему.</p>
+<h3 id="ex-ch47-05">5. Транзакции</h3>
+<p>Создание задачи пишет запись в <code>tasks</code> и в <code>history</code>. Что произойдёт без
+транзакции, если вторая запись упадёт? Как исправить?</p>
+<h3 id="ex-ch47-06">6. Тесты ошибок</h3>
+<p>Напишите тесты для: пустого <code>title</code>, слишком длинного <code>title</code>, несуществующего
+<code>id</code>, неверного JSON. Какие коды ожидаются?</p>
+<h3 id="ex-ch47-07">7. Ограничение размера</h3>
+<p>Предложите способ ограничить размер тела запроса. Что вернуть клиенту при
+превышении?</p>
+<h3 id="ex-ch47-08">8. Ошибки без утечек</h3>
+<p>Сервер получил исключение из базы. Что записать в лог и что вернуть клиенту?
+Почему нельзя вернуть текст исключения?</p>
+<h3 id="ex-ch47-09">9. Пагинация</h3>
+<p>Добавьте <code>limit</code> и <code>offset</code> в <code>GET /tasks</code>. Какие значения по умолчанию
+разумны и как ограничить максимум?</p>
+<h3 id="ex-ch47-10">10. Мини-релиз API</h3>
+<p>Опишите шаги выпуска API-версии <code>1.0.0</code>: тесты, миграции базы, конфигурация,
+мониторинг, план отката. Что должно быть зелёным до публикации?</p>
+<h2 id="проверка-понимания"><span class="h-number">47.13</span> Проверка понимания</h2>
+<ol>
+<li>Что такое REST и почему путь описывает ресурс, а метод — действие?</li>
+<li>Чем конечная точка отличается от ресурса?</li>
+<li>Почему валидация должна выполняться до бизнес-логики?</li>
+<li>Чем <code>4xx</code> отличается от <code>5xx</code> и почему это важно для мониторинга?</li>
+<li>Почему параметризация SQL обязательна?</li>
+<li>Что даёт веб-фреймворк и что остаётся ответственностью разработчика?</li>
+<li>Почему нельзя возвращать клиенту стектрейс?</li>
+</ol>
+<h2 id="что-дальше"><span class="h-number">47.14</span> Что дальше</h2>
+<p>API работает, но каждый запрос обрабатывается в одном потоке, а внешние
+сервисы отвечают медленно. Последний проект — асинхронный сборщик данных:
+конкурентные запросы, ограничение параллелизма и частоты, повторы с задержкой и
+наблюдаемость.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-46-project-cli.html"><span class="pager-label">← Назад</span><span class="pager-title">Проект: консольный менеджер задач</span></a><a class="pager-card next" rel="next" href="ch-48-project-async.html"><span class="pager-label">Далее:</span><span class="pager-title">Проект: асинхронный сборщик данных</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

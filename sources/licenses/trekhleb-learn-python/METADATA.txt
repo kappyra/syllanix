@@ -1,0 +1,6 @@
+source_url: https://github.com/trekhleb/learn-python
+commit: 5e4fad5903ce5a76cc1f90838d69a220968e1494
+commit_date: 2026-04-06
+verified_at: 2026-11-01
+file: LICENSE sha256=9364e1660a4907599858374d22b6d6e770356613700ff0c7ddbcb6afb2316adf
+file: METADATA.txt sha256=099d4c0d3030bccc9332962d3097aa6db0214a93bab69a4bcdd3fdd476d982b1

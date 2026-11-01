@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 470" role="img"
+     aria-labelledby="t34mp d34mp" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="t34mp">Карта шести модулей стандартной библиотеки по назначению</title>
+  <desc id="d34mp">Шесть карточек показывают назначение модулей. collections даёт контейнеры Counter, deque и defaultdict для частот, очередей и группировки. itertools строит ленивые конвейеры. functools настраивает функции через partial и reduce. pathlib работает с путями без строковых склеек. enum заменяет магические строки именованными константами. contextlib позволяет писать собственные контекстные менеджеры с гарантией очистки.</desc>
+
+  <text x="24" y="30" font-size="17" font-weight="bold" fill="#1d3550">Шесть модулей, которые закрывают повседневные задачи</text>
+
+  <rect x="36" y="52" width="224" height="158" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="52" y="78" font-size="15" font-weight="bold" fill="#1d3550">collections</text>
+  <text x="52" y="102" font-size="12.5" fill="#33557a">контейнеры под задачу</text>
+  <text x="52" y="128" font-size="12.5" fill="#1d3550">Counter, deque,</text>
+  <text x="52" y="148" font-size="12.5" fill="#1d3550">defaultdict</text>
+  <text x="52" y="176" font-size="12" fill="#4b3a16">частоты, очереди,</text>
+  <text x="52" y="194" font-size="12" fill="#4b3a16">группы по ключу</text>
+
+  <rect x="278" y="52" width="224" height="158" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="294" y="78" font-size="15" font-weight="bold" fill="#1d3550">itertools</text>
+  <text x="294" y="102" font-size="12.5" fill="#33557a">ленивые конвейеры</text>
+  <text x="294" y="128" font-size="12.5" fill="#1d3550">chain, islice,</text>
+  <text x="294" y="148" font-size="12.5" fill="#1d3550">groupby, product</text>
+  <text x="294" y="176" font-size="12" fill="#4b3a16">память не растёт</text>
+  <text x="294" y="194" font-size="12" fill="#4b3a16">с размером входа</text>
+
+  <rect x="520" y="52" width="224" height="158" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="536" y="78" font-size="15" font-weight="bold" fill="#1d3550">functools</text>
+  <text x="536" y="102" font-size="12.5" fill="#33557a">работа с функциями</text>
+  <text x="536" y="128" font-size="12.5" fill="#1d3550">partial, reduce,</text>
+  <text x="536" y="148" font-size="12.5" fill="#1d3550">wraps</text>
+  <text x="536" y="176" font-size="12" fill="#4b3a16">настройка поведения</text>
+  <text x="536" y="194" font-size="12" fill="#4b3a16">без лишних lambda</text>
+
+  <rect x="36" y="232" width="224" height="158" rx="10" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="52" y="258" font-size="15" font-weight="bold" fill="#1d3550">pathlib</text>
+  <text x="52" y="282" font-size="12.5" fill="#33557a">пути без строк</text>
+  <text x="52" y="308" font-size="12.5" fill="#1d3550">Path, оператор /,</text>
+  <text x="52" y="328" font-size="12.5" fill="#1d3550">suffix, stem</text>
+  <text x="52" y="356" font-size="12" fill="#4b3a16">одинаково на Linux,</text>
+  <text x="52" y="374" font-size="12" fill="#4b3a16">macOS и Windows</text>
+
+  <rect x="278" y="232" width="224" height="158" rx="10" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="294" y="258" font-size="15" font-weight="bold" fill="#1d3550">enum</text>
+  <text x="294" y="282" font-size="12.5" fill="#33557a">именованные константы</text>
+  <text x="294" y="308" font-size="12.5" fill="#1d3550">Enum, .value</text>
+  <text x="294" y="328" font-size="12.5" fill="#1d3550">Status.NEW</text>
+  <text x="294" y="356" font-size="12" fill="#4b3a16">вместо магических</text>
+  <text x="294" y="374" font-size="12" fill="#4b3a16">строк и чисел</text>
+
+  <rect x="520" y="232" width="224" height="158" rx="10" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="536" y="258" font-size="15" font-weight="bold" fill="#1d3550">contextlib</text>
+  <text x="536" y="282" font-size="12.5" fill="#33557a">свои менеджеры</text>
+  <text x="536" y="308" font-size="12.5" fill="#1d3550">@contextmanager,</text>
+  <text x="536" y="328" font-size="12.5" fill="#1d3550">yield</text>
+  <text x="536" y="356" font-size="12" fill="#4b3a16">очистка гарантирована</text>
+  <text x="536" y="374" font-size="12" fill="#4b3a16">даже при исключении</text>
+
+  <text x="390" y="428" text-anchor="middle" font-size="12.5" fill="#33557a">Стандартная библиотека идёт в комплекте: не нужно ставить пакет и фиксировать его версию</text>
+  <text x="390" y="452" text-anchor="middle" font-size="12.5" fill="#33557a">Сначала проверьте, есть ли готовый инструмент, и только потом добавляйте зависимость</text>
+</svg>

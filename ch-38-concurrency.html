@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Конкурентность: потоки, процессы и GIL — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-38-concurrency.html" aria-current="page">38. Конкурентность: потоки, процессы и GIL</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-38-concurrency.html#что-вы-сможете-после-этой-главы">38.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-38-concurrency.html#concepts">38.2. Конкурентность и параллелизм</a></li>
+<li><a href="ch-38-concurrency.html#threads">38.3. Потоки</a></li>
+<li><a href="ch-38-concurrency.html#gil">38.4. GIL: что это и чего он не делает</a></li>
+<li><a href="ch-38-concurrency.html#race">38.5. Состояние гонки и блокировки</a></li>
+<li><a href="ch-38-concurrency.html#processes">38.6. Процессы и выбор инструмента</a></li>
+<li><a href="ch-38-concurrency.html#mistakes">38.7. Типичные ошибки</a></li>
+<li><a href="ch-38-concurrency.html#упражнения">38.8. Упражнения</a></li>
+<li><a href="ch-38-concurrency.html#проверка-понимания">38.9. Проверка понимания</a></li>
+<li><a href="ch-38-concurrency.html#что-дальше">38.10. Что дальше</a></li>
+</ol></details></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 7. Практическая разработка</span><span class="sep">›</span><span>Глава 38</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Практическая разработка · глава 38</p>
+<h1 id="конкурентность-потоки-процессы-и-gil">Конкурентность: потоки, процессы и GIL</h1>
+<p class="chapter-summary">Когда программа должна делать несколько дел одновременно, чем потоки отличаются от процессов и как GIL влияет на выбор.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#что-вы-сможете-после-этой-главы"><span class="toc-number">38.1</span> Что вы сможете после этой главы</a></li>
+<li class="level-2"><a href="#concepts"><span class="toc-number">38.2</span> Конкурентность и параллелизм</a></li>
+<li class="level-2"><a href="#threads"><span class="toc-number">38.3</span> Потоки</a></li>
+<li class="level-2"><a href="#gil"><span class="toc-number">38.4</span> GIL: что это и чего он не делает</a></li>
+<li class="level-2"><a href="#race"><span class="toc-number">38.5</span> Состояние гонки и блокировки</a></li>
+<li class="level-2"><a href="#processes"><span class="toc-number">38.6</span> Процессы и выбор инструмента</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">38.7</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">38.8</span> Упражнения</a></li>
+<li class="level-2"><a href="#проверка-понимания"><span class="toc-number">38.9</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#что-дальше"><span class="toc-number">38.10</span> Что дальше</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#завершение-потоков">Завершение потоков</a></li>
+<li class="level-3"><a href="#пул-потоков">Пул потоков</a></li>
+<li class="level-3"><a href="#очередь-как-средство-связи">Очередь как средство связи</a></li>
+<li class="level-3"><a href="#сборки-без-gil">Сборки без GIL</a></li>
+<li class="level-3"><a href="#особенности-процессов">Особенности процессов</a></li>
+<li class="level-3"><a href="#ex-ch38-01">1. Классификация задач</a></li>
+<li class="level-3"><a href="#ex-ch38-02">2. Первый поток</a></li>
+<li class="level-3"><a href="#ex-ch38-03">3. Пул потоков</a></li>
+<li class="level-3"><a href="#ex-ch38-04">4. Защита счётчика</a></li>
+<li class="level-3"><a href="#ex-ch38-05">5. Объяснение гонки</a></li>
+<li class="level-3"><a href="#ex-ch38-06">6. Очередь задач</a></li>
+<li class="level-3"><a href="#ex-ch38-07">7. Правда и мифы о GIL</a></li>
+<li class="level-3"><a href="#ex-ch38-08">8. Потоки или процессы</a></li>
+<li class="level-3"><a href="#ex-ch38-09">9. Проверка потокобезопасности</a></li>
+<li class="level-3"><a href="#ex-ch38-10">10. Мини-проект: параллельная загрузка</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>Программа проводит время не только за вычислениями. Она ждёт ответа базы,
+читает файл, отправляет запрос в сеть. Если ждать последовательно, ресурсы
+простаивают. <strong>Конкурентность</strong> — способ организовать работу так, чтобы
+несколько задач продвигались с перекрытием во времени.</p>
+<p>У этой темы много мифов, и главный из них — «потоки ускоряют любой код».
+Реальность зависит от характера задачи: ожидание ввода-вывода и вычисления
+ведут себя по-разному. В этой главе вы разберётесь, что такое <strong>потоки</strong> и
+<strong>процессы</strong>, как <strong>GIL</strong> ограничивает параллелизм вычислений в CPython и как
+писать <strong>потокобезопасный</strong> код с <strong>блокировками</strong>.</p>
+<h2 id="что-вы-сможете-после-этой-главы"><span class="h-number">38.1</span> Что вы сможете после этой главы</h2>
+<p>К концу главы вы будете понимать, где конкурентность помогает, а где создаёт
+лишнюю сложность. Вы сможете:</p>
+<ul>
+<li>различать конкурентность и параллелизм;</li>
+<li>классифицировать задачу как связанную с вводом-выводом или с вычислениями;</li>
+<li>запускать потоки и пул потоков, дожидаться результата;</li>
+<li>объяснять, что делает GIL и чего он не делает;</li>
+<li>распознавать состояние гонки и защищать общие данные блокировкой;</li>
+<li>выбирать между потоками и процессами.</li>
+</ul>
+<h2 id="concepts"><span class="h-number">38.2</span> Конкурентность и параллелизм</h2>
+<p><strong>Конкурентность</strong> — выполнение нескольких задач с перекрытием во времени, не
+обязательно одновременно. Один повар может готовить два блюда: пока суп
+варится, он режет овощи. Задачи продвигаются параллельно по времени, но руки
+у него одни.</p>
+<p><strong>Параллелизм</strong> — одновременное исполнение нескольких вычислений на разных
+ядрах. Два повара действительно работают одновременно. Параллелизм — частный
+случай конкурентности, когда задачи физически выполняются в один момент.</p>
+<p>Разница определяет выбор инструмента. Задачи делят на две группы:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Тип задачи</th>
+<th>Что делает</th>
+<th>Что помогает</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>связанная с вводом-выводом</td>
+<td>ждёт сеть, диск, базу</td>
+<td>потоки, <code>asyncio</code></td>
+</tr>
+<tr>
+<td>связанная с вычислениями</td>
+<td>считает, не освобождая процессор</td>
+<td>процессы</td>
+</tr>
+</tbody>
+</table>
+</div><p>Конкурентность не бесплатна. Она добавляет сложность: гонки, блокировки,
+недетерминированные падения. Если задача выполняется за миллисекунды и не
+ждёт внешних ресурсов, последовательный код проще и надёжнее. Оптимизацию
+начинают с измерения, а не с добавления потоков «на всякий случай». Потоки и
+процессы — инструменты для конкретной проблемы, а не признак «серьёзного»
+кода.</p>
+<p>Если программа ждёт, конкурентность даёт выигрыш даже на одном ядре:
+пока один поток ждёт ответа, другой работает. Если программа считает, нужно
+несколько ядер — а их дают процессы.</p>
+<p><figure class="figure"><img src="illustrations/ch-38-concurrency-vs-parallelism.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h2 id="threads"><span class="h-number">38.3</span> Потоки</h2>
+<p><strong>Поток</strong> — единица исполнения внутри процесса, разделяющая с другими
+потоками память. Потоки дешевле процессов, быстро создаются и видят одни и те
+же объекты. Это удобно и опасно одновременно: любое изменение общего объекта
+затрагивает все потоки.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
+
+<span class="n">results</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">worker</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
+        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span> <span class="o">*</span> <span class="n">value</span><span class="p">)</span>
+
+
+<span class="n">threads</span> <span class="o">=</span> <span class="p">[</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,))</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+    <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+    <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>[0, 1, 4, 9, 16]
+</code></pre>
+<h3 id="завершение-потоков">Завершение потоков</h3>
+<p>Поток может быть обычным или демоническим. Обычный поток программа ждёт: она
+не завершится, пока он работает. Демонический поток (<code>daemon=True</code>)
+останавливается вместе с основным процессом, не давая гарантий корректной
+очистки. Демоны годятся для фоновых задач вроде периодической записи, но не
+для работы, которую нельзя потерять.</p>
+<p><code>join</code> принимает таймаут: если поток не завершился за отведённое время,
+программа может зафиксировать проблему и продолжить. Без <code>join</code> основной поток
+может выйти раньше, и результат работы останется неизвестным: программа
+завершилась «успешно», а данные не сохранились.</p>
+<p><code>start</code> запускает поток, <code>join</code> ждёт его завершения. Порядок завершения
+непредсказуем, поэтому результат сортируют перед выводом. <code>lock</code> защищает
+список: без него одновременный <code>append</code> теоретически мог бы привести к потере
+элемента (хотя конкретный список в CPython защищён внутренне, полагаться на
+это не стоит — речь о принципе).</p>
+<p>Поток удобен, когда задача много ждёт: загрузка страниц, чтение файлов,
+запросы к базе. Пока один поток ждёт сеть, остальные продолжают работу.</p>
+<h3 id="пул-потоков">Пул потоков</h3>
+<p>Создавать поток на каждую задачу расточительно: создание и переключение стоят
+времени, а тысячи потоков конкурируют за память. <strong>Пул потоков</strong> — набор
+заранее созданных потоков, распределяющих задачи; используется через
+<code>concurrent.futures</code>.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">concurrent.futures</span><span class="w"> </span><span class="kn">import</span> <span class="n">ThreadPoolExecutor</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">square</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">value</span> <span class="o">*</span> <span class="n">value</span>
+
+
+<span class="k">with</span> <span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">executor</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">square</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">))))</span>
+</code></pre></div>
+<pre class="output"><code>[0, 1, 4, 9, 16, 25]
+</code></pre>
+<p><code>executor.map</code> сохраняет порядок результатов, даже если задачи завершились в
+другом порядке. Пул сам решает, какой поток берёт следующую задачу, и
+корректно завершает работу при выходе из <code>with</code>.</p>
+<p>Ограничение <code>max_workers</code> — не формальность. Если задач тысячи, а потоков
+четыре, остальные ждут в очереди; это защищает память и сеть от перегрузки.
+Если задач мало, а потоков много, лишние потоки просто простаивают. Значение
+подбирают по характеру нагрузки, а не «чем больше, тем лучше».</p>
+<h3 id="очередь-как-средство-связи">Очередь как средство связи</h3>
+<p><code>queue.Queue</code> — потокобезопасная очередь: один поток кладёт задачи, другой
+забирает. Она сама синхронизирует доступ, поэтому явная блокировка не нужна.
+Это предпочтительный способ передавать работу между потоками: вместо общей
+переменной с замком — канал с понятными правилами.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">queue</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
+
+<span class="n">tasks</span><span class="p">:</span> <span class="n">queue</span><span class="o">.</span><span class="n">Queue</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+<span class="n">results</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">producer</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+        <span class="n">tasks</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+    <span class="n">tasks</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">consumer</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">number</span> <span class="o">=</span> <span class="n">tasks</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">number</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">number</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+
+
+<span class="n">first</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">consumer</span><span class="p">)</span>
+<span class="n">first</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">producer</span><span class="p">()</span>
+<span class="n">first</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>[0, 10, 20, 30, 40]
+</code></pre>
+<p>Маркер <code>-1</code> сообщает потребителю о конце работы. В реальном коде для этого
+используют отдельное событие или <code>None</code>, но принцип тот же: очередь передаёт
+не только данные, но и сигнал завершения. Без него потребитель ждал бы
+бесконечно.</p>
+<h2 id="gil"><span class="h-number">38.4</span> GIL: что это и чего он не делает</h2>
+<p><strong>GIL (глобальная блокировка интерпретатора)</strong> — блокировка CPython, не
+позволяющая нескольким потокам исполнять байткод одновременно; влияет на
+выбор потоков или процессов. В стандартной сборке CPython в каждый момент
+байткод исполняет только один поток. Другие ждут своей очереди.</p>
+<p>Что это означает на практике:</p>
+<ul>
+<li>несколько потоков <strong>не</strong> ускоряют вычисления, потому что ядро всё равно
+занято одним потоком;</li>
+<li>потоки <strong>ускоряют</strong> ожидание ввода-вывода: пока поток ждёт сеть, GIL
+освобождается и другие потоки работают;</li>
+<li>GIL — деталь CPython, а не гарантия языка Python: другие реализации могут
+вести себя иначе; free-threaded сборка без GIL официально поддерживается
+начиная с 3.14, хотя по умолчанию её не включают.</li>
+</ul>
+<p><figure class="figure"><img src="illustrations/ch-38-gil-threads.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Важно понимать, чего GIL <strong>не</strong> делает. Он не делает код потокобезопасным:
+переключение между потоками происходит между байткодами, поэтому операция
+<code>counter += 1</code> состоит из нескольких шагов — прочитать, сложить, записать, — и
+другой поток может вклиниться между ними. GIL защищает внутренние структуры
+интерпретатора, а не ваши инварианты.</p>
+<h3 id="сборки-без-gil">Сборки без GIL</h3>
+<p>В Python 3.13 появилась экспериментальная free-threaded сборка без GIL; в
+3.14 она официально поддерживается (PEP 779), хотя по умолчанию её не
+включают: её ставят отдельно, и исполняемый файл называется <code>python3.14t</code>.
+В такой сборке потоки могут исполнять байткод одновременно, что меняет
+привычную картину производительности. Но вместе с возможностями приходят
+обязанности: код, который неявно полагался на GIL, начинает ловить настоящие
+гонки.</p>
+<p>Поэтому потокобезопасность важна уже сегодня. Программа, написанная с явными
+блокировками и минимумом общего изменяемого состояния, переживёт смену
+интерпретатора без переписывания. Код, который полагается на
+GIL как на защиту от гонок, при переходе на такую сборку сломается. Правильный
+код защищает общие данные явно.</p>
+<h2 id="race"><span class="h-number">38.5</span> Состояние гонки и блокировки</h2>
+<p><strong>Состояние гонки</strong> — дефект, при котором результат зависит от непредсказуемого
+порядка доступа к общим данным. Классический пример — счётчик, который два
+потока увеличивают одновременно.</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
+
+<span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">increment</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">global</span> <span class="n">counter</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100_000</span><span class="p">):</span>
+        <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+
+<span class="n">threads</span> <span class="o">=</span> <span class="p">[</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">increment</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+    <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+    <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span>
+</code></pre></div>
+<p>На одном запуске программа может вывести <code>200000</code>, на другом — <code>199873</code>.
+Расхождение возникает потому, что <code>counter += 1</code> не атомарна: поток прочитал
+значение, но не успел записать, а второй уже записал своё. Ожидать конкретное
+число нельзя — это и есть состояние гонки. Такие примеры в книге не
+исполняются: вывод недетерминирован по определению.</p>
+<p><strong>Блокировка</strong> — примитив синхронизации, обеспечивающий доступ к общему
+ресурсу только одному потоку за раз. В Python это <code>threading.Lock</code>.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
+
+<span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">increment</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">global</span> <span class="n">counter</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10_000</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
+            <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+
+<span class="n">threads</span> <span class="o">=</span> <span class="p">[</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">increment</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+    <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+    <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>30000
+</code></pre>
+<p>Теперь результат детерминирован: три потока по десять тысяч увеличений дают
+ровно тридцать тысяч. Блокировка сериализует критическую секцию: пока один
+поток внутри, остальные ждут.</p>
+<p><strong>Потокобезопасность</strong> — свойство кода работать корректно при одновременном
+вызове из нескольких потоков. Достигается не «включением потоков», а
+дисциплиной: минимизировать общее изменяемое состояние, защищать критически
+секции, использовать потокобезопасные структуры (<code>queue.Queue</code>).</p>
+<h2 id="processes"><span class="h-number">38.6</span> Процессы и выбор инструмента</h2>
+<p><strong>Процесс</strong> — изолированный экземпляр программы с собственной памятью. У
+процессов нет общих изменяемых объектов: обмен идёт через сериализацию
+(аргументы, очереди, каналы). Это дороже, зато даёт настоящий параллелизм
+вычислений и защищает от гонок по построению.</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">concurrent.futures</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProcessPoolExecutor</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_prime</span><span class="p">(</span><span class="n">number</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">for</span> <span class="n">divisor</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">number</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">number</span> <span class="o">%</span> <span class="n">divisor</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">count_primes</span><span class="p">(</span><span class="n">limit</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">limit</span><span class="p">)</span> <span class="k">if</span> <span class="n">is_prime</span><span class="p">(</span><span class="n">number</span><span class="p">))</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">ProcessPoolExecutor</span><span class="p">()</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">executor</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">count_primes</span><span class="p">,</span> <span class="p">[</span><span class="mi">10_000</span><span class="p">,</span> <span class="mi">20_000</span><span class="p">])))</span>
+</code></pre></div>
+<h3 id="особенности-процессов">Особенности процессов</h3>
+<p>Процессы дают настоящий параллелизм вычислений, но у них есть цена. Запуск
+процесса занимает десятки миллисекунд, память не разделяется, а результаты
+передаются через сериализацию. Поэтому процессный пул выгоден для длительных
+вычислений, а не для тысяч мелких задач.</p>
+<p>Есть и платформенные различия. В Python 3.14 на Linux по умолчанию работает
+<code>forkserver</code>: отдельный процесс-сервер создаётся один раз и уже он порождает
+рабочих. На macOS и Windows по умолчанию <code>spawn</code>: новый интерпретатор
+импортирует модуль заново. <code>fork</code> остаётся доступным, но по умолчанию не
+выбирается. При <code>spawn</code> и <code>forkserver</code> код должен быть защищён проверкой
+<code>if __name__ == &quot;__main__&quot;:</code>, иначе дочерний интерпретатор при импорте снова
+запустит создание процессов. Это не прихоть, а требование переносимости.</p>
+<p><code>ProcessPoolExecutor</code> запускает отдельные интерпретаторы. В учебной песочнице
+такой код не исполняется: запуск процессов запрещён, поэтому пример приведён
+как иллюстративный.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Критерий</th>
+<th>Потоки</th>
+<th>Процессы</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>память</td>
+<td>общая</td>
+<td>изолированная</td>
+</tr>
+<tr>
+<td>создание</td>
+<td>дешёвое</td>
+<td>дорогое</td>
+</tr>
+<tr>
+<td>вычисления</td>
+<td>мешает GIL</td>
+<td>параллельны</td>
+</tr>
+<tr>
+<td>ожидание ввода-вывода</td>
+<td>выгодно</td>
+<td>избыточно</td>
+</tr>
+<tr>
+<td>обмен данными</td>
+<td>быстрый, но опасный</td>
+<td>через сериализацию</td>
+</tr>
+<tr>
+<td>гонки</td>
+<td>возможны</td>
+<td>по общим данным исключены</td>
+</tr>
+</tbody>
+</table>
+</div><p>Практическое правило: ждёт — потоки или <code>asyncio</code>; считает — процессы. Если
+задача одновременно и ждёт, и считает, её разбивают на части и применяют
+разные инструменты к разным частям.</p>
+<h2 id="mistakes"><span class="h-number">38.7</span> Типичные ошибки</h2>
+<ol>
+<li><strong>Ждать ускорения вычислений от потоков.</strong> GIL не даст параллелизма; для
+CPU-bound нужны процессы.</li>
+<li><strong>Полагать, что GIL защищает от гонок.</strong> Он защищает интерпретатор, а не
+ваши данные.</li>
+<li><strong>Держать блокировку во время ввода-вывода.</strong> Пока поток ждёт сеть под
+замком, остальные не работают; критическую секцию делают короткой.</li>
+<li><strong>Захватывать несколько блокировок в разном порядке.</strong> Два потока могут
+заблокировать друг друга навсегда. Порядок захвата должен быть общим.</li>
+<li><strong>Создавать поток на каждую задачу.</strong> Тысячи потоков конкурируют за
+ресурсы; используйте пул.</li>
+<li><strong>Передавать изменяемые объекты между процессами без сериализации.</strong>
+Процессы не разделяют память; объект нужно передать через аргументы или
+очередь.</li>
+<li><strong>Игнорировать завершение потоков.</strong> Без <code>join</code> программа может выйти
+раньше, чем задачи закончат работу.</li>
+<li><strong>Использовать общий список вместо очереди.</strong> Очередь задаёт протокол
+обмена и снимает часть забот о синхронизации.</li>
+<li><strong>Запускать процессы без защиты <code>__main__</code>.</strong> На всех платформах при
+<code>spawn</code>/<code>forkserver</code> — а это выбор по умолчанию в 3.14 — это приводит к
+рекурсивному запуску и падению.</li>
+</ol>
+<h2 id="упражнения"><span class="h-number">38.8</span> Упражнения</h2>
+<h3 id="ex-ch38-01">1. Классификация задач</h3>
+<p>Определите, что поможет каждой задаче: потоки, процессы или последовательный
+код. Обоснуйте: скачивание десяти страниц, вычисление миллиона простых чисел,
+чтение большого файла, сортировка списка из ста элементов.</p>
+<h3 id="ex-ch38-02">2. Первый поток</h3>
+<p>Запустите три потока, каждый из которых добавляет свой номер в общий список
+под блокировкой. Дождитесь завершения и выведите отсортированный результат.</p>
+<h3 id="ex-ch38-03">3. Пул потоков</h3>
+<p>С помощью <code>ThreadPoolExecutor</code> вычислите кубы чисел от 1 до 8. Объясните,
+почему <code>map</code> возвращает результаты в порядке исходных данных, а не завершения.</p>
+<h3 id="ex-ch38-04">4. Защита счётчика</h3>
+<p>Реализуйте счётчик, который три потока увеличивают по 5000 раз под
+блокировкой. Проверьте, что итог равен 15000, и объясните, что было бы без
+блокировки.</p>
+<h3 id="ex-ch38-05">5. Объяснение гонки</h3>
+<p>Почему программа с двумя потоками и <code>counter += 1</code> может вывести не
+<code>200000</code>? Опишите последовательность шагов, при которой одно обновление
+теряется. Почему GIL не спасает?</p>
+<h3 id="ex-ch38-06">6. Очередь задач</h3>
+<p>Реализуйте производителя и потребителя через <code>queue.Queue</code>: производитель
+кладёт числа от 0 до 4, потребитель умножает их на 10 и складывает в список.
+Дождитесь завершения и выведите результат.</p>
+<h3 id="ex-ch38-07">7. Правда и мифы о GIL</h3>
+<p>Определите, какие утверждения верны: (а) GIL ускоряет потоки; (б) GIL
+освобождается при ожидании ввода-вывода; (в) GIL делает список потокобезопасным;
+(г) GIL — часть языка Python; (д) процессы обходят ограничение GIL для
+вычислений. Объясните каждое.</p>
+<h3 id="ex-ch38-08">8. Потоки или процессы</h3>
+<p>Для функции, которая считает хэши строк, выберите инструмент и обоснуйте.
+Опишите, как изменится выбор, если функция вместо вычислений читает файлы.</p>
+<h3 id="ex-ch38-09">9. Проверка потокобезопасности</h3>
+<p>Дана функция, которая увеличивает общий словарь под блокировкой. Напишите
+проверку: запустите четыре потока по 1000 операций и сравните итоговое
+значение. Объясните, почему проверка детерминирована.</p>
+<h3 id="ex-ch38-10">10. Мини-проект: параллельная загрузка</h3>
+<p>Спроектируйте функцию <code>fetch_all(urls)</code>, которая загружает страницы
+параллельно с ограничением на число одновременных запросов. Опишите выбор
+инструмента, обработку ошибок и таймауты. Реализуйте версию с подставной
+функцией загрузки, возвращающей длину «страницы», и проверьте результат.</p>
+<h2 id="проверка-понимания"><span class="h-number">38.9</span> Проверка понимания</h2>
+<ol>
+<li>Чем конкурентность отличается от параллелизма?</li>
+<li>Почему потоки помогают при вводе-выводе и не помогают при вычислениях?</li>
+<li>Что такое GIL и почему он не делает код потокобезопасным?</li>
+<li>Как блокировка предотвращает состояние гонки?</li>
+<li>Почему процессы не разделяют память и как они обмениваются данными?</li>
+<li>Когда пул потоков лучше создания потока на каждую задачу?</li>
+<li>Почему порядок захвата блокировок должен быть одинаковым во всей программе?</li>
+</ol>
+<h2 id="что-дальше"><span class="h-number">38.10</span> Что дальше</h2>
+<p>Потоки решают проблему ожидания, но требуют дисциплины и не масштабируются на
+тысячи задач. Следующая глава — об <code>asyncio</code>: одном потоке, который
+переключается между задачами на операциях ввода-вывода. Логи с отметками
+времени из предыдущей главы помогут увидеть, как задачи чередуются: по
+временным меткам видно, что ожидание одного запроса не блокирует остальные.
+Это первый шаг к пониманию асинхронной модели. О работе с
+сетью говорилось в <a href="ch-35-os-network.html">главе 35</a>, о логировании — в
+<a href="ch-37-time-logging.html">главе 37</a>.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-37-time-logging.html"><span class="pager-label">← Назад</span><span class="pager-title">Время, даты и логирование</span></a><a class="pager-card next" rel="next" href="ch-39-asyncio.html"><span class="pager-label">Далее:</span><span class="pager-title">Асинхронность: asyncio</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

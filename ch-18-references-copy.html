@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Ссылки, алиасы и копирование — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-18-references-copy.html" aria-current="page">18. Ссылки, алиасы и копирование</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-18-references-copy.html#что-вы-сможете-после-этой-главы">18.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-18-references-copy.html#why">18.2. Задача: «изменил одно — поменялось другое»</a></li>
+<li><a href="ch-18-references-copy.html#references">18.3. Имена, объекты и ссылки</a></li>
+<li><a href="ch-18-references-copy.html#aliasing">18.4. Алиасинг (псевдонимы)</a></li>
+<li><a href="ch-18-references-copy.html#nested">18.5. Вложенная структура</a></li>
+<li><a href="ch-18-references-copy.html#shallow">18.6. Поверхностное копирование</a></li>
+<li><a href="ch-18-references-copy.html#deep">18.7. Глубокое копирование</a></li>
+<li><a href="ch-18-references-copy.html#default-arg">18.8. Изменяемое значение по умолчанию</a></li>
+<li><a href="ch-18-references-copy.html#mistakes">18.9. Типичные ошибки</a></li>
+<li><a href="ch-18-references-copy.html#упражнения">18.10. Упражнения</a></li>
+<li><a href="ch-18-references-copy.html#проверка-понимания">18.11. Проверка понимания</a></li>
+<li><a href="ch-18-references-copy.html#что-дальше">18.12. Что дальше</a></li>
+</ol></details></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 3. Коллекции и данные</span><span class="sep">›</span><span>Глава 18</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Коллекции и данные · глава 18</p>
+<h1 id="ссылки-алиасы-и-копирование">Ссылки, алиасы и копирование</h1>
+<p class="chapter-summary">Почему изменения видны «в другом месте»: ссылочная семантика, алиасинг, вложенные структуры, поверхностное и глубокое копирование.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#что-вы-сможете-после-этой-главы"><span class="toc-number">18.1</span> Что вы сможете после этой главы</a></li>
+<li class="level-2"><a href="#why"><span class="toc-number">18.2</span> Задача: «изменил одно — поменялось другое»</a></li>
+<li class="level-2"><a href="#references"><span class="toc-number">18.3</span> Имена, объекты и ссылки</a></li>
+<li class="level-2"><a href="#aliasing"><span class="toc-number">18.4</span> Алиасинг (псевдонимы)</a></li>
+<li class="level-2"><a href="#nested"><span class="toc-number">18.5</span> Вложенная структура</a></li>
+<li class="level-2"><a href="#shallow"><span class="toc-number">18.6</span> Поверхностное копирование</a></li>
+<li class="level-2"><a href="#deep"><span class="toc-number">18.7</span> Глубокое копирование</a></li>
+<li class="level-2"><a href="#default-arg"><span class="toc-number">18.8</span> Изменяемое значение по умолчанию</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">18.9</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">18.10</span> Упражнения</a></li>
+<li class="level-2"><a href="#проверка-понимания"><span class="toc-number">18.11</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#что-дальше"><span class="toc-number">18.12</span> Что дальше</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#ex-ch18-01">1. Прогнозирование вывода</a></li>
+<li class="level-3"><a href="#ex-ch18-02">2. is или ==</a></li>
+<li class="level-3"><a href="#ex-ch18-03">3. Функция портит аргумент</a></li>
+<li class="level-3"><a href="#ex-ch18-04">4. Три способа скопировать список</a></li>
+<li class="level-3"><a href="#ex-ch18-05">5. Поверхностная ловушка</a></li>
+<li class="level-3"><a href="#ex-ch18-06">6. Вложенный словарь</a></li>
+<li class="level-3"><a href="#ex-ch18-07">7. Значение по умолчанию</a></li>
+<li class="level-3"><a href="#ex-ch18-08">8. Копия внутри функции</a></li>
+<li class="level-3"><a href="#ex-ch18-09">9. Резервная копия настроек</a></li>
+<li class="level-3"><a href="#ex-ch18-10">10. Где алиасинг полезен</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>Самый неприятный класс дефектов в начале обучения выглядит так: программа
+меняет одну переменную, а «портится» совсем другая. Список, который вы
+передали в функцию, после вызова оказывается другим. Резервная копия,
+сделанная «на всякий случай», меняется вместе с оригиналом. Причина не в
+ошибке синтаксиса и не в опечатке, а в устройстве модели памяти Python:
+имена не хранят значения, они ссылаются на объекты. Пока вы работаете с
+числами и строками, это незаметно. Как только появляются списки, словари и
+вложенные структуры, различие становится источником и ошибок, и мощных
+приёмов.</p>
+<p>В этой главе вы разберётесь, что именно происходит при присваивании, чем
+<code>is</code> отличается от <code>==</code>, почему «копия» иногда оказывается лишь вторым именем
+и как получить настоящую независимую копию.</p>
+<h2 id="что-вы-сможете-после-этой-главы"><span class="h-number">18.1</span> Что вы сможете после этой главы</h2>
+<ul>
+<li>объяснять, что присваивание копирует ссылку, а не объект;</li>
+<li>предсказывать, когда изменение через одно имя видно через другое;</li>
+<li>различать поверхностное и глубокое копирование и выбирать нужное;</li>
+<li>строить вложенные структуры и понимать, какие их части общие, а какие нет;</li>
+<li>не попадать в ловушку изменяемого значения по умолчанию и узнавать её в
+чужом коде.</li>
+</ul>
+<h2 id="why"><span class="h-number">18.2</span> Задача: «изменил одно — поменялось другое»</h2>
+<p>Представьте, что программа хранит список покупок и делает резервную копию
+перед сортировкой.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">shopping</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"молоко"</span><span class="p">,</span> <span class="s2">"хлеб"</span><span class="p">,</span> <span class="s2">"сыр"</span><span class="p">]</span>
+<span class="n">backup</span> <span class="o">=</span> <span class="n">shopping</span>
+<span class="n">shopping</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">shopping</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">backup</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>[&#x27;молоко&#x27;, &#x27;сыр&#x27;, &#x27;хлеб&#x27;]
+[&#x27;молоко&#x27;, &#x27;сыр&#x27;, &#x27;хлеб&#x27;]
+</code></pre>
+<p>Сортировка изменила <code>shopping</code>, но изменилась и «копия» <code>backup</code>. Строка
+<code>backup = shopping</code> не создала второй список: она связала второе имя с тем же
+самым объектом. Пока вы не увидите модель, в которой имя — это ссылка, такое
+поведение кажется нелогичным. С ним мы и будем разбираться.</p>
+<h2 id="references"><span class="h-number">18.3</span> Имена, объекты и ссылки</h2>
+<p>Вспомним модель, введённую в главе 3: значение живёт в объекте, имя — это
+способ обратиться к объекту. Инструкция присваивания не копирует объект, она
+<strong>связывает имя</strong> с объектом. Поэтому у одного объекта может быть несколько
+имён.</p>
+<p><strong>Ссылочная семантика</strong> — правило, по которому присваивание копирует ссылку
+на объект, а не сам объект. Из него следует всё остальное в этой главе.</p>
+<p><figure class="figure"><img src="illustrations/ch-18-aliasing.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>[1, 2, 3, 4]
+True
+</code></pre>
+<p><code>a is b</code> истинно, потому что оба имени ссылаются на один объект. Внимание:
+<code>is</code> сравнивает не значения, а <strong>идентичность</strong> — тот ли это объект. Для
+значений служит <code>==</code>.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>True
+False
+</code></pre>
+<p>Два разных списка с одинаковым содержимым равны, но не идентичны. Правило
+простое: <code>==</code> отвечает на вопрос «одинаковы ли значения», <code>is</code> — «это один и
+тот же объект». Для <code>None</code> принято писать <code>is None</code>, потому что <code>None</code> —
+единственный объект; для чисел, строк и списков сравнение через <code>is</code> почти
+всегда ошибка.</p>
+<p>С неизменяемыми объектами ссылочная семантика не видна: число нельзя изменить,
+операция <code>b = b + 1</code> создаёт новый объект и связывает <code>b</code> с ним, а <code>a</code>
+продолжает указывать на старое число.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>10 11
+</code></pre>
+<p>Ссылочная семантика — не случайность реализации, а осознанное решение языка.
+Присваивание в Python не перекладывает содержимое объекта: оно связывает имя
+с объектом, и это одинаково дешёвая операция и для числа, и для списка из
+миллиона элементов. Благодаря такой модели большой словарь можно передать в
+функцию, не копируя его: достаточно передать ссылку. Цена решения —
+необходимость явно думать о том, кто владеет объектом и кто вправе его
+менять.</p>
+<h2 id="aliasing"><span class="h-number">18.4</span> Алиасинг (псевдонимы)</h2>
+<p><strong>Алиасинг (псевдонимы)</strong> — ситуация, когда два имени ссылаются на один
+изменяемый объект, поэтому изменение видно через оба. Алиасинг сам по себе — не ошибка:
+иногда он нужен и удобен. Опасен он тогда, когда
+программа считает имена независимыми.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">prices</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"яблоко"</span><span class="p">:</span> <span class="mi">90</span><span class="p">}</span>
+<span class="n">backup</span> <span class="o">=</span> <span class="n">prices</span>
+<span class="n">backup</span><span class="p">[</span><span class="s2">"банан"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">120</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prices</span> <span class="ow">is</span> <span class="n">backup</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>{&#x27;яблоко&#x27;: 90, &#x27;банан&#x27;: 120}
+True
+</code></pre>
+<p>Алиасинг часто возникает незаметно — при передаче аргумента в функцию.
+Параметр и аргумент становятся двумя именами одного объекта.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">add_item</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+    <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">add_item</span><span class="p">(</span><span class="n">numbers</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>[1, 2, 3]
+</code></pre>
+<p>Функция не возвращала список, но исходный <code>numbers</code> изменился: <code>items</code> внутри
+функции — это ещё одно имя того же списка. Такое поведение называют
+<strong>побочным эффектом</strong>. Оно бывает намеренным (например, функция добавляет
+запись в переданный журнал), но чаще оказывается неожиданным.</p>
+<p>Если функция не должна менять аргумент, есть два способа: не изменять объект,
+а создавать новый либо скопировать аргумент на входе и менять копию.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">add_item</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="n">items</span> <span class="o">+</span> <span class="p">[</span><span class="n">item</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">items</span>
+
+
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">add_item</span><span class="p">(</span><span class="n">numbers</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>[1, 2]
+[1, 2, 3]
+</code></pre>
+<p>Здесь <code>items = items + [item]</code> создаёт новый список и связывает с ним
+локальное имя <code>items</code>; исходный объект не тронут. Это тот же приём, что и с
+неизменяемыми значениями: результат — новое значение, вход — прежний.</p>
+<p>Из этого правила следует требование к аккуратному проектированию функций.
+Если функция меняет переданный объект, это должно быть видно из её имени и
+документации — например, <code>add_item</code> меняет, а <code>with_item</code> возвращает новое.
+Обратная ошибка тоже встречается: функция возвращает внутренний список
+объекта, вызывающий код его меняет, и состояние структуры незаметно портится.
+Поэтому функция, отдающая наружу коллекцию, нередко возвращает её копию, а не
+сам объект. Такой приём называют защитным копированием, и он платит небольшим
+расходом памяти за предсказуемость поведения.</p>
+<h2 id="nested"><span class="h-number">18.5</span> Вложенная структура</h2>
+<p>До сих пор объекты были простыми. Реальные сведения устроены сложнее:
+<strong>вложенная структура</strong> — коллекция внутри коллекции: список списков, словарь
+списков и т. п. Вложенность добавляет второй уровень ссылок, и именно на нём
+чаще всего ломаются интуиции о копировании.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">matrix</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+<span class="n">same</span> <span class="o">=</span> <span class="n">matrix</span>
+<span class="n">same</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>[[99, 2], [3, 4]]
+</code></pre>
+<p>Разберём, что здесь есть. Есть внешний список из двух элементов. Каждый
+элемент — ссылка на внутренний список. Имена <code>matrix</code> и <code>same</code> указывают на
+внешний список, поэтому изменение вложенного элемента видно через оба имени.</p>
+<pre class="text"><code>matrix ──▶ [ •, • ]        внешний список
+              │  │
+              ▼  ▼
+          [99, 2] [3, 4]   внутренние списки
+</code></pre>
+<p>Имена ссылаются на внешний список; внешний список ссылается на внутренние.
+Изменение <code>same[0][0]</code> идёт по цепочке: имя → внешний список → внутренний
+список → элемент.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">user</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"имя"</span><span class="p">:</span> <span class="s2">"Анна"</span><span class="p">,</span> <span class="s2">"оценки"</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="p">[</span><span class="s2">"оценки"</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">user</span><span class="p">[</span><span class="s2">"оценки"</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>4
+{&#x27;имя&#x27;: &#x27;Анна&#x27;, &#x27;оценки&#x27;: [4, 5, 3]}
+</code></pre>
+<p>Словарь, значения которого — списки, устроен так же: ключ ведёт к объекту-
+списку, и этот список можно менять, не трогая сам словарь.</p>
+<h2 id="shallow"><span class="h-number">18.6</span> Поверхностное копирование</h2>
+<p>Чтобы получить независимую копию списка, его нужно явно скопировать.
+<strong>Поверхностное копирование</strong> — копирование только верхнего уровня структуры;
+вложенные объекты остаются общими. Для списка есть три равнозначных способа:
+метод <code>copy()</code>, полный срез и функция <code>list()</code>.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:]</span>
+<span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>[1, 2] [1, 2, 3]
+[1, 2] [99, 2]
+</code></pre>
+<p>Для плоского списка этого достаточно: копия независима. Но для вложенной
+структуры поверхностное копирование копирует только внешний список, а
+внутренние остаются теми же объектами.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">matrix</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+<span class="n">clone</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">clone</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">clone</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="n">clone</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</code></pre></div>
+<pre class="output"><code>[[99, 2], [3, 4]]
+[[99, 2], [3, 4]]
+True
+</code></pre>
+<p>Значение <code>True</code> в последней строке — приговор: первый внутренний список у
+копии и у оригинала один и тот же. Поверхностное копирование создало новый
+внешний список, но элементы-ссылки скопировало как есть.</p>
+<p><figure class="figure"><img src="illustrations/ch-18-shallow-deep.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Для словаря поверхностная копия делается методом <code>copy()</code> или функцией
+<code>dict()</code>; для множества — методом <code>copy()</code>. Модуль <code>copy</code> даёт общую функцию
+<code>copy.copy</code>, которая работает с любым поддерживающим копирование объектом.</p>
+<p>Стоит помнить, что многие встроенные операции возвращают новый объект, а не
+меняют старый: <code>sorted(...)</code>, полный срез <code>[::]</code> и <code>list(...)</code> дают
+поверхностную копию верхнего уровня. Для плоской коллекции этого достаточно,
+для вложенной — нет, и различие снова решает вопрос «кто владеет внутренними
+объектами».</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
+
+<span class="n">original</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"a"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">]}</span>
+<span class="n">shallow</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">original</span><span class="p">)</span>
+<span class="n">shallow</span><span class="p">[</span><span class="s2">"a"</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">original</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">original</span><span class="p">[</span><span class="s2">"a"</span><span class="p">]</span> <span class="ow">is</span> <span class="n">shallow</span><span class="p">[</span><span class="s2">"a"</span><span class="p">])</span>
+</code></pre></div>
+<pre class="output"><code>{&#x27;a&#x27;: [1, 2]}
+True
+</code></pre>
+<p>Функция <code>dict(other)</code> даёт тот же результат, что и метод <code>copy()</code>: новый
+словарь, но с прежними ссылками на значения. Поэтому список внутри значения
+остаётся общим.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">settings</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"темы"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"светлая"</span><span class="p">],</span> <span class="s2">"язык"</span><span class="p">:</span> <span class="s2">"ru"</span><span class="p">}</span>
+<span class="n">shallow_copy</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span>
+<span class="n">shallow_copy</span><span class="p">[</span><span class="s2">"темы"</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"тёмная"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">settings</span><span class="p">[</span><span class="s2">"темы"</span><span class="p">]</span> <span class="ow">is</span> <span class="n">shallow_copy</span><span class="p">[</span><span class="s2">"темы"</span><span class="p">])</span>
+</code></pre></div>
+<pre class="output"><code>{&#x27;темы&#x27;: [&#x27;светлая&#x27;, &#x27;тёмная&#x27;], &#x27;язык&#x27;: &#x27;ru&#x27;}
+True
+</code></pre>
+<h2 id="deep"><span class="h-number">18.7</span> Глубокое копирование</h2>
+<p>Когда нужна полностью независимая структура, применяют <strong>глубокое
+копирование</strong> — рекурсивное копирование всех вложенных объектов. В стандартной
+библиотеке для этого есть <code>copy.deepcopy</code>.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
+
+<span class="n">matrix</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+<span class="n">deep</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+<span class="n">deep</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">deep</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="n">deep</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</code></pre></div>
+<pre class="output"><code>[[1, 2], [3, 4]]
+[[99, 2], [3, 4]]
+False
+</code></pre>
+<p>Теперь изменение копии не затронуло оригинал: внутренние списки тоже
+скопированы. <code>deepcopy</code> обходит структуру рекурсивно, копируя каждый
+изменяемый объект; для неизменяемых объектов (числа, строки, кортежи из
+неизменяемых) копия не нужна, и функция возвращает тот же объект.</p>
+<p>Глубокое копирование умеет обрабатывать и структуры, которые ссылаются сами
+на себя: оно запоминает уже скопированные объекты и не уходит в бесконечную
+рекурсию.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span> <span class="ow">is</span> <span class="n">a</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>2
+True
+False
+</code></pre>
+<p>Глубокая копия нужна, когда структура действительно должна быть независимой.
+У неё есть цена: время на обход всех уровней и дополнительная память. Если
+достаточно независимости верхнего уровня, поверхностного копирования хватает
+и оно дешевле. Выбор диктуется задачей, а не привычкой: «всегда deepcopy» —
+такая же крайность, как «никогда не копировать».</p>
+<p>Есть и содержательное ограничение: <code>deepcopy</code> копирует только структуру
+данных, а не внешние ресурсы. Если объект описывает открытый файл, сетевое
+соединение или другой ресурс операционной системы, копирование такого объекта
+бессмысленно: две копии не могут независимо владеть одним ресурсом. Для
+подобных объектов предусмотрен отдельный протокол настройки копирования; о
+нём вы узнаете, когда познакомитесь с собственными классами. Пока достаточно
+запомнить: глубокое копирование — инструмент для коллекций и вложенных
+структур, а не универсальное средство «сделать всё независимым».</p>
+<h2 id="default-arg"><span class="h-number">18.8</span> Изменяемое значение по умолчанию</h2>
+<p>Отдельный случай ссылочной семантики — значения параметров по умолчанию.
+Значение по умолчанию вычисляется один раз, при определении функции, и
+сохраняется в её объекте. Если это изменяемый объект, все вызовы будут
+делить его между собой.</p>
+<p><strong>Изменяемое значение по умолчанию</strong> — ошибка проектирования, когда
+изменяемый объект используется как значение по умолчанию и сохраняет
+изменения между вызовами.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">collect</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">bucket</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="n">bucket</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">bucket</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">collect</span><span class="p">(</span><span class="s2">"а"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">collect</span><span class="p">(</span><span class="s2">"б"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">collect</span><span class="p">(</span><span class="s2">"в"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>[&#x27;а&#x27;]
+[&#x27;а&#x27;, &#x27;б&#x27;]
+[&#x27;а&#x27;, &#x27;б&#x27;, &#x27;в&#x27;]
+</code></pre>
+<p>Функция выглядит так, будто каждый вызов начинает с пустого списка, но список
+создан один раз — при определении <code>collect</code>. Все вызовы получают один и тот
+же объект, поэтому результаты накапливаются. То же случится со словарём или
+множеством в роли значения по умолчанию.</p>
+<p>Исправление стандартное: по умолчанию ставить <code>None</code>, а нужный объект
+создавать внутри функции.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">collect</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">bucket</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">bucket</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">bucket</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">bucket</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">bucket</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">collect</span><span class="p">(</span><span class="s2">"а"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">collect</span><span class="p">(</span><span class="s2">"б"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>[&#x27;а&#x27;]
+[&#x27;б&#x27;]
+</code></pre>
+<p>Проверка <code>is None</code> здесь обязательна: если бы мы написали <code>if not bucket</code>, то
+пустой список, переданный явно, тоже считался бы отсутствующим, и вызов
+<code>collect(&quot;а&quot;, [])</code> не изменил бы переданный список. <code>None</code> — обычный признак
+«аргумент не передан», пока <code>None</code> не входит в число допустимых значений. Если
+он допустим, безопаснее уникальный маркер-объект, например <code>sentinel = object()</code>.</p>
+<h2 id="mistakes"><span class="h-number">18.9</span> Типичные ошибки</h2>
+<ol>
+<li><strong>Считать <code>b = a</code> копированием.</strong> Это второе имя того же объекта.</li>
+<li><strong>Проверять равенство через <code>is</code>.</strong> <code>is</code> сравнивает идентичность; для
+значений нужно <code>==</code>. Исключение — сравнение с <code>None</code>.</li>
+<li><strong>Считать <code>list.copy()</code> полной копией.</strong> Для вложенной структуры копия
+поверхностная, внутренние объекты общие.</li>
+<li><strong>Путать <code>deepcopy</code> с бесплатной операцией.</strong> Она обходит всю структуру,
+поэтому дороже; для больших данных это заметно.</li>
+<li><strong>Изменять аргумент, когда этого не ждут.</strong> Функция, меняющая переданный
+список, обязана быть очевидной по имени и документации, иначе дефект
+всплывёт далеко от места вызова.</li>
+<li><strong>Изменяемое значение по умолчанию.</strong> Список, словарь или множество в
+сигнатуре сохраняет изменения между вызовами.</li>
+<li><strong>Ждать, что кортеж защитит содержимое.</strong> Кортеж неизменяем, но если в нём
+лежит список, сам список менять можно.</li>
+</ol>
+<p>Проверим последний пункт: неизменяемость кортежа относится к набору ссылок,
+а не к объектам, на которые они указывают.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>(1, [2, 3, 4])
+</code></pre>
+<h2 id="упражнения"><span class="h-number">18.10</span> Упражнения</h2>
+<h3 id="ex-ch18-01">1. Прогнозирование вывода</h3>
+<p>Не запуская код, запишите результат. Затем проверьте и объясните.</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</code></pre></div>
+<p>Сравните с вариантом, где вместо <code>b = b + [3]</code> стоит <code>b.append(3)</code>.</p>
+<h3 id="ex-ch18-02">2. is или ==</h3>
+<p>Для каждой пары значений определите, что выведет <code>print(x is y)</code> и
+<code>print(x == y)</code>, и объясните различие:</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+</code></pre></div>
+<p>Затем проверьте на числах: <code>x = 1000</code>, <code>y = int(&quot;1000&quot;)</code>, а потом то же
+самое с <code>100</code> вместо <code>1000</code>. Объясните, почему для небольших чисел результат
+<code>is</code> отличается и почему опираться на это нельзя.</p>
+<h3 id="ex-ch18-03">3. Функция портит аргумент</h3>
+<p>Функция должна возвращать список без отрицательных чисел, но исходный список
+тоже меняется:</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">positive</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">numbers</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">numbers</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">positive</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>
+<p>Объясните, почему <code>data</code> изменился, и предложите исправление, которое
+не трогает входной список.</p>
+<h3 id="ex-ch18-04">4. Три способа скопировать список</h3>
+<p>Скопируйте список <code>[1, 2, 3]</code> тремя способами: методом <code>copy()</code>, полным срезом
+и функцией <code>list()</code>. Проверьте, что копии равны исходному списку, но не
+идентичны ему, и что изменение копии не меняет исходный список.</p>
+<h3 id="ex-ch18-05">5. Поверхностная ловушка</h3>
+<p>Дан список списков <code>[[1, 2], [3, 4]]</code>. Сделайте его поверхностную копию,
+измените <code>второй</code> вложенный список в копии и объясните, что произошло с
+оригиналом. Затем повторите с <code>copy.deepcopy</code> и сравните результаты.</p>
+<h3 id="ex-ch18-06">6. Вложенный словарь</h3>
+<p>Дан словарь <code>{&quot;имя&quot;: &quot;Анна&quot;, &quot;оценки&quot;: [4, 5]}</code>. Сделайте копию, добавьте
+оценку в копию и покажите, что произойдёт с оригиналом при поверхностном и при
+глубоком копировании. Объясните различие через понятие вложенной структуры.</p>
+<h3 id="ex-ch18-07">7. Значение по умолчанию</h3>
+<p>Функция накапливает историю вызовов, но записи «переезжают» между вызовами:</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">log</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">history</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">history</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="s2">"старт"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="s2">"шаг 1"</span><span class="p">))</span>
+</code></pre></div>
+<p>Исправьте функцию так, чтобы каждый вызов с одним аргументом начинал новую
+историю, но при явно переданном списке запись шла в него.</p>
+<h3 id="ex-ch18-08">8. Копия внутри функции</h3>
+<p>Напишите функцию <code>without_duplicates(items)</code>, которая возвращает новый список
+без повторяющихся элементов, не изменяя входной. Проверьте на списке, который
+после вызова должен остаться прежним.</p>
+<h3 id="ex-ch18-09">9. Резервная копия настроек</h3>
+<p>Программа хранит настройки в виде словаря, значения которого — списки.
+Напишите функцию <code>snapshot(settings)</code>, которая возвращает независимую копию
+настроек. Докажите независимость: измените копию и покажите, что исходные
+настройки не изменились. Объясните, почему <code>dict(settings)</code> здесь не подходит.</p>
+<h3 id="ex-ch18-10">10. Где алиасинг полезен</h3>
+<p>Приведите два примера, когда алиасинг (два имени на один объект) полезен, и
+два примера, когда он опасен. Для каждого примера напишите короткий код,
+который показывает эффект, и объясните, что видит программист.</p>
+<h2 id="проверка-понимания"><span class="h-number">18.11</span> Проверка понимания</h2>
+<ol>
+<li>Что копирует присваивание — объект или ссылку? Как это проверить?</li>
+<li>Чем <code>is</code> отличается от <code>==</code> и когда <code>is</code> уместен?</li>
+<li>Почему изменение списка через одно имя видно через другое имя?</li>
+<li>Чем поверхностное копирование отличается от глубокого? Приведите пример,
+где различие проявляется.</li>
+<li>Почему значение по умолчанию создаётся один раз, а не при каждом вызове?</li>
+<li>Почему кортеж с вложенным списком нельзя назвать полностью неизменяемым?</li>
+<li>В каких случаях глубокое копирование не нужно?</li>
+</ol>
+<h2 id="что-дальше"><span class="h-number">18.12</span> Что дальше</h2>
+<p>Модель ссылок объясняет, почему структуры данных ведут себя «не так, как
+кажется». Следующий шаг — вывести сведения за пределы памяти программы:
+сохранить их в файл и прочитать обратно. Там та же логика продолжится на
+другом уровне: файл — внешний ресурс, который нужно открыть и корректно
+закрыть, а форматы вроде CSV и JSON придётся преобразовывать в знакомые
+словари и списки и обратно.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-17-dicts.html"><span class="pager-label">← Назад</span><span class="pager-title">Словари: отображения и структурирование данных</span></a><a class="pager-card next" rel="next" href="ch-19-files-formats.html"><span class="pager-label">Далее:</span><span class="pager-title">Файлы, пути и текстовые форматы</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

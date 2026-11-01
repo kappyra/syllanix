@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 400" role="img"
+     aria-labelledby="ttl15a desc15a" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl15a">Строка и её кодировка: символы, кодовые точки и байты</title>
+  <desc id="desc15a">Строка «Ёж!» состоит из трёх символов с кодовыми точками U+0401, U+0436 и U+0021. В кодировке UTF-8 та же строка занимает пять байтов: D0 81, D0 B6 и 21. Кириллическая буква кодируется двумя байтами, восклицательный знак — одним. Длина строки равна трём символам, длина последовательности байтов — пяти.</desc>
+
+  <text x="30" y="32" font-size="17" font-weight="bold" fill="#1d3550">Символ ≠ байт: строка и её кодировка</text>
+
+  <text x="30" y="86" font-size="13" fill="#4b3a16">строка:</text>
+
+  <!-- символы -->
+  <rect x="110" y="62" width="150" height="66" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="185" y="100" text-anchor="middle" font-size="24" font-weight="bold" fill="#1d3550">Ё</text>
+  <text x="185" y="120" text-anchor="middle" font-size="12" fill="#33557a">U+0401</text>
+
+  <rect x="270" y="62" width="150" height="66" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="345" y="100" text-anchor="middle" font-size="24" font-weight="bold" fill="#1d3550">ж</text>
+  <text x="345" y="120" text-anchor="middle" font-size="12" fill="#33557a">U+0436</text>
+
+  <rect x="430" y="62" width="150" height="66" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="505" y="100" text-anchor="middle" font-size="24" font-weight="bold" fill="#1d3550">!</text>
+  <text x="505" y="120" text-anchor="middle" font-size="12" fill="#33557a">U+0021</text>
+
+  <text x="610" y="100" font-size="13" fill="#33557a">3 символа</text>
+
+  <!-- разделители -->
+  <line x1="265" y1="140" x2="265" y2="286" stroke="#b9b3a5" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <line x1="425" y1="140" x2="425" y2="286" stroke="#b9b3a5" stroke-width="1.5" stroke-dasharray="5 4"/>
+
+  <text x="30" y="182" font-size="13" fill="#4b3a16">UTF-8:</text>
+
+  <!-- байты -->
+  <rect x="110" y="158" width="72" height="52" rx="7" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="146" y="191" text-anchor="middle" font-size="14" font-weight="bold" fill="#4b3a16">D0</text>
+  <rect x="188" y="158" width="72" height="52" rx="7" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="224" y="191" text-anchor="middle" font-size="14" font-weight="bold" fill="#4b3a16">81</text>
+
+  <rect x="270" y="158" width="72" height="52" rx="7" fill="#eaf3ea" stroke="#3c6b47" stroke-width="2"/>
+  <text x="306" y="191" text-anchor="middle" font-size="14" font-weight="bold" fill="#254a2d">D0</text>
+  <rect x="348" y="158" width="72" height="52" rx="7" fill="#eaf3ea" stroke="#3c6b47" stroke-width="2"/>
+  <text x="384" y="191" text-anchor="middle" font-size="14" font-weight="bold" fill="#254a2d">B6</text>
+
+  <rect x="430" y="158" width="72" height="52" rx="7" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="466" y="191" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3550">21</text>
+
+  <text x="610" y="191" font-size="13" fill="#33557a">5 байтов</text>
+
+  <!-- группировка -->
+  <line x1="110" y1="228" x2="260" y2="228" stroke="#8a6a2f" stroke-width="2"/>
+  <line x1="110" y1="228" x2="110" y2="236" stroke="#8a6a2f" stroke-width="2"/>
+  <line x1="260" y1="228" x2="260" y2="236" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="185" y="256" text-anchor="middle" font-size="12" fill="#4b3a16">2 байта</text>
+
+  <line x1="270" y1="228" x2="420" y2="228" stroke="#3c6b47" stroke-width="2"/>
+  <line x1="270" y1="228" x2="270" y2="236" stroke="#3c6b47" stroke-width="2"/>
+  <line x1="420" y1="228" x2="420" y2="236" stroke="#3c6b47" stroke-width="2"/>
+  <text x="345" y="256" text-anchor="middle" font-size="12" fill="#254a2d">2 байта</text>
+
+  <line x1="430" y1="228" x2="502" y2="228" stroke="#33557a" stroke-width="2"/>
+  <line x1="430" y1="228" x2="430" y2="236" stroke="#33557a" stroke-width="2"/>
+  <line x1="502" y1="228" x2="502" y2="236" stroke="#33557a" stroke-width="2"/>
+  <text x="466" y="256" text-anchor="middle" font-size="12" fill="#33557a">1 байт</text>
+
+  <line x1="30" y1="300" x2="750" y2="300" stroke="#c9c2b4" stroke-width="1.5"/>
+  <text x="30" y="324" font-size="13" fill="#4b3a16">len("Ёж!") = 3 — длина в символах (кодовых точках).</text>
+  <text x="30" y="346" font-size="13" fill="#4b3a16">len("Ёж!".encode("utf-8")) = 5 — длина в байтах.</text>
+  <text x="30" y="376" font-size="13" fill="#8a2b2b">Файл хранит байты, а программа работает со строками: нужна кодировка.</text>
+</svg>

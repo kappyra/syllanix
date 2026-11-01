@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 360" role="img"
+     aria-labelledby="ttl12b desc12b" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl12b">Три вопроса, на которые отвечает последовательность</title>
+  <desc id="desc12b">Для последовательности numbers = range(10, 20) показаны три вопроса и ответы. Сколько элементов: len(numbers) равно 10. Что стоит на позиции: numbers[3] равно 13. Входит ли значение: 15 in numbers даёт True. Позиции нумеруются с нуля, поэтому значение 10 стоит на позиции с индексом 0, а значение 13 — на позиции 3.</desc>
+
+  <text x="30" y="32" font-size="17" font-weight="bold" fill="#1d3550">Три вопроса к одной последовательности</text>
+  <text x="30" y="60" font-size="14" fill="#33557a">numbers = range(10, 20) — числа от 10 до 19, всего 10 элементов</text>
+
+  <!-- карточка 1 -->
+  <rect x="30" y="86" width="220" height="176" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="46" y="112" font-size="14" font-weight="bold" fill="#1d3550">Сколько элементов?</text>
+  <text x="46" y="140" font-size="13" fill="#33557a" font-family="'DejaVu Sans Mono', monospace">len(numbers)</text>
+  <text x="46" y="174" font-size="26" font-weight="bold" fill="#1d3550">10</text>
+  <text x="46" y="204" font-size="12" fill="#33557a">длина — это количество</text>
+  <text x="46" y="222" font-size="12" fill="#33557a">элементов, а не последний</text>
+  <text x="46" y="240" font-size="12" fill="#33557a">индекс: он равен 9</text>
+
+  <!-- карточка 2 -->
+  <rect x="280" y="86" width="220" height="176" rx="10" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="296" y="112" font-size="14" font-weight="bold" fill="#4b3a16">Что стоит на позиции?</text>
+  <text x="296" y="140" font-size="13" fill="#4b3a16" font-family="'DejaVu Sans Mono', monospace">numbers[3]</text>
+  <text x="296" y="174" font-size="26" font-weight="bold" fill="#4b3a16">13</text>
+  <text x="296" y="204" font-size="12" fill="#4b3a16">позиции считаются с нуля,</text>
+  <text x="296" y="222" font-size="12" fill="#4b3a16">поэтому индекс 3 — это</text>
+  <text x="296" y="240" font-size="12" fill="#4b3a16">четвёртый элемент</text>
+
+  <!-- карточка 3 -->
+  <rect x="530" y="86" width="220" height="176" rx="10" fill="#eaf3ea" stroke="#3c6b47" stroke-width="2"/>
+  <text x="546" y="112" font-size="14" font-weight="bold" fill="#254a2d">Есть ли значение?</text>
+  <text x="546" y="140" font-size="13" fill="#254a2d" font-family="'DejaVu Sans Mono', monospace">15 in numbers</text>
+  <text x="546" y="174" font-size="26" font-weight="bold" fill="#254a2d">True</text>
+  <text x="546" y="204" font-size="12" fill="#254a2d">проверка вхождения</text>
+  <text x="546" y="222" font-size="12" fill="#254a2d">отвечает True или False,</text>
+  <text x="546" y="240" font-size="12" fill="#254a2d">а не индексом</text>
+
+  <line x1="30" y1="292" x2="750" y2="292" stroke="#c9c2b4" stroke-width="1.5"/>
+  <text x="30" y="316" font-size="13" fill="#4b3a16">Индекс отвечает на вопрос «где», значение — на вопрос «что».</text>
+  <text x="30" y="338" font-size="13" fill="#4b3a16">Длина и индекс связаны так: последний индекс = длина − 1.</text>
+</svg>

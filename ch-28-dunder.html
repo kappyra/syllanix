@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Модель данных: dunder-методы — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-28-dunder.html" aria-current="page">28. Модель данных: dunder-методы</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-28-dunder.html#why">28.1. Зачем это нужно</a></li>
+<li><a href="ch-28-dunder.html#что-вы-сможете-после-этой-главы">28.2. Что вы сможете после этой главы</a></li>
+<li><a href="ch-28-dunder.html#dunder">28.3. Что такое dunder-метод</a></li>
+<li><a href="ch-28-dunder.html#repr">28.4. __repr__: представление для разработчика</a></li>
+<li><a href="ch-28-dunder.html#eq">28.5. __eq__: равенство по значению</a></li>
+<li><a href="ch-28-dunder.html#hash">28.6. __hash__: объекты в множествах и словарях</a></li>
+<li><a href="ch-28-dunder.html#rich-comparison">28.7. Богатые сравнения</a></li>
+<li><a href="ch-28-dunder.html#len">28.8. __len__ и истинность</a></li>
+<li><a href="ch-28-dunder.html#operator-overloading">28.9. Перегрузка операторов</a></li>
+<li><a href="ch-28-dunder.html#callable">28.10. Вызываемые объекты</a></li>
+<li><a href="ch-28-dunder.html#how-many-dunders">28.11. Сколько методов реализовывать</a></li>
+<li><a href="ch-28-dunder.html#mistakes">28.12. Типичные ошибки</a></li>
+<li><a href="ch-28-dunder.html#упражнения">28.13. Упражнения</a></li>
+<li><a href="ch-28-dunder.html#проверка-понимания">28.14. Проверка понимания</a></li>
+<li><a href="ch-28-dunder.html#что-дальше">28.15. Что дальше</a></li>
+</ol></details></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 5. Объектно-ориентированное программирование</span><span class="sep">›</span><span>Глава 28</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Объектно-ориентированное программирование · глава 28</p>
+<h1 id="модель-данных-dunder-методы">Модель данных: dunder-методы</h1>
+<p class="chapter-summary">Как встроить свои типы в синтаксис Python: читаемое представление, равенство, хеширование, сортировка, длина и операторы.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#why"><span class="toc-number">28.1</span> Зачем это нужно</a></li>
+<li class="level-2"><a href="#что-вы-сможете-после-этой-главы"><span class="toc-number">28.2</span> Что вы сможете после этой главы</a></li>
+<li class="level-2"><a href="#dunder"><span class="toc-number">28.3</span> Что такое dunder-метод</a></li>
+<li class="level-2"><a href="#repr"><span class="toc-number">28.4</span> __repr__: представление для разработчика</a></li>
+<li class="level-2"><a href="#eq"><span class="toc-number">28.5</span> __eq__: равенство по значению</a></li>
+<li class="level-2"><a href="#hash"><span class="toc-number">28.6</span> __hash__: объекты в множествах и словарях</a></li>
+<li class="level-2"><a href="#rich-comparison"><span class="toc-number">28.7</span> Богатые сравнения</a></li>
+<li class="level-2"><a href="#len"><span class="toc-number">28.8</span> __len__ и истинность</a></li>
+<li class="level-2"><a href="#operator-overloading"><span class="toc-number">28.9</span> Перегрузка операторов</a></li>
+<li class="level-2"><a href="#callable"><span class="toc-number">28.10</span> Вызываемые объекты</a></li>
+<li class="level-2"><a href="#how-many-dunders"><span class="toc-number">28.11</span> Сколько методов реализовывать</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">28.12</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">28.13</span> Упражнения</a></li>
+<li class="level-2"><a href="#проверка-понимания"><span class="toc-number">28.14</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#что-дальше"><span class="toc-number">28.15</span> Что дальше</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#lookup-on-type">Почему методы вызывает интерпретатор</a></li>
+<li class="level-3"><a href="#ex-ch28-01">1. Прогноз вывода</a></li>
+<li class="level-3"><a href="#ex-ch28-02">2. Представление для денег</a></li>
+<li class="level-3"><a href="#ex-ch28-03">3. Равенство точек</a></li>
+<li class="level-3"><a href="#ex-ch28-04">4. Согласование равенства и хеша</a></li>
+<li class="level-3"><a href="#ex-ch28-05">5. Сортировка версий</a></li>
+<li class="level-3"><a href="#ex-ch28-06">6. Длина и истинность</a></li>
+<li class="level-3"><a href="#ex-ch28-07">7. Сложение векторов</a></li>
+<li class="level-3"><a href="#ex-ch28-08">8. Вызываемый фильтр</a></li>
+<li class="level-3"><a href="#ex-ch28-09">9. Исправление нехешируемого класса</a></li>
+<li class="level-3"><a href="#ex-ch28-10">10. Мини-проект: карточка товара</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>Ваши классы уже умеют хранить состояние и защищать его. Но за пределами
+собственных методов они ведут себя как чужие объекты: <code>print(point)</code> печатает
+непонятный адрес, <code>point1 == point2</code> сравнивает ссылки, <code>len(basket)</code> падает,
+а <code>sorted(points)</code> поднимает исключение. Причина в том, что встроенные
+операции языка не знают, что делать с вашим типом. В этой главе вы научитесь
+описывать это поведение — через специальные методы, которые Python вызывает
+сам.</p>
+<h2 id="why"><span class="h-number">28.1</span> Зачем это нужно</h2>
+<p>Представьте отладочный вывод. Список точек печатается как набор служебных
+строк с адресами памяти: по такому выводу невозможно понять, какие координаты
+у элементов. Ещё хуже с равенством: две точки с одинаковыми координатами
+считаются разными, потому что по умолчанию сравниваются ссылки. Если точки
+попадают в множество или становятся ключами словаря, дубликаты не
+объединяются, а поиск идёт не по значению.</p>
+<p>Модель данных Python решает все эти задачи одинаково: для каждой встроенной
+операции есть специальный метод, который интерпретатор вызывает у вашего
+объекта. <code>print</code> обращается к методу представления, <code>==</code> — к методу
+равенства, <code>len</code> — к методу длины, <code>+</code> — к методу сложения. Реализовав их,
+вы получаете класс, который ведёт себя как встроенный тип: его можно
+сравнивать, сортировать, складывать, печатать и хранить в множествах.</p>
+<h2 id="что-вы-сможете-после-этой-главы"><span class="h-number">28.2</span> Что вы сможете после этой главы</h2>
+<p>К концу главы ваши классы будут вести себя как встроенные типы в самых
+частых операциях. Конкретно — вот чему вы научитесь:</p>
+<ul>
+<li>объяснять, зачем интерпретатор вызывает специальные методы сам;</li>
+<li>задавать читаемое и однозначное представление объекта;</li>
+<li>реализовывать равенство по значению и согласовывать его с хешированием;</li>
+<li>упорядочивать объекты и сортировать их встроенной сортировкой;</li>
+<li>определять длину, истинность, операторы и вызываемость объекта;</li>
+<li>замечать ошибки, которые ломают работу множеств и словарей.</li>
+</ul>
+<h2 id="dunder"><span class="h-number">28.3</span> Что такое dunder-метод</h2>
+<p><strong>dunder-метод (специальный метод)</strong> — метод с двумя подчёркиваниями по
+краям, который Python вызывает для встроенных операций.</p>
+<p>Название происходит от английского «double underscore»: <code>__repr__</code>,
+<code>__eq__</code>, <code>__len__</code>. Вы уже встречали два таких метода — <code>__init__</code> и
+<code>__repr__</code> в выводе ошибок. Их особенность в том, что вызывающий код редко
+пишет их имя напрямую. Вместо этого он использует обычную запись языка, а
+интерпретатор сам находит нужный метод.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Запись в коде</th>
+<th>Что вызывает Python</th>
+<th>Смысл</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>print(x)</code></td>
+<td><code>x.__str__()</code></td>
+<td>читаемый текст</td>
+</tr>
+<tr>
+<td><code>repr(x)</code></td>
+<td><code>x.__repr__()</code></td>
+<td>однозначное представление</td>
+</tr>
+<tr>
+<td><code>x == y</code></td>
+<td><code>x.__eq__(y)</code></td>
+<td>равенство</td>
+</tr>
+<tr>
+<td><code>hash(x)</code></td>
+<td><code>x.__hash__()</code></td>
+<td>хеш</td>
+</tr>
+<tr>
+<td><code>len(x)</code></td>
+<td><code>x.__len__()</code></td>
+<td>длина</td>
+</tr>
+<tr>
+<td><code>x &lt; y</code></td>
+<td><code>x.__lt__(y)</code></td>
+<td>порядок</td>
+</tr>
+<tr>
+<td><code>x + y</code></td>
+<td><code>x.__add__(y)</code></td>
+<td>сложение</td>
+</tr>
+<tr>
+<td><code>x()</code></td>
+<td><code>x.__call__()</code></td>
+<td>вызов объекта</td>
+</tr>
+</tbody>
+</table>
+</div><p>Правило простое: имя метода — часть контракта языка. Придумывать свои методы
+с двумя подчёркиваниями не нужно: они зарезервированы моделью данных, и
+интерпретатор может искать их в неожиданных местах. Для собственных операций
+используйте обычные имена.</p>
+<p><figure class="figure"><img src="illustrations/ch-28-dunder-map.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h3 id="lookup-on-type">Почему методы вызывает интерпретатор</h3>
+<p>Специальные методы отличаются от обычных ещё и способом поиска. Когда вы
+пишете <code>x + y</code>, Python ищет <code>__add__</code> в типе <code>x</code>, а не в самом объекте.
+Обычный атрибут можно положить в экземпляр, и он найдётся; специальный —
+нет.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Sneaky</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">Sneaky</span><span class="p">()</span>
+<span class="n">s</span><span class="o">.</span><span class="fm">__len__</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="mi">5</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+<span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"TypeError:"</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>TypeError: object of type &#x27;Sneaky&#x27; has no len()
+</code></pre>
+<p>Метод <code>__len__</code> присвоен экземпляру, но <code>len</code> его не видит: поиск идёт по
+типу. Такое правило защищает язык от неожиданностей — иначе любой код мог бы
+подменить поведение встроенных операций у отдельного объекта. Практический
+вывод простой: специальные методы объявляют в теле класса, а не добавляют
+объекту во время работы.</p>
+<h2 id="repr"><span class="h-number">28.4</span> <strong>repr</strong>: представление для разработчика</h2>
+<p><strong><code>__repr__</code></strong> — метод, возвращающий однозначное техническое представление
+объекта для отладки.</p>
+<p>По умолчанию объект печатается как нечто вроде <code>&lt;Point object at 0x...&gt;</code>.
+Проверить это можно, не выводя адрес:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Empty</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="n">e</span> <span class="o">=</span> <span class="n">Empty</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"&lt;"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>True
+</code></pre>
+<p>Стандартное представление начинается с угловой скобки и содержит адрес
+памяти. Адрес меняется от запуска к запуску, поэтому такой вывод бесполезен
+и в книге, и в тестах. Свой <code>__repr__</code> решает задачу:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Point</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"Point(x=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">, y=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">)"</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">([</span><span class="n">p</span><span class="p">,</span> <span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)])</span>
+</code></pre></div>
+<pre class="output"><code>Point(x=3, y=4)
+Point(x=3, y=4)
+[Point(x=3, y=4), Point(x=0, y=0)]
+</code></pre>
+<p>Три вывода показывают важное свойство: представление работает и для
+одиночного объекта, и внутри коллекции. Хороший <code>__repr__</code> выглядит как код,
+который создаёт такой же объект. Если скопировать <code>Point(x=3, y=4)</code>, получится
+равная точка — это и означает «однозначное представление».</p>
+<p>Если объявить ещё и <code>__str__</code>, он станет читаемой формой для <code>print</code>:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Money</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">amount</span> <span class="o">=</span> <span class="n">amount</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"Money(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">amount</span><span class="si">}</span><span class="s2">)"</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">amount</span><span class="si">}</span><span class="s2"> ₽"</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Money</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">Money</span><span class="p">(</span><span class="mi">100</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">([</span><span class="n">Money</span><span class="p">(</span><span class="mi">100</span><span class="p">)])</span>
+</code></pre></div>
+<pre class="output"><code>100 ₽
+Money(100)
+[Money(100)]
+</code></pre>
+<p><code>print</code> использует <code>__str__</code>, а <code>repr</code> и список — <code>__repr__</code>. Если <code>__str__</code>
+не объявлен, <code>print</code> берёт <code>__repr__</code>: именно поэтому достаточно одного
+метода в большинстве классов. Правило выбора: <code>__repr__</code> — для разработчика
+и отладки, он должен быть однозначным; <code>__str__</code> — для пользователя, он
+может быть красивым.</p>
+<h2 id="eq"><span class="h-number">28.5</span> <strong>eq</strong>: равенство по значению</h2>
+<p><strong><code>__eq__</code></strong> — метод, определяющий равенство объектов при сравнении через
+<code>==</code>.</p>
+<p>По умолчанию <code>==</code> сравнивает ссылки: два разных объекта не равны, даже если
+их поля совпадают. Реализация по значению выглядит так:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Point</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Point</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">NotImplemented</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="n">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="n">Point</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"точка"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">!=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>True
+False
+False
+True
+</code></pre>
+<p>Здесь важны три решения. Первое: сравниваются поля, а не ссылки. Второе:
+для объекта чужого типа возвращается <code>NotImplemented</code> — специальное значение,
+которое говорит «я не умею сравнивать с этим». Python тогда попробует
+отражённый метод другой стороны, а если и тот откажется, вернёт <code>False</code> для
+равенства. Третье: <code>!=</code> объявлять не нужно, Python выводит его из <code>__eq__</code>.</p>
+<p>Сравнение <code>Point(1, 2) == &quot;точка&quot;</code> не поднимает исключение и не падает:
+правило <code>NotImplemented</code> превращает его в <code>False</code>. Если бы вместо этого
+вернулось <code>False</code> напрямую, <code>!=</code> тоже работал бы, но отражённое сравнение с
+другим классом, который умеет сравниваться с точкой, стало бы невозможно.</p>
+<h2 id="hash"><span class="h-number">28.6</span> <strong>hash</strong>: объекты в множествах и словарях</h2>
+<p><strong><code>__hash__</code></strong> — метод, вычисляющий хеш объекта; он должен согласовываться с
+<code>__eq__</code>.</p>
+<p>Хеш — это число, по которому объект раскладывается в множестве или словаре.
+Требование к паре методов строгое: если два объекта равны, их хеши обязаны
+быть равны. Иначе поиск в множестве не найдёт объект, который там лежит.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Point</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Point</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">hash</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
+
+<span class="n">p1</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p1</span> <span class="o">==</span> <span class="n">p2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">hash</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">hash</span><span class="p">(</span><span class="n">p2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">({</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">}))</span>
+</code></pre></div>
+<pre class="output"><code>True
+True
+1
+</code></pre>
+<p>Две равные точки дали одинаковый хеш, поэтому множество схлопнуло их в один
+элемент. Если объявить <code>__eq__</code> и забыть про <code>__hash__</code>, объект станет
+нехешируемым: Python специально запрещает использовать его в множествах и
+как ключ словаря.</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Point</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">hash</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>TypeError: unhashable type: &#x27;Point&#x27;
+</code></pre>
+<p>Это защита от логической ошибки: если равенство зависит от полей, а хеш
+остался от стандартного поведения, множество будет считать равные объекты
+разными. Решение — либо объявить <code>__hash__</code>, либо осознанно оставить тип
+нехешируемым.</p>
+<p><figure class="figure"><img src="illustrations/ch-28-eq-hash-contract.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Второе ограничение связано с изменяемостью. Хеш вычисляется в момент
+добавления, и если после этого изменить поля, объект «переедет» в другую
+корзину, а множество продолжит искать его по старому хешу:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Point</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">hash</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="p">{</span><span class="n">p</span><span class="p">}</span>
+<span class="n">p</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p</span> <span class="ow">in</span> <span class="n">s</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>False
+</code></pre>
+<p>Объект лежит в множестве, но найти его нельзя: хеш изменился. Отсюда правило:
+хешируемые объекты делают неизменяемыми по тем полям, которые участвуют в
+хеше.</p>
+<h2 id="rich-comparison"><span class="h-number">28.7</span> Богатые сравнения</h2>
+<p><strong>Богатые сравнения</strong> — набор dunder-методов <code>__lt__</code>, <code>__le__</code>, <code>__gt__</code>,
+<code>__ge__</code> для упорядочивания объектов.</p>
+<p>Часто достаточно объявить <code>__lt__</code>: <code>&gt;</code> для своего типа заработает через
+отражённое сравнение (<code>a &gt; b</code> вызывает <code>b.__lt__(a)</code>), а <code>sorted</code> пользуется
+именно <code>&lt;</code>. А вот <code>&lt;=</code> и <code>&gt;=</code> по умолчанию не выводятся — их нужно объявлять
+явно, если они нужны.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Version</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">major</span><span class="p">,</span> <span class="n">minor</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">major</span> <span class="o">=</span> <span class="n">major</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">minor</span> <span class="o">=</span> <span class="n">minor</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"Version(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">major</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">minor</span><span class="si">}</span><span class="s2">)"</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">major</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">minor</span><span class="p">)</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">major</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">minor</span><span class="p">)</span>
+
+<span class="n">versions</span> <span class="o">=</span> <span class="p">[</span><span class="n">Version</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">Version</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">Version</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">versions</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Version</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">Version</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>[Version(1, 2), Version(1, 10), Version(2, 0)]
+True
+</code></pre>
+<p>Сортировка не требует <code>__gt__</code> или <code>__le__</code>. Но если нужно полное
+упорядочивание — например, чтобы работали все четыре операции, — объявляют
+все четыре метода. Список их соответствий: <code>__lt__</code> для <code>&lt;</code>, <code>__le__</code> для
+<code>&lt;=</code>, <code>__gt__</code> для <code>&gt;</code>, <code>__ge__</code> для <code>&gt;=</code>.</p>
+<p>Для полного набора сравнений удобно реализовать <code>__eq__</code> и <code>__lt__</code>, а
+остальные получить через <code>functools.total_ordering</code> из стандартной
+библиотеки. Этот декоратор достраивает недостающие методы, если они
+согласованы.</p>
+<h2 id="len"><span class="h-number">28.8</span> <strong>len</strong> и истинность</h2>
+<p><strong><code>__len__</code></strong> — метод, возвращающий длину объекта для функции <code>len</code> и
+проверки истинности.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Basket</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">Basket</span><span class="p">([</span><span class="s2">"яблоко"</span><span class="p">,</span> <span class="s2">"груша"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="n">Basket</span><span class="p">([])))</span>
+</code></pre></div>
+<pre class="output"><code>2
+True
+False
+</code></pre>
+<p><code>len</code> вызывает <code>__len__</code> напрямую. Проверка истинности в <code>if</code> тоже
+обращается к <code>__len__</code>: пустая корзина даёт <code>False</code>, непустая — <code>True</code>.
+Метод обязан вернуть неотрицательное целое число: отрицательное значение Python
+отвергает с <code>ValueError</code>, а нецелое — с <code>TypeError</code>.</p>
+<h2 id="operator-overloading"><span class="h-number">28.9</span> Перегрузка операторов</h2>
+<p><strong>Перегрузка операторов</strong> — определение поведения операторов для своего типа
+через dunder-методы (<code>__add__</code>, <code>__lt__</code> и другие).</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Vector</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"Vector(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">)"</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">Vector</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>Vector(4, 6)
+</code></pre>
+<p><code>__add__</code> получает второй операнд и возвращает новый объект. Три правила
+делают перегрузку безопасной. Первое: не изменяйте <code>self</code>, создавайте новое
+значение — так работают числа и строки, и читатель ожидает того же.
+Второе: для чужого типа возвращайте <code>NotImplemented</code>, а не пытайтесь угадать.
+Третье: реализуйте оператор только там, где его смысл очевиден. Сложение
+векторов понятно, а <code>Vector * Vector</code> может означать скалярное произведение
+или покомпонентное умножение — лучше метод с именем, чем неоднозначный
+оператор.</p>
+<h2 id="callable"><span class="h-number">28.10</span> Вызываемые объекты</h2>
+<p><strong>Вызываемый объект</strong> — объект, который можно вызвать как функцию благодаря
+методу <code>__call__</code>.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Multiplier</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">factor</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">factor</span> <span class="o">=</span> <span class="n">factor</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">value</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">factor</span>
+
+<span class="n">double</span> <span class="o">=</span> <span class="n">Multiplier</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">double</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">callable</span><span class="p">(</span><span class="n">double</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>10
+True
+</code></pre>
+<p>Объект хранит состояние (<code>factor</code>) и при этом вызывается как функция.
+<code>callable</code> проверяет, есть ли у объекта <code>__call__</code>. Такой приём удобен, когда
+у операции есть настройки: вместо функции с замыканием можно создать объект
+с методами и настройками, который при этом остаётся вызываемым.</p>
+<h2 id="how-many-dunders"><span class="h-number">28.11</span> Сколько методов реализовывать</h2>
+<p>Специальных методов много, и реализовывать их все не нужно. Набор зависит от
+того, какую роль играет класс.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Роль класса</th>
+<th>Обязательные методы</th>
+<th>Обычно добавляют</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>значение с данными</td>
+<td><code>__repr__</code></td>
+<td><code>__eq__</code>, <code>__hash__</code></td>
+</tr>
+<tr>
+<td>упорядоченное значение</td>
+<td><code>__repr__</code>, <code>__eq__</code></td>
+<td><code>__lt__</code> и остальные сравнения</td>
+</tr>
+<tr>
+<td>контейнер</td>
+<td><code>__repr__</code>, <code>__len__</code></td>
+<td><code>__iter__</code>, <code>__getitem__</code></td>
+</tr>
+<tr>
+<td>число или вектор</td>
+<td><code>__repr__</code></td>
+<td><code>__add__</code>, <code>__eq__</code></td>
+</tr>
+<tr>
+<td>операция с настройками</td>
+<td><code>__repr__</code></td>
+<td><code>__call__</code></td>
+</tr>
+</tbody>
+</table>
+</div><p><code>__repr__</code> стоит реализовать почти всегда: это самый дешёвый способ сделать
+класс удобным для отладки и логов. <code>__eq__</code> нужен, когда у объекта есть
+понятие «такое же значение»; если объект представляет уникальную сущность
+(например, соединение с базой), равенство по ссылке может быть правильным
+решением. <code>__hash__</code> добавляют только к неизменяемым значениям, которые
+действительно будут храниться в множествах или словарях.</p>
+<p>Обратное правило тоже важно: не реализуйте метод «на всякий случай».
+Например, <code>__add__</code> у класса, где сложение не имеет очевидного смысла, хуже
+отсутствия метода: читатель потратит время на выяснение, что означает эта
+операция. Специальный метод — часть публичного контракта, и он должен быть
+понятен без документации.</p>
+<p>И ещё одно ограничение: модель данных не терпит противоречий. Если <code>__eq__</code>
+сравнивает поля, а <code>__lt__</code> — только одно из них, сортировка и равенство
+начнут расходиться. Проверяйте согласованность на примерах: равные объекты
+должны вести себя одинаково во всех операциях.</p>
+<h2 id="mistakes"><span class="h-number">28.12</span> Типичные ошибки</h2>
+<ol>
+<li><strong>Оставлять стандартный <code>__repr__</code>.</strong> Адрес памяти в выводе бесполезен и
+делает примеры недетерминированными; объявите представление явно.</li>
+<li><strong>Сравнивать объекты через <code>is</code>.</strong> <code>is</code> проверяет тождество ссылок.
+Равенство по значению задаётся <code>__eq__</code>, и для этого нужен <code>==</code>.</li>
+<li><strong>Объявить <code>__eq__</code> и забыть <code>__hash__</code>.</strong> Тип станет нехешируемым, и
+множество или словарь с ним не сработают.</li>
+<li><strong>Сделать <code>__eq__</code> и <code>__hash__</code> несогласованными.</strong> Если равные объекты
+дают разные хеши, поиск в множестве ломается.</li>
+<li><strong>Изменять поля хешируемого объекта.</strong> Объект останется в множестве, но
+перестанет находиться.</li>
+<li><strong>Возвращать из <code>__repr__</code> не строку.</strong> Даже число вызовет <code>TypeError</code>,
+потому что представление обязано быть текстом.</li>
+<li><strong>Менять <code>self</code> в операторе.</strong> <code>a + b</code> не должен незаметно изменять <code>a</code>:
+читатель ожидает новое значение.</li>
+</ol>
+<h2 id="упражнения"><span class="h-number">28.13</span> Упражнения</h2>
+<h3 id="ex-ch28-01">1. Прогноз вывода</h3>
+<p>Определите, что напечатает программа, и объясните, какой метод вызывается в
+каждой строке:</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Tag</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"Tag(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">!r}</span><span class="s2">)"</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Tag</span><span class="p">(</span><span class="s2">"python"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">Tag</span><span class="p">(</span><span class="s2">"python"</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">([</span><span class="n">Tag</span><span class="p">(</span><span class="s2">"a"</span><span class="p">),</span> <span class="n">Tag</span><span class="p">(</span><span class="s2">"b"</span><span class="p">)])</span>
+</code></pre></div>
+<h3 id="ex-ch28-02">2. Представление для денег</h3>
+<p>Объявите класс <code>Money</code> с суммой и валютой. <code>__repr__</code> должен возвращать
+строку вида <code>Money(100, 'руб.')</code>, а <code>__str__</code> — <code>100 руб.</code>. Проверьте оба
+представления и печать списка.</p>
+<h3 id="ex-ch28-03">3. Равенство точек</h3>
+<p>Объявите класс <code>Point</code> с координатами и методом <code>__eq__</code>, сравнивающим
+значения полей. Проверьте равенство двух точек с одинаковыми координатами,
+неравенство разных и сравнение с объектом другого типа.</p>
+<h3 id="ex-ch28-04">4. Согласование равенства и хеша</h3>
+<p>Добавьте в <code>Point</code> из предыдущего упражнения <code>__hash__</code>. Убедитесь, что две
+равные точки дают одинаковый хеш и что множество из них содержит один
+элемент. Затем покажите, что без <code>__hash__</code> тот же класс нельзя хешировать.</p>
+<h3 id="ex-ch28-05">5. Сортировка версий</h3>
+<p>Объявите класс <code>Version</code> с номерами major и minor и методом <code>__lt__</code>,
+сравнивающим версии по паре чисел. Отсортируйте список <code>1.10</code>, <code>1.2</code>, <code>2.0</code>
+и объясните, почему <code>1.2</code> идёт раньше <code>1.10</code>.</p>
+<h3 id="ex-ch28-06">6. Длина и истинность</h3>
+<p>Объявите класс <code>Queue</code> с внутренним списком и методом <code>__len__</code>. Проверьте
+<code>len(queue)</code>, истинность непустой и пустой очереди. Объясните, почему
+проверка <code>if queue:</code> работает без отдельного метода.</p>
+<h3 id="ex-ch28-07">7. Сложение векторов</h3>
+<p>Объявите класс <code>Vector</code> с <code>__add__</code>, возвращающим новый вектор, и <code>__repr__</code>.
+Проверьте сложение двух векторов и убедитесь, что исходные объекты не
+изменились.</p>
+<h3 id="ex-ch28-08">8. Вызываемый фильтр</h3>
+<p>Объявите класс <code>StartsWith</code> с префиксом в конструкторе и методом <code>__call__</code>,
+который принимает строку и возвращает логическое значение. Проверьте на
+списке слов, отобрав подходящие, и объясните, почему объект можно передать
+туда, где ожидается функция.</p>
+<h3 id="ex-ch28-09">9. Исправление нехешируемого класса</h3>
+<p>Класс хранит равенство по полям, но его нельзя положить в множество:</p>
+<pre class="text"><code>class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __eq__(self, other):
+        return (self.x, self.y) == (other.x, other.y)
+
+p = Point(1, 2)
+print(hash(p))
+</code></pre>
+<p>Объясните ошибку и исправьте класс, не теряя равенства по значению.</p>
+<h3 id="ex-ch28-10">10. Мини-проект: карточка товара</h3>
+<p>Объявите класс <code>Product</code> с названием и ценой. Реализуйте <code>__repr__</code>,
+<code>__eq__</code> и <code>__hash__</code> по названию. Создайте множество товаров с повторяющимся
+названием, словарь, где товар — ключ, и отсортируйте список товаров по цене
+через <code>key</code>. Объясните, какие методы понадобились в каждом случае.</p>
+<h2 id="проверка-понимания"><span class="h-number">28.14</span> Проверка понимания</h2>
+<ol>
+<li>Почему <code>__repr__</code> должен быть однозначным, а <code>__str__</code> — читаемым?</li>
+<li>Что значит вернуть <code>NotImplemented</code> из <code>__eq__</code>? Чем это лучше <code>False</code>?</li>
+<li>Почему после объявления <code>__eq__</code> тип становится нехешируемым, если не
+объявить <code>__hash__</code>?</li>
+<li>Какое требование связывает <code>__eq__</code> и <code>__hash__</code>?</li>
+<li>Почему опасно изменять поля объекта, лежащего в множестве?</li>
+<li>Зачем <code>sorted</code> достаточно одного <code>__lt__</code>, а для всех сравнений нужны
+четыре метода?</li>
+</ol>
+<h2 id="что-дальше"><span class="h-number">28.15</span> Что дальше</h2>
+<p>Модель данных делает ваши типы полноправными участниками языка. Следующая
+глава сокращает ручную работу: в
+<a href="ch-29-dataclasses-protocols.html">«Dataclasses, протоколы и абстрактные классы»</a>
+вы увидите, как получить <code>__init__</code>, <code>__repr__</code> и сравнение из объявления
+полей, а также как описывать контракты без жёсткой иерархии.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-27-inheritance.html"><span class="pager-label">← Назад</span><span class="pager-title">Наследование, полиморфизм и композиция</span></a><a class="pager-card next" rel="next" href="ch-29-dataclasses-protocols.html"><span class="pager-label">Далее:</span><span class="pager-title">Dataclasses, протоколы и абстрактные классы</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

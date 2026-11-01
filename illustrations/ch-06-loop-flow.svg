@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 460" role="img"
+     aria-labelledby="ttl6a desc6a" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl6a">Как работают циклы while и for</title>
+  <desc id="desc6a">Слева схема цикла while: условие n больше нуля проверяется перед каждой итерацией, при истинном условии выполняется тело print и уменьшение n, затем управление возвращается к проверке; при ложном условии цикл завершается. Справа схема цикла for по range от 1 до 3: переменная цикла по очереди получает значения 1, 2 и 3, и для каждого значения выполняется тело; правая граница range не включается.</desc>
+
+  <text x="30" y="30" font-size="16" font-weight="bold" fill="#1d3550">Цикл повторяет блок, пока это нужно</text>
+
+  <!-- ================= левая панель: while ================= -->
+  <rect x="24" y="46" width="332" height="356" rx="12" fill="#f7fafd" stroke="#33557a" stroke-width="2"/>
+  <text x="190" y="72" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3550">while: проверка перед итерацией</text>
+
+  <rect x="120" y="88" width="140" height="32" rx="8" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="190" y="109" text-anchor="middle" font-size="14" fill="#1d3550">n = 5</text>
+  <line x1="190" y1="120" x2="190" y2="134" stroke="#33557a" stroke-width="2"/>
+  <path d="M 183 129 L 190 141 L 197 129" fill="none" stroke="#33557a" stroke-width="2"/>
+
+  <polygon points="190,144 256,178 190,212 124,178" fill="#fdf1dc" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="190" y="183" text-anchor="middle" font-size="14" fill="#4b3a16">n &gt; 0?</text>
+
+  <line x1="190" y1="212" x2="190" y2="232" stroke="#3f6b3f" stroke-width="2"/>
+  <path d="M 183 227 L 190 239 L 197 227" fill="none" stroke="#3f6b3f" stroke-width="2"/>
+  <text x="200" y="230" font-size="13" fill="#264a26">да</text>
+
+  <rect x="95" y="242" width="190" height="52" rx="8" fill="#eef7ee" stroke="#3f6b3f" stroke-width="2"/>
+  <text x="190" y="264" text-anchor="middle" font-size="14" fill="#264a26">print(n)</text>
+  <text x="190" y="284" text-anchor="middle" font-size="14" fill="#264a26">n -= 1</text>
+
+  <!-- возврат к условию -->
+  <line x1="95" y1="268" x2="52" y2="268" stroke="#8a6a2f" stroke-width="2"/>
+  <line x1="52" y1="268" x2="52" y2="178" stroke="#8a6a2f" stroke-width="2"/>
+  <line x1="52" y1="178" x2="116" y2="178" stroke="#8a6a2f" stroke-width="2"/>
+  <path d="M 110 171 L 122 178 L 110 185" fill="none" stroke="#8a6a2f" stroke-width="2"/>
+
+  <!-- выход -->
+  <line x1="256" y1="178" x2="318" y2="178" stroke="#33557a" stroke-width="2"/>
+  <line x1="318" y1="178" x2="318" y2="330" stroke="#33557a" stroke-width="2"/>
+  <line x1="318" y1="330" x2="272" y2="330" stroke="#33557a" stroke-width="2"/>
+  <path d="M 278 323 L 266 330 L 278 337" fill="none" stroke="#33557a" stroke-width="2"/>
+  <text x="264" y="170" font-size="13" fill="#1d3550">нет</text>
+
+  <rect x="95" y="314" width="170" height="34" rx="8" fill="#e8f0fa" stroke="#33557a" stroke-width="2"/>
+  <text x="180" y="336" text-anchor="middle" font-size="14" fill="#1d3550">print("старт")</text>
+
+  <text x="40" y="380" font-size="13" fill="#4b3a16">тело обязано менять условие —</text>
+  <text x="40" y="398" font-size="13" fill="#4b3a16">здесь это делает n -= 1</text>
+
+  <!-- ================= правая панель: for ================= -->
+  <rect x="384" y="46" width="332" height="356" rx="12" fill="#f7fafd" stroke="#33557a" stroke-width="2"/>
+  <text x="550" y="72" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3550">for: перебор элементов range</text>
+
+  <rect x="435" y="88" width="230" height="32" rx="8" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="550" y="109" text-anchor="middle" font-size="14" fill="#1d3550">for i in range(1, 4):</text>
+  <line x1="550" y1="120" x2="550" y2="134" stroke="#33557a" stroke-width="2"/>
+  <path d="M 543 129 L 550 141 L 557 129" fill="none" stroke="#33557a" stroke-width="2"/>
+
+  <text x="550" y="157" text-anchor="middle" font-size="12.5" fill="#4a5a6a">переменная цикла i получает по очереди:</text>
+
+  <rect x="432" y="166" width="62" height="30" rx="6" fill="#fdf1dc" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="463" y="186" text-anchor="middle" font-size="14" fill="#4b3a16">i = 1</text>
+  <rect x="519" y="166" width="62" height="30" rx="6" fill="#fdf1dc" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="550" y="186" text-anchor="middle" font-size="14" fill="#4b3a16">i = 2</text>
+  <rect x="606" y="166" width="62" height="30" rx="6" fill="#fdf1dc" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="637" y="186" text-anchor="middle" font-size="14" fill="#4b3a16">i = 3</text>
+
+  <line x1="494" y1="181" x2="513" y2="181" stroke="#8a6a2f" stroke-width="2"/>
+  <path d="M 508 175 L 517 181 L 508 187" fill="none" stroke="#8a6a2f" stroke-width="2"/>
+  <line x1="581" y1="181" x2="600" y2="181" stroke="#8a6a2f" stroke-width="2"/>
+  <path d="M 595 175 L 604 181 L 595 187" fill="none" stroke="#8a6a2f" stroke-width="2"/>
+
+  <!-- сборка к телу -->
+  <line x1="463" y1="196" x2="463" y2="214" stroke="#33557a" stroke-width="1.5"/>
+  <line x1="550" y1="196" x2="550" y2="214" stroke="#33557a" stroke-width="1.5"/>
+  <line x1="637" y1="196" x2="637" y2="214" stroke="#33557a" stroke-width="1.5"/>
+  <line x1="463" y1="214" x2="637" y2="214" stroke="#33557a" stroke-width="1.5"/>
+  <line x1="550" y1="214" x2="550" y2="228" stroke="#33557a" stroke-width="2"/>
+  <path d="M 543 223 L 550 235 L 557 223" fill="none" stroke="#33557a" stroke-width="2"/>
+
+  <rect x="435" y="240" width="230" height="44" rx="8" fill="#eef7ee" stroke="#3f6b3f" stroke-width="2"/>
+  <text x="550" y="267" text-anchor="middle" font-size="14" fill="#264a26">тело цикла: print(i)</text>
+
+  <rect x="470" y="310" width="160" height="34" rx="8" fill="#e8f0fa" stroke="#33557a" stroke-width="2"/>
+  <text x="550" y="332" text-anchor="middle" font-size="14" fill="#1d3550">цикл завершён</text>
+
+  <text x="400" y="372" font-size="13" fill="#4b3a16">range(1, 4) даёт 1, 2, 3:</text>
+  <text x="400" y="390" font-size="13" fill="#4b3a16">правая граница не включается</text>
+
+  <text x="30" y="428" font-size="14" fill="#1d3550">while отвечает на вопрос «пока не…», for — на вопрос «для каждого элемента…».</text>
+</svg>

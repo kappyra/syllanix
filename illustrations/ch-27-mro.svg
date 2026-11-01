@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 440" role="img"
+     aria-labelledby="ttl27a desc27a" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl27a">Иерархия классов и порядок разрешения методов</title>
+  <desc id="desc27a">Класс A — базовый для B и C, класс D наследует от B и C. Порядок разрешения методов для D: D, B, C, A, object. Поэтому вызов D().who() находит метод в B, а super() внутри него продолжает поиск с C, а не с A.</desc>
+
+  <rect x="0" y="0" width="880" height="440" fill="#ffffff"/>
+  <defs>
+    <marker id="arr27a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#33557a"/>
+    </marker>
+    <marker id="arr27a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8a5a13"/>
+    </marker>
+  </defs>
+
+  <text x="28" y="32" font-size="17" font-weight="bold" fill="#1d3550">Иерархия классов и порядок разрешения методов (MRO)</text>
+
+  <!-- класс A -->
+  <rect x="120" y="64" width="140" height="50" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="1.8"/>
+  <text x="190" y="95" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3550" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">A</text>
+
+  <!-- класс B -->
+  <rect x="40" y="164" width="140" height="50" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="1.8"/>
+  <text x="110" y="195" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3550" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">B</text>
+
+  <!-- класс C -->
+  <rect x="200" y="164" width="140" height="50" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="1.8"/>
+  <text x="270" y="195" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3550" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">C</text>
+
+  <!-- класс D -->
+  <rect x="120" y="264" width="140" height="50" rx="8" fill="#fdf3e3" stroke="#8a5a13" stroke-width="1.8"/>
+  <text x="190" y="295" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3550" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">D</text>
+
+  <!-- связи наследования -->
+  <path d="M110 164 L 158 116" fill="none" stroke="#33557a" stroke-width="2" marker-end="url(#arr27a)"/>
+  <path d="M270 164 L 222 116" fill="none" stroke="#33557a" stroke-width="2" marker-end="url(#arr27a)"/>
+  <path d="M150 264 L 118 218" fill="none" stroke="#8a5a13" stroke-width="2" marker-end="url(#arr27a2)"/>
+  <path d="M230 264 L 262 218" fill="none" stroke="#8a5a13" stroke-width="2" marker-end="url(#arr27a2)"/>
+
+  <text x="40" y="345" font-size="13" fill="#33557a">стрелки ведут от подкласса к базовому классу</text>
+  <text x="40" y="366" font-size="13" fill="#8a5a13">D наследует сразу от B и C</text>
+
+  <!-- MRO -->
+  <text x="430" y="60" font-size="14" font-weight="bold" fill="#1d3550">Порядок разрешения методов для D:</text>
+
+  <rect x="430" y="76" width="420" height="44" rx="6" fill="#eef4fb" stroke="#33557a" stroke-width="1.4"/>
+  <text x="446" y="104" font-size="14" fill="#1d3550">1. D — свой метод не объявлен</text>
+
+  <rect x="430" y="128" width="420" height="44" rx="6" fill="#ffffff" stroke="#33557a" stroke-width="1.4"/>
+  <text x="446" y="156" font-size="14" fill="#1d3550">2. B — здесь найден who</text>
+
+  <rect x="430" y="180" width="420" height="44" rx="6" fill="#ffffff" stroke="#33557a" stroke-width="1.4"/>
+  <text x="446" y="208" font-size="14" fill="#1d3550">3. C — сюда ведёт super() из B</text>
+
+  <rect x="430" y="232" width="420" height="44" rx="6" fill="#ffffff" stroke="#33557a" stroke-width="1.4"/>
+  <text x="446" y="260" font-size="14" fill="#1d3550">4. A — сюда ведёт super() из C</text>
+
+  <rect x="430" y="284" width="420" height="44" rx="6" fill="#e8f5ec" stroke="#2f6b45" stroke-width="1.4" stroke-dasharray="7 5"/>
+  <text x="446" y="312" font-size="14" fill="#2f6b45">5. object — общий базовый класс</text>
+
+  <path d="M640 120 L 640 126" fill="none" stroke="#33557a" stroke-width="2" marker-end="url(#arr27a)"/>
+  <path d="M640 172 L 640 178" fill="none" stroke="#33557a" stroke-width="2" marker-end="url(#arr27a)"/>
+  <path d="M640 224 L 640 230" fill="none" stroke="#33557a" stroke-width="2" marker-end="url(#arr27a)"/>
+  <path d="M640 276 L 640 282" fill="none" stroke="#33557a" stroke-width="2" marker-end="url(#arr27a)"/>
+
+  <!-- итог -->
+  <rect x="28" y="384" width="824" height="40" rx="8" fill="#f7f9fc" stroke="#c9d3e0" stroke-width="1.2"/>
+  <text x="44" y="410" font-size="14" fill="#1d3550">D().who() даёт «B + C + A»: super() идёт по цепочке MRO, а не к прямому родителю.</text>
+</svg>

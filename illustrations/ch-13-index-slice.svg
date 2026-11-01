@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 425" role="img"
+     aria-labelledby="ttl13a desc13a" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl13a">Индексы и срезы списка letters из шести элементов</title>
+  <desc id="desc13a">Список letters содержит элементы a, b, c, d, e, f. Сверху подписаны положительные индексы от 0 до 5, снизу отрицательные от минус 6 до минус 1. Срез letters[1:4] выделяет элементы b, c, d, потому что правый конец 4 не включается. Срез letters[-2:] выделяет e и f. Каждый срез создаёт новый список.</desc>
+
+  <text x="60" y="32" font-size="17" font-weight="bold" fill="#1d3550">Индексы и срезы списка letters</text>
+
+  <text x="60" y="76" font-size="13" fill="#4b3a16">положительные индексы:</text>
+
+  <!-- положительные индексы -->
+  <text x="101" y="100" text-anchor="middle" font-size="13" fill="#33557a">0</text>
+  <text x="179" y="100" text-anchor="middle" font-size="13" fill="#33557a">1</text>
+  <text x="257" y="100" text-anchor="middle" font-size="13" fill="#33557a">2</text>
+  <text x="335" y="100" text-anchor="middle" font-size="13" fill="#33557a">3</text>
+  <text x="413" y="100" text-anchor="middle" font-size="13" fill="#33557a">4</text>
+  <text x="491" y="100" text-anchor="middle" font-size="13" fill="#33557a">5</text>
+
+  <!-- ячейки -->
+  <rect x="62" y="112" width="78" height="56" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="101" y="147" text-anchor="middle" font-size="18" font-weight="bold" fill="#1d3550">a</text>
+  <rect x="140" y="112" width="78" height="56" rx="8" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2.5"/>
+  <text x="179" y="147" text-anchor="middle" font-size="18" font-weight="bold" fill="#4b3a16">b</text>
+  <rect x="218" y="112" width="78" height="56" rx="8" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2.5"/>
+  <text x="257" y="147" text-anchor="middle" font-size="18" font-weight="bold" fill="#4b3a16">c</text>
+  <rect x="296" y="112" width="78" height="56" rx="8" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2.5"/>
+  <text x="335" y="147" text-anchor="middle" font-size="18" font-weight="bold" fill="#4b3a16">d</text>
+  <rect x="374" y="112" width="78" height="56" rx="8" fill="#eaf3ea" stroke="#3c6b47" stroke-width="2.5"/>
+  <text x="413" y="147" text-anchor="middle" font-size="18" font-weight="bold" fill="#254a2d">e</text>
+  <rect x="452" y="112" width="78" height="56" rx="8" fill="#eaf3ea" stroke="#3c6b47" stroke-width="2.5"/>
+  <text x="491" y="147" text-anchor="middle" font-size="18" font-weight="bold" fill="#254a2d">f</text>
+
+  <!-- отрицательные индексы -->
+  <text x="101" y="192" text-anchor="middle" font-size="13" fill="#8a2b2b">−6</text>
+  <text x="179" y="192" text-anchor="middle" font-size="13" fill="#8a2b2b">−5</text>
+  <text x="257" y="192" text-anchor="middle" font-size="13" fill="#8a2b2b">−4</text>
+  <text x="335" y="192" text-anchor="middle" font-size="13" fill="#8a2b2b">−3</text>
+  <text x="413" y="192" text-anchor="middle" font-size="13" fill="#8a2b2b">−2</text>
+  <text x="491" y="192" text-anchor="middle" font-size="13" fill="#8a2b2b">−1</text>
+
+  <!-- срез 1:4 -->
+  <line x1="140" y1="214" x2="140" y2="224" stroke="#8a6a2f" stroke-width="2"/>
+  <line x1="374" y1="214" x2="374" y2="224" stroke="#8a6a2f" stroke-width="2"/>
+  <line x1="140" y1="224" x2="374" y2="224" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="140" y="246" font-size="14" font-weight="bold" fill="#4b3a16">letters[1:4] → ['b', 'c', 'd']</text>
+  <text x="140" y="266" font-size="12" fill="#4b3a16">правый конец 4 не включается: элемент d имеет индекс 3</text>
+
+  <!-- срез -2: -->
+  <line x1="374" y1="286" x2="374" y2="296" stroke="#3c6b47" stroke-width="2"/>
+  <line x1="530" y1="286" x2="530" y2="296" stroke="#3c6b47" stroke-width="2"/>
+  <line x1="374" y1="296" x2="530" y2="296" stroke="#3c6b47" stroke-width="2"/>
+  <text x="374" y="318" font-size="14" font-weight="bold" fill="#254a2d">letters[-2:] → ['e', 'f']</text>
+  <text x="374" y="338" font-size="12" fill="#254a2d">два последних элемента списка</text>
+
+  <line x1="60" y1="356" x2="720" y2="356" stroke="#c9c2b4" stroke-width="1.5"/>
+  <text x="60" y="380" font-size="13" fill="#4b3a16">Отрицательные индексы считаются от конца: −1 — последний элемент.</text>
+  <text x="60" y="404" font-size="13" fill="#4b3a16">Срез [начало:конец:шаг] создаёт новый список и не меняет исходный.</text>
+</svg>

@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Стандартная библиотека: collections, itertools, functools, pathlib — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><details class="chapter-current" open><summary>
+<a href="ch-34-stdlib.html" aria-current="page">34. Стандартная библиотека: collections, itertools, functools, pathlib</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-34-stdlib.html#что-вы-сможете-после-этой-главы">34.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-34-stdlib.html#map">34.2. Карта стандартной библиотеки</a></li>
+<li><a href="ch-34-stdlib.html#collections">34.3. collections: контейнеры под задачу</a></li>
+<li><a href="ch-34-stdlib.html#itertools">34.4. itertools: ленивые конвейеры</a></li>
+<li><a href="ch-34-stdlib.html#functools-pathlib">34.5. functools и pathlib: функции и пути</a></li>
+<li><a href="ch-34-stdlib.html#enum">34.6. Enum: именованные константы</a></li>
+<li><a href="ch-34-stdlib.html#contextlib">34.7. contextlib: свои контекстные менеджеры</a></li>
+<li><a href="ch-34-stdlib.html#mistakes">34.8. Типичные ошибки</a></li>
+<li><a href="ch-34-stdlib.html#упражнения">34.9. Упражнения</a></li>
+<li><a href="ch-34-stdlib.html#проверка-понимания">34.10. Проверка понимания</a></li>
+<li><a href="ch-34-stdlib.html#что-дальше">34.11. Что дальше</a></li>
+</ol></details></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 7. Практическая разработка</span><span class="sep">›</span><span>Глава 34</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Практическая разработка · глава 34</p>
+<h1 id="стандартная-библиотека-collections-itertools-functools-pathlib">Стандартная библиотека: collections, itertools, functools, pathlib</h1>
+<p class="chapter-summary">Инструменты стандартной библиотеки, которые закрывают большинство повседневных задач без внешних зависимостей.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#что-вы-сможете-после-этой-главы"><span class="toc-number">34.1</span> Что вы сможете после этой главы</a></li>
+<li class="level-2"><a href="#map"><span class="toc-number">34.2</span> Карта стандартной библиотеки</a></li>
+<li class="level-2"><a href="#collections"><span class="toc-number">34.3</span> collections: контейнеры под задачу</a></li>
+<li class="level-2"><a href="#itertools"><span class="toc-number">34.4</span> itertools: ленивые конвейеры</a></li>
+<li class="level-2"><a href="#functools-pathlib"><span class="toc-number">34.5</span> functools и pathlib: функции и пути</a></li>
+<li class="level-2"><a href="#enum"><span class="toc-number">34.6</span> Enum: именованные константы</a></li>
+<li class="level-2"><a href="#contextlib"><span class="toc-number">34.7</span> contextlib: свои контекстные менеджеры</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">34.8</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">34.9</span> Упражнения</a></li>
+<li class="level-2"><a href="#проверка-понимания"><span class="toc-number">34.10</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#что-дальше"><span class="toc-number">34.11</span> Что дальше</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#counter-частоты">Counter: частоты</a></li>
+<li class="level-3"><a href="#deque-очередь-с-двумя-концами">deque: очередь с двумя концами</a></li>
+<li class="level-3"><a href="#defaultdict-значения-по-умолчанию">defaultdict: значения по умолчанию</a></li>
+<li class="level-3"><a href="#бесконечные-источники">Бесконечные источники</a></li>
+<li class="level-3"><a href="#несколько-ресурсов-сразу">Несколько ресурсов сразу</a></li>
+<li class="level-3"><a href="#ex-ch34-01">1. Частотный анализ</a></li>
+<li class="level-3"><a href="#ex-ch34-02">2. История действий</a></li>
+<li class="level-3"><a href="#ex-ch34-03">3. Группировка по ключу</a></li>
+<li class="level-3"><a href="#ex-ch34-04">4. Пагинация итератора</a></li>
+<li class="level-3"><a href="#ex-ch34-05">5. Частичное применение</a></li>
+<li class="level-3"><a href="#ex-ch34-06">6. Пути и расширения</a></li>
+<li class="level-3"><a href="#ex-ch34-07">7. Статусы заказа</a></li>
+<li class="level-3"><a href="#ex-ch34-08">8. Контекстный менеджер</a></li>
+<li class="level-3"><a href="#ex-ch34-09">9. Прогнозирование вывода</a></li>
+<li class="level-3"><a href="#ex-ch34-10">10. Мини-проект: анализ журнала</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>Стандартная библиотека Python — это сотни модулей, которые поставляются вместе
+с интерпретатором. Она закрывает работу с текстом, файлами, датами, сетью,
+архивами, базами данных и структурами данных. Знание её карты экономит время
+и уменьшает число зависимостей: прежде чем искать пакет, стоит проверить, нет
+ли готового решения в комплекте.</p>
+<p>В этой главе — четыре опорных модуля повседневной разработки. <code>collections</code>
+даёт специализированные контейнеры, <code>itertools</code> — инструменты ленивой
+обработки последовательностей, <code>functools</code> — приёмы работы с функциями, а
+<code>pathlib</code> — безопасные пути. К ним добавим перечисления и контекстные
+менеджеры, которые делают код выразительнее.</p>
+<h2 id="что-вы-сможете-после-этой-главы"><span class="h-number">34.1</span> Что вы сможете после этой главы</h2>
+<ul>
+<li>выбирать подходящий контейнер вместо самодельной структуры;</li>
+<li>считать частоты, хранить историю и группировать данные без ручных циклов;</li>
+<li>строить ленивые конвейеры из итераторов и объяснять, когда они экономят
+память;</li>
+<li>заменять «магические» строки перечислением <code>Enum</code>;</li>
+<li>писать собственные контекстные менеджеры через <code>contextlib</code>;</li>
+<li>свободно собирать и разбирать пути через <code>pathlib</code>.</li>
+</ul>
+<h2 id="map"><span class="h-number">34.2</span> Карта стандартной библиотеки</h2>
+<p>Полезно держать в голове, за что отвечает каждый крупный модуль. Полный список
+велик, но повседневность покрывает небольшой набор.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Задача</th>
+<th>Модуль</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>специализированные контейнеры</td>
+<td><code>collections</code></td>
+</tr>
+<tr>
+<td>комбинирование итераторов</td>
+<td><code>itertools</code></td>
+</tr>
+<tr>
+<td>работа с функциями</td>
+<td><code>functools</code></td>
+</tr>
+<tr>
+<td>пути и файлы</td>
+<td><code>pathlib</code></td>
+</tr>
+<tr>
+<td>дата и время</td>
+<td><code>datetime</code></td>
+</tr>
+<tr>
+<td>сериализация</td>
+<td><code>json</code>, <code>csv</code></td>
+</tr>
+<tr>
+<td>журналирование</td>
+<td><code>logging</code></td>
+</tr>
+<tr>
+<td>регулярные выражения</td>
+<td><code>re</code></td>
+</tr>
+<tr>
+<td>случайные числа</td>
+<td><code>random</code></td>
+</tr>
+<tr>
+<td>системные вызовы</td>
+<td><code>os</code>, <code>sys</code>, <code>subprocess</code></td>
+</tr>
+</tbody>
+</table>
+</div><p>Правило простое: если задача типовая, вероятность найти готовый инструмент
+высока. Самодельная реализация нужна, когда стандартная не подходит по
+требованиям, а не потому, что о ней не знали.</p>
+<p>У карты есть и вторая польза: она помогает выбирать между похожими
+инструментами. Для очереди подходит <code>deque</code>, для частот — <code>Counter</code>, для
+группировки — <code>groupby</code>, для путей — <code>pathlib</code>. Когда инструменты известны,
+код становится короче, а ошибки исчезают вместе с самодельными циклами.
+Внешняя зависимость оправдана, только если стандартная библиотека не решает
+задачу или решает её заметно хуже. У зависимости есть цена: её нужно
+устанавливать, обновлять и проверять на уязвимости. Поэтому «есть пакет
+удобнее» — не аргумент, пока не показано, что стандартный инструмент
+действительно не подходит.</p>
+<p>Есть и обратная крайность: пытаться обойтись только стандартной библиотекой,
+когда задача требует зрелого решения. HTTP-клиент из <code>urllib</code> работает, но
+современные библиотеки дают удобные таймауты, повторные попытки и разбор
+ответа с меньшим количеством кода. Выбор зависит от контекста, а не от
+принципа. Здоровый подход — сначала изучить стандартный инструмент, затем
+осознанно добавить зависимость и зафиксировать её версию.</p>
+<p><figure class="figure"><img src="illustrations/ch-34-stdlib-map.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h2 id="collections"><span class="h-number">34.3</span> collections: контейнеры под задачу</h2>
+<p><strong>Модуль collections</strong> — модуль стандартной библиотеки со
+специализированными контейнерами: <code>Counter</code>, <code>deque</code>, <code>defaultdict</code>, <code>ChainMap</code>.
+Обычный словарь или список справятся со многим, но для частых операций есть
+более точные инструменты.</p>
+<h3 id="counter-частоты">Counter: частоты</h3>
+<p><strong>Counter</strong> — словарь-счётчик: количество вхождений каждого элемента; удобен
+для частотного анализа.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="n">words</span> <span class="o">=</span> <span class="s2">"кот пёс кот слон кот пёс"</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counts</span><span class="p">[</span><span class="s2">"кот"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>Counter({&#x27;кот&#x27;: 3, &#x27;пёс&#x27;: 2, &#x27;слон&#x27;: 1})
+3
+[(&#x27;кот&#x27;, 3), (&#x27;пёс&#x27;, 2)]
+</code></pre>
+<p><code>Counter</code> — обычный словарь с дополнительными методами. <code>most_common(n)</code>
+возвращает <code>n</code> самых частых элементов, а отсутствующий ключ даёт <code>0</code>, а не
+<code>KeyError</code>. Счётчик можно складывать и вычитать: полезно при сравнении двух
+периодов или наборов данных.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="n">january</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">([</span><span class="s2">"кот"</span><span class="p">,</span> <span class="s2">"пёс"</span><span class="p">,</span> <span class="s2">"кот"</span><span class="p">])</span>
+<span class="n">february</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">([</span><span class="s2">"кот"</span><span class="p">,</span> <span class="s2">"слон"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">january</span> <span class="o">+</span> <span class="n">february</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">february</span> <span class="o">-</span> <span class="n">january</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>Counter({&#x27;кот&#x27;: 3, &#x27;пёс&#x27;: 1, &#x27;слон&#x27;: 1})
+Counter({&#x27;слон&#x27;: 1})
+</code></pre>
+<p>При вычитании нулевые и отрицательные результаты отбрасываются: в феврале
+кот встречался реже, и разница <code>1 - 2 = -1</code> отброшена, поэтому «минус один
+кот» в отчёте не появится. Для разницы без потерь есть <code>subtract</code>, который
+сохраняет отрицательные значения.</p>
+<h3 id="deque-очередь-с-двумя-концами">deque: очередь с двумя концами</h3>
+<p><strong>deque</strong> — двусторонняя очередь с быстрыми операциями добавления и извлечения
+с обоих концов.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">deque</span>
+
+<span class="n">queue</span> <span class="o">=</span> <span class="n">deque</span><span class="p">([</span><span class="s2">"первый"</span><span class="p">,</span> <span class="s2">"второй"</span><span class="p">])</span>
+<span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"третий"</span><span class="p">)</span>
+<span class="n">queue</span><span class="o">.</span><span class="n">appendleft</span><span class="p">(</span><span class="s2">"нулевой"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">queue</span><span class="o">.</span><span class="n">popleft</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">queue</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>deque([&#x27;нулевой&#x27;, &#x27;первый&#x27;, &#x27;второй&#x27;, &#x27;третий&#x27;])
+нулевой
+третий
+deque([&#x27;первый&#x27;, &#x27;второй&#x27;])
+</code></pre>
+<p>Список тоже умеет <code>append</code> и <code>pop</code>, но удаление из начала стоит дорого:
+остальные элементы сдвигаются. <code>deque</code> поддерживает оба конца за постоянное
+время и умеет ограничивать длину: <code>deque(maxlen=5)</code> автоматически выбрасывает
+старые элементы — готовый буфер истории.</p>
+<h3 id="defaultdict-значения-по-умолчанию">defaultdict: значения по умолчанию</h3>
+<p><code>defaultdict</code> создаёт отсутствующий ключ автоматически, вызывая фабрику
+значений. Это убирает проверки «а есть ли уже такой ключ».</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">defaultdict</span>
+
+<span class="n">groups</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="s2">"кот пёс кот слон кот"</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+    <span class="n">groups</span><span class="p">[</span><span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">groups</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>{&#x27;к&#x27;: [&#x27;кот&#x27;, &#x27;кот&#x27;, &#x27;кот&#x27;], &#x27;п&#x27;: [&#x27;пёс&#x27;], &#x27;с&#x27;: [&#x27;слон&#x27;]}
+</code></pre>
+<p>Обычный словарь потребовал бы <code>groups.setdefault(...)</code> или проверку через
+<code>in</code>. <code>defaultdict</code> делает намерение явным: ключ будет, а значение создастся
+по правилу.</p>
+<p>Ещё один полезный контейнер — <code>ChainMap</code>: он объединяет несколько словарей в
+одно представление, не копируя их. Это удобно для конфигурации: настройки по
+умолчанию лежат в одном словаре, пользовательские — в другом, а поиск идёт
+сначала по пользовательским. Изменения при этом попадают только в первый
+словарь, что защищает значения по умолчанию.</p>
+<h2 id="itertools"><span class="h-number">34.4</span> itertools: ленивые конвейеры</h2>
+<p><strong>Модуль itertools</strong> — модуль с инструментами комбинирования и обработки
+итераторов: <code>chain</code>, <code>groupby</code>, <code>product</code>, <code>islice</code>. Его функции не создают
+списки целиком, а выдают элементы по одному, поэтому работают с большими и
+даже бесконечными последовательностями.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">chain</span><span class="p">,</span> <span class="n">groupby</span><span class="p">,</span> <span class="n">islice</span><span class="p">,</span> <span class="n">product</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">chain</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s2">"аб"</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">islice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="mi">4</span><span class="p">)))</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">"фрукт"</span><span class="p">,</span> <span class="s2">"яблоко"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"фрукт"</span><span class="p">,</span> <span class="s2">"груша"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"овощ"</span><span class="p">,</span> <span class="s2">"морковь"</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">kind</span><span class="p">,</span> <span class="n">items</span> <span class="ow">in</span> <span class="n">groupby</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">pair</span><span class="p">:</span> <span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">kind</span><span class="p">,</span> <span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">product</span><span class="p">(</span><span class="s2">"аб"</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])))</span>
+</code></pre></div>
+<pre class="output"><code>[1, 2, &#x27;а&#x27;, &#x27;б&#x27;]
+[0, 1, 2, 3]
+фрукт [&#x27;яблоко&#x27;, &#x27;груша&#x27;]
+овощ [&#x27;морковь&#x27;]
+[(&#x27;а&#x27;, 1), (&#x27;а&#x27;, 2), (&#x27;б&#x27;, 1), (&#x27;б&#x27;, 2)]
+</code></pre>
+<p>Разберём функции:</p>
+<ul>
+<li><code>chain</code> соединяет несколько итерируемых объектов в один поток;</li>
+<li><code>islice</code> берёт срез итератора, не превращая его в список;</li>
+<li><code>groupby</code> группирует соседние элементы с одинаковым ключом;</li>
+<li><code>product</code> даёт декартово произведение.</li>
+</ul>
+<p>У <code>groupby</code> есть важная особенность: она группирует <strong>соседние</strong> элементы.
+Если одинаковые ключи идут не подряд, получится несколько групп. Поэтому перед
+группировкой данные сортируют по тому же ключу.</p>
+<p><figure class="figure"><img src="illustrations/ch-34-itertools-pipeline.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h3 id="бесконечные-источники">Бесконечные источники</h3>
+<p>Некоторые функции <code>itertools</code> создают бесконечные последовательности. Сами по
+себе они опасны: <code>list(count())</code> никогда не завершится. Но вместе с <code>islice</code>
+они превращаются в удобный источник.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">count</span><span class="p">,</span> <span class="n">cycle</span><span class="p">,</span> <span class="n">islice</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">islice</span><span class="p">(</span><span class="n">count</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="mi">4</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">islice</span><span class="p">(</span><span class="n">cycle</span><span class="p">(</span><span class="s2">"аб"</span><span class="p">),</span> <span class="mi">5</span><span class="p">)))</span>
+</code></pre></div>
+<pre class="output"><code>[10, 15, 20, 25]
+[&#x27;а&#x27;, &#x27;б&#x27;, &#x27;а&#x27;, &#x27;б&#x27;, &#x27;а&#x27;]
+</code></pre>
+<p><code>count</code> выдаёт числа с шагом, <code>cycle</code> повторяет последовательность по кругу.
+Ограничитель <code>islice</code> делает поток конечным. Такой приём удобен для
+тестовых данных, индексов страниц и циклических подписей.</p>
+<p>Ленивость — не автоматическое преимущество. Если результат всё равно
+потребуется целиком несколько раз, список окажется удобнее и предсказуемее.
+Итератор можно пройти только один раз: после исчерпания он пуст.</p>
+<h2 id="functools-pathlib"><span class="h-number">34.5</span> functools и pathlib: функции и пути</h2>
+<p><strong>Модуль functools</strong> — набор инструментов для работы с функциями:
+<code>partial</code>, <code>reduce</code>, <code>wraps</code>, <code>lru_cache</code>. Декоратор <code>wraps</code> и <code>lru_cache</code> вы
+уже встречали; здесь добавим <code>partial</code>, который фиксирует часть аргументов.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">partial</span><span class="p">,</span> <span class="n">reduce</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">power</span><span class="p">(</span><span class="n">base</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">exponent</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">base</span> <span class="o">**</span> <span class="n">exponent</span>
+
+
+<span class="n">square</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">power</span><span class="p">,</span> <span class="n">exponent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">square</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">acc</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">acc</span> <span class="o">+</span> <span class="n">value</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="mi">0</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>49
+10
+</code></pre>
+<p><code>partial</code> возвращает новую функцию с заранее заполненными аргументами. Это
+удобно для колбэков и настройки поведения без <code>lambda</code>. <code>reduce</code> сворачивает
+последовательность в одно значение, применяя функцию слева направо; в
+повседневном коде его часто заменяет <code>sum</code> или цикл, но знать его полезно.</p>
+<p>У <code>reduce</code> есть репутация «умного» инструмента, и ею легко злоупотребить.
+Если свёртка неочевидна, цикл с накопителем читается лучше: видно начальное
+значение, условие и обновление. <code>reduce</code> уместен, когда операция уже
+существует как функция и свёртка очевидна — например, перемножение или
+объединение словарей.</p>
+<p><strong>pathlib</strong> — модуль объектного представления путей. Он уже появлялся в главе
+о файлах; напомним ключевые операции.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"data"</span><span class="p">)</span> <span class="o">/</span> <span class="s2">"reports"</span> <span class="o">/</span> <span class="s2">"2026-11-01.csv"</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">suffix</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">stem</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s2">".json"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>data/reports/2026-11-01.csv
+2026-11-01.csv
+.csv
+2026-11-01
+reports
+data/reports/2026-11-01.json
+</code></pre>
+<p>Оператор <code>/</code> соединяет части пути и работает одинаково на разных платформах.
+<code>with_suffix</code> заменяет расширение, <code>stem</code> даёт имя без расширения, <code>parent</code> —
+каталог. В отличие от ручной склейки строк, <code>pathlib</code> не теряет разделители и
+не ломается на абсолютных путях.</p>
+<p><code>Path</code> умеет и проверять состояние файла: <code>exists()</code>, <code>is_dir()</code>,
+<code>is_file()</code>, а также читать и писать текст методами <code>read_text</code> и
+<code>write_text</code>. Для больших файлов эти методы не подходят — они загружают файл
+целиком; там нужен <code>open</code> и построчное чтение. Выбор простой: небольшие файлы
+удобнее читать методами <code>Path</code>, большие — потоково.</p>
+<h2 id="enum"><span class="h-number">34.6</span> Enum: именованные константы</h2>
+<p><strong>Enum</strong> — класс перечисления с именованными константами, заменяющий
+«магические» строки и числа. Когда статус заказа принимает значения <code>&quot;new&quot;</code>,
+<code>&quot;paid&quot;</code>, <code>&quot;shipped&quot;</code>, опечатка <code>&quot;shippd&quot;</code> не будет поймана ничем. Перечисление
+делает допустимые значения явными.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Status</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">NEW</span> <span class="o">=</span> <span class="s2">"new"</span>
+    <span class="n">PAID</span> <span class="o">=</span> <span class="s2">"paid"</span>
+    <span class="n">DONE</span> <span class="o">=</span> <span class="s2">"done"</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Status</span><span class="o">.</span><span class="n">NEW</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Status</span><span class="o">.</span><span class="n">NEW</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Status</span><span class="p">(</span><span class="s2">"done"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">Status</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>Status.NEW
+new
+Status.DONE
+[&lt;Status.NEW: &#x27;new&#x27;&gt;, &lt;Status.PAID: &#x27;paid&#x27;&gt;, &lt;Status.DONE: &#x27;done&#x27;&gt;]
+</code></pre>
+<p>Член перечисления сравнивается по идентичности, а значение доступно через
+<code>.value</code>. Конструктор <code>Status(&quot;done&quot;)</code> преобразует строку в член и поднимает
+<code>ValueError</code> для неизвестного значения — удобная проверка на границе, где
+данные приходят извне. Перечисление неизменяемо: после объявления его нельзя
+расширить, и это защищает контракт.</p>
+<p>Важно не путать член перечисления с его значением: <code>Status.NEW == &quot;new&quot;</code>
+даёт <code>False</code>, потому что сравниваются разные типы. Если нужно сравнивать со
+строками, используйте <code>Status.NEW.value == &quot;new&quot;</code> или наследуйте перечисление
+от <code>str</code>. Второй вариант удобен для сериализации, но делает тип менее строгим:
+значение снова можно перепутать со строкой.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Color</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">RED</span> <span class="o">=</span> <span class="s2">"red"</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span> <span class="o">==</span> <span class="s2">"red"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s2">"red"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span><span class="p">,</span> <span class="nb">str</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>False
+True
+False
+</code></pre>
+<p>Такая строгость — преимущество: случайное сравнение с сырой строкой сразу
+видно по результату, а не превращается в тихую ошибку.</p>
+<h2 id="contextlib"><span class="h-number">34.7</span> contextlib: свои контекстные менеджеры</h2>
+<p><strong>contextlib</strong> — модуль для создания и композиции контекстных менеджеров, в
+том числе через <code>@contextmanager</code>. Контекстный менеджер гарантирует
+освобождение ресурса, даже если внутри блока произошла ошибка. Обычно его
+пишут классом с <code>__enter__</code> и <code>__exit__</code>, но для простых случаев достаточно
+генератора.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">contextlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">contextmanager</span>
+
+
+<span class="nd">@contextmanager</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">section</span><span class="p">(</span><span class="n">title</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"начало: </span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">title</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"конец: </span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+
+<span class="k">with</span> <span class="n">section</span><span class="p">(</span><span class="s2">"отчёт"</span><span class="p">)</span> <span class="k">as</span> <span class="n">name</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"внутри:"</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>начало: отчёт
+внутри: ОТЧЁТ
+конец: отчёт
+</code></pre>
+<p>Код до <code>yield</code> — вход в контекст, после — выход. Блок <code>finally</code> гарантирует
+очистку даже при исключении. Так удобно оформлять временные файлы, блокировки,
+замеры и подключения.</p>
+<h3 id="несколько-ресурсов-сразу">Несколько ресурсов сразу</h3>
+<p>Иногда нужно открыть несколько ресурсов и закрыть их в обратном порядке.
+Вложенные <code>with</code> быстро становятся громоздкими, особенно если число ресурсов
+заранее неизвестно. <code>contextlib.ExitStack</code> собирает менеджеры в стек и
+закрывает их автоматически.</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">contextlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExitStack</span>
+
+<span class="k">with</span> <span class="n">ExitStack</span><span class="p">()</span> <span class="k">as</span> <span class="n">stack</span><span class="p">:</span>
+    <span class="n">first</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">enter_context</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">"a.txt"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">))</span>
+    <span class="n">second</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">enter_context</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">"b.txt"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">))</span>
+    <span class="n">process</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">)</span>
+</code></pre></div>
+<p>Здесь файлы закроются в обратном порядке открытия, даже если <code>process</code>
+поднимет исключение. Тот же приём используют для динамических наборов
+ресурсов, когда количество известно только во время выполнения.</p>
+<h2 id="mistakes"><span class="h-number">34.8</span> Типичные ошибки</h2>
+<ol>
+<li><strong>Писать самодельный счётчик.</strong> Цикл с <code>dict.get(word, 0) + 1</code> работает, но
+<code>Counter</code> короче и не содержит ошибок на границах.</li>
+<li><strong>Использовать список как очередь.</strong> <code>pop(0)</code> сдвигает все элементы и на
+больших данных становится узким местом. Для очереди есть <code>deque</code>.</li>
+<li><strong>Забыть отсортировать данные перед <code>groupby</code>.</strong> Функция группирует только
+соседние элементы; без сортировки группы разорвутся.</li>
+<li><strong>Проходить итератор дважды.</strong> После исчерпания он пуст; если нужен
+повторный проход, сохраните список.</li>
+<li><strong>Сравнивать член перечисления со строкой.</strong> <code>Status.NEW == &quot;new&quot;</code> даёт
+<code>False</code>; сравнивайте с членом или приводите значение явно.</li>
+<li><strong>Считать ленивость всегда выгодной.</strong> Для маленьких данных генератор
+добавляет накладные расходы и усложняет отладку.</li>
+<li><strong>Собирать пути строками.</strong> Ручные <code>&quot;/&quot;.join(...)</code> ломаются на абсолютных
+путях и на Windows; используйте <code>pathlib</code>.</li>
+<li><strong>Возвращать из фабрики <code>defaultdict</code> один и тот же объект.</strong> Фабрика
+вызывается для каждого нового ключа, поэтому <code>defaultdict(list)</code> безопасно
+создаёт отдельный список. Ошибка — вернуть из неё заранее созданный
+изменяемый объект: тогда все ключи будут ссылаться на него, и изменение
+одного значения отразится на всех.</li>
+<li><strong>Путать <code>Enum</code> с набором констант.</strong> Члены перечисления нельзя создавать
+после объявления и нельзя изменять; это часть контракта, а не ограничение.</li>
+</ol>
+<h2 id="упражнения"><span class="h-number">34.9</span> Упражнения</h2>
+<h3 id="ex-ch34-01">1. Частотный анализ</h3>
+<p>Дан текст: <code>&quot;один два один три два один&quot;</code>. С помощью <code>Counter</code> выведите
+таблицу частот в порядке убывания и отдельно — самое частое слово.</p>
+<h3 id="ex-ch34-02">2. История действий</h3>
+<p>Реализуйте историю команд на <code>deque</code> с ограничением в три элемента: добавьте
+пять команд и покажите, что хранятся только последние три. Объясните, почему
+для этой задачи неудобен список.</p>
+<h3 id="ex-ch34-03">3. Группировка по ключу</h3>
+<p>Дан список пар <code>(категория, товар)</code>. Сгруппируйте товары по категориям через
+<code>itertools.groupby</code>. Что нужно сделать с данными перед группировкой и почему?</p>
+<h3 id="ex-ch34-04">4. Пагинация итератора</h3>
+<p>С помощью <code>itertools.islice</code> выведите вторую страницу результатов по три
+элемента из последовательности чисел от 0 до 20; страницы нумеруются с
+единицы. Объясните, почему срез списка здесь не нужен.</p>
+<h3 id="ex-ch34-05">5. Частичное применение</h3>
+<p>Создайте функцию <code>format_price(amount: int, currency: str) -&gt; str</code>, которая
+возвращает строку вида <code>&quot;1 250 ₽&quot;</code>. С помощью <code>functools.partial</code> создайте
+варианты для рублей и долларов и проверьте оба.</p>
+<h3 id="ex-ch34-06">6. Пути и расширения</h3>
+<p>Из пути <code>&quot;reports/2026/october.csv&quot;</code> получите имя файла без расширения,
+каталог и новый путь с расширением <code>.json</code>. Используйте <code>pathlib</code> и проверьте
+результат.</p>
+<h3 id="ex-ch34-07">7. Статусы заказа</h3>
+<p>Опишите <code>Enum</code> для статусов заказа: <code>NEW</code>, <code>PAID</code>, <code>SHIPPED</code>, <code>DONE</code>.
+Реализуйте функцию <code>parse_status(value: str) -&gt; Status</code>, которая возвращает
+член перечисления и поднимает <code>ValueError</code> для неизвестного значения.</p>
+<h3 id="ex-ch34-08">8. Контекстный менеджер</h3>
+<p>Напишите контекстный менеджер <code>capture(log: list[str])</code>, который добавляет в
+список строку <code>&quot;вход&quot;</code> при входе и <code>&quot;выход&quot;</code> при выходе — даже если внутри
+блока произошло исключение. Проверьте оба сценария.</p>
+<h3 id="ex-ch34-09">9. Прогнозирование вывода</h3>
+<p>Что выведет программа? Объясните порядок элементов.</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">deque</span>
+
+<span class="n">items</span> <span class="o">=</span> <span class="n">deque</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">maxlen</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="ex-ch34-10">10. Мини-проект: анализ журнала</h3>
+<p>Дан список строк журнала: <code>&quot;INFO старт&quot;</code>, <code>&quot;ERROR сбой&quot;</code>, <code>&quot;INFO шаг&quot;</code>,
+<code>&quot;ERROR сбой&quot;</code>. С помощью <code>Counter</code> и <code>Enum</code> постройте отчёт: сколько записей
+каждого уровня, какое сообщение встречается чаще всего. Оформите результат
+как словарь.</p>
+<h2 id="проверка-понимания"><span class="h-number">34.10</span> Проверка понимания</h2>
+<ol>
+<li>Чем <code>Counter</code> отличается от обычного словаря и когда он удобнее?</li>
+<li>Почему <code>deque</code> лучше списка для очереди?</li>
+<li>Почему <code>groupby</code> требует отсортированных данных?</li>
+<li>Что означает ленивость <code>itertools</code> и в каких случаях она полезна?</li>
+<li>Зачем нужен <code>partial</code>, если можно написать <code>lambda</code>?</li>
+<li>Какую проблему решает <code>Enum</code> по сравнению со строками-константами?</li>
+<li>Что гарантирует <code>finally</code> внутри <code>@contextmanager</code>?</li>
+</ol>
+<h2 id="что-дальше"><span class="h-number">34.11</span> Что дальше</h2>
+<p>Стандартная библиотека даёт инструменты, но программа живёт не в вакууме: она
+читает переменные окружения, запускает процессы и общается с сетью. Следующая
+глава — о взаимодействии с операционной системой и HTTP-API. Там понадобятся
+и ленивые конвейеры, и безопасная работа с путями.</p>
+<p>О путях и файлах подробно говорилось в <a href="ch-19-files-formats.html">главе 19</a>, о
+декораторах и <code>functools</code> — в <a href="ch-22-higher-order.html">главе 22</a>, о контекстных
+менеджерах — в главе 19 и в этой главе. Итераторы и ленивые вычисления
+разобраны в <a href="ch-20-iterators.html">главе 20</a> и <a href="ch-21-generators.html">главе 21</a>.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-33-project-tooling.html"><span class="pager-label">← Назад</span><span class="pager-title">Структура проекта, зависимости и инструменты</span></a><a class="pager-card next" rel="next" href="ch-35-os-network.html"><span class="pager-label">Далее:</span><span class="pager-title">ОС, процессы, сеть и API</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

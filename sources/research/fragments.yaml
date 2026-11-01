@@ -1,0 +1,5564 @@
+schema: 1
+book: python-zero-to-pro
+generated_at: '2026-11-01'
+registry: sources/registry.yaml
+note: Инвентарь только по источникам с лицензиями, разрешающими переработку.
+fragments:
+- id: frag-0001
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/basics.md
+  lines: 5-33
+  kind: prose
+  topics:
+  - comments
+  chapters:
+  - ch-02-first-program
+  concepts:
+  - comment
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: Короткое объяснение комментариев с примерами; стиль дружелюбный, подходит для первого знакомства.
+- id: frag-0002
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/basics.md
+  lines: 34-51
+  kind: prose
+  topics:
+  - numbers
+  - literals
+  chapters:
+  - ch-03-values-names-objects
+  concepts:
+  - int_type
+  - float_type
+  - integer_literal
+  - float_literal
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: Числовые литералы int/float; корректно, но без разбора точности float — дополнить из CPython.
+- id: frag-0003
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/basics.md
+  lines: 52-95
+  kind: prose
+  topics:
+  - strings
+  chapters:
+  - ch-15-strings
+  concepts:
+  - string_type
+  - escape_sequence
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'Строки: кавычки, тройные кавычки, неизменяемость. Хорошая база, но нет f-strings.'
+- id: frag-0004
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/basics.md
+  lines: 96-214
+  kind: prose
+  topics:
+  - string formatting
+  chapters:
+  - ch-15-strings
+  concepts:
+  - string_method
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'Подробный разбор str.format(). Устаревший способ: сохранить идею (именованные подстановки), заменить на f-strings.'
+- id: frag-0005
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/basics.md
+  lines: 215-253
+  kind: prose
+  topics:
+  - escape sequences
+  - raw strings
+  chapters:
+  - ch-15-strings
+  concepts:
+  - escape_sequence
+  - raw_string
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Ясное объяснение escape-последовательностей и raw-строк с ошибками-примерами.
+- id: frag-0006
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/basics.md
+  lines: 254-302
+  kind: prose
+  topics:
+  - variables
+  - naming
+  - objects
+  chapters:
+  - ch-03-values-names-objects
+  concepts:
+  - name
+  - variable
+  - assignment
+  - object
+  - type
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: Переменная как имя объекта, соглашения об именах. Согласуется с понятийной моделью книги.
+- id: frag-0007
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/basics.md
+  lines: 303-339
+  kind: example
+  topics:
+  - variables
+  - scripts
+  chapters:
+  - ch-02-first-program
+  - ch-03-values-names-objects
+  concepts:
+  - name
+  - print_function
+  - source_code
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: Первый полный скрипт с переменными и выводом; исполняемый пример для главы 2.
+- id: frag-0008
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/basics.md
+  lines: 340-440
+  kind: prose
+  topics:
+  - indentation
+  - lines
+  chapters:
+  - ch-02-first-program
+  - ch-05-control-flow
+  concepts:
+  - statement
+  - block
+  - indentation
+  - syntax_error
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Логические/физические строки, отступы как синтаксис; сильное объяснение для новичка.
+- id: frag-0009
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/op_exp.md
+  lines: 7-117
+  kind: prose
+  topics:
+  - operators
+  chapters:
+  - ch-04-expressions-input
+  concepts:
+  - arithmetic_operator
+  - operator
+  - operand
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Полный обзор операторов включая битовые; годится после сокращения объёма.
+- id: frag-0010
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/op_exp.md
+  lines: 118-201
+  kind: prose
+  topics:
+  - evaluation order
+  chapters:
+  - ch-04-expressions-input
+  concepts:
+  - operator_precedence
+  - expression
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Порядок вычисления и ассоциативность; примеры с побочными эффектами аккуратны.
+- id: frag-0011
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/control_flow.md
+  lines: 7-50
+  kind: prose
+  topics:
+  - if
+  chapters:
+  - ch-05-control-flow
+  concepts:
+  - if_statement
+  - condition
+  - truthiness
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Классическое объяснение if с отступами и типичными ошибками.
+- id: frag-0012
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/control_flow.md
+  lines: 51-108
+  kind: prose
+  topics:
+  - while
+  - for
+  chapters:
+  - ch-06-loops
+  concepts:
+  - while_loop
+  - for_loop
+  - range_object
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: while и for на простых примерах; объединить с современным range/for-else.
+- id: frag-0013
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/control_flow.md
+  lines: 109-161
+  kind: prose
+  topics:
+  - break
+  - continue
+  chapters:
+  - ch-06-loops
+  concepts:
+  - break_statement
+  - continue_statement
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: break/continue с мотивацией «зачем»; подходит без переписывания.
+- id: frag-0014
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/functions.md
+  lines: 23-88
+  kind: prose
+  topics:
+  - parameters
+  - scope
+  chapters:
+  - ch-07-functions
+  concepts:
+  - parameter
+  - argument
+  - local_scope
+  - global_statement
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Параметры, локальные переменные, global; объяснено до главы о замыканиях.
+- id: frag-0015
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/functions.md
+  lines: 89-141
+  kind: prose
+  topics:
+  - defaults
+  - keyword args
+  chapters:
+  - ch-07-functions
+  concepts:
+  - default_argument
+  - keyword_argument
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Аргументы по умолчанию и именованные аргументы; честно предупреждает про порядок параметров.
+- id: frag-0016
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/functions.md
+  lines: 142-159
+  kind: prose
+  topics:
+  - varargs
+  chapters:
+  - ch-24-signatures
+  concepts:
+  - variadic_positional
+  - variadic_keyword
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Короткое введение в *args/**kwargs; механику распаковки брать из CPython.
+- id: frag-0017
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/functions.md
+  lines: 189-212
+  kind: prose
+  topics:
+  - docstrings
+  chapters:
+  - ch-07-functions
+  concepts:
+  - docstring
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Docstring как документация функции; согласуется со стилем книги.
+- id: frag-0018
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/data_structures.md
+  lines: 7-80
+  kind: prose
+  topics:
+  - lists
+  - objects
+  chapters:
+  - ch-13-lists
+  concepts:
+  - list_type
+  - index
+  - append_method
+  - object
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Списки и первый заход в объекты/классы; хороший мост к ООП.
+- id: frag-0019
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/data_structures.md
+  lines: 81-166
+  kind: prose
+  topics:
+  - dict
+  - sequence
+  chapters:
+  - ch-17-dicts
+  - ch-12-collections-intro
+  concepts:
+  - dict_type
+  - mapping
+  - sequence
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Словарь и понятие последовательности; дополнить современным dict API.
+- id: frag-0020
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/data_structures.md
+  lines: 167-235
+  kind: prose
+  topics:
+  - set
+  - references
+  chapters:
+  - ch-16-sets
+  - ch-18-references-copy
+  concepts:
+  - set_type
+  - aliasing
+  - reference_semantics
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Множества и ссылочная семантика; редкое удачное объяснение aliasing для новичка.
+- id: frag-0021
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/modules.md
+  lines: 41-123
+  kind: prose
+  topics:
+  - modules
+  - import
+  chapters:
+  - ch-09-modules
+  concepts:
+  - module
+  - import_statement
+  - main_guard
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: pyc-файлы, from..import, __name__; аккуратная подача без углубления в import-систему.
+- id: frag-0022
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/modules.md
+  lines: 178-211
+  kind: prose
+  topics:
+  - packages
+  chapters:
+  - ch-09-modules
+  concepts:
+  - package
+  - namespace
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Пакеты как каталоги с __init__; требует обновления (namespace-пакеты, pyproject).
+- id: frag-0023
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/problem_solving.md
+  lines: 25-68
+  kind: example
+  topics:
+  - design
+  - scripts
+  chapters:
+  - ch-46-project-cli
+  concepts:
+  - cli_application
+  - file_persistence
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'Сквозной пример «backup-скрипт, версия 1»: от постановки к коду. Педагогически ценно, но использует os.system.'
+- id: frag-0024
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/problem_solving.md
+  lines: 69-134
+  kind: prose
+  topics:
+  - refactoring
+  - iteration
+  chapters:
+  - ch-46-project-cli
+  - ch-44-architecture
+  concepts:
+  - cli_application
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'Итеративное улучшение программы: показывает процесс разработки, а не готовый ответ.'
+- id: frag-0025
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/oop.md
+  lines: 35-141
+  kind: prose
+  topics:
+  - classes
+  chapters:
+  - ch-25-objects-classes
+  concepts:
+  - class
+  - instance
+  - method
+  - init_method
+  - class_attribute
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Классы, методы, __init__, переменные класса и объекта; хорошая отправная точка.
+- id: frag-0026
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/oop.md
+  lines: 142-178
+  kind: prose
+  topics:
+  - inheritance
+  chapters:
+  - ch-27-inheritance
+  concepts:
+  - inheritance
+  - subclass
+  - superclass
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Наследование на минимальном примере; добавить super() и MRO.
+- id: frag-0027
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/exceptions.md
+  lines: 22-100
+  kind: prose
+  topics:
+  - exceptions
+  chapters:
+  - ch-10-errors-exceptions
+  concepts:
+  - exception
+  - try_statement
+  - raise_statement
+  - finally_clause
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'Обработка исключений: try/except, raise, finally — компактно и корректно.'
+- id: frag-0028
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/exceptions.md
+  lines: 101-120
+  kind: prose
+  topics:
+  - with statement
+  chapters:
+  - ch-19-files-formats
+  concepts:
+  - with_statement
+  - context_manager
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Введение в with; механизм контекстных менеджеров брать из глав 19/34.
+- id: frag-0029
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/io.md
+  lines: 33-56
+  kind: prose
+  topics:
+  - files
+  chapters:
+  - ch-19-files-formats
+  concepts:
+  - file_object
+  - open_function
+  - file_mode
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Чтение/запись файлов; нет encoding — обязательно дополнять (см. hieulouisdev 06).
+- id: frag-0030
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/io.md
+  lines: 75-107
+  kind: prose
+  topics:
+  - unicode
+  chapters:
+  - ch-15-strings
+  concepts:
+  - unicode
+  - encoding
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: Объяснение Unicode/UTF-8 для новичка; терминологически близко к глоссарию книги.
+- id: frag-0031
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/stdlib.md
+  lines: 11-55
+  kind: prose
+  topics:
+  - stdlib
+  - logging
+  chapters:
+  - ch-34-stdlib
+  - ch-37-time-logging
+  concepts:
+  - standard_library
+  - logging
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: sys и logging в одном месте; расширить современным logging API.
+- id: frag-0032
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/more.md
+  lines: 33-58
+  kind: prose
+  topics:
+  - special methods
+  chapters:
+  - ch-28-dunder
+  concepts:
+  - dunder_method
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: Введение в специальные методы; терминология «магические методы» расходится с книгой — выровнять.
+- id: frag-0033
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/more.md
+  lines: 88-105
+  kind: prose
+  topics:
+  - comprehensions
+  chapters:
+  - ch-23-functional
+  concepts:
+  - list_comprehension
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Списковые включения с мотивацией; аккуратный пример.
+- id: frag-0034
+  source: src-swaroopch-byte-of-python
+  path: sources/repos/swaroopch-byte-of-python/more.md
+  lines: 144-160
+  kind: prose
+  topics:
+  - decorators
+  chapters:
+  - ch-22-higher-order
+  concepts:
+  - decorator
+  - closure
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC-BY-SA-4.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Минимальный декоратор; требует предварительного объяснения замыканий.
+- id: frag-0035
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/00-introduction/README.md
+  lines: 9-56
+  kind: prose
+  topics:
+  - python overview
+  chapters:
+  - ch-01-introduction
+  concepts:
+  - python_language
+  - interpreter
+  - program
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Что такое Python и где применяется; современный обзор без рекламных клише.
+- id: frag-0036
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/00-introduction/README.md
+  lines: 73-155
+  kind: prose
+  topics:
+  - installation
+  chapters:
+  - ch-01-introduction
+  - ch-33-project-tooling
+  concepts:
+  - interpreter
+  - virtual_environment
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: Установка Python 3.14 через pyenv/uv на трёх ОС; практично, но нужно сверить с актуальными версиями.
+- id: frag-0037
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/01-basics/README.md
+  lines: 30-125
+  kind: prose
+  topics:
+  - statements
+  - comments
+  chapters:
+  - ch-02-first-program
+  concepts:
+  - statement
+  - expression
+  - comment
+  - help_function
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Различие выражений и инструкций, комментарии, help(); ясное начало.
+- id: frag-0038
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/01-basics/README.md
+  lines: 126-260
+  kind: prose
+  topics:
+  - variables
+  - assignment
+  chapters:
+  - ch-03-values-names-objects
+  concepts:
+  - name
+  - variable
+  - assignment
+  - augmented_assignment
+  - name_binding
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Присваивание как привязка имён, walrus, множественное присваивание; совпадает с моделью книги.
+- id: frag-0039
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/02-control-flow/README.md
+  lines: 29-161
+  kind: prose
+  topics:
+  - if
+  - elif
+  - ternary
+  chapters:
+  - ch-05-control-flow
+  concepts:
+  - if_statement
+  - elif_clause
+  - else_clause
+  - conditional_expression
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Условные конструкции с верными/неверными примерами; отличная педагогика.
+- id: frag-0040
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/02-control-flow/README.md
+  lines: 162-255
+  kind: prose
+  topics:
+  - match/case
+  chapters:
+  - ch-05-control-flow
+  concepts:
+  - if_statement
+  - condition
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'Структурное сопоставление: полезно, но в книге вводится позже; давать как углубление.'
+- id: frag-0041
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/02-control-flow/README.md
+  lines: 256-408
+  kind: prose
+  topics:
+  - while
+  - for
+  - range
+  chapters:
+  - ch-06-loops
+  concepts:
+  - while_loop
+  - for_loop
+  - range_object
+  - iteration_variable
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Циклы и range; последовательность «сначала задача, потом синтаксис».
+- id: frag-0042
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/02-control-flow/README.md
+  lines: 409-551
+  kind: prose
+  topics:
+  - break
+  - continue
+  - loop else
+  chapters:
+  - ch-06-loops
+  concepts:
+  - break_statement
+  - continue_statement
+  - loop_else
+  - enumerate_function
+  - zip_function
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: break/continue/pass, loop-else, enumerate/zip — редко встречающийся вместе набор.
+- id: frag-0043
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/02-control-flow/README.md
+  lines: 682-748
+  kind: prose
+  topics:
+  - loop pitfalls
+  chapters:
+  - ch-06-loops
+  concepts:
+  - infinite_loop
+  - iteration
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'Типичные ошибки циклов: исчерпывающе и по делу, готовый материал для раздела «граничные случаи».'
+- id: frag-0044
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/03-functions/README.md
+  lines: 29-131
+  kind: prose
+  topics:
+  - functions
+  - arguments
+  chapters:
+  - ch-07-functions
+  concepts:
+  - function
+  - def_statement
+  - parameter
+  - argument
+  - function_call
+  - return_statement
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Определение и вызов функций, позиционные/именованные аргументы; чистое изложение.
+- id: frag-0045
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/03-functions/README.md
+  lines: 132-199
+  kind: prose
+  topics:
+  - default args
+  chapters:
+  - ch-07-functions
+  - ch-18-references-copy
+  concepts:
+  - default_argument
+  - default_argument_trap
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Ловушка изменяемого значения по умолчанию разобрана явно с исправлением — сильный фрагмент.
+- id: frag-0046
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/03-functions/README.md
+  lines: 200-306
+  kind: prose
+  topics:
+  - '*args'
+  - '**kwargs'
+  chapters:
+  - ch-24-signatures
+  concepts:
+  - variadic_positional
+  - variadic_keyword
+  - keyword_only_parameter
+  - positional_only_parameter
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Гибкие сигнатуры с примерами; полностью покрывает главу 24.
+- id: frag-0047
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/03-functions/README.md
+  lines: 366-484
+  kind: prose
+  topics:
+  - scope
+  - closures
+  chapters:
+  - ch-08-recursion-scope
+  - ch-22-higher-order
+  concepts:
+  - scope
+  - global_scope
+  - enclosing_scope
+  - closure
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: LEGB и замыкания на бытовых примерах; хорошая подготовка к декораторам.
+- id: frag-0048
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/03-functions/README.md
+  lines: 485-561
+  kind: prose
+  topics:
+  - lambda
+  chapters:
+  - ch-23-functional
+  concepts:
+  - lambda_expression
+  - higher_order_function
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Lambda с предостережениями о читаемости; сбалансированная подача.
+- id: frag-0049
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/03-functions/README.md
+  lines: 616-702
+  kind: prose
+  topics:
+  - docstrings
+  chapters:
+  - ch-07-functions
+  concepts:
+  - docstring
+  - help_function
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Docstring и help() как инструмент; согласовано с главой 2.
+- id: frag-0050
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/04-data-structures/README.md
+  lines: 41-219
+  kind: prose
+  topics:
+  - lists
+  chapters:
+  - ch-13-lists
+  concepts:
+  - list_type
+  - index
+  - slice
+  - negative_index
+  - list_method
+  - append_method
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'Списки: литералы, срезы, методы; очень полный и точный раздел.'
+- id: frag-0051
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/04-data-structures/README.md
+  lines: 220-339
+  kind: prose
+  topics:
+  - tuples
+  chapters:
+  - ch-14-tuples
+  concepts:
+  - tuple_type
+  - immutability
+  - unpacking
+  - tuple_packing
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Кортежи, распаковка, неизменяемость; примеры с ошибками.
+- id: frag-0052
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/04-data-structures/README.md
+  lines: 340-500
+  kind: prose
+  topics:
+  - dicts
+  chapters:
+  - ch-17-dicts
+  concepts:
+  - dict_type
+  - key_value_pair
+  - dict_method
+  - get_method
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'Словари: создание, доступ, методы; современный синтаксис (|, comprehension).'
+- id: frag-0053
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/04-data-structures/README.md
+  lines: 501-600
+  kind: prose
+  topics:
+  - sets
+  chapters:
+  - ch-16-sets
+  concepts:
+  - set_type
+  - set_operation
+  - hashable
+  - frozenset
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Множества и операции над ними; ясное объяснение хешируемости.
+- id: frag-0054
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/04-data-structures/README.md
+  lines: 601-720
+  kind: prose
+  topics:
+  - aliasing
+  - copying
+  chapters:
+  - ch-18-references-copy
+  concepts:
+  - reference_semantics
+  - aliasing
+  - shallow_copy
+  - deep_copy
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Aliasing и поверхностное/глубокое копирование — ключевая глава 18.
+- id: frag-0055
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/05-strings/README.md
+  lines: 28-115
+  kind: prose
+  topics:
+  - strings
+  chapters:
+  - ch-15-strings
+  concepts:
+  - string_type
+  - string_literal
+  - escape_sequence
+  - raw_string
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Литералы строк, кавычки, многострочные; база без устаревших приёмов.
+- id: frag-0056
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/05-strings/README.md
+  lines: 306-437
+  kind: prose
+  topics:
+  - f-strings
+  chapters:
+  - ch-15-strings
+  concepts:
+  - f_string
+  - string_method
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: f-strings с форматными спецификациями; современно и точно, включая отладку =.
+- id: frag-0057
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/05-strings/README.md
+  lines: 666-758
+  kind: prose
+  topics:
+  - unicode
+  - encoding
+  chapters:
+  - ch-15-strings
+  concepts:
+  - unicode
+  - encoding
+  - file_encoding
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'Unicode и кодировки: кодовая точка, UTF-8, ошибки кодирования. Сильный фрагмент.'
+- id: frag-0058
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/06-file-handling/README.md
+  lines: 81-204
+  kind: prose
+  topics:
+  - files
+  - modes
+  chapters:
+  - ch-19-files-formats
+  concepts:
+  - open_function
+  - file_object
+  - file_mode
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: open() и режимы файлов с таблицей режимов; практично.
+- id: frag-0059
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/06-file-handling/README.md
+  lines: 205-286
+  kind: prose
+  topics:
+  - context managers
+  - with
+  chapters:
+  - ch-19-files-formats
+  concepts:
+  - with_statement
+  - context_manager
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: with как гарантия закрытия файла; разобрано «почему», а не только «как».
+- id: frag-0060
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/06-file-handling/README.md
+  lines: 517-609
+  kind: prose
+  topics:
+  - encoding
+  chapters:
+  - ch-19-files-formats
+  concepts:
+  - file_encoding
+  - encoding
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Почему всегда указывать encoding='utf-8'; примеры поломок на Windows.
+- id: frag-0061
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/06-file-handling/README.md
+  lines: 661-769
+  kind: prose
+  topics:
+  - pathlib
+  chapters:
+  - ch-19-files-formats
+  - ch-34-stdlib
+  concepts:
+  - path
+  - pathlib
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'pathlib: пути как объекты; современная замена os.path.'
+- id: frag-0062
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/07-error-handling/README.md
+  lines: 36-160
+  kind: prose
+  topics:
+  - exceptions
+  chapters:
+  - ch-10-errors-exceptions
+  concepts:
+  - exception
+  - exception_type
+  - runtime_error
+  - syntax_error
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Что такое исключение и чем отличается от синтаксической/логической ошибки.
+- id: frag-0063
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/07-error-handling/README.md
+  lines: 161-434
+  kind: prose
+  topics:
+  - exception hierarchy
+  chapters:
+  - ch-10-errors-exceptions
+  concepts:
+  - exception_hierarchy
+  - exception_type
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Иерархия исключений и разбор частых встроенных; отличная карта для главы 10.
+- id: frag-0064
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/07-error-handling/README.md
+  lines: 435-617
+  kind: prose
+  topics:
+  - try/except
+  chapters:
+  - ch-10-errors-exceptions
+  concepts:
+  - try_statement
+  - except_clause
+  - else_clause
+  - finally_clause
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Анатомия try/except/else/finally с антипримерами (слишком широкий try).
+- id: frag-0065
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/07-error-handling/README.md
+  lines: 877-1015
+  kind: prose
+  topics:
+  - exception chaining
+  chapters:
+  - ch-10-errors-exceptions
+  concepts:
+  - raise_statement
+  - exception_chaining
+  - custom_exception
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: raise ... from и сохранение контекста; редкая глубина для учебника.
+- id: frag-0066
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/07-error-handling/README.md
+  lines: 1372-1445
+  kind: prose
+  topics:
+  - bare except
+  chapters:
+  - ch-10-errors-exceptions
+  concepts:
+  - except_clause
+  - error_handling
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'Почему bare except плох: аргументированно, с корректной альтернативой.'
+- id: frag-0067
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/07-error-handling/README.md
+  lines: 1533-1620
+  kind: prose
+  topics:
+  - logging exceptions
+  chapters:
+  - ch-11-debugging
+  concepts:
+  - traceback
+  - logging
+  - log_level
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Логирование исключений через traceback; согласовать с главой 37.
+- id: frag-0068
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/08-oop/README.md
+  lines: 150-266
+  kind: prose
+  topics:
+  - classes
+  chapters:
+  - ch-25-objects-classes
+  concepts:
+  - class
+  - instance
+  - init_method
+  - self_parameter
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Классы и объекты, пошаговое создание экземпляра; ясно, что происходит при вызове Dog().
+- id: frag-0069
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/08-oop/README.md
+  lines: 267-412
+  kind: prose
+  topics:
+  - class vs instance attributes
+  chapters:
+  - ch-26-encapsulation
+  concepts:
+  - class_attribute
+  - instance_attribute
+  - attribute
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Различие атрибутов класса и экземпляра с ловушками; критично для главы 26.
+- id: frag-0070
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/08-oop/README.md
+  lines: 676-803
+  kind: prose
+  topics:
+  - encapsulation
+  chapters:
+  - ch-26-encapsulation
+  concepts:
+  - encapsulation
+  - name_mangling
+  - attribute
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Соглашения _, __ и name mangling; честно о том, что это не запрет доступа.
+- id: frag-0071
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/08-oop/README.md
+  lines: 804-1006
+  kind: prose
+  topics:
+  - properties
+  chapters:
+  - ch-26-encapsulation
+  concepts:
+  - property_decorator
+  - setter
+  - attribute
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: property/setter/deleter с мотивацией; полный разбор.
+- id: frag-0072
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/08-oop/README.md
+  lines: 1007-1240
+  kind: prose
+  topics:
+  - inheritance
+  - MRO
+  chapters:
+  - ch-27-inheritance
+  concepts:
+  - inheritance
+  - super_function
+  - override
+  - polymorphism
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Наследование, super(), MRO; хорошие примеры ромбовидной проблемы.
+- id: frag-0073
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/08-oop/README.md
+  lines: 1580-1970
+  kind: prose
+  topics:
+  - dunder methods
+  chapters:
+  - ch-28-dunder
+  concepts:
+  - dunder_method
+  - operator_overloading
+  - repr_method
+  - eq_method
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'Магические методы: repr/eq/len и перегрузка операторов; объём требует сокращения.'
+- id: frag-0074
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/08-oop/README.md
+  lines: 2064-2281
+  kind: prose
+  topics:
+  - dataclasses
+  chapters:
+  - ch-29-dataclasses-protocols
+  concepts:
+  - dataclass
+  - dataclass_decorator
+  - frozen_dataclass
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'Dataclasses: зачем и как; современный Python.'
+- id: frag-0075
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/09-modules-packages/README.md
+  lines: 37-105
+  kind: prose
+  topics:
+  - modules
+  chapters:
+  - ch-09-modules
+  concepts:
+  - module
+  - namespace
+  - package
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Модули/пакеты и зачем разбивать программу; вводная часть главы 9.
+- id: frag-0076
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/09-modules-packages/README.md
+  lines: 106-312
+  kind: prose
+  topics:
+  - import forms
+  chapters:
+  - ch-09-modules
+  concepts:
+  - import_statement
+  - namespace
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Все формы import и их последствия; таблица «что попадает в namespace».
+- id: frag-0077
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/09-modules-packages/README.md
+  lines: 408-477
+  kind: prose
+  topics:
+  - main guard
+  chapters:
+  - ch-09-modules
+  concepts:
+  - main_guard
+  - module
+  - entry_point
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'if __name__ == ''__main__'': с объяснением, зачем нужен; классическая тема, изложена верно.'
+- id: frag-0078
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/09-modules-packages/README.md
+  lines: 574-664
+  kind: prose
+  topics:
+  - packages
+  chapters:
+  - ch-09-modules
+  concepts:
+  - package
+  - module
+  - namespace
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Пакеты с __init__.py; примеры структуры каталогов.
+- id: frag-0079
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/10-iterators-generators/README.md
+  lines: 38-127
+  kind: prose
+  topics:
+  - iteration
+  chapters:
+  - ch-20-iterators
+  concepts:
+  - iterable
+  - iteration
+  - for_loop
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Что такое итерация и iterable до формального протокола; правильный порядок понятий.
+- id: frag-0080
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/10-iterators-generators/README.md
+  lines: 128-274
+  kind: prose
+  topics:
+  - iterator protocol
+  chapters:
+  - ch-20-iterators
+  concepts:
+  - iterator
+  - iterator_protocol
+  - iter_function
+  - next_function
+  - stop_iteration
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Итерируемое vs итератор, __iter__/__next__ — ядро главы 20.
+- id: frag-0081
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/10-iterators-generators/README.md
+  lines: 441-559
+  kind: prose
+  topics:
+  - generators
+  chapters:
+  - ch-21-generators
+  concepts:
+  - generator
+  - generator_function
+  - yield_statement
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Генераторы как приостанавливаемые функции; объяснение состояния.
+- id: frag-0082
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/10-iterators-generators/README.md
+  lines: 654-735
+  kind: prose
+  topics:
+  - yield from
+  chapters:
+  - ch-21-generators
+  concepts:
+  - yield_statement
+  - generator
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: yield from и делегирование; полезно, но для книги — углубление.
+- id: frag-0083
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/10-iterators-generators/README.md
+  lines: 736-862
+  kind: prose
+  topics:
+  - generator expressions
+  chapters:
+  - ch-21-generators
+  concepts:
+  - generator_expression
+  - lazy_evaluation
+  - exhaustion
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Генераторные выражения и ленивость/исчерпание — ключевые граничные случаи.
+- id: frag-0084
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/11-decorators/README.md
+  lines: 36-86
+  kind: prose
+  topics:
+  - decorators
+  chapters:
+  - ch-22-higher-order
+  concepts:
+  - decorator
+  - higher_order_function
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'Зачем нужны декораторы: мотивация до синтаксиса.'
+- id: frag-0085
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/11-decorators/README.md
+  lines: 162-255
+  kind: prose
+  topics:
+  - closures
+  chapters:
+  - ch-22-higher-order
+  - ch-08-recursion-scope
+  concepts:
+  - closure
+  - first_class_function
+  - higher_order_function
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Замыкания и функции высшего порядка как основа декораторов.
+- id: frag-0086
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/11-decorators/README.md
+  lines: 466-543
+  kind: prose
+  topics:
+  - functools.wraps
+  chapters:
+  - ch-22-higher-order
+  concepts:
+  - functools_wraps
+  - decorator
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Почему без wraps ломаются имена и docstring; практическая деталь, которую часто пропускают.
+- id: frag-0087
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/12-context-managers/README.md
+  lines: 34-90
+  kind: prose
+  topics:
+  - context managers
+  chapters:
+  - ch-19-files-formats
+  concepts:
+  - context_manager
+  - with_statement
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'Зачем нужен with: гарантии освобождения ресурсов.'
+- id: frag-0088
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/12-context-managers/README.md
+  lines: 166-369
+  kind: prose
+  topics:
+  - enter/exit protocol
+  chapters:
+  - ch-19-files-formats
+  concepts:
+  - context_manager
+  - exception
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Протокол __enter__/__exit__ и подавление исключений; точная механика.
+- id: frag-0089
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/12-context-managers/README.md
+  lines: 534-671
+  kind: prose
+  topics:
+  - contextlib
+  chapters:
+  - ch-34-stdlib
+  concepts:
+  - contextlib
+  - context_manager
+  - generator_function
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: '@contextmanager через генератор; связывает главы 19, 21, 34.'
+- id: frag-0090
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/13-type-hints/README.md
+  lines: 47-156
+  kind: prose
+  topics:
+  - type hints
+  chapters:
+  - ch-31-typing
+  concepts:
+  - annotation
+  - type_hint
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Зачем аннотации, если Python динамический; без догматизма.
+- id: frag-0091
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/13-type-hints/README.md
+  lines: 441-551
+  kind: prose
+  topics:
+  - Optional
+  - Union
+  chapters:
+  - ch-31-typing
+  concepts:
+  - union_type
+  - optional_type
+  - none_value
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Optional/Union и современный синтаксис |; включает разбор None.
+- id: frag-0092
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/13-type-hints/README.md
+  lines: 788-900
+  kind: prose
+  topics:
+  - Protocol
+  chapters:
+  - ch-29-dataclasses-protocols
+  - ch-31-typing
+  concepts:
+  - protocol
+  - structural_typing
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Структурная типизация через Protocol; связка с главой 29.
+- id: frag-0093
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/14-async-await/README.md
+  lines: 44-214
+  kind: prose
+  topics:
+  - sync vs async
+  chapters:
+  - ch-38-concurrency
+  - ch-39-asyncio
+  concepts:
+  - concurrency
+  - parallelism
+  - coroutine
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'Синхронность/асинхронность/параллелизм: понятийная рамка перед asyncio.'
+- id: frag-0094
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/14-async-await/README.md
+  lines: 351-486
+  kind: prose
+  topics:
+  - asyncio basics
+  chapters:
+  - ch-39-asyncio
+  concepts:
+  - event_loop
+  - async_await
+  - coroutine
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: asyncio.run и цикл событий; аккуратно про то, что await не создаёт поток.
+- id: frag-0095
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/14-async-await/README.md
+  lines: 487-595
+  kind: prose
+  topics:
+  - tasks
+  chapters:
+  - ch-39-asyncio
+  concepts:
+  - task
+  - event_loop
+  - awaitable
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'create_task/gather/wait: практические различия и типичные ошибки.'
+- id: frag-0096
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/15-testing/README.md
+  lines: 275-442
+  kind: prose
+  topics:
+  - TDD
+  chapters:
+  - ch-32-testing
+  concepts:
+  - tdd
+  - unit_test
+  - test_case
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: TDD-цикл red-green-refactor на сквозном примере.
+- id: frag-0097
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/15-testing/README.md
+  lines: 767-1140
+  kind: prose
+  topics:
+  - pytest
+  chapters:
+  - ch-32-testing
+  concepts:
+  - pytest
+  - fixture
+  - parametrization
+  - assertion
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'pytest: тесты, фикстуры, параметризация; совпадает с официальной документацией.'
+- id: frag-0098
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/15-testing/README.md
+  lines: 1141-1381
+  kind: prose
+  topics:
+  - mocking
+  chapters:
+  - ch-32-testing
+  concepts:
+  - unit_test
+  - test_case
+  - dependency
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: unittest.mock с примерами; согласовать терминологию с главой 32.
+- id: frag-0099
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/16-standard-library/README.md
+  lines: 633-717
+  kind: prose
+  topics:
+  - regular expressions
+  chapters:
+  - ch-15-strings
+  - ch-34-stdlib
+  concepts:
+  - string_method
+  - standard_library
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'Краткий re: достаточно для книги, но примеры нужно переписать под русский текст.'
+- id: frag-0100
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/16-standard-library/README.md
+  lines: 718-771
+  kind: prose
+  topics:
+  - collections
+  chapters:
+  - ch-34-stdlib
+  concepts:
+  - collections_module
+  - counter
+  - deque
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'collections: Counter/deque/defaultdict — ядро главы 34.'
+- id: frag-0101
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/17-virtual-environments-packages/README.md
+  lines: 42-121
+  kind: prose
+  topics:
+  - virtual environments
+  chapters:
+  - ch-33-project-tooling
+  concepts:
+  - virtual_environment
+  - dependency
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Dependency hell как мотивация виртуальных окружений; хорошо для новичка.
+- id: frag-0102
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/17-virtual-environments-packages/README.md
+  lines: 277-409
+  kind: prose
+  topics:
+  - uv
+  chapters:
+  - ch-33-project-tooling
+  concepts:
+  - package_manager
+  - virtual_environment
+  - lockfile
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'uv как современный инструмент: команды и модель проекта.'
+- id: frag-0103
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/17-virtual-environments-packages/README.md
+  lines: 822-1005
+  kind: prose
+  topics:
+  - pyproject.toml
+  chapters:
+  - ch-33-project-tooling
+  concepts:
+  - pyproject_toml
+  - dependency
+  - package_manager
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: pyproject.toml по PEP 517/518/621; точная и актуальная часть.
+- id: frag-0104
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/18-best-practices/README.md
+  lines: 72-380
+  kind: prose
+  topics:
+  - PEP 8
+  chapters:
+  - ch-33-project-tooling
+  concepts:
+  - linter
+  - standard_library
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: PEP 8 с примерами; сократить вдвое, оставив спорные места (длина строки, импорты).
+- id: frag-0105
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/18-best-practices/README.md
+  lines: 497-658
+  kind: prose
+  topics:
+  - tooling
+  chapters:
+  - ch-33-project-tooling
+  - ch-45-git-ci-releases
+  concepts:
+  - linter
+  - package_manager
+  - ci_pipeline
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Современный стек инструментов (ruff, mypy, pre-commit); актуально на 2026.
+- id: frag-0106
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/19-advanced-topics/README.md
+  lines: 46-290
+  kind: prose
+  topics:
+  - metaclasses
+  chapters:
+  - ch-43-metaprogramming
+  concepts:
+  - metaclass
+  - class_decorator
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'Метаклассы: от «зачем» к реализации; требует редактуры под объём главы 43.'
+- id: frag-0107
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/19-advanced-topics/README.md
+  lines: 291-550
+  kind: prose
+  topics:
+  - descriptors
+  chapters:
+  - ch-43-metaprogramming
+  concepts:
+  - descriptor
+  - descriptor_protocol
+  - dynamic_attribute
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Дескрипторы с протоколом и примерами; ключевой материал главы 43.
+- id: frag-0108
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/19-advanced-topics/README.md
+  lines: 1655-1744
+  kind: prose
+  topics:
+  - inspect
+  chapters:
+  - ch-42-internals
+  concepts:
+  - bytecode
+  - pyobject
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Модуль inspect и интроспекция; полезно для главы 42.
+- id: frag-0109
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/19-advanced-topics/README.md
+  lines: 1745-1853
+  kind: prose
+  topics:
+  - CPython object model
+  chapters:
+  - ch-42-internals
+  concepts:
+  - pyobject
+  - memory_management
+  - reference_counting
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Структура объекта CPython и refcount — материал для главы 42; сверять с CPython.
+- id: frag-0110
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/19-advanced-topics/README.md
+  lines: 1980-2127
+  kind: prose
+  topics:
+  - profiling
+  chapters:
+  - ch-40-performance
+  concepts:
+  - profiling
+  - timeit
+  - bottleneck
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'Профилирование: cProfile, line_profiler; практические команды.'
+- id: frag-0111
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/20-projects/README.md
+  lines: 184-316
+  kind: exercise
+  topics:
+  - projects
+  chapters:
+  - ch-46-project-cli
+  - ch-47-project-api
+  - ch-48-project-async
+  concepts:
+  - cli_application
+  - rest_api
+  - async_client
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'Пять проектов возрастающей сложности: CLI, todo, API-клиент, async-скрапер. Хорошая карта для части 10.'
+- id: frag-0112
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/20-projects/README.md
+  lines: 317-448
+  kind: prose
+  topics:
+  - project patterns
+  chapters:
+  - ch-44-architecture
+  - ch-45-git-ci-releases
+  concepts:
+  - api_design
+  - layering
+  - design_pattern
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'Сквозные паттерны проектов: конфигурация, обработка ошибок, структура пакета.'
+- id: frag-0113
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/introduction.rst
+  lines: 40-139
+  kind: prose
+  topics:
+  - numbers
+  - arithmetic
+  chapters:
+  - ch-02-first-program
+  - ch-03-values-names-objects
+  concepts:
+  - arithmetic_operator
+  - int_type
+  - float_type
+  - expression
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'Python как калькулятор: эталонные формулировки про int/float и деление. Источник фактов, не текст для перевода.'
+- id: frag-0114
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/introduction.rst
+  lines: 140-384
+  kind: prose
+  topics:
+  - strings
+  chapters:
+  - ch-15-strings
+  concepts:
+  - string_type
+  - string_literal
+  - escape_sequence
+  - raw_string
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'Строки в официальном tutorial: кавычки, raw, Unicode. Арбитр по терминологии.'
+- id: frag-0115
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/introduction.rst
+  lines: 385-493
+  kind: prose
+  topics:
+  - lists
+  chapters:
+  - ch-13-lists
+  concepts:
+  - list_type
+  - index
+  - slice
+  - append_method
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'Списки: индексация, срезы, конкатенация; эталонные примеры.'
+- id: frag-0116
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/introduction.rst
+  lines: 494-577
+  kind: example
+  topics:
+  - first program
+  chapters:
+  - ch-02-first-program
+  concepts:
+  - for_loop
+  - print_function
+  - while_loop
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'Первые шаги: fibonacci через while и for — минимальный сквозной пример.'
+- id: frag-0117
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/controlflow.rst
+  lines: 93-466
+  kind: prose
+  topics:
+  - if
+  - for
+  - range
+  chapters:
+  - ch-05-control-flow
+  - ch-06-loops
+  concepts:
+  - if_statement
+  - for_loop
+  - range_object
+  - break_statement
+  - continue_statement
+  - loop_else
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Официальное изложение if/for/range/break/continue/else у цикла; сверять формулировки.
+- id: frag-0118
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/controlflow.rst
+  lines: 467-577
+  kind: prose
+  topics:
+  - functions
+  chapters:
+  - ch-07-functions
+  concepts:
+  - def_statement
+  - function
+  - docstring
+  - return_statement
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Определение функций в официальном tutorial; эталон.
+- id: frag-0119
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/controlflow.rst
+  lines: 587-748
+  kind: prose
+  topics:
+  - default and keyword args
+  chapters:
+  - ch-07-functions
+  concepts:
+  - default_argument
+  - keyword_argument
+  - default_argument_trap
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Default values и ловушка изменяемого значения — официальная формулировка.
+- id: frag-0120
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/controlflow.rst
+  lines: 749-900
+  kind: prose
+  topics:
+  - special parameters
+  chapters:
+  - ch-24-signatures
+  concepts:
+  - positional_only_parameter
+  - keyword_only_parameter
+  - variadic_positional
+  - variadic_keyword
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'positional-only / keyword-only / *args / **kwargs: самый точный источник по сигнатурам.'
+- id: frag-0121
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/controlflow.rst
+  lines: 923-1019
+  kind: prose
+  topics:
+  - unpacking
+  - lambda
+  chapters:
+  - ch-24-signatures
+  - ch-23-functional
+  concepts:
+  - argument_unpacking
+  - lambda_expression
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Распаковка аргументов и lambda; кратко и без воды.
+- id: frag-0122
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/controlflow.rst
+  lines: 1020-1100
+  kind: prose
+  topics:
+  - docstrings
+  - annotations
+  chapters:
+  - ch-07-functions
+  - ch-31-typing
+  concepts:
+  - docstring
+  - annotation
+  - type_hint
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Docstring-соглашения и первые аннотации; мост к главе 31.
+- id: frag-0123
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/datastructures.rst
+  lines: 12-189
+  kind: prose
+  topics:
+  - list methods
+  chapters:
+  - ch-13-lists
+  concepts:
+  - list_method
+  - append_method
+  - sort_method
+  - del_statement
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Методы списка, стеки/очереди; официальный набор примеров.
+- id: frag-0124
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/datastructures.rst
+  lines: 190-331
+  kind: prose
+  topics:
+  - list comprehensions
+  chapters:
+  - ch-23-functional
+  concepts:
+  - list_comprehension
+  - iterable
+  - expression
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'Списковые включения: эталонное объяснение и границы применимости.'
+- id: frag-0125
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/datastructures.rst
+  lines: 405-483
+  kind: prose
+  topics:
+  - tuples
+  chapters:
+  - ch-14-tuples
+  concepts:
+  - tuple_type
+  - unpacking
+  - immutability
+  - tuple_packing
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Кортежи и распаковка; официальные примеры.
+- id: frag-0126
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/datastructures.rst
+  lines: 484-538
+  kind: prose
+  topics:
+  - sets
+  chapters:
+  - ch-16-sets
+  concepts:
+  - set_type
+  - set_operation
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'Множества: операции и примеры; кратко.'
+- id: frag-0127
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/datastructures.rst
+  lines: 539-633
+  kind: prose
+  topics:
+  - dictionaries
+  chapters:
+  - ch-17-dicts
+  concepts:
+  - dict_type
+  - key_value_pair
+  - dict_method
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Словари в официальном tutorial; эталон API.
+- id: frag-0128
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/datastructures.rst
+  lines: 634-723
+  kind: prose
+  topics:
+  - looping techniques
+  chapters:
+  - ch-06-loops
+  - ch-17-dicts
+  concepts:
+  - dict_iteration
+  - enumerate_function
+  - zip_function
+  - sort_method
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Идиомы перебора (items, enumerate, zip, sorted) — готовый материал для практики.
+- id: frag-0129
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/errors.rst
+  lines: 14-85
+  kind: prose
+  topics:
+  - syntax vs runtime errors
+  chapters:
+  - ch-10-errors-exceptions
+  concepts:
+  - syntax_error
+  - exception
+  - runtime_error
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Различие синтаксических ошибок и исключений; базовая терминология.
+- id: frag-0130
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/errors.rst
+  lines: 86-291
+  kind: prose
+  topics:
+  - handling exceptions
+  chapters:
+  - ch-10-errors-exceptions
+  concepts:
+  - try_statement
+  - except_clause
+  - raise_statement
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'Обработка и поднятие исключений: официальный текст, арбитр по формулировкам.'
+- id: frag-0131
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/errors.rst
+  lines: 292-490
+  kind: prose
+  topics:
+  - chaining
+  - cleanup
+  chapters:
+  - ch-10-errors-exceptions
+  concepts:
+  - exception_chaining
+  - finally_clause
+  - with_statement
+  - custom_exception
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: raise from, finally, with, пользовательские исключения — плотный и точный раздел.
+- id: frag-0132
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/errors.rst
+  lines: 519-697
+  kind: prose
+  topics:
+  - exception groups
+  chapters:
+  - ch-10-errors-exceptions
+  - ch-39-asyncio
+  concepts:
+  - exception_type
+  - exception
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: ExceptionGroup/except* и add_note — современный Python 3.11+; в книге как углубление.
+- id: frag-0133
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/classes.rst
+  lines: 42-210
+  kind: prose
+  topics:
+  - namespaces
+  chapters:
+  - ch-08-recursion-scope
+  - ch-25-objects-classes
+  concepts:
+  - namespace
+  - scope
+  - object
+  - name
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Пространства имён и области видимости до классов; ключ к пониманию self.
+- id: frag-0134
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/classes.rst
+  lines: 211-396
+  kind: prose
+  topics:
+  - classes
+  chapters:
+  - ch-25-objects-classes
+  concepts:
+  - class
+  - instance
+  - method
+  - self_parameter
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'Классы, объекты, методы: официальное изложение.'
+- id: frag-0135
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/classes.rst
+  lines: 397-467
+  kind: prose
+  topics:
+  - class variables
+  chapters:
+  - ch-26-encapsulation
+  concepts:
+  - class_attribute
+  - instance_attribute
+  - attribute
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Переменные класса и экземпляра с обсуждением изменяемых значений — важно для ловушек.
+- id: frag-0136
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/classes.rst
+  lines: 565-739
+  kind: prose
+  topics:
+  - inheritance
+  - private
+  chapters:
+  - ch-27-inheritance
+  concepts:
+  - inheritance
+  - multiple_inheritance
+  - name_mangling
+  - super_function
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Наследование, множественное наследование, приватные переменные.
+- id: frag-0137
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/classes.rst
+  lines: 784-959
+  kind: prose
+  topics:
+  - iterators
+  - generators
+  chapters:
+  - ch-20-iterators
+  - ch-21-generators
+  concepts:
+  - iterator
+  - iterator_protocol
+  - generator
+  - generator_expression
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'Итераторы и генераторы: эталон протокола и терминологии.'
+- id: frag-0138
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/inputoutput.rst
+  lines: 114-305
+  kind: prose
+  topics:
+  - string formatting
+  chapters:
+  - ch-15-strings
+  concepts:
+  - f_string
+  - format_method
+  - string_method
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'f-strings и str.format: официальные правила форматирования.'
+- id: frag-0139
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/inputoutput.rst
+  lines: 306-483
+  kind: prose
+  topics:
+  - files
+  chapters:
+  - ch-19-files-formats
+  concepts:
+  - open_function
+  - file_object
+  - file_mode
+  - pathlib
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'Чтение/запись файлов и pathlib: официальный минимум с encoding.'
+- id: frag-0140
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/inputoutput.rst
+  lines: 484-547
+  kind: prose
+  topics:
+  - json
+  chapters:
+  - ch-19-files-formats
+  - ch-36-data-storage
+  concepts:
+  - json_format
+  - serialization
+  - file_object
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Сохранение структур в JSON; мост к главе 36.
+- id: frag-0141
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/modules.rst
+  lines: 73-182
+  kind: prose
+  topics:
+  - modules
+  chapters:
+  - ch-09-modules
+  concepts:
+  - module
+  - main_guard
+  - namespace
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Модули, скрипты, __name__ — официальная семантика.
+- id: frag-0142
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/modules.rst
+  lines: 183-389
+  kind: prose
+  topics:
+  - module search path
+  chapters:
+  - ch-09-modules
+  concepts:
+  - module
+  - namespace
+  - package
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: sys.path и поиск модулей; объясняет типичные ошибки импорта.
+- id: frag-0143
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/modules.rst
+  lines: 390-591
+  kind: prose
+  topics:
+  - packages
+  chapters:
+  - ch-09-modules
+  concepts:
+  - package
+  - import_statement
+  - namespace
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Пакеты, подпакеты, относительные импорты — точный источник.
+- id: frag-0144
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/stdlib.rst
+  lines: 10-136
+  kind: prose
+  topics:
+  - os
+  - sys
+  - re
+  chapters:
+  - ch-34-stdlib
+  concepts:
+  - standard_library
+  - os_module
+  - string_method
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Обзор стандартной библиотеки (os, shutil, glob, argv, re) — карта главы 34.
+- id: frag-0145
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/stdlib.rst
+  lines: 209-280
+  kind: prose
+  topics:
+  - datetime
+  - compression
+  - timing
+  chapters:
+  - ch-37-time-logging
+  - ch-40-performance
+  concepts:
+  - datetime_type
+  - timeit
+  - standard_library
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Даты/время, сжатие, timeit в одном разделе; сверять с главой 37.
+- id: frag-0146
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/stdlib2.rst
+  lines: 166-211
+  kind: prose
+  topics:
+  - threading
+  chapters:
+  - ch-38-concurrency
+  concepts:
+  - thread
+  - concurrency
+  - gil
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Многопоточность в официальном tutorial; добавить разговор о GIL.
+- id: frag-0147
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/stdlib2.rst
+  lines: 212-287
+  kind: prose
+  topics:
+  - logging
+  - weakref
+  chapters:
+  - ch-37-time-logging
+  concepts:
+  - logging_module
+  - log_level
+  - log_handler
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: logging и weakref; официальный минимум по логированию.
+- id: frag-0148
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/stdlib2.rst
+  lines: 288-353
+  kind: prose
+  topics:
+  - collections
+  - array
+  chapters:
+  - ch-34-stdlib
+  concepts:
+  - collections_module
+  - deque
+  - standard_library
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: collections/array/bisect — практичные структуры данных.
+- id: frag-0149
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/venv.rst
+  lines: 8-101
+  kind: prose
+  topics:
+  - venv
+  chapters:
+  - ch-33-project-tooling
+  concepts:
+  - virtual_environment
+  - package_manager
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Виртуальные окружения в официальном tutorial; база для главы 33.
+- id: frag-0150
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/tutorial/floatingpoint.rst
+  lines: 1-254
+  kind: prose
+  topics:
+  - floating point
+  chapters:
+  - ch-03-values-names-objects
+  - ch-04-expressions-input
+  concepts:
+  - float_type
+  - float_literal
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Двоичное представление дробей и почему 0.1+0.2 != 0.3 — эталонное объяснение для главы 3.
+- id: frag-0151
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/reference/datamodel.rst
+  lines: 11-118
+  kind: prose
+  topics:
+  - objects and types
+  chapters:
+  - ch-03-values-names-objects
+  - ch-18-references-copy
+  concepts:
+  - object
+  - identity
+  - type
+  - mutability
+  - value
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Определения объекта, идентичности, типа, изменяемости — нормативный текст для понятийной модели.
+- id: frag-0152
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/reference/datamodel.rst
+  lines: 444-551
+  kind: prose
+  topics:
+  - sets and mappings
+  chapters:
+  - ch-16-sets
+  - ch-17-dicts
+  concepts:
+  - set_type
+  - mapping
+  - dict_type
+  - hashing
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Нормативные определения множеств и отображений.
+- id: frag-0153
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/reference/datamodel.rst
+  lines: 1213-1400
+  kind: prose
+  topics:
+  - special attributes
+  chapters:
+  - ch-25-objects-classes
+  - ch-42-internals
+  concepts:
+  - class
+  - attribute
+  - type
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Специальные атрибуты классов и экземпляров; справочный материал.
+- id: frag-0154
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/howto/descriptor.rst
+  lines: 1-120
+  kind: prose
+  topics:
+  - descriptors
+  chapters:
+  - ch-43-metaprogramming
+  concepts:
+  - descriptor
+  - descriptor_protocol
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: Официальный howto по дескрипторам; лучший источник для главы 43, но требует адаптации.
+- id: frag-0155
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/howto/functional.rst
+  lines: 1-140
+  kind: prose
+  topics:
+  - functional programming
+  chapters:
+  - ch-23-functional
+  concepts:
+  - higher_order_function
+  - map_function
+  - filter_function
+  - lambda_expression
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'Официальный howto по функциональному стилю: итераторы, генераторы, functools.'
+- id: frag-0156
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/howto/sorting.rst
+  lines: 1-120
+  kind: prose
+  topics:
+  - sorting
+  chapters:
+  - ch-13-lists
+  - ch-23-functional
+  concepts:
+  - sort_method
+  - sort_key
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'Сортировка и key-функции: эталонные примеры для практики.'
+- id: frag-0157
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/howto/regex.rst
+  lines: 1-140
+  kind: prose
+  topics:
+  - regular expressions
+  chapters:
+  - ch-15-strings
+  concepts:
+  - string_method
+  - escape_sequence
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: Официальный howto по re; в книге — сокращённая версия без катастрофического бэктрекинга.
+- id: frag-0158
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/howto/perf_profiling.rst
+  lines: 1-120
+  kind: prose
+  topics:
+  - profiling
+  chapters:
+  - ch-40-performance
+  concepts:
+  - profiling
+  - benchmark
+  - bottleneck
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'Профилирование в CPython 3.12+: perf, pyperf; современные инструменты.'
+- id: frag-0159
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/faq/programming.rst
+  lines: 1-140
+  kind: prose
+  topics:
+  - faq
+  chapters:
+  - ch-40-performance
+  - ch-42-internals
+  concepts:
+  - performance
+  - pyobject
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'FAQ по программированию: типичные вопросы («почему так медленно/странно») с точными ответами.'
+- id: frag-0160
+  source: src-trekhleb-learn-python
+  path: sources/repos/trekhleb-learn-python/src/operators/test_arithmetic.py
+  lines: 1-44
+  kind: example
+  topics:
+  - operators
+  chapters:
+  - ch-04-expressions-input
+  concepts:
+  - arithmetic_operator
+  - operator
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Минимальные assert-примеры арифметики, включая целочисленное деление; готовые проверки.
+- id: frag-0161
+  source: src-trekhleb-learn-python
+  path: sources/repos/trekhleb-learn-python/src/data_types/test_lists.py
+  lines: 17-77
+  kind: example
+  topics:
+  - lists
+  chapters:
+  - ch-13-lists
+  concepts:
+  - list_type
+  - index
+  - slice
+  - negative_index
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Индексация/срезы с проверками; можно превратить в упражнения с автопроверкой.
+- id: frag-0162
+  source: src-trekhleb-learn-python
+  path: sources/repos/trekhleb-learn-python/src/data_types/test_lists.py
+  lines: 78-200
+  kind: example
+  topics:
+  - list methods
+  chapters:
+  - ch-13-lists
+  concepts:
+  - list_method
+  - append_method
+  - sort_method
+  - del_statement
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Методы списка в виде исполняемых утверждений.
+- id: frag-0163
+  source: src-trekhleb-learn-python
+  path: sources/repos/trekhleb-learn-python/src/data_types/test_strings.py
+  lines: 146-201
+  kind: example
+  topics:
+  - string methods
+  chapters:
+  - ch-15-strings
+  concepts:
+  - string_method
+  - split_join
+  - string_comparison
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Методы строк с ожидаемыми значениями; удобно для тестов главы 15.
+- id: frag-0164
+  source: src-trekhleb-learn-python
+  path: sources/repos/trekhleb-learn-python/src/control_flow/test_for.py
+  lines: 14-108
+  kind: example
+  topics:
+  - for
+  chapters:
+  - ch-06-loops
+  concepts:
+  - for_loop
+  - iteration_variable
+  - iterable
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: for по разным итерируемым объектам; компактно.
+- id: frag-0165
+  source: src-trekhleb-learn-python
+  path: sources/repos/trekhleb-learn-python/src/control_flow/test_try.py
+  lines: 1-66
+  kind: example
+  topics:
+  - exceptions
+  chapters:
+  - ch-10-errors-exceptions
+  concepts:
+  - try_statement
+  - except_clause
+  - finally_clause
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: try/except/finally в виде проверок; точные ожидания.
+- id: frag-0166
+  source: src-trekhleb-learn-python
+  path: sources/repos/trekhleb-learn-python/src/functions/test_function_definition.py
+  lines: 1-123
+  kind: example
+  topics:
+  - functions
+  chapters:
+  - ch-07-functions
+  concepts:
+  - function
+  - def_statement
+  - return_statement
+  - function_call
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Определение функций и область видимости с assert; рекурсивный пример.
+- id: frag-0167
+  source: src-trekhleb-learn-python
+  path: sources/repos/trekhleb-learn-python/src/functions/test_function_default_arguments.py
+  lines: 1-26
+  kind: example
+  topics:
+  - default args
+  chapters:
+  - ch-07-functions
+  concepts:
+  - default_argument
+  - keyword_argument
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Эталонный мини-пример default-аргументов; прямое соответствие главе 7.
+- id: frag-0168
+  source: src-trekhleb-learn-python
+  path: sources/repos/trekhleb-learn-python/src/functions/test_function_decorators.py
+  lines: 1-91
+  kind: example
+  topics:
+  - decorators
+  chapters:
+  - ch-22-higher-order
+  concepts:
+  - decorator
+  - closure
+  - functools_wraps
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Декораторы с проверками; добавить объяснение замыканий.
+- id: frag-0169
+  source: src-trekhleb-learn-python
+  path: sources/repos/trekhleb-learn-python/src/classes/test_inheritance.py
+  lines: 1-81
+  kind: example
+  topics:
+  - inheritance
+  chapters:
+  - ch-27-inheritance
+  concepts:
+  - inheritance
+  - superclass
+  - subclass
+  - override
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Классы Person/Employee и проверки наследования.
+- id: frag-0170
+  source: src-trekhleb-learn-python
+  path: sources/repos/trekhleb-learn-python/src/exceptions/test_handle_exceptions.py
+  lines: 1-106
+  kind: example
+  topics:
+  - exceptions
+  chapters:
+  - ch-10-errors-exceptions
+  concepts:
+  - exception
+  - except_clause
+  - raise_statement
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Обработка исключений в тестах; полезно как упражнение.
+- id: frag-0171
+  source: src-trekhleb-learn-python
+  path: sources/repos/trekhleb-learn-python/src/modules/test_modules.py
+  lines: 1-97
+  kind: example
+  topics:
+  - modules
+  chapters:
+  - ch-09-modules
+  concepts:
+  - module
+  - import_statement
+  - main_guard
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Импорт модулей/пакетов с проверками; дополняет главу 9.
+- id: frag-0172
+  source: src-trekhleb-learn-python
+  path: sources/repos/trekhleb-learn-python/src/additions/test_generators.py
+  lines: 1-39
+  kind: example
+  topics:
+  - generators
+  chapters:
+  - ch-21-generators
+  concepts:
+  - generator
+  - generator_function
+  - yield_statement
+  - lazy_evaluation
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Генераторы компактно; хороший минимальный пример lazy-вычислений.
+- id: frag-0173
+  source: src-trekhleb-learn-python
+  path: sources/repos/trekhleb-learn-python/src/standard_libraries/test_json.py
+  lines: 1-38
+  kind: example
+  topics:
+  - json
+  chapters:
+  - ch-19-files-formats
+  - ch-36-data-storage
+  concepts:
+  - json_format
+  - serialization
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: json.dumps/loads с проверками; коротко и по делу.
+- id: frag-0174
+  source: src-trekhleb-learn-python
+  path: sources/repos/trekhleb-learn-python/src/files/test_file_reading.py
+  lines: 1-77
+  kind: example
+  topics:
+  - files
+  chapters:
+  - ch-19-files-formats
+  concepts:
+  - file_object
+  - open_function
+  - with_statement
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Чтение файлов с временными файлами; требует проверки API (устаревшие режимы).
+- id: frag-0175
+  source: src-thealgorithms-python
+  path: sources/repos/thealgorithms-python/searches/binary_search.py
+  lines: 192-266
+  kind: example
+  topics:
+  - binary search
+  chapters:
+  - ch-40-performance
+  concepts:
+  - algorithmic_complexity
+  - benchmark
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Бинарный поиск с doctest и типизацией; эталон для раздела сложности.
+- id: frag-0176
+  source: src-thealgorithms-python
+  path: sources/repos/thealgorithms-python/searches/linear_search.py
+  lines: 1-77
+  kind: example
+  topics:
+  - linear search
+  chapters:
+  - ch-40-performance
+  concepts:
+  - algorithmic_complexity
+  - iteration
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Линейный поиск с doctest — минимальный пример O(n).
+- id: frag-0177
+  source: src-thealgorithms-python
+  path: sources/repos/thealgorithms-python/sorts/bubble_sort.py
+  lines: 8-81
+  kind: example
+  topics:
+  - sorting
+  chapters:
+  - ch-13-lists
+  - ch-40-performance
+  concepts:
+  - sort_method
+  - algorithmic_complexity
+  - iteration
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Пузырьковая сортировка итеративная с типизацией; хороший пример «как не надо» по сложности.
+- id: frag-0178
+  source: src-thealgorithms-python
+  path: sources/repos/thealgorithms-python/sorts/bubble_sort.py
+  lines: 82-173
+  kind: example
+  topics:
+  - recursion
+  chapters:
+  - ch-08-recursion-scope
+  - ch-40-performance
+  concepts:
+  - recursion
+  - algorithmic_complexity
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Рекурсивная пузырьковая сортировка — пример рекурсии с плохими характеристиками.
+- id: frag-0179
+  source: src-thealgorithms-python
+  path: sources/repos/thealgorithms-python/sorts/quick_sort.py
+  lines: 1-56
+  kind: example
+  topics:
+  - sorting
+  - recursion
+  chapters:
+  - ch-08-recursion-scope
+  - ch-40-performance
+  concepts:
+  - recursion
+  - sort_method
+  - algorithmic_complexity
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'Быстрая сортировка: рекурсия + сложность в одном компактном файле.'
+- id: frag-0180
+  source: src-thealgorithms-python
+  path: sources/repos/thealgorithms-python/data_structures/binary_tree/binary_search_tree.py
+  lines: 100-353
+  kind: example
+  topics:
+  - binary tree
+  chapters:
+  - ch-42-internals
+  - ch-40-performance
+  concepts:
+  - algorithmic_complexity
+  - memoization
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'BST: узлы, вставка, обходы; материал для главы о структурах данных.'
+- id: frag-0181
+  source: src-thealgorithms-python
+  path: sources/repos/thealgorithms-python/data_structures/hashing/hash_table.py
+  lines: 1-140
+  kind: example
+  topics:
+  - hash table
+  chapters:
+  - ch-16-sets
+  - ch-17-dicts
+  concepts:
+  - hashing
+  - hashable
+  - dict_type
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'Реализация хеш-таблицы: показывает, что скрыто за dict/set.'
+- id: frag-0182
+  source: src-thealgorithms-python
+  path: sources/repos/thealgorithms-python/data_structures/linked_list/singly_linked_list.py
+  lines: 1-200
+  kind: example
+  topics:
+  - linked list
+  chapters:
+  - ch-12-collections-intro
+  concepts:
+  - collection
+  - sequence
+  - index
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'Связный список: почему list устроен иначе; материал для главы 12.'
+- id: frag-0183
+  source: src-thealgorithms-python
+  path: sources/repos/thealgorithms-python/graphs/breadth_first_search.py
+  lines: 10-93
+  kind: example
+  topics:
+  - graphs
+  chapters:
+  - ch-12-collections-intro
+  - ch-34-stdlib
+  concepts:
+  - collection
+  - iterable
+  - deque
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'BFS с deque: практический пример коллекций и очередей.'
+- id: frag-0184
+  source: src-thealgorithms-python
+  path: sources/repos/thealgorithms-python/dynamic_programming/fibonacci.py
+  lines: 7-51
+  kind: example
+  topics:
+  - dynamic programming
+  chapters:
+  - ch-08-recursion-scope
+  - ch-40-performance
+  concepts:
+  - recursion
+  - memoization
+  - algorithmic_complexity
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'Fibonacci с мемоизацией: наглядно про повторные вычисления.'
+- id: frag-0185
+  source: src-thealgorithms-python
+  path: sources/repos/thealgorithms-python/maths/average_mean.py
+  lines: 1-28
+  kind: example
+  topics:
+  - statistics
+  chapters:
+  - ch-34-stdlib
+  concepts:
+  - standard_library
+  - float_type
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'Среднее значение: короткий пример работы с числами.'
+- id: frag-0186
+  source: src-thealgorithms-python
+  path: sources/repos/thealgorithms-python/searches/binary_search.py
+  lines: 267-341
+  kind: example
+  topics:
+  - duplicates
+  - binary search
+  chapters:
+  - ch-40-performance
+  concepts:
+  - algorithmic_complexity
+  - list_type
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'Поиск с дубликатами: граничные случаи, которых нет в учебниках.'
+- id: frag-0187
+  source: src-jerry-git-learn-python3
+  path: sources/repos/jerry-git-learn-python3/notebooks/beginner/notebooks/01_strings.ipynb
+  lines: 4-108
+  kind: prose
+  topics:
+  - strings
+  chapters:
+  - ch-15-strings
+  concepts:
+  - string_type
+  - string_method
+  - split_join
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'Строки в ноутбуке: теория + ячейки с выводом; хорошо для интерактивных примеров.'
+- id: frag-0188
+  source: src-jerry-git-learn-python3
+  path: sources/repos/jerry-git-learn-python3/notebooks/beginner/notebooks/06_for_loops.ipynb
+  lines: 1-173
+  kind: prose
+  topics:
+  - for loops
+  chapters:
+  - ch-06-loops
+  concepts:
+  - for_loop
+  - range_object
+  - iteration_variable
+  - break_statement
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Циклы с пошаговыми пояснениями; можно перевести в формат книги.
+- id: frag-0189
+  source: src-jerry-git-learn-python3
+  path: sources/repos/jerry-git-learn-python3/notebooks/beginner/notebooks/07_functions.ipynb
+  lines: 1-262
+  kind: prose
+  topics:
+  - functions
+  chapters:
+  - ch-07-functions
+  concepts:
+  - function
+  - parameter
+  - argument
+  - return_value
+  - docstring
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'Функции: аргументы, возврат, docstring; согласуется с главой 7.'
+- id: frag-0190
+  source: src-jerry-git-learn-python3
+  path: sources/repos/jerry-git-learn-python3/notebooks/beginner/notebooks/11_classes.ipynb
+  lines: 1-329
+  kind: prose
+  topics:
+  - classes
+  chapters:
+  - ch-25-objects-classes
+  concepts:
+  - class
+  - instance
+  - method
+  - init_method
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Классы для новичка; примеры с выводом.
+- id: frag-0191
+  source: src-jerry-git-learn-python3
+  path: sources/repos/jerry-git-learn-python3/notebooks/beginner/notebooks/12_exceptions.ipynb
+  lines: 23-84
+  kind: prose
+  topics:
+  - exceptions
+  chapters:
+  - ch-10-errors-exceptions
+  concepts:
+  - try_statement
+  - except_clause
+  - exception_type
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: try/except с разбором типов исключений; компактно.
+- id: frag-0192
+  source: src-jerry-git-learn-python3
+  path: sources/repos/jerry-git-learn-python3/notebooks/beginner/notebooks/14_debugging.ipynb
+  lines: 1-114
+  kind: prose
+  topics:
+  - debugging
+  chapters:
+  - ch-11-debugging
+  concepts:
+  - debugger
+  - breakpoint
+  - traceback
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'Отладка: pdb/breakpoint и чтение traceback; практичный минимум.'
+- id: frag-0193
+  source: src-jerry-git-learn-python3
+  path: sources/repos/jerry-git-learn-python3/notebooks/beginner/notebooks/08_testing1.ipynb
+  lines: 11-147
+  kind: prose
+  topics:
+  - testing
+  chapters:
+  - ch-32-testing
+  concepts:
+  - pytest
+  - unit_test
+  - tdd
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Зачем тесты и TDD с pytest; хорошая мотивация перед главой 32.
+- id: frag-0194
+  source: src-jerry-git-learn-python3
+  path: sources/repos/jerry-git-learn-python3/notebooks/intermediate/notebooks/01_pytest_fixtures.ipynb
+  lines: 1-260
+  kind: example
+  topics:
+  - pytest fixtures
+  chapters:
+  - ch-32-testing
+  concepts:
+  - fixture
+  - pytest
+  - test_case
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Фикстуры pytest на практике; дополняет официальную документацию.
+- id: frag-0195
+  source: src-jerry-git-learn-python3
+  path: sources/repos/jerry-git-learn-python3/notebooks/intermediate/notebooks/01_idiomatic_loops.ipynb
+  lines: 1-220
+  kind: prose
+  topics:
+  - idiomatic code
+  chapters:
+  - ch-06-loops
+  - ch-23-functional
+  concepts:
+  - for_loop
+  - enumerate_function
+  - zip_function
+  - list_comprehension
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: Идиоматичные циклы (enumerate/zip/comprehensions) — сильный материал уровня «после основ».
+- id: frag-0196
+  source: src-jerry-git-learn-python3
+  path: sources/repos/jerry-git-learn-python3/notebooks/intermediate/notebooks/02_idiomatic_dicts.ipynb
+  lines: 1-220
+  kind: prose
+  topics:
+  - idiomatic dicts
+  chapters:
+  - ch-17-dicts
+  concepts:
+  - dict_type
+  - dict_method
+  - get_method
+  - dict_iteration
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'Идиомы словарей: defaultdict/Counter/items; полезно для главы 17.'
+- id: frag-0197
+  source: src-norvig-pytudes
+  path: sources/repos/norvig-pytudes/py/spell.py
+  lines: 1-106
+  kind: example
+  topics:
+  - text processing
+  - collections
+  chapters:
+  - ch-17-dicts
+  - ch-34-stdlib
+  concepts:
+  - counter
+  - dict_type
+  - string_method
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'Корректор орфографии: Counter + регулярные выражения, компактно и образцово.'
+- id: frag-0198
+  source: src-norvig-pytudes
+  path: sources/repos/norvig-pytudes/py/lispy.py
+  lines: 1-120
+  kind: example
+  topics:
+  - interpreter
+  chapters:
+  - ch-42-internals
+  concepts:
+  - interpreter_loop
+  - pyobject
+  - bytecode
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'Мини-интерпретатор Lisp: парсер/вычислитель — иллюстрация работы интерпретатора.'
+- id: frag-0199
+  source: src-norvig-pytudes
+  path: sources/repos/norvig-pytudes/py/lis.py
+  lines: 1-132
+  kind: example
+  topics:
+  - interpreter
+  chapters:
+  - ch-42-internals
+  concepts:
+  - interpreter_loop
+  - recursion
+  - pyobject
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: Ещё более короткий интерпретатор; хорош как пошаговый проект.
+- id: frag-0200
+  source: src-norvig-pytudes
+  path: sources/repos/norvig-pytudes/py/pal.py
+  lines: 1-155
+  kind: example
+  topics:
+  - strings
+  - algorithms
+  chapters:
+  - ch-15-strings
+  - ch-40-performance
+  concepts:
+  - string_method
+  - algorithmic_complexity
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'Палиндромы: несколько решений с разной сложностью — материал для сравнения подходов.'
+- id: frag-0201
+  source: src-norvig-pytudes
+  path: sources/repos/norvig-pytudes/py/ngrams.py
+  lines: 1-260
+  kind: example
+  topics:
+  - text
+  - data
+  chapters:
+  - ch-19-files-formats
+  - ch-34-stdlib
+  concepts:
+  - file_object
+  - dict_type
+  - collections_module
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'N-граммы: чтение файлов, словари, сортировка — сквозной пример.'
+- id: frag-0202
+  source: src-norvig-pytudes
+  path: sources/repos/norvig-pytudes/py/docex.py
+  lines: 1-237
+  kind: example
+  topics:
+  - testing
+  chapters:
+  - ch-32-testing
+  - ch-11-debugging
+  concepts:
+  - test_case
+  - assertion
+  - docstring
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'Фреймворк тестирования на doctest/exec: показывает, как устроены тест-раннеры.'
+- id: frag-0203
+  source: src-norvig-pytudes
+  path: sources/repos/norvig-pytudes/py/SET.py
+  lines: 1-134
+  kind: example
+  topics:
+  - sets
+  - game
+  chapters:
+  - ch-16-sets
+  concepts:
+  - set_type
+  - set_operation
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'Игра Set на множествах: практическое применение set-операций.'
+- id: frag-0204
+  source: src-norvig-pytudes
+  path: sources/repos/norvig-pytudes/py/yaptu.py
+  lines: 1-171
+  kind: example
+  topics:
+  - parsing
+  chapters:
+  - ch-42-internals
+  concepts:
+  - interpreter_loop
+  - recursion
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Ещё один маленький парсер/интерпретатор; материал для проекта главы 42.
+- id: frag-0205
+  source: src-norvig-pytudes
+  path: sources/repos/norvig-pytudes/py/ibol.py
+  lines: 1-194
+  kind: example
+  topics:
+  - turtle graphics
+  chapters:
+  - ch-44-architecture
+  concepts:
+  - design_pattern
+  - composition_over_inheritance
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'Графика черепашкой: ООП-дизайн в действии; иллюстративный материал.'
+- id: frag-0206
+  source: src-fluentpython-example-code-2e
+  path: sources/repos/fluentpython-example-code-2e/01-data-model/vector2d.py
+  lines: 1-55
+  kind: example
+  topics:
+  - data model
+  chapters:
+  - ch-28-dunder
+  concepts:
+  - dunder_method
+  - repr_method
+  - operator_overloading
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'Vector2d: repr/abs/bool — минимальный пример модели данных.'
+- id: frag-0207
+  source: src-fluentpython-example-code-2e
+  path: sources/repos/fluentpython-example-code-2e/01-data-model/frenchdeck.py
+  lines: 1-17
+  kind: example
+  topics:
+  - dunder methods
+  chapters:
+  - ch-28-dunder
+  concepts:
+  - dunder_method
+  - len_method
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'Короткая колода карт: __len__/__getitem__ за 17 строк.'
+- id: frag-0208
+  source: src-fluentpython-example-code-2e
+  path: sources/repos/fluentpython-example-code-2e/09-closure-deco/average.py
+  lines: 1-33
+  kind: example
+  topics:
+  - closures
+  chapters:
+  - ch-22-higher-order
+  concepts:
+  - closure
+  - first_class_function
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'Замыкание-аккумулятор: короткий и точный пример нелокального состояния.'
+- id: frag-0209
+  source: src-fluentpython-example-code-2e
+  path: sources/repos/fluentpython-example-code-2e/17-it-generator/aritprog_v3.py
+  lines: 1-11
+  kind: example
+  topics:
+  - generators
+  chapters:
+  - ch-21-generators
+  concepts:
+  - generator_function
+  - yield_statement
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Арифметическая прогрессия генератором; 11 строк — идеальный минимальный пример.
+- id: frag-0210
+  source: src-fluentpython-example-code-2e
+  path: sources/repos/fluentpython-example-code-2e/19-concurrency/spinner_thread.py
+  lines: 1-43
+  kind: example
+  topics:
+  - threads
+  chapters:
+  - ch-38-concurrency
+  concepts:
+  - thread
+  - concurrency
+  - race_condition
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'Спиннер на потоках: наглядная конкурентность и общий ресурс.'
+- id: frag-0211
+  source: src-fluentpython-example-code-2e
+  path: sources/repos/fluentpython-example-code-2e/19-concurrency/spinner_async.py
+  lines: 1-41
+  kind: example
+  topics:
+  - asyncio
+  chapters:
+  - ch-39-asyncio
+  concepts:
+  - coroutine
+  - async_await
+  - event_loop
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'Тот же спиннер на asyncio: прямое сравнение потоков и корутин.'
+- id: frag-0212
+  source: src-fluentpython-example-code-2e
+  path: sources/repos/fluentpython-example-code-2e/13-protocol-abc/tombola.py
+  lines: 1-34
+  kind: example
+  topics:
+  - ABC
+  chapters:
+  - ch-29-dataclasses-protocols
+  concepts:
+  - abstract_base_class
+  - protocol
+  - inheritance
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'Абстрактный базовый класс Tombola: интерфейс без реализации.'
+- id: frag-0213
+  source: src-fluentpython-example-code-2e
+  path: sources/repos/fluentpython-example-code-2e/10-dp-1class-func/classic_strategy.py
+  lines: 71-105
+  kind: example
+  topics:
+  - strategy pattern
+  chapters:
+  - ch-44-architecture
+  concepts:
+  - design_pattern
+  - polymorphism
+  - cohesion
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'Паттерн «Стратегия» на классах: скидки; материал главы 44.'
+- id: frag-0214
+  source: src-fluentpython-example-code-2e
+  path: sources/repos/fluentpython-example-code-2e/12-seq-hacking/vector_v1.py
+  lines: 91-126
+  kind: example
+  topics:
+  - sequence protocol
+  chapters:
+  - ch-28-dunder
+  - ch-13-lists
+  concepts:
+  - dunder_method
+  - len_method
+  - slice
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'Vector v1: как сделать свой тип последовательностью.'
+- id: frag-0215
+  source: src-fluentpython-example-code-2e
+  path: sources/repos/fluentpython-example-code-2e/23-descriptor/descriptorkinds.py
+  lines: 145-199
+  kind: example
+  topics:
+  - descriptors
+  chapters:
+  - ch-43-metaprogramming
+  concepts:
+  - descriptor
+  - descriptor_protocol
+  - dynamic_attribute
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: Четыре вида дескрипторов с печатью вызовов — лучший материал для главы 43.
+- id: frag-0216
+  source: src-fluentpython-example-code-2e
+  path: sources/repos/fluentpython-example-code-2e/22-dyn-attr-prop/bulkfood/bulkfood_v2b.py
+  lines: 1-64
+  kind: example
+  topics:
+  - properties
+  chapters:
+  - ch-26-encapsulation
+  concepts:
+  - property_decorator
+  - dynamic_attribute
+  - setter
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'Свойства без декоратора и с ним: эволюция решения.'
+- id: frag-0217
+  source: src-fluentpython-example-code-2e
+  path: sources/repos/fluentpython-example-code-2e/06-obj-ref/bus.py
+  lines: 1-28
+  kind: example
+  topics:
+  - references
+  chapters:
+  - ch-18-references-copy
+  concepts:
+  - reference_semantics
+  - aliasing
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'Класс Bus: изменяемый атрибут класса и его последствия — классическая ловушка.'
+- id: frag-0218
+  source: src-fluentpython-example-code-2e
+  path: sources/repos/fluentpython-example-code-2e/03-dict-set/index_default.py
+  lines: 1-26
+  kind: example
+  topics:
+  - defaultdict
+  chapters:
+  - ch-17-dicts
+  concepts:
+  - dict_type
+  - get_method
+  - dict_iteration
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'Индекс по словам: сравнение setdefault/defaultdict.'
+- id: frag-0219
+  source: src-mattmakai-fullstackpython
+  path: sources/repos/mattmakai-fullstackpython/content/pages/02-development-environments/15-application-dependencies.markdown
+  lines: 47-102
+  kind: prose
+  topics:
+  - dependencies
+  chapters:
+  - ch-33-project-tooling
+  concepts:
+  - dependency
+  - virtual_environment
+  - package_manager
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Изоляция зависимостей и requirements.txt; устарело (virtualenv), обновить на uv.
+- id: frag-0220
+  source: src-mattmakai-fullstackpython
+  path: sources/repos/mattmakai-fullstackpython/content/pages/03-data/00-data.markdown
+  lines: 1-180
+  kind: prose
+  topics:
+  - data tasks
+  chapters:
+  - ch-36-data-storage
+  concepts:
+  - database_table
+  - sql_query
+  - serialization
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'Карта работы с данными: БД, ORM, анализ; только как обзор тем.'
+- id: frag-0221
+  source: src-mattmakai-fullstackpython
+  path: sources/repos/mattmakai-fullstackpython/content/pages/04-web-development/00-web-development.markdown
+  lines: 16-90
+  kind: prose
+  topics:
+  - web development
+  chapters:
+  - ch-47-project-api
+  concepts:
+  - http_server
+  - web_framework
+  - request_handler
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'Как Python вписывается в веб: WSGI/ASGI, фреймворки; для главы 47.'
+- id: frag-0222
+  source: src-mattmakai-fullstackpython
+  path: sources/repos/mattmakai-fullstackpython/content/pages/05-deployment/00-deployment.markdown
+  lines: 20-140
+  kind: prose
+  topics:
+  - deployment
+  chapters:
+  - ch-45-git-ci-releases
+  concepts:
+  - ci_pipeline
+  - version_control
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Варианты развёртывания и инструменты; сильно устарело — только структура.
+- id: frag-0223
+  source: src-mattmakai-fullstackpython
+  path: sources/repos/mattmakai-fullstackpython/content/pages/06-devops/00-devops.markdown
+  lines: 16-100
+  kind: prose
+  topics:
+  - devops
+  chapters:
+  - ch-45-git-ci-releases
+  concepts:
+  - ci_pipeline
+  - virtual_environment
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Обзор DevOps-практик; ссылки старые, идеи применимы.
+- id: frag-0224
+  source: src-mattmakai-fullstackpython
+  path: sources/repos/mattmakai-fullstackpython/content/pages/01-introduction/02-python-programming-language.markdown
+  lines: 1-120
+  kind: prose
+  topics:
+  - language overview
+  chapters:
+  - ch-01-introduction
+  concepts:
+  - python_language
+  - interpreter
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Обзор языка для практика; пересекается с главой 1.
+- id: frag-0225
+  source: src-mattmakai-fullstackpython
+  path: sources/repos/mattmakai-fullstackpython/content/pages/02-development-environments/00-development-environments.markdown
+  lines: 1-120
+  kind: prose
+  topics:
+  - environments
+  chapters:
+  - ch-33-project-tooling
+  concepts:
+  - virtual_environment
+  - package_manager
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Карта окружений разработки; обновить инструменты.
+- id: frag-0226
+  source: src-pytest-dev-pytest
+  path: sources/repos/pytest-dev-pytest/doc/en/getting-started.rst
+  lines: 66-150
+  kind: prose
+  topics:
+  - first tests
+  chapters:
+  - ch-32-testing
+  concepts:
+  - pytest
+  - test_case
+  - assertion
+  - unit_test
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'Первый тест и pytest.raises: официальный старт, минимальный объём.'
+- id: frag-0227
+  source: src-pytest-dev-pytest
+  path: sources/repos/pytest-dev-pytest/doc/en/getting-started.rst
+  lines: 112-240
+  kind: prose
+  topics:
+  - test classes
+  chapters:
+  - ch-32-testing
+  concepts:
+  - pytest
+  - test_case
+  - fixture
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Группировка тестов в классы; сравнить с функциональным стилем.
+- id: frag-0228
+  source: src-pytest-dev-pytest
+  path: sources/repos/pytest-dev-pytest/doc/en/getting-started.rst
+  lines: 241-316
+  kind: prose
+  topics:
+  - approx
+  - tmp_path
+  chapters:
+  - ch-32-testing
+  concepts:
+  - assertion
+  - fixture
+  - float_type
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: pytest.approx для float и tmp_path — две практические детали, важные новичку.
+- id: frag-0229
+  source: src-pytest-dev-pytest
+  path: sources/repos/pytest-dev-pytest/doc/en/explanation/fixtures.rst
+  lines: 11-90
+  kind: prose
+  topics:
+  - fixtures
+  chapters:
+  - ch-32-testing
+  concepts:
+  - fixture
+  - pytest
+  - test_case
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: Что такое фикстуры и зачем они вместо setup/teardown.
+- id: frag-0230
+  source: src-pytest-dev-pytest
+  path: sources/repos/pytest-dev-pytest/doc/en/how-to/parametrize.rst
+  lines: 9-213
+  kind: prose
+  topics:
+  - parametrization
+  chapters:
+  - ch-32-testing
+  concepts:
+  - parametrization
+  - pytest
+  - test_case
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'Параметризация: официальное объяснение с табличными примерами.'
+- id: frag-0231
+  source: src-pytest-dev-pytest
+  path: sources/repos/pytest-dev-pytest/doc/en/how-to/assert.rst
+  lines: 96-174
+  kind: prose
+  topics:
+  - assertions
+  chapters:
+  - ch-32-testing
+  concepts:
+  - assertion
+  - pytest
+  - exception
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: pytest.raises и проверка сообщений; точный API.
+- id: frag-0232
+  source: src-pytest-dev-pytest
+  path: sources/repos/pytest-dev-pytest/doc/en/how-to/monkeypatch.rst
+  lines: 267-340
+  kind: prose
+  topics:
+  - monkeypatch
+  chapters:
+  - ch-32-testing
+  - ch-41-security
+  concepts:
+  - test_case
+  - environment_variable
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: Подмена окружения в тестах; аккуратно про глобальное состояние.
+- id: frag-0233
+  source: src-pytest-dev-pytest
+  path: sources/repos/pytest-dev-pytest/doc/en/explanation/goodpractices.rst
+  lines: 1-120
+  kind: prose
+  topics:
+  - test structure
+  chapters:
+  - ch-32-testing
+  - ch-33-project-tooling
+  concepts:
+  - test_case
+  - unit_test
+  - pytest
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: Структура тестов и соглашения; полезно для главы о структуре проекта.
+- id: frag-0234
+  source: src-astral-sh-uv
+  path: sources/repos/astral-sh-uv/docs/concepts/projects/init.md
+  lines: 28-101
+  kind: prose
+  topics:
+  - projects
+  chapters:
+  - ch-33-project-tooling
+  concepts:
+  - pyproject_toml
+  - package_manager
+  - virtual_environment
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'Создание проекта-приложения: что генерируется и зачем.'
+- id: frag-0235
+  source: src-astral-sh-uv
+  path: sources/repos/astral-sh-uv/docs/concepts/python-versions.md
+  lines: 6-161
+  kind: prose
+  topics:
+  - python versions
+  chapters:
+  - ch-01-introduction
+  - ch-33-project-tooling
+  concepts:
+  - interpreter
+  - virtual_environment
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'Управление версиями Python: managed vs system; современная практика.'
+- id: frag-0236
+  source: src-astral-sh-uv
+  path: sources/repos/astral-sh-uv/docs/concepts/projects/dependencies.md
+  lines: 22-133
+  kind: prose
+  topics:
+  - dependencies
+  chapters:
+  - ch-33-project-tooling
+  concepts:
+  - dependency
+  - lockfile
+  - package_manager
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: Добавление/удаление зависимостей и lockfile — ядро главы 33.
+- id: frag-0237
+  source: src-astral-sh-uv
+  path: sources/repos/astral-sh-uv/docs/guides/scripts.md
+  lines: 21-160
+  kind: prose
+  topics:
+  - scripts
+  chapters:
+  - ch-02-first-program
+  - ch-33-project-tooling
+  concepts:
+  - source_code
+  - package_manager
+  - dependency
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: Запуск скриптов и inline-зависимости; мост «от скрипта к проекту».
+- id: frag-0238
+  source: src-astral-sh-uv
+  path: sources/repos/astral-sh-uv/docs/concepts/projects/config.md
+  lines: 1-140
+  kind: prose
+  topics:
+  - project config
+  chapters:
+  - ch-33-project-tooling
+  - ch-45-git-ci-releases
+  concepts:
+  - pyproject_toml
+  - lockfile
+  - ci_pipeline
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: Конфигурация проекта и воспроизводимость сборок.
+- id: frag-0239
+  source: src-jakevdp-whirlwind-tour
+  path: sources/repos/jakevdp-whirlwind-tour/02-Basic-Python-Syntax.ipynb
+  lines: 23-140
+  kind: prose
+  topics:
+  - syntax
+  chapters:
+  - ch-02-first-program
+  concepts:
+  - statement
+  - comment
+  - block
+  - indentation
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC0-1.0
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: Быстрый обзор синтаксиса для знающих другой язык; CC0 — можно свободно перерабатывать.
+- id: frag-0240
+  source: src-jakevdp-whirlwind-tour
+  path: sources/repos/jakevdp-whirlwind-tour/03-Semantics-Variables.ipynb
+  lines: 23-200
+  kind: prose
+  topics:
+  - variables and objects
+  chapters:
+  - ch-03-values-names-objects
+  concepts:
+  - name
+  - object
+  - type
+  - dynamic_typing
+  - identity
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC0-1.0
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'Модель имён и объектов: ссылки, id(), изменяемость; компактно и точно.'
+- id: frag-0241
+  source: src-jakevdp-whirlwind-tour
+  path: sources/repos/jakevdp-whirlwind-tour/04-Semantics-Operators.ipynb
+  lines: 23-200
+  kind: prose
+  topics:
+  - operators
+  chapters:
+  - ch-04-expressions-input
+  concepts:
+  - arithmetic_operator
+  - comparison_operator
+  - logical_operator
+  - operator_precedence
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC0-1.0
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: Операторы и приоритет; хорошая плотность для повторения.
+- id: frag-0242
+  source: src-jakevdp-whirlwind-tour
+  path: sources/repos/jakevdp-whirlwind-tour/06-Built-in-Data-Structures.ipynb
+  lines: 30-300
+  kind: prose
+  topics:
+  - collections
+  chapters:
+  - ch-12-collections-intro
+  - ch-13-lists
+  concepts:
+  - list_type
+  - tuple_type
+  - dict_type
+  - set_type
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC0-1.0
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: Обзор встроенных коллекций с таблицей свойств; годно как резюме части 3.
+- id: frag-0243
+  source: src-jakevdp-whirlwind-tour
+  path: sources/repos/jakevdp-whirlwind-tour/08-Defining-Functions.ipynb
+  lines: 23-300
+  kind: prose
+  topics:
+  - functions
+  chapters:
+  - ch-07-functions
+  - ch-24-signatures
+  concepts:
+  - function
+  - def_statement
+  - default_argument
+  - docstring
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC0-1.0
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'Функции: аргументы, *args/**kwargs, docstring; сжатая версия главы 7.'
+- id: frag-0244
+  source: src-jakevdp-whirlwind-tour
+  path: sources/repos/jakevdp-whirlwind-tour/10-Iterators.ipynb
+  lines: 23-300
+  kind: prose
+  topics:
+  - iterators
+  chapters:
+  - ch-20-iterators
+  concepts:
+  - iterator
+  - iterator_protocol
+  - iter_function
+  - next_function
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC0-1.0
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: Итераторы и ленивые последовательности; хороший мост к генераторам.
+- id: frag-0245
+  source: src-jakevdp-whirlwind-tour
+  path: sources/repos/jakevdp-whirlwind-tour/12-Generators.ipynb
+  lines: 37-260
+  kind: prose
+  topics:
+  - generators
+  chapters:
+  - ch-21-generators
+  concepts:
+  - generator
+  - generator_expression
+  - yield_statement
+  - lazy_evaluation
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC0-1.0
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: Генераторы и генераторные выражения с пояснениями.
+- id: frag-0246
+  source: src-jakevdp-whirlwind-tour
+  path: sources/repos/jakevdp-whirlwind-tour/09-Errors-and-Exceptions.ipynb
+  lines: 23-300
+  kind: prose
+  topics:
+  - exceptions
+  chapters:
+  - ch-10-errors-exceptions
+  concepts:
+  - exception
+  - try_statement
+  - except_clause
+  - raise_statement
+  concepts_confidence: high
+  license_ok: true
+  source_license: CC0-1.0
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'Исключения: синтаксис и философия EAFP; полезное дополнение.'
+- id: frag-0260
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/02-control-flow/exercises_solutions.md
+  lines: 3-20
+  kind: exercise
+  topics:
+  - loops
+  chapters:
+  - ch-06-loops
+  concepts:
+  - for_loop
+  - while_loop
+  - if_statement
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: FizzBuzz с решением и разбором; классическое упражнение на циклы и условия.
+- id: frag-0261
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/02-control-flow/exercises_solutions.md
+  lines: 21-57
+  kind: exercise
+  topics:
+  - conditions
+  chapters:
+  - ch-05-control-flow
+  concepts:
+  - if_statement
+  - elif_clause
+  - condition
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Классификатор оценок и таблица умножения; условие + решение в одном месте.
+- id: frag-0262
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/04-data-structures/exercises_solutions.md
+  lines: 3-24
+  kind: exercise
+  topics:
+  - list operations
+  chapters:
+  - ch-13-lists
+  concepts:
+  - list_type
+  - slice
+  - del_statement
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Четыре операции над списком (срезы, замена, удаление) с решениями.
+- id: frag-0263
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/04-data-structures/exercises_solutions.md
+  lines: 25-73
+  kind: exercise
+  topics:
+  - word frequency
+  chapters:
+  - ch-17-dicts
+  concepts:
+  - dict_type
+  - dict_iteration
+  - string_method
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: Частотный словарь и телефонная книга; практика словарей.
+- id: frag-0264
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/04-data-structures/exercises_solutions.md
+  lines: 74-111
+  kind: exercise
+  topics:
+  - set operations
+  chapters:
+  - ch-16-sets
+  concepts:
+  - set_type
+  - set_operation
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Операции над множествами и умножение матриц; ответы с объяснением.
+- id: frag-0265
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/07-error-handling/exercises_solutions.md
+  lines: 8-83
+  kind: exercise
+  topics:
+  - exceptions
+  chapters:
+  - ch-10-errors-exceptions
+  concepts:
+  - try_statement
+  - except_clause
+  - raise_statement
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Безопасное деление и несколько типов исключений; разобраны ошибки.
+- id: frag-0266
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/07-error-handling/exercises_solutions.md
+  lines: 131-223
+  kind: exercise
+  topics:
+  - custom exceptions
+  chapters:
+  - ch-10-errors-exceptions
+  - ch-30-oop-design
+  concepts:
+  - custom_exception
+  - exception_hierarchy
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: Иерархия пользовательских исключений с решением; мост к главе 30.
+- id: frag-0267
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/10-iterators-generators/exercises_solutions.md
+  lines: 10-117
+  kind: exercise
+  topics:
+  - custom iterator
+  chapters:
+  - ch-20-iterators
+  concepts:
+  - iterator
+  - iterator_protocol
+  - iter_function
+  - next_function
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'Свой класс-range: полный разбор протокола итерации с решением.'
+- id: frag-0268
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/10-iterators-generators/exercises_solutions.md
+  lines: 212-295
+  kind: exercise
+  topics:
+  - generator expressions
+  chapters:
+  - ch-21-generators
+  concepts:
+  - generator_expression
+  - list_comprehension
+  - lazy_evaluation
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Сравнение генераторного выражения и спискового включения по памяти/времени.
+- id: frag-0269
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/11-decorators/exercises_solutions.md
+  lines: 10-88
+  kind: exercise
+  topics:
+  - decorators
+  chapters:
+  - ch-22-higher-order
+  concepts:
+  - decorator
+  - functools_wraps
+  - closure
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: '@uppercase_result: первый декоратор с решением и functools.wraps.'
+- id: frag-0270
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/11-decorators/exercises_solutions.md
+  lines: 433-572
+  kind: exercise
+  topics:
+  - memoization
+  chapters:
+  - ch-22-higher-order
+  - ch-40-performance
+  concepts:
+  - decorator
+  - memoization
+  - closure
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: '@memoize: практический декоратор с кешем; связка с главой 40.'
+- id: frag-0271
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/13-type-hints/exercises_solutions.md
+  lines: 10-93
+  kind: exercise
+  topics:
+  - annotations
+  chapters:
+  - ch-31-typing
+  concepts:
+  - type_hint
+  - annotation
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'Аннотирование функции: упражнение + эталонный ответ.'
+- id: frag-0272
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/13-type-hints/exercises_solutions.md
+  lines: 293-411
+  kind: exercise
+  topics:
+  - Protocol
+  chapters:
+  - ch-29-dataclasses-protocols
+  - ch-31-typing
+  concepts:
+  - protocol
+  - structural_typing
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'Protocol на практике: структурная типизация в упражнении.'
+- id: frag-0273
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/15-testing/exercises_solutions.md
+  lines: 492-625
+  kind: exercise
+  topics:
+  - TDD
+  chapters:
+  - ch-32-testing
+  concepts:
+  - tdd
+  - pytest
+  - test_case
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'TDD FizzBuzz: полный цикл red-green-refactor с кодом тестов.'
+- id: frag-0274
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/16-standard-library/exercises_solutions.md
+  lines: 28-105
+  kind: exercise
+  topics:
+  - collections
+  chapters:
+  - ch-34-stdlib
+  concepts:
+  - collections_module
+  - counter
+  - file_object
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'Анализатор частотности слов: Counter + файлы.'
+- id: frag-0275
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/16-standard-library/exercises_solutions.md
+  lines: 460-563
+  kind: exercise
+  topics:
+  - csv/json
+  chapters:
+  - ch-19-files-formats
+  - ch-36-data-storage
+  concepts:
+  - csv_format
+  - json_format
+  - serialization
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'CSV → JSON конвертер: два формата в одной задаче.'
+- id: frag-0276
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/16-standard-library/exercises_solutions.md
+  lines: 564-761
+  kind: exercise
+  topics:
+  - sqlite
+  chapters:
+  - ch-36-data-storage
+  concepts:
+  - sqlite_module
+  - sql_query
+  - db_connection
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'SQLite todo-приложение: минимальный CRUD с параметризованными запросами.'
+- id: frag-0277
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/16-standard-library/exercises_solutions.md
+  lines: 762-891
+  kind: exercise
+  topics:
+  - concurrency
+  chapters:
+  - ch-38-concurrency
+  - ch-35-os-network
+  concepts:
+  - thread
+  - http_client
+  - concurrency
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'Конкурентный загрузчик URL: потоки + сеть; требует проверки безопасности.'
+- id: frag-0278
+  source: src-hieulouisdev-learn-python
+  path: sources/repos/hieulouisdev-learn-python/19-advanced-topics/exercises_solutions.md
+  lines: 1-160
+  kind: exercise
+  topics:
+  - metaclasses
+  chapters:
+  - ch-43-metaprogramming
+  concepts:
+  - metaclass
+  - descriptor
+  - dynamic_attribute
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: Продвинутые упражнения по метаклассам/дескрипторам с решениями.
+- id: frag-0279
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/library/subprocess.rst
+  lines: 67-160
+  kind: prose
+  topics:
+  - subprocess
+  chapters:
+  - ch-35-os-network
+  concepts:
+  - subprocess_module
+  - os_module
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'Запуск внешних процессов: официальный tutorial модуля; безопасность аргументов.'
+- id: frag-0280
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/library/os.rst
+  lines: 1-120
+  kind: prose
+  topics:
+  - os interface
+  chapters:
+  - ch-35-os-network
+  concepts:
+  - os_module
+  - environment_variable
+  - path
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'os: окружение, файловая система, процессы; справочная основа главы 35.'
+- id: frag-0281
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/library/urllib.request.rst
+  lines: 1-140
+  kind: prose
+  topics:
+  - HTTP client
+  chapters:
+  - ch-35-os-network
+  - ch-41-security
+  concepts:
+  - http_client
+  - url
+  - http_status_code
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'urllib.request: базовый HTTP-клиент для главы 35.'
+- id: frag-0282
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/library/sqlite3.rst
+  lines: 67-250
+  kind: prose
+  topics:
+  - sqlite
+  chapters:
+  - ch-36-data-storage
+  concepts:
+  - sqlite_module
+  - sql_query
+  - db_connection
+  - transaction
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'Официальный tutorial sqlite3: подключение, запросы, транзакции.'
+- id: frag-0283
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/library/logging.rst
+  lines: 1-120
+  kind: prose
+  topics:
+  - logging
+  chapters:
+  - ch-37-time-logging
+  concepts:
+  - logging_module
+  - log_handler
+  - log_level
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'logging: уровни, обработчики, конфигурация.'
+- id: frag-0284
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/library/threading.rst
+  lines: 16-110
+  kind: prose
+  topics:
+  - threads
+  - GIL
+  chapters:
+  - ch-38-concurrency
+  concepts:
+  - thread
+  - gil
+  - race_condition
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: Введение в threading и раздел про GIL — ключ к главе 38.
+- id: frag-0285
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/library/asyncio-task.rst
+  lines: 1-140
+  kind: prose
+  topics:
+  - asyncio tasks
+  chapters:
+  - ch-39-asyncio
+  concepts:
+  - task
+  - coroutine
+  - awaitable
+  - async_await
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'Задачи asyncio: официальное описание awaitable/task.'
+- id: frag-0286
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/library/dataclasses.rst
+  lines: 20-130
+  kind: prose
+  topics:
+  - dataclasses
+  chapters:
+  - ch-29-dataclasses-protocols
+  concepts:
+  - dataclass
+  - dataclass_decorator
+  - frozen_dataclass
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'dataclasses: официальная спецификация поведения.'
+- id: frag-0287
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/library/typing.rst
+  lines: 1-120
+  kind: prose
+  topics:
+  - typing
+  chapters:
+  - ch-31-typing
+  concepts:
+  - type_hint
+  - annotation
+  - generic_type
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'typing: справочник по аннотациям; в книге — выжимка.'
+- id: frag-0288
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/library/json.rst
+  lines: 1-120
+  kind: prose
+  topics:
+  - json
+  chapters:
+  - ch-19-files-formats
+  - ch-36-data-storage
+  concepts:
+  - json_format
+  - serialization
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'json: API модуля и соответствие типов Python/JSON.'
+- id: frag-0289
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/library/pathlib.rst
+  lines: 1-120
+  kind: prose
+  topics:
+  - pathlib
+  chapters:
+  - ch-19-files-formats
+  concepts:
+  - pathlib
+  - path
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: merge
+  quality_note: 'pathlib: официальный обзор объектной работы с путями.'
+- id: frag-0290
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/library/secrets.rst
+  lines: 56-143
+  kind: prose
+  topics:
+  - secrets
+  chapters:
+  - ch-41-security
+  concepts:
+  - secrets_management
+  - security
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'secrets: генерация токенов и правило «не random для паролей» — прямое попадание в главу 41.'
+- id: frag-0291
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/library/pathlib-parts.svg
+  lines: 1-67
+  kind: figure
+  topics:
+  - paths
+  chapters:
+  - ch-19-files-formats
+  concepts:
+  - pathlib
+  - path
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'Схема частей пути (drive/root/dir/name): готовая иллюстрация для главы 19; PSF-2.0.'
+- id: frag-0292
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/library/heapq-binary-tree.svg
+  lines: 1-210
+  kind: figure
+  topics:
+  - heap
+  - binary tree
+  chapters:
+  - ch-12-collections-intro
+  - ch-34-stdlib
+  concepts:
+  - collection
+  - algorithmic_complexity
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'Бинарная куча как дерево: иллюстрация для раздела структур данных.'
+- id: frag-0293
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/library/datetime-inheritance.svg
+  lines: 1-84
+  kind: figure
+  topics:
+  - datetime
+  chapters:
+  - ch-37-time-logging
+  concepts:
+  - datetime_type
+  - timezone
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'Иерархия классов datetime: помогает объяснить aware/naive.'
+- id: frag-0294
+  source: src-python-cpython
+  path: sources/repos/python-cpython/Doc/howto/logging_flow.svg
+  lines: 1-327
+  kind: figure
+  topics:
+  - logging flow
+  chapters:
+  - ch-37-time-logging
+  concepts:
+  - logging_module
+  - log_handler
+  - log_level
+  concepts_confidence: high
+  license_ok: true
+  source_license: PSF-2.0
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: Поток сообщения через logger/handler/formatter — лучшая схема для главы о логировании.
+- id: frag-0295
+  source: src-pytest-dev-pytest
+  path: sources/repos/pytest-dev-pytest/doc/en/example/fixtures/test_fixtures_order_dependencies.svg
+  lines: 1-60
+  kind: figure
+  topics:
+  - fixture order
+  chapters:
+  - ch-32-testing
+  concepts:
+  - fixture
+  - pytest
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'Граф зависимостей фикстур: наглядно для объяснения порядка выполнения.'
+- id: frag-0296
+  source: src-pytest-dev-pytest
+  path: sources/repos/pytest-dev-pytest/doc/en/example/fixtures/test_fixtures_order_autouse_multiple_scopes.svg
+  lines: 1-76
+  kind: figure
+  topics:
+  - fixture scopes
+  chapters:
+  - ch-32-testing
+  concepts:
+  - fixture
+  - pytest
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: translate
+  quality_note: 'Autouse + несколько scope: схема, которую трудно объяснить словами.'
+- id: frag-0297
+  source: src-norvig-pytudes
+  path: sources/repos/norvig-pytudes/py/sudoku-easy50.txt
+  lines: 1-50
+  kind: dataset
+  topics:
+  - sudoku
+  chapters:
+  - ch-40-performance
+  - ch-19-files-formats
+  concepts:
+  - benchmark
+  - file_object
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 50 лёгких судоку (по строке на головоломку) — датасет для упражнений по парсингу/поиску.
+- id: frag-0298
+  source: src-norvig-pytudes
+  path: sources/repos/norvig-pytudes/py/sudoku-hardest.txt
+  lines: 1-11
+  kind: dataset
+  topics:
+  - sudoku
+  chapters:
+  - ch-40-performance
+  concepts:
+  - benchmark
+  - algorithmic_complexity
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: 'Трудные судоку: проверка производительности решателя.'
+- id: frag-0299
+  source: src-jerry-git-learn-python3
+  path: sources/repos/jerry-git-learn-python3/notebooks/beginner/data/numbers.txt
+  lines: 1-9
+  kind: dataset
+  topics:
+  - file reading
+  chapters:
+  - ch-19-files-formats
+  concepts:
+  - file_object
+  - file_mode
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Маленький файл чисел для упражнений по чтению файлов.
+- id: frag-0300
+  source: src-jerry-git-learn-python3
+  path: sources/repos/jerry-git-learn-python3/notebooks/beginner/data/simple_file_with_empty_lines.txt
+  lines: 1-5
+  kind: dataset
+  topics:
+  - file reading
+  chapters:
+  - ch-19-files-formats
+  concepts:
+  - file_object
+  - split_join
+  concepts_confidence: high
+  license_ok: true
+  source_license: MIT
+  source_allowed_use: full
+  recommended_action: keep
+  quality_note: Файл с пустыми строками — граничный случай чтения, который часто ломает решения.

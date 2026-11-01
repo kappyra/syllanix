@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 440" role="img"
+     aria-labelledby="ttl53b desc53b" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl53b">Карта технического долга: частота изменений и помехи</title>
+  <desc id="desc53b">Две оси: как часто код меняется и насколько он мешает изменениям. Четыре области: чинить первым — часто меняется и сильно мешает; планировать — мешает, но меняется редко; улучшать при касании — часто меняется, но терпимо; не трогать — стабильно и не мешает.</desc>
+
+  <rect x="0" y="0" width="880" height="440" fill="#ffffff"/>
+
+  <text x="28" y="30" font-size="17" font-weight="bold" fill="#1d3550">Карта технического долга: когда платить</text>
+
+  <!-- оси -->
+  <line x1="120" y1="64" x2="120" y2="360" stroke="#4b5563" stroke-width="1.6"/>
+  <line x1="120" y1="360" x2="820" y2="360" stroke="#4b5563" stroke-width="1.6"/>
+
+  <!-- области -->
+  <rect x="120" y="64" width="350" height="148" fill="#fdf8ec" stroke="#c9b98f" stroke-width="1.2"/>
+  <rect x="470" y="64" width="350" height="148" fill="#fdf0ee" stroke="#d8a79d" stroke-width="1.2"/>
+  <rect x="120" y="212" width="350" height="148" fill="#f3f4f6" stroke="#c9d3e0" stroke-width="1.2"/>
+  <rect x="470" y="212" width="350" height="148" fill="#eef4fb" stroke="#9fb3c8" stroke-width="1.2"/>
+
+  <!-- подписи областей -->
+  <text x="136" y="112" font-size="14" font-weight="bold" fill="#6b4610">ПЛАНИРОВАТЬ</text>
+  <text x="136" y="136" font-size="12" fill="#6b4610">мешает, но меняется редко</text>
+  <text x="136" y="158" font-size="12" fill="#4b5563">включить в план, когда появится окно</text>
+
+  <text x="486" y="112" font-size="14" font-weight="bold" fill="#8f2d1f">ЧИНИТЬ ПЕРВЫМ</text>
+  <text x="486" y="136" font-size="12" fill="#8f2d1f">часто меняется и сильно мешает</text>
+  <text x="486" y="158" font-size="12" fill="#4b5563">разбирать до следующей функции</text>
+
+  <text x="136" y="260" font-size="14" font-weight="bold" fill="#4b5563">НЕ ТРОГАТЬ</text>
+  <text x="136" y="284" font-size="12" fill="#4b5563">стабильно и не мешает</text>
+  <text x="136" y="306" font-size="12" fill="#4b5563">время лучше вложить в другое место</text>
+
+  <text x="486" y="260" font-size="14" font-weight="bold" fill="#1d3550">УЛУЧШАТЬ ПРИ КАСАНИИ</text>
+  <text x="486" y="284" font-size="12" fill="#33557a">часто меняется, но терпимо</text>
+  <text x="486" y="306" font-size="12" fill="#4b5563">правило бойскаута: чуть чище, чем было</text>
+
+  <!-- деления осей -->
+  <line x1="120" y1="212" x2="820" y2="212" stroke="#c9d3e0" stroke-width="1.2" stroke-dasharray="6 5"/>
+  <line x1="470" y1="64" x2="470" y2="360" stroke="#c9d3e0" stroke-width="1.2" stroke-dasharray="6 5"/>
+
+  <text x="136" y="382" font-size="12" fill="#4b5563">редко</text>
+  <text x="800" y="382" text-anchor="end" font-size="12" fill="#4b5563">часто</text>
+  <text x="470" y="408" text-anchor="middle" font-size="13" fill="#1d3550">как часто код меняется →</text>
+
+  <text x="0" y="0" transform="translate(58,212) rotate(-90)" text-anchor="middle" font-size="13" fill="#1d3550">насколько мешает изменениям →</text>
+</svg>

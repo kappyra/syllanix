@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Логика и управление потоком — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details open><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-05-control-flow.html" aria-current="page">05. Логика и управление потоком</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-05-control-flow.html#что-вы-сможете-после-этой-главы">5.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-05-control-flow.html#truthiness">5.2. Истинность значения</a></li>
+<li><a href="ch-05-control-flow.html#if">5.3. Инструкция if</a></li>
+<li><a href="ch-05-control-flow.html#elif-else">5.4. Ветви elif и else</a></li>
+<li><a href="ch-05-control-flow.html#indentation">5.5. Отступы и блоки</a></li>
+<li><a href="ch-05-control-flow.html#writing-conditions">5.6. Как формулировать условие</a></li>
+<li><a href="ch-05-control-flow.html#nesting">5.7. Вложенные условия и порядок проверок</a></li>
+<li><a href="ch-05-control-flow.html#conditional-expression">5.8. Условное выражение</a></li>
+<li><a href="ch-05-control-flow.html#example">5.9. Собираем вместе</a></li>
+<li><a href="ch-05-control-flow.html#guessing-game">5.10. Разбор: игра «угадай число»</a></li>
+<li><a href="ch-05-control-flow.html#mistakes">5.11. Типичные ошибки</a></li>
+<li><a href="ch-05-control-flow.html#упражнения">5.12. Упражнения</a></li>
+<li><a href="ch-05-control-flow.html#проверка-понимания">5.13. Проверка понимания</a></li>
+<li><a href="ch-05-control-flow.html#что-дальше">5.14. Что дальше</a></li>
+</ol></details></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 1. Начало</span><span class="sep">›</span><span>Глава 5</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Начало · глава 5</p>
+<h1 id="логика-и-управление-потоком">Логика и управление потоком</h1>
+<p class="chapter-summary">Истинность значений, условные конструкции, отступы и выбор ветви исполнения.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#что-вы-сможете-после-этой-главы"><span class="toc-number">5.1</span> Что вы сможете после этой главы</a></li>
+<li class="level-2"><a href="#truthiness"><span class="toc-number">5.2</span> Истинность значения</a></li>
+<li class="level-2"><a href="#if"><span class="toc-number">5.3</span> Инструкция if</a></li>
+<li class="level-2"><a href="#elif-else"><span class="toc-number">5.4</span> Ветви elif и else</a></li>
+<li class="level-2"><a href="#indentation"><span class="toc-number">5.5</span> Отступы и блоки</a></li>
+<li class="level-2"><a href="#writing-conditions"><span class="toc-number">5.6</span> Как формулировать условие</a></li>
+<li class="level-2"><a href="#nesting"><span class="toc-number">5.7</span> Вложенные условия и порядок проверок</a></li>
+<li class="level-2"><a href="#conditional-expression"><span class="toc-number">5.8</span> Условное выражение</a></li>
+<li class="level-2"><a href="#example"><span class="toc-number">5.9</span> Собираем вместе</a></li>
+<li class="level-2"><a href="#guessing-game"><span class="toc-number">5.10</span> Разбор: игра «угадай число»</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">5.11</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">5.12</span> Упражнения</a></li>
+<li class="level-2"><a href="#проверка-понимания"><span class="toc-number">5.13</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#что-дальше"><span class="toc-number">5.14</span> Что дальше</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#ex-ch05-01">1. Что напечатается</a></li>
+<li class="level-3"><a href="#ex-ch05-02">2. Истинность значений</a></li>
+<li class="level-3"><a href="#ex-ch05-03">3. Исправление отступа</a></li>
+<li class="level-3"><a href="#ex-ch05-04">4. Порядок ветвей</a></li>
+<li class="level-3"><a href="#ex-ch05-05">5. Три случая</a></li>
+<li class="level-3"><a href="#ex-ch05-06">6. Плоская форма</a></li>
+<li class="level-3"><a href="#ex-ch05-07">7. Условное выражение</a></li>
+<li class="level-3"><a href="#ex-ch05-08">8. Ошибка с одним знаком</a></li>
+<li class="level-3"><a href="#ex-ch05-09">9. Билеты по возрасту</a></li>
+<li class="level-3"><a href="#ex-ch05-10">10. Два if или elif</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>Программы из предыдущих глав шли по прямой: каждая инструкция выполнялась
+ровно один раз и в том порядке, в каком записана. Такая программа не умеет
+реагировать на входные значения — она всегда делает одно и то же. Настоящее
+поведение начинается там, где появляется выбор: если возраст меньше 18, продать
+билет со скидкой; если сумма заказа больше тысячи, добавить доставку бесплатно;
+если ввели пустую строку, попросить повторить ввод.</p>
+<p>Для выбора нужны две вещи: условие, которое может быть истинным или ложным, и
+инструкция, которая решает, какой блок кода выполнить. В этой главе появятся
+<code>if</code>, <code>elif</code> и <code>else</code>, а вместе с ними — отступы, которые в Python входят в
+синтаксис и определяют границы блоков.</p>
+<h2 id="что-вы-сможете-после-этой-главы"><span class="h-number">5.1</span> Что вы сможете после этой главы</h2>
+<p>К концу главы вы будете уметь следующее.</p>
+<ul>
+<li>понимать, как Python трактует значение в логическом контексте;</li>
+<li>писать ветвления с одной, двумя и многими ветвями;</li>
+<li>объяснять, почему отступ — часть синтаксиса, а не украшение;</li>
+<li>выбирать между вложенными условиями и цепочкой проверок;</li>
+<li>записывать простое ветвление одним условным выражением;</li>
+<li>читать сообщения об ошибках отступов и исправлять их.</li>
+</ul>
+<h2 id="truthiness"><span class="h-number">5.2</span> Истинность значения</h2>
+<p>Логические операторы <code>and</code> и <code>or</code> из главы 4 возвращали не обязательно <code>True</code>
+или <code>False</code>, а один из операндов. Причина в том, что Python умеет трактовать
+любое значение как истинное или ложное. Это правило называется <strong>истинность
+значения</strong>.</p>
+<p>Ложными в логическом контексте считаются:</p>
+<ul>
+<li>число <code>0</code> и <code>0.0</code> — любое нулевое число;</li>
+<li>пустая строка <code>&quot;&quot;</code>;</li>
+<li>значение <code>None</code>;</li>
+<li>сам <code>False</code>;</li>
+<li>пустые коллекции — с ними мы познакомимся в части 3.</li>
+</ul>
+<p>Все остальные значения истинны. Важно, что «нулеподобность» текста не
+работает: строка <code>&quot;0&quot;</code> истинна, потому что это непустая строка, а не число.
+Строка <code>&quot; &quot;</code> из одного пробела тоже истинна.</p>
+<p>Проверить правило можно встроенной функцией <code>bool</code>, которая возвращает
+логическое значение для своего аргумента:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="nb">bool</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="nb">bool</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span> <span class="nb">bool</span><span class="p">(</span><span class="mf">0.0001</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="s2">""</span><span class="p">),</span> <span class="nb">bool</span><span class="p">(</span><span class="s2">" "</span><span class="p">),</span> <span class="nb">bool</span><span class="p">(</span><span class="s2">"0"</span><span class="p">),</span> <span class="nb">bool</span><span class="p">(</span><span class="s2">"False"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span> <span class="nb">bool</span><span class="p">(</span><span class="kc">False</span><span class="p">),</span> <span class="nb">bool</span><span class="p">(</span><span class="kc">True</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>False True True
+False True
+False True True True
+False False True
+</code></pre>
+<p>Вторая строка показывает, что <code>0.0001</code> истинно, хотя число очень маленькое:
+важен только ноль. Третья строка — источник ошибок: любая непустая строка
+истинна, даже если изображает ноль или слово «False».</p>
+<p>Практическое следствие: проверка <code>if value:</code> короче, но она не различает
+«значение равно нулю» и «значения нет». Если ноль — допустимое значение,
+пишите явно: <code>if value != 0:</code> или <code>if value is not None:</code>. Явное сравнение
+сообщает читателю, что именно вы проверяете, и не зависит от того, помнит ли
+он правило истинности.</p>
+<p>Есть случай, где краткая проверка уместна и даже полезна: пустой ввод. Функция
+input возвращает строку, и человек может нажать Enter, ничего не набрав. Тогда
+значение равно <code>&quot;&quot;</code>, а это как раз ложное значение, поэтому <code>if raw:</code> читается
+естественно: «если что-то введено». Но и здесь полезно назвать намерение
+словами в комментарии или в имени переменной, чтобы следующий читатель не
+гадал, проверяете вы пустоту или ноль.</p>
+<h2 id="if"><span class="h-number">5.3</span> Инструкция if</h2>
+<p><strong>Инструкция if</strong> выполняет блок кода только тогда, когда её <strong>условие</strong>
+истинно. Условие — любое выражение; его результат трактуется по правилу
+истинности. После условия ставится двоеточие, а тело записывается с отступом.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">age</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"доступ разрешён"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"проверка завершена"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>доступ разрешён
+проверка завершена
+</code></pre>
+<p><strong>Блок</strong> — группа инструкций, которую исполняют как единое целое. В Python
+блок выделяется отступом: строки с одинаковым отступом после <code>if</code> относятся к
+его телу. Строка без отступа к блоку не относится и выполняется всегда — в
+примере это <code>print(&quot;проверка завершена&quot;)</code>.</p>
+<p>Если условие ложно, тело пропускается целиком:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">age</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"доступ разрешён"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"проверка завершена"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>проверка завершена
+</code></pre>
+<p>Обратите внимание: программа не «сломалась» и не сообщила об ошибке. Ложное
+условие — обычная ситуация, а не исключительная.</p>
+<p>Тело может состоять из нескольких инструкций: все они выполняются или
+пропускаются вместе.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"больше пяти"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"вторая строка блока"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"вне блока"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>больше пяти
+вторая строка блока
+вне блока
+</code></pre>
+<h2 id="elif-else"><span class="h-number">5.4</span> Ветви elif и else</h2>
+<p>Одной ветви часто мало: нужно не только сделать что-то при выполнении условия,
+но и предусмотреть противоположный случай. <strong>Ветвь else</strong> задаёт блок, который
+исполняется, когда условие ложно.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"больше пяти"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"не больше пяти"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>не больше пяти
+</code></pre>
+<p><strong>Ветвь elif</strong> добавляет ещё одну проверку, которая выполняется только тогда,
+когда все предыдущие условия оказались ложными. Цепочка может быть длинной.
+Исполняется первая ветвь, чьё условие истинно: если в цепочке есть <code>else</code>,
+ровно одна ветвь исполнится всегда, а без <code>else</code> при всех ложных условиях не
+исполнится ни одна.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">score</span> <span class="o">=</span> <span class="mi">85</span>
+<span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"оценка 5"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">80</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"оценка 4"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">70</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"оценка 3"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"оценка 2"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>оценка 4
+</code></pre>
+<p>Порядок ветвей стал частью логики. Если поставить более мягкое условие первым,
+до строгого очередь не дойдёт:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">score</span> <span class="o">=</span> <span class="mi">85</span>
+<span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">70</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"зачёт"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"отлично"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>зачёт
+</code></pre>
+<p>Второе условие здесь недостижимо: любое число, для которого истинно
+<code>score &gt;= 90</code>, истинно и для <code>score &gt;= 70</code>, поэтому первая ветвь всегда
+сработает раньше. Это не ошибка синтаксиса — программа работает, но ведёт себя
+не так, как ожидал автор. Проверяя цепочку <code>elif</code>, читайте её сверху вниз и
+спрашивайте: может ли эта ветвь вообще выполниться?</p>
+<p><figure class="figure"><img src="illustrations/ch-05-branching.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h2 id="indentation"><span class="h-number">5.5</span> Отступы и блоки</h2>
+<p>В большинстве языков границы блока задают фигурными скобками, а отступы нужны
+только людям. В Python наоборот: <strong>отступ</strong> — ведущие пробелы в начале строки —
+определяет, к какому блоку относится инструкция. Это решение языка, а не
+соглашение оформителей, поэтому неверный отступ делает программу неверной.</p>
+<p>Основные правила:</p>
+<ol>
+<li>Тело <code>if</code>, <code>elif</code> и <code>else</code> записывается с отступом больше, чем строка с
+условием.</li>
+<li>Все строки одного блока имеют одинаковый отступ.</li>
+<li>Блок заканчивается там, где отступ уменьшается.</li>
+<li>Вложенные блоки получают ещё один уровень отступа.</li>
+</ol>
+<p>Рекомендация PEP 8 — четыре пробела на уровень. Это именно рекомендация стиля:
+язык принимает и два пробела, и три. Но смешивать табуляцию и пробелы нельзя —
+Python 3 считает это ошибкой.</p>
+<p><figure class="figure"><img src="illustrations/ch-05-blocks.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Посмотрим, что происходит, когда отступ потерян или лишний. В первом примере
+после <code>if</code> нет тела:</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"нет отступа"</span><span class="p">)</span>
+</code></pre></div>
+<p>Во втором примере блок начался, но следующая строка неожиданно вернулась на
+прежний уровень, а затем снова ушла вправо:</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"первая строка"</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">"отступ не совпадает"</span><span class="p">)</span>
+</code></pre></div>
+<p>Интерпретатор сообщает об ошибке отступа до запуска программы и указывает
+строку. Текст сообщения зависит от версии Python, поэтому ориентируйтесь на тип
+ошибки. Для первого случая это <code>IndentationError</code>, для смешения табуляции и
+пробелов — <code>TabError</code>. Вот как выглядит такое сообщение (детали текста в разных
+версиях отличаются):</p>
+<pre class="text"><code>  File &quot;program.py&quot;, line 2
+    print(&quot;нет отступа&quot;)
+    ^
+IndentationError: expected an indented block after &#x27;if&#x27; statement on line 1
+</code></pre>
+<p>Полезная привычка: настраивать редактор так, чтобы он вставлял четыре пробела
+по Tab и показывал невидимые символы. Тогда ошибка отступа не появится вовсе.</p>
+<p>Почему смешивать табуляцию и пробелы опасно: ширина табуляции зависит от
+настроек редактора. Один и тот же файл в разных программах выглядит по-разному, и
+человек видит один блок там, где интерпретатор видит другой. Пробелы такой
+двусмысленности не создают: четыре пробела — всегда четыре пробела. Отсюда
+правило: в одном файле либо только пробелы, либо только табуляция, и для Python
+принято первое.</p>
+<h2 id="writing-conditions"><span class="h-number">5.6</span> Как формулировать условие</h2>
+<p>Условие читают люди, а исполняет машина. Поэтому формулировка важна не меньше,
+чем синтаксис. Несколько правил, которые экономят время при отладке.</p>
+<p><strong>Формулируйте утвердительно.</strong> <code>if age &gt;= 18:</code> читается легче, чем
+<code>if not age &lt; 18:</code>, хотя это одно и то же. Отрицание заставляет читателя
+выполнить в уме ещё один шаг.</p>
+<p><strong>Не сравнивайте с <code>True</code> и <code>False</code>.</strong> Запись <code>if is_ready == True:</code> избыточна:
+само имя уже логическое значение, и <code>if is_ready:</code> делает то же самое. Сравнение
+с <code>False</code> вдвойне опасно: <code>if is_ready == False:</code> легко превращается в
+<code>if is_ready = False:</code> при невнимательной правке, а такая ошибка не всегда
+заметна сразу.</p>
+<p><strong>Помните о законах де Моргана.</strong> Отрицание связки меняет оператор:</p>
+<ul>
+<li><code>not (a and b)</code> равносильно <code>(not a) or (not b)</code>;</li>
+<li><code>not (a or b)</code> равносильно <code>(not a) and (not b)</code>.</li>
+</ul>
+<p>Проверим на конкретных значениях:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">a</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">b</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="nb">print</span><span class="p">(</span><span class="ow">not</span> <span class="p">(</span><span class="n">a</span> <span class="ow">and</span> <span class="n">b</span><span class="p">),</span> <span class="p">(</span><span class="ow">not</span> <span class="n">a</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="ow">not</span> <span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="ow">not</span> <span class="p">(</span><span class="n">a</span> <span class="ow">or</span> <span class="n">b</span><span class="p">),</span> <span class="p">(</span><span class="ow">not</span> <span class="n">a</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="n">b</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>True True
+False False
+</code></pre>
+<p>Совпадение не случайно: это тождество логики, а не особенность Python. Оно
+позволяет переписать непонятное условие в понятное. Например,
+<code>not (age &lt; 18 or age &gt; 65)</code> превращается в <code>age &gt;= 18 and age &lt;= 65</code>, а это
+уже цепочка сравнений <code>18 &lt;= age &lt;= 65</code>.</p>
+<h2 id="nesting"><span class="h-number">5.7</span> Вложенные условия и порядок проверок</h2>
+<p>Одно условие может стоять внутри другого. Это нужно, когда второе решение
+имеет смысл только после первого.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"оба условия истинны"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>оба условия истинны
+</code></pre>
+<p>Вложенность работает, но у неё есть цена: каждый уровень добавляет отступ и
+усложняет чтение. Часто вложенное условие можно заменить одним составным — и
+тогда код становится плоским:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"оба условия истинны"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>оба условия истинны
+</code></pre>
+<p>Результат тот же, а уровней стало меньше. Логическая связка <code>and</code> здесь
+работает и как соединение условий, и как
+<a href="ch-04-expressions-input.html#short-circuit">сокращённое вычисление</a>: если <code>a == 1</code>
+ложно, вторая часть не проверяется.</p>
+<p>Выбирайте форму по смыслу:</p>
+<ul>
+<li><strong>Составное условие</strong> — когда важны все условия сразу и между ними нет
+иерархии.</li>
+<li><strong>Вложенное условие</strong> — когда вторая проверка осмысленна только внутри
+первой, а между ветвями есть собственная логика.</li>
+<li><strong>Цепочка <code>elif</code></strong> — когда есть несколько взаимоисключающих вариантов.</li>
+</ul>
+<p>Три уровня вложенности — сигнал, что стоит разбить задачу на части. Инструмент
+для этого появится в главе 7: функции позволят вынести проверку в отдельное
+имя и вернуть результат.</p>
+<h2 id="conditional-expression"><span class="h-number">5.8</span> Условное выражение</h2>
+<p>Иногда нужно не выполнить блок, а выбрать одно из двух значений. Для этого
+служит <strong>условное выражение</strong> — выражение вида <code>A if условие else B</code>. Оно
+вычисляет <code>A</code>, если условие истинно, и <code>B</code> в противном случае, а результатом
+служит выбранное значение.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">x</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"чётное"</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">"нечётное"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>нечётное
+</code></pre>
+<p>Условное выражение можно присвоить имени или вставить в f-строку:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">age</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">status</span> <span class="o">=</span> <span class="s2">"совершеннолетний"</span> <span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">18</span> <span class="k">else</span> <span class="s2">"несовершеннолетний"</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Статус: </span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>Статус: несовершеннолетний
+</code></pre>
+<p>Обратите внимание на порядок слов: сначала идёт значение для истинного случая,
+потом условие, потом значение для ложного. Это отличается от <code>if</code>-инструкции,
+где условие стоит первым. Читайте такую запись как вопрос: «какое из двух
+значений взять, если условие истинно?».</p>
+<p>Условные выражения можно соединять в цепочку, но злоупотреблять этим не стоит:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">temperature</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"холодно"</span> <span class="k">if</span> <span class="n">temperature</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">"прохладно"</span> <span class="k">if</span> <span class="n">temperature</span> <span class="o">&lt;</span> <span class="mi">15</span> <span class="k">else</span> <span class="s2">"тепло"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>прохладно
+</code></pre>
+<p>Работает, но читается хуже, чем цепочка <code>elif</code>. Правило простое: если
+выбирается значение — берите условное выражение; если выполняются действия —
+берите <code>if</code>. Смешивать не нужно.</p>
+<h2 id="example"><span class="h-number">5.9</span> Собираем вместе</h2>
+<p>Задача: посчитать стоимость доставки по весу посылки. До 1 кг — 300 рублей, до
+5 кг — 500 рублей, тяжелее — 800 рублей плюс 100 рублей за каждый килограмм
+сверх пяти.</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">raw_weight</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Вес посылки, кг: "</span><span class="p">)</span>
+<span class="n">weight</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">raw_weight</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">weight</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">delivery</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="k">elif</span> <span class="n">weight</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="n">delivery</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">over</span> <span class="o">=</span> <span class="n">weight</span> <span class="o">-</span> <span class="mi">5</span>
+    <span class="n">extra</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">over</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="k">if</span> <span class="n">over</span> <span class="o">&gt;</span> <span class="nb">int</span><span class="p">(</span><span class="n">over</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">delivery</span> <span class="o">=</span> <span class="mi">800</span> <span class="o">+</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">extra</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Вес: </span><span class="si">{</span><span class="n">weight</span><span class="si">}</span><span class="s2"> кг, доставка: </span><span class="si">{</span><span class="n">delivery</span><span class="si">}</span><span class="s2"> рублей"</span><span class="p">)</span>
+</code></pre></div>
+<p><code>int(over)</code> считает полные килограммы сверх пяти, а добавка <code>1</code> нужна, когда
+остаток не целый: за начатый килограмм платят как за целый.</p>
+<p>Проверим ту же логику на нескольких значениях, чтобы увидеть все ветви:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">raw_weight</span> <span class="o">=</span> <span class="s2">"3.2"</span>
+<span class="n">weight</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">raw_weight</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">weight</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">delivery</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="k">elif</span> <span class="n">weight</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="n">delivery</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">over</span> <span class="o">=</span> <span class="n">weight</span> <span class="o">-</span> <span class="mi">5</span>
+    <span class="n">extra</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">over</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="k">if</span> <span class="n">over</span> <span class="o">&gt;</span> <span class="nb">int</span><span class="p">(</span><span class="n">over</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">delivery</span> <span class="o">=</span> <span class="mi">800</span> <span class="o">+</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">extra</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Вес: </span><span class="si">{</span><span class="n">weight</span><span class="si">}</span><span class="s2"> кг, доставка: </span><span class="si">{</span><span class="n">delivery</span><span class="si">}</span><span class="s2"> рублей"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>Вес: 3.2 кг, доставка: 500 рублей
+</code></pre>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">weight</span> <span class="o">=</span> <span class="mf">6.4</span>
+<span class="k">if</span> <span class="n">weight</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">delivery</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="k">elif</span> <span class="n">weight</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="n">delivery</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">over</span> <span class="o">=</span> <span class="n">weight</span> <span class="o">-</span> <span class="mi">5</span>
+    <span class="n">extra</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">over</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="k">if</span> <span class="n">over</span> <span class="o">&gt;</span> <span class="nb">int</span><span class="p">(</span><span class="n">over</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">delivery</span> <span class="o">=</span> <span class="mi">800</span> <span class="o">+</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">extra</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Вес: </span><span class="si">{</span><span class="n">weight</span><span class="si">}</span><span class="s2"> кг, доставка: </span><span class="si">{</span><span class="n">delivery</span><span class="si">}</span><span class="s2"> рублей"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>Вес: 6.4 кг, доставка: 1000 рублей
+</code></pre>
+<p>Проверим целый вес чуть больше пяти — здесь легко ошибиться на единицу:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">weight</span> <span class="o">=</span> <span class="mf">6.0</span>
+<span class="k">if</span> <span class="n">weight</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">delivery</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="k">elif</span> <span class="n">weight</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="n">delivery</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">over</span> <span class="o">=</span> <span class="n">weight</span> <span class="o">-</span> <span class="mi">5</span>
+    <span class="n">extra</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">over</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="k">if</span> <span class="n">over</span> <span class="o">&gt;</span> <span class="nb">int</span><span class="p">(</span><span class="n">over</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">delivery</span> <span class="o">=</span> <span class="mi">800</span> <span class="o">+</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">extra</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Вес: </span><span class="si">{</span><span class="n">weight</span><span class="si">}</span><span class="s2"> кг, доставка: </span><span class="si">{</span><span class="n">delivery</span><span class="si">}</span><span class="s2"> рублей"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>Вес: 6.0 кг, доставка: 900 рублей
+</code></pre>
+<p>В рабочей программе к этому коду добавилась бы защита от неверного ввода:
+<code>float(&quot;шесть&quot;)</code> завершится ошибкой <code>ValueError</code>, а пустая строка не даст
+числа вовсе. Проверить ввод заранее можно так:</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">raw_weight</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Вес посылки, кг: "</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">raw_weight</span> <span class="o">==</span> <span class="s2">""</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"вес не указан"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">weight</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">raw_weight</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Принят вес </span><span class="si">{</span><span class="n">weight</span><span class="si">}</span><span class="s2"> кг"</span><span class="p">)</span>
+</code></pre></div>
+<p>Такая проверка не заменяет обработку ошибок из главы 10, но отсекает самый
+частый случай — пустой ввод.</p>
+<p>Разберём случай с весом <code>6.4</code>: он больше пяти, поэтому работает <code>else</code>.
+Разница <code>6.4 - 5 = 1.4</code> кг; <code>int(1.4)</code> даёт <code>1</code> полный килограмм, а поскольку
+остаток <code>0.4</code> не равен нулю, добавляется ещё один — итого <code>2</code> оплачиваемых
+килограмма сверх пяти, <code>800 + 200 = 1000</code> рублей. Для ровно <code>6.0</code> кг остаток
+равен нулю, добавки нет, и выходит <code>800 + 100 = 900</code> рублей. Здесь <code>int</code>
+использован осознанно: вес может быть дробным, а плата считается целыми
+рублями, причём начатый килограмм оплачивается целиком.</p>
+<h2 id="guessing-game"><span class="h-number">5.10</span> Разбор: игра «угадай число»</h2>
+<p><em>Адаптировано из книги «A Byte of Python» (Swaroop C H, лицензия CC BY-SA 4.0,
+ревизия <code>84f4dd8</code>): текст переведён и отредактирован, структура разбора
+сохранена. Изменения: сокращены повторы, добавлены запускаемые примеры и
+русские сообщения, интерактивный ввод заменён заранее заданными значениями.</em></p>
+<p>Условная логика особенно наглядна в программе, которая сравнивает догадку
+человека с загаданным числом. Полный интерактивный вариант выглядит так:</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">number</span> <span class="o">=</span> <span class="mi">23</span>
+<span class="n">raw</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Угадайте число: "</span><span class="p">)</span>
+<span class="n">guess</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">guess</span> <span class="o">==</span> <span class="n">number</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Поздравляю, вы угадали!"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">guess</span> <span class="o">&lt;</span> <span class="n">number</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Немного больше"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Немного меньше"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Игра окончена"</span><span class="p">)</span>
+</code></pre></div>
+<p>Порядок проверок здесь принципиален. Сначала сравнивается равенство: если
+догадка совпала, остальные ветви не проверяются вовсе. Если нет — программа
+выясняет, в какую сторону ошибся человек, и сообщает, куда двигаться. Ветвь
+<code>else</code> срабатывает только тогда, когда не подошли ни <code>if</code>, ни <code>elif</code>.</p>
+<p>Чтобы увидеть каждую ветвь, запустим ту же логику с заранее заданными
+догадками. Первая догадка меньше загаданного числа:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">number</span> <span class="o">=</span> <span class="mi">23</span>
+<span class="n">guess</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s2">"10"</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">guess</span> <span class="o">==</span> <span class="n">number</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Поздравляю, вы угадали!"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">guess</span> <span class="o">&lt;</span> <span class="n">number</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Немного больше"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Немного меньше"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>Немного больше
+</code></pre>
+<p>Вторая догадка совпадает:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">number</span> <span class="o">=</span> <span class="mi">23</span>
+<span class="n">guess</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s2">"23"</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">guess</span> <span class="o">==</span> <span class="n">number</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Поздравляю, вы угадали!"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">guess</span> <span class="o">&lt;</span> <span class="n">number</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Немного больше"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Немного меньше"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>Поздравляю, вы угадали!
+</code></pre>
+<p>Третья догадка больше загаданного числа, поэтому работает <code>else</code>:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">number</span> <span class="o">=</span> <span class="mi">23</span>
+<span class="n">guess</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s2">"50"</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">guess</span> <span class="o">==</span> <span class="n">number</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Поздравляю, вы угадали!"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">guess</span> <span class="o">&lt;</span> <span class="n">number</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Немного больше"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Немного меньше"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>Немного меньше
+</code></pre>
+<p>Обратите внимание на две детали, которые часто упускают. Во-первых, <code>int(raw)</code>
+преобразует строку в число: без этого сравнение строки с числом дало бы <code>False</code>
+всегда, а не ошибку. Во-вторых, порядок ветвей <code>elif</code> можно менять, только если
+условия не пересекаются; здесь они упорядочены по возрастанию сложности
+проверки, и каждая следующая ветвь рассматривает всё более узкий случай.</p>
+<p><em>Источник и характер изменений зафиксированы в <code>provenance/05-control-flow.yaml</code>.</em></p>
+<h2 id="mistakes"><span class="h-number">5.11</span> Типичные ошибки</h2>
+<ol>
+<li><strong>Забыть двоеточие.</strong> После условия и после <code>else</code> двоеточие обязательно;
+без него программа не разбирается.</li>
+<li><strong>Потерять отступ.</strong> Тело условия обязано быть сдвинуто вправо. Это ошибка
+разбора, а не предупреждение.</li>
+<li><strong>Смешать табуляцию и пробелы.</strong> Визуально отступы могут выглядеть
+одинаково, но Python сообщит <code>TabError</code>. Настройте редактор на пробелы.</li>
+<li><strong>Использовать <code>=</code> вместо <code>==</code>.</strong> <code>if x = 5:</code> — синтаксическая ошибка;
+сравнение записывается двойным знаком.</li>
+<li><strong>Путать <code>if</code> и <code>elif</code>.</strong> Две независимые инструкции <code>if</code> проверяют оба
+условия, а цепочка <code>elif</code> — только до первого истинного. Результаты
+различаются, если условия не исключают друг друга.</li>
+<li><strong>Ставить мягкое условие раньше строгого.</strong> В цепочке <code>elif</code> до строгой
+ветви очередь может не дойти.</li>
+<li><strong>Проверять число через <code>if value:</code>.</strong> Ноль — допустимое значение, но оно
+ложно. Если ноль возможен, сравнивайте явно.</li>
+<li><strong>Ожидать, что <code>bool(&quot;0&quot;)</code> даст <code>False</code>.</strong> Непустая строка истинна;
+преобразование текста в число делает <code>int</code>, а не <code>bool</code>.</li>
+</ol>
+<h2 id="упражнения"><span class="h-number">5.12</span> Упражнения</h2>
+<h3 id="ex-ch05-01">1. Что напечатается</h3>
+<p>Какие строки выведет программа? Запишите ответ, затем проверьте.</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">x</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"больше десяти"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"проверка окончена"</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"меньше десяти"</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="ex-ch05-02">2. Истинность значений</h3>
+<p>Не запуская код, определите результаты: <code>bool(0)</code>, <code>bool(&quot;0&quot;)</code>, <code>bool(&quot;&quot;)</code>,
+<code>bool(&quot; &quot;)</code>, <code>bool(None)</code>, <code>bool(-1)</code>, <code>bool(0.0)</code>. Затем проверьте и объясните
+каждое значение.</p>
+<h3 id="ex-ch05-03">3. Исправление отступа</h3>
+<p>Программа не запускается:</p>
+<pre class="text"><code>age = 20
+if age &gt;= 18:
+print(&quot;доступ разрешён&quot;)
+</code></pre>
+<p>Объясните причину и запишите исправленный вариант. Почему 0 пробелов —
+ошибка, а 2 или 8 — синтаксически допустимы, хотя PEP 8 рекомендует 4?</p>
+<h3 id="ex-ch05-04">4. Порядок ветвей</h3>
+<p>Дана цепочка:</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">grade</span> <span class="o">=</span> <span class="mi">75</span>
+<span class="k">if</span> <span class="n">grade</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"удовлетворительно"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">grade</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"отлично"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">grade</span> <span class="o">&gt;=</span> <span class="mi">75</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"хорошо"</span><span class="p">)</span>
+</code></pre></div>
+<p>Что выведет программа? Почему ветви <code>отлично</code> и <code>хорошо</code> не работают так, как
+задумано? Исправьте порядок условий.</p>
+<h3 id="ex-ch05-05">5. Три случая</h3>
+<p>Напишите программу, которая для числа <code>n</code> выводит <code>положительное</code>,
+<code>отрицательное</code> или <code>ноль</code>. Проверьте на значениях <code>7</code>, <code>-3</code>, <code>0</code>.</p>
+<h3 id="ex-ch05-06">6. Плоская форма</h3>
+<p>Перепишите код, избавившись от вложенности:</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">age</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">age</span> <span class="o">&lt;=</span> <span class="mi">65</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"рабочий возраст"</span><span class="p">)</span>
+</code></pre></div>
+<p>Результат должен сохраниться. Объясните, какое условие получилось и почему
+эквивалентность сохраняется.</p>
+<h3 id="ex-ch05-07">7. Условное выражение</h3>
+<p>Перепишите выбор значения одним условным выражением:</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">limit</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="k">if</span> <span class="n">limit</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">:</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="s2">"большой лимит"</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="s2">"маленький лимит"</span>
+</code></pre></div>
+<p>Затем выведите <code>message</code> через f-строку.</p>
+<h3 id="ex-ch05-08">8. Ошибка с одним знаком</h3>
+<p>Почему программа не запускается? Исправьте её и объясните, чем <code>=</code> отличается
+от <code>==</code>.</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"пять"</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="ex-ch05-09">9. Билеты по возрасту</h3>
+<p>Цена билета: до 6 лет — бесплатно, от 6 до 17 — 300 рублей, от 18 до 64 — 600
+рублей, от 65 — 200 рублей. Напишите программу, которая получает возраст
+строкой, преобразует его в целое и печатает цену через f-строку. Проверьте на
+возрастах <code>5</code>, <code>12</code>, <code>30</code>, <code>70</code>.</p>
+<h3 id="ex-ch05-10">10. Два if или elif</h3>
+<p>Сравните две программы:</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">x</span> <span class="o">=</span> <span class="mi">150</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"больше ста"</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"больше пятидесяти"</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><code class="language-python"><span class="n">x</span> <span class="o">=</span> <span class="mi">150</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"больше ста"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"больше пятидесяти"</span><span class="p">)</span>
+</code></pre></div>
+<p>Сколько строк выведет каждая? Объясните разницу и скажите, в каком случае
+цепочка <code>elif</code> уместна и читается лучше.</p>
+<h2 id="проверка-понимания"><span class="h-number">5.13</span> Проверка понимания</h2>
+<ol>
+<li>Какие значения Python считает ложными? Почему <code>bool(&quot;0&quot;)</code> даёт <code>True</code>?</li>
+<li>Чем условие отличается от обычного выражения?</li>
+<li>Что такое блок и как Python определяет его границы?</li>
+<li>Почему отступ в Python — часть синтаксиса, а не оформление?</li>
+<li>Чем цепочка <code>elif</code> отличается от нескольких независимых <code>if</code>?</li>
+<li>Почему порядок ветвей в цепочке <code>elif</code> важен?</li>
+<li>Когда выбирать условное выражение, а когда — инструкцию <code>if</code>?</li>
+<li>Чем <code>IndentationError</code> отличается от <code>TabError</code> по причине возникновения?</li>
+</ol>
+<h2 id="что-дальше"><span class="h-number">5.14</span> Что дальше</h2>
+<p>Теперь программа умеет выбирать путь. Но каждая ветвь всё ещё исполняется один
+раз: чтобы обработать сто заказов, пришлось бы сто раз повторить код. Дальше
+появятся <a href="ch-06-loops.html">циклы</a> — механизм, который повторяет блок, пока условие
+истинно, и позволяет обрабатывать данные любого объёма.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-04-expressions-input.html"><span class="pager-label">← Назад</span><span class="pager-title">Выражения, операторы и ввод данных</span></a><a class="pager-card next" rel="next" href="ch-06-loops.html"><span class="pager-label">Далее:</span><span class="pager-title">Циклы: while и for</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

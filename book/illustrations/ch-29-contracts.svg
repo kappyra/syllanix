@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 360" role="img"
+     aria-labelledby="ttl29b desc29b" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl29b">Три способа описать контракт: обычный класс, абстрактный базовый класс, протокол</title>
+  <desc id="desc29b">Обычный класс задаёт интерфейс неявно и никем не проверяется. Абстрактный базовый класс требует наследования и проверяется Python при создании экземпляра. Протокол описывает набор методов без наследования, его проверяет статический анализ, общего кода он не даёт.</desc>
+
+  <rect x="0" y="0" width="880" height="360" fill="#ffffff"/>
+
+  <text x="28" y="32" font-size="17" font-weight="bold" fill="#1d3550">Три способа описать контракт</text>
+
+  <!-- обычный класс -->
+  <rect x="28" y="58" width="264" height="196" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="1.8"/>
+  <text x="44" y="86" font-size="14" font-weight="bold" fill="#1d3550">обычный класс</text>
+  <line x1="44" y1="98" x2="276" y2="98" stroke="#9fb3c8" stroke-width="1.2"/>
+  <text x="44" y="126" font-size="12" fill="#1d3550">задаётся:</text>
+  <text x="44" y="144" font-size="12" fill="#33557a">публичные методы именами</text>
+  <text x="44" y="176" font-size="12" fill="#1d3550">проверяет:</text>
+  <text x="44" y="194" font-size="12" fill="#33557a">никто, ошибка при вызове</text>
+  <text x="44" y="226" font-size="12" fill="#1d3550">общий код:</text>
+  <text x="44" y="244" font-size="12" fill="#33557a">только в самом классе</text>
+
+  <!-- ABC -->
+  <rect x="308" y="58" width="264" height="196" rx="10" fill="#fdf3e3" stroke="#8a5a13" stroke-width="1.8"/>
+  <text x="324" y="86" font-size="14" font-weight="bold" fill="#1d3550">абстрактный класс</text>
+  <line x1="324" y1="98" x2="556" y2="98" stroke="#c8ab7d" stroke-width="1.2"/>
+  <text x="324" y="126" font-size="12" fill="#1d3550">задаётся:</text>
+  <text x="324" y="144" font-size="12" fill="#8a5a13">ABC + abstractmethod</text>
+  <text x="324" y="176" font-size="12" fill="#1d3550">проверяет:</text>
+  <text x="324" y="194" font-size="12" fill="#8a5a13">Python при создании</text>
+  <text x="324" y="226" font-size="12" fill="#1d3550">общий код:</text>
+  <text x="324" y="244" font-size="12" fill="#8a5a13">да, в базовом классе</text>
+
+  <!-- протокол -->
+  <rect x="588" y="58" width="264" height="196" rx="10" fill="#e8f5ec" stroke="#2f6b45" stroke-width="1.8"/>
+  <text x="604" y="86" font-size="14" font-weight="bold" fill="#1d3550">протокол</text>
+  <line x1="604" y1="98" x2="836" y2="98" stroke="#9dc3aa" stroke-width="1.2"/>
+  <text x="604" y="126" font-size="12" fill="#1d3550">задаётся:</text>
+  <text x="604" y="144" font-size="12" fill="#2f6b45">набором методов</text>
+  <text x="604" y="176" font-size="12" fill="#1d3550">проверяет:</text>
+  <text x="604" y="194" font-size="12" fill="#2f6b45">статический анализ</text>
+  <text x="604" y="226" font-size="12" fill="#1d3550">общий код:</text>
+  <text x="604" y="244" font-size="12" fill="#2f6b45">нет, только описание</text>
+
+  <!-- итог -->
+  <rect x="28" y="274" width="824" height="58" rx="8" fill="#f7f9fc" stroke="#c9d3e0" stroke-width="1.2"/>
+  <text x="44" y="298" font-size="13" fill="#1d3550">Есть общий код подклассов — берите абстрактный класс.</text>
+  <text x="44" y="320" font-size="13" fill="#33557a">Нужен контракт без иерархии — берите протокол.</text>
+</svg>

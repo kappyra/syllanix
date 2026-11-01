@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" role="img"
+     aria-labelledby="ttl30a desc30a" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl30a">Низкая и высокая связность класса</title>
+  <desc id="desc30a">Слева один класс с тремя обязанностями: читает данные, форматирует отчёт и отправляет его, поэтому у него три причины для изменения. Справа обязанности разделены на три класса, каждый меняется отдельно. Внизу — правило связанности: зависимости передают снаружи, чтобы класс зависел от контракта, а не от конкретной базы или почты.</desc>
+
+  <rect x="0" y="0" width="880" height="400" fill="#ffffff"/>
+
+  <text x="28" y="30" font-size="17" font-weight="bold" fill="#1d3550">Одна обязанность на класс</text>
+
+  <!-- плохо -->
+  <rect x="28" y="56" width="380" height="228" rx="10" fill="#fdf0ee" stroke="#a33a2a" stroke-width="1.8"/>
+  <text x="44" y="84" font-size="14" font-weight="bold" fill="#8f2d1f">низкая связность</text>
+
+  <rect x="48" y="100" width="340" height="150" rx="8" fill="#ffffff" stroke="#a33a2a" stroke-width="1.4"/>
+  <text x="64" y="128" font-size="13" fill="#1d3550">один класс «Отчёт»</text>
+  <line x1="64" y1="140" x2="372" y2="140" stroke="#e2b6ae" stroke-width="1.2"/>
+  <text x="64" y="164" font-size="13" fill="#1d3550">1. читает данные из базы</text>
+  <text x="64" y="190" font-size="13" fill="#1d3550">2. форматирует текст отчёта</text>
+  <text x="64" y="216" font-size="13" fill="#1d3550">3. отправляет по почте</text>
+  <text x="64" y="240" font-size="12" fill="#8f2d1f">три причины для изменения</text>
+
+  <!-- хорошо -->
+  <rect x="452" y="56" width="380" height="228" rx="10" fill="#f3faf5" stroke="#2f6b45" stroke-width="1.8"/>
+  <text x="468" y="84" font-size="14" font-weight="bold" fill="#1f5233">высокая связность</text>
+
+  <rect x="472" y="100" width="340" height="44" rx="8" fill="#ffffff" stroke="#2f6b45" stroke-width="1.4"/>
+  <text x="488" y="128" font-size="13" fill="#1d3550">Loader — читает данные</text>
+
+  <rect x="472" y="156" width="340" height="44" rx="8" fill="#ffffff" stroke="#2f6b45" stroke-width="1.4"/>
+  <text x="488" y="184" font-size="13" fill="#1d3550">Formatter — форматирует</text>
+
+  <rect x="472" y="212" width="340" height="44" rx="8" fill="#ffffff" stroke="#2f6b45" stroke-width="1.4"/>
+  <text x="488" y="240" font-size="13" fill="#1d3550">Sender — отправляет</text>
+
+  <text x="468" y="250" font-size="12" fill="#1f5233"> </text>
+
+  <!-- связанность -->
+  <rect x="28" y="300" width="824" height="72" rx="8" fill="#f7f9fc" stroke="#c9d3e0" stroke-width="1.2"/>
+  <text x="44" y="326" font-size="13" fill="#1d3550">Связанность: зависимости (база, почта, логгер) передают снаружи.</text>
+  <text x="44" y="350" font-size="13" fill="#33557a">Тогда класс зависит от контракта «умеет save / send / write», а не от конкретной службы.</text>
+  <text x="44" y="370" font-size="12" fill="#4b5563"> </text>
+</svg>

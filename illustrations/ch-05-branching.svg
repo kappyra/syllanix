@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 636" role="img"
+     aria-labelledby="ttl5a desc5a" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl5a">Порядок исполнения цепочки if, elif и else</title>
+  <desc id="desc5a">Схема цепочки проверок для переменной score. Условия проверяются сверху вниз: score больше или равно 90, затем 80, затем 70. Первое истинное условие исполняет свою ветвь и завершает цепочку, остальные ветви пропускаются. Если ни одно условие не истинно, исполняется ветвь else. Все ветви сходятся к продолжению программы.</desc>
+
+  <text x="30" y="30" font-size="16" font-weight="bold" fill="#1d3550">Цепочка if / elif / else: исполняется ровно одна ветвь</text>
+
+  <!-- старт -->
+  <rect x="140" y="44" width="180" height="34" rx="8" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="230" y="66" text-anchor="middle" font-size="14" fill="#1d3550">score = 85</text>
+  <line x1="230" y1="78" x2="230" y2="88" stroke="#33557a" stroke-width="2"/>
+
+  <!-- ромб 1 -->
+  <polygon points="230,88 335,124 230,160 125,124" fill="#fdf1dc" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="230" y="129" text-anchor="middle" font-size="14" fill="#4b3a16">score &gt;= 90?</text>
+  <line x1="335" y1="124" x2="452" y2="124" stroke="#3f6b3f" stroke-width="2"/>
+  <path d="M 445 117 L 458 124 L 445 131" fill="none" stroke="#3f6b3f" stroke-width="2"/>
+  <text x="394" y="115" text-anchor="middle" font-size="13" fill="#264a26">да</text>
+  <rect x="462" y="102" width="216" height="44" rx="8" fill="#eef7ee" stroke="#3f6b3f" stroke-width="2"/>
+  <text x="570" y="129" text-anchor="middle" font-size="14" fill="#264a26">оценка 5</text>
+
+  <line x1="230" y1="160" x2="230" y2="194" stroke="#8a6a2f" stroke-width="2"/>
+  <path d="M 223 188 L 230 200 L 237 188" fill="none" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="242" y="184" font-size="13" fill="#4b3a16">нет</text>
+
+  <!-- ромб 2 -->
+  <polygon points="230,204 335,240 230,276 125,240" fill="#fdf1dc" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="230" y="245" text-anchor="middle" font-size="14" fill="#4b3a16">score &gt;= 80?</text>
+  <line x1="335" y1="240" x2="452" y2="240" stroke="#3f6b3f" stroke-width="2"/>
+  <path d="M 445 233 L 458 240 L 445 247" fill="none" stroke="#3f6b3f" stroke-width="2"/>
+  <text x="394" y="231" text-anchor="middle" font-size="13" fill="#264a26">да</text>
+  <rect x="462" y="218" width="216" height="44" rx="8" fill="#eef7ee" stroke="#3f6b3f" stroke-width="2"/>
+  <text x="570" y="245" text-anchor="middle" font-size="14" fill="#264a26">оценка 4</text>
+
+  <line x1="230" y1="276" x2="230" y2="310" stroke="#8a6a2f" stroke-width="2"/>
+  <path d="M 223 304 L 230 316 L 237 304" fill="none" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="242" y="300" font-size="13" fill="#4b3a16">нет</text>
+
+  <!-- ромб 3 -->
+  <polygon points="230,320 335,356 230,392 125,356" fill="#fdf1dc" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="230" y="361" text-anchor="middle" font-size="14" fill="#4b3a16">score &gt;= 70?</text>
+  <line x1="335" y1="356" x2="452" y2="356" stroke="#3f6b3f" stroke-width="2"/>
+  <path d="M 445 349 L 458 356 L 445 363" fill="none" stroke="#3f6b3f" stroke-width="2"/>
+  <text x="394" y="347" text-anchor="middle" font-size="13" fill="#264a26">да</text>
+  <rect x="462" y="334" width="216" height="44" rx="8" fill="#eef7ee" stroke="#3f6b3f" stroke-width="2"/>
+  <text x="570" y="361" text-anchor="middle" font-size="14" fill="#264a26">оценка 3</text>
+
+  <line x1="230" y1="392" x2="230" y2="424" stroke="#8a6a2f" stroke-width="2"/>
+  <path d="M 223 418 L 230 430 L 237 418" fill="none" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="242" y="414" font-size="13" fill="#4b3a16">нет</text>
+
+  <!-- else -->
+  <rect x="120" y="434" width="220" height="44" rx="8" fill="#e8f0fa" stroke="#33557a" stroke-width="2"/>
+  <text x="230" y="461" text-anchor="middle" font-size="14" fill="#1d3550">else: оценка 2</text>
+
+  <!-- сборка ветвей -->
+  <line x1="678" y1="124" x2="702" y2="124" stroke="#33557a" stroke-width="2"/>
+  <line x1="678" y1="240" x2="702" y2="240" stroke="#33557a" stroke-width="2"/>
+  <line x1="678" y1="356" x2="702" y2="356" stroke="#33557a" stroke-width="2"/>
+  <line x1="340" y1="456" x2="702" y2="456" stroke="#33557a" stroke-width="2"/>
+  <line x1="702" y1="124" x2="702" y2="520" stroke="#33557a" stroke-width="2"/>
+  <line x1="702" y1="520" x2="330" y2="520" stroke="#33557a" stroke-width="2"/>
+  <path d="M 336 513 L 324 520 L 336 527" fill="none" stroke="#33557a" stroke-width="2"/>
+
+  <rect x="110" y="500" width="212" height="40" rx="8" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="216" y="526" text-anchor="middle" font-size="14" fill="#1d3550">продолжение программы</text>
+
+  <text x="30" y="580" font-size="14" fill="#1d3550">Проверки идут сверху вниз; после первой истинной ветви цепочка заканчивается.</text>
+  <text x="30" y="606" font-size="14" font-weight="bold" fill="#1d3550">Ветви elif проверяются, только если все предыдущие условия ложны.</text>
+</svg>

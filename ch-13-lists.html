@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Списки: индексы, срезы и методы — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-13-lists.html" aria-current="page">13. Списки: индексы, срезы и методы</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-13-lists.html#why">13.1. Зачем нужны списки</a></li>
+<li><a href="ch-13-lists.html#list-basics">13.2. Создание списка</a></li>
+<li><a href="ch-13-lists.html#mutation">13.3. Изменение элемента</a></li>
+<li><a href="ch-13-lists.html#negative-index">13.4. Отрицательные индексы</a></li>
+<li><a href="ch-13-lists.html#slices">13.5. Срезы</a></li>
+<li><a href="ch-13-lists.html#index-error">13.6. IndexError</a></li>
+<li><a href="ch-13-lists.html#methods">13.7. Методы списка</a></li>
+<li><a href="ch-13-lists.html#append">13.8. append: добавление в конец</a></li>
+<li><a href="ch-13-lists.html#edit">13.9. Вставка, удаление и извлечение</a></li>
+<li><a href="ch-13-lists.html#sort">13.10. Сортировка</a></li>
+<li><a href="ch-13-lists.html#del">13.11. Инструкция del</a></li>
+<li><a href="ch-13-lists.html#slice-copy">13.12. Срез создаёт копию</a></li>
+<li><a href="ch-13-lists.html#list-argument">13.13. Список как аргумент функции</a></li>
+<li><a href="ch-13-lists.html#mistakes">13.14. Типичные ошибки</a></li>
+<li><a href="ch-13-lists.html#упражнения">13.15. Упражнения</a></li>
+<li><a href="ch-13-lists.html#проверка-понимания">13.16. Проверка понимания</a></li>
+<li><a href="ch-13-lists.html#что-дальше">13.17. Что дальше</a></li>
+</ol></details></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 3. Коллекции и данные</span><span class="sep">›</span><span>Глава 13</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Коллекции и данные · глава 13</p>
+<h1 id="списки-индексы-срезы-и-методы">Списки: индексы, срезы и методы</h1>
+<p class="chapter-summary">Изменяемые последовательности: доступ, изменение, срезы и основные методы.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#why"><span class="toc-number">13.1</span> Зачем нужны списки</a></li>
+<li class="level-2"><a href="#list-basics"><span class="toc-number">13.2</span> Создание списка</a></li>
+<li class="level-2"><a href="#mutation"><span class="toc-number">13.3</span> Изменение элемента</a></li>
+<li class="level-2"><a href="#negative-index"><span class="toc-number">13.4</span> Отрицательные индексы</a></li>
+<li class="level-2"><a href="#slices"><span class="toc-number">13.5</span> Срезы</a></li>
+<li class="level-2"><a href="#index-error"><span class="toc-number">13.6</span> IndexError</a></li>
+<li class="level-2"><a href="#methods"><span class="toc-number">13.7</span> Методы списка</a></li>
+<li class="level-2"><a href="#append"><span class="toc-number">13.8</span> append: добавление в конец</a></li>
+<li class="level-2"><a href="#edit"><span class="toc-number">13.9</span> Вставка, удаление и извлечение</a></li>
+<li class="level-2"><a href="#sort"><span class="toc-number">13.10</span> Сортировка</a></li>
+<li class="level-2"><a href="#del"><span class="toc-number">13.11</span> Инструкция del</a></li>
+<li class="level-2"><a href="#slice-copy"><span class="toc-number">13.12</span> Срез создаёт копию</a></li>
+<li class="level-2"><a href="#list-argument"><span class="toc-number">13.13</span> Список как аргумент функции</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">13.14</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">13.15</span> Упражнения</a></li>
+<li class="level-2"><a href="#проверка-понимания"><span class="toc-number">13.16</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#что-дальше"><span class="toc-number">13.17</span> Что дальше</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#ex-ch13-01">1. Чтение списка</a></li>
+<li class="level-3"><a href="#ex-ch13-02">2. Изменение элементов</a></li>
+<li class="level-3"><a href="#ex-ch13-03">3. Срезы</a></li>
+<li class="level-3"><a href="#ex-ch13-04">4. Сортировка</a></li>
+<li class="level-3"><a href="#ex-ch13-05">5. Удаление</a></li>
+<li class="level-3"><a href="#ex-ch13-06">6. Работа со словами</a></li>
+<li class="level-3"><a href="#ex-ch13-07">7. Ловушка append</a></li>
+<li class="level-3"><a href="#ex-ch13-08">8. Границы среза</a></li>
+<li class="level-3"><a href="#ex-ch13-09">9. Извлечение в цикле</a></li>
+<li class="level-3"><a href="#ex-ch13-10">10. Фильтр чётных</a></li>
+<li class="level-3"><a href="#ex-ch13-11">11. Сортировка без изменения оригинала</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>В предыдущей главе появились коллекции и последовательности, но работать
+приходилось с <code>range</code> — последовательностью, которую нельзя изменить.
+Настоящие данные меняются: список задач пополняется, корзина покупок
+редактируется, результаты измерений сортируются. Для этого нужен список.</p>
+<h2 id="why"><span class="h-number">13.1</span> Зачем нужны списки</h2>
+<p><strong>Список</strong> — изменяемая упорядоченная последовательность произвольных
+объектов. Три слова в этом определении важны по отдельности. Упорядоченная
+— значит, у элементов есть позиции и индексы, как у любой
+последовательности. Произвольных объектов — значит, в одном списке могут
+лежать числа, строки и другие значения. Изменяемая — значит, список можно
+менять после создания: заменять элементы, добавлять и удалять их,
+переставлять.</p>
+<p>Последнее свойство отличает список от <code>range</code>. Диапазон задаётся один раз
+и не меняется; список живёт вместе с программой. Именно поэтому список —
+самая используемая коллекция Python: он подходит и для хранения данных,
+которые ещё будут меняться, и для накопления результатов.</p>
+<p>После этой главы вы сможете:</p>
+<ul>
+<li>создавать списки и обращаться к элементам по индексу;</li>
+<li>пользоваться отрицательными индексами и срезами;</li>
+<li>добавлять, удалять и заменять элементы;</li>
+<li>сортировать список и отличать сортировку на месте от создания копии;</li>
+<li>понимать, почему метод списка возвращает <code>None</code>, и не попадаться на
+этом.</li>
+</ul>
+<h2 id="list-basics"><span class="h-number">13.2</span> Создание списка</h2>
+<p>Список записывается квадратными скобками, элементы разделяются запятыми.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">numbers</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">20</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>[10, 20, 30, 40, 50]
+5
+10 40
+True
+list
+</code></pre>
+<p>Список отвечает на все вопросы последовательности из
+<a href="ch-12-collections-intro.html#collections">предыдущей главы</a>: у него есть
+длина, элементы доступны по индексу, работает проверка вхождения. При
+печати список показывается в квадратных скобках — это удобная форма
+записи, по которой видно и значения, и их порядок.</p>
+<p>Пустой список записывается как <code>[]</code>. Его длина равна нулю, и это
+нормальное начальное состояние, из которого список наполняется.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">squares</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+    <span class="n">squares</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">number</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">squares</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>[1, 4, 9, 16]
+</code></pre>
+<p>Такой приём — начать с пустого списка и добавлять элементы в цикле —
+встречается постоянно. Метод <code>append</code> добавляет элемент в конец; о нём
+подробнее ниже.</p>
+<h2 id="mutation"><span class="h-number">13.3</span> Изменение элемента</h2>
+<p>Список изменяем: элементу можно присвоить новое значение по индексу.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<span class="n">numbers</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">100</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>[10, 25, 30]
+[110, 25, 30]
+</code></pre>
+<p>Присваивание по индексу заменяет элемент, не меняя длину списка. Это
+отличие от добавления: замена возможна только для существующей позиции.
+Попытка присвоить значение по индексу, которого нет, поднимает
+<code>IndexError</code>.</p>
+<p>Изменяемость — свойство самого списка, а не имени. Если два имени связаны
+с одним списком, изменение видно через оба. Подробно это разобрано в
+главе <a href="ch-18-references-copy.html">о ссылках и копировании</a>; пока достаточно
+помнить, что список — не «значение-снимок», а объект, который можно
+менять.</p>
+<h2 id="negative-index"><span class="h-number">13.4</span> Отрицательные индексы</h2>
+<p>Кроме индексов от начала, у последовательностей есть <strong>отрицательный
+индекс</strong> — индекс, отсчитываемый от конца. <code>-1</code> — последний элемент,
+<code>-2</code> — предпоследний, и так далее.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">])</span>
+</code></pre></div>
+<pre class="output"><code>50
+40
+10
+</code></pre>
+<p>Отрицательный индекс удобен, когда нужен последний элемент, а длину
+списка не хочется вычислять. Соответствие простое: <code>numbers[-1]</code>
+равносильно <code>numbers[len(numbers) - 1]</code>. Первый элемент можно взять как
+<code>numbers[-len(numbers)]</code>.</p>
+<p>Граница действует и здесь: <code>numbers[-6]</code> для списка из пяти элементов —
+ошибка, потому что такого элемента нет.</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">])</span>
+</code></pre></div>
+<pre class="output"><code>IndexError: list index out of range
+</code></pre>
+<h2 id="slices"><span class="h-number">13.5</span> Срезы</h2>
+<p><strong>Срез</strong> — часть последовательности, задаваемая выражением
+<code>[начало:конец:шаг]</code>. Срез не меняет исходный список, а создаёт новый
+список из выбранных элементов. Правая граница не включается — то же
+правило полуоткрытого интервала, что у <code>range</code>.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">letters</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">,</span> <span class="s2">"c"</span><span class="p">,</span> <span class="s2">"d"</span><span class="p">,</span> <span class="s2">"e"</span><span class="p">,</span> <span class="s2">"f"</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">letters</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">letters</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">letters</span><span class="p">[</span><span class="mi">3</span><span class="p">:])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">letters</span><span class="p">[:])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">letters</span><span class="p">[::</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">letters</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+</code></pre></div>
+<pre class="output"><code>[&#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;]
+[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]
+[&#x27;d&#x27;, &#x27;e&#x27;, &#x27;f&#x27;]
+[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;, &#x27;e&#x27;, &#x27;f&#x27;]
+[&#x27;a&#x27;, &#x27;c&#x27;, &#x27;e&#x27;]
+[&#x27;b&#x27;, &#x27;d&#x27;]
+</code></pre>
+<p>Разберём строку за строкой. <code>letters[1:4]</code> берёт элементы с индексами 1,
+2, 3 — то есть <code>b</code>, <code>c</code>, <code>d</code>; индекс 4 уже не входит. Если начало
+опущено, срез начинается с нуля; если опущен конец — идёт до конца
+списка. <code>letters[:]</code> копирует весь список. Третий параметр — шаг:
+<code>letters[::2]</code> берёт каждый второй элемент, а <code>letters[1:5:2]</code> — каждый
+второй на отрезке от 1 до 5.</p>
+<p>Отрицательные значения работают и в срезах: они отсчитываются от конца.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">letters</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">,</span> <span class="s2">"c"</span><span class="p">,</span> <span class="s2">"d"</span><span class="p">,</span> <span class="s2">"e"</span><span class="p">,</span> <span class="s2">"f"</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">letters</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">letters</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">letters</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</code></pre></div>
+<pre class="output"><code>[&#x27;e&#x27;, &#x27;f&#x27;]
+[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;]
+[&#x27;f&#x27;, &#x27;e&#x27;, &#x27;d&#x27;, &#x27;c&#x27;, &#x27;b&#x27;, &#x27;a&#x27;]
+</code></pre>
+<p><code>letters[-2:]</code> — два последних элемента, <code>letters[:-2]</code> — всё, кроме двух
+последних, а <code>letters[::-1]</code> — перевёрнутая копия. Обратите внимание:
+срез с шагом <code>-1</code> не меняет исходный список, а создаёт новый.</p>
+<p><figure class="figure"><img src="illustrations/ch-13-index-slice.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Срез терпим к выходящим за границы значениям: слишком большой конец
+просто означает «до конца списка».</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">100</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">9</span><span class="p">])</span>
+</code></pre></div>
+<pre class="output"><code>[20, 30]
+[]
+</code></pre>
+<p>Это отличается от обращения по индексу: <code>numbers[100]</code> — ошибка, а
+<code>numbers[1:100]</code> — допустимый срез. Причина в том, что срез описывает
+диапазон позиций, а не конкретный элемент.</p>
+<h2 id="index-error"><span class="h-number">13.6</span> IndexError</h2>
+<p><strong>IndexError</strong> — исключение, которое поднимается при обращении к
+несуществующему индексу последовательности. Причина всегда одна:
+индекс вышел за допустимый диапазон <code>0 .. len - 1</code> (или, для
+отрицательных, ниже <code>-len</code>).</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+</code></pre></div>
+<pre class="output"><code>IndexError: list index out of range
+</code></pre>
+<p>В списке три элемента, допустимые индексы — 0, 1, 2. Индекс 3 означает
+четвёртый элемент, которого нет. Сообщение <code>list index out of range</code>
+переводится буквально: «индекс списка вне диапазона».</p>
+<p>Типичная причина — ошибка на единицу: путают длину и последний индекс.
+Если нужен последний элемент, пишите <code>numbers[-1]</code> или
+<code>numbers[len(numbers) - 1]</code>, но не <code>numbers[len(numbers)]</code>.</p>
+<h2 id="methods"><span class="h-number">13.7</span> Методы списка</h2>
+<p><strong>Метод списка</strong> — операция над списком, вызываемая через точку:
+<code>numbers.append(4)</code>. Методы меняют список или возвращают информацию о
+нём. Основные методы собраны в таблице.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Что делает</th>
+<th>Возвращает</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>append(x)</code></td>
+<td>добавляет <code>x</code> в конец</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>extend(iterable)</code></td>
+<td>добавляет все элементы из iterable</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>insert(i, x)</code></td>
+<td>вставляет <code>x</code> на позицию <code>i</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>remove(x)</code></td>
+<td>удаляет первый элемент со значением <code>x</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>pop()</code></td>
+<td>удаляет и возвращает последний элемент</td>
+<td>элемент</td>
+</tr>
+<tr>
+<td><code>pop(i)</code></td>
+<td>удаляет и возвращает элемент с индексом <code>i</code></td>
+<td>элемент</td>
+</tr>
+<tr>
+<td><code>sort()</code></td>
+<td>сортирует список на месте</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>reverse()</code></td>
+<td>переворачивает список на месте</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>index(x)</code></td>
+<td>возвращает индекс первого вхождения <code>x</code></td>
+<td>индекс</td>
+</tr>
+<tr>
+<td><code>count(x)</code></td>
+<td>считает вхождения <code>x</code></td>
+<td>число</td>
+</tr>
+</tbody>
+</table>
+</div><p><code>index(x)</code> поднимает <code>ValueError</code>, если значения нет, а <code>pop()</code> на пустом
+списке — <code>IndexError</code>.</p>
+<p>Обратите внимание на третий столбец: методы, которые меняют структуру и не
+извлекают значение (<code>append</code>, <code>extend</code>, <code>insert</code>, <code>remove</code>, <code>sort</code>,
+<code>reverse</code>), возвращают <code>None</code>. <code>pop</code> — исключение: он меняет список и
+возвращает удалённый элемент, поэтому его результат можно сразу использовать,
+а результат <code>append(...)</code> — нет.</p>
+<p><figure class="figure"><img src="illustrations/ch-13-list-methods.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h2 id="append"><span class="h-number">13.8</span> append: добавление в конец</h2>
+<p>Метод <strong>append</strong> добавляет один элемент в конец списка, изменяет список и
+возвращает <code>None</code>.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">numbers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>[10, 20, 30]
+None
+</code></pre>
+<p>Здесь кроется классическая ловушка. Запись <code>numbers = numbers.append(30)</code>
+присвоит имени <code>numbers</code> значение <code>None</code> и потеряет список. Правильно
+вызывать метод отдельной инструкцией.</p>
+<p>Метод <code>extend</code> добавляет сразу несколько элементов из другого
+итерируемого объекта, а <code>append</code> добавляет переданное значение как один
+элемент — даже если это другой список.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+<span class="n">numbers</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="n">numbers</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">53</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>[10, 20, 30, 40]
+[10, 20, 30, 40, 50, 51, 52]
+</code></pre>
+<h2 id="edit"><span class="h-number">13.9</span> Вставка, удаление и извлечение</h2>
+<p>Три операции покрывают большинство правок: вставить в середину, удалить
+по значению, извлечь по позиции.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<span class="n">numbers</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="n">numbers</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="n">last</span> <span class="o">=</span> <span class="n">numbers</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"взяли:"</span><span class="p">,</span> <span class="n">last</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="n">first</span> <span class="o">=</span> <span class="n">numbers</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"взяли:"</span><span class="p">,</span> <span class="n">first</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>[10, 15, 20, 30]
+[10, 15, 30]
+взяли: 30
+[10, 15]
+взяли: 10
+[15]
+</code></pre>
+<p><code>insert(1, 15)</code> ставит 15 на позицию 1 и сдвигает остальные элементы
+вправо. <code>remove(20)</code> удаляет первый элемент со значением 20 — именно
+значение, а не позицию. <code>pop()</code> без аргумента удаляет последний элемент и
+возвращает его; <code>pop(0)</code> удаляет первый. Разница между <code>remove</code> и <code>pop</code>
+принципиальна: <code>remove</code> ищет значение, <code>pop</code> работает с позицией.</p>
+<p>Если значения нет, <code>remove</code> поднимает <code>ValueError</code>.</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<span class="n">numbers</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">99</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>ValueError: list.remove(x): x not in list
+</code></pre>
+<h2 id="sort"><span class="h-number">13.10</span> Сортировка</h2>
+<p><strong>sort</strong> сортирует список на месте и возвращает <code>None</code>; встроенная
+функция <code>sorted</code> возвращает новый отсортированный список, не меняя
+исходный.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+<span class="n">numbers</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="n">numbers</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="o">.</span><span class="n">sort</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>[10, 20, 30, 50]
+[50, 30, 20, 10]
+None
+</code></pre>
+<p>Третья строка вывода показывает возвращаемое значение <code>sort</code> — <code>None</code>.
+Поэтому запись <code>numbers = numbers.sort()</code> обнулит имя. Если нужен новый
+список, применяйте <code>sorted</code>.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+<span class="n">ordered</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ordered</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>[10, 20, 30, 50]
+[30, 10, 50, 20]
+</code></pre>
+<p><code>numbers</code> остался в исходном порядке, а <code>ordered</code> — новый список. Выбор
+между <code>sort</code> и <code>sorted</code> зависит от того, нужен ли исходный порядок дальше.</p>
+<h2 id="del"><span class="h-number">13.11</span> Инструкция del</h2>
+<p><strong>Инструкция del</strong> удаляет элемент по индексу или срез. В отличие от
+<code>remove</code>, она работает с позицией и не возвращает удалённое значение.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="k">del</span> <span class="n">numbers</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="k">del</span> <span class="n">numbers</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>[10, 30, 40, 50]
+[10, 50]
+</code></pre>
+<p>Первая <code>del</code> удалила элемент с индексом 1. Вторая удалила срез с
+индексами 1 и 2 — то есть 30 и 40. После удаления элементы сдвигаются,
+поэтому индексы оставшихся меняются.</p>
+<h2 id="slice-copy"><span class="h-number">13.12</span> Срез создаёт копию</h2>
+<p>Срез возвращает новый список. Это важно: изменение среза не влияет на
+исходный список.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="n">slice_copy</span> <span class="o">=</span> <span class="n">numbers</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">slice_copy</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">slice_copy</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>[10, 20, 30, 40, 50]
+[99, 30]
+</code></pre>
+<p>Изменение <code>slice_copy</code> не затронуло <code>numbers</code>: это два разных объекта.
+Срез <code>numbers[:]</code> — простейший способ сделать поверхностную копию
+списка. Глубокая копия понадобится, если внутри списка лежат другие
+изменяемые объекты; об этом — в главе о ссылках.</p>
+<p>Срезу можно и присвоить новый список: тогда заменяется целый участок, а
+не один элемент.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="n">numbers</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">21</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">41</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="n">numbers</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>[10, 21, 31, 41, 40, 50]
+[10, 41, 40, 50]
+</code></pre>
+<p>Первая замена поставила на место двух элементов три, поэтому список
+удлинился. Вторая замена пустым списком удалила участок — это ещё один
+способ удаления по срезу, равносильный <code>del numbers[1:3]</code>. Такое
+присваивание меняет исходный список, потому что слева стоит не новый
+объект, а участок существующего.</p>
+<h2 id="list-argument"><span class="h-number">13.13</span> Список как аргумент функции</h2>
+<p>Изменяемость проявляется и при передаче в функцию: список передаётся как
+объект, поэтому изменения внутри функции видны вызывающему коду.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">add_item</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">add_item</span><span class="p">(</span><span class="n">numbers</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>[1, 2, 3]
+</code></pre>
+<p>Функция ничего не возвращает, но список изменился. Иногда это и нужно, а
+иногда — нежелательный побочный эффект. Если функция должна вернуть новый
+список, а входной сохранить, скопируйте его через срез.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">with_item</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">items</span><span class="p">[:]</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">extended</span> <span class="o">=</span> <span class="n">with_item</span><span class="p">(</span><span class="n">numbers</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">extended</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>[1, 2]
+[1, 2, 3]
+</code></pre>
+<p>Соглашение простое и полезное: функция меняет аргумент только тогда,
+когда это следует из её названия. <code>add_item</code> звучит как действие над
+списком, <code>with_item</code> — как создание нового. Название должно сообщать о
+побочном эффекте, иначе читатель кода ошибётся.</p>
+<h2 id="mistakes"><span class="h-number">13.14</span> Типичные ошибки</h2>
+<p><strong>Присваивать результат изменяющего метода.</strong> <code>numbers = numbers.append(5)</code> — теперь <code>numbers</code> равно <code>None</code>. Методы <code>append</code>,
+<code>sort</code>, <code>reverse</code>, <code>insert</code>, <code>remove</code>, <code>extend</code> возвращают <code>None</code>.</p>
+<p><strong>Путать длину и последний индекс.</strong> Для списка из пяти элементов
+последний индекс равен 4. <code>numbers[5]</code> — <code>IndexError</code>.</p>
+<p><strong>Путать <code>remove</code> и <code>pop</code>.</strong> <code>remove(x)</code> удаляет по значению и ничего не
+возвращает; <code>pop(i)</code> удаляет по индексу и возвращает элемент.</p>
+<p><strong>Менять список во время перебора.</strong> Удаление элементов внутри
+<code>for number in numbers</code> приводит к пропускам, потому что индексы
+сдвигаются. Собирайте результат в новый список или перебирайте копию.</p>
+<p><strong>Считать, что <code>sort</code> вернёт список.</strong> Он возвращает <code>None</code>; для нового
+списка есть <code>sorted</code>.</p>
+<p><strong>Ожидать, что срез изменит исходный список.</strong> Срез копирует. Для
+изменения части списка используют присваивание срезу, но это отдельная
+тема для практики.</p>
+<h2 id="упражнения"><span class="h-number">13.15</span> Упражнения</h2>
+<h3 id="ex-ch13-01">1. Чтение списка</h3>
+<p>Дан список <code>numbers = [5, 10, 15, 20, 25]</code>. Не запуская код, определите:
+первый элемент, последний элемент, длину, элемент с индексом 2 и
+результат проверки <code>20 in numbers</code>. Проверьте ответы программой.</p>
+<h3 id="ex-ch13-02">2. Изменение элементов</h3>
+<p>Начните со списка <code>[1, 2, 3]</code>. Добавьте в конец 4, вставьте 0 в начало,
+замените элемент с индексом 2 на 20. Выведите итоговый список и
+объясните, почему после вставки индексы сдвинулись.</p>
+<h3 id="ex-ch13-03">3. Срезы</h3>
+<p>Для <code>letters = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;]</code> запишите, что вернут
+выражения <code>letters[2:5]</code>, <code>letters[-3:]</code> и <code>letters[::3]</code>. Проверьте
+запуском и объясните каждую границу; для <code>letters[-3:]</code> начало задаётся
+отрицательным индексом.</p>
+<h3 id="ex-ch13-04">4. Сортировка</h3>
+<p>Дан список <code>[4, 1, 3, 2]</code>. Отсортируйте его по возрастанию методом
+<code>sort</code>, затем выведите убывающий порядок через <code>sorted</code>, не меняя
+исходный список. Объясните разницу между двумя способами.</p>
+<h3 id="ex-ch13-05">5. Удаление</h3>
+<p>Дан список <code>[10, 20, 30, 40, 50]</code>. Удалите элемент с индексом 2, затем
+удалите элементы с чётными индексами (0, 2, …) оставшегося списка с помощью
+<code>del</code> и среза. Выведите результат.</p>
+<h3 id="ex-ch13-06">6. Работа со словами</h3>
+<p>Дан список <code>[&quot;яблоко&quot;, &quot;груша&quot;, &quot;банан&quot;]</code>. Добавьте <code>&quot;слива&quot;</code>,
+отсортируйте список, затем удалите первый элемент через <code>pop(0)</code>.
+Выведите результат.</p>
+<h3 id="ex-ch13-07">7. Ловушка append</h3>
+<p>Объясните, что выведет программа, и почему это опасно:</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">numbers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="ex-ch13-08">8. Границы среза</h3>
+<p>Что выведут <code>numbers[1:100]</code> и <code>numbers[5:9]</code> для
+<code>numbers = [10, 20, 30]</code>? Почему срез не поднимает <code>IndexError</code>, хотя
+индекс 100 в списке отсутствует?</p>
+<h3 id="ex-ch13-09">9. Извлечение в цикле</h3>
+<p>Дан список <code>[10, 20, 30, 40]</code>. Используя <code>pop()</code> в цикле <code>while</code>,
+просуммируйте все элементы. Объясните, почему условие цикла записывается
+как <code>while numbers:</code> и что произойдёт, если забыть про удаление.</p>
+<h3 id="ex-ch13-10">10. Фильтр чётных</h3>
+<p>Напишите функцию <code>evens(numbers)</code>, которая возвращает новый список из
+чётных элементов входного списка. Используйте пустой список и <code>append</code>.
+Проверьте на <code>[1, 2, 4, 5, 6, 7]</code>.</p>
+<h3 id="ex-ch13-11">11. Сортировка без изменения оригинала</h3>
+<p>Напишите функцию <code>normalize(numbers)</code>, которая возвращает
+отсортированную копию входного списка, не меняя его. Проверьте, что
+исходный список остался в прежнем порядке.</p>
+<h2 id="проверка-понимания"><span class="h-number">13.16</span> Проверка понимания</h2>
+<ol>
+<li>Чем список отличается от <code>range</code> по изменяемости и по назначению?</li>
+<li>Почему нумерация с конца начинается с <code>-1</code>, а не с <code>-0</code>?</li>
+<li>Чем <code>numbers[3]</code> отличается от <code>numbers[3:4]</code> по результату и по
+поведению при выходе за границу?</li>
+<li>Почему <code>append</code> возвращает <code>None</code> и чем это опасно?</li>
+<li>Чем <code>remove</code> отличается от <code>pop</code> по аргументу и результату?</li>
+<li>Чем <code>sort</code> отличается от <code>sorted</code>?</li>
+<li>Почему срез создаёт копию, а изменение элемента — нет?</li>
+</ol>
+<h2 id="что-дальше"><span class="h-number">13.17</span> Что дальше</h2>
+<p>Список — изменяемая последовательность. Но не все наборы данных должны
+меняться: иногда важно зафиксировать состав значений и защитить его от
+случайной правки. Для этого служат кортежи — неизменяемые
+последовательности. Об этом — в главе
+<a href="ch-14-tuples.html#tuples">«Кортежи, распаковка и неизменяемость»</a>.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-12-collections-intro.html"><span class="pager-label">← Назад</span><span class="pager-title">Коллекции и последовательности: введение</span></a><a class="pager-card next" rel="next" href="ch-14-tuples.html"><span class="pager-label">Далее:</span><span class="pager-title">Кортежи, распаковка и неизменяемость</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

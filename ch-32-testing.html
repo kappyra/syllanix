@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Тестирование: pytest и TDD — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-32-testing.html" aria-current="page">32. Тестирование: pytest и TDD</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-32-testing.html#что-вы-сможете-после-этой-главы">32.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-32-testing.html#unit-test">32.2. Модульный тест и тестовый случай</a></li>
+<li><a href="ch-32-testing.html#pytest">32.3. pytest: соглашения и запуск</a></li>
+<li><a href="ch-32-testing.html#fixtures">32.4. Фикстуры и параметризация</a></li>
+<li><a href="ch-32-testing.html#tdd">32.5. Разработка через тесты</a></li>
+<li><a href="ch-32-testing.html#coverage">32.6. Покрытие, моки и регрессионные тесты</a></li>
+<li><a href="ch-32-testing.html#mistakes">32.7. Типичные ошибки</a></li>
+<li><a href="ch-32-testing.html#упражнения">32.8. Упражнения</a></li>
+<li><a href="ch-32-testing.html#проверка-понимания">32.9. Проверка понимания</a></li>
+<li><a href="ch-32-testing.html#что-дальше">32.10. Что дальше</a></li>
+</ol></details></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 6. Типизация, тестирование и инструменты</span><span class="sep">›</span><span>Глава 32</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Типизация, тестирование и инструменты · глава 32</p>
+<h1 id="тестирование-pytest-и-tdd">Тестирование: pytest и TDD</h1>
+<p class="chapter-summary">Как писать тесты, которые находят дефекты, чем помогают фикстуры и параметризация и как работать от теста.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#что-вы-сможете-после-этой-главы"><span class="toc-number">32.1</span> Что вы сможете после этой главы</a></li>
+<li class="level-2"><a href="#unit-test"><span class="toc-number">32.2</span> Модульный тест и тестовый случай</a></li>
+<li class="level-2"><a href="#pytest"><span class="toc-number">32.3</span> pytest: соглашения и запуск</a></li>
+<li class="level-2"><a href="#fixtures"><span class="toc-number">32.4</span> Фикстуры и параметризация</a></li>
+<li class="level-2"><a href="#tdd"><span class="toc-number">32.5</span> Разработка через тесты</a></li>
+<li class="level-2"><a href="#coverage"><span class="toc-number">32.6</span> Покрытие, моки и регрессионные тесты</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">32.7</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">32.8</span> Упражнения</a></li>
+<li class="level-2"><a href="#проверка-понимания"><span class="toc-number">32.9</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#что-дальше"><span class="toc-number">32.10</span> Что дальше</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#как-выбрать-что-тестировать">Как выбрать, что тестировать</a></li>
+<li class="level-3"><a href="#пирамида-тестов">Пирамида тестов</a></li>
+<li class="level-3"><a href="#имена-и-расположение-тестов">Имена и расположение тестов</a></li>
+<li class="level-3"><a href="#проверка-исключений">Проверка исключений</a></li>
+<li class="level-3"><a href="#ex-ch32-01">1. Проверка без фреймворка</a></li>
+<li class="level-3"><a href="#ex-ch32-02">2. Прогнозирование падения</a></li>
+<li class="level-3"><a href="#ex-ch32-03">3. Тестовый случай по шагам</a></li>
+<li class="level-3"><a href="#ex-ch32-04">4. Параметризация без pytest</a></li>
+<li class="level-3"><a href="#ex-ch32-05">5. Красный — зелёный</a></li>
+<li class="level-3"><a href="#ex-ch32-06">6. Ожидаемое исключение</a></li>
+<li class="level-3"><a href="#ex-ch32-07">7. Регрессия</a></li>
+<li class="level-3"><a href="#ex-ch32-08">8. Мок зависимости</a></li>
+<li class="level-3"><a href="#ex-ch32-09">9. Анализ покрытия</a></li>
+<li class="level-3"><a href="#ex-ch32-10">10. Мини-проект: набор тестов</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>Программа, которая «работает у меня на машине», — не аргумент. Поведение
+меняется от данных, порядка вызовов, версии библиотеки и настроек окружения.
+Единственный способ удерживать поведение под контролем — проверять его
+автоматически и повторяемо.</p>
+<p><strong>Модульный тест</strong> — автоматическая проверка небольшой единицы поведения с
+известным ожидаемым результатом. Тест исполняется вместе с кодом, падает при
+расхождении и не требует ручного сравнения. В этой главе вы научитесь писать
+такие проверки, организовывать их в набор, изолировать зависимости и строить
+работу от теста, а не от готовой реализации.</p>
+<h2 id="что-вы-сможете-после-этой-главы"><span class="h-number">32.1</span> Что вы сможете после этой главы</h2>
+<ul>
+<li>писать тесты на <code>assert</code> и понимать, что именно они проверяют;</li>
+<li>организовывать тесты в файлы и запускать их через pytest;</li>
+<li>готовить состояние через фикстуры и прогонять один тест на многих данных
+через параметризацию тестов;</li>
+<li>работать по циклу «красный — зелёный — рефакторинг»;</li>
+<li>отличать полезный тест от теста, который лишь увеличивает покрытие.</li>
+</ul>
+<h2 id="unit-test"><span class="h-number">32.2</span> Модульный тест и тестовый случай</h2>
+<p>Любой тест состоит из трёх шагов: подготовка, действие, проверка. Такой
+порядок называют AAA — arrange, act, assert. Сначала создаём данные, затем
+вызываем проверяемое поведение, затем сравниваем результат с ожидаемым.</p>
+<p><strong>Тестовый случай</strong> — отдельная проверка: входные данные, вызов и ожидаемый
+результат. Один тестовый случай проверяет одну ситуацию. Если в нём пять
+разных вызовов и один упал, придётся выяснять, какой именно и почему.</p>
+<p>Полезная привычка — добавлять к <code>assert</code> пояснение: <code>assert total == 42, f&quot;total={total}&quot;</code>.
+Голый <code>assert</code> при падении не печатает значения — только <code>AssertionError</code>,
+поэтому отладка начинается с добавления <code>print</code>. Сообщение в утверждении
+сразу отвечает на вопрос «что было на самом деле». pytest переписывает
+утверждения и показывает сравниваемые значения сам, но собственное сообщение
+всё равно полезно: оно объясняет смысл проверки.</p>
+<p>Начнём без фреймворков: обычный <code>assert</code> уже умеет проверять условие и
+поднимать исключение.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+
+<span class="k">assert</span> <span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span>
+<span class="k">assert</span> <span class="n">add</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">add</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"все проверки прошли"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>все проверки прошли
+</code></pre>
+<p>Если условие ложно, <code>assert</code> поднимает <code>AssertionError</code> и останавливает
+выполнение.</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
+
+
+<span class="k">assert</span> <span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span>
+</code></pre></div>
+<pre class="output"><code>AssertionError
+</code></pre>
+<p>Такой тест уже полезен: он документирует ожидание и падает при регрессии.
+Но у голых <code>assert</code> есть недостатки. Нет общего запуска и отчёта, нет
+подготовки и очистки состояния, нельзя прогнать один случай на десяти наборах
+данных без копирования кода. Для этого нужен фреймворк.</p>
+<h2 id="pytest"><span class="h-number">32.3</span> pytest: соглашения и запуск</h2>
+<p><strong>pytest</strong> — популярный фреймворк тестирования: функции <code>test_*</code>, <code>assert</code> и
+богатый набор расширений. <code>pytest</code> не входит в стандартную библиотеку: это
+внешний инструмент, который устанавливают в виртуальное окружение проекта
+(глава 33). Код ниже показывает типичную структуру, но запускать его нужно в
+проекте с pytest.</p>
+<div class="highlight"><pre><code class="language-python"><span class="c1"># tests/test_calculator.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">calculator</span><span class="w"> </span><span class="kn">import</span> <span class="n">add</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_add_positive</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_add_zero</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">add</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+</code></pre></div>
+<p>Фреймворк сам находит файлы <code>test_*.py</code>, функции <code>test_*</code> и запускает их.
+Внутри теста не нужно печатать результат: pytest перехватывает <code>AssertionError</code>
+и показывает, какие значения сравнивались. Именно поэтому <code>assert</code> в тестах
+предпочтительнее <code>print</code>: проверка автоматическая, а сообщение об ошибке
+содержательное.</p>
+<p>Пусть в <code>calculator.py</code> функция <code>add</code> по ошибке возвращает <code>a - b</code>. Тогда
+запуск покажет:</p>
+<pre class="text"><code>$ pytest -q
+F.                                                                 [100%]
+FAILED tests/test_calculator.py::test_add_positive - assert -1 == 5
+1 failed, 1 passed in 0.02s
+</code></pre>
+<p>Символы в строке прогресса — это результаты: точка означает успех, <code>F</code> —
+падение. В конце pytest перечисляет упавшие тесты и показывает расхождение.
+Такой отчёт можно читать в терминале и в непрерывной интеграции.</p>
+<h3 id="как-выбрать-что-тестировать">Как выбрать, что тестировать</h3>
+<p>Тестируйте поведение, а не реализацию. Хороший тест переживает рефакторинг:
+если вы переписали внутренности функции, но её контракт не изменился, тест
+должен проходить. Плохой тест проверяет, что функция вызывает конкретный
+приватный метод в конкретном порядке, — он ломается от любого улучшения.</p>
+<p>Начинайте с границ и ветвей:</p>
+<ul>
+<li>типичный случай, ради которого функция написана;</li>
+<li>граничные значения: ноль, пустая строка, последний элемент;</li>
+<li>ошибочные входные данные и ожидаемые исключения;</li>
+<li>ветки <code>if</code>/<code>else</code>, которые легко забыть.</li>
+</ul>
+<p>Полный перебор всех комбинаций быстро становится невыносимым, и это нормально.
+Тестирование не доказывает отсутствие ошибок — оно повышает уверенность в тех
+сценариях, которые вы посчитали важными. Выбирайте случаи по риску: там, где
+ошибка дорого стоит или где логика запутана, проверок должно быть больше.</p>
+<h3 id="пирамида-тестов">Пирамида тестов</h3>
+<p>Не все тесты одинаковы. Модульный тест проверяет одну функцию и работает
+доли секунды. Интеграционный тест соединяет несколько частей — например,
+хранилище и бизнес-логику — и стоит дороже. Сквозной сценарий проходит через
+всю систему, как пользователь, и может занимать минуты. Смешивать их в одну
+кучу неудобно: набор становится медленным, а падение — неинформативным.</p>
+<p><figure class="figure"><img src="illustrations/ch-32-test-pyramid.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Пирамида задаёт пропорцию: в основании много дешёвых модульных тестов, выше —
+меньше интеграционных, на вершине — единицы сквозных. Такое распределение даёт
+быструю обратную связь: большинство ошибок ловится за секунды и с точным
+адресом. Сквозные тесты нужны для критичных путей — входа в систему, оплаты,
+сохранения заказа, — но делать их основным инструментом расточительно.</p>
+<h3 id="имена-и-расположение-тестов">Имена и расположение тестов</h3>
+<p>Имя теста — часть документации. <code>test_add_negative</code> сообщает, что проверяется
+сложение отрицательных чисел; <code>test_1</code> не сообщает ничего. Хорошее имя
+описывает ситуацию и ожидание: <code>test_total_with_zero_discount_returns_total</code>.
+При падении именно оно попадёт в отчёт, и по нему должно быть понятно, что
+сломалось, без открытия кода.</p>
+<p>Тесты обычно складывают в каталог <code>tests/</code>, повторяющий структуру пакета:
+<code>tests/test_cart.py</code> для <code>cart.py</code>. Такое расположение помогает найти нужный
+файл и не смешивать проверки с production-кодом. Внутри файла тесты
+группируют по проверяемой функции, а не по типу проверки.</p>
+<h3 id="проверка-исключений">Проверка исключений</h3>
+<p>Ожидаемое исключение — такая же часть контракта, как возвращаемое значение.
+В pytest его проверяют контекстным менеджером <code>pytest.raises</code>: он проходит,
+только если исключение действительно поднято.</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">divide</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"деление на ноль"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_divide_by_zero</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="n">match</span><span class="o">=</span><span class="s2">"деление на ноль"</span><span class="p">):</span>
+        <span class="n">divide</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<p><code>match</code> принимает регулярное выражение и проверяет, что оно найдено в тексте
+сообщения; поэтому <code>&quot;деление на ноль&quot;</code> сработает и внутри более длинной
+фразы. Если исключение не поднялось, <code>pytest.raises</code> сам провалит тест —
+ручной <code>try</code>/<code>except</code> с <code>assert</code> в тестах нужен редко.</p>
+<h2 id="fixtures"><span class="h-number">32.4</span> Фикстуры и параметризация</h2>
+<p>Многим тестам нужно одинаковое начальное состояние: временный файл, тестовая
+база, настроенный объект. Копировать подготовку в каждый тест плохо: она
+разъедется, а очистка где-то забудется.</p>
+<p><strong>Фикстура</strong> — подготовка и очистка состояния, переиспользуемая между тестами.
+В pytest фикстура объявляется декоратором и внедряется в тест по имени
+параметра.</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">order</span><span class="p">():</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"яблоко"</span><span class="p">,</span> <span class="s2">"груша"</span><span class="p">]</span>
+    <span class="k">yield</span> <span class="n">items</span>
+    <span class="n">items</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_order_not_empty</span><span class="p">(</span><span class="n">order</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">order</span>
+</code></pre></div>
+<p>Фикстура может возвращать значение или быть генератором: код до <code>yield</code> —
+подготовка, после — очистка. Тест получает готовый объект и не думает о том,
+как его создали и когда освободят. Фикстуры, нужные нескольким файлам,
+выносят в <code>conftest.py</code>: pytest находит этот файл автоматически и делает его
+фикстуры доступными всем тестам в каталоге и ниже — импортировать их не
+нужно.</p>
+<p>Встроенные фикстуры pytest закрывают частые нужды. Например, <code>tmp_path</code> даёт
+уникальный временный каталог, отдельный для каждого теста; pytest сохраняет
+каталоги нескольких последних сессий и постепенно удаляет старые:</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">test_write_report</span><span class="p">(</span><span class="n">tmp_path</span><span class="p">):</span>
+    <span class="n">report</span> <span class="o">=</span> <span class="n">tmp_path</span> <span class="o">/</span> <span class="s2">"report.txt"</span>
+    <span class="n">report</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="s2">"итог: 42"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">report</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"итог: 42"</span>
+</code></pre></div>
+<p>Тест работает с настоящей файловой системой, но не оставляет мусора и не
+зависит от других тестов. Это важное свойство: тесты должны проходить в любом
+порядке и на любой машине.</p>
+<p><strong>Параметризация тестов</strong> — запуск одного теста на множестве наборов входных
+данных. Вместо копии функции с другим литералом вы описываете таблицу случаев.</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span>
+    <span class="p">(</span><span class="s2">"raw"</span><span class="p">,</span> <span class="s2">"expected"</span><span class="p">),</span>
+    <span class="p">[(</span><span class="s2">"0"</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="s2">"41"</span><span class="p">,</span> <span class="mi">41</span><span class="p">),</span> <span class="p">(</span><span class="s2">" 42 "</span><span class="p">,</span> <span class="mi">42</span><span class="p">)],</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_parse_age</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">expected</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">parse_age</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span> <span class="o">==</span> <span class="n">expected</span>
+</code></pre></div>
+<p>pytest создаст по тесту на каждую строку таблицы и покажет, какой именно набор
+упал. Это одновременно документация поведения и защита от регрессий.</p>
+<h2 id="tdd"><span class="h-number">32.5</span> Разработка через тесты</h2>
+<p><strong>Разработка через тесты</strong> (TDD) — подход «красный — зелёный — рефакторинг»:
+сначала падающий тест, затем минимальная реализация, затем улучшение кода при
+зелёных тестах. Три шага короткие, и каждый имеет цель.</p>
+<p><figure class="figure"><img src="illustrations/ch-32-tdd-cycle.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<ol>
+<li><strong>Красный.</strong> Пишем тест на ещё не существующее поведение. Он падает — это
+доказательство, что тест действительно проверяет что-то новое.</li>
+<li><strong>Зелёный.</strong> Пишем самую простую реализацию, которая проходит тест. Не
+самую красивую — минимальную.</li>
+<li><strong>Рефакторинг.</strong> Убираем дубли и улучшаем структуру, не меняя поведения.
+Тесты остаются зелёными и подтверждают, что ничего не сломали.</li>
+</ol>
+<p>Покажем шаг «красный» на функции нормализации телефона.</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">normalize_phone</span><span class="p">(</span><span class="n">raw</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">raw</span>
+
+
+<span class="k">assert</span> <span class="n">normalize_phone</span><span class="p">(</span><span class="s2">"+7 (999) 123-45-67"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"+79991234567"</span>
+</code></pre></div>
+<pre class="output"><code>AssertionError
+</code></pre>
+<p>Тест падает, потому что реализация возвращает вход без изменений. Теперь
+минимальная реализация:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">normalize_phone</span><span class="p">(</span><span class="n">raw</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">digits</span> <span class="o">=</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">char</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">raw</span> <span class="k">if</span> <span class="n">char</span><span class="o">.</span><span class="n">isdigit</span><span class="p">())</span>
+    <span class="k">return</span> <span class="s2">"+"</span> <span class="o">+</span> <span class="n">digits</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">normalize_phone</span><span class="p">(</span><span class="s2">"+7 (999) 123-45-67"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">normalize_phone</span><span class="p">(</span><span class="s2">"8 999 123 45 67"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>+79991234567
++89991234567
+</code></pre>
+<p>Второй случай показывает, что реализация ещё неполная: она не заменяет
+ведущую восьмёрку на семёрку. Добавим тест — он снова красный, — и только
+затем код. Так TDD не даёт забыть о граничных случаях: каждый из них сначала
+становится проверкой.</p>
+<p>Полезно различать TDD и «тесты после кода». Второй подход тоже нормален:
+много кода пишут, чтобы понять задачу, и покрывают его тестами задним числом.
+Но если писать тест после реализации, легко невольно подогнать его под
+текущее поведение, включая ошибку. Тест, написанный до кода, фиксирует
+требование, а не привычку.</p>
+<h2 id="coverage"><span class="h-number">32.6</span> Покрытие, моки и регрессионные тесты</h2>
+<p><strong>Покрытие</strong> — доля кода, исполненного тестами; полезный, но недостаточный
+показатель качества тестов. Покрытие измеряют инструментом <code>coverage.py</code>,
+обычно через плагин <code>pytest-cov</code>: команда <code>pytest --cov=calculator</code> печатает
+отчёт по модулям. Сто процентов покрытия не означают ста процентов проверок:
+строка может исполниться, а её результат никто не сравнит.</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">divide</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"деление на ноль"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span>
+</code></pre></div>
+<p>Покрытие полезно как диагностика: оно показывает участки, о которых тесты
+ничего не говорят. Если целая функция не исполнялась ни разу, это повод
+написать тест. Но процент сам по себе ничего не доказывает — он не отличает
+проверку результата от простого вызова. Поэтому покрытие смотрят вместе с
+качеством утверждений, а не вместо него.</p>
+<p>Тест <code>assert divide(10, 2) == 5.0</code> покрывает строку возврата, но не ветку
+ошибки. Чтобы покрытие было осмысленным, добавьте тест на <code>ValueError</code> — и
+проверьте, что исключение действительно поднимается.</p>
+<p><strong>Мок (заглушка)</strong> — подмена зависимости управляемым объектом, чтобы
+изолировать тестируемую единицу. Если функция обращается к сети, часам или
+базе, тест становится медленным и нестабильным. Мок возвращает заранее
+известное значение и позволяет проверить, что зависимость вызвана правильно.
+Модуль <code>unittest.mock</code> входит в стандартную библиотеку.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">unittest.mock</span><span class="w"> </span><span class="kn">import</span> <span class="n">patch</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">fetch_price</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="mi">100</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">total_with_tax</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">fetch_price</span><span class="p">()</span> <span class="o">*</span> <span class="mi">120</span> <span class="o">//</span> <span class="mi">100</span>
+
+
+<span class="k">with</span> <span class="n">patch</span><span class="p">(</span><span class="s2">"__main__.fetch_price"</span><span class="p">,</span> <span class="n">return_value</span><span class="o">=</span><span class="mi">250</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">total_with_tax</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total_with_tax</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>300
+120
+</code></pre>
+<p>Внутри <code>with</code> функция <code>fetch_price</code> заменена заглушкой, которая возвращает
+<code>250</code>; после выхода восстанавливается настоящая. Тест проверяет логику
+<code>total_with_tax</code>, не завися от источника цены.</p>
+<p><strong>Регрессионный тест</strong> — тест, закрепляющий исправленный дефект, чтобы он не
+вернулся. Работают в два шага: сначала тест воспроизводит ошибку и падает,
+затем исправление делает его зелёным, и тест остаётся в наборе навсегда. Если
+закрепить тестом текущее, ещё не проверенное поведение, можно зафиксировать
+сам дефект — поэтому сначала решают, что правильно.</p>
+<p>Покажем первый шаг на скидке: пользователь сообщил, что 10 % от 999 рублей
+дали 900 вместо 899. Тест фиксирует ожидание и падает на старой формуле:</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">discount</span><span class="p">(</span><span class="n">total</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">percent</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">total</span> <span class="o">-</span> <span class="n">total</span> <span class="o">*</span> <span class="n">percent</span> <span class="o">//</span> <span class="mi">100</span>
+
+
+<span class="c1"># сообщение пользователя: discount(999, 10) вернула 900, а должна 899</span>
+<span class="k">assert</span> <span class="n">discount</span><span class="p">(</span><span class="mi">999</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mi">899</span>
+</code></pre></div>
+<pre class="output"><code>AssertionError
+</code></pre>
+<p>Причина в порядке округления: <code>999 * 10 // 100 = 99</code>, и <code>999 - 99 = 900</code>.
+Округлять нужно не скидку, а итоговую долю: <code>999 * 90 // 100 = 899</code>, а для
+33 % — <code>999 * 67 // 100 = 669</code>. После исправления функции тест становится
+зелёным и остаётся в наборе: теперь он не даст вернуть старую формулу.
+Исправление этой функции — упражнение 7.</p>
+<h2 id="mistakes"><span class="h-number">32.7</span> Типичные ошибки</h2>
+<ol>
+<li><strong>Тест без проверки.</strong> Функция вызывает код и ничего не сравнивает: тест
+проходит всегда. Каждый тест обязан содержать <code>assert</code> или ожидание
+исключения.</li>
+<li><strong>Один тест на всё.</strong> Длинный сценарий с двадцатью проверками падает
+целиком, и непонятно, что сломалось. Лучше много маленьких тестов с ясными
+именами.</li>
+<li><strong>Проверка реализации.</strong> Тест, завязанный на приватные методы и порядок
+вызовов, ломается при рефакторинге и не ловит реальных дефектов.</li>
+<li><strong>Зависимость от порядка и времени.</strong> Тест, который проходит только после
+другого теста или зависит от текущей даты, называют нестабильным. Он хуже
+отсутствующего: ему перестают доверять.</li>
+<li><strong>Погоня за покрытием.</strong> Сотня тестов на геттеры и ни одного на граничный
+случай создаёт иллюзию защищённости. Покрытие — индикатор, а не цель.</li>
+<li><strong>Мок на всё.</strong> Если замокано всё, тест проверяет моки, а не программу.
+Заменяйте только внешние и нестабильные зависимости.</li>
+<li><strong>Тест подогнан под баг.</strong> Тест, написанный после кода и закрепляющий
+неверное поведение, мешает исправлению. Сначала решите, что правильно.</li>
+</ol>
+<h2 id="упражнения"><span class="h-number">32.8</span> Упражнения</h2>
+<h3 id="ex-ch32-01">1. Проверка без фреймворка</h3>
+<p>Напишите функцию <code>is_even(number: int) -&gt; bool</code> и проверьте её тремя
+инструкциями <code>assert</code> для <code>0</code>, <code>7</code> и <code>-4</code>. Выведите строку об успехе.</p>
+<h3 id="ex-ch32-02">2. Прогнозирование падения</h3>
+<p>Что произойдёт при запуске и почему?</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">half</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">value</span> <span class="o">/</span> <span class="mi">2</span>
+
+
+<span class="k">assert</span> <span class="n">half</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mf">2.5</span>
+<span class="k">assert</span> <span class="n">half</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"готово"</span><span class="p">)</span>
+</code></pre></div>
+<p>Запишите ответ, проверьте запуском и объясните, что показывает сообщение
+<code>AssertionError</code>.</p>
+<h3 id="ex-ch32-03">3. Тестовый случай по шагам</h3>
+<p>Для функции <code>clamp(value: int, low: int, high: int) -&gt; int</code>, ограничивающей
+число диапазоном, опишите три тестовых случая по схеме «подготовка — действие
+— проверка»: значение внутри диапазона, ниже границы, выше границы.
+Реализуйте функцию и проверьте все три случая.</p>
+<h3 id="ex-ch32-04">4. Параметризация без pytest</h3>
+<p>Дан список пар <code>(вход, ожидание)</code>. Напишите цикл, который проверяет
+<code>normalize_space</code> на каждой паре и сообщает номер упавшего случая:</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">cases</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">" a  b "</span><span class="p">,</span> <span class="s2">"a b"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"a</span><span class="se">\t</span><span class="s2">b"</span><span class="p">,</span> <span class="s2">"a b"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"   "</span><span class="p">,</span> <span class="s2">""</span><span class="p">)]</span>
+</code></pre></div>
+<p>Реализуйте <code>normalize_space</code> и добейтесь, чтобы все случаи прошли.</p>
+<h3 id="ex-ch32-05">5. Красный — зелёный</h3>
+<p>Функция <code>slugify(title: str) -&gt; str</code> должна заменять пробелы на дефисы,
+приводить текст к нижнему регистру и удалять лишние дефисы по краям. Сначала
+напишите падающий тест для <code>&quot;  Привет, Мир  &quot;</code>, затем реализацию. Покажите
+оба шага.</p>
+<h3 id="ex-ch32-06">6. Ожидаемое исключение</h3>
+<p>Функция <code>parse_percent(text: str) -&gt; int</code> принимает строку с процентом и
+поднимает <code>ValueError</code>, если число вне диапазона 0–100. Напишите тест в стиле
+pytest: успешную проверку и проверку исключения через
+<code>pytest.raises(ValueError, match=&quot;диапазон&quot;)</code>. Если pytest в вашем окружении
+нет, воспроизведите ту же проверку через <code>try</code>/<code>except</code>/<code>else</code>.</p>
+<h3 id="ex-ch32-07">7. Регрессия</h3>
+<p>Пользователь сообщил: «Скидка 10 % на 999 рублей дала 900, а должна дать 899».
+Воспроизведите дефект тестом, выясните причину и исправьте функцию
+<code>discount(total, percent)</code>, сохранив регрессионный тест.</p>
+<h3 id="ex-ch32-08">8. Мок зависимости</h3>
+<p>Функция <code>greeting()</code> формирует приветствие из текущего часа, который берёт из
+<code>current_hour()</code>. Замените <code>current_hour</code> моком, возвращающим <code>9</code>, и
+проверьте, что <code>greeting()</code> возвращает утреннее приветствие. Затем проверьте
+вечерний вариант с часом <code>21</code>.</p>
+<h3 id="ex-ch32-09">9. Анализ покрытия</h3>
+<p>Дана функция и один тест:</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">sign</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">"плюс"</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">"минус"</span>
+    <span class="k">return</span> <span class="s2">"ноль"</span>
+
+
+<span class="k">assert</span> <span class="n">sign</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"плюс"</span>
+</code></pre></div>
+<p>Объясните, какие ветки не исполнены и почему покрытие в 100 % здесь
+недостижимо одним тестом. Допишите тесты так, чтобы все возвраты были
+проверены.</p>
+<h3 id="ex-ch32-10">10. Мини-проект: набор тестов</h3>
+<p>Для функции <code>to_fahrenheit(celsius: float) -&gt; float</code> напишите набор проверок:
+точка замерзания, точка кипения, отрицательное значение, дробное значение.
+Добавьте проверку, что при нечисловом аргументе поднимается <code>TypeError</code>.
+Оформите набор как функции <code>test_*</code> с <code>assert</code> и добейтесь успешного прогона
+собственным мини-раннером.</p>
+<h2 id="проверка-понимания"><span class="h-number">32.9</span> Проверка понимания</h2>
+<ol>
+<li>Чем модульный тест отличается от ручной проверки в терминале?</li>
+<li>Что входит в тестовый случай и почему его лучше не смешивать с другими?</li>
+<li>Зачем нужна фикстура, если подготовку можно написать в самом тесте?</li>
+<li>Как параметризация тестов помогает при отладке упавшего набора?</li>
+<li>Почему тест, написанный до кода, ловит ошибки лучше теста после кода?</li>
+<li>Что показывает покрытие и чего оно не показывает?</li>
+<li>В каких случаях мок полезен, а в каких превращает тест в проверку моков?</li>
+</ol>
+<h2 id="что-дальше"><span class="h-number">32.10</span> Что дальше</h2>
+<p>Тесты запускаются в проекте, а проект требует окружения, зависимостей и
+единых правил оформления. Следующая глава — о структуре проекта, виртуальных
+окружениях и инструментах качества: без них тесты негде запускать
+воспроизводимо. О том, как исключения проверяют в тестах, говорилось в
+<a href="ch-10-errors-exceptions.html">главе 10</a>; об аннотациях, которые дополняют тесты
+статической проверкой, — в <a href="ch-31-typing.html">главе 31</a>. О том, как тесты
+встраиваются в автоматические проверки при каждом изменении, — в главе 45.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-31-typing.html"><span class="pager-label">← Назад</span><span class="pager-title">Аннотации типов и статическая проверка</span></a><a class="pager-card next" rel="next" href="ch-33-project-tooling.html"><span class="pager-label">Далее:</span><span class="pager-title">Структура проекта, зависимости и инструменты</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

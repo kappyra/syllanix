@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 420" role="img"
+     aria-labelledby="ttl12a desc12a" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl12a">Строение последовательности range(10, 20): элементы, позиции и индексы</title>
+  <desc id="desc12a">Десять ячеек со значениями от 10 до 19. Над каждой ячейкой стоит её индекс от 0 до 9. Длина последовательности равна 10, последний индекс равен 9. Обращение numbers[3] даёт значение 13, проверка вхождения 15 in numbers даёт True. Значение 10 стоит на позиции с индексом 0.</desc>
+
+  <text x="40" y="32" font-size="17" font-weight="bold" fill="#1d3550">Последовательность numbers = range(10, 20)</text>
+
+  <text x="40" y="72" font-size="13" fill="#4b3a16">индекс (номер позиции, счёт с нуля):</text>
+
+  <!-- индексы -->
+  <text x="74" y="98" text-anchor="middle" font-size="13" fill="#33557a">0</text>
+  <text x="142" y="98" text-anchor="middle" font-size="13" fill="#33557a">1</text>
+  <text x="210" y="98" text-anchor="middle" font-size="13" fill="#33557a">2</text>
+  <text x="278" y="98" text-anchor="middle" font-size="13" font-weight="bold" fill="#8a6a2f">3</text>
+  <text x="346" y="98" text-anchor="middle" font-size="13" fill="#33557a">4</text>
+  <text x="414" y="98" text-anchor="middle" font-size="13" font-weight="bold" fill="#3c6b47">5</text>
+  <text x="482" y="98" text-anchor="middle" font-size="13" fill="#33557a">6</text>
+  <text x="550" y="98" text-anchor="middle" font-size="13" fill="#33557a">7</text>
+  <text x="618" y="98" text-anchor="middle" font-size="13" fill="#33557a">8</text>
+  <text x="686" y="98" text-anchor="middle" font-size="13" fill="#33557a">9</text>
+
+  <!-- ячейки -->
+  <rect x="42" y="112" width="64" height="56" rx="7" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="74" y="147" text-anchor="middle" font-size="16" font-weight="bold" fill="#1d3550">10</text>
+  <rect x="110" y="112" width="64" height="56" rx="7" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="142" y="147" text-anchor="middle" font-size="16" font-weight="bold" fill="#1d3550">11</text>
+  <rect x="178" y="112" width="64" height="56" rx="7" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="210" y="147" text-anchor="middle" font-size="16" font-weight="bold" fill="#1d3550">12</text>
+  <rect x="246" y="112" width="64" height="56" rx="7" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2.5"/>
+  <text x="278" y="147" text-anchor="middle" font-size="16" font-weight="bold" fill="#4b3a16">13</text>
+  <rect x="314" y="112" width="64" height="56" rx="7" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="346" y="147" text-anchor="middle" font-size="16" font-weight="bold" fill="#1d3550">14</text>
+  <rect x="382" y="112" width="64" height="56" rx="7" fill="#eaf3ea" stroke="#3c6b47" stroke-width="2.5"/>
+  <text x="414" y="147" text-anchor="middle" font-size="16" font-weight="bold" fill="#254a2d">15</text>
+  <rect x="450" y="112" width="64" height="56" rx="7" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="482" y="147" text-anchor="middle" font-size="16" font-weight="bold" fill="#1d3550">16</text>
+  <rect x="518" y="112" width="64" height="56" rx="7" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="550" y="147" text-anchor="middle" font-size="16" font-weight="bold" fill="#1d3550">17</text>
+  <rect x="586" y="112" width="64" height="56" rx="7" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="618" y="147" text-anchor="middle" font-size="16" font-weight="bold" fill="#1d3550">18</text>
+  <rect x="654" y="112" width="64" height="56" rx="7" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="686" y="147" text-anchor="middle" font-size="16" font-weight="bold" fill="#1d3550">19</text>
+
+  <!-- пояснения -->
+  <rect x="40" y="206" width="330" height="76" rx="8" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="56" y="232" font-size="14" font-weight="bold" fill="#4b3a16">numbers[3] равно 13</text>
+  <text x="56" y="254" font-size="13" fill="#4b3a16">индекс 3 — это четвёртая позиция,</text>
+  <text x="56" y="272" font-size="13" fill="#4b3a16">счёт начинается с нуля</text>
+
+  <rect x="396" y="206" width="344" height="76" rx="8" fill="#eaf3ea" stroke="#3c6b47" stroke-width="2"/>
+  <text x="412" y="232" font-size="14" font-weight="bold" fill="#254a2d">15 in numbers даёт True</text>
+  <text x="412" y="254" font-size="13" fill="#254a2d">значение 15 есть в последовательности,</text>
+  <text x="412" y="272" font-size="13" fill="#254a2d">оно стоит на позиции с индексом 5</text>
+
+  <rect x="40" y="302" width="330" height="76" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="56" y="328" font-size="14" font-weight="bold" fill="#1d3550">len(numbers) равно 10</text>
+  <text x="56" y="350" font-size="13" fill="#33557a">длина — количество элементов;</text>
+  <text x="56" y="368" font-size="13" fill="#33557a">последний индекс на единицу меньше</text>
+
+  <rect x="396" y="302" width="344" height="76" rx="8" fill="#fdf1f1" stroke="#8a2b2b" stroke-width="2"/>
+  <text x="412" y="328" font-size="14" font-weight="bold" fill="#8a2b2b">20 in numbers даёт False</text>
+  <text x="412" y="350" font-size="13" fill="#8a2b2b">правый конец диапазона не включается:</text>
+  <text x="412" y="368" font-size="13" fill="#8a2b2b">19 — последний элемент</text>
+</svg>

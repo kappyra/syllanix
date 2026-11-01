@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 440" role="img"
+     aria-labelledby="ttl25a desc25a" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl25a">Класс как описание и экземпляры как значения</title>
+  <desc id="desc25a">Слева класс Point с атрибутами x и y и методом distance_from_origin. Из него созданы три экземпляра p, q и r: у каждого свои значения x и y, поэтому метод возвращает разные результаты. Методы общие, состояние у каждого экземпляра своё.</desc>
+
+  <rect x="0" y="0" width="880" height="440" fill="#ffffff"/>
+  <defs>
+    <marker id="arr25a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#33557a"/>
+    </marker>
+  </defs>
+
+  <text x="28" y="32" font-size="17" font-weight="bold" fill="#1d3550">Класс — описание, экземпляры — значения</text>
+
+  <!-- класс -->
+  <rect x="28" y="64" width="260" height="180" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="158" y="94" text-anchor="middle" font-size="16" font-weight="bold" fill="#1d3550" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">класс Point</text>
+  <text x="158" y="118" text-anchor="middle" font-size="13" fill="#4b5563">описание типа</text>
+  <line x1="48" y1="134" x2="268" y2="134" stroke="#9fb3c8" stroke-width="1.2"/>
+  <text x="48" y="160" font-size="13" fill="#1d3550">атрибуты: x, y</text>
+  <text x="48" y="184" font-size="13" fill="#1d3550">методы:</text>
+  <text x="48" y="206" font-size="12" fill="#33557a" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">distance_from_origin()</text>
+
+  <!-- стрелки к экземплярам -->
+  <path d="M288 150 C 400 150, 430 102, 552 102" fill="none" stroke="#33557a" stroke-width="2" marker-end="url(#arr25a)"/>
+  <path d="M288 150 C 400 150, 430 214, 552 214" fill="none" stroke="#33557a" stroke-width="2" marker-end="url(#arr25a)"/>
+  <path d="M288 150 C 400 150, 430 326, 552 326" fill="none" stroke="#33557a" stroke-width="2" marker-end="url(#arr25a)"/>
+
+  <!-- экземпляр p -->
+  <rect x="560" y="56" width="292" height="92" rx="8" fill="#ffffff" stroke="#33557a" stroke-width="1.8"/>
+  <text x="578" y="82" font-size="14" font-weight="bold" fill="#1d3550">экземпляр p</text>
+  <text x="578" y="108" font-size="13" fill="#33557a" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">x = 3, y = 4</text>
+  <text x="578" y="132" font-size="13" fill="#2f6b45">distance_from_origin() = 5.0</text>
+
+  <!-- экземпляр q -->
+  <rect x="560" y="168" width="292" height="92" rx="8" fill="#ffffff" stroke="#33557a" stroke-width="1.8"/>
+  <text x="578" y="194" font-size="14" font-weight="bold" fill="#1d3550">экземпляр q</text>
+  <text x="578" y="220" font-size="13" fill="#33557a" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">x = 0, y = 0</text>
+  <text x="578" y="244" font-size="13" fill="#2f6b45">distance_from_origin() = 0.0</text>
+
+  <!-- экземпляр r -->
+  <rect x="560" y="280" width="292" height="92" rx="8" fill="#ffffff" stroke="#33557a" stroke-width="1.8"/>
+  <text x="578" y="306" font-size="14" font-weight="bold" fill="#1d3550">экземпляр r</text>
+  <text x="578" y="332" font-size="13" fill="#33557a" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">x = 6, y = 8</text>
+  <text x="578" y="356" font-size="13" fill="#2f6b45">distance_from_origin() = 10.0</text>
+
+  <!-- пояснение -->
+  <rect x="28" y="380" width="824" height="44" rx="8" fill="#f7f9fc" stroke="#c9d3e0" stroke-width="1.2"/>
+  <text x="44" y="407" font-size="14" fill="#1d3550">Метод описан один раз в классе, но читает состояние своего экземпляра: поэтому результаты разные.</text>
+</svg>

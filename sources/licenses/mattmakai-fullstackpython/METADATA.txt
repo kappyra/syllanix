@@ -1,0 +1,6 @@
+source_url: https://github.com/mattmakai/fullstackpython.com
+commit: daa9782d1a42b282a5c4489ecdb3aad19bb9aaa8
+commit_date: 2023-04-14
+verified_at: 2026-11-01
+file: LICENSE sha256=060e67cd2ac808e9fdf0db4ebcf0c081d69795607d2c5d98f5ac4dd339e5f0a4
+file: METADATA.txt sha256=cd2549b6e00bfc79a141e50b84a65f7398f7bc713021523659aaa0ac3d01e191

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 460" role="img"
+     aria-labelledby="lookup-title lookup-desc"
+     font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="lookup-title">Порядок поиска атрибута в Python</title>
+  <desc id="lookup-desc">Поиск атрибута идёт по четырём шагам: сначала данные-дескрипторы в типе, затем словарь экземпляра, затем остальные атрибуты типа, затем __getattr__. Поэтому property побеждает значение в словаре экземпляра, а дескриптор без __set__ такому значению уступает.</desc>
+
+  <text x="30" y="32" font-size="18" font-weight="bold" fill="#1d3550">Порядок поиска атрибута</text>
+  <text x="30" y="56" font-size="13" fill="#33557a">Первое совпадение выигрывает; следующие шаги не выполняются.</text>
+
+  <!-- шаг 1 -->
+  <rect x="60" y="80" width="420" height="70" rx="8" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="1.8"/>
+  <text x="78" y="106" font-size="14" font-weight="bold" fill="#4b3a16">1. данные-дескрипторы в типе</text>
+  <text x="78" y="130" font-size="12" fill="#4b3a16">есть __set__/__delete__ → вызывается __get__</text>
+
+  <!-- шаг 2 -->
+  <rect x="60" y="180" width="420" height="70" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="1.8"/>
+  <text x="78" y="206" font-size="14" font-weight="bold" fill="#1d3550">2. словарь экземпляра</text>
+  <text x="78" y="230" font-size="12" fill="#1d3550">obj.__dict__ — обычные поля, созданные присваиванием</text>
+
+  <!-- шаг 3 -->
+  <rect x="60" y="280" width="420" height="70" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="1.8"/>
+  <text x="78" y="306" font-size="14" font-weight="bold" fill="#1d3550">3. остальные атрибуты типа</text>
+  <text x="78" y="330" font-size="12" fill="#1d3550">обычные атрибуты класса и non-data дескрипторы</text>
+
+  <!-- шаг 4 -->
+  <rect x="60" y="380" width="420" height="70" rx="8" fill="#fdf1f1" stroke="#8c2f2f" stroke-width="1.8"/>
+  <text x="78" y="406" font-size="14" font-weight="bold" fill="#6b2020">4. __getattr__</text>
+  <text x="78" y="430" font-size="12" fill="#6b2020">вызывается, только если ничего не найдено</text>
+
+  <!-- стрелки -->
+  <line x1="270" y1="150" x2="270" y2="176" stroke="#9aa7b5" stroke-width="2.5"/>
+  <polygon points="270,180 263,170 277,170" fill="#9aa7b5"/>
+  <line x1="270" y1="250" x2="270" y2="276" stroke="#9aa7b5" stroke-width="2.5"/>
+  <polygon points="270,280 263,270 277,270" fill="#9aa7b5"/>
+  <line x1="270" y1="350" x2="270" y2="376" stroke="#9aa7b5" stroke-width="2.5"/>
+  <polygon points="270,380 263,370 277,370" fill="#9aa7b5"/>
+
+  <!-- панель: что побеждает -->
+  <rect x="520" y="80" width="310" height="160" rx="10" fill="#f2f6ee" stroke="#4a6b35" stroke-width="1.8"/>
+  <text x="538" y="108" font-size="14" font-weight="bold" fill="#2f4a20">побеждает словарь</text>
+  <text x="538" y="134" font-size="13" fill="#2f4a20">data-дескриптор:</text>
+  <text x="538" y="158" font-size="13" fill="#2f4a20">property, member_descriptor</text>
+  <text x="538" y="186" font-size="12" fill="#2f4a20">запись в __dict__ вручную</text>
+  <text x="538" y="206" font-size="12" fill="#2f4a20">не обходит свойство</text>
+
+  <!-- панель: что уступает -->
+  <rect x="520" y="280" width="310" height="170" rx="10" fill="#fdf1f1" stroke="#8c2f2f" stroke-width="1.8"/>
+  <text x="538" y="308" font-size="14" font-weight="bold" fill="#6b2020">уступает словарю</text>
+  <text x="538" y="334" font-size="13" fill="#6b2020">non-data дескриптор:</text>
+  <text x="538" y="358" font-size="13" fill="#6b2020">cached_property, функция</text>
+  <text x="538" y="386" font-size="12" fill="#6b2020">после первого чтения значение</text>
+  <text x="538" y="406" font-size="12" fill="#6b2020">лежит в __dict__ и находится</text>
+  <text x="538" y="426" font-size="12" fill="#6b2020">раньше дескриптора</text>
+</svg>

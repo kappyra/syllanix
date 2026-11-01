@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 540" role="img"
+     aria-labelledby="ttl9a desc9a" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl9a">Что происходит при импорте модуля: поиск, исполнение, связывание имени</title>
+  <desc id="desc9a">Схема выполнения инструкции import geometry. Python ищет модуль по путям sys.path, находит файл geometry.py, исполняет его код верхнего уровня один раз, создавая функции и переменные, затем связывает имя geometry в текущей области видимости. После этого функции модуля доступны через точку. Модуль запоминается: повторный импорт не исполняет код заново, а возвращает уже загруженный модуль.</desc>
+
+  <text x="30" y="30" font-size="16" font-weight="bold" fill="#1d3550">Что происходит при import</text>
+  <text x="30" y="52" font-size="13" fill="#4a5a6a">модуль загружается один раз, а имя получает каждый, кто его импортировал</text>
+
+  <rect x="190" y="68" width="330" height="40" rx="9" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="355" y="94" text-anchor="middle" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" fill="#1d3550">import geometry</text>
+  <line x1="355" y1="108" x2="355" y2="124" stroke="#33557a" stroke-width="2"/>
+  <path d="M 348 119 L 355 131 L 362 119" fill="none" stroke="#33557a" stroke-width="2"/>
+
+  <rect x="190" y="134" width="330" height="40" rx="9" fill="#e8f0fa" stroke="#33557a" stroke-width="2"/>
+  <text x="355" y="160" text-anchor="middle" font-size="14" fill="#1d3550">поиск модуля по sys.path</text>
+  <line x1="355" y1="174" x2="355" y2="190" stroke="#33557a" stroke-width="2"/>
+  <path d="M 348 185 L 355 197 L 362 185" fill="none" stroke="#33557a" stroke-width="2"/>
+
+  <rect x="190" y="200" width="330" height="40" rx="9" fill="#e8f0fa" stroke="#33557a" stroke-width="2"/>
+  <text x="355" y="226" text-anchor="middle" font-size="14" fill="#1d3550">найден файл geometry.py</text>
+  <line x1="355" y1="240" x2="355" y2="256" stroke="#33557a" stroke-width="2"/>
+  <path d="M 348 251 L 355 263 L 362 251" fill="none" stroke="#33557a" stroke-width="2"/>
+
+  <rect x="190" y="266" width="330" height="52" rx="9" fill="#fdf1dc" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="355" y="288" text-anchor="middle" font-size="14" fill="#4b3a16">код модуля исполняется</text>
+  <text x="355" y="307" text-anchor="middle" font-size="13" fill="#4b3a16">создаются функции и значения</text>
+  <line x1="355" y1="318" x2="355" y2="334" stroke="#33557a" stroke-width="2"/>
+  <path d="M 348 329 L 355 341 L 362 329" fill="none" stroke="#33557a" stroke-width="2"/>
+
+  <rect x="190" y="344" width="330" height="40" rx="9" fill="#eef7ee" stroke="#3f6b3f" stroke-width="2"/>
+  <text x="355" y="370" text-anchor="middle" font-size="14" fill="#264a26">имя geometry связано с модулем</text>
+  <line x1="355" y1="384" x2="355" y2="400" stroke="#3f6b3f" stroke-width="2"/>
+  <path d="M 348 395 L 355 407 L 362 395" fill="none" stroke="#3f6b3f" stroke-width="2"/>
+
+  <rect x="190" y="410" width="330" height="44" rx="9" fill="#eef7ee" stroke="#3f6b3f" stroke-width="2"/>
+  <text x="355" y="438" text-anchor="middle" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" fill="#264a26">geometry.rectangle(3, 4)</text>
+
+  <!-- кэш модулей -->
+  <line x1="520" y1="292" x2="560" y2="292" stroke="#8a6a2f" stroke-width="1.8" stroke-dasharray="6 4"/>
+  <rect x="562" y="252" width="164" height="82" rx="9" fill="#fffdf7" stroke="#8a6a2f" stroke-width="1.8" stroke-dasharray="6 4"/>
+  <text x="644" y="276" text-anchor="middle" font-size="13" font-weight="bold" fill="#4b3a16">модуль запомнен</text>
+  <text x="644" y="297" text-anchor="middle" font-size="12.5" fill="#4b3a16">повторный import</text>
+  <text x="644" y="314" text-anchor="middle" font-size="12.5" fill="#4b3a16">не исполняет код</text>
+
+  <text x="30" y="482" font-size="14" fill="#1d3550">Код верхнего уровня модуля исполняется при импорте, поэтому вычисления</text>
+  <text x="30" y="504" font-size="14" fill="#1d3550">и печать на верхнем уровне модуля делают импорт нежелательным.</text>
+  <text x="30" y="528" font-size="14" font-weight="bold" fill="#1d3550">Функции модуля доступны только через точку: имя_модуля.имя_функции.</text>
+</svg>

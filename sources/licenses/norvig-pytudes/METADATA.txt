@@ -1,0 +1,6 @@
+source_url: https://github.com/norvig/pytudes
+commit: ffa0f1a818acd5d3ecafefa96a7ebb269d62ce94
+commit_date: 2026-10-28
+verified_at: 2026-11-01
+file: LICENSE sha256=dd325ad86b175663be94c76100eff3306bf6618d7537538616dd32e546da32c7
+file: METADATA.txt sha256=08eb7843884927fd295c42ae9fc7db0eaec61bea82402990eb9ea6026bbd95e1

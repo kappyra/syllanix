@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Метапрограммирование и дескрипторы — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-43-metaprogramming.html" aria-current="page">43. Метапрограммирование и дескрипторы</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-43-metaprogramming.html#что-вы-сможете-после-этой-главы">43.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-43-metaprogramming.html#what-is">43.2. Что такое метапрограммирование</a></li>
+<li><a href="ch-43-metaprogramming.html#introspection">43.3. Интроспекция</a></li>
+<li><a href="ch-43-metaprogramming.html#attribute-lookup">43.4. Поиск атрибута</a></li>
+<li><a href="ch-43-metaprogramming.html#descriptors">43.5. Дескрипторы</a></li>
+<li><a href="ch-43-metaprogramming.html#dynamic-attributes">43.6. Динамические атрибуты</a></li>
+<li><a href="ch-43-metaprogramming.html#metaclasses">43.7. Метаклассы</a></li>
+<li><a href="ch-43-metaprogramming.html#class-decorators">43.8. Декораторы классов</a></li>
+<li><a href="ch-43-metaprogramming.html#when-justified">43.9. Когда это оправдано</a></li>
+<li><a href="ch-43-metaprogramming.html#testing">43.10. Как тестировать метапрограммирование</a></li>
+<li><a href="ch-43-metaprogramming.html#mistakes">43.11. Типичные ошибки</a></li>
+<li><a href="ch-43-metaprogramming.html#упражнения">43.12. Упражнения</a></li>
+<li><a href="ch-43-metaprogramming.html#check">43.13. Проверка понимания</a></li>
+<li><a href="ch-43-metaprogramming.html#links">43.14. Связи</a></li>
+</ol></details></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 8. Внутреннее устройство</span><span class="sep">›</span><span>Глава 43</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Внутреннее устройство · глава 43</p>
+<h1 id="метапрограммирование-и-дескрипторы">Метапрограммирование и дескрипторы</h1>
+<p class="chapter-summary">Как Python позволяет программам изменять собственное поведение — и когда это оправдано.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#что-вы-сможете-после-этой-главы"><span class="toc-number">43.1</span> Что вы сможете после этой главы</a></li>
+<li class="level-2"><a href="#what-is"><span class="toc-number">43.2</span> Что такое метапрограммирование</a></li>
+<li class="level-2"><a href="#introspection"><span class="toc-number">43.3</span> Интроспекция</a></li>
+<li class="level-2"><a href="#attribute-lookup"><span class="toc-number">43.4</span> Поиск атрибута</a></li>
+<li class="level-2"><a href="#descriptors"><span class="toc-number">43.5</span> Дескрипторы</a></li>
+<li class="level-2"><a href="#dynamic-attributes"><span class="toc-number">43.6</span> Динамические атрибуты</a></li>
+<li class="level-2"><a href="#metaclasses"><span class="toc-number">43.7</span> Метаклассы</a></li>
+<li class="level-2"><a href="#class-decorators"><span class="toc-number">43.8</span> Декораторы классов</a></li>
+<li class="level-2"><a href="#when-justified"><span class="toc-number">43.9</span> Когда это оправдано</a></li>
+<li class="level-2"><a href="#testing"><span class="toc-number">43.10</span> Как тестировать метапрограммирование</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">43.11</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">43.12</span> Упражнения</a></li>
+<li class="level-2"><a href="#check"><span class="toc-number">43.13</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#links"><span class="toc-number">43.14</span> Связи</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#углубление-порядок-записи">Углубление: порядок записи</a></li>
+<li class="level-3"><a href="#углубление-дескрипторы-в-стандартной-библиотеке">Углубление: дескрипторы в стандартной библиотеке</a></li>
+<li class="level-3"><a href="#углубление-когда-__getattr__-вредит">Углубление: когда `__getattr__` вредит</a></li>
+<li class="level-3"><a href="#углубление-классы-созданные-во-время-исполнения">Углубление: классы, созданные во время исполнения</a></li>
+<li class="level-3"><a href="#ex-ch43-01">1. Порядок поиска</a></li>
+<li class="level-3"><a href="#ex-ch43-02">2. Проверяющий дескриптор</a></li>
+<li class="level-3"><a href="#ex-ch43-03">3. `__set_name__`</a></li>
+<li class="level-3"><a href="#ex-ch43-04">4. `__getattr__` или `__getattribute__`</a></li>
+<li class="level-3"><a href="#ex-ch43-05">5. Опечатка в динамическом атрибуте</a></li>
+<li class="level-3"><a href="#ex-ch43-06">6. Реестр подклассов</a></li>
+<li class="level-3"><a href="#ex-ch43-07">7. Декоратор класса</a></li>
+<li class="level-3"><a href="#ex-ch43-08">8. Метод как дескриптор</a></li>
+<li class="level-3"><a href="#ex-ch43-09">9. Кэширующий дескриптор</a></li>
+<li class="level-3"><a href="#ex-ch43-10">10. Мини-задача: поля с валидацией</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>Вы уже видели, как Python управляет атрибутами: <code>property</code> превращает метод в
+поле, декоратор оборачивает функцию, <code>dataclass</code> сам пишет <code>__init__</code>. Всё это
+работает благодаря механизмам, которые находятся ниже обычного кода: поиску
+атрибутов, дескрипторам и метаклассам. В этой главе мы разберём их устройство,
+чтобы перестать воспринимать такие инструменты как магию — и чтобы понимать,
+когда применять их самим, а когда это лишняя сложность.</p>
+<h2 id="что-вы-сможете-после-этой-главы"><span class="h-number">43.1</span> Что вы сможете после этой главы</h2>
+<ul>
+<li>объяснять порядок поиска атрибута и предсказывать, какое значение получится;</li>
+<li>писать собственные дескрипторы для проверки и вычисляемых полей;</li>
+<li>отличать <code>__getattr__</code> от <code>__getattribute__</code> и безопасно применять оба;</li>
+<li>создавать метаклассы и понимать, когда достаточно <code>__init_subclass__</code>;</li>
+<li>оценивать цену метапрограммирования и выбирать самый простой механизм,
+который решает задачу.</li>
+</ul>
+<h2 id="what-is"><span class="h-number">43.2</span> Что такое метапрограммирование</h2>
+<p><strong>Метапрограммирование</strong> — приём, при котором программа работает не только с
+данными, но и со своей структурой: читает классы и функции, изменяет их,
+создаёт новые во время исполнения. В Python для этого есть несколько уровней,
+и их полезно различать по силе и цене.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Уровень</th>
+<th>Инструменты</th>
+<th>Что меняет</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>интроспекция</td>
+<td><code>getattr</code>, <code>vars</code>, <code>__dict__</code>, <code>inspect</code></td>
+<td>читает структуру, ничего не меняя</td>
+</tr>
+<tr>
+<td>динамические атрибуты</td>
+<td><code>__getattr__</code>, <code>__setattr__</code></td>
+<td>меняет доступ к атрибутам объекта</td>
+</tr>
+<tr>
+<td>дескрипторы</td>
+<td><code>__get__</code>, <code>__set__</code>, <code>__set_name__</code></td>
+<td>управляет одним атрибутом класса</td>
+</tr>
+<tr>
+<td>декораторы классов</td>
+<td>функция над классом</td>
+<td>меняет класс после создания</td>
+</tr>
+<tr>
+<td>метаклассы</td>
+<td><code>type</code>, <code>metaclass=</code></td>
+<td>меняет сам процесс создания класса</td>
+</tr>
+</tbody>
+</table>
+</div><p>Чем ниже уровень в таблице, тем мощнее механизм и тем труднее читать код.
+Правило простое: выбирайте верхний уровень, который решает задачу.
+Интроспекция почти ничего не стоит, метакласс же делает поведение класса
+неочевидным для читателя и для инструментов вроде <code>mypy</code>.</p>
+<h2 id="introspection"><span class="h-number">43.3</span> Интроспекция</h2>
+<p>Самый простой уровень метапрограммирования ничего не меняет: программа читает
+свою структуру и принимает решения по ней. Это нужно отладчикам,
+сериализации, документации и тестам.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">area</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">"см"</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Площадь прямоугольника."""</span>
+    <span class="k">return</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span>
+
+<span class="n">signature</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">area</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"параметры:"</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">signature</span><span class="o">.</span><span class="n">parameters</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"значение по умолчанию:"</span><span class="p">,</span> <span class="n">signature</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s2">"unit"</span><span class="p">]</span><span class="o">.</span><span class="n">default</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"документация:"</span><span class="p">,</span> <span class="n">area</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Point</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+
+<span class="n">point</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"поля экземпляра:"</span><span class="p">,</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">vars</span><span class="p">(</span><span class="n">point</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"getattr по имени:"</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>параметры: [&#x27;width&#x27;, &#x27;height&#x27;, &#x27;unit&#x27;]
+значение по умолчанию: см
+документация: Площадь прямоугольника.
+поля экземпляра: [&#x27;x&#x27;, &#x27;y&#x27;]
+getattr по имени: 1
+</code></pre>
+<p><code>inspect.signature</code> описывает параметры функции, <code>vars</code> показывает словарь
+объекта, <code>getattr</code> читает атрибут по имени из строки. Всё это работает без
+изменения кода и не создаёт скрытой логики: читатель видит обычные вызовы
+функций. Именно поэтому интроспекция — предпочтительный способ, если задача
+сводится к «узнать и решить».</p>
+<h2 id="attribute-lookup"><span class="h-number">43.4</span> Поиск атрибута</h2>
+<p>Прежде чем говорить о дескрипторах, нужно понять, что происходит при обращении
+<code>subject.value</code>. Python не просто ищет ключ в словаре. Порядок такой.</p>
+<ol>
+<li><strong>Данные-дескрипторы в типе.</strong> Просматривается <code>type(subject).__mro__</code>
+(порядок разрешения методов из главы 27). Если в одном из классов найден
+дескриптор с методом <code>__set__</code> или <code>__delete__</code>, вызывается его <code>__get__</code>.</li>
+<li><strong>Словарь экземпляра.</strong> Если в <code>subject.__dict__</code> есть ключ, возвращается
+его значение.</li>
+<li><strong>Остальные атрибуты типа.</strong> Если в типе найден обычный атрибут или
+дескриптор без <code>__set__</code>, он используется; для дескриптора вызывается
+<code>__get__</code>.</li>
+<li><strong><code>__getattr__</code>.</strong> Если ничего не найдено и у класса определён
+<code>__getattr__</code>, вызывается он.</li>
+</ol>
+<p><figure class="figure"><img src="illustrations/ch-43-attribute-lookup.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Проверим ключевое различие: дескриптор с <code>__set__</code> побеждает словарь
+экземпляра, а дескриптор без <code>__set__</code> — нет.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">DataDescriptor</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">owner</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">"значение из data-дескриптора"</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__set__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"__set__ вызван, значение отброшено"</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">NonDataDescriptor</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">owner</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">"значение из non-data дескриптора"</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Subject</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">DataDescriptor</span><span class="p">()</span>
+    <span class="n">nondata</span> <span class="o">=</span> <span class="n">NonDataDescriptor</span><span class="p">()</span>
+
+<span class="n">subject</span> <span class="o">=</span> <span class="n">Subject</span><span class="p">()</span>
+<span class="n">subject</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s2">"data"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"значение в словаре экземпляра"</span>
+<span class="n">subject</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s2">"nondata"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"значение в словаре экземпляра"</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"data:"</span><span class="p">,</span> <span class="n">subject</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"nondata:"</span><span class="p">,</span> <span class="n">subject</span><span class="o">.</span><span class="n">nondata</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>data: значение из data-дескриптора
+nondata: значение в словаре экземпляра
+</code></pre>
+<p>Вот почему <code>property</code> (глава 26) всегда управляет доступом: у него есть
+<code>__set__</code>, то есть он data-дескриптор. Прямая запись в <code>__dict__</code> не обходит
+свойство.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Item</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s2">"price"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">999</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">price</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">100</span>
+
+<span class="n">item</span> <span class="o">=</span> <span class="n">Item</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"property победил:"</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">price</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"в словаре экземпляра:"</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s2">"price"</span><span class="p">])</span>
+</code></pre></div>
+<pre class="output"><code>property победил: 100
+в словаре экземпляра: 999
+</code></pre>
+<h2 id="descriptors"><span class="h-number">43.5</span> Дескрипторы</h2>
+<p><strong>Дескриптор</strong> — объект, который управляет доступом к атрибуту другого
+объекта: он объявлен в классе и реализует методы протокола дескрипторов.
+<strong>Протокол дескрипторов</strong> — набор методов, которые Python вызывает при
+доступе к атрибуту:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Когда вызывается</th>
+<th>Обязателен</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__get__(self, instance, owner)</code></td>
+<td>при чтении атрибута</td>
+<td>да, иначе это не дескриптор</td>
+</tr>
+<tr>
+<td><code>__set__(self, instance, value)</code></td>
+<td>при присваивании</td>
+<td>нет</td>
+</tr>
+<tr>
+<td><code>__delete__(self, instance)</code></td>
+<td>при <code>del</code></td>
+<td>нет</td>
+</tr>
+<tr>
+<td><code>__set_name__(self, owner, name)</code></td>
+<td>при создании класса</td>
+<td>нет</td>
+</tr>
+</tbody>
+</table>
+</div><p>Дескриптор с <code>__set__</code> или <code>__delete__</code> называют <strong>data-дескриптором</strong>
+(дескриптор данных), без них — <strong>non-data дескриптором</strong>. Это различие и
+определяет место в порядке поиска.</p>
+<p>Простейший полезный дескриптор — проверяющее поле. Он хранит значение в
+отдельном атрибуте экземпляра и не пропускает недопустимые значения.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Positive</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__set_name__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">owner</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"_</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">"</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">owner</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">instance</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__set__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"значение должно быть положительным"</span><span class="p">)</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Order</span><span class="p">:</span>
+    <span class="n">quantity</span> <span class="o">=</span> <span class="n">Positive</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">quantity</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">quantity</span> <span class="o">=</span> <span class="n">quantity</span>
+
+<span class="n">order</span> <span class="o">=</span> <span class="n">Order</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"количество:"</span><span class="p">,</span> <span class="n">order</span><span class="o">.</span><span class="n">quantity</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"поле в словаре:"</span><span class="p">,</span> <span class="n">order</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">order</span><span class="o">.</span><span class="n">quantity</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"ValueError:"</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>количество: 3
+поле в словаре: {&#x27;_quantity&#x27;: 3}
+ValueError: значение должно быть положительным
+</code></pre>
+<p>Разберём, что происходит. При создании класса Python вызывает
+<code>__set_name__</code> и передаёт дескриптору имя атрибута. <code>__set__</code> проверяет
+значение и кладёт его в <code>_quantity</code>. <code>__get__</code> читает оттуда же. Когда
+<code>instance is None</code>, обращение идёт через класс (<code>Order.quantity</code>), и
+дескриптор возвращает сам себя — так работают и <code>property</code>, и методы.</p>
+<p><figure class="figure"><img src="illustrations/ch-43-descriptor.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><strong>Функция — тоже дескриптор.</strong> Поэтому <code>Greeter.hello</code> — функция, а
+<code>greeter.hello</code> — связанный метод: <code>__get__</code> функции возвращает метод,
+который помнит экземпляр.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Greeter</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">"привет"</span>
+
+<span class="n">greeter</span> <span class="o">=</span> <span class="n">Greeter</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"атрибут класса:"</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">Greeter</span><span class="o">.</span><span class="n">hello</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"атрибут экземпляра:"</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">greeter</span><span class="o">.</span><span class="n">hello</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"вызов:"</span><span class="p">,</span> <span class="n">greeter</span><span class="o">.</span><span class="n">hello</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>атрибут класса: function
+атрибут экземпляра: method
+вызов: привет
+</code></pre>
+<h3 id="углубление-порядок-записи">Углубление: порядок записи</h3>
+<p>Присваивание устроено зеркально чтению, но с одной оговоркой: сначала всегда
+вызывается <code>__setattr__</code> объекта, а уже внутри него — <code>__set__</code> подходящего
+дескриптора. Поэтому переопределённый <code>__setattr__</code> видит все записи, включая
+те, которые затем обработает дескриптор.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Checked</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__set__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"__set__ дескриптора"</span><span class="p">)</span>
+        <span class="n">instance</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s2">"checked"</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Thing</span><span class="p">:</span>
+    <span class="n">checked</span> <span class="o">=</span> <span class="n">Checked</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"__setattr__:"</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+<span class="n">thing</span> <span class="o">=</span> <span class="n">Thing</span><span class="p">()</span>
+<span class="n">thing</span><span class="o">.</span><span class="n">checked</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"значение:"</span><span class="p">,</span> <span class="n">thing</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s2">"checked"</span><span class="p">])</span>
+</code></pre></div>
+<pre class="output"><code>__setattr__: checked
+__set__ дескриптора
+значение: 5
+</code></pre>
+<p>Отсюда практическое правило: для проверки значений используйте дескриптор или
+<code>property</code>, а <code>__setattr__</code> оставьте для задач, где нужно видеть все записи
+сразу, — например, для аудита изменений. Переопределять <code>__setattr__</code> ради
+валидации одного поля не стоит: он замедляет все присваивания и легко
+превращается в источник рекурсии.</p>
+<h3 id="углубление-дескрипторы-в-стандартной-библиотеке">Углубление: дескрипторы в стандартной библиотеке</h3>
+<p>Многие привычные инструменты — дескрипторы. <code>functools.cached_property</code> —
+non-data дескриптор: при первом чтении он вычисляет значение и кладёт его в
+словарь экземпляра. Дальше обычный поиск находит значение в <code>__dict__</code> раньше
+дескриптора, и вычисление не повторяется.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">cached_property</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Box</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
+
+    <span class="nd">@cached_property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"вычисляем площадь"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span>
+
+<span class="n">box</span> <span class="o">=</span> <span class="n">Box</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"первое чтение:"</span><span class="p">,</span> <span class="n">box</span><span class="o">.</span><span class="n">area</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"второе чтение:"</span><span class="p">,</span> <span class="n">box</span><span class="o">.</span><span class="n">area</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"тип атрибута класса:"</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">Box</span><span class="o">.</span><span class="n">area</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>вычисляем площадь
+первое чтение: 12
+второе чтение: 12
+тип атрибута класса: cached_property
+</code></pre>
+<p>Ещё пример — <code>__slots__</code>. Для каждого имени в <code>__slots__</code> класс получает
+дескриптор-хранилище: он умеет читать и писать значение в заранее выделенном
+месте, а словаря экземпляра при этом нет. Поэтому лишние атрибуты не
+принимаются, а память экономится.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Slotted</span><span class="p">:</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"value"</span><span class="p">,)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"тип слота в классе:"</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">Slotted</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">slotted</span> <span class="o">=</span> <span class="n">Slotted</span><span class="p">()</span>
+<span class="n">slotted</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"значение:"</span><span class="p">,</span> <span class="n">slotted</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">slotted</span><span class="o">.</span><span class="n">extra</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"лишний атрибут отклонён:"</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>тип слота в классе: member_descriptor
+значение: 1
+лишний атрибут отклонён: True
+</code></pre>
+<p>Дескрипторы оправданы, когда одно и то же поведение нужно многим атрибутам
+многих классов: проверка диапазона, ленивое вычисление, кэширование,
+преобразование единиц. Для одного поля достаточно <code>property</code>.</p>
+<h2 id="dynamic-attributes"><span class="h-number">43.6</span> Динамические атрибуты</h2>
+<p><strong>Динамический атрибут</strong> — атрибут, который не хранится в объекте, а
+вычисляется или подставляется в момент обращения. Для этого есть два метода,
+и путать их опасно.</p>
+<ul>
+<li><code>__getattr__(self, name)</code> вызывается, <strong>только когда обычный поиск не
+нашёл атрибут</strong>. Это безопасная точка расширения.</li>
+<li><code>__getattribute__(self, name)</code> вызывается <strong>при любом обращении</strong> и
+заменяет весь механизм поиска. Ошибка в нём ломает объект целиком, включая
+доступ к собственным полям.</li>
+</ul>
+<p>Типичное применение <code>__getattr__</code> — настройки с доступом через точку.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Settings</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_values</span> <span class="o">=</span> <span class="n">values</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"_"</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_values</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"нет настройки </span><span class="si">{</span><span class="n">name</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="kc">None</span>
+
+<span class="n">settings</span> <span class="o">=</span> <span class="n">Settings</span><span class="p">({</span><span class="s2">"timeout"</span><span class="p">:</span> <span class="mi">30</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"timeout:"</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"значение по умолчанию:"</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s2">"retries"</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">settings</span><span class="o">.</span><span class="n">unknown</span>
+<span class="k">except</span> <span class="ne">AttributeError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"AttributeError:"</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>timeout: 30
+значение по умолчанию: 3
+AttributeError: нет настройки &#x27;unknown&#x27;
+</code></pre>
+<p>Три правила безопасного <code>__getattr__</code>. Первое: всегда поднимайте
+<code>AttributeError</code> для неизвестного имени, иначе сломаются <code>hasattr</code>,
+<code>getattr</code> с умолчанием и проверки в библиотеках. Второе: не обращайтесь
+внутри к атрибутам, которых может не быть, — иначе получите бесконечную
+рекурсию. Третье: не подменяйте опечатки — <code>settings.timout</code> должен падать,
+а не возвращать <code>None</code>.</p>
+<h3 id="углубление-когда-__getattr__-вредит">Углубление: когда <code>__getattr__</code> вредит</h3>
+<p>Если <code>__getattr__</code> возвращает значение для любого имени, объект перестаёт
+сообщать об ошибках: опечатка в имени метода превращается в вызов «чего-то».
+Отладка становится дорогой, а статическая проверка типов вообще не видит таких
+атрибутов. Поэтому динамические атрибуты применяют для узкого и понятного
+набора имён, а не как универсальный заменитель полей.</p>
+<h2 id="metaclasses"><span class="h-number">43.7</span> Метаклассы</h2>
+<p><strong>Метакласс</strong> — класс, экземплярами которого являются классы. У обычного
+класса метакласс — <code>type</code>: <code>type(Order)</code> возвращает <code>type</code>. Если нужно
+вмешаться в создание класса, объявляют свой метакласс и указывают его в
+<code>metaclass=</code>.</p>
+<p>Типичная задача — реестр подклассов: классы регистрируются автоматически, и
+никто не забывает добавить запись вручную.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Registry</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__new__</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">namespace</span><span class="p">):</span>
+        <span class="bp">cls</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">namespace</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="o">!=</span> <span class="s2">"Plugin"</span><span class="p">:</span>
+            <span class="n">Registry</span><span class="o">.</span><span class="n">plugins</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="bp">cls</span>
+        <span class="k">return</span> <span class="bp">cls</span>
+
+    <span class="n">plugins</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Plugin</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">Registry</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">JsonPlugin</span><span class="p">(</span><span class="n">Plugin</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">CsvPlugin</span><span class="p">(</span><span class="n">Plugin</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"метакласс Plugin:"</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">Plugin</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"зарегистрированы:"</span><span class="p">,</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">Registry</span><span class="o">.</span><span class="n">plugins</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>метакласс Plugin: Registry
+зарегистрированы: [&#x27;CsvPlugin&#x27;, &#x27;JsonPlugin&#x27;]
+</code></pre>
+<p><code>__new__</code> метакласса получает имя, базовые классы и пространство имён и
+возвращает готовый класс. Здесь же можно добавить методы, проверить
+инварианты, переименовать атрибуты.</p>
+<p>Однако для регистрации подклассов метакласс не обязателен: то же самое делает
+<code>__init_subclass__</code>, и он проще.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Plugin</span><span class="p">:</span>
+    <span class="n">registry</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__init_subclass__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init_subclass__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">Plugin</span><span class="o">.</span><span class="n">registry</span><span class="p">[</span><span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span><span class="p">]</span> <span class="o">=</span> <span class="bp">cls</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">JsonPlugin</span><span class="p">(</span><span class="n">Plugin</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">CsvPlugin</span><span class="p">(</span><span class="n">Plugin</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"зарегистрированы:"</span><span class="p">,</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">Plugin</span><span class="o">.</span><span class="n">registry</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>зарегистрированы: [&#x27;CsvPlugin&#x27;, &#x27;JsonPlugin&#x27;]
+</code></pre>
+<p>Правило выбора: если задача решается через <code>__init_subclass__</code>, декоратор
+класса или <code>property</code>, метакласс не нужен. Метаклассы оправданы в библиотеках
+и фреймворках, где поведение задаётся для целого семейства классов, а
+пользователь не должен ничего писать вручную. Ещё одна причина избегать
+метаклассов — конфликты: у класса может быть только один метакласс, и
+наследование от двух классов с разными метаклассами приводит к <code>TypeError</code>.</p>
+<h3 id="углубление-классы-созданные-во-время-исполнения">Углубление: классы, созданные во время исполнения</h3>
+<p>Метакласс — не единственный способ создать класс в runtime. <code>type</code> с тремя
+аргументами создаёт класс из имени, базовых классов и словаря атрибутов.
+Этим пользуются фабрики моделей, ORM и генераторы кода.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">make_model</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">fields</span><span class="p">):</span>
+    <span class="n">namespace</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"__annotations__"</span><span class="p">:</span> <span class="p">{</span><span class="n">field</span><span class="p">:</span> <span class="nb">str</span> <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">}}</span>
+    <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
+        <span class="n">namespace</span><span class="p">[</span><span class="n">field</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="p">(),</span> <span class="n">namespace</span><span class="p">)</span>
+
+<span class="n">Record</span> <span class="o">=</span> <span class="n">make_model</span><span class="p">(</span><span class="s2">"Record"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"title"</span><span class="p">,</span> <span class="s2">"author"</span><span class="p">])</span>
+<span class="n">record</span> <span class="o">=</span> <span class="n">Record</span><span class="p">()</span>
+<span class="n">record</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s2">"Python"</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"имя класса:"</span><span class="p">,</span> <span class="n">Record</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"поля:"</span><span class="p">,</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">Record</span><span class="o">.</span><span class="vm">__annotations__</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"значение:"</span><span class="p">,</span> <span class="n">record</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"экземпляр своего класса:"</span><span class="p">,</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">Record</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>имя класса: Record
+поля: [&#x27;author&#x27;, &#x27;title&#x27;]
+значение: Python
+экземпляр своего класса: True
+</code></pre>
+<p>Такой класс ничем не отличается от объявленного через <code>class</code>: <code>class Record: ...</code>
+компилируется в те же шаги — собрать пространство имён и вызвать метакласс.
+Разница в читаемости: объявление в коде видно сразу, а создание в runtime
+нужно проследить. Поэтому динамические классы применяют там, где набор полей
+известен только при запуске, — например, по описанию из конфигурации.</p>
+<h2 id="class-decorators"><span class="h-number">43.8</span> Декораторы классов</h2>
+<p><strong>Декоратор класса</strong> — функция, которая получает класс и возвращает класс
+(или другой объект). Это тот же приём, что и декораторы функций из главы 22,
+но применённый к классу.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">add_repr</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">value</span><span class="si">!r}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="n">fields</span><span class="si">}</span><span class="s2">)"</span>
+    <span class="bp">cls</span><span class="o">.</span><span class="fm">__repr__</span> <span class="o">=</span> <span class="fm">__repr__</span>
+    <span class="k">return</span> <span class="bp">cls</span>
+
+<span class="nd">@add_repr</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Point</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>Point(x=1, y=2)
+</code></pre>
+<p>Декоратор класса — компромисс между явным кодом и метаклассом: он виден в
+объявлении класса, применяется к одному классу и не влияет на наследников
+автоматически. Для большинства задач этого достаточно. Недостаток тот же, что
+у любого метапрограммирования: читатель должен знать, что декоратор делает,
+поэтому имя должно быть говорящим, а поведение — документированным.</p>
+<h2 id="when-justified"><span class="h-number">43.9</span> Когда это оправдано</h2>
+<p>Метапрограммирование стоит применять, когда выполняются все три условия.</p>
+<ol>
+<li><strong>Повторение реально.</strong> Один и тот же код нужен многим классам или
+атрибутам, и копирование уже стало источником ошибок.</li>
+<li><strong>Поведение декларативно.</strong> Пользователь механизма описывает <em>что</em>, а не
+<em>как</em>: <code>quantity = Positive()</code> читается лучше, чем ручная проверка в
+<code>__init__</code> каждого класса.</li>
+<li><strong>Цена чтения оправдана.</strong> Механизм документирован, протестирован и не
+скрывает ошибки: опечатки падают, типы проверяются, отладка возможна.</li>
+</ol>
+<p>Проверочный список перед тем, как писать дескриптор или метакласс:</p>
+<ul>
+<li>сколько мест придётся изменить без механизма — одно, три или тридцать;</li>
+<li>сможет ли новый читатель понять класс, не открывая реализацию механизма;</li>
+<li>видит ли <code>mypy</code> атрибуты, которые создаёт механизм;</li>
+<li>что произойдёт с ошибкой: упадёт она с понятным сообщением или превратится
+в тихое значение <code>None</code>;</li>
+<li>есть ли более простой инструмент — <code>property</code>, <code>dataclass</code>, декоратор.</li>
+</ul>
+<p>Если хотя бы одно условие не выполняется, лучше явный код. Явный код длиннее,
+но его понимает каждый, кто открыл файл, и его видит <code>mypy</code>. Метапрограммирование
+пишут один раз, а читают много раз.</p>
+<h2 id="testing"><span class="h-number">43.10</span> Как тестировать метапрограммирование</h2>
+<p>Механизм, который меняет поведение классов, нужно проверять отдельно от
+бизнес-логики. Минимальный набор тестов выглядит так.</p>
+<ol>
+<li><strong>Успешный сценарий.</strong> Атрибут читается и пишется, значение сохраняется.</li>
+<li><strong>Отказ.</strong> Недопустимое значение поднимает ожидаемое исключение, а не
+проходит молча.</li>
+<li><strong>Наследование.</strong> Подкласс ведёт себя так же; <code>__set_name__</code> получает
+правильные имена.</li>
+<li><strong>Границы.</strong> <code>None</code>, пустые значения, <code>bool</code> вместо <code>int</code> — всё, что легко
+перепутать.</li>
+<li><strong>Читаемость.</strong> Тот, кто открывает класс, должен видеть объявление поля и
+понимать, откуда берётся поведение. Если для этого нужно читать метакласс,
+механизм, вероятно, слишком сложен.</li>
+</ol>
+<p>Тесты на дескриптор пишут как на обычный компонент: создают класс-носитель и
+проверяют доступ к атрибуту. Это ещё один довод в пользу дескрипторов и
+декораторов классов: их можно тестировать изолированно, а метакласс затрагивает
+всю иерархию.</p>
+<h2 id="mistakes"><span class="h-number">43.11</span> Типичные ошибки</h2>
+<ol>
+<li><strong><code>__getattr__</code> не поднимает <code>AttributeError</code>.</strong> Ломаются <code>hasattr</code>,
+<code>getattr</code> с умолчанием и проверки библиотек; опечатки перестают быть
+ошибками.</li>
+<li><strong>Бесконечная рекурсия в <code>__getattr__</code>.</strong> Внутри метода нельзя обращаться к
+отсутствующим атрибутам: используйте <code>object.__getattribute__</code> или поля,
+которые точно есть.</li>
+<li><strong>Переопределение <code>__getattribute__</code> без необходимости.</strong> Это самый
+рискованный метод: он вызывается для всех обращений, включая служебные.</li>
+<li><strong>Дескриптор без <code>__set__</code> и ожидание, что он победит словарь экземпляра.</strong>
+Non-data дескриптор уступает значению в <code>__dict__</code>; для контроля нужен
+data-дескриптор.</li>
+<li><strong>Метакласс там, где хватает <code>__init_subclass__</code>.</strong> Лишний уровень магии
+усложняет чтение и ломает композицию с другими метаклассами.</li>
+<li><strong>Один метакласс на иерархию «на всякий случай».</strong> Конфликт метаклассов
+проявляется при наследовании и лечится только переписыванием иерархии.</li>
+<li><strong><code>exec</code> и <code>eval</code> вместо механизмов языка.</strong> Динамический код трудно
+проверять, отлаживать и защищать; почти всегда есть явная альтернатива.</li>
+</ol>
+<h2 id="упражнения"><span class="h-number">43.12</span> Упражнения</h2>
+<h3 id="ex-ch43-01">1. Порядок поиска</h3>
+<p>Дан класс с <code>property</code> для <code>price</code> и запись <code>instance.__dict__[&quot;price&quot;] = 999</code>.
+Что вернёт <code>instance.price</code> и почему? А если заменить <code>property</code> на объект с
+одним методом <code>__get__</code>? Объясните через порядок поиска атрибута.</p>
+<h3 id="ex-ch43-02">2. Проверяющий дескриптор</h3>
+<p>Напишите дескриптор <code>Bounded(min_value, max_value)</code>, который проверяет
+диапазон при записи и хранит значение в закрытом атрибуте экземпляра.
+Используйте его в классе <code>Sensor</code> для поля <code>temperature</code> с диапазоном от −50
+до 150. Проверьте допустимое и недопустимое значения.</p>
+<h3 id="ex-ch43-03">3. <code>__set_name__</code></h3>
+<p>Дескриптор <code>Field</code> должен сохранять имя атрибута, чтобы найти место хранения.
+Реализуйте его и объясните, когда именно вызывается <code>__set_name__</code> и что
+произойдёт, если назначить дескриптор после создания класса.</p>
+<h3 id="ex-ch43-04">4. <code>__getattr__</code> или <code>__getattribute__</code></h3>
+<p>Класс конфигурации должен подставлять значения по умолчанию для отсутствующих
+ключей. Какой из двух методов выбрать и почему? Покажите, что выбранный
+вариант не мешает доступу к обычным полям.</p>
+<h3 id="ex-ch43-05">5. Опечатка в динамическом атрибуте</h3>
+<p>Объект с <code>__getattr__</code> возвращает <code>None</code> для любого имени. Приведите два
+примера, как это скрывает ошибку, и перепишите <code>__getattr__</code> так, чтобы
+опечатки падали с <code>AttributeError</code>.</p>
+<h3 id="ex-ch43-06">6. Реестр подклассов</h3>
+<p>Реализуйте реестр плагинов двумя способами: через <code>__init_subclass__</code> и через
+метакласс. Сравните объём кода и читаемость. В каком случае метакласс даёт
+что-то, чего не даёт <code>__init_subclass__</code>?</p>
+<h3 id="ex-ch43-07">7. Декоратор класса</h3>
+<p>Напишите декоратор <code>with_slots</code>, который добавляет классу атрибут <code>__slots__</code>
+по списку полей, переданному в декоратор с аргументами. Проверьте, что
+экземпляр не принимает лишних атрибутов.</p>
+<h3 id="ex-ch43-08">8. Метод как дескриптор</h3>
+<p>Объясните, почему <code>Greeter.hello</code> — функция, а <code>greeter.hello</code> — метод.
+Что делает <code>__get__</code> функции и как связанный метод получает экземпляр?
+Подтвердите выводом типов.</p>
+<h3 id="ex-ch43-09">9. Кэширующий дескриптор</h3>
+<p>Напишите non-data дескриптор <code>Lazy</code>, который при первом чтении вычисляет
+значение функцией и запоминает его в словаре экземпляра. Почему здесь нужен
+именно non-data дескриптор и что произойдёт, если добавить <code>__set__</code>?</p>
+<h3 id="ex-ch43-10">10. Мини-задача: поля с валидацией</h3>
+<p>Реализуйте дескриптор <code>Validated(checker)</code>, который принимает функцию-проверку
+и поднимает <code>ValueError</code> при её провале. Соберите класс <code>User</code> с полями
+<code>name</code> (непустая строка) и <code>age</code> (целое от 0 до 130). Проверьте, что оба поля
+валидируются, а сообщение содержит имя поля.</p>
+<h2 id="check"><span class="h-number">43.13</span> Проверка понимания</h2>
+<ol>
+<li>Перечислите шаги поиска атрибута при обращении <code>obj.name</code>.</li>
+<li>Чем data-дескриптор отличается от non-data и почему это различие важно?</li>
+<li>Зачем дескриптору метод <code>__set_name__</code>?</li>
+<li>Почему <code>property</code> побеждает значение в <code>__dict__</code> экземпляра?</li>
+<li>Чем <code>__getattr__</code> отличается от <code>__getattribute__</code> и какой из них безопаснее?</li>
+<li>Что такое метакласс и почему <code>type(Order)</code> — это <code>type</code>?</li>
+<li>Когда <code>__init_subclass__</code> предпочтительнее метакласса?</li>
+<li>Почему метапрограммирование ухудшает читаемость и как это компенсировать?</li>
+</ol>
+<h2 id="links"><span class="h-number">43.14</span> Связи</h2>
+<p>Глава опирается на модель данных из главы 28: dunder-методы и то, как Python
+вызывает их при обращении к объекту. Наследование и порядок разрешения методов
+из главы 27 объясняют, в каком порядке просматривается тип. <code>property</code> из
+главы 26 — частный случай дескриптора, а декораторы функций из главы 22 —
+предшественники декораторов классов. Понимание объектов из главы 42 объясняет,
+почему атрибуты ищутся в двух местах: в экземпляре и в типе.</p>
+<p>Дальше — <a href="ch-44-architecture.html">архитектура, SOLID и паттерны</a>: метапрограммирование
+полезно для инфраструктуры, а архитектура помогает решить, где эта
+инфраструктура уместна.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-42-internals.html"><span class="pager-label">← Назад</span><span class="pager-title">Внутреннее устройство Python</span></a><a class="pager-card next" rel="next" href="ch-44-architecture.html"><span class="pager-label">Далее:</span><span class="pager-title">Архитектура, SOLID и паттерны</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

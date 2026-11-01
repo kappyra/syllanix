@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 470" role="img"
+     aria-labelledby="chart-types-title chart-types-desc"
+     font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="chart-types-title">Какой тип диаграммы отвечает на вопрос</title>
+  <desc id="chart-types-desc">Пять вопросов и подходящие формы: динамика показывается линией, сравнение категорий — столбцами, распределение — гистограммой, связь двух величин — точками, части целого — столбцами или стеком. Круговая диаграмма проигрывает, когда доли близки, потому что угол читается хуже длины.</desc>
+
+  <text x="40" y="34" font-size="18" font-weight="bold" fill="#1d3550">Вопрос → форма графика</text>
+  <text x="40" y="58" font-size="13" fill="#33557a">Тип диаграммы выбирают по вопросу, а не по внешнему виду.</text>
+
+  <!-- 1 динамика -->
+  <rect x="40" y="86" width="380" height="56" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="1.6"/>
+  <text x="58" y="119" font-size="13" fill="#1d3550">Как величина меняется во времени?</text>
+  <line x1="422" y1="114" x2="500" y2="114" stroke="#9aa7b5" stroke-width="2"/>
+  <polygon points="504,114 494,108 494,120" fill="#9aa7b5"/>
+  <rect x="514" y="86" width="316" height="56" rx="8" fill="#f2f6ee" stroke="#4a6b35" stroke-width="1.6"/>
+  <polyline points="524,130 540,116 554,122 570,98" fill="none" stroke="#4a6b35" stroke-width="2.6"/>
+  <circle cx="570" cy="98" r="3.5" fill="#4a6b35"/>
+  <text x="590" y="112" font-size="13" font-weight="bold" fill="#2f4a20">линия</text>
+  <text x="590" y="130" font-size="11" fill="#2f4a20">порядок точек задан</text>
+
+  <!-- 2 сравнение -->
+  <rect x="40" y="156" width="380" height="56" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="1.6"/>
+  <text x="58" y="189" font-size="13" fill="#1d3550">Как сравнить категории между собой?</text>
+  <line x1="422" y1="184" x2="500" y2="184" stroke="#9aa7b5" stroke-width="2"/>
+  <polygon points="504,184 494,178 494,190" fill="#9aa7b5"/>
+  <rect x="514" y="156" width="316" height="56" rx="8" fill="#f2f6ee" stroke="#4a6b35" stroke-width="1.6"/>
+  <rect x="524" y="186" width="12" height="14" fill="#4a6b35"/>
+  <rect x="542" y="174" width="12" height="26" fill="#4a6b35"/>
+  <rect x="560" y="164" width="12" height="36" fill="#4a6b35"/>
+  <text x="590" y="182" font-size="13" font-weight="bold" fill="#2f4a20">столбцы</text>
+  <text x="590" y="200" font-size="11" fill="#2f4a20">длина сравнивается точно</text>
+
+  <!-- 3 распределение -->
+  <rect x="40" y="226" width="380" height="56" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="1.6"/>
+  <text x="58" y="259" font-size="13" fill="#1d3550">Как распределены значения?</text>
+  <line x1="422" y1="254" x2="500" y2="254" stroke="#9aa7b5" stroke-width="2"/>
+  <polygon points="504,254 494,248 494,260" fill="#9aa7b5"/>
+  <rect x="514" y="226" width="316" height="56" rx="8" fill="#f2f6ee" stroke="#4a6b35" stroke-width="1.6"/>
+  <rect x="524" y="258" width="13" height="12" fill="#4a6b35"/>
+  <rect x="537" y="248" width="13" height="22" fill="#4a6b35"/>
+  <rect x="550" y="252" width="13" height="18" fill="#4a6b35"/>
+  <rect x="563" y="240" width="13" height="30" fill="#4a6b35"/>
+  <text x="590" y="252" font-size="13" font-weight="bold" fill="#2f4a20">гистограмма</text>
+  <text x="590" y="270" font-size="11" fill="#2f4a20">частоты по интервалам</text>
+
+  <!-- 4 связь -->
+  <rect x="40" y="296" width="380" height="56" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="1.6"/>
+  <text x="58" y="329" font-size="13" fill="#1d3550">Есть ли связь двух величин?</text>
+  <line x1="422" y1="324" x2="500" y2="324" stroke="#9aa7b5" stroke-width="2"/>
+  <polygon points="504,324 494,318 494,330" fill="#9aa7b5"/>
+  <rect x="514" y="296" width="316" height="56" rx="8" fill="#f2f6ee" stroke="#4a6b35" stroke-width="1.6"/>
+  <circle cx="530" cy="330" r="3.5" fill="#4a6b35"/>
+  <circle cx="544" cy="320" r="3.5" fill="#4a6b35"/>
+  <circle cx="556" cy="324" r="3.5" fill="#4a6b35"/>
+  <circle cx="566" cy="310" r="3.5" fill="#4a6b35"/>
+  <circle cx="574" cy="314" r="3.5" fill="#4a6b35"/>
+  <text x="590" y="322" font-size="13" font-weight="bold" fill="#2f4a20">точки</text>
+  <text x="590" y="340" font-size="11" fill="#2f4a20">видна тенденция и выбросы</text>
+
+  <!-- 5 части целого -->
+  <rect x="40" y="366" width="380" height="56" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="1.6"/>
+  <text x="58" y="399" font-size="13" fill="#1d3550">Из каких частей состоит целое?</text>
+  <line x1="422" y1="394" x2="500" y2="394" stroke="#9aa7b5" stroke-width="2"/>
+  <polygon points="504,394 494,388 494,400" fill="#9aa7b5"/>
+  <rect x="514" y="366" width="316" height="56" rx="8" fill="#fdf6ec" stroke="#8a6a2f" stroke-width="1.6"/>
+  <rect x="524" y="382" width="16" height="20" fill="#8a6a2f"/>
+  <rect x="540" y="382" width="16" height="20" fill="#c9a06a"/>
+  <rect x="556" y="382" width="16" height="20" fill="#e3cba6"/>
+  <text x="590" y="392" font-size="13" font-weight="bold" fill="#4b3a16">столбцы или стек</text>
+  <text x="590" y="410" font-size="11" fill="#4b3a16">круг — только для крупных долей</text>
+
+  <!-- пояснение -->
+  <rect x="40" y="432" width="790" height="30" rx="6" fill="#ffffff" stroke="#9aa7b5" stroke-width="1.2"/>
+  <text x="56" y="452" font-size="12" fill="#1d3550">Круговая диаграмма проигрывает, когда доли близки: угол читается хуже длины.</text>
+</svg>

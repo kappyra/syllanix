@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Безопасность приложений — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-41-security.html" aria-current="page">41. Безопасность приложений</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-41-security.html#что-вы-сможете-после-этой-главы">41.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-41-security.html#threat-model">41.2. Модель угроз и границы доверия</a></li>
+<li><a href="ch-41-security.html#validation">41.3. Валидация ввода</a></li>
+<li><a href="ch-41-security.html#injection">41.4. Инъекция</a></li>
+<li><a href="ch-41-security.html#secrets">41.5. Управление секретами</a></li>
+<li><a href="ch-41-security.html#password-hashing">41.6. Хеширование паролей</a></li>
+<li><a href="ch-41-security.html#deserialization">41.7. Небезопасная десериализация</a></li>
+<li><a href="ch-41-security.html#dependencies">41.8. Уязвимости зависимостей</a></li>
+<li><a href="ch-41-security.html#least-privilege">41.9. Принцип наименьших привилегий</a></li>
+<li><a href="ch-41-security.html#not-security">41.10. Что не защищает</a></li>
+<li><a href="ch-41-security.html#mistakes">41.11. Типичные ошибки</a></li>
+<li><a href="ch-41-security.html#упражнения">41.12. Упражнения</a></li>
+<li><a href="ch-41-security.html#check">41.13. Проверка понимания</a></li>
+<li><a href="ch-41-security.html#links">41.14. Связи</a></li>
+</ol></details></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 7. Практическая разработка</span><span class="sep">›</span><span>Глава 41</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Практическая разработка · глава 41</p>
+<h1 id="безопасность-приложений">Безопасность приложений</h1>
+<p class="chapter-summary">Секреты, инъекции, небезопасная десериализация и работа с зависимостями.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#что-вы-сможете-после-этой-главы"><span class="toc-number">41.1</span> Что вы сможете после этой главы</a></li>
+<li class="level-2"><a href="#threat-model"><span class="toc-number">41.2</span> Модель угроз и границы доверия</a></li>
+<li class="level-2"><a href="#validation"><span class="toc-number">41.3</span> Валидация ввода</a></li>
+<li class="level-2"><a href="#injection"><span class="toc-number">41.4</span> Инъекция</a></li>
+<li class="level-2"><a href="#secrets"><span class="toc-number">41.5</span> Управление секретами</a></li>
+<li class="level-2"><a href="#password-hashing"><span class="toc-number">41.6</span> Хеширование паролей</a></li>
+<li class="level-2"><a href="#deserialization"><span class="toc-number">41.7</span> Небезопасная десериализация</a></li>
+<li class="level-2"><a href="#dependencies"><span class="toc-number">41.8</span> Уязвимости зависимостей</a></li>
+<li class="level-2"><a href="#least-privilege"><span class="toc-number">41.9</span> Принцип наименьших привилегий</a></li>
+<li class="level-2"><a href="#not-security"><span class="toc-number">41.10</span> Что не защищает</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">41.11</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">41.12</span> Упражнения</a></li>
+<li class="level-2"><a href="#check"><span class="toc-number">41.13</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#links"><span class="toc-number">41.14</span> Связи</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#углубление-где-живут-секреты">Углубление: где живут секреты</a></li>
+<li class="level-3"><a href="#ex-ch41-01">1. Границы доверия</a></li>
+<li class="level-3"><a href="#ex-ch41-02">2. Валидация по белому списку</a></li>
+<li class="level-3"><a href="#ex-ch41-03">3. Поиск инъекции</a></li>
+<li class="level-3"><a href="#ex-ch41-04">4. Команда без оболочки</a></li>
+<li class="level-3"><a href="#ex-ch41-05">5. Секреты в логах</a></li>
+<li class="level-3"><a href="#ex-ch41-06">6. Хеширование пароля</a></li>
+<li class="level-3"><a href="#ex-ch41-07">7. Опасная десериализация</a></li>
+<li class="level-3"><a href="#ex-ch41-08">8. Уязвимая зависимость</a></li>
+<li class="level-3"><a href="#ex-ch41-09">9. Наименьшие привилегии</a></li>
+<li class="level-3"><a href="#ex-ch41-10">10. Мини-задача: безопасная регистрация</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>Безопасность — не отдельный модуль, который подключают в конце, и не список
+запретов. Это свойство всей программы: она остаётся работоспособной и не
+теряет данные, когда её используют неправильно или враждебно. Ошибку в
+логике заметит пользователь, ошибку в безопасности заметит злоумышленник — и
+не скажет о ней. В этой главе мы разберём типовые места, где программы
+ломаются, и правила, которые закрывают эти места.</p>
+<h2 id="что-вы-сможете-после-этой-главы"><span class="h-number">41.1</span> Что вы сможете после этой главы</h2>
+<ul>
+<li>определять границы доверия и проверять данные именно на них;</li>
+<li>узнавать инъекцию в коде и заменять её безопасным способом передачи данных;</li>
+<li>хранить секреты так, чтобы они не попадали в репозиторий, логи и сообщения
+об ошибках;</li>
+<li>хешировать пароли правильно и объяснять, почему быстрый хеш для этого не
+годится;</li>
+<li>отличать безопасную десериализацию от опасной и понимать, чем опасен
+<code>pickle</code> на недоверенных данных;</li>
+<li>оценивать уязвимости зависимостей и применять принцип наименьших
+привилегий.</li>
+</ul>
+<h2 id="threat-model"><span class="h-number">41.2</span> Модель угроз и границы доверия</h2>
+<p><strong>Безопасность</strong> — свойство системы сохранять конфиденциальность, целостность
+и доступность данных при враждебных или ошибочных действиях. Это не бинарное
+состояние «защищено / не защищено», а набор мер, каждая из которых закрывает
+свой класс проблем.</p>
+<p>Прежде чем что-то защищать, полезно ответить на три вопроса. Что мы защищаем:
+данные пользователей, деньги, доступ к инфраструктуре? От кого: от
+случайного пользователя, от авторизованного клиента, от внешнего сканера?
+Каким путём данные попадают в систему: формы, файлы, сеть, переменные
+окружения, база, сторонние API?</p>
+<p>Ответы образуют <strong>модель угроз</strong> — описание того, что и от кого защищается.
+Без неё защита превращается в набор случайных мер: где-то проверки есть,
+где-то нет, и никто не знает почему.</p>
+<p>Ключевое понятие — <strong>граница доверия</strong>: линия, разделяющая код, которому мы
+доверяем, и данные, которые пришли извне. Всё, что пересекает границу, —
+недоверенные данные, независимо от того, насколько солидно они выглядят.
+Запрос из браузера, файл от пользователя, ответ чужого API, значение из
+переменной окружения, даже строка из базы, которую мог изменить другой
+сервис.</p>
+<p><figure class="figure"><img src="illustrations/ch-41-trust-boundary.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Практическое следствие: <strong>проверяйте данные на границе и дальше работайте с
+проверенными значениями</strong>. Если функция внутри ядра получает строку «где-то
+из сети» и сама решает, можно ли ей верить, — рано или поздно кто-то забудет
+проверку. Внутренний код должен получать данные уже приведёнными к типу.</p>
+<h2 id="validation"><span class="h-number">41.3</span> Валидация ввода</h2>
+<p><strong>Валидация ввода</strong> — проверка данных на соответствие ожидаемому формату,
+диапазону и смыслу до того, как программа начнёт с ними работать. Хорошая
+валидация отвечает на вопрос «что допустимо», а не «что запрещено»: белый
+список надёжнее чёрного, потому что не требует угадать все варианты атаки.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ValidationError</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">parse_age</span><span class="p">(</span><span class="n">raw</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s2">"возраст должен быть строкой"</span><span class="p">)</span>
+    <span class="n">raw</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="sa">r</span><span class="s2">"\d{1,3}"</span><span class="p">,</span> <span class="n">raw</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s2">"возраст: ожидается 1–3 цифры"</span><span class="p">)</span>
+    <span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">age</span> <span class="o">&lt;=</span> <span class="mi">130</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s2">"возраст вне допустимого диапазона"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">age</span>
+
+<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">" 42 "</span><span class="p">,</span> <span class="s2">"7"</span><span class="p">,</span> <span class="s2">"abc"</span><span class="p">,</span> <span class="s2">"999"</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">value</span><span class="p">),</span> <span class="s2">"-&gt;"</span><span class="p">,</span> <span class="n">parse_age</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+    <span class="k">except</span> <span class="n">ValidationError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">value</span><span class="p">),</span> <span class="s2">"-&gt;"</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>&#x27; 42 &#x27; -&gt; 42
+&#x27;7&#x27; -&gt; 7
+&#x27;abc&#x27; -&gt; возраст: ожидается 1–3 цифры
+&#x27;999&#x27; -&gt; возраст вне допустимого диапазона
+</code></pre>
+<p>Функция проверяет тип, формат и диапазон и возвращает уже число. Всё, что
+пришло после неё, работает с <code>int</code>, а не с произвольной строкой. Обратите
+внимание: проверка формата идёт регулярным выражением с полным совпадением
+(<code>fullmatch</code>), поэтому строка <code>&quot;42abc&quot;</code> не пройдёт.</p>
+<p>Три правила валидации:</p>
+<ol>
+<li><strong>Проверяйте на границе.</strong> Один раз, в точке входа, а не в каждом
+внутреннем вызове.</li>
+<li><strong>Отказывайте по умолчанию.</strong> Неизвестное значение отклоняется, а не
+пропускается «на всякий случай».</li>
+<li><strong>Не подменяйте валидацию экранированием.</strong> Проверка отвечает «допустимо
+ли», экранирование — «как безопасно передать». Это разные задачи, и обе
+нужны.</li>
+</ol>
+<h2 id="injection"><span class="h-number">41.4</span> Инъекция</h2>
+<p><strong>Инъекция</strong> — класс атак, при которых данные, предназначенные для значения,
+интерпретируются как код или команда. Причина всегда одна: программа
+склеивает данные и код в одну строку, а потом отдаёт её интерпретатору,
+который не может отличить одно от другого.</p>
+<p>Самый частый пример — SQL-запрос, собранный подстановкой. В главе 36 мы уже
+видели, что параметризованный запрос решает проблему; посмотрим, как именно
+она возникает.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+
+<span class="n">connection</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">":memory:"</span><span class="p">)</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"CREATE TABLE users (name TEXT, role TEXT)"</span><span class="p">)</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span>
+    <span class="s2">"INSERT INTO users VALUES (?, ?)"</span><span class="p">,</span>
+    <span class="p">[(</span><span class="s2">"anna"</span><span class="p">,</span> <span class="s2">"user"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"boris"</span><span class="p">,</span> <span class="s2">"admin"</span><span class="p">)],</span>
+<span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">find_user_unsafe</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"SELECT name, role FROM users WHERE name = '</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">'"</span>
+    <span class="k">return</span> <span class="n">connection</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"обычный ввод:"</span><span class="p">,</span> <span class="n">find_user_unsafe</span><span class="p">(</span><span class="s2">"anna"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"инъекция:"</span><span class="p">,</span> <span class="n">find_user_unsafe</span><span class="p">(</span><span class="s2">"anna' OR '1'='1"</span><span class="p">))</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">find_user_safe</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="s2">"SELECT name, role FROM users WHERE name = ?"</span>
+    <span class="k">return</span> <span class="n">connection</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="p">(</span><span class="n">name</span><span class="p">,))</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"безопасно:"</span><span class="p">,</span> <span class="n">find_user_safe</span><span class="p">(</span><span class="s2">"anna' OR '1'='1"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>обычный ввод: [(&#x27;anna&#x27;, &#x27;user&#x27;)]
+инъекция: [(&#x27;anna&#x27;, &#x27;user&#x27;), (&#x27;boris&#x27;, &#x27;admin&#x27;)]
+безопасно: []
+</code></pre>
+<p>В первом случае строка <code>anna' OR '1'='1</code> сломала условие: запрос вернул всех
+пользователей, включая администратора. Во втором случае база получила запрос
+с параметром и значение отдельно, поэтому значение сравнивается буквально —
+и такого пользователя нет.</p>
+<p><figure class="figure"><img src="illustrations/ch-41-injection.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Тот же механизм работает в командной строке. Склеивание команды из данных
+превращает любую строку в часть команды:</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">host</span> <span class="o">=</span> <span class="s2">"example.com; echo взломано"</span>
+<span class="n">command</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"ping -c 1 </span><span class="si">{</span><span class="n">host</span><span class="si">}</span><span class="s2">"</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+</code></pre></div>
+<p>Оболочка увидит не одно имя хоста, а две команды. Правило общее для всех
+интерпретаторов — SQL, shell, HTML, шаблонов: <strong>данные никогда не должны
+становиться кодом</strong>. Для каждого из них есть свой способ передать данные
+отдельно: параметры запроса, список аргументов процесса без <code>shell=True</code>,
+экранирование шаблона.</p>
+<h2 id="secrets"><span class="h-number">41.5</span> Управление секретами</h2>
+<p><strong>Управление секретами</strong> — набор практик хранения и передачи значений,
+которые дают доступ: паролей, токенов, ключей. Секрет отличается от обычной
+настройки тем, что его утечка необратима: пароль можно сменить, а
+опубликованный в репозитории ключ остаётся в истории навсегда.</p>
+<p>Правила, которые покрывают почти все инциденты:</p>
+<ol>
+<li><strong>Секреты не в коде и не в репозитории.</strong> Ни в файлах, ни в истории
+коммитов, ни в комментариях. Конфигурация читается из переменных окружения
+(глава 35) или хранилища секретов.</li>
+<li><strong>Секреты не в логах.</strong> Токен в строке лога равносилен публикации: логи
+читают люди и системы.</li>
+<li><strong>Секреты не в сообщениях об ошибках.</strong> Пользователь не должен видеть
+строку подключения, а traceback с параметрами — попадать в ответ API.</li>
+<li><strong>Секреты генерируются криптостойко.</strong> Модуль <code>secrets</code> использует
+генератор, пригодный для токенов; <code>random</code> для этого не годится.</li>
+<li><strong>Сравнение секретов — постоянное по времени.</strong> Обычное <code>==</code>
+останавливается на первом несовпадении, и по времени ответа можно
+постепенно угадать значение.</li>
+</ol>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">hashlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">hmac</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">secrets</span>
+
+<span class="n">token</span> <span class="o">=</span> <span class="n">secrets</span><span class="o">.</span><span class="n">token_hex</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"длина токена:"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">token</span><span class="p">),</span> <span class="s2">"символов"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"сравнение совпадающих:"</span><span class="p">,</span> <span class="n">secrets</span><span class="o">.</span><span class="n">compare_digest</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">token</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"сравнение разных:"</span><span class="p">,</span> <span class="n">secrets</span><span class="o">.</span><span class="n">compare_digest</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="s2">"0"</span> <span class="o">*</span> <span class="mi">32</span><span class="p">))</span>
+
+<span class="n">salt</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">"demo-salt-0123456"</span>
+<span class="n">stored</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">scrypt</span><span class="p">(</span><span class="sa">b</span><span class="s2">"secret"</span><span class="p">,</span> <span class="n">salt</span><span class="o">=</span><span class="n">salt</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="o">**</span><span class="mi">14</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dklen</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"длина производного ключа:"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">stored</span><span class="p">),</span> <span class="s2">"байт"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"проверка:"</span><span class="p">,</span> <span class="n">hmac</span><span class="o">.</span><span class="n">compare_digest</span><span class="p">(</span><span class="n">stored</span><span class="p">,</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">scrypt</span><span class="p">(</span><span class="sa">b</span><span class="s2">"secret"</span><span class="p">,</span> <span class="n">salt</span><span class="o">=</span><span class="n">salt</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="o">**</span><span class="mi">14</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dklen</span><span class="o">=</span><span class="mi">32</span><span class="p">)))</span>
+</code></pre></div>
+<pre class="output"><code>длина токена: 32 символов
+сравнение совпадающих: True
+сравнение разных: False
+длина производного ключа: 32 байт
+проверка: True
+</code></pre>
+<p>Токен из 16 байт даёт 32 шестнадцатеричных символа. <code>secrets.compare_digest</code>
+и <code>hmac.compare_digest</code> сравнивают значения за постоянное время и возвращают
+<code>True</code>/<code>False</code>; третий вывод — <code>False</code>, потому что сравниваются разные
+значения: функция сообщает лишь факт совпадения и ничего не раскрывает о том,
+в каком месте строки было различие.</p>
+<h3 id="углубление-где-живут-секреты">Углубление: где живут секреты</h3>
+<p>В разработке секреты берут из файла, который не попадает в репозиторий, а в
+работе — из переменных окружения или хранилища. Один и тот же код читает
+значение по имени, а не по адресу:</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="n">database_url</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"DATABASE_URL"</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">database_url</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">"не задан DATABASE_URL"</span><span class="p">)</span>
+</code></pre></div>
+<p>Проверка на отсутствие важна: программа должна падать при запуске, а не
+подключаться к «пустой» базе и терять данные. Имя переменной можно писать в
+коде; её значение — никогда.</p>
+<h2 id="password-hashing"><span class="h-number">41.6</span> Хеширование паролей</h2>
+<p><strong>Хеширование паролей</strong> — преобразование пароля в необратимый отпечаток,
+который хранится вместо самого пароля. При входе введённый пароль
+преобразуется тем же способом, и отпечатки сравниваются. Даже при утечке базы
+злоумышленник не получает паролей в открытом виде.</p>
+<p>У этого правила две части, и обе обязательны.</p>
+<p><strong>Соль.</strong> Случайное значение, уникальное для каждой записи, добавляется к
+паролю перед хешированием. Без соли одинаковые пароли дают одинаковые
+отпечатки, и один вычисленный хеш раскрывает всех пользователей с тем же
+паролем. Соль хранится рядом с хешем: она не секрет, её задача — сделать
+хеши разными.</p>
+<p><strong>Медленный алгоритм.</strong> Обычные хеши вроде <code>sha256</code> спроектированы быстрыми:
+миллиарды вычислений в секунду. Для проверки пароля это преимущество
+злоумышленника. Поэтому используют алгоритмы, намеренно требующие времени и
+памяти: <code>scrypt</code>, <code>bcrypt</code>, <code>argon2</code>. Стандартная библиотека даёт <code>scrypt</code>
+через <code>hashlib</code>.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">hashlib</span><span class="o">,</span><span class="w"> </span><span class="nn">hmac</span>
+
+<span class="n">salt</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">"unique-salt-for-record"</span>
+<span class="n">password</span> <span class="o">=</span> <span class="s2">"правильный пароль"</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">hash_password</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">salt</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">scrypt</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">salt</span><span class="o">=</span><span class="n">salt</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="o">**</span><span class="mi">14</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dklen</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+
+<span class="n">stored</span> <span class="o">=</span> <span class="n">hash_password</span><span class="p">(</span><span class="n">password</span><span class="p">,</span> <span class="n">salt</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"длина хеша:"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">stored</span><span class="p">),</span> <span class="s2">"байт"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"верный пароль:"</span><span class="p">,</span> <span class="n">hmac</span><span class="o">.</span><span class="n">compare_digest</span><span class="p">(</span><span class="n">stored</span><span class="p">,</span> <span class="n">hash_password</span><span class="p">(</span><span class="n">password</span><span class="p">,</span> <span class="n">salt</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"неверный пароль:"</span><span class="p">,</span> <span class="n">hmac</span><span class="o">.</span><span class="n">compare_digest</span><span class="p">(</span><span class="n">stored</span><span class="p">,</span> <span class="n">hash_password</span><span class="p">(</span><span class="s2">"другой пароль"</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span> <span class="n">salt</span><span class="p">)))</span>
+</code></pre></div>
+<pre class="output"><code>длина хеша: 32 байт
+верный пароль: True
+неверный пароль: False
+</code></pre>
+<p>Параметры <code>n</code>, <code>r</code>, <code>p</code> задают стоимость вычисления: чем больше, тем медленнее
+и тем дороже перебор. Их подбирают так, чтобы проверка занимала доли секунды
+на целевом оборудовании, и хранят вместе с хешем, чтобы при смене параметров
+старые записи продолжали проверяться.</p>
+<h2 id="deserialization"><span class="h-number">41.7</span> Небезопасная десериализация</h2>
+<p><strong>Небезопасная десериализация</strong> — восстановление объектов из данных, формат
+которых допускает исполнение кода. В Python самый известный пример — <code>pickle</code>:
+он умеет восстанавливать произвольные объекты, и вместе с данными
+восстанавливается поведение.</p>
+<p>Учебная модель: класс, который при восстановлении вызывает функцию.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Payload</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">message</span> <span class="o">=</span> <span class="n">message</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__reduce__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nb">print</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="p">,))</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">Payload</span><span class="p">(</span><span class="s2">"выполнился код из данных"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"данные выглядят безобидно:"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="s2">"байт"</span><span class="p">)</span>
+<span class="n">pickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>данные выглядят безобидно: 85 байт
+выполнился код из данных
+</code></pre>
+<p>Функция <code>print</code> здесь безопасна только потому, что мы сами её выбрали. В
+реальной атаке на её месте оказалась бы любая функция, доступная в момент
+загрузки. Вывод простой: <strong><code>pickle</code> допустим только для доверенных данных</strong>,
+например для собственного кеша на своей машине. Для обмена с внешним миром
+используют форматы данных без исполнения: JSON (глава 19), CSV, YAML с
+безопасным загрузчиком.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">ast</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+<span class="n">message</span> <span class="o">=</span> <span class="s1">'{"user": "anna", "roles": ["admin"]}'</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"json:"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">message</span><span class="p">))</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s2">"{'user': 'anna', 'roles': ['admin']}"</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"literal_eval:"</span><span class="p">,</span> <span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">(</span><span class="s2">"__import__('os').getcwd()"</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"отклонено:"</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">error</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>json: {&#x27;user&#x27;: &#x27;anna&#x27;, &#x27;roles&#x27;: [&#x27;admin&#x27;]}
+literal_eval: {&#x27;user&#x27;: &#x27;anna&#x27;, &#x27;roles&#x27;: [&#x27;admin&#x27;]}
+отклонено: ValueError
+</code></pre>
+<p><code>json</code> разбирает только данные. <code>ast.literal_eval</code> принимает лишь литералы —
+строки, числа, списки, словари — и отклоняет вызовы функций, поэтому годится
+для разбора строк, похожих на Python-литералы. Но и он не заменяет валидацию:
+после разбора данные всё равно проверяют по схеме.</p>
+<h2 id="dependencies"><span class="h-number">41.8</span> Уязвимости зависимостей</h2>
+<p><strong>Уязвимость зависимости</strong> — известная проблема в сторонней библиотеке,
+которую использует ваш проект. Код может быть безупречен, но уязвимость в
+парсере или HTTP-клиенте открывает доступ к системе. Зависимости — часть
+вашей программы, и отвечаете за них вы.</p>
+<p>Работа с ними строится на трёх вещах.</p>
+<ol>
+<li><strong>Фиксация версий.</strong> <code>lockfile</code> (глава 33) фиксирует точные версии всех
+зависимостей, включая транзитивные. Сборка должна быть воспроизводимой:
+одинаковая версия кода — одинаковый набор пакетов.</li>
+<li><strong>Регулярная проверка.</strong> Специализированные инструменты сверяют
+зависимости с базами известных уязвимостей. Запускать их стоит в CI, а не
+«когда вспомним».</li>
+<li><strong>Обновление.</strong> Уязвимость закрывается обновлением, поэтому зависимости
+обновляют планово и проверяют тестами. Старый пакет без обновлений — это
+не «стабильность», а накопленный риск.</li>
+</ol>
+<p>Типичный сеанс проверки выглядит так:</p>
+<pre class="text"><code>$ uv lock --check
+Resolved 42 packages
+$ uvx pip-audit
+No known vulnerabilities found
+</code></pre>
+<p>Числа и названия инструментов зависят от проекта; смысл в том, что проверка
+встроена в процесс, а не выполняется вручную перед релизом.</p>
+<h2 id="least-privilege"><span class="h-number">41.9</span> Принцип наименьших привилегий</h2>
+<p><strong>Принцип наименьших привилегий</strong> — каждая часть системы получает только те
+права и данные, которые нужны ей для работы, и ничего сверх этого. Функция,
+которой нужны имя и почта, не должна получать хеш пароля и флаг
+администратора: лишнее поле рано или поздно попадёт в лог, в ответ API или в
+чужой код.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">UserRecord</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">password_hash</span><span class="p">,</span> <span class="n">is_admin</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="n">email</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">password_hash</span> <span class="o">=</span> <span class="n">password_hash</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_admin</span> <span class="o">=</span> <span class="n">is_admin</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">public_view</span><span class="p">(</span><span class="n">record</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="n">record</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">"email"</span><span class="p">:</span> <span class="n">record</span><span class="o">.</span><span class="n">email</span><span class="p">}</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">render_card</span><span class="p">(</span><span class="n">view</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">view</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span><span class="si">}</span><span class="s2"> &lt;</span><span class="si">{</span><span class="n">view</span><span class="p">[</span><span class="s1">'email'</span><span class="p">]</span><span class="si">}</span><span class="s2">&gt;"</span><span class="p">)</span>
+
+<span class="n">user</span> <span class="o">=</span> <span class="n">UserRecord</span><span class="p">(</span><span class="s2">"anna"</span><span class="p">,</span> <span class="s2">"anna@example.com"</span><span class="p">,</span> <span class="s2">"хеш-пароля"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">render_card</span><span class="p">(</span><span class="n">public_view</span><span class="p">(</span><span class="n">user</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>anna &lt;anna@example.com&gt;
+</code></pre>
+<p><code>render_card</code> получает словарь из двух полей и физически не может вывести
+пароль. Это надёжнее, чем правило «не логируй пароль»: правило можно забыть, а
+отсутствующее поле забыть невозможно.</p>
+<p>Принцип работает на всех уровнях: учётная запись базы имеет права только на
+свою схему, процесс не запускается от администратора, токен API даёт доступ к
+одному сервису, а не ко всем. Чем меньше прав у скомпрометированной части, тем
+меньше ущерб.</p>
+<h2 id="not-security"><span class="h-number">41.10</span> Что не защищает</h2>
+<p>Некоторые меры выглядят как защита, но ею не являются.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Мера</th>
+<th>Почему не защищает</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>проверка только в браузере</td>
+<td>запрос можно отправить напрямую, минуя интерфейс</td>
+</tr>
+<tr>
+<td>скрытие кнопки в интерфейсе</td>
+<td>право доступа проверяется на сервере, а не в вёрстке</td>
+</tr>
+<tr>
+<td>чёрный список опасных слов</td>
+<td>вариантов обхода бесконечно много</td>
+</tr>
+<tr>
+<td>обфускация кода</td>
+<td>код всё равно исполняется, секреты в нём остаются</td>
+</tr>
+<tr>
+<td>«сложный» пароль без ограничения попыток</td>
+<td>перебор остановит только ограничение скорости</td>
+</tr>
+</tbody>
+</table>
+</div><p>Защита должна стоять там, где принимается решение: на сервере, в базе, в
+коде, который выполняет операцию. Всё, что происходит на клиенте, — удобство,
+а не контроль.</p>
+<h2 id="mistakes"><span class="h-number">41.11</span> Типичные ошибки</h2>
+<ol>
+<li><strong>Склеивать данные и код.</strong> <code>f&quot;SELECT ... {value}&quot;</code>, <code>shell=True</code> со
+строкой, шаблон, собранный конкатенацией. Используйте параметры и списки
+аргументов.</li>
+<li><strong>Верить данным из базы.</strong> Их мог записать другой сервис или
+злоумышленник через другую уязвимость. Проверяйте на границе каждого
+доверенного контура.</li>
+<li><strong>Хранить секреты в репозитории.</strong> Даже в приватном: история коммитов
+остаётся, а доступ к репозиторию не равен доверию.</li>
+<li><strong>Хешировать пароли быстрым хешем.</strong> <code>sha256</code> без соли и без замедления
+перебирается на видеокарте с огромной скоростью.</li>
+<li><strong>Загружать <code>pickle</code> из сети.</strong> Это исполнение чужого кода, а не разбор
+данных.</li>
+<li><strong>Сравнивать секреты через <code>==</code>.</strong> Утечка по времени позволяет угадывать
+значение посимвольно.</li>
+<li><strong>Показывать внутренние ошибки пользователю.</strong> Traceback и строка
+подключения — подарок для атакующего; логируйте подробности, а
+пользователю отдавайте общий ответ.</li>
+<li><strong>Игнорировать зависимости.</strong> Уязвимость в библиотеке — ваша уязвимость.</li>
+</ol>
+<h2 id="упражнения"><span class="h-number">41.12</span> Упражнения</h2>
+<h3 id="ex-ch41-01">1. Границы доверия</h3>
+<p>Для приложения «заметки» перечислите пять источников данных и отнесите каждый
+к доверенным или недоверенным: текст заметки из формы, имя пользователя из
+сессии, ответ внешнего API погоды, значение из переменной окружения, строка
+из вашей базы. Для каждого недоверенного источника укажите, где стоит
+проверка.</p>
+<h3 id="ex-ch41-02">2. Валидация по белому списку</h3>
+<p>Напишите функцию <code>parse_status(raw)</code>, которая принимает только значения
+<code>&quot;new&quot;</code>, <code>&quot;in_progress&quot;</code>, <code>&quot;done&quot;</code> и возвращает их, а на всё остальное
+поднимает <code>ValueError</code> с понятным сообщением. Проверьте четыре варианта,
+включая строку с пробелами по краям.</p>
+<h3 id="ex-ch41-03">3. Поиск инъекции</h3>
+<p>Дан код:</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">find_order</span><span class="p">(</span><span class="n">cursor</span><span class="p">,</span> <span class="n">order_id</span><span class="p">):</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="s2">"SELECT * FROM orders WHERE id = "</span> <span class="o">+</span> <span class="n">order_id</span>
+    <span class="k">return</span> <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</code></pre></div>
+<p>Объясните, как через <code>order_id</code> можно изменить смысл запроса, и перепишите
+функцию безопасно. Что изменится в типе аргумента?</p>
+<h3 id="ex-ch41-04">4. Команда без оболочки</h3>
+<p>Функция запускает <code>ping</code> для имени хоста, полученного от пользователя:</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="sa">f</span><span class="s2">"ping -c 1 </span><span class="si">{</span><span class="n">host</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<p>Почему это опасно? Перепишите вызов так, чтобы данные не могли стать частью
+команды, и объясните роль <code>shell=True</code>.</p>
+<h3 id="ex-ch41-05">5. Секреты в логах</h3>
+<p>В лог пишется строка подключения с паролем. Предложите три уровня исправления:
+что изменить в коде логирования, что — в конфигурации, и как проверить, что
+секрет больше не появляется в логах.</p>
+<h3 id="ex-ch41-06">6. Хеширование пароля</h3>
+<p>Реализуйте функции <code>hash_password(raw, salt)</code> и <code>verify_password(raw, salt, stored)</code> на основе <code>hashlib.scrypt</code> и <code>hmac.compare_digest</code>. Проверьте верный
+и неверный пароль. Объясните, зачем нужна соль и почему нельзя использовать
+<code>sha256</code>.</p>
+<h3 id="ex-ch41-07">7. Опасная десериализация</h3>
+<p>Приложение принимает от пользователя JSON и восстанавливает из него объекты
+через <code>pickle</code>. Опишите, какую атаку это позволяет, и замените механизм на
+безопасный: разбор JSON с последующей валидацией полей. Приведите реализацию
+для структуры <code>{&quot;name&quot;: str, &quot;age&quot;: int}</code>.</p>
+<h3 id="ex-ch41-08">8. Уязвимая зависимость</h3>
+<p>Проект использует библиотеку версии <code>1.2.0</code>, в которой найдена уязвимость;
+исправлена она в <code>1.2.3</code>. Опишите порядок действий: как зафиксировать
+обновление, как убедиться, что оно не сломало проект, и что делать, если
+обновление невозможно.</p>
+<h3 id="ex-ch41-09">9. Наименьшие привилегии</h3>
+<p>Функция формирования отчёта получает объект пользователя целиком, хотя
+использует только <code>name</code> и <code>created_at</code>. Перепишите интерфейс так, чтобы
+лишние данные были недоступны, и объясните, как это ограничивает ущерб при
+утечке логов.</p>
+<h3 id="ex-ch41-10">10. Мини-задача: безопасная регистрация</h3>
+<p>Напишите функцию <code>register(payload)</code>, которая принимает словарь из внешнего
+мира, валидирует <code>name</code> (2–40 символов), <code>email</code> (простая проверка формата) и
+<code>password</code> (не короче 12 символов), хеширует пароль с солью и возвращает
+словарь для сохранения — без пароля в открытом виде. Ошибки валидации
+собирайте в один <code>ValueError</code> со списком проблем.</p>
+<h2 id="check"><span class="h-number">41.13</span> Проверка понимания</h2>
+<ol>
+<li>Что такое граница доверия и почему данные из базы тоже могут быть
+недоверенными?</li>
+<li>Чем валидация отличается от экранирования и почему нужны обе?</li>
+<li>Почему параметризованный запрос защищает от инъекции, а экранирование
+кавычек — нет?</li>
+<li>Почему для паролей нужен медленный алгоритм с солью?</li>
+<li>Чем опасен <code>pickle</code> и что можно использовать вместо него?</li>
+<li>Что такое уязвимость зависимости и почему <code>lockfile</code> помогает с ней
+работать?</li>
+<li>Как принцип наименьших привилегий ограничивает ущерб от ошибки?</li>
+<li>Почему проверка прав в браузере не даёт защиты?</li>
+</ol>
+<h2 id="links"><span class="h-number">41.14</span> Связи</h2>
+<p>Глава опирается на SQL и параметризованные запросы из главы 36, на
+сериализацию и JSON из главы 19, на хеширование из главы 16, на переменные
+окружения из главы 35 и на управление зависимостями из главы 33. Логирование
+из главы 37 объясняет, почему секрет в логе — это утечка, а обработка ошибок
+из главы 10 — почему traceback нельзя отдавать наружу.</p>
+<p>Дальше — <a href="ch-42-internals.html">внутреннее устройство Python</a>: чтобы понимать,
+почему утечки памяти и неожиданное поведение объектов возможны, полезно
+увидеть, как устроены объекты и память.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-40-performance.html"><span class="pager-label">← Назад</span><span class="pager-title">Производительность и профилирование</span></a><a class="pager-card next" rel="next" href="ch-42-internals.html"><span class="pager-label">Далее:</span><span class="pager-title">Внутреннее устройство Python</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

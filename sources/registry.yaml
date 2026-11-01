@@ -1,0 +1,787 @@
+schema: 1
+project: Syllanix
+book: python-zero-to-pro
+audited_at: '2026-11-01'
+auditor: sources-auditor
+syllanix_license:
+  text: CC-BY-SA-4.0
+  code: MIT
+sources:
+- id: src-hieulouisdev-learn-python
+  title: Learn Python — beginner-to-expert curriculum (Python 3.14)
+  url: https://github.com/hieulouisdev/learn-python
+  commit: ee677ada3288bba81479bcba7a4af5a7317225bd
+  path: sources/repos/hieulouisdev-learn-python
+  verified_at: '2026-11-01'
+  language: en
+  license: MIT
+  license_file: sources/licenses/hieulouisdev-learn-python/LICENSE
+  derivative_allowed: true
+  commercial_use: true
+  redistribution: true
+  files:
+  - sources/repos/hieulouisdev-learn-python
+  allowed_use: full
+  license_code:
+    spdx: MIT
+    file: LICENSE
+    allows_modification: true
+    allows_commercial: true
+    share_alike: false
+    attribution_required: true
+  license_docs:
+    spdx: MIT
+    file: LICENSE + README.md §License
+    allows_modification: true
+    allows_commercial: true
+    share_alike: false
+    attribution_required: true
+  license_images:
+    spdx: MIT
+    file: LICENSE
+    allows_modification: true
+    note: отдельных изображений почти нет; схемы — ASCII/mermaid в markdown
+  license_exercises:
+    spdx: MIT
+    file: LICENSE
+    allows_modification: true
+    note: exercises_solutions.md в каждом модуле, включая решения
+  compatibility:
+    text_merge: allowed
+    code_merge: allowed
+    note: 'MIT → CC BY-SA 4.0: текст можно перерабатывать и переводить, адаптация выходит под CC BY-SA 4.0 с указанием источника;
+      код совместим с MIT.'
+  restrictions:
+  - Сохранять уведомление об авторских правах MIT при копировании существенных частей кода.
+  - Один автор, 2025–2026; фактические утверждения требуют выборочной проверки перед включением.
+  evidence:
+  - file: LICENSE
+    lines: 1-3
+    note: MIT License, Copyright (c) 2025 hieulouisdev
+  - file: README.md
+    lines: 287-289
+    note: «This curriculum is released under the MIT License… free to copy, modify, and distribute… commercial training»
+  - file: README.md
+    lines: 3,21
+    note: заявлен Python 3.14, t-strings, free-threading, deferred annotations
+  quality:
+    depth: 5
+    accuracy: 4
+    currency: 5
+    worked_examples: true
+    pedagogical_order: 4
+  overlap_with:
+  - src-swaroopch-byte-of-python
+  - src-jerry-git-learn-python3
+  - src-trekhleb-learn-python
+  - src-python-cpython
+  - src-realpython-python-guide
+  notes: 'Главный кандидат на первичный источник: 20 модулей, ~55 000 строк markdown, отдельный файл упражнений с решениями
+    в каждом модуле, современный Python 3.14. Структура модулей почти 1:1 ложится на части 1–7 программы книги. Слабые места:
+    единственный автор, отсутствие независимой редактуры, местами избыточная длина разделов; требуется сверка фактов по CPython.'
+- id: src-jerry-git-learn-python3
+  title: Learn Python 3 — Jupyter notebooks (beginner + intermediate)
+  url: https://github.com/jerry-git/learn-python3
+  commit: 85e30d370ec20618ac27b802c4d35876d7031b67
+  path: sources/repos/jerry-git-learn-python3
+  verified_at: '2026-11-01'
+  language: en
+  license: MIT
+  license_file: sources/licenses/jerry-git-learn-python3/LICENSE
+  derivative_allowed: true
+  commercial_use: true
+  redistribution: true
+  files:
+  - sources/repos/jerry-git-learn-python3
+  allowed_use: full
+  license_code:
+    spdx: MIT
+    file: LICENSE
+    allows_modification: true
+    allows_commercial: true
+  license_docs:
+    spdx: MIT
+    file: LICENSE
+    allows_modification: true
+    allows_commercial: true
+  license_images:
+    spdx: не покрыто MIT
+    file: README.md
+    allows_modification: false
+    note: logo.png — сторонний логотип (Abdur-Rahmaan Janhangeer, README:76); не переиспользовать
+  license_exercises:
+    spdx: MIT
+    file: LICENSE
+    allows_modification: true
+    note: notebooks/*/exercises — упражнения без решений в открытом виде
+  compatibility:
+    text_merge: allowed
+    code_merge: allowed
+    note: MIT совместим с MIT-кодом и допускает перевод/переработку текста notebooks.
+  restrictions:
+  - 'Изображения: logo.png — сторонняя работа, лицензия не заявлена; исключить.'
+  - 'Ноутбуки написаны в 2018–2023 (Python 3.6+ эпоха): синтаксис актуален, но примеры библиотек/инструментов устарели.'
+  evidence:
+  - file: LICENSE
+    lines: 1-3
+    note: MIT License, Copyright (c) 2023 jerry-git
+  - file: README.md
+    lines: '76'
+    note: '«Logo: Abdur-Rahmaan Janhangeer» — сторонний артефакт'
+  quality:
+    depth: 3
+    accuracy: 4
+    currency: 3
+    worked_examples: true
+    pedagogical_order: 4
+  overlap_with:
+  - src-trekhleb-learn-python
+  - src-hieulouisdev-learn-python
+  - src-swaroopch-byte-of-python
+  notes: 'Ноутбуки с пошаговыми объяснениями и отдельными упражнениями (без решений). Ценно для промежуточного уровня: идиоматичный
+    Python, pytest-фикстуры, best practices. Слабости: тонко по глубине, устаревшие версии инструментов.'
+- id: src-trekhleb-learn-python
+  title: Learn Python — annotated snippets with pytest asserts
+  url: https://github.com/trekhleb/learn-python
+  commit: 5e4fad5903ce5a76cc1f90838d69a220968e1494
+  path: sources/repos/trekhleb-learn-python
+  verified_at: '2026-11-01'
+  language: en
+  license: MIT
+  license_file: sources/licenses/trekhleb-learn-python/LICENSE
+  derivative_allowed: true
+  commercial_use: true
+  redistribution: true
+  files:
+  - sources/repos/trekhleb-learn-python
+  allowed_use: full
+  license_code:
+    spdx: MIT
+    file: LICENSE
+    allows_modification: true
+  license_docs:
+    spdx: MIT
+    file: LICENSE
+    allows_modification: true
+  license_images:
+    spdx: нет изображений
+    file: null
+    allows_modification: true
+  license_exercises:
+    spdx: MIT
+    file: LICENSE
+    allows_modification: true
+    note: assert-блоки = самопроверка, отдельных упражнений нет
+  compatibility:
+    text_merge: allowed
+    code_merge: allowed
+  restrictions:
+  - Каждый файл — самостоятельный сниппет; связного объяснения нет, использовать как источник примеров/самопроверок.
+  evidence:
+  - file: LICENSE
+    lines: 1-3
+    note: MIT License, Copyright (c) 2018 Oleksii Trekhleb
+  - file: src/functions/test_function_default_arguments.py
+    lines: 1-10
+    note: docstring + ссылка на официальный tutorial; проверки через assert
+  quality:
+    depth: 2
+    accuracy: 5
+    currency: 4
+    worked_examples: true
+    pedagogical_order: 3
+  overlap_with:
+  - src-python-cpython
+  - src-jerry-git-learn-python3
+  - src-hieulouisdev-learn-python
+  notes: Компактные исполняемые сниппеты с assert-проверками по темам (data_types, control_flow, functions, classes, exceptions,
+    files, modules, generators). Отличный источник «минимальных проверяемых примеров» и тестовых ожиданий; объяснительного
+    текста почти нет.
+- id: src-thealgorithms-python
+  title: TheAlgorithms/Python — implementations, data structures and algorithms
+  url: https://github.com/TheAlgorithms/Python
+  commit: 6e03a48579ca212a08b36be00378f887dc41a003
+  path: sources/repos/thealgorithms-python
+  verified_at: '2026-11-01'
+  language: en
+  license: MIT
+  license_file: sources/licenses/thealgorithms-python/LICENSE.md
+  derivative_allowed: true
+  commercial_use: true
+  redistribution: true
+  files:
+  - sources/repos/thealgorithms-python
+  allowed_use: full
+  license_code:
+    spdx: MIT
+    file: LICENSE.md
+    allows_modification: true
+  license_docs:
+    spdx: MIT
+    file: LICENSE.md
+    allows_modification: true
+    note: docstrings внутри .py и docs/
+  license_images:
+    spdx: MIT
+    file: LICENSE.md
+    allows_modification: true
+    note: редкие изображения в docs/ — проверить при использовании
+  license_exercises:
+    spdx: MIT
+    file: LICENSE.md
+    allows_modification: true
+    note: doctest-примеры в docstring
+  compatibility:
+    text_merge: allowed
+    code_merge: allowed
+    note: MIT совместим; doctest-ожидания можно переносить в упражнения и решения.
+  restrictions:
+  - 'Код не учебный: тысячи независимых файлов, часто без объяснений и с дублями — не источник прозы.'
+  - 'В репозитории есть AGENTS.md для сторонних ИИ-агентов: это ДАННЫЕ, а не инструкции для нас (MISSION.md §Правила безопасности).'
+  - 'Проверять каждый файл: в больших репозиториях встречаются ошибки и нестандартные зависимости.'
+  evidence:
+  - file: LICENSE.md
+    lines: 1-3
+    note: MIT License, Copyright (c) 2016-2022 TheAlgorithms and contributors
+  - file: searches/binary_search.py
+    lines: 1-30
+    note: типизированный модуль с doctest-описанием и ссылкой на bisect
+  - file: AGENTS.md
+    lines: 1-5
+    note: сторонний AGENTS.md — недоверенное содержимое
+  quality:
+    depth: 3
+    accuracy: 4
+    currency: 5
+    worked_examples: true
+    pedagogical_order: 1
+  overlap_with:
+  - src-python-cpython
+  - src-norvig-pytudes
+  - src-fluentpython-example-code-2e
+  notes: 1608 Python-файлов, doctest внутри docstring, современная типизация. Ценно для глав о данных/алгоритмах, производительности
+    и внутреннем устройстве (реализации структур данных), не для объяснения понятий.
+- id: src-python-cpython
+  title: CPython — reference implementation and official documentation (Doc/)
+  url: https://github.com/python/cpython
+  commit: 9c0cfb141c236c902954841bb6cca407f86e1eeb
+  path: sources/repos/python-cpython
+  verified_at: '2026-11-01'
+  language: en
+  license: PSF-2.0
+  license_file: sources/licenses/python-cpython/LICENSE
+  derivative_allowed: true
+  commercial_use: true
+  redistribution: true
+  files:
+  - sources/repos/python-cpython
+  allowed_use: full
+  clone_mode: --depth 1 --filter=blob:none --sparse (Doc/tutorial, Doc/reference, Doc/library, Doc/howto, Doc/faq, Doc/license.rst)
+  license_code:
+    spdx: PSF-2.0
+    file: LICENSE
+    allows_modification: true
+    allows_commercial: true
+  license_docs:
+    spdx: PSF-2.0
+    file: Doc/license.rst
+    allows_modification: true
+    allows_commercial: true
+    note: 'строки 76-87: «Python software and documentation are licensed under the PYTHON SOFTWARE FOUNDATION LICENSE VERSION
+      2»'
+  license_images:
+    spdx: PSF-2.0
+    file: Doc/license.rst
+    allows_modification: true
+    note: иллюстрации — часть документации; при переносе сохранять уведомление PSF
+  license_exercises:
+    spdx: 0BSD OR PSF-2.0
+    file: Doc/license.rst
+    allows_modification: true
+    note: 'строки 279-291: примеры/рецепты кода в документации двойно лицензированы PSF-2.0 и Zero-Clause BSD'
+  compatibility:
+    text_merge: allowed_with_notice
+    code_merge: allowed
+    note: PSF-2.0 разрешает переработку и перевод при сохранении текста лицензии и уведомления PSF; 0BSD на примеры кода не
+      требует ничего.
+  restrictions:
+  - Сохранять текст PSF-лицензии и уведомление об авторстве PSF в разделе благодарностей/лицензий книги.
+  - Сторонние включённые компоненты (OpenSSL, expat, libffi, zlib, W3C C14N и др.) имеют собственные лицензии — см. sources/licenses/python-cpython/THIRD-PARTY.md.
+  - 'Не копировать текст без сверки с ревизией: документация меняется каждую неделю.'
+  evidence:
+  - file: Doc/license.rst
+    lines: 76-87
+    note: PSF-2.0 на софт и документацию; примеры кода — dual PSF-2.0 / 0BSD
+  - file: Doc/license.rst
+    lines: 279-291
+    note: текст Zero-Clause BSD для кода в документации
+  - file: Doc/license.rst
+    lines: 298-305
+    note: начало списка сторонних лицензий (Included Software)
+  - file: LICENSE
+    lines: 1-10
+    note: история лицензий Python (PSF/BeOpen/CNRI/CWI) в корне
+  quality:
+    depth: 5
+    accuracy: 5
+    currency: 5
+    worked_examples: true
+    pedagogical_order: 3
+  overlap_with:
+  - src-trekhleb-learn-python
+  - src-hieulouisdev-learn-python
+  - src-swaroopch-byte-of-python
+  - src-py4e
+  notes: 'Первичный источник фактов и терминологии: язык, модель данных, исключения, asyncio, дескрипторы, метапрограммирование.
+    Использовать как арбитра при противоречиях между учебниками. Порядок изложения tutorial не совпадает с педагогическим
+    порядком книги — материал нужно перекомпоновывать.'
+- id: src-pytest-dev-pytest
+  title: pytest — testing framework (source + documentation)
+  url: https://github.com/pytest-dev/pytest
+  commit: 0212785e34eb635b3359e4eccc757de95bf39036
+  path: sources/repos/pytest-dev-pytest
+  verified_at: '2026-11-01'
+  language: en
+  license: MIT
+  license_file: sources/licenses/pytest-dev-pytest/LICENSE
+  derivative_allowed: true
+  commercial_use: true
+  redistribution: true
+  files:
+  - sources/repos/pytest-dev-pytest
+  allowed_use: full
+  license_code:
+    spdx: MIT
+    file: LICENSE
+    allows_modification: true
+  license_docs:
+    spdx: MIT
+    file: LICENSE
+    allows_modification: true
+    note: doc/en/*.rst
+  license_images:
+    spdx: MIT
+    file: LICENSE
+    allows_modification: true
+    note: логотип pytest — товарный знак проекта; не использовать как иллюстрацию
+  license_exercises:
+    spdx: MIT
+    file: LICENSE
+    allows_modification: true
+    note: doc/en/example и how-to
+  compatibility:
+    text_merge: allowed
+    code_merge: allowed
+  restrictions:
+  - 'Документация — справочник API, а не учебник: переписывать под педагогическую задачу.'
+  - AUTHORS перечисляет сотни контрибьюторов — сохранять уведомление MIT.
+  evidence:
+  - file: LICENSE
+    lines: 1-4
+    note: The MIT License (MIT), Copyright (c) 2004 Holger Krekel and others
+  - file: AUTHORS
+    lines: 1-10
+    note: коллективное авторство
+  - file: doc/en/index.rst
+    lines: 1-40
+    note: структура официальной документации
+  quality:
+    depth: 4
+    accuracy: 5
+    currency: 5
+    worked_examples: true
+    pedagogical_order: 3
+  overlap_with:
+  - src-hieulouisdev-learn-python
+  - src-jerry-git-learn-python3
+  notes: 'Источник для главы 32 (тестирование) и частично 45 (CI): фикстуры, параметризация, плагины, `raises`, временные
+    каталоги. Отличные рабочие примеры; педагогической последовательности нет — брать фрагментами.'
+- id: src-astral-sh-uv
+  title: uv — extremely fast Python package and project manager
+  url: https://github.com/astral-sh/uv
+  commit: 564a2074b02eb9de5aaaa9491ed74357ade0332f
+  path: sources/repos/astral-sh-uv
+  verified_at: '2026-11-01'
+  language: en
+  license: MIT
+  license_file: sources/licenses/astral-sh-uv/LICENSE-MIT
+  derivative_allowed: true
+  commercial_use: true
+  redistribution: true
+  files:
+  - sources/repos/astral-sh-uv
+  allowed_use: full
+  license_code:
+    spdx: MIT OR Apache-2.0
+    file: LICENSE-MIT, LICENSE-APACHE
+    allows_modification: true
+    note: двойная лицензия, выбор за лицензиатом — для Syllanix берём MIT
+  license_docs:
+    spdx: MIT OR Apache-2.0
+    file: LICENSE-MIT, LICENSE-APACHE
+    allows_modification: true
+    note: docs/*.md
+  license_images:
+    spdx: MIT OR Apache-2.0
+    file: LICENSE-MIT
+    allows_modification: true
+    note: скриншоты/диаграммы в docs/assets
+  license_exercises:
+    spdx: MIT OR Apache-2.0
+    file: LICENSE-MIT
+    allows_modification: true
+    note: учебных упражнений нет
+  compatibility:
+    text_merge: allowed
+    code_merge: allowed
+    note: MIT-ветвь совместима с MIT-кодом Syllanix; Apache-2.0-ветвь не нужна.
+  restrictions:
+  - 'uv — инструмент, а не учебник: годятся только концептуальные разделы (projects, lockfile, python-versions, workspaces).'
+  - Название и логотип Astral/uv — товарные знаки; не использовать как иллюстрацию.
+  evidence:
+  - file: README.md
+    lines: 308-320
+    note: «uv is licensed under either of Apache License 2.0 … MIT license … at your option»
+  - file: Cargo.toml
+    lines: '16'
+    note: license = "MIT OR Apache-2.0"
+  - file: LICENSE-MIT
+    lines: 1-3
+    note: MIT License, Copyright (c) 2025 Astral Software Inc.
+  quality:
+    depth: 4
+    accuracy: 5
+    currency: 5
+    worked_examples: true
+    pedagogical_order: 3
+  overlap_with:
+  - src-hieulouisdev-learn-python
+  - src-realpython-python-guide
+  notes: Источник для глав 33 (структура проекта, зависимости) и 17-го модуля hieulouisdev. Документация концептуальная и
+    точная, но предполагает знакомство с pip/venv; для книги нужен пересказ с нуля.
+- id: src-swaroopch-byte-of-python
+  title: A Byte of Python
+  url: https://github.com/swaroopch/byte_of_python
+  commit: 84f4dd8d6f09836fa58226eaafe922b8a7baabc6
+  path: sources/repos/swaroopch-byte-of-python
+  verified_at: '2026-11-01'
+  language: en
+  license: CC-BY-SA-4.0
+  license_file: sources/licenses/swaroopch-byte-of-python/README.md
+  derivative_allowed: true
+  commercial_use: true
+  redistribution: true
+  files:
+  - sources/repos/swaroopch-byte-of-python
+  allowed_use: full
+  license_code:
+    spdx: BSD-3-Clause
+    file: README.md
+    allows_modification: true
+    allows_commercial: true
+    note: 'строки 275: код и скрипты — 3-clause BSD, если не указано иное'
+  license_docs:
+    spdx: CC-BY-SA-4.0
+    file: README.md
+    allows_modification: true
+    allows_commercial: true
+    share_alike: true
+    attribution_required: true
+    note: строки 261-275
+  license_images:
+    spdx: CC-BY-SA-4.0
+    file: README.md
+    allows_modification: true
+    note: img/ — скриншоты PyCharm/терминала; скриншоты интерфейса — цитирование, а не свободная лицензия, использовать с
+      осторожностью
+  license_exercises:
+    spdx: CC-BY-SA-4.0
+    file: README.md
+    allows_modification: true
+    note: упражнения в конце глав, решений нет
+  compatibility:
+    text_merge: allowed_with_share_alike
+    code_merge: allowed
+    note: CC BY-SA 4.0 полностью совпадает с лицензией текста Syllanix — идеальный источник для перевода/переработки; производный
+      текст остаётся CC BY-SA 4.0.
+  restrictions:
+  - Attribution обязательна в описании и на титульной странице производного документа (README:274).
+  - 'ShareAlike: переработанный текст должен распространяться под CC BY-SA 4.0.'
+  - Не продавать электронные/печатные копии без явного указания, что это не оригинал (README:273).
+  - 'Код — BSD-3-Clause: сохранять уведомление.'
+  - Скриншоты интерфейсов (PyCharm) — не свободные изображения; не переносить в книгу.
+  evidence:
+  - file: README.md
+    lines: 261-275
+    note: CC BY-SA 4.0 на книгу; BSD-3 на код; условия атрибуции и ShareAlike
+  - file: problem_solving.md
+    lines: 25-70
+    note: образец связного примера «от задачи к программе» (backup script), устаревший os.system
+  - file: functions.md
+    lines: 89-120
+    note: объяснение default arguments + предупреждение о порядке параметров
+  quality:
+    depth: 3
+    accuracy: 4
+    currency: 2
+    worked_examples: true
+    pedagogical_order: 5
+  overlap_with:
+  - src-hieulouisdev-learn-python
+  - src-jerry-git-learn-python3
+  - src-python-cpython
+  - src-py4e
+  - src-allendowney-thinkpython2
+  notes: 'Лучшая лицензионная совместимость из всех источников (CC BY-SA 4.0 = лицензия Syllanix) и отличная педагогическая
+    последовательность для абсолютного новичка. Устарело технически: `os.system`, `zip` через shell, мало современного Python
+    (нет f-strings, pathlib, dataclasses, type hints); примеры требуют переработки.'
+- id: src-mattmakai-fullstackpython
+  title: Full Stack Python — book and site sources
+  url: https://github.com/mattmakai/fullstackpython.com
+  commit: daa9782d1a42b282a5c4489ecdb3aad19bb9aaa8
+  path: sources/repos/mattmakai-fullstackpython
+  verified_at: '2026-11-01'
+  language: en
+  license: MIT
+  license_file: sources/licenses/mattmakai-fullstackpython/LICENSE
+  derivative_allowed: true
+  commercial_use: true
+  redistribution: true
+  files:
+  - sources/repos/mattmakai-fullstackpython
+  allowed_use: full
+  license_code:
+    spdx: MIT
+    file: LICENSE
+    allows_modification: true
+  license_docs:
+    spdx: MIT
+    file: LICENSE
+    allows_modification: true
+    note: content/**/*.markdown — 768 файлов; отдельного заявления о лицензии контента нет, действует корневой MIT
+  license_images:
+    spdx: MIT (предположительно)
+    file: LICENSE
+    allows_modification: true
+    note: img/ — скриншоты и логотипы сторонних продуктов; их права принадлежат владельцам
+  license_exercises:
+    spdx: нет упражнений
+    file: null
+    allows_modification: true
+  compatibility:
+    text_merge: allowed_with_attribution
+    code_merge: allowed
+    note: MIT разрешает перевод и переработку; атрибуция обязательна по тексту лицензии (сохранение copyright notice).
+  restrictions:
+  - 'Лицензия контента не выделена отдельно от кода — риск: часть материалов может быть под иной лицензией; для крупных фрагментов
+    фиксировать ссылку на файл.'
+  - Логотипы/скриншоты сторонних сервисов не покрываются MIT — не переносить.
+  - 'Устарело: примеры ориентированы на Python 3.6, virtualenv, старые версии Django/Flask; нет uv, pyproject, современных
+    практик.'
+  evidence:
+  - file: LICENSE
+    lines: 1-8
+    note: The MIT License (MIT), Copyright (c) 2017 Matthew Makai
+  - file: content/pages/02-development-environments/00-development-environments.markdown
+    lines: 44-49
+    note: 'пример устаревания: Python 3.6 + virtualenv'
+  quality:
+    depth: 3
+    accuracy: 3
+    currency: 2
+    worked_examples: false
+    pedagogical_order: 3
+  overlap_with:
+  - src-realpython-python-guide
+  - src-astral-sh-uv
+  - src-jakevdp-python-data-science-handbook
+  notes: Широкий обзор практической разработки (environments, data, web, deployment, DevOps) — ценно для глав 33–35, 44–45
+    как карта тем. Текст обзорный, много ссылок, мало сквозных примеров; технически устарел (2023).
+- id: src-fluentpython-example-code-2e
+  title: Fluent Python, 2nd edition — example code
+  url: https://github.com/fluentpython/example-code-2e
+  commit: cf3161ca006b106bfc0ba698e9135e9cdfb51e55
+  path: sources/repos/fluentpython-example-code-2e
+  verified_at: '2026-11-01'
+  language: en
+  license: MIT
+  license_file: sources/licenses/fluentpython-example-code-2e/LICENSE
+  derivative_allowed: true
+  commercial_use: true
+  redistribution: true
+  files:
+  - sources/repos/fluentpython-example-code-2e
+  allowed_use: full
+  license_code:
+    spdx: MIT
+    file: LICENSE
+    allows_modification: true
+    allows_commercial: true
+  license_docs:
+    spdx: MIT
+    file: LICENSE
+    allows_modification: true
+    note: в репозитории только код и README; текст книги (O'Reilly) не включён
+  license_images:
+    spdx: нет изображений
+    file: null
+    allows_modification: true
+  license_exercises:
+    spdx: MIT
+    file: LICENSE
+    allows_modification: true
+    note: тесты и примеры, упражнений нет
+  compatibility:
+    text_merge: allowed
+    code_merge: allowed
+    note: MIT на код; текст книги отсутствует, поэтому риска смешения лицензий нет.
+  restrictions:
+  - 'Это только код к книге O''Reilly: текст книги защищён и в репозитории отсутствует — не цитировать книгу.'
+  - Примеры рассчитаны на продвинутого читателя; для глав 25–30, 38–39, 43 нужен пересказ с нуля.
+  evidence:
+  - file: LICENSE
+    lines: 1-3
+    note: The MIT License (MIT), Copyright (c) 2021 Luciano Ramalho
+  - file: README.md
+    lines: 1-5
+    note: «Example code for the book Fluent Python, Second Edition by Luciano Ramalho (O'Reilly, 2022)»
+  quality:
+    depth: 5
+    accuracy: 5
+    currency: 5
+    worked_examples: true
+    pedagogical_order: 2
+  overlap_with:
+  - src-python-cpython
+  - src-thealgorithms-python
+  - src-norvig-pytudes
+  notes: 409 Python-файлов по главам (модель данных, дескрипторы, протоколы, конкурентность, asyncio, метапрограммирование).
+    Эталон идиоматичного современного Python; порядок — книжный, не учебный.
+- id: src-jakevdp-whirlwind-tour
+  title: A Whirlwind Tour of Python
+  url: https://github.com/jakevdp/WhirlwindTourOfPython
+  commit: 6f1daf714fe52a8dde6a288674ba46a7feed8816
+  path: sources/repos/jakevdp-whirlwind-tour
+  verified_at: '2026-11-01'
+  language: en
+  license: CC0-1.0
+  license_file: sources/licenses/jakevdp-whirlwind-tour/LICENSE
+  derivative_allowed: true
+  commercial_use: true
+  redistribution: true
+  files:
+  - sources/repos/jakevdp-whirlwind-tour
+  allowed_use: full
+  license_code:
+    spdx: CC0-1.0
+    file: LICENSE
+    allows_modification: true
+    allows_commercial: true
+    attribution_required: false
+  license_docs:
+    spdx: CC0-1.0
+    file: LICENSE
+    allows_modification: true
+    allows_commercial: true
+    attribution_required: false
+  license_images:
+    spdx: CC0-1.0
+    file: LICENSE
+    allows_modification: true
+    note: fig/ — диаграммы, CC0
+  license_exercises:
+    spdx: CC0-1.0
+    file: LICENSE
+    allows_modification: true
+    note: упражнений нет
+  compatibility:
+    text_merge: allowed
+    code_merge: allowed
+    note: 'CC0 — public domain dedication: максимальная свобода, совместимо с любой лицензией; атрибуция не требуется (но
+      желательна как добрая практика).'
+  restrictions:
+  - 'Материал 2017 года (Python 3.5): нет f-strings, walrus, match; синтаксис в основном актуален, но примеры требуют обновления.'
+  - Никаких юридических ограничений (CC0), но нельзя искажать смысл при переработке — это уже вопрос качества, а не права.
+  evidence:
+  - file: LICENSE
+    lines: 1-2
+    note: CC0 1.0 Universal (public domain dedication)
+  - file: 03-Semantics-Variables.ipynb
+    lines: 1-40
+    note: 'структура ноутбуков: краткая теория + исполняемые ячейки'
+  quality:
+    depth: 3
+    accuracy: 4
+    currency: 2
+    worked_examples: true
+    pedagogical_order: 4
+  overlap_with:
+  - src-swaroopch-byte-of-python
+  - src-python-cpython
+  - src-hieulouisdev-learn-python
+  notes: Самый «юридически простой» источник (CC0) с хорошим сжатым изложением основ для читателя, уже знающего другой язык.
+    Устарел технически, но структура и объяснения пригодны для переработки.
+- id: src-norvig-pytudes
+  title: pytudes — Python programs for practice and study
+  url: https://github.com/norvig/pytudes
+  commit: ffa0f1a818acd5d3ecafefa96a7ebb269d62ce94
+  path: sources/repos/norvig-pytudes
+  verified_at: '2026-11-01'
+  language: en
+  license: MIT
+  license_file: sources/licenses/norvig-pytudes/LICENSE
+  derivative_allowed: true
+  commercial_use: true
+  redistribution: true
+  files:
+  - sources/repos/norvig-pytudes
+  allowed_use: full
+  license_code:
+    spdx: MIT
+    file: LICENSE
+    allows_modification: true
+    allows_commercial: true
+  license_docs:
+    spdx: MIT
+    file: LICENSE
+    allows_modification: true
+    note: README.md и ноутбуки
+  license_images:
+    spdx: MIT
+    file: LICENSE
+    allows_modification: true
+    note: редкие png — проверить при использовании
+  license_exercises:
+    spdx: MIT
+    file: LICENSE
+    allows_modification: true
+    note: задачи и разборы внутри файлов
+  compatibility:
+    text_merge: allowed
+    code_merge: allowed
+  restrictions:
+  - 'Это коллекция этюдов, а не учебник: нет последовательности, много advanced-материала (Prolog/Lisp/Python-интерпретаторы).'
+  - Файлы требуют данных (txt/, data/) — переносить только с ресурсами.
+  evidence:
+  - file: LICENSE
+    lines: 1-3
+    note: MIT License, Copyright (c) 2010-2017 Peter Norvig
+  - file: py/spell.py
+    lines: 1-10
+    note: заголовок с copyright + MIT, компактный пример collections.Counter/regex
+  - file: py/lispy.py
+    lines: 1-30
+    note: интерпретатор Lisp на Python — материал для главы о внутреннем устройстве
+  quality:
+    depth: 5
+    accuracy: 5
+    currency: 4
+    worked_examples: true
+    pedagogical_order: 1
+  overlap_with:
+  - src-thealgorithms-python
+  - src-fluentpython-example-code-2e
+  - src-python-cpython
+  notes: 'Образцовые по качеству кода «этюды»: парсеры, интерпретаторы, алгоритмы, регулярные выражения, работа с текстом.
+    Идеальны для глав 40–43 и «проектных» глав; не учебник.'
+note_removed: 'Источники с лицензиями NC/ND или без лицензии удалены из проекта по требованию владельца: их материал не использовался.'

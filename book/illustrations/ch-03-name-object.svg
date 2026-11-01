@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" role="img"
+     aria-labelledby="no nod" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="no">Имена ссылаются на объекты</title>
+  <desc id="nod">Имена a и b связаны с одним и тем же объектом целого числа 42: у объекта есть тип int, идентичность и значение. Имя c связано с другим объектом — строкой Python. Присваивание связывает имя с объектом, а не копирует объект.</desc>
+
+  <text x="30" y="32" font-size="17" font-weight="bold" fill="#1d3550">Имя — это ссылка на объект</text>
+
+  <!-- names -->
+  <text x="60" y="66" font-size="13" fill="#5a6b7d">имена</text>
+  <rect x="40" y="76" width="96" height="46" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="88" y="106" text-anchor="middle" font-size="18" font-weight="bold" fill="#1d3550">a</text>
+
+  <rect x="40" y="166" width="96" height="46" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="88" y="196" text-anchor="middle" font-size="18" font-weight="bold" fill="#1d3550">b</text>
+
+  <rect x="40" y="300" width="96" height="46" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="88" y="330" text-anchor="middle" font-size="18" font-weight="bold" fill="#1d3550">c</text>
+
+  <!-- arrows -->
+  <line x1="136" y1="99" x2="452" y2="99" stroke="#33557a" stroke-width="2.5"/>
+  <polygon points="456,99 444,92 444,106" fill="#33557a"/>
+  <line x1="136" y1="189" x2="452" y2="120" stroke="#33557a" stroke-width="2.5"/>
+  <polygon points="456,118 443,113 446,126" fill="#33557a"/>
+  <line x1="136" y1="323" x2="452" y2="318" stroke="#33557a" stroke-width="2.5"/>
+  <polygon points="456,318 444,311 444,325" fill="#33557a"/>
+
+  <!-- object 1 -->
+  <rect x="460" y="64" width="310" height="132" rx="10" fill="#ffffff" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="480" y="88" font-size="14" font-weight="bold" fill="#4b3a16">объект</text>
+  <text x="480" y="112" font-size="13" fill="#4b3a16">тип: int</text>
+  <text x="480" y="134" font-size="13" fill="#4b3a16">идентичность: 0x7f… (свой адрес)</text>
+  <text x="480" y="156" font-size="13" fill="#4b3a16">значение: 42</text>
+  <text x="480" y="180" font-size="12.5" fill="#8a6a2f">один объект — две ссылки: a и b</text>
+
+  <!-- object 2 -->
+  <rect x="460" y="276" width="310" height="96" rx="10" fill="#ffffff" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="480" y="300" font-size="14" font-weight="bold" fill="#4b3a16">объект</text>
+  <text x="480" y="322" font-size="13" fill="#4b3a16">тип: str</text>
+  <text x="480" y="344" font-size="13" fill="#4b3a16">значение: "Python"</text>
+
+  <!-- note -->
+  <rect x="200" y="222" width="230" height="92" rx="8" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="1.5"/>
+  <text x="218" y="246" font-size="13" font-weight="bold" fill="#4b3a16">b = a</text>
+  <text x="218" y="268" font-size="12.5" fill="#4b3a16">не создаёт второй</text>
+  <text x="218" y="286" font-size="12.5" fill="#4b3a16">объект 42, а связывает</text>
+  <text x="218" y="304" font-size="12.5" fill="#4b3a16">b с уже существующим</text>
+</svg>

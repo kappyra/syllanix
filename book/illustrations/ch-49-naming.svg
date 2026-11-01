@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 546" role="img"
+     aria-labelledby="ttl49a desc49a" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl49a">Плохие и хорошие имена: что именно меняется и почему</title>
+  <desc id="desc49a">Шесть пар имён. Слева имена, которые не сообщают смысла: data, tmp, process, flag, l и usr_tbl_cnt. Справа их замены: order_items, previous_total, normalize_phone, is_paid, line_total и user_table_count. В третьем столбце объяснена причина замены: имя должно отвечать на вопрос, что здесь лежит, а не описывать роль или требовать расшифровки.</desc>
+
+  <text x="30" y="30" font-size="16" font-weight="bold" fill="#1d3550">Хорошее имя отвечает на вопрос «что здесь лежит»</text>
+  <text x="30" y="52" font-size="13" fill="#4a5a6a">одна и та же роль в коде может быть названа по-разному; выбор влияет на стоимость чтения</text>
+
+  <text x="30" y="90" font-size="13.5" font-weight="bold" fill="#7a2222">плохое имя</text>
+  <text x="270" y="90" font-size="13.5" font-weight="bold" fill="#264a26">хорошее имя</text>
+  <text x="500" y="90" font-size="13.5" font-weight="bold" fill="#1d3550">почему лучше</text>
+
+  <!-- строка 1 -->
+  <rect x="30" y="104" width="214" height="42" rx="8" fill="#fff5f5" stroke="#a33a3a" stroke-width="1.8"/>
+  <text x="46" y="131" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" fill="#7a2222">data</text>
+  <line x1="250" y1="125" x2="262" y2="125" stroke="#8a6a2f" stroke-width="2"/>
+  <path d="M 257 119 L 267 125 L 257 131" fill="none" stroke="#8a6a2f" stroke-width="2"/>
+  <rect x="270" y="104" width="214" height="42" rx="8" fill="#eef7ee" stroke="#3f6b3f" stroke-width="1.8"/>
+  <text x="286" y="131" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" fill="#264a26">order_items</text>
+  <text x="500" y="122" font-size="12.5" fill="#1d3550">не говорит, какие</text>
+  <text x="500" y="138" font-size="12.5" fill="#1d3550">именно данные</text>
+
+  <!-- строка 2 -->
+  <rect x="30" y="158" width="214" height="42" rx="8" fill="#fff5f5" stroke="#a33a3a" stroke-width="1.8"/>
+  <text x="46" y="185" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" fill="#7a2222">tmp</text>
+  <line x1="250" y1="179" x2="262" y2="179" stroke="#8a6a2f" stroke-width="2"/>
+  <path d="M 257 173 L 267 179 L 257 185" fill="none" stroke="#8a6a2f" stroke-width="2"/>
+  <rect x="270" y="158" width="214" height="42" rx="8" fill="#eef7ee" stroke="#3f6b3f" stroke-width="1.8"/>
+  <text x="286" y="185" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" fill="#264a26">previous_total</text>
+  <text x="500" y="176" font-size="12.5" fill="#1d3550">роль вместо</text>
+  <text x="500" y="192" font-size="12.5" fill="#1d3550">содержимого</text>
+
+  <!-- строка 3 -->
+  <rect x="30" y="212" width="214" height="42" rx="8" fill="#fff5f5" stroke="#a33a3a" stroke-width="1.8"/>
+  <text x="46" y="239" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" fill="#7a2222">process</text>
+  <line x1="250" y1="233" x2="262" y2="233" stroke="#8a6a2f" stroke-width="2"/>
+  <path d="M 257 227 L 267 233 L 257 239" fill="none" stroke="#8a6a2f" stroke-width="2"/>
+  <rect x="270" y="212" width="214" height="42" rx="8" fill="#eef7ee" stroke="#3f6b3f" stroke-width="1.8"/>
+  <text x="286" y="239" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" fill="#264a26">normalize_phone</text>
+  <text x="500" y="230" font-size="12.5" fill="#1d3550">непонятно, что</text>
+  <text x="500" y="246" font-size="12.5" fill="#1d3550">обрабатывается</text>
+
+  <!-- строка 4 -->
+  <rect x="30" y="266" width="214" height="42" rx="8" fill="#fff5f5" stroke="#a33a3a" stroke-width="1.8"/>
+  <text x="46" y="293" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" fill="#7a2222">flag</text>
+  <line x1="250" y1="287" x2="262" y2="287" stroke="#8a6a2f" stroke-width="2"/>
+  <path d="M 257 281 L 267 287 L 257 293" fill="none" stroke="#8a6a2f" stroke-width="2"/>
+  <rect x="270" y="266" width="214" height="42" rx="8" fill="#eef7ee" stroke="#3f6b3f" stroke-width="1.8"/>
+  <text x="286" y="293" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" fill="#264a26">is_paid</text>
+  <text x="500" y="284" font-size="12.5" fill="#1d3550">неясно, что</text>
+  <text x="500" y="300" font-size="12.5" fill="#1d3550">означает истина</text>
+
+  <!-- строка 5 -->
+  <rect x="30" y="320" width="214" height="42" rx="8" fill="#fff5f5" stroke="#a33a3a" stroke-width="1.8"/>
+  <text x="46" y="347" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" fill="#7a2222">l</text>
+  <line x1="250" y1="341" x2="262" y2="341" stroke="#8a6a2f" stroke-width="2"/>
+  <path d="M 257 335 L 267 341 L 257 347" fill="none" stroke="#8a6a2f" stroke-width="2"/>
+  <rect x="270" y="320" width="214" height="42" rx="8" fill="#eef7ee" stroke="#3f6b3f" stroke-width="1.8"/>
+  <text x="286" y="347" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" fill="#264a26">line_total</text>
+  <text x="500" y="338" font-size="12.5" fill="#1d3550">легко спутать</text>
+  <text x="500" y="354" font-size="12.5" fill="#1d3550">с единицей</text>
+
+  <!-- строка 6 -->
+  <rect x="30" y="374" width="214" height="42" rx="8" fill="#fff5f5" stroke="#a33a3a" stroke-width="1.8"/>
+  <text x="46" y="401" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" fill="#7a2222">usr_tbl_cnt</text>
+  <line x1="250" y1="395" x2="262" y2="395" stroke="#8a6a2f" stroke-width="2"/>
+  <path d="M 257 389 L 267 395 L 257 401" fill="none" stroke="#8a6a2f" stroke-width="2"/>
+  <rect x="270" y="374" width="214" height="42" rx="8" fill="#eef7ee" stroke="#3f6b3f" stroke-width="1.8"/>
+  <text x="286" y="401" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" fill="#264a26">user_table_count</text>
+  <text x="500" y="392" font-size="12.5" fill="#1d3550">сокращение надо</text>
+  <text x="500" y="408" font-size="12.5" fill="#1d3550">расшифровывать</text>
+
+  <text x="30" y="452" font-size="14" fill="#1d3550">Имя описывает смысл объекта, а не его тип, роль в алгоритме или привычку автора.</text>
+  <text x="30" y="476" font-size="14" fill="#1d3550">Форма записи зависит от роли: переменные и функции — snake_case, классы — PascalCase,</text>
+  <text x="30" y="500" font-size="14" fill="#1d3550">константы — UPPER_CASE, внутренние имена — с ведущим подчёркиванием.</text>
+  <text x="30" y="526" font-size="14" font-weight="bold" fill="#1d3550">Длина имени должна соответствовать сроку жизни объекта в коде.</text>
+</svg>

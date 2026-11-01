@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 450" role="img"
+     aria-labelledby="ttl51p desc51p" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl51p">Разбор шаблона регулярного выражения по шагам</title>
+  <desc id="desc51p">Шаблон из трёх групп и двух дефисов сопоставляется со строкой 2026-05-17. Часть (\d{4}) находит 2026 и захватывает это значение в первую группу, дефис совпадает с дефисом, (\d{2}) находит 05 и захватывает вторую группу, затем дефис и последняя группа находят 17.</desc>
+
+  <text x="32" y="34" font-size="17" font-weight="bold" fill="#1d3550">Шаблон (\d{4})-(\d{2})-(\d{2}) против строки 2026-05-17</text>
+
+  <!-- заголовки колонок -->
+  <text x="40" y="66" font-size="12" font-weight="bold" fill="#5a6b7d">часть шаблона</text>
+  <text x="440" y="66" font-size="12" font-weight="bold" fill="#5a6b7d">что найдено в строке</text>
+
+  <!-- строка 1 -->
+  <rect x="30" y="78" width="340" height="56" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="44" y="102" font-size="14" fill="#1d3550" font-family="'DejaVu Sans Mono', monospace">(\d{4})</text>
+  <text x="44" y="124" font-size="11" fill="#33557a">ровно четыре цифры, группа 1</text>
+  <line x1="370" y1="106" x2="424" y2="106" stroke="#33557a" stroke-width="2"/>
+  <polygon points="424,106 413,100 413,112" fill="#33557a"/>
+  <rect x="428" y="78" width="120" height="56" rx="8" fill="#f1f8f2" stroke="#2f6b3f" stroke-width="2"/>
+  <text x="488" y="112" text-anchor="middle" font-size="16" fill="#2f6b3f" font-family="'DejaVu Sans Mono', monospace">2026</text>
+
+  <!-- строка 2 -->
+  <rect x="30" y="144" width="340" height="48" rx="8" fill="#ffffff" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="44" y="174" font-size="14" fill="#4b3a16" font-family="'DejaVu Sans Mono', monospace">-</text>
+  <text x="120" y="174" font-size="11" fill="#6b5a34">обычный символ, дефис</text>
+  <line x1="370" y1="168" x2="424" y2="168" stroke="#8a6a2f" stroke-width="2"/>
+  <polygon points="424,168 413,162 413,174" fill="#8a6a2f"/>
+  <rect x="428" y="144" width="120" height="48" rx="8" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="488" y="174" text-anchor="middle" font-size="16" fill="#4b3a16" font-family="'DejaVu Sans Mono', monospace">-</text>
+
+  <!-- строка 3 -->
+  <rect x="30" y="202" width="340" height="56" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="44" y="226" font-size="14" fill="#1d3550" font-family="'DejaVu Sans Mono', monospace">(\d{2})</text>
+  <text x="120" y="226" font-size="11" fill="#33557a">ровно две цифры, группа 2</text>
+  <line x1="370" y1="230" x2="424" y2="230" stroke="#33557a" stroke-width="2"/>
+  <polygon points="424,230 413,224 413,236" fill="#33557a"/>
+  <rect x="428" y="202" width="120" height="56" rx="8" fill="#f1f8f2" stroke="#2f6b3f" stroke-width="2"/>
+  <text x="488" y="236" text-anchor="middle" font-size="16" fill="#2f6b3f" font-family="'DejaVu Sans Mono', monospace">05</text>
+
+  <!-- строка 4 -->
+  <rect x="30" y="268" width="340" height="48" rx="8" fill="#ffffff" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="44" y="298" font-size="14" fill="#4b3a16" font-family="'DejaVu Sans Mono', monospace">-</text>
+  <text x="120" y="298" font-size="11" fill="#6b5a34">обычный символ, дефис</text>
+  <line x1="370" y1="292" x2="424" y2="292" stroke="#8a6a2f" stroke-width="2"/>
+  <polygon points="424,292 413,286 413,298" fill="#8a6a2f"/>
+  <rect x="428" y="268" width="120" height="48" rx="8" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="488" y="298" text-anchor="middle" font-size="16" fill="#4b3a16" font-family="'DejaVu Sans Mono', monospace">-</text>
+
+  <!-- строка 5 -->
+  <rect x="30" y="326" width="340" height="56" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="44" y="350" font-size="14" fill="#1d3550" font-family="'DejaVu Sans Mono', monospace">(\d{2})</text>
+  <text x="120" y="350" font-size="11" fill="#33557a">ровно две цифры, группа 3</text>
+  <line x1="370" y1="354" x2="424" y2="354" stroke="#33557a" stroke-width="2"/>
+  <polygon points="424,354 413,348 413,360" fill="#33557a"/>
+  <rect x="428" y="326" width="120" height="56" rx="8" fill="#f1f8f2" stroke="#2f6b3f" stroke-width="2"/>
+  <text x="488" y="360" text-anchor="middle" font-size="16" fill="#2f6b3f" font-family="'DejaVu Sans Mono', monospace">17</text>
+
+  <!-- результат групп -->
+  <text x="584" y="106" font-size="12" fill="#2f6b3f" font-family="'DejaVu Sans Mono', monospace">group(1)</text>
+  <text x="584" y="230" font-size="12" fill="#2f6b3f" font-family="'DejaVu Sans Mono', monospace">group(2)</text>
+  <text x="584" y="354" font-size="12" fill="#2f6b3f" font-family="'DejaVu Sans Mono', monospace">group(3)</text>
+
+  <text x="32" y="416" font-size="12" fill="#5a6b7d">Итог: match.group() = «2026-05-17», match.groups() = («2026», «05», «17»).</text>
+  <text x="32" y="436" font-size="12" fill="#5a6b7d">Скобки одновременно задают повторение части шаблона и захватывают найденный текст.</text>
+</svg>

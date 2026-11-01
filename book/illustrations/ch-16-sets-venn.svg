@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 400" role="img"
+     aria-labelledby="ttl16a desc16a" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl16a">Операции над двумя множествами A и B на диаграмме пересекающихся кругов</title>
+  <desc id="desc16a">Два пересекающихся круга A и B. Область 1 — элементы только A, область 2 — общая часть, область 3 — элементы только B. Объединение A | B включает все три области, пересечение A &amp; B — только область 2, разность A - B — область 1, симметрическая разность A ^ B — области 1 и 3.</desc>
+
+  <text x="30" y="32" font-size="17" font-weight="bold" fill="#1d3550">Операции над множествами A и B</text>
+
+  <!-- круги -->
+  <circle cx="200" cy="160" r="100" fill="#eef4fb" fill-opacity="0.75" stroke="#33557a" stroke-width="2.5"/>
+  <circle cx="350" cy="160" r="100" fill="#eaf3ea" fill-opacity="0.75" stroke="#3c6b47" stroke-width="2.5"/>
+
+  <text x="112" y="166" font-size="17" font-weight="bold" fill="#1d3550">A</text>
+  <text x="438" y="166" font-size="17" font-weight="bold" fill="#254a2d">B</text>
+
+  <text x="155" y="166" text-anchor="middle" font-size="16" font-weight="bold" fill="#1d3550">1</text>
+  <text x="275" y="166" text-anchor="middle" font-size="16" font-weight="bold" fill="#4b3a16">2</text>
+  <text x="395" y="166" text-anchor="middle" font-size="16" font-weight="bold" fill="#254a2d">3</text>
+
+  <text x="150" y="290" text-anchor="middle" font-size="12" fill="#1d3550">только A</text>
+  <text x="275" y="290" text-anchor="middle" font-size="12" fill="#4b3a16">общая часть</text>
+  <text x="400" y="290" text-anchor="middle" font-size="12" fill="#254a2d">только B</text>
+
+  <line x1="30" y1="304" x2="750" y2="304" stroke="#c9c2b4" stroke-width="1.5"/>
+
+  <!-- легенда -->
+  <text x="30" y="328" font-size="13" fill="#1d3550" font-family="'DejaVu Sans Mono', monospace">A | B</text>
+  <text x="100" y="328" font-size="13" fill="#1d3550">— объединение: области 1, 2 и 3</text>
+  <text x="430" y="328" font-size="13" fill="#4b3a16" font-family="'DejaVu Sans Mono', monospace">A &amp; B</text>
+  <text x="500" y="328" font-size="13" fill="#4b3a16">— пересечение: область 2</text>
+
+  <text x="30" y="354" font-size="13" fill="#1d3550" font-family="'DejaVu Sans Mono', monospace">A - B</text>
+  <text x="100" y="354" font-size="13" fill="#1d3550">— разность: область 1</text>
+  <text x="430" y="354" font-size="13" fill="#254a2d" font-family="'DejaVu Sans Mono', monospace">A ^ B</text>
+  <text x="500" y="354" font-size="13" fill="#254a2d">— симметрическая: 1 и 3</text>
+
+  <text x="30" y="384" font-size="13" fill="#4b3a16">Порядок операндов важен: A - B и B - A дают разные множества.</text>
+</svg>

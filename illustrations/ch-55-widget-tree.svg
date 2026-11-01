@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 500" role="img"
+     aria-labelledby="t55wt d55wt" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="t55wt">Дерево виджетов окна и три менеджера компоновки</title>
+  <desc id="d55wt">Корневое окно Tk содержит два контейнера Frame. В левом Frame лежат Label, Entry и Button, размещённые сеткой grid по строкам; в правом Frame — Label результата, связанный с переменной StringVar. Внизу сравниваются менеджеры компоновки: pack укладывает виджеты по стороне, grid ставит их в строки и столбцы, place задаёт координаты. Выбор менеджера определяет, как интерфейс переживает изменение размера.</desc>
+  <defs>
+    <marker id="arr55a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#33557a"/>
+    </marker>
+  </defs>
+
+  <text x="24" y="30" font-size="17" font-weight="bold" fill="#1d3550">Дерево виджетов: контейнеры и элементы</text>
+
+  <rect x="60" y="52" width="660" height="304" rx="12" fill="#f6f8fb" stroke="#33557a" stroke-width="2"/>
+  <text x="80" y="80" font-size="14" font-weight="bold" fill="#1d3550">Tk — корневое окно</text>
+  <text x="700" y="80" text-anchor="end" font-size="12" fill="#33557a">контейнер верхнего уровня</text>
+
+  <rect x="100" y="102" width="280" height="228" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="118" y="130" font-size="13.5" font-weight="bold" fill="#1d3550">Frame: форма (grid)</text>
+
+  <rect x="120" y="148" width="200" height="34" rx="6" fill="#ffffff" stroke="#33557a" stroke-width="1.5"/>
+  <text x="132" y="170" font-size="12" fill="#1d3550">Label · row 0</text>
+  <rect x="120" y="192" width="200" height="34" rx="6" fill="#ffffff" stroke="#33557a" stroke-width="1.5"/>
+  <text x="132" y="214" font-size="12" fill="#1d3550">Entry · row 1</text>
+  <rect x="120" y="236" width="200" height="34" rx="6" fill="#ffffff" stroke="#33557a" stroke-width="1.5"/>
+  <text x="132" y="258" font-size="12" fill="#1d3550">Button · row 2</text>
+  <text x="118" y="296" font-size="12" fill="#33557a">все три — в column 0/1</text>
+  <text x="118" y="316" font-size="12" fill="#4b3a16">weight отдаёт лишнее место</text>
+
+  <rect x="420" y="102" width="280" height="228" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="438" y="130" font-size="13.5" font-weight="bold" fill="#1d3550">Frame: вывод</text>
+
+  <rect x="440" y="148" width="240" height="34" rx="6" fill="#ffffff" stroke="#33557a" stroke-width="1.5"/>
+  <text x="452" y="170" font-size="12" fill="#1d3550">Label · textvariable</text>
+  <rect x="440" y="192" width="240" height="34" rx="6" fill="#ffffff" stroke="#33557a" stroke-width="1.5"/>
+  <text x="452" y="214" font-size="12" fill="#1d3550">StringVar: результат</text>
+  <text x="438" y="252" font-size="12" fill="#33557a">переменная связывает</text>
+  <text x="438" y="272" font-size="12" fill="#33557a">данные и виджет</text>
+  <text x="438" y="300" font-size="12" fill="#4b3a16">менять значение — status.set(...)</text>
+
+
+  <rect x="60" y="376" width="660" height="76" rx="10" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="78" y="402" font-size="13" font-weight="bold" fill="#4b3a16">Менеджер компоновки</text>
+  <text x="78" y="424" font-size="12" fill="#4b3a16">pack — по стороне (просто)</text>
+  <text x="310" y="424" font-size="12" fill="#4b3a16">grid — строки и столбцы (форма)</text>
+  <text x="560" y="424" font-size="12" fill="#4b3a16">place — координаты</text>
+  <text x="78" y="444" font-size="11.5" fill="#4b3a16">Смешивать pack и grid в одном контейнере нельзя: правила конфликтуют</text>
+
+  <text x="390" y="486" text-anchor="middle" font-size="12.5" fill="#33557a">Менеджер компоновки решает, как интерфейс переживает изменение размера окна</text>
+</svg>

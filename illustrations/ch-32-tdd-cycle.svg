@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 430" role="img"
+     aria-labelledby="t32td d32td" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="t32td">Цикл разработки через тесты: красный, зелёный, рефакторинг</title>
+  <desc id="d32td">Три шага повторяются по кругу. На шаге «красный» новый тест падает, потому что поведение ещё не реализовано. На шаге «зелёный» пишется минимальная реализация, и тест проходит. На шаге «рефакторинг» код улучшают, не меняя поведения, пока тесты остаются зелёными. Затем цикл начинается снова со следующего требования.</desc>
+  <defs>
+    <marker id="arr32b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#33557a"/>
+    </marker>
+  </defs>
+
+  <text x="24" y="30" font-size="17" font-weight="bold" fill="#1d3550">Разработка через тесты: три шага по кругу</text>
+
+  <rect x="60" y="62" width="220" height="88" rx="12" fill="#fdecea" stroke="#a33a2c" stroke-width="2"/>
+  <text x="170" y="92" text-anchor="middle" font-size="15" font-weight="bold" fill="#7a2b20">1. КРАСНЫЙ</text>
+  <text x="170" y="116" text-anchor="middle" font-size="12.5" fill="#7a2b20">новый тест падает:</text>
+  <text x="170" y="136" text-anchor="middle" font-size="12.5" fill="#7a2b20">поведения ещё нет</text>
+
+  <rect x="500" y="62" width="220" height="88" rx="12" fill="#e8f5ec" stroke="#2f7a45" stroke-width="2"/>
+  <text x="610" y="92" text-anchor="middle" font-size="15" font-weight="bold" fill="#1f5c33">2. ЗЕЛЁНЫЙ</text>
+  <text x="610" y="116" text-anchor="middle" font-size="12.5" fill="#1f5c33">минимальная реализация —</text>
+  <text x="610" y="136" text-anchor="middle" font-size="12.5" fill="#1f5c33">тест проходит</text>
+
+  <rect x="280" y="272" width="220" height="88" rx="12" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="390" y="302" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3550">3. РЕФАКТОРИНГ</text>
+  <text x="390" y="326" text-anchor="middle" font-size="12.5" fill="#1d3550">улучшаем структуру,</text>
+  <text x="390" y="346" text-anchor="middle" font-size="12.5" fill="#1d3550">тесты остаются зелёными</text>
+
+  <line x1="282" y1="106" x2="494" y2="106" stroke="#33557a" stroke-width="2.5" marker-end="url(#arr32b)"/>
+  <text x="388" y="96" text-anchor="middle" font-size="12" fill="#33557a">тест написан</text>
+
+  <path d="M 710 154 C 710 230 640 268 508 292" fill="none" stroke="#33557a" stroke-width="2.5" marker-end="url(#arr32b)"/>
+  <text x="520" y="238" text-anchor="middle" font-size="12" fill="#33557a">реализация есть</text>
+
+  <path d="M 272 292 C 160 268 70 230 70 158" fill="none" stroke="#33557a" stroke-width="2.5" marker-end="url(#arr32b)"/>
+  <text x="252" y="238" text-anchor="middle" font-size="12" fill="#33557a">код стал чище</text>
+
+  <text x="390" y="400" text-anchor="middle" font-size="12.5" fill="#33557a">Каждый шаг короткий; тест фиксирует требование, а не привычное поведение</text>
+</svg>

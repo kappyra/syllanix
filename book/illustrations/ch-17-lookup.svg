@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" role="img"
+     aria-labelledby="ttl17l desc17l" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl17l">Поиск последнего товара: перебор списка пар и доступ по ключу</title>
+  <desc id="desc17l">Слева список пар из пяти товаров: чтобы найти сливу, цикл сравнил все пять названий. Справа словарь: ключ слива сразу даёт значение 150. Вывод: перебор растёт вместе с числом записей, поиск по ключу в хеш-таблице почти не зависит от размера словаря.</desc>
+
+  <text x="32" y="34" font-size="17" font-weight="bold" fill="#1d3550">Найти цену сливы: пять сравнений или один ключ</text>
+
+  <!-- левая панель -->
+  <rect x="30" y="52" width="334" height="292" rx="10" fill="#fdfaf4" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="46" y="76" font-size="13" font-weight="bold" fill="#4b3a16">список пар — линейный перебор</text>
+
+  <text x="46" y="106" font-size="12" fill="#6b5a34">сравниваем названия по очереди:</text>
+  <g font-size="13" fill="#3d3320">
+    <text x="46" y="134">1. яблоко — 90</text>
+    <text x="46" y="162">2. банан — 120</text>
+    <text x="46" y="190">3. вишня — 350</text>
+    <text x="46" y="218">4. груша — 200</text>
+    <text x="46" y="246">5. слива — 150</text>
+  </g>
+  <g stroke="#8a6a2f" stroke-width="1.6" fill="none">
+    <path d="M286 128 l7 7 l13 -14"/>
+    <path d="M286 156 l7 7 l13 -14"/>
+    <path d="M286 184 l7 7 l13 -14"/>
+    <path d="M286 212 l7 7 l13 -14"/>
+    <path d="M286 240 l7 7 l13 -14"/>
+  </g>
+  <text x="46" y="278" font-size="13" font-weight="bold" fill="#8a3030">найдено на 5-м сравнении</text>
+  <text x="46" y="304" font-size="12" fill="#6b5a34">чем длиннее список, тем</text>
+  <text x="46" y="322" font-size="12" fill="#6b5a34">больше сравнений в среднем</text>
+
+  <!-- правая панель -->
+  <rect x="396" y="52" width="334" height="292" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="412" y="76" font-size="13" font-weight="bold" fill="#1d3550">словарь — доступ по ключу</text>
+  <text x="412" y="106" font-size="12" fill="#33557a">ключ сразу указывает на значение:</text>
+
+  <rect x="412" y="122" width="132" height="46" rx="8" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="478" y="150" text-anchor="middle" font-size="14" fill="#1d3550">«слива»</text>
+  <rect x="600" y="122" width="114" height="46" rx="8" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="657" y="150" text-anchor="middle" font-size="15" fill="#4b3a16">150</text>
+  <line x1="550" y1="145" x2="590" y2="145" stroke="#33557a" stroke-width="2"/>
+  <polygon points="590,145 579,139 579,151" fill="#33557a"/>
+
+  <text x="412" y="196" font-size="13" font-weight="bold" fill="#2f6b3f">одно обращение по ключу</text>
+  <text x="412" y="222" font-size="12" fill="#33557a">число шагов почти не зависит</text>
+  <text x="412" y="240" font-size="12" fill="#33557a">от числа записей: хеш-таблица</text>
+  <text x="412" y="258" font-size="12" fill="#33557a">сразу ведёт к нужной ячейке</text>
+
+  <text x="412" y="298" font-size="12" fill="#5a6b7d">в словаре те же пять товаров,</text>
+  <text x="412" y="316" font-size="12" fill="#5a6b7d">но порядок поиска не важен</text>
+
+  <!-- вывод -->
+  <rect x="30" y="360" width="700" height="52" rx="9" fill="#ffffff" stroke="#5a6b7d" stroke-width="2"/>
+  <text x="46" y="383" font-size="13" fill="#1d3550">Перебор сравнивает элементы по очереди, поиск по ключу — один шаг:</text>
+  <text x="46" y="402" font-size="13" fill="#1d3550">именно поэтому словарь называют отображением с быстрым доступом.</text>
+</svg>

@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Генераторы и ленивые вычисления — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-21-generators.html" aria-current="page">21. Генераторы и ленивые вычисления</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-21-generators.html#что-вы-сможете-после-этой-главы">21.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-21-generators.html#why">21.2. Задача: значения по требованию</a></li>
+<li><a href="ch-21-generators.html#yield">21.3. Функция-генератор и yield</a></li>
+<li><a href="ch-21-generators.html#lazy">21.4. Ленивые вычисления</a></li>
+<li><a href="ch-21-generators.html#exhaustion">21.5. Исчерпание генератора</a></li>
+<li><a href="ch-21-generators.html#genexpr">21.6. Генераторное выражение</a></li>
+<li><a href="ch-21-generators.html#return">21.7. Генератор, return и StopIteration</a></li>
+<li><a href="ch-21-generators.html#pipeline">21.8. Конвейер из генераторов</a></li>
+<li><a href="ch-21-generators.html#files">21.9. Генератор для чтения файла</a></li>
+<li><a href="ch-21-generators.html#mistakes">21.10. Типичные ошибки</a></li>
+<li><a href="ch-21-generators.html#упражнения">21.11. Упражнения</a></li>
+<li><a href="ch-21-generators.html#проверка-понимания">21.12. Проверка понимания</a></li>
+<li><a href="ch-21-generators.html#что-дальше">21.13. Что дальше</a></li>
+</ol></details></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 4. Итерация и функции высшего порядка</span><span class="sep">›</span><span>Глава 21</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Итерация и функции высшего порядка · глава 21</p>
+<h1 id="генераторы-и-ленивые-вычисления">Генераторы и ленивые вычисления</h1>
+<p class="chapter-summary">yield, функции-генераторы, генераторные выражения и вычисления без лишней памяти: как выдавать значения по требованию.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#что-вы-сможете-после-этой-главы"><span class="toc-number">21.1</span> Что вы сможете после этой главы</a></li>
+<li class="level-2"><a href="#why"><span class="toc-number">21.2</span> Задача: значения по требованию</a></li>
+<li class="level-2"><a href="#yield"><span class="toc-number">21.3</span> Функция-генератор и yield</a></li>
+<li class="level-2"><a href="#lazy"><span class="toc-number">21.4</span> Ленивые вычисления</a></li>
+<li class="level-2"><a href="#exhaustion"><span class="toc-number">21.5</span> Исчерпание генератора</a></li>
+<li class="level-2"><a href="#genexpr"><span class="toc-number">21.6</span> Генераторное выражение</a></li>
+<li class="level-2"><a href="#return"><span class="toc-number">21.7</span> Генератор, return и StopIteration</a></li>
+<li class="level-2"><a href="#pipeline"><span class="toc-number">21.8</span> Конвейер из генераторов</a></li>
+<li class="level-2"><a href="#files"><span class="toc-number">21.9</span> Генератор для чтения файла</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">21.10</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">21.11</span> Упражнения</a></li>
+<li class="level-2"><a href="#проверка-понимания"><span class="toc-number">21.12</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#что-дальше"><span class="toc-number">21.13</span> Что дальше</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#ex-ch21-01">1. Прогнозирование вывода</a></li>
+<li class="level-3"><a href="#ex-ch21-02">2. Первый генератор</a></li>
+<li class="level-3"><a href="#ex-ch21-03">3. Ленивость на практике</a></li>
+<li class="level-3"><a href="#ex-ch21-04">4. Генераторное выражение</a></li>
+<li class="level-3"><a href="#ex-ch21-05">5. Сумма без списка</a></li>
+<li class="level-3"><a href="#ex-ch21-06">6. Исчерпание</a></li>
+<li class="level-3"><a href="#ex-ch21-07">7. Ранний выход</a></li>
+<li class="level-3"><a href="#ex-ch21-08">8. Конвейер</a></li>
+<li class="level-3"><a href="#ex-ch21-09">9. Мини-проект: строки с ключевым словом</a></li>
+<li class="level-3"><a href="#ex-ch21-10">10. Генератор или список</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>В предыдущей главе вы увидели, что цикл <code>for</code> работает с итератором: объектом,
+который хранит позицию и выдаёт элементы по одному. Писать такой объект
+вручную неудобно: нужно завести состояние, реализовать методы протокола и
+аккуратно поднимать <code>StopIteration</code>. К счастью, в Python есть способ получить
+итератор гораздо проще: описать функцию, которая не возвращает результат
+целиком, а <strong>выдаёт</strong> значения по одному. Такая функция называется
+<strong>функцией-генератором</strong>: при вызове она создаёт генератор, который позволяет
+обрабатывать данные, не помещающиеся в память, и строить вычисления, которые
+не делают лишней работы.</p>
+<h2 id="что-вы-сможете-после-этой-главы"><span class="h-number">21.1</span> Что вы сможете после этой главы</h2>
+<ul>
+<li>писать функции-генераторы с <code>yield</code> и объяснять, когда исполняется их тело;</li>
+<li>получать значения из генератора через <code>next</code>, <code>for</code> и встроенные функции;</li>
+<li>объяснять, что такое ленивые вычисления и какую память они экономят;</li>
+<li>использовать генераторные выражения вместо промежуточных списков;</li>
+<li>распознавать исчерпание генератора и не переиспользовать его по ошибке;</li>
+<li>собирать конвейеры из нескольких генераторов.</li>
+</ul>
+<p>Все примеры в главе исполняются и проверяются автоматически на Python 3.14,
+поэтому вывод можно смело сверять со своим.</p>
+<h2 id="why"><span class="h-number">21.2</span> Задача: значения по требованию</h2>
+<p>Представьте, что программа ищет в большом журнале первые три строки с
+ошибкой. Журнал содержит миллион строк. Прямолинейное решение — прочитать всё
+в список и потом искать:</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"app.log"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+</code></pre></div>
+<p>Список займёт память под миллион строк, хотя нужны всего три. Более того,
+работа будет сделана зря: остальные строки мы даже не посмотрим. Хочется
+обратного: запрашивать строки по одной и остановиться, как только нашли
+нужное.</p>
+<p>Такую возможность дают генераторы. <strong>Генератор</strong> — итератор, создаваемый
+функцией с <code>yield</code>; элементы вычисляются по требованию. В отличие от списка,
+генератор не хранит все значения: он хранит состояние вычисления и выдаёт
+следующее значение, когда его попросят.</p>
+<h2 id="yield"><span class="h-number">21.3</span> Функция-генератор и yield</h2>
+<p><strong>Функция-генератор</strong> — функция, содержащая <code>yield</code>; при вызове она не
+исполняется сразу, а возвращает генератор. <strong>yield</strong> — инструкция, выдающая
+очередное значение и приостанавливающая функцию до следующего запроса.</p>
+<p>Сравните с обычной функцией: та при вызове исполняется целиком и возвращает
+результат. Функция-генератор при вызове только создаёт объект. Тело начинает
+работать при первом запросе элемента.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">countdown</span><span class="p">(</span><span class="n">start</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"старт функции"</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">start</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">start</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">start</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"конец функции"</span><span class="p">)</span>
+
+
+<span class="n">gen</span> <span class="o">=</span> <span class="n">countdown</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">gen</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>generator
+старт функции
+3
+2
+</code></pre>
+<p>Обратите внимание на порядок строк. Сначала напечатано имя типа: вызов
+<code>countdown(3)</code> не выполнил ни одной строки тела. Затем <code>next</code> запустил тело до
+первого <code>yield</code>: появилось <code>старт функции</code> и значение <code>3</code>. Второй <code>next</code>
+продолжил с места остановки и выдал <code>2</code>.</p>
+<p><code>yield</code> можно представить как «пауза с возвратом значения». Функция
+запоминает, где остановилась, и при следующем запросе продолжает оттуда же.
+Именно поэтому генератору не нужно вручную хранить позицию: состояние
+вычисления живёт в самом генераторе.</p>
+<p>Полезно различать саму функцию-генератор и создаваемый ею объект. Функция
+остаётся функцией, её можно вызывать снова и снова; каждый вызов создаёт
+новый генератор со своим состоянием.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">squares</span><span class="p">(</span><span class="n">limit</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="n">limit</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">n</span> <span class="o">*</span> <span class="n">n</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">squares</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">squares</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>function
+generator
+</code></pre>
+<p>Из этого следует практическое правило: сохранять «на потом» нужно не
+результат вызова, а саму функцию, и создавать генератор в момент работы. Иначе
+легко получить уже исчерпанный объект — как с итераторами в предыдущей главе.</p>
+<p>Каждый вызов функции-генератора создаёт <strong>новый</strong> генератор со своим
+состоянием. Два генератора одной функции независимы, как и два итератора
+одного списка.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">countdown</span><span class="p">(</span><span class="n">start</span><span class="p">):</span>
+    <span class="k">while</span> <span class="n">start</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">start</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">start</span> <span class="o">-</span> <span class="mi">1</span>
+
+
+<span class="n">first</span> <span class="o">=</span> <span class="n">countdown</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">second</span> <span class="o">=</span> <span class="n">countdown</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">first</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">second</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">first</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>2
+2
+1
+</code></pre>
+<p><figure class="figure"><img src="illustrations/ch-21-yield-flow.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h2 id="lazy"><span class="h-number">21.4</span> Ленивые вычисления</h2>
+<p><strong>Ленивые вычисления</strong> — вычисление значений только в момент использования;
+это экономит память и позволяет обрабатывать бесконечные последовательности.
+Генератор вычисляет очередное значение тогда, когда его запросили, а не
+заранее.</p>
+<p>Увидеть это можно по побочным эффектам: вставьте печать перед каждым <code>yield</code> и
+посмотрите, в каком порядке идут строки.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">squares</span><span class="p">(</span><span class="n">limit</span><span class="p">):</span>
+    <span class="n">number</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="n">limit</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"вычисляем"</span><span class="p">,</span> <span class="n">number</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="n">number</span> <span class="o">*</span> <span class="n">number</span>
+        <span class="n">number</span> <span class="o">=</span> <span class="n">number</span> <span class="o">+</span> <span class="mi">1</span>
+
+
+<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">squares</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"получили"</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>вычисляем 0
+получили 0
+вычисляем 1
+получили 1
+вычисляем 2
+получили 4
+</code></pre>
+<p>Строки чередуются: одно вычисление — одно использование. Если бы генератор
+работал как список, все «вычисляем» напечатались бы до первого «получили».
+Именно это свойство и называют ленивостью: работа выполняется ровно в тот
+момент, когда результат понадобился, и ни шагом раньше.</p>
+<p>Представьте разницу на предельном примере: список из миллиона чисел требует
+памяти под миллион чисел, а генератор — только под текущее значение и позицию.
+Если обработка останавливается на третьем элементе, остальные не вычисляются
+вовсе.</p>
+<p>Ленивость позволяет описывать и бесконечные последовательности: генератор
+может выдавать значения без конца, а потребитель возьмёт столько, сколько
+нужно, и остановится. Список так не устроить — он обязан где-то закончиться.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">naturals</span><span class="p">():</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">n</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+
+
+<span class="n">gen</span> <span class="o">=</span> <span class="n">naturals</span><span class="p">()</span>
+<span class="n">collected</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">gen</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">collected</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">collected</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>[1, 2, 3]
+</code></pre>
+<p>Бесконечный генератор безопасен только до тех пор, пока потребитель
+ограничивает выборку. Если передать его в <code>list</code> или <code>sum</code>, программа
+попытается забрать все элементы и не завершится никогда.</p>
+<h2 id="exhaustion"><span class="h-number">21.5</span> Исчерпание генератора</h2>
+<p><strong>Исчерпание генератора</strong> — состояние, в котором генератор уже выдал все
+элементы и больше ничего не вернёт. Как и любой итератор, генератор
+одноразовый: после исчерпания он пуст навсегда.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">countdown</span><span class="p">(</span><span class="n">start</span><span class="p">):</span>
+    <span class="k">while</span> <span class="n">start</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">start</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">start</span> <span class="o">-</span> <span class="mi">1</span>
+
+
+<span class="n">gen</span> <span class="o">=</span> <span class="n">countdown</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">gen</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">gen</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>[2, 1]
+[]
+</code></pre>
+<p>Первый <code>list(gen)</code> забрал оба значения, второй вызов получил уже исчерпанный
+генератор и вернул пустой список. Ошибки нет — есть следствие модели:
+генератор хранит одно вычисление, а не набор значений.</p>
+<p>Запасное значение <code>next</code> позволяет безопасно дочитать генератор до конца.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">countdown</span><span class="p">(</span><span class="n">start</span><span class="p">):</span>
+    <span class="k">while</span> <span class="n">start</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">start</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">start</span> <span class="o">-</span> <span class="mi">1</span>
+
+
+<span class="n">gen</span> <span class="o">=</span> <span class="n">countdown</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">,</span> <span class="s2">"конец"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">,</span> <span class="s2">"конец"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>2
+1
+конец
+</code></pre>
+<p>После второго значения генератор приостановлен на <code>yield</code>; при следующем
+<code>next</code> он дошёл до конца тела и поднял <code>StopIteration</code>. <code>next</code> с запасным
+значением вернул <code>конец</code> вместо исключения. Это удобный способ дочитать генератор, не добавляя
+<code>try</code>/<code>except</code>.</p>
+<h2 id="genexpr"><span class="h-number">21.6</span> Генераторное выражение</h2>
+<p><strong>Генераторное выражение</strong> — компактная запись генератора в круглых скобках:
+<code>(f(x) for x in items)</code>. Оно выглядит похоже на заключённое в скобки выражение,
+но создаёт не значение, а генератор.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">gen</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">gen</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">gen</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>generator
+0
+[1, 4, 9]
+</code></pre>
+<p>Из четырёх квадратов первый забрал <code>next</code>, остальные три — <code>list</code>. Генераторное
+выражение удобно там, где значения нужны один раз и по порядку. Например,
+<code>sum</code> умеет принимать генератор напрямую и не создавать промежуточный список.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)))</span>
+</code></pre></div>
+<pre class="output"><code>14
+332833500
+</code></pre>
+<p>Вторая строка вычисляет сумму квадратов тысячи чисел, не строя список из
+тысячи чисел. Для такой задачи разница невелика, но на миллионах значений она
+становится решающей.</p>
+<p>Круглые скобки в генераторном выражении не превращают его в кортеж. Сравните
+два выражения: <code>(1, 2)</code> — кортеж из двух чисел, а <code>(x for x in [1, 2])</code> —
+генератор.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">((</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]))</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>tuple
+generator
+</code></pre>
+<p>Если генераторное выражение — единственный аргумент функции, внешние скобки
+можно опустить: <code>sum(x * x for x in range(4))</code>. Это тот же генератор, просто
+запись короче.</p>
+<p>Генераторное выражение — тоже одноразовое. Если сохранить его и использовать
+дважды, второй раз оно окажется исчерпанным.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">gen</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">3</span> <span class="ow">in</span> <span class="n">gen</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">gen</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>True
+[]
+</code></pre>
+<p>Проверка вхождения идёт по генератору и останавливается, как только находит
+элемент. Здесь искомое <code>3</code> — последний элемент, поэтому после успешной
+проверки генератор исчерпан и <code>list(gen)</code> возвращает пустой список. Если бы
+мы искали <code>2</code>, поиск остановился бы раньше и <code>list(gen)</code> вернул бы <code>[3]</code>.
+Если искомого элемента нет, поиск забирает генератор до конца.</p>
+<h2 id="return"><span class="h-number">21.7</span> Генератор, return и StopIteration</h2>
+<p>Внутри генератора можно использовать <code>return</code>. Он не возвращает значение
+циклу, а <strong>завершает</strong> генератор: следующий запрос элемента получит
+<code>StopIteration</code>. Это удобно, когда работу нужно прекратить досрочно.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">first_positive</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">n</span>
+            <span class="k">return</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">first_positive</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])))</span>
+</code></pre></div>
+<pre class="output"><code>[3]
+</code></pre>
+<p>Функция выдала первое положительное число и завершилась. Четвёрка из списка
+так и не была рассмотрена. Такой приём часто применяют в поиске: как только
+найдено нужное, дальше идти незачем.</p>
+<p>Важно различать два способа закончить генератор. Если функция просто доходит
+до конца тела, генератор исчерпывается. Если встречается <code>return</code>,
+генератор тоже исчерпывается, но раньше. В обоих случаях <code>for</code> увидит
+<code>StopIteration</code> и спокойно завершит цикл.</p>
+<h2 id="pipeline"><span class="h-number">21.8</span> Конвейер из генераторов</h2>
+<p>Генераторы хорошо соединяются друг с другом: каждый следующий берёт элементы
+из предыдущего. Получается <strong>конвейер</strong> — цепочка обработки, в которой
+элементы продвигаются по одному.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">numbers</span><span class="p">(</span><span class="n">limit</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="n">limit</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">n</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">doubled</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">item</span> <span class="o">*</span> <span class="mi">2</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">greater_than</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">item</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">item</span>
+
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">greater_than</span><span class="p">(</span><span class="n">doubled</span><span class="p">(</span><span class="n">numbers</span><span class="p">(</span><span class="mi">5</span><span class="p">)),</span> <span class="mi">6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">pipeline</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>[8, 10]
+</code></pre>
+<p>Разберём движение одного элемента. <code>numbers(5)</code> выдаёт <code>1</code>, <code>doubled</code> получает
+его и выдаёт <code>2</code>, <code>greater_than</code> получает <code>2</code>, сравнивает с <code>6</code> и отбрасывает.
+Затем запрашивается следующий элемент из начала цепочки. Так продолжается,
+пока не дойдёт до <code>8</code> и <code>10</code>, которые проходят фильтр.</p>
+<p>Преимущество конвейера в том, что промежуточные коллекции не создаются.
+Каждый этап хранит только своё состояние. Если бы каждый шаг строил список,
+память росла бы с каждым этапом, а работа выполнялась бы целиком на каждом
+шаге.</p>
+<p>Проверим, что конвейер действительно продвигает элементы по одному: попросим
+всего одно значение и посмотрим, сколько работы успел сделать источник.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">traced</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="s2">"выдаёт"</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="n">item</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">doubled</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">item</span> <span class="o">*</span> <span class="mi">2</span>
+
+
+<span class="n">gen</span> <span class="o">=</span> <span class="n">doubled</span><span class="p">(</span><span class="n">traced</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="s2">"источник"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"---"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">gen</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>источник выдаёт 1
+2
+---
+источник выдаёт 2
+источник выдаёт 3
+[4, 6]
+</code></pre>
+<p>Первый <code>next</code> заставил источник выдать только первый элемент. Остальные были
+вычислены лишь при втором проходе. Это и есть смысл конвейера: каждый этап
+работает ровно столько, сколько требует потребитель.</p>
+<p><figure class="figure"><img src="illustrations/ch-21-generator-pipeline.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h2 id="files"><span class="h-number">21.9</span> Генератор для чтения файла</h2>
+<p>Самое частое практическое применение генераторов — построчная обработка
+файлов. Генератор открывает файл, читает строки по одной и выдаёт только
+подходящие. Память при этом не зависит от размера файла.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">find_lines</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">keyword</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">keyword</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+
+<span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">tmp</span><span class="p">:</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span> <span class="o">/</span> <span class="s2">"journal.txt"</span>
+    <span class="n">path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="s2">"старт</span><span class="se">\n</span><span class="s2">ошибка 1</span><span class="se">\n</span><span class="s2">шаг</span><span class="se">\n</span><span class="s2">ошибка 2</span><span class="se">\n</span><span class="s2">финиш</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">find_lines</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">"ошибка"</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>ошибка 1
+ошибка 2
+</code></pre>
+<p>Инструкция <code>with</code> находится <strong>внутри</strong> генератора. Файл открывается, когда
+начинается обход, и закрывается, когда генератор завершается — дочитан до
+конца, закрыт явно или уничтожен сборщиком мусора. Если потребитель прервал
+обход раньше, файл остаётся открытым до завершения генератора, поэтому
+генераторы, владеющие ресурсами, стоит дочитывать или закрывать явно.</p>
+<p>Такой генератор уместен и тогда, когда строк очень много, и тогда, когда
+нужны первые несколько: в обоих случаях лишняя работа не выполняется.</p>
+<p>При этом генераторы не делают программу быстрее автоматически: приостановка и
+возобновление функции стоят небольших накладных расходов. Их сила — в памяти
+и в возможности остановиться раньше. Для маленькой коллекции список проще и
+часто быстрее; генератор выбирают, когда важен объём сведений или досрочный
+выход из обработки.</p>
+<h2 id="mistakes"><span class="h-number">21.10</span> Типичные ошибки</h2>
+<ol>
+<li><strong>Ждать, что генератор выполнится при вызове.</strong> Вызов функции-генератора
+только создаёт объект; работа начинается с первого <code>next</code> или <code>for</code>.</li>
+<li><strong>Переиспользовать исчерпанный генератор.</strong> Второй проход ничего не даст и
+не сообщит об ошибке.</li>
+<li><strong>Путать <code>return</code> с выдачей значения.</strong> <code>return</code> завершает генератор;
+значение возврата в цикл <code>for</code> не попадает.</li>
+<li><strong>Сохранять генераторное выражение «на потом».</strong> Оно одноразовое; если
+нужно несколько проходов, постройте список.</li>
+<li><strong>Передавать бесконечный генератор в <code>list</code> или <code>sum</code>.</strong> Эти функции
+попытаются забрать все элементы и не завершатся. Ограничивайте выборку.</li>
+<li><strong>Отлаживать генератор как обычную функцию.</strong> Тело исполняется частями, и
+точка остановки не видна в исходнике без понимания <code>yield</code>.</li>
+<li><strong>Забывать, что генератор — итератор.</strong> Всё, что вы знаете об исчерпании и
+<code>StopIteration</code>, действует и здесь.</li>
+</ol>
+<p>Отдельная сложность — отладка. Обычная функция исполняется целиком, и
+точка останова показывает её состояние один раз. Генератор исполняется
+частями: остановка срабатывает на каждом запросе, а между запросами функция
+«спит». Если поведение кажется странным, помогает печать внутри генератора:
+по ней видно, сколько раз тело продвинулось и на каком значении
+остановилось.</p>
+<p>Проверим третью ловушку: <code>return</code> в генераторе не даёт значения, а завершает
+его.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">one_then_stop</span><span class="p">():</span>
+    <span class="k">yield</span> <span class="s2">"первое"</span>
+    <span class="k">return</span> <span class="s2">"не выдаётся"</span>
+    <span class="k">yield</span> <span class="s2">"второе"</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">one_then_stop</span><span class="p">()))</span>
+</code></pre></div>
+<pre class="output"><code>[&#x27;первое&#x27;]
+</code></pre>
+<p>Строка после <code>return</code> недостижима, поэтому второго значения нет. Если бы
+<code>return</code> возвращал значение в цикл, <code>list</code> содержал бы два элемента — но это
+не так.</p>
+<h2 id="упражнения"><span class="h-number">21.11</span> Упражнения</h2>
+<h3 id="ex-ch21-01">1. Прогнозирование вывода</h3>
+<p>Не запуская код, запишите результат. Затем проверьте и объясните порядок строк.</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">speak</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"начало"</span><span class="p">)</span>
+    <span class="k">yield</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"середина"</span><span class="p">)</span>
+    <span class="k">yield</span> <span class="mi">2</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"конец"</span><span class="p">)</span>
+
+
+<span class="n">gen</span> <span class="o">=</span> <span class="n">speak</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">,</span> <span class="s2">"пусто"</span><span class="p">))</span>
+</code></pre></div>
+<h3 id="ex-ch21-02">2. Первый генератор</h3>
+<p>Напишите функцию-генератор <code>countdown(n)</code>, которая выдаёт числа от <code>n</code> до <code>1</code>.
+Проверьте её через <code>list</code> и через <code>for</code>, не создавая промежуточный список.</p>
+<h3 id="ex-ch21-03">3. Ленивость на практике</h3>
+<p>Напишите генератор <code>naturals(limit)</code>, который печатает <code>вычисляю</code> перед каждым
+выдаваемым числом. Используйте его в цикле и остановитесь после третьего
+элемента через <code>break</code>. Объясните, сколько раз напечаталось <code>вычисляю</code> и
+почему.</p>
+<h3 id="ex-ch21-04">4. Генераторное выражение</h3>
+<p>Для списка <code>[3, 1, 4, 1, 5]</code> постройте генераторное выражение, удваивающее
+каждый элемент, и выведите первые два значения через <code>next</code>, затем остаток
+через <code>list</code>.</p>
+<h3 id="ex-ch21-05">5. Сумма без списка</h3>
+<p>Вычислите сумму квадратов чисел от 1 до 100, используя генераторное выражение
+внутри <code>sum</code>. Объясните, почему промежуточный список здесь не нужен.</p>
+<h3 id="ex-ch21-06">6. Исчерпание</h3>
+<p>Объясните, почему программа печатает <code>[1, 2]</code> и <code>[]</code>. Предложите два
+исправления, чтобы оба вывода были одинаковыми:</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">gen</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">gen</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">gen</span><span class="p">))</span>
+</code></pre></div>
+<h3 id="ex-ch21-07">7. Ранний выход</h3>
+<p>Напишите генератор <code>first_even(numbers)</code>, который выдаёт первое чётное число и
+завершается. Проверьте на списке <code>[3, 5, 8, 10]</code> и объясните, почему
+<code>list(...)</code> содержит один элемент.</p>
+<h3 id="ex-ch21-08">8. Конвейер</h3>
+<p>Соберите конвейер из трёх генераторов: источник выдаёт числа от 1 до 10,
+второй оставляет нечётные, третий возводит в квадрат. Выведите результат
+списком и объясните, сколько элементов проходит через каждый этап.</p>
+<h3 id="ex-ch21-09">9. Мини-проект: строки с ключевым словом</h3>
+<p>Напишите генератор <code>find_lines(path, keyword)</code>, который читает файл построчно
+и выдаёт только строки, содержащие ключевое слово. Проверьте на временном
+файле из пяти строк, выведите найденные строки и объясните, почему файл не
+загружается в память целиком.</p>
+<h3 id="ex-ch21-10">10. Генератор или список</h3>
+<p>Для каждой задачи выберите генератор или список и обоснуйте выбор:</p>
+<ul>
+<li>вывести первые 10 членов последовательности;</li>
+<li>отсортировать все оценки класса по убыванию;</li>
+<li>посчитать сумму чисел, введённых в файле;</li>
+<li>вернуть результат, который вызывающий код будет перебирать трижды.</li>
+</ul>
+<p>Для одного из случаев «генератор» напишите пример, для одного из случаев
+«список» — тоже.</p>
+<h2 id="проверка-понимания"><span class="h-number">21.12</span> Проверка понимания</h2>
+<ol>
+<li>Что происходит при вызове функции-генератора и когда начинает исполняться
+её тело?</li>
+<li>Чем <code>yield</code> отличается от <code>return</code>?</li>
+<li>Что такое ленивые вычисления и какую память они экономят?</li>
+<li>Почему генератор нельзя перебрать дважды?</li>
+<li>Чем генераторное выражение отличается от заключённого в скобки выражения?</li>
+<li>Что произойдёт, если передать бесконечный генератор в <code>list</code>?</li>
+<li>Как связаны генератор, итератор и <code>StopIteration</code>?</li>
+</ol>
+<h2 id="что-дальше"><span class="h-number">21.13</span> Что дальше</h2>
+<p>Генераторы показали, что функция не обязана быть «чёрным ящиком», который
+считает результат целиком. Следующий шаг — взглянуть на функции как на
+обычные объекты: их можно передавать, хранить в структурах, возвращать из
+других функций и оборачивать, добавляя поведение. Об этом — в главе о
+замыканиях и декораторах.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-20-iterators.html"><span class="pager-label">← Назад</span><span class="pager-title">Итераторы и протокол итерации</span></a><a class="pager-card next" rel="next" href="ch-22-higher-order.html"><span class="pager-label">Далее:</span><span class="pager-title">Функции как объекты: замыкания и декораторы</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

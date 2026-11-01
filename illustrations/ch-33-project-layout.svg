@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 460" role="img"
+     aria-labelledby="t33pl d33pl" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="t33pl">Структура проекта: корень, пакет в src и зеркальные тесты</title>
+  <desc id="d33pl">В корне проекта лежат манифест pyproject.toml, файл блокировки uv.lock, README и каталоги src и tests. В src/notes/ находится код пакета: __init__.py, cli.py и storage.py. В tests/ лежат test_cli.py и test_storage.py, повторяющие имена модулей. Тесты не попадают в собранный пакет, а манифест и блокировка восстанавливают окружение одной командой.</desc>
+  <defs>
+    <marker id="arr33a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#33557a"/>
+    </marker>
+  </defs>
+
+  <text x="24" y="30" font-size="17" font-weight="bold" fill="#1d3550">Структура проекта: код, тесты и настройки разделены</text>
+
+  <rect x="36" y="60" width="240" height="250" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="52" y="88" font-size="14" font-weight="bold" fill="#1d3550">notes/ — корень проекта</text>
+  <text x="52" y="122" font-size="13" fill="#1d3550">pyproject.toml — манифест</text>
+  <text x="52" y="150" font-size="13" fill="#1d3550">uv.lock — точные версии</text>
+  <text x="52" y="178" font-size="13" fill="#1d3550">README.md — описание</text>
+  <text x="52" y="206" font-size="13" fill="#1d3550">src/ — исходный код</text>
+  <text x="52" y="234" font-size="13" fill="#1d3550">tests/ — проверки</text>
+  <text x="52" y="276" font-size="12" fill="#33557a">всё, что не код,</text>
+  <text x="52" y="294" font-size="12" fill="#33557a">лежит вне пакета</text>
+
+  <rect x="330" y="60" width="190" height="170" rx="10" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="346" y="88" font-size="14" font-weight="bold" fill="#1d3550">src/notes/</text>
+  <text x="346" y="120" font-size="13" fill="#1d3550">__init__.py</text>
+  <text x="346" y="148" font-size="13" fill="#1d3550">cli.py</text>
+  <text x="346" y="176" font-size="13" fill="#1d3550">storage.py</text>
+  <text x="346" y="208" font-size="12" fill="#33557a">только это попадает</text>
+  <text x="346" y="224" font-size="12" fill="#33557a">в собранный пакет</text>
+
+  <rect x="574" y="60" width="170" height="170" rx="10" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="590" y="88" font-size="14" font-weight="bold" fill="#1d3550">tests/</text>
+  <text x="590" y="120" font-size="13" fill="#1d3550">test_cli.py</text>
+  <text x="590" y="148" font-size="13" fill="#1d3550">test_storage.py</text>
+  <text x="590" y="180" font-size="12" fill="#33557a">имена повторяют</text>
+  <text x="590" y="196" font-size="12" fill="#33557a">модули пакета</text>
+
+  <line x1="276" y1="196" x2="324" y2="196" stroke="#33557a" stroke-width="2" marker-end="url(#arr33a)"/>
+  <polyline points="276,300 654,300 654,238" fill="none" stroke="#33557a" stroke-width="2" marker-end="url(#arr33a)"/>
+  <text x="300" y="188" font-size="12" fill="#33557a">код</text>
+  <text x="380" y="292" font-size="12" fill="#33557a">проверки</text>
+
+  <rect x="36" y="336" width="708" height="100" rx="10" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="54" y="362" font-size="13" font-weight="bold" fill="#4b3a16">Воспроизводимость важнее удобства</text>
+  <text x="54" y="386" font-size="12.5" fill="#4b3a16">Одна команда uv sync собирает окружение по манифесту и файлу блокировки.</text>
+  <text x="54" y="408" font-size="12.5" fill="#4b3a16">Тесты лежат рядом, но не входят в пакет и не замедляют установку.</text>
+</svg>

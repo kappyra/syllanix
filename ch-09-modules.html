@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Модули, пакеты и импорты — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-09-modules.html" aria-current="page">09. Модули, пакеты и импорты</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-09-modules.html#что-вы-сможете-после-этой-главы">9.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-09-modules.html#module">9.2. Модуль — это файл</a></li>
+<li><a href="ch-09-modules.html#import-statement">9.3. Инструкция import</a></li>
+<li><a href="ch-09-modules.html#from-import">9.4. from … import …</a></li>
+<li><a href="ch-09-modules.html#namespace">9.5. Пространство имён</a></li>
+<li><a href="ch-09-modules.html#standard-library">9.6. Стандартная библиотека</a></li>
+<li><a href="ch-09-modules.html#package">9.7. Пакеты</a></li>
+<li><a href="ch-09-modules.html#main-guard">9.8. Точка входа и проверка __name__ == &quot;__main__&quot;</a></li>
+<li><a href="ch-09-modules.html#sys-path">9.9. Почему sys.path — не место для хаков</a></li>
+<li><a href="ch-09-modules.html#example">9.10. Собираем вместе</a></li>
+<li><a href="ch-09-modules.html#mistakes">9.11. Типичные ошибки</a></li>
+<li><a href="ch-09-modules.html#упражнения">9.12. Упражнения</a></li>
+<li><a href="ch-09-modules.html#проверка-понимания">9.13. Проверка понимания</a></li>
+<li><a href="ch-09-modules.html#что-дальше">9.14. Что дальше</a></li>
+</ol></details></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 2. Функции и структура программы</span><span class="sep">›</span><span>Глава 9</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Функции и структура программы · глава 9</p>
+<h1 id="модули-пакеты-и-импорты">Модули, пакеты и импорты</h1>
+<p class="chapter-summary">Как организовывать код в модули, что такое пакет, namespace и точка входа программы.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#что-вы-сможете-после-этой-главы"><span class="toc-number">9.1</span> Что вы сможете после этой главы</a></li>
+<li class="level-2"><a href="#module"><span class="toc-number">9.2</span> Модуль — это файл</a></li>
+<li class="level-2"><a href="#import-statement"><span class="toc-number">9.3</span> Инструкция import</a></li>
+<li class="level-2"><a href="#from-import"><span class="toc-number">9.4</span> from … import …</a></li>
+<li class="level-2"><a href="#namespace"><span class="toc-number">9.5</span> Пространство имён</a></li>
+<li class="level-2"><a href="#standard-library"><span class="toc-number">9.6</span> Стандартная библиотека</a></li>
+<li class="level-2"><a href="#package"><span class="toc-number">9.7</span> Пакеты</a></li>
+<li class="level-2"><a href="#main-guard"><span class="toc-number">9.8</span> Точка входа и проверка __name__ == &quot;__main__&quot;</a></li>
+<li class="level-2"><a href="#sys-path"><span class="toc-number">9.9</span> Почему sys.path — не место для хаков</a></li>
+<li class="level-2"><a href="#example"><span class="toc-number">9.10</span> Собираем вместе</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">9.11</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">9.12</span> Упражнения</a></li>
+<li class="level-2"><a href="#проверка-понимания"><span class="toc-number">9.13</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#что-дальше"><span class="toc-number">9.14</span> Что дальше</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#ex-ch09-01">1. Имя модуля</a></li>
+<li class="level-3"><a href="#ex-ch09-02">2. Две формы импорта</a></li>
+<li class="level-3"><a href="#ex-ch09-03">3. Прогнозирование</a></li>
+<li class="level-3"><a href="#ex-ch09-04">4. Пространство имён</a></li>
+<li class="level-3"><a href="#ex-ch09-05">5. Стандартная библиотека</a></li>
+<li class="level-3"><a href="#ex-ch09-06">6. Пакет</a></li>
+<li class="level-3"><a href="#ex-ch09-07">7. Точка входа</a></li>
+<li class="level-3"><a href="#ex-ch09-08">8. Исправление ошибки импорта</a></li>
+<li class="level-3"><a href="#ex-ch09-09">9. Библиотека и программа</a></li>
+<li class="level-3"><a href="#ex-ch09-10">10. Мини-задача: разбиение на модули</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>До этой главы вся программа жила в одном файле. Для учебных задач этого
+хватало, но у одного файла есть предел: когда функций становится несколько
+десятков, найти нужную труднее, чем написать новую. Кроме того, один и тот же
+код нужен в разных программах — а копировать файл целиком бессмысленно.</p>
+<p>Модуль решает эту задачу так же, как функция решала задачу повторения: даёт
+имя части программы. Файл <code>geometry.py</code> становится модулем <code>geometry</code>, его
+функции доступны из других файлов, а внутри модуля действует собственное
+пространство имён. Python поставляется с большой <strong>стандартной библиотекой</strong>
+таких модулей, и умение ими пользоваться отличает новичка от человека, который
+работает продуктивно.</p>
+<p>В этой главе появятся модули, пакеты, инструкция import и точка входа
+программы — всё, что нужно, чтобы перейти от отдельных файлов к проекту.</p>
+<h2 id="что-вы-сможете-после-этой-главы"><span class="h-number">9.1</span> Что вы сможете после этой главы</h2>
+<p>К концу главы вы будете уметь следующее.</p>
+<ul>
+<li>разбивать программу на модули и импортировать их;</li>
+<li>объяснять разницу между <code>import module</code> и <code>from module import name</code>;</li>
+<li>понимать, что такое пространство имён и почему одинаковые имена не мешают;</li>
+<li>находить нужные инструменты в стандартной библиотеке;</li>
+<li>собирать пакет из нескольких модулей;</li>
+<li>отделять библиотечную часть файла от запуска через точку входа.</li>
+</ul>
+<h2 id="module"><span class="h-number">9.2</span> Модуль — это файл</h2>
+<p><strong>Модуль</strong> — файл <code>.py</code>, содержимое которого образует отдельную область имён и
+может быть импортировано другим кодом. Имя модуля — имя файла без расширения.
+Файл <code>geometry.py</code> даёт модуль <code>geometry</code>; файл <code>report_utils.py</code> — модуль
+<code>report_utils</code>.</p>
+<p>Внутри модуля можно писать всё то же, что и в обычном файле: функции,
+переменные, инструкции. Разница в том, как этот файл используется. Посмотрим на
+модуль с двумя функциями:</p>
+<div class="highlight"><pre><code class="language-python"><span class="sd">"""Простые вычисления площадей."""</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">rectangle</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Вернуть площадь прямоугольника."""</span>
+    <span class="k">return</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">circle</span><span class="p">(</span><span class="n">radius</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Вернуть площадь круга."""</span>
+    <span class="k">return</span> <span class="mf">3.141592653589793</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">**</span> <span class="mi">2</span>
+</code></pre></div>
+<p>Если сохранить этот текст в файл <code>geometry.py</code>, рядом можно создать второй файл
+и воспользоваться первым:</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">geometry</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">geometry</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">geometry</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+<p>Запустим второй файл из той же папки:</p>
+<pre class="text"><code>$ python use_geometry.py
+12
+12.566370614359172
+</code></pre>
+<p>Что произошло: интерпретатор нашёл файл <code>geometry.py</code>, выполнил его код сверху
+вниз (определения функций при этом только создали функции) и связал имя
+<code>geometry</code> с модулем. После этого функции модуля стали доступны через точку.</p>
+<p>Важно понимать: <strong>код модуля верхнего уровня исполняется при импорте</strong>. Именно
+поэтому в модулях не принято писать вычисления прямо на верхнем уровне — иначе
+они выполнятся при каждом импорте. Всё, что должно произойти при запуске
+программы, помещают в функцию и вызывают её из точки входа.</p>
+<h2 id="import-statement"><span class="h-number">9.3</span> Инструкция import</h2>
+<p><strong>Инструкция import</strong> загружает модуль и связывает его имя в текущей области
+видимости. После <code>import math</code> имя <code>math</code> становится доступным, а через точку
+открываются имена внутри модуля.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>math
+4.0
+3.14
+</code></pre>
+<p>Здесь видно три вещи. Во-первых, <code>math</code> — обычный объект, у которого есть
+атрибут <code>__name__</code>. Во-вторых, имена внутри модуля доступны через точку:
+<code>math.sqrt</code>. В-третьих, модуль приносит не только функции, но и значения:
+<code>math.pi</code> — число.</p>
+<p>Модуль можно переименовать при импорте, если его имя длинное или конфликтует:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">m</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">25</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>5.0
+3.142
+</code></pre>
+<p><figure class="figure"><img src="illustrations/ch-09-import-flow.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Повторный импорт того же модуля не выполняется заново: Python запоминает уже
+загруженные модули и при повторном <code>import</code> просто возвращает готовый.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>2.0
+</code></pre>
+<p>Это не оптимизация «на всякий случай», а часть модели: модуль загружается один
+раз, а имя получает каждый, кто его импортирует. Подробнее о кэше модулей — в
+главе 33, когда речь пойдёт об устройстве проекта.</p>
+<h2 id="from-import"><span class="h-number">9.4</span> from … import …</h2>
+<p>Вторая форма импорта переносит имена из модуля прямо в текущую область
+видимости. После <code>from math import sqrt</code> доступна функция <code>sqrt</code> без префикса.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">pi</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">pi</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>1.4142135623730951
+3.142
+</code></pre>
+<p>Разница между формами не косметическая:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Запись</th>
+<th>Что появляется в текущей области</th>
+<th>Как обращаться</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>import math</code></td>
+<td>имя <code>math</code></td>
+<td><code>math.sqrt(2)</code></td>
+</tr>
+<tr>
+<td><code>from math import sqrt</code></td>
+<td>имя <code>sqrt</code></td>
+<td><code>sqrt(2)</code></td>
+</tr>
+<tr>
+<td><code>import math as m</code></td>
+<td>имя <code>m</code></td>
+<td><code>m.sqrt(2)</code></td>
+</tr>
+</tbody>
+</table>
+</div><p>Первая форма безопаснее: имена модуля остаются внутри его пространства имён, и
+вы всегда видите, откуда взялась функция. Вторая форма короче, но добавляет
+имена в ваш код — а значит, может столкнуться с уже существующими.</p>
+<p>Столкновение реально и опасно тем, что происходит молча:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sqrt</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">n</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>16
+</code></pre>
+<p>Импортированная функция была заменена собственной, и <code>sqrt(16)</code> теперь не
+извлекает корень. Python не считает это ошибкой: имя — это имя, последнее
+связывание побеждает. Отсюда правило: после <code>from ... import ...</code> не
+переопределяйте импортированные имена, а если это необходимо, импортируйте
+модуль целиком.</p>
+<p>Третья форма — <code>from math import *</code> — переносит <strong>все</strong> имена модуля. Её
+избегают: невозможно понять, откуда в коде появилось имя, и какие имена
+перезаписаны. Явное лучше неявного.</p>
+<h2 id="namespace"><span class="h-number">9.5</span> Пространство имён</h2>
+<p><strong>Пространство имён</strong> — отображение имён в объекты. У модуля и функции своё
+пространство: одно и то же имя в разных пространствах обозначает разные вещи и
+не конфликтует.</p>
+<p>Вы уже встречались с этим: локальная область видимости функции — тоже
+пространство имён, и <code>x</code> в одной функции не имеет отношения к <code>x</code> в другой.
+Модуль добавляет ещё один уровень: <code>math.sqrt</code> и <code>cmath.sqrt</code> — разные функции
+с одинаковым коротким именем.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">math</span><span class="p">,</span> <span class="s2">"sqrt"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">math</span><span class="p">,</span> <span class="s2">"sqrt2"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>math
+True
+False
+</code></pre>
+<p>Функция <code>hasattr</code> проверяет, есть ли у объекта атрибут с таким именем. Обратите
+внимание: <code>sqrt2</code> в <code>math</code> нет, и это не ошибка — просто такое имя в этом
+пространстве не определено.</p>
+<p>Практическое следствие: полное имя <code>math.sqrt</code> однозначно. Если в программе
+несколько модулей, их имена и составляют ваше пространство имён верхнего
+уровня. Отсюда совет: не называйте свои модули так же, как модули стандартной
+библиотеки. Файл <code>math.py</code> в папке проекта перекроет стандартный <code>math</code>, и
+искать причину странного поведения можно долго.</p>
+<h2 id="standard-library"><span class="h-number">9.6</span> Стандартная библиотека</h2>
+<p><strong>Стандартная библиотека</strong> — поставляемый с Python набор модулей, не требующий
+установки. В неё входят <code>math</code>, <code>random</code>, <code>json</code>, <code>pathlib</code>, <code>itertools</code> и
+многие другие.</p>
+<p>Несколько примеров того, что там уже есть:</p>
+<ul>
+<li>математика: корни, тригонометрия, наибольший общий делитель;</li>
+<li>случайные числа с возможностью зафиксировать seed;</li>
+<li>работа с файлами и путями;</li>
+<li>форматы данных: JSON, CSV;</li>
+<li>даты и время;</li>
+<li>инструменты для тестирования и отладки.</li>
+</ul>
+<p>Проверим пару возможностей:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="mf">3.7</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="mf">3.2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">gcd</span><span class="p">(</span><span class="mi">84</span><span class="p">,</span> <span class="mi">36</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>3
+4
+12
+</code></pre>
+<p>Умение искать в стандартной библиотеке — навык, который окупается быстрее
+любого другого. Начинайте с вопроса «неужели для этого нет готового?» и
+смотрите официальную документацию Python. Большая часть повседневных задач уже
+решена, и написанный вручную код чаще содержит ошибки, чем проверенный
+библиотечный.</p>
+<p>Важно различать уровни: стандартная библиотека входит в поставку Python, но не
+в сам синтаксис языка. Её модули обновляются вместе с версией Python, и часть
+из них может отсутствовать в других реализациях.</p>
+<h2 id="package"><span class="h-number">9.7</span> Пакеты</h2>
+<p><strong>Пакет</strong> — каталог с модулями и (обычно) файлом <code>__init__.py</code>, образующий
+иерархическое пространство имён. Пакет позволяет группировать модули по смыслу,
+а не сваливать всё в одну папку.</p>
+<p>Типичная структура небольшого проекта:</p>
+<pre class="text"><code>shop/
+├── __init__.py
+├── pricing.py
+├── storage.py
+└── cli.py
+</code></pre>
+<p>Обращаться к модулям пакета можно через точку:</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">shop.pricing</span><span class="w"> </span><span class="kn">import</span> <span class="n">order_total</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">shop</span><span class="w"> </span><span class="kn">import</span> <span class="n">storage</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">order_total</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</code></pre></div>
+<p>Здесь <code>shop</code> — пакет, <code>shop.pricing</code> — модуль внутри пакета. Точка означает
+иерархию: сначала пакет, затем модуль, затем имя внутри модуля.</p>
+<p>Файл <code>__init__.py</code> отмечает каталог как пакет. В простейшем случае он пуст; в
+нём можно выполнить инициализацию пакета, но злоупотреблять этим не стоит:
+импорт пакета не должен запускать тяжёлые действия.</p>
+<p><figure class="figure"><img src="illustrations/ch-09-package-tree.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Современный Python допускает и пакеты без <code>__init__.py</code> — они называются
+пакетами пространства имён. Для учебных проектов проще придерживаться
+классической схемы с <code>__init__.py</code>: она явнее и привычнее для инструментов.</p>
+<h2 id="main-guard"><span class="h-number">9.8</span> Точка входа и проверка <strong>name</strong> == &quot;<strong>main</strong>&quot;</h2>
+<p>Модуль можно запустить двумя способами: как программу и как библиотеку. Это
+порождает вопрос: какой код должен выполняться в каждом случае?</p>
+<p>Ответ даёт атрибут <code>__name__</code>. Когда файл запускают напрямую, Python
+присваивает этому имени строку <code>&quot;__main__&quot;</code>. Когда файл импортируют, <code>__name__</code>
+равен имени модуля.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>__main__
+</code></pre>
+<p>Проверка <code>__name__ == &quot;__main__&quot;</code> — идиома, которая позволяет файлу совмещать
+обе роли. Код внутри этой проверки выполняется только при прямом запуске.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"главная функция запущена"</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+<pre class="output"><code>главная функция запущена
+</code></pre>
+<p>Смысл конструкции в том, что <code>main()</code> вызывается не всегда, а только когда файл
+запущен как программа. Если этот же файл импортировать из другого, функция
+<code>main</code> станет доступна, но не выполнится.</p>
+<p><strong>Точка входа</strong> — место, с которого начинается исполнение программы при
+запуске. В скрипте это первая инструкция файла; с главной функцией — вызов
+<code>main()</code>. У библиотечного модуля точки входа нет вовсе, и это правильно: код,
+который начинает работать при импорте, делает модуль непредсказуемым.</p>
+<p>Проверим вторую ветвь логики на модели: представим, что модуль импортирован и
+его имя не равно <code>&quot;__main__&quot;</code>.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">module_name</span> <span class="o">=</span> <span class="s2">"shop.pricing"</span>
+
+<span class="k">if</span> <span class="n">module_name</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"прямой запуск: код выполняется"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"модуль импортирован: код пропущен"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>модуль импортирован: код пропущен
+</code></pre>
+<p>Так модуль становится и библиотекой, и программой одновременно. Это стандарт
+для консольных утилит: файл <code>cli.py</code> содержит функции, которые можно
+импортировать в тестах, и блок с точкой входа для запуска.</p>
+<h2 id="sys-path"><span class="h-number">9.9</span> Почему sys.path — не место для хаков</h2>
+<p>Когда вы пишете <code>import math</code>, Python ищет модуль в нескольких местах. Список
+этих мест хранится в <code>sys.path</code> — списке путей, который просматривается по
+порядку. В него входят каталог запускаемой программы, каталог установленных
+пакетов и некоторые другие места.</p>
+<p>Соблазн новичка — дописать нужный каталог в <code>sys.path</code> прямо в коде:</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">"../my_libs"</span><span class="p">)</span>  <span class="c1"># так делать не стоит: путь зависит от машины</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">my_lib</span>
+</code></pre></div>
+<p>Так делать не стоит, и вот почему.</p>
+<ol>
+<li><strong>Зависимость становится невидимой.</strong> По коду не понять, что программа
+требует внешнего каталога с библиотекой; на другой машине это выяснится
+только при запуске.</li>
+<li><strong>Порядок путей непредсказуем.</strong> Добавление каталога в начало списка может
+перекрыть модуль стандартной библиотеки или установленный пакет — и ошибка
+проявится в совершенно другом месте.</li>
+<li><strong>Ломается упаковка.</strong> Инструменты установки и тестирования ожидают, что
+зависимости объявлены, а не подложены по пути.</li>
+<li><strong>Ломается воспроизводимость.</strong> Программа, работающая на вашей машине,
+перестаёт работать в CI и у коллеги.</li>
+</ol>
+<p>Правильные способы решить ту же задачу:</p>
+<ul>
+<li>оформить код как пакет и установить его (<code>uv</code>, <code>pip</code>) — тогда он найдётся
+сам;</li>
+<li>запускать программу из корня проекта как модуль: <code>python -m shop.cli</code>;</li>
+<li>для локальной разработки использовать управляемое окружение, а не правку
+<code>sys.path</code> в коде.</li>
+</ul>
+<p>Есть и обратный случай: модуль не находится, хотя файл рядом. Почти всегда
+причина в том, что запускается не тот файл или не из той папки. Проверять
+нужно структуру проекта, а не добавлять пути.</p>
+<h2 id="example"><span class="h-number">9.10</span> Собираем вместе</h2>
+<p>Разделим маленькую программу на два модуля: вычисления и запуск.</p>
+<p>Модуль <code>pricing.py</code> содержит только функции — его удобно импортировать и
+тестировать:</p>
+<div class="highlight"><pre><code class="language-python"><span class="sd">"""Расчёты для заказа."""</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">order_total</span><span class="p">(</span><span class="n">price</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">discount</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Вернуть итог заказа в целых рублях."""</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">price</span> <span class="o">*</span> <span class="n">count</span>
+    <span class="k">return</span> <span class="n">total</span> <span class="o">-</span> <span class="n">total</span> <span class="o">*</span> <span class="n">discount</span> <span class="o">//</span> <span class="mi">100</span>
+</code></pre></div>
+<p>Модуль <code>cli.py</code> отвечает за общение с человеком и запуск:</p>
+<div class="highlight"><pre><code class="language-python"><span class="sd">"""Точка входа консольной программы."""</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pricing</span><span class="w"> </span><span class="kn">import</span> <span class="n">order_total</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">amount</span> <span class="o">=</span> <span class="n">order_total</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"К оплате: </span><span class="si">{</span><span class="n">amount</span><span class="si">}</span><span class="s2"> рублей"</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+<p>Запуск:</p>
+<pre class="text"><code>$ python cli.py
+К оплате: 675 рублей
+</code></pre>
+<p>Разделение дало три выгоды. Вычисления не зависят от ввода и вывода, поэтому
+их легко проверить. Файл <code>pricing.py</code> можно импортировать в другой программе.
+А <code>cli.py</code> можно запустить и получить результат, не заглядывая внутрь.</p>
+<h2 id="mistakes"><span class="h-number">9.11</span> Типичные ошибки</h2>
+<ol>
+<li><strong>Называть свой модуль как модуль стандартной библиотеки.</strong> Файл <code>math.py</code>
+перекроет стандартный <code>math</code>, и импорт в других местах начнёт вести себя
+странно.</li>
+<li><strong>Выполнять работу на верхнем уровне модуля.</strong> Код, который печатает или
+читает файлы при импорте, срабатывает каждый раз, когда модуль импортируют.</li>
+<li><strong>Использовать <code>from module import *</code>.</strong> Непонятно, откуда взялись имена, и
+какие из них перезаписаны.</li>
+<li><strong>Переопределять импортированное имя.</strong> Своя функция <code>sqrt</code> молча заменит
+импортированную.</li>
+<li><strong>Забыть <code>__init__.py</code> в классическом пакете.</strong> В Python 3.3+ каталог без
+этого файла может работать как пакет пространства имён, но поведение
+зависит от структуры проекта и инструментов; в классической схеме
+<code>__init__.py</code> нужен, чтобы пакет был явным.</li>
+<li><strong>Импортировать файл, а не модуль.</strong> <code>import geometry.py</code> — синтаксическая
+ошибка; имя модуля пишется без расширения.</li>
+<li><strong>Править <code>sys.path</code> в коде.</strong> Зависимость становится невидимой, а поведение
+зависит от машины.</li>
+<li><strong>Путать точку входа с точкой, где объявлена функция.</strong> Точка входа — место
+запуска, а не место определения.</li>
+<li><strong>Ожидать, что при импорте выполнится <code>main()</code>.</strong> Без проверки
+<code>__name__ == &quot;__main__&quot;</code> он выполнится; с проверкой — нет.</li>
+</ol>
+<h2 id="упражнения"><span class="h-number">9.12</span> Упражнения</h2>
+<h3 id="ex-ch09-01">1. Имя модуля</h3>
+<p>Файл называется <code>text_tools.py</code>. Как называется модуль, который он образует?
+Как импортировать из него функцию <code>normalize</code> двумя способами?</p>
+<h3 id="ex-ch09-02">2. Две формы импорта</h3>
+<p>Объясните разницу между <code>import math</code> и <code>from math import sqrt</code>. Как в каждом
+случае вызвать корень из 9? Проверьте оба варианта программой.</p>
+<h3 id="ex-ch09-03">3. Прогнозирование</h3>
+<p>Что выведет программа? Объясните, почему два вызова дают разные значения.</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">floor</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">floor</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">floor</span><span class="p">(</span><span class="mf">2.9</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="mf">2.9</span><span class="p">))</span>
+</code></pre></div>
+<h3 id="ex-ch09-04">4. Пространство имён</h3>
+<p>Почему <code>math.__name__</code> возвращает <code>math</code>, а не имя функции? Что это говорит о
+модуле как об объекте?</p>
+<h3 id="ex-ch09-05">5. Стандартная библиотека</h3>
+<p>Найдите в документации Python модуль, который умеет округлять числа вверх и
+вниз. Напишите программу, которая печатает <code>math.ceil(2.1)</code> и <code>math.floor(2.9)</code>,
+и объясните результаты.</p>
+<h3 id="ex-ch09-06">6. Пакет</h3>
+<p>Дан каталог:</p>
+<pre class="text"><code>tools/
+├── __init__.py
+├── text.py
+└── files.py
+</code></pre>
+<p>Напишите две строки импорта: функцию <code>clean</code> из модуля <code>text</code> и модуль <code>files</code>
+целиком. Как обращаться к функции после каждого импорта?</p>
+<h3 id="ex-ch09-07">7. Точка входа</h3>
+<p>Почему в примере ниже при импорте этого файла ничего не напечатается, а при
+запуске напечатается?</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"работаю"</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="ex-ch09-08">8. Исправление ошибки импорта</h3>
+<p>Код падает:</p>
+<pre class="text"><code>ModuleNotFoundError: No module named &#x27;pricing&#x27;
+</code></pre>
+<p>Файл <code>pricing.py</code> лежит в той же папке, что и запускаемый файл. Назовите две
+возможные причины и способ проверки.</p>
+<h3 id="ex-ch09-09">9. Библиотека и программа</h3>
+<p>Перепишите файл так, чтобы его функции можно было импортировать, а запуск
+печатал результат:</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">double</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">double</span><span class="p">(</span><span class="mi">21</span><span class="p">))</span>
+</code></pre></div>
+<h3 id="ex-ch09-10">10. Мини-задача: разбиение на модули</h3>
+<p>Опишите структуру из трёх файлов для программы «конвертер температур»: модуль
+с формулами, модуль с функциями вывода и файл запуска. Для каждого файла
+напишите, что в нём лежит и есть ли в нём проверка <code>__name__ == &quot;__main__&quot;</code>.</p>
+<h2 id="проверка-понимания"><span class="h-number">9.13</span> Проверка понимания</h2>
+<ol>
+<li>Что такое модуль и как его имя связано с именем файла?</li>
+<li>Когда исполняется код верхнего уровня модуля?</li>
+<li>Чем <code>import module</code> отличается от <code>from module import name</code>?</li>
+<li>Почему <code>from module import *</code> считается плохой практикой?</li>
+<li>Что такое пространство имён модуля?</li>
+<li>Что такое пакет и зачем нужен <code>__init__.py</code>?</li>
+<li>Почему при импорте файла <code>__name__</code> не равно <code>&quot;__main__&quot;</code>?</li>
+<li>Что такое точка входа программы?</li>
+<li>Почему не стоит править <code>sys.path</code> в коде?</li>
+</ol>
+<h2 id="что-дальше"><span class="h-number">9.14</span> Что дальше</h2>
+<p>Вы умеете делить программу на модули и запускать её через точку входа. Но до
+сих пор любая ошибка — деление на ноль, неверный ввод, отсутствующий файл —
+обрывала программу. Дальше появятся <a href="ch-10-errors-exceptions.html">исключения</a>:
+механизм, который позволяет сообщать об ошибках и обрабатывать их, не теряя
+управление.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-08-recursion-scope.html"><span class="pager-label">← Назад</span><span class="pager-title">Стек вызовов, области видимости и рекурсия</span></a><a class="pager-card next" rel="next" href="ch-10-errors-exceptions.html"><span class="pager-label">Далее:</span><span class="pager-title">Ошибки и исключения</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

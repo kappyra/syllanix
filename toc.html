@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Оглавление — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Оглавление</span></nav>
+<h1>Python: от нуля до профессиональной разработки</h1>
+<p class="section-note">Практический курс с проверяемыми примерами</p>
+<h2>Перед книгой</h2>
+<ul class="link-list">
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<ol class="parts">
+<li>
+<h2>Часть 1. Начало</h2>
+<p class="section-note">Язык, среда и первые программы</p>
+<ul class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a>
+<ul class="topic-list">
+<li><a href="ch-01-introduction.html#почему-python">1.1. Почему Python</a></li>
+<li><a href="ch-01-introduction.html#язык-интерпретатор-и-cpython">1.2. Язык, интерпретатор и CPython</a></li>
+<li><a href="ch-01-introduction.html#исходный-код-программа-и-repl">1.3. Исходный код, программа и REPL</a></li>
+<li><a href="ch-01-introduction.html#как-устроена-эта-книга">1.4. Как устроена эта книга</a></li>
+<li><a href="ch-01-introduction.html#рабочая-среда">1.5. Рабочая среда</a></li>
+<li><a href="ch-01-introduction.html#как-учиться-по-этой-книге">1.6. Как учиться по этой книге</a></li>
+<li><a href="ch-01-introduction.html#упражнения">1.7. Упражнения</a></li>
+<li><a href="ch-01-introduction.html#проверка-понимания">1.8. Проверка понимания</a></li>
+<li><a href="ch-01-introduction.html#что-дальше">1.9. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a>
+<ul class="topic-list">
+<li><a href="ch-02-first-program.html#что-вы-сможете-после-этой-главы">2.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-02-first-program.html#expressions-statements">2.2. Программа, выражение и инструкция</a></li>
+<li><a href="ch-02-first-program.html#arithmetic">2.3. Арифметические операторы</a></li>
+<li><a href="ch-02-first-program.html#print">2.4. print: как показать результат</a></li>
+<li><a href="ch-02-first-program.html#strings">2.5. Строки и их соединение</a></li>
+<li><a href="ch-02-first-program.html#comments">2.6. Комментарии</a></li>
+<li><a href="ch-02-first-program.html#errors">2.7. Две категории ошибок</a></li>
+<li><a href="ch-02-first-program.html#execution">2.8. Как исполняется программа</a></li>
+<li><a href="ch-02-first-program.html#mistakes">2.9. Типичные ошибки начинающих</a></li>
+<li><a href="ch-02-first-program.html#упражнения">2.10. Упражнения</a></li>
+<li><a href="ch-02-first-program.html#проверка-понимания">2.11. Проверка понимания</a></li>
+<li><a href="ch-02-first-program.html#что-дальше">2.12. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a>
+<ul class="topic-list">
+<li><a href="ch-03-values-names-objects.html#что-вы-сможете-после-этой-главы">3.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-03-values-names-objects.html#значения-и-объекты">3.2. Значения и объекты</a></li>
+<li><a href="ch-03-values-names-objects.html#типы">3.3. Типы</a></li>
+<li><a href="ch-03-values-names-objects.html#имена-переменные-и-присваивание">3.4. Имена, переменные и присваивание</a></li>
+<li><a href="ch-03-values-names-objects.html#идентичность-и-оператор-is">3.5. Идентичность и оператор is</a></li>
+<li><a href="ch-03-values-names-objects.html#binary">3.6. Двоичное представление чисел</a></li>
+<li><a href="ch-03-values-names-objects.html#изменяемость">3.7. Изменяемость</a></li>
+<li><a href="ch-03-values-names-objects.html#типичные-ошибки">3.8. Типичные ошибки</a></li>
+<li><a href="ch-03-values-names-objects.html#упражнения">3.9. Упражнения</a></li>
+<li><a href="ch-03-values-names-objects.html#проверка-понимания">3.10. Проверка понимания</a></li>
+<li><a href="ch-03-values-names-objects.html#что-дальше">3.11. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a>
+<ul class="topic-list">
+<li><a href="ch-04-expressions-input.html#что-вы-сможете-после-этой-главы">4.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-04-expressions-input.html#precedence">4.2. Порядок вычисления выражения</a></li>
+<li><a href="ch-04-expressions-input.html#comparisons">4.3. Сравнения и значения True и False</a></li>
+<li><a href="ch-04-expressions-input.html#logical">4.4. Логические операторы</a></li>
+<li><a href="ch-04-expressions-input.html#short-circuit">4.5. Сокращённое вычисление</a></li>
+<li><a href="ch-04-expressions-input.html#augmented">4.6. Расширенное присваивание</a></li>
+<li><a href="ch-04-expressions-input.html#input">4.7. Ввод данных с клавиатуры</a></li>
+<li><a href="ch-04-expressions-input.html#conversion">4.8. Преобразование типа</a></li>
+<li><a href="ch-04-expressions-input.html#fstrings">4.9. Форматирование строк: f-строки</a></li>
+<li><a href="ch-04-expressions-input.html#putting-together">4.10. Собираем вместе</a></li>
+<li><a href="ch-04-expressions-input.html#mistakes">4.11. Типичные ошибки</a></li>
+<li><a href="ch-04-expressions-input.html#упражнения">4.12. Упражнения</a></li>
+<li><a href="ch-04-expressions-input.html#проверка-понимания">4.13. Проверка понимания</a></li>
+<li><a href="ch-04-expressions-input.html#что-дальше">4.14. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a>
+<ul class="topic-list">
+<li><a href="ch-05-control-flow.html#что-вы-сможете-после-этой-главы">5.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-05-control-flow.html#truthiness">5.2. Истинность значения</a></li>
+<li><a href="ch-05-control-flow.html#if">5.3. Инструкция if</a></li>
+<li><a href="ch-05-control-flow.html#elif-else">5.4. Ветви elif и else</a></li>
+<li><a href="ch-05-control-flow.html#indentation">5.5. Отступы и блоки</a></li>
+<li><a href="ch-05-control-flow.html#writing-conditions">5.6. Как формулировать условие</a></li>
+<li><a href="ch-05-control-flow.html#nesting">5.7. Вложенные условия и порядок проверок</a></li>
+<li><a href="ch-05-control-flow.html#conditional-expression">5.8. Условное выражение</a></li>
+<li><a href="ch-05-control-flow.html#example">5.9. Собираем вместе</a></li>
+<li><a href="ch-05-control-flow.html#guessing-game">5.10. Разбор: игра «угадай число»</a></li>
+<li><a href="ch-05-control-flow.html#mistakes">5.11. Типичные ошибки</a></li>
+<li><a href="ch-05-control-flow.html#упражнения">5.12. Упражнения</a></li>
+<li><a href="ch-05-control-flow.html#проверка-понимания">5.13. Проверка понимания</a></li>
+<li><a href="ch-05-control-flow.html#что-дальше">5.14. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a>
+<ul class="topic-list">
+<li><a href="ch-06-loops.html#что-вы-сможете-после-этой-главы">6.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-06-loops.html#while">6.2. Цикл while</a></li>
+<li><a href="ch-06-loops.html#for">6.3. Цикл for и range</a></li>
+<li><a href="ch-06-loops.html#other-iterables">6.4. Перебор не только чисел</a></li>
+<li><a href="ch-06-loops.html#break-continue">6.5. Инструкции break и continue</a></li>
+<li><a href="ch-06-loops.html#loop-else">6.6. Ветвь else цикла</a></li>
+<li><a href="ch-06-loops.html#nested">6.7. Вложенные циклы</a></li>
+<li><a href="ch-06-loops.html#infinite-loop">6.8. Бесконечный цикл</a></li>
+<li><a href="ch-06-loops.html#choosing">6.9. Как выбрать цикл</a></li>
+<li><a href="ch-06-loops.html#example">6.10. Собираем вместе</a></li>
+<li><a href="ch-06-loops.html#mistakes">6.11. Типичные ошибки</a></li>
+<li><a href="ch-06-loops.html#упражнения">6.12. Упражнения</a></li>
+<li><a href="ch-06-loops.html#проверка-понимания">6.13. Проверка понимания</a></li>
+<li><a href="ch-06-loops.html#что-дальше">6.14. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a>
+<ul class="topic-list">
+<li><a href="ch-07-functions.html#что-вы-сможете-после-этой-главы">7.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-07-functions.html#why">7.2. Зачем нужна функция</a></li>
+<li><a href="ch-07-functions.html#def">7.3. Инструкция def и вызов функции</a></li>
+<li><a href="ch-07-functions.html#parameters">7.4. Параметры и аргументы</a></li>
+<li><a href="ch-07-functions.html#return">7.5. Возвращаемое значение и return</a></li>
+<li><a href="ch-07-functions.html#args-kinds">7.6. Позиционные и именованные аргументы</a></li>
+<li><a href="ch-07-functions.html#defaults">7.7. Аргументы по умолчанию</a></li>
+<li><a href="ch-07-functions.html#local-scope">7.8. Локальная область видимости</a></li>
+<li><a href="ch-07-functions.html#docstring">7.9. docstring: документация внутри функции</a></li>
+<li><a href="ch-07-functions.html#design">7.10. Как проектировать функцию</a></li>
+<li><a href="ch-07-functions.html#example">7.11. Собираем вместе</a></li>
+<li><a href="ch-07-functions.html#mistakes">7.12. Типичные ошибки</a></li>
+<li><a href="ch-07-functions.html#упражнения">7.13. Упражнения</a></li>
+<li><a href="ch-07-functions.html#проверка-понимания">7.14. Проверка понимания</a></li>
+<li><a href="ch-07-functions.html#что-дальше">7.15. Что дальше</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<h2>Часть 2. Функции и структура программы</h2>
+<p class="section-note">Как разбивать задачу на части</p>
+<ul class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a>
+<ul class="topic-list">
+<li><a href="ch-08-recursion-scope.html#что-вы-сможете-после-этой-главы">8.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-08-recursion-scope.html#call-stack">8.2. Стек вызовов</a></li>
+<li><a href="ch-08-recursion-scope.html#frame">8.3. Кадр стека</a></li>
+<li><a href="ch-08-recursion-scope.html#scope">8.4. Области видимости</a></li>
+<li><a href="ch-08-recursion-scope.html#enclosing">8.5. Объемлющая область видимости</a></li>
+<li><a href="ch-08-recursion-scope.html#global">8.6. Глобальная область видимости и инструкция global</a></li>
+<li><a href="ch-08-recursion-scope.html#recursion">8.7. Рекурсия</a></li>
+<li><a href="ch-08-recursion-scope.html#limit">8.8. Предел рекурсии</a></li>
+<li><a href="ch-08-recursion-scope.html#example">8.9. Собираем вместе</a></li>
+<li><a href="ch-08-recursion-scope.html#mistakes">8.10. Типичные ошибки</a></li>
+<li><a href="ch-08-recursion-scope.html#упражнения">8.11. Упражнения</a></li>
+<li><a href="ch-08-recursion-scope.html#проверка-понимания">8.12. Проверка понимания</a></li>
+<li><a href="ch-08-recursion-scope.html#что-дальше">8.13. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a>
+<ul class="topic-list">
+<li><a href="ch-09-modules.html#что-вы-сможете-после-этой-главы">9.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-09-modules.html#module">9.2. Модуль — это файл</a></li>
+<li><a href="ch-09-modules.html#import-statement">9.3. Инструкция import</a></li>
+<li><a href="ch-09-modules.html#from-import">9.4. from … import …</a></li>
+<li><a href="ch-09-modules.html#namespace">9.5. Пространство имён</a></li>
+<li><a href="ch-09-modules.html#standard-library">9.6. Стандартная библиотека</a></li>
+<li><a href="ch-09-modules.html#package">9.7. Пакеты</a></li>
+<li><a href="ch-09-modules.html#main-guard">9.8. Точка входа и проверка __name__ == &quot;__main__&quot;</a></li>
+<li><a href="ch-09-modules.html#sys-path">9.9. Почему sys.path — не место для хаков</a></li>
+<li><a href="ch-09-modules.html#example">9.10. Собираем вместе</a></li>
+<li><a href="ch-09-modules.html#mistakes">9.11. Типичные ошибки</a></li>
+<li><a href="ch-09-modules.html#упражнения">9.12. Упражнения</a></li>
+<li><a href="ch-09-modules.html#проверка-понимания">9.13. Проверка понимания</a></li>
+<li><a href="ch-09-modules.html#что-дальше">9.14. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a>
+<ul class="topic-list">
+<li><a href="ch-10-errors-exceptions.html#зачем-эта-глава">10.1. Зачем эта глава</a></li>
+<li><a href="ch-10-errors-exceptions.html#exception-kinds">10.2. Как Python сообщает об ошибке</a></li>
+<li><a href="ch-10-errors-exceptions.html#try-except">10.3. Инструкция try и ветвь except</a></li>
+<li><a href="ch-10-errors-exceptions.html#exception-object">10.4. Объект исключения</a></li>
+<li><a href="ch-10-errors-exceptions.html#multiple">10.5. Несколько ветвей except</a></li>
+<li><a href="ch-10-errors-exceptions.html#hierarchy">10.6. Иерархия исключений</a></li>
+<li><a href="ch-10-errors-exceptions.html#except-order">10.7. Порядок ветвей except</a></li>
+<li><a href="ch-10-errors-exceptions.html#finally">10.8. Ветвь finally</a></li>
+<li><a href="ch-10-errors-exceptions.html#try-else-order">10.9. Ветвь else и полный порядок выполнения</a></li>
+<li><a href="ch-10-errors-exceptions.html#raise">10.10. Инструкция raise</a></li>
+<li><a href="ch-10-errors-exceptions.html#chaining">10.11. Цепочка исключений</a></li>
+<li><a href="ch-10-errors-exceptions.html#assert">10.12. Утверждения: assert</a></li>
+<li><a href="ch-10-errors-exceptions.html#error-handling">10.13. Политика обработки ошибок</a></li>
+<li><a href="ch-10-errors-exceptions.html#mistakes">10.14. Типичные ошибки</a></li>
+<li><a href="ch-10-errors-exceptions.html#упражнения">10.15. Упражнения</a></li>
+<li><a href="ch-10-errors-exceptions.html#проверка-понимания">10.16. Проверка понимания</a></li>
+<li><a href="ch-10-errors-exceptions.html#что-дальше">10.17. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a>
+<ul class="topic-list">
+<li><a href="ch-11-debugging.html#зачем-эта-глава">11.1. Зачем эта глава</a></li>
+<li><a href="ch-11-debugging.html#traceback">11.2. Трассировка: отчёт о цепочке вызовов</a></li>
+<li><a href="ch-11-debugging.html#frames">11.3. Что даёт трассировка при поиске дефекта</a></li>
+<li><a href="ch-11-debugging.html#print-debugging">11.4. Отладка через print</a></li>
+<li><a href="ch-11-debugging.html#logging">11.5. Логирование</a></li>
+<li><a href="ch-11-debugging.html#debugger">11.6. Отладчик и точки останова</a></li>
+<li><a href="ch-11-debugging.html#method">11.7. Систематический поиск дефекта</a></li>
+<li><a href="ch-11-debugging.html#ask-help">11.8. Как сообщить о проблеме, чтобы вам помогли</a></li>
+<li><a href="ch-11-debugging.html#mistakes">11.9. Типичные ошибки</a></li>
+<li><a href="ch-11-debugging.html#упражнения">11.10. Упражнения</a></li>
+<li><a href="ch-11-debugging.html#проверка-понимания">11.11. Проверка понимания</a></li>
+<li><a href="ch-11-debugging.html#что-дальше">11.12. Что дальше</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<h2>Часть 3. Коллекции и данные</h2>
+<p class="section-note">Как хранить и обрабатывать множество значений</p>
+<ul class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a>
+<ul class="topic-list">
+<li><a href="ch-12-collections-intro.html#зачем-нужны-коллекции">12.1. Зачем нужны коллекции</a></li>
+<li><a href="ch-12-collections-intro.html#collections">12.2. Коллекция и последовательность</a></li>
+<li><a href="ch-12-collections-intro.html#elements">12.3. Элемент и позиция</a></li>
+<li><a href="ch-12-collections-intro.html#index-vs-value">12.4. Индекс и значение — разные вещи</a></li>
+<li><a href="ch-12-collections-intro.html#membership">12.5. Проверка вхождения</a></li>
+<li><a href="ch-12-collections-intro.html#iteration">12.6. Итерируемость</a></li>
+<li><a href="ch-12-collections-intro.html#families">12.7. Коллекции бывают разными</a></li>
+<li><a href="ch-12-collections-intro.html#mistakes">12.8. Типичные ошибки</a></li>
+<li><a href="ch-12-collections-intro.html#упражнения">12.9. Упражнения</a></li>
+<li><a href="ch-12-collections-intro.html#проверка-понимания">12.10. Проверка понимания</a></li>
+<li><a href="ch-12-collections-intro.html#что-дальше">12.11. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a>
+<ul class="topic-list">
+<li><a href="ch-13-lists.html#why">13.1. Зачем нужны списки</a></li>
+<li><a href="ch-13-lists.html#list-basics">13.2. Создание списка</a></li>
+<li><a href="ch-13-lists.html#mutation">13.3. Изменение элемента</a></li>
+<li><a href="ch-13-lists.html#negative-index">13.4. Отрицательные индексы</a></li>
+<li><a href="ch-13-lists.html#slices">13.5. Срезы</a></li>
+<li><a href="ch-13-lists.html#index-error">13.6. IndexError</a></li>
+<li><a href="ch-13-lists.html#methods">13.7. Методы списка</a></li>
+<li><a href="ch-13-lists.html#append">13.8. append: добавление в конец</a></li>
+<li><a href="ch-13-lists.html#edit">13.9. Вставка, удаление и извлечение</a></li>
+<li><a href="ch-13-lists.html#sort">13.10. Сортировка</a></li>
+<li><a href="ch-13-lists.html#del">13.11. Инструкция del</a></li>
+<li><a href="ch-13-lists.html#slice-copy">13.12. Срез создаёт копию</a></li>
+<li><a href="ch-13-lists.html#list-argument">13.13. Список как аргумент функции</a></li>
+<li><a href="ch-13-lists.html#mistakes">13.14. Типичные ошибки</a></li>
+<li><a href="ch-13-lists.html#упражнения">13.15. Упражнения</a></li>
+<li><a href="ch-13-lists.html#проверка-понимания">13.16. Проверка понимания</a></li>
+<li><a href="ch-13-lists.html#что-дальше">13.17. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a>
+<ul class="topic-list">
+<li><a href="ch-14-tuples.html#why">14.1. Зачем нужна неизменяемость</a></li>
+<li><a href="ch-14-tuples.html#tuples">14.2. Создание кортежа</a></li>
+<li><a href="ch-14-tuples.html#sequence">14.3. Кортеж — это последовательность</a></li>
+<li><a href="ch-14-tuples.html#immutability">14.4. Неизменяемость</a></li>
+<li><a href="ch-14-tuples.html#unpacking">14.5. Распаковка</a></li>
+<li><a href="ch-14-tuples.html#packing">14.6. Упаковка кортежа</a></li>
+<li><a href="ch-14-tuples.html#unpacking-loop">14.7. Распаковка в цикле</a></li>
+<li><a href="ch-14-tuples.html#mistakes">14.8. Типичные ошибки</a></li>
+<li><a href="ch-14-tuples.html#choosing">14.9. Как выбрать структуру</a></li>
+<li><a href="ch-14-tuples.html#упражнения">14.10. Упражнения</a></li>
+<li><a href="ch-14-tuples.html#проверка-понимания">14.11. Проверка понимания</a></li>
+<li><a href="ch-14-tuples.html#что-дальше">14.12. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a>
+<ul class="topic-list">
+<li><a href="ch-15-strings.html#why">15.1. Зачем эта глава</a></li>
+<li><a href="ch-15-strings.html#strings">15.2. Строковый тип</a></li>
+<li><a href="ch-15-strings.html#unicode">15.3. Unicode</a></li>
+<li><a href="ch-15-strings.html#encoding">15.4. Кодировка</a></li>
+<li><a href="ch-15-strings.html#escapes">15.5. Escape-последовательности</a></li>
+<li><a href="ch-15-strings.html#string-methods">15.6. Методы строки</a></li>
+<li><a href="ch-15-strings.html#split-join">15.7. split и join</a></li>
+<li><a href="ch-15-strings.html#string-comparison">15.8. Сравнение строк</a></li>
+<li><a href="ch-15-strings.html#formatting">15.9. Форматирование</a></li>
+<li><a href="ch-15-strings.html#mistakes">15.10. Типичные ошибки</a></li>
+<li><a href="ch-15-strings.html#упражнения">15.11. Упражнения</a></li>
+<li><a href="ch-15-strings.html#проверка-понимания">15.12. Проверка понимания</a></li>
+<li><a href="ch-15-strings.html#что-дальше">15.13. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a>
+<ul class="topic-list">
+<li><a href="ch-16-sets.html#why">16.1. Зачем нужны множества</a></li>
+<li><a href="ch-16-sets.html#sets">16.2. Создание множества</a></li>
+<li><a href="ch-16-sets.html#hashing">16.3. Хеширование</a></li>
+<li><a href="ch-16-sets.html#hashable">16.4. Хешируемость</a></li>
+<li><a href="ch-16-sets.html#operations">16.5. Операции над множествами</a></li>
+<li><a href="ch-16-sets.html#mutation">16.6. Изменение множества</a></li>
+<li><a href="ch-16-sets.html#ordering">16.7. Порядок обхода</a></li>
+<li><a href="ch-16-sets.html#frozenset">16.8. frozenset</a></li>
+<li><a href="ch-16-sets.html#vs-list">16.9. Сравнение со списком</a></li>
+<li><a href="ch-16-sets.html#words-practice">16.10. Практика: общие слова</a></li>
+<li><a href="ch-16-sets.html#when-not">16.11. Когда множество не подходит</a></li>
+<li><a href="ch-16-sets.html#mistakes">16.12. Типичные ошибки</a></li>
+<li><a href="ch-16-sets.html#упражнения">16.13. Упражнения</a></li>
+<li><a href="ch-16-sets.html#проверка-понимания">16.14. Проверка понимания</a></li>
+<li><a href="ch-16-sets.html#что-дальше">16.15. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a>
+<ul class="topic-list">
+<li><a href="ch-17-dicts.html#что-вы-сможете-после-этой-главы">17.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-17-dicts.html#why-dicts">17.2. Задача, где позиция не помогает</a></li>
+<li><a href="ch-17-dicts.html#mapping">17.3. Отображение и словарь</a></li>
+<li><a href="ch-17-dicts.html#key-value-pair">17.4. Пары «ключ — значение»</a></li>
+<li><a href="ch-17-dicts.html#dict-methods">17.5. Методы словаря</a></li>
+<li><a href="ch-17-dicts.html#dict-iteration">17.6. Итерация по словарю</a></li>
+<li><a href="ch-17-dicts.html#structuring">17.7. Словари как структурирование данных</a></li>
+<li><a href="ch-17-dicts.html#mistakes">17.8. Типичные ошибки</a></li>
+<li><a href="ch-17-dicts.html#упражнения">17.9. Упражнения</a></li>
+<li><a href="ch-17-dicts.html#проверка-понимания">17.10. Проверка понимания</a></li>
+<li><a href="ch-17-dicts.html#что-дальше">17.11. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a>
+<ul class="topic-list">
+<li><a href="ch-18-references-copy.html#что-вы-сможете-после-этой-главы">18.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-18-references-copy.html#why">18.2. Задача: «изменил одно — поменялось другое»</a></li>
+<li><a href="ch-18-references-copy.html#references">18.3. Имена, объекты и ссылки</a></li>
+<li><a href="ch-18-references-copy.html#aliasing">18.4. Алиасинг (псевдонимы)</a></li>
+<li><a href="ch-18-references-copy.html#nested">18.5. Вложенная структура</a></li>
+<li><a href="ch-18-references-copy.html#shallow">18.6. Поверхностное копирование</a></li>
+<li><a href="ch-18-references-copy.html#deep">18.7. Глубокое копирование</a></li>
+<li><a href="ch-18-references-copy.html#default-arg">18.8. Изменяемое значение по умолчанию</a></li>
+<li><a href="ch-18-references-copy.html#mistakes">18.9. Типичные ошибки</a></li>
+<li><a href="ch-18-references-copy.html#упражнения">18.10. Упражнения</a></li>
+<li><a href="ch-18-references-copy.html#проверка-понимания">18.11. Проверка понимания</a></li>
+<li><a href="ch-18-references-copy.html#что-дальше">18.12. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a>
+<ul class="topic-list">
+<li><a href="ch-19-files-formats.html#что-вы-сможете-после-этой-главы">19.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-19-files-formats.html#why">19.2. Зачем программе файлы</a></li>
+<li><a href="ch-19-files-formats.html#paths">19.3. Путь и pathlib</a></li>
+<li><a href="ch-19-files-formats.html#open-modes">19.4. Открытие файла: open и режимы</a></li>
+<li><a href="ch-19-files-formats.html#with">19.5. with и контекстный менеджер</a></li>
+<li><a href="ch-19-files-formats.html#encoding">19.6. Кодировка файла</a></li>
+<li><a href="ch-19-files-formats.html#csv">19.7. CSV: табличные сведения</a></li>
+<li><a href="ch-19-files-formats.html#json">19.8. JSON: обмен структурами</a></li>
+<li><a href="ch-19-files-formats.html#mistakes">19.9. Типичные ошибки</a></li>
+<li><a href="ch-19-files-formats.html#упражнения">19.10. Упражнения</a></li>
+<li><a href="ch-19-files-formats.html#проверка-понимания">19.11. Проверка понимания</a></li>
+<li><a href="ch-19-files-formats.html#что-дальше">19.12. Что дальше</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<h2>Часть 4. Итерация и функции высшего порядка</h2>
+<p class="section-note">Как выражать повторяющиеся вычисления</p>
+<ul class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a>
+<ul class="topic-list">
+<li><a href="ch-20-iterators.html#что-вы-сможете-после-этой-главы">20.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-20-iterators.html#why">20.2. Загадка цикла for</a></li>
+<li><a href="ch-20-iterators.html#iterable-vs-iterator">20.3. Итерируемый объект и итератор</a></li>
+<li><a href="ch-20-iterators.html#iter-next">20.4. iter и next</a></li>
+<li><a href="ch-20-iterators.html#protocol">20.5. Протокол итерации</a></li>
+<li><a href="ch-20-iterators.html#state">20.6. Состояние и исчерпание</a></li>
+<li><a href="ch-20-iterators.html#everywhere">20.7. Где в Python живут итераторы</a></li>
+<li><a href="ch-20-iterators.html#design">20.8. Что передавать в функцию</a></li>
+<li><a href="ch-20-iterators.html#memory">20.9. Итератор и память</a></li>
+<li><a href="ch-20-iterators.html#mistakes">20.10. Типичные ошибки</a></li>
+<li><a href="ch-20-iterators.html#упражнения">20.11. Упражнения</a></li>
+<li><a href="ch-20-iterators.html#проверка-понимания">20.12. Проверка понимания</a></li>
+<li><a href="ch-20-iterators.html#что-дальше">20.13. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a>
+<ul class="topic-list">
+<li><a href="ch-21-generators.html#что-вы-сможете-после-этой-главы">21.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-21-generators.html#why">21.2. Задача: значения по требованию</a></li>
+<li><a href="ch-21-generators.html#yield">21.3. Функция-генератор и yield</a></li>
+<li><a href="ch-21-generators.html#lazy">21.4. Ленивые вычисления</a></li>
+<li><a href="ch-21-generators.html#exhaustion">21.5. Исчерпание генератора</a></li>
+<li><a href="ch-21-generators.html#genexpr">21.6. Генераторное выражение</a></li>
+<li><a href="ch-21-generators.html#return">21.7. Генератор, return и StopIteration</a></li>
+<li><a href="ch-21-generators.html#pipeline">21.8. Конвейер из генераторов</a></li>
+<li><a href="ch-21-generators.html#files">21.9. Генератор для чтения файла</a></li>
+<li><a href="ch-21-generators.html#mistakes">21.10. Типичные ошибки</a></li>
+<li><a href="ch-21-generators.html#упражнения">21.11. Упражнения</a></li>
+<li><a href="ch-21-generators.html#проверка-понимания">21.12. Проверка понимания</a></li>
+<li><a href="ch-21-generators.html#что-дальше">21.13. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a>
+<ul class="topic-list">
+<li><a href="ch-22-higher-order.html#что-вы-сможете-после-этой-главы">22.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-22-higher-order.html#first-class">22.2. Функция — обычный объект</a></li>
+<li><a href="ch-22-higher-order.html#higher-order">22.3. Функции высшего порядка</a></li>
+<li><a href="ch-22-higher-order.html#closure">22.4. Замыкание</a></li>
+<li><a href="ch-22-higher-order.html#decorator">22.5. Декоратор</a></li>
+<li><a href="ch-22-higher-order.html#wraps">22.6. functools.wraps: сохранить имя и документацию</a></li>
+<li><a href="ch-22-higher-order.html#stacking">22.7. Несколько декораторов на одной функции</a></li>
+<li><a href="ch-22-higher-order.html#functools">22.8. Модуль functools</a></li>
+<li><a href="ch-22-higher-order.html#mistakes">22.9. Типичные ошибки</a></li>
+<li><a href="ch-22-higher-order.html#упражнения">22.10. Упражнения</a></li>
+<li><a href="ch-22-higher-order.html#проверка-понимания">22.11. Проверка понимания</a></li>
+<li><a href="ch-22-higher-order.html#что-дальше">22.12. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a>
+<ul class="topic-list">
+<li><a href="ch-23-functional.html#что-вы-сможете-после-этой-главы">23.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-23-functional.html#list-comprehension">23.2. Списковое включение</a></li>
+<li><a href="ch-23-functional.html#dict-set">23.3. Словарное и множественное включения</a></li>
+<li><a href="ch-23-functional.html#lambda">23.4. Лямбда-выражение</a></li>
+<li><a href="ch-23-functional.html#map-filter">23.5. map и filter</a></li>
+<li><a href="ch-23-functional.html#sort-key">23.6. Сортировка по ключу</a></li>
+<li><a href="ch-23-functional.html#pure">23.7. Чистые функции</a></li>
+<li><a href="ch-23-functional.html#mistakes">23.8. Типичные ошибки</a></li>
+<li><a href="ch-23-functional.html#упражнения">23.9. Упражнения</a></li>
+<li><a href="ch-23-functional.html#проверка-понимания">23.10. Проверка понимания</a></li>
+<li><a href="ch-23-functional.html#что-дальше">23.11. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a>
+<ul class="topic-list">
+<li><a href="ch-24-signatures.html#why">24.1. Зачем это нужно</a></li>
+<li><a href="ch-24-signatures.html#что-вы-сможете-после-этой-главы">24.2. Что вы сможете после этой главы</a></li>
+<li><a href="ch-24-signatures.html#signature">24.3. Сигнатура как контракт</a></li>
+<li><a href="ch-24-signatures.html#varargs">24.4. Параметр *args: лишние позиционные аргументы</a></li>
+<li><a href="ch-24-signatures.html#kwargs">24.5. Параметр **kwargs: лишние именованные аргументы</a></li>
+<li><a href="ch-24-signatures.html#markers">24.6. Маркеры / и *: кто как передаётся</a></li>
+<li><a href="ch-24-signatures.html#unpacking-arguments">24.7. Распаковка аргументов</a></li>
+<li><a href="ch-24-signatures.html#forwarding">24.8. Форвардинг: зачем это на практике</a></li>
+<li><a href="ch-24-signatures.html#stdlib-signatures">24.9. Сигнатуры в стандартной библиотеке</a></li>
+<li><a href="ch-24-signatures.html#mistakes">24.10. Типичные ошибки</a></li>
+<li><a href="ch-24-signatures.html#упражнения">24.11. Упражнения</a></li>
+<li><a href="ch-24-signatures.html#проверка-понимания">24.12. Проверка понимания</a></li>
+<li><a href="ch-24-signatures.html#что-дальше">24.13. Что дальше</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<h2>Часть 5. Объектно-ориентированное программирование</h2>
+<p class="section-note">Как моделировать предметную область</p>
+<ul class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a>
+<ul class="topic-list">
+<li><a href="ch-25-objects-classes.html#why">25.1. Зачем это нужно</a></li>
+<li><a href="ch-25-objects-classes.html#что-вы-сможете-после-этой-главы">25.2. Что вы сможете после этой главы</a></li>
+<li><a href="ch-25-objects-classes.html#class-instance">25.3. Класс — это тип, экземпляр — значение</a></li>
+<li><a href="ch-25-objects-classes.html#attributes">25.4. Атрибуты экземпляра</a></li>
+<li><a href="ch-25-objects-classes.html#methods">25.5. Методы и параметр self</a></li>
+<li><a href="ch-25-objects-classes.html#init">25.6. Метод инициализации и конструктор</a></li>
+<li><a href="ch-25-objects-classes.html#account">25.7. Состояние и поведение: счёт</a></li>
+<li><a href="ch-25-objects-classes.html#independent-state">25.8. У каждого экземпляра своё состояние</a></li>
+<li><a href="ch-25-objects-classes.html#objects-references">25.9. Объекты и ссылки</a></li>
+<li><a href="ch-25-objects-classes.html#objects-everywhere">25.10. Объекты вокруг нас</a></li>
+<li><a href="ch-25-objects-classes.html#when-not">25.11. Углубление: когда класс лишний</a></li>
+<li><a href="ch-25-objects-classes.html#mistakes">25.12. Типичные ошибки</a></li>
+<li><a href="ch-25-objects-classes.html#упражнения">25.13. Упражнения</a></li>
+<li><a href="ch-25-objects-classes.html#проверка-понимания">25.14. Проверка понимания</a></li>
+<li><a href="ch-25-objects-classes.html#что-дальше">25.15. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a>
+<ul class="topic-list">
+<li><a href="ch-26-encapsulation.html#why">26.1. Зачем это нужно</a></li>
+<li><a href="ch-26-encapsulation.html#что-вы-сможете-после-этой-главы">26.2. Что вы сможете после этой главы</a></li>
+<li><a href="ch-26-encapsulation.html#class-instance-attributes">26.3. Атрибуты класса и атрибуты экземпляра</a></li>
+<li><a href="ch-26-encapsulation.html#encapsulation">26.4. Инкапсуляция и соглашения об именах</a></li>
+<li><a href="ch-26-encapsulation.html#property">26.5. Свойства: вычисляемый атрибут</a></li>
+<li><a href="ch-26-encapsulation.html#setter">26.6. Сеттер и контроль инвариантов</a></li>
+<li><a href="ch-26-encapsulation.html#class-api">26.7. Границы API класса</a></li>
+<li><a href="ch-26-encapsulation.html#mistakes">26.8. Типичные ошибки</a></li>
+<li><a href="ch-26-encapsulation.html#упражнения">26.9. Упражнения</a></li>
+<li><a href="ch-26-encapsulation.html#проверка-понимания">26.10. Проверка понимания</a></li>
+<li><a href="ch-26-encapsulation.html#что-дальше">26.11. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a>
+<ul class="topic-list">
+<li><a href="ch-27-inheritance.html#why">27.1. Зачем это нужно</a></li>
+<li><a href="ch-27-inheritance.html#что-вы-сможете-после-этой-главы">27.2. Что вы сможете после этой главы</a></li>
+<li><a href="ch-27-inheritance.html#inheritance">27.3. Наследование: базовый класс и подкласс</a></li>
+<li><a href="ch-27-inheritance.html#override-super">27.4. Переопределение и super()</a></li>
+<li><a href="ch-27-inheritance.html#polymorphism">27.5. Полиморфизм</a></li>
+<li><a href="ch-27-inheritance.html#when-inheritance">27.6. Когда наследование уместно</a></li>
+<li><a href="ch-27-inheritance.html#isinstance">27.7. isinstance, issubclass и проверки типов</a></li>
+<li><a href="ch-27-inheritance.html#mro">27.8. Порядок разрешения методов</a></li>
+<li><a href="ch-27-inheritance.html#composition">27.9. Композиция</a></li>
+<li><a href="ch-27-inheritance.html#inheritance-from-builtins">27.10. Наследование от встроенных классов: чего избегать</a></li>
+<li><a href="ch-27-inheritance.html#mistakes">27.11. Типичные ошибки</a></li>
+<li><a href="ch-27-inheritance.html#упражнения">27.12. Упражнения</a></li>
+<li><a href="ch-27-inheritance.html#проверка-понимания">27.13. Проверка понимания</a></li>
+<li><a href="ch-27-inheritance.html#что-дальше">27.14. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a>
+<ul class="topic-list">
+<li><a href="ch-28-dunder.html#why">28.1. Зачем это нужно</a></li>
+<li><a href="ch-28-dunder.html#что-вы-сможете-после-этой-главы">28.2. Что вы сможете после этой главы</a></li>
+<li><a href="ch-28-dunder.html#dunder">28.3. Что такое dunder-метод</a></li>
+<li><a href="ch-28-dunder.html#repr">28.4. __repr__: представление для разработчика</a></li>
+<li><a href="ch-28-dunder.html#eq">28.5. __eq__: равенство по значению</a></li>
+<li><a href="ch-28-dunder.html#hash">28.6. __hash__: объекты в множествах и словарях</a></li>
+<li><a href="ch-28-dunder.html#rich-comparison">28.7. Богатые сравнения</a></li>
+<li><a href="ch-28-dunder.html#len">28.8. __len__ и истинность</a></li>
+<li><a href="ch-28-dunder.html#operator-overloading">28.9. Перегрузка операторов</a></li>
+<li><a href="ch-28-dunder.html#callable">28.10. Вызываемые объекты</a></li>
+<li><a href="ch-28-dunder.html#how-many-dunders">28.11. Сколько методов реализовывать</a></li>
+<li><a href="ch-28-dunder.html#mistakes">28.12. Типичные ошибки</a></li>
+<li><a href="ch-28-dunder.html#упражнения">28.13. Упражнения</a></li>
+<li><a href="ch-28-dunder.html#проверка-понимания">28.14. Проверка понимания</a></li>
+<li><a href="ch-28-dunder.html#что-дальше">28.15. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a>
+<ul class="topic-list">
+<li><a href="ch-29-dataclasses-protocols.html#why">29.1. Зачем это нужно</a></li>
+<li><a href="ch-29-dataclasses-protocols.html#что-вы-сможете-после-этой-главы">29.2. Что вы сможете после этой главы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html#dataclass">29.3. Dataclass: данные без церемоний</a></li>
+<li><a href="ch-29-dataclasses-protocols.html#namedtuple">29.4. namedtuple: компактная неизменяемая запись</a></li>
+<li><a href="ch-29-dataclasses-protocols.html#interface">29.5. Интерфейс и контракт</a></li>
+<li><a href="ch-29-dataclasses-protocols.html#abc">29.6. Абстрактный базовый класс</a></li>
+<li><a href="ch-29-dataclasses-protocols.html#protocol">29.7. Структурная типизация и протоколы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html#choose">29.8. Что выбрать</a></li>
+<li><a href="ch-29-dataclasses-protocols.html#mistakes">29.9. Типичные ошибки</a></li>
+<li><a href="ch-29-dataclasses-protocols.html#упражнения">29.10. Упражнения</a></li>
+<li><a href="ch-29-dataclasses-protocols.html#проверка-понимания">29.11. Проверка понимания</a></li>
+<li><a href="ch-29-dataclasses-protocols.html#что-дальше">29.12. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a>
+<ul class="topic-list">
+<li><a href="ch-30-oop-design.html#why">30.1. Зачем это нужно</a></li>
+<li><a href="ch-30-oop-design.html#что-вы-сможете-после-этой-главы">30.2. Что вы сможете после этой главы</a></li>
+<li><a href="ch-30-oop-design.html#cohesion">30.3. Связность</a></li>
+<li><a href="ch-30-oop-design.html#boundaries">30.4. Как найти границу класса</a></li>
+<li><a href="ch-30-oop-design.html#coupling">30.5. Связанность</a></li>
+<li><a href="ch-30-oop-design.html#composition-over-inheritance">30.6. Композиция вместо наследования</a></li>
+<li><a href="ch-30-oop-design.html#api-design">30.7. Проектирование API</a></li>
+<li><a href="ch-30-oop-design.html#custom-exceptions">30.8. Собственные исключения</a></li>
+<li><a href="ch-30-oop-design.html#putting-together">30.9. Собираем вместе</a></li>
+<li><a href="ch-30-oop-design.html#mistakes">30.10. Типичные ошибки</a></li>
+<li><a href="ch-30-oop-design.html#упражнения">30.11. Упражнения</a></li>
+<li><a href="ch-30-oop-design.html#проверка-понимания">30.12. Проверка понимания</a></li>
+<li><a href="ch-30-oop-design.html#что-дальше">30.13. Что дальше</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<h2>Часть 6. Типизация, тестирование и инструменты</h2>
+<p class="section-note">Как делать код надёжным и поддерживаемым</p>
+<ul class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a>
+<ul class="topic-list">
+<li><a href="ch-31-typing.html#что-вы-сможете-после-этой-главы">31.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-31-typing.html#annotations">31.2. Аннотация: синтаксис и смысл</a></li>
+<li><a href="ch-31-typing.html#mypy">31.3. mypy: статическая проверка</a></li>
+<li><a href="ch-31-typing.html#union">31.4. Объединение типов и Optional</a></li>
+<li><a href="ch-31-typing.html#generics">31.5. Обобщённые типы</a></li>
+<li><a href="ch-31-typing.html#runtime">31.6. Типы во время выполнения</a></li>
+<li><a href="ch-31-typing.html#mistakes">31.7. Типичные ошибки</a></li>
+<li><a href="ch-31-typing.html#упражнения">31.8. Упражнения</a></li>
+<li><a href="ch-31-typing.html#проверка-понимания">31.9. Проверка понимания</a></li>
+<li><a href="ch-31-typing.html#что-дальше">31.10. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a>
+<ul class="topic-list">
+<li><a href="ch-32-testing.html#что-вы-сможете-после-этой-главы">32.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-32-testing.html#unit-test">32.2. Модульный тест и тестовый случай</a></li>
+<li><a href="ch-32-testing.html#pytest">32.3. pytest: соглашения и запуск</a></li>
+<li><a href="ch-32-testing.html#fixtures">32.4. Фикстуры и параметризация</a></li>
+<li><a href="ch-32-testing.html#tdd">32.5. Разработка через тесты</a></li>
+<li><a href="ch-32-testing.html#coverage">32.6. Покрытие, моки и регрессионные тесты</a></li>
+<li><a href="ch-32-testing.html#mistakes">32.7. Типичные ошибки</a></li>
+<li><a href="ch-32-testing.html#упражнения">32.8. Упражнения</a></li>
+<li><a href="ch-32-testing.html#проверка-понимания">32.9. Проверка понимания</a></li>
+<li><a href="ch-32-testing.html#что-дальше">32.10. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a>
+<ul class="topic-list">
+<li><a href="ch-33-project-tooling.html#что-вы-сможете-после-этой-главы">33.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-33-project-tooling.html#layout">33.2. Структура проекта</a></li>
+<li><a href="ch-33-project-tooling.html#venv">33.3. Виртуальное окружение</a></li>
+<li><a href="ch-33-project-tooling.html#dependencies">33.4. Зависимости и pyproject.toml</a></li>
+<li><a href="ch-33-project-tooling.html#quality">33.5. Линтеры и форматтеры</a></li>
+<li><a href="ch-33-project-tooling.html#versioning">33.6. Версионирование</a></li>
+<li><a href="ch-33-project-tooling.html#mistakes">33.7. Типичные ошибки</a></li>
+<li><a href="ch-33-project-tooling.html#упражнения">33.8. Упражнения</a></li>
+<li><a href="ch-33-project-tooling.html#проверка-понимания">33.9. Проверка понимания</a></li>
+<li><a href="ch-33-project-tooling.html#что-дальше">33.10. Что дальше</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<h2>Часть 7. Практическая разработка</h2>
+<p class="section-note">Стандартная библиотека, данные, сеть, конкурентность</p>
+<ul class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a>
+<ul class="topic-list">
+<li><a href="ch-34-stdlib.html#что-вы-сможете-после-этой-главы">34.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-34-stdlib.html#map">34.2. Карта стандартной библиотеки</a></li>
+<li><a href="ch-34-stdlib.html#collections">34.3. collections: контейнеры под задачу</a></li>
+<li><a href="ch-34-stdlib.html#itertools">34.4. itertools: ленивые конвейеры</a></li>
+<li><a href="ch-34-stdlib.html#functools-pathlib">34.5. functools и pathlib: функции и пути</a></li>
+<li><a href="ch-34-stdlib.html#enum">34.6. Enum: именованные константы</a></li>
+<li><a href="ch-34-stdlib.html#contextlib">34.7. contextlib: свои контекстные менеджеры</a></li>
+<li><a href="ch-34-stdlib.html#mistakes">34.8. Типичные ошибки</a></li>
+<li><a href="ch-34-stdlib.html#упражнения">34.9. Упражнения</a></li>
+<li><a href="ch-34-stdlib.html#проверка-понимания">34.10. Проверка понимания</a></li>
+<li><a href="ch-34-stdlib.html#что-дальше">34.11. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a>
+<ul class="topic-list">
+<li><a href="ch-35-os-network.html#что-вы-сможете-после-этой-главы">35.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-35-os-network.html#os">35.2. Модуль os: система и пути</a></li>
+<li><a href="ch-35-os-network.html#env">35.3. Переменные окружения</a></li>
+<li><a href="ch-35-os-network.html#subprocess">35.4. Процессы и subprocess</a></li>
+<li><a href="ch-35-os-network.html#http">35.5. URL и HTTP-запрос</a></li>
+<li><a href="ch-35-os-network.html#api-client">35.6. Клиент API</a></li>
+<li><a href="ch-35-os-network.html#mistakes">35.7. Типичные ошибки</a></li>
+<li><a href="ch-35-os-network.html#упражнения">35.8. Упражнения</a></li>
+<li><a href="ch-35-os-network.html#проверка-понимания">35.9. Проверка понимания</a></li>
+<li><a href="ch-35-os-network.html#что-дальше">35.10. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a>
+<ul class="topic-list">
+<li><a href="ch-36-data-storage.html#что-вы-сможете-после-этой-главы">36.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-36-data-storage.html#tables">36.2. Таблицы и SQL</a></li>
+<li><a href="ch-36-data-storage.html#sqlite">36.3. sqlite3: встроенная база</a></li>
+<li><a href="ch-36-data-storage.html#injection">36.4. Параметризованные запросы</a></li>
+<li><a href="ch-36-data-storage.html#transactions">36.5. Транзакции</a></li>
+<li><a href="ch-36-data-storage.html#serialization">36.6. Сериализация: JSON и CSV</a></li>
+<li><a href="ch-36-data-storage.html#when-not-db">36.7. Когда база не нужна</a></li>
+<li><a href="ch-36-data-storage.html#orm">36.8. ORM</a></li>
+<li><a href="ch-36-data-storage.html#mistakes">36.9. Типичные ошибки</a></li>
+<li><a href="ch-36-data-storage.html#упражнения">36.10. Упражнения</a></li>
+<li><a href="ch-36-data-storage.html#проверка-понимания">36.11. Проверка понимания</a></li>
+<li><a href="ch-36-data-storage.html#что-дальше">36.12. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a>
+<ul class="topic-list">
+<li><a href="ch-37-time-logging.html#что-вы-сможете-после-этой-главы">37.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-37-time-logging.html#datetime">37.2. datetime: даты, время и интервалы</a></li>
+<li><a href="ch-37-time-logging.html#timezone">37.3. Часовые пояса</a></li>
+<li><a href="ch-37-time-logging.html#timestamp">37.4. Отметки времени и ISO 8601</a></li>
+<li><a href="ch-37-time-logging.html#logging">37.5. Модуль logging: уровни и обработчики</a></li>
+<li><a href="ch-37-time-logging.html#structured">37.6. Структурированное логирование</a></li>
+<li><a href="ch-37-time-logging.html#mistakes">37.7. Типичные ошибки</a></li>
+<li><a href="ch-37-time-logging.html#упражнения">37.8. Упражнения</a></li>
+<li><a href="ch-37-time-logging.html#проверка-понимания">37.9. Проверка понимания</a></li>
+<li><a href="ch-37-time-logging.html#что-дальше">37.10. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a>
+<ul class="topic-list">
+<li><a href="ch-38-concurrency.html#что-вы-сможете-после-этой-главы">38.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-38-concurrency.html#concepts">38.2. Конкурентность и параллелизм</a></li>
+<li><a href="ch-38-concurrency.html#threads">38.3. Потоки</a></li>
+<li><a href="ch-38-concurrency.html#gil">38.4. GIL: что это и чего он не делает</a></li>
+<li><a href="ch-38-concurrency.html#race">38.5. Состояние гонки и блокировки</a></li>
+<li><a href="ch-38-concurrency.html#processes">38.6. Процессы и выбор инструмента</a></li>
+<li><a href="ch-38-concurrency.html#mistakes">38.7. Типичные ошибки</a></li>
+<li><a href="ch-38-concurrency.html#упражнения">38.8. Упражнения</a></li>
+<li><a href="ch-38-concurrency.html#проверка-понимания">38.9. Проверка понимания</a></li>
+<li><a href="ch-38-concurrency.html#что-дальше">38.10. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a>
+<ul class="topic-list">
+<li><a href="ch-39-asyncio.html#что-вы-сможете-после-этой-главы">39.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-39-asyncio.html#why">39.2. Задача, которую решает асинхронность</a></li>
+<li><a href="ch-39-asyncio.html#task-model">39.3. Модель выполнения задач</a></li>
+<li><a href="ch-39-asyncio.html#coroutines">39.4. Корутины и await</a></li>
+<li><a href="ch-39-asyncio.html#awaitable">39.5. Awaitable-объекты</a></li>
+<li><a href="ch-39-asyncio.html#event-loop">39.6. Цикл событий</a></li>
+<li><a href="ch-39-asyncio.html#tasks">39.7. Задачи</a></li>
+<li><a href="ch-39-asyncio.html#concurrency">39.8. Конкурентность и порядок выполнения</a></li>
+<li><a href="ch-39-asyncio.html#taskgroup">39.9. Структурная конкурентность: TaskGroup</a></li>
+<li><a href="ch-39-asyncio.html#cancellation">39.10. Отмена задачи</a></li>
+<li><a href="ch-39-asyncio.html#timeouts">39.11. Таймауты</a></li>
+<li><a href="ch-39-asyncio.html#async-context-manager">39.12. Асинхронные контекстные менеджеры</a></li>
+<li><a href="ch-39-asyncio.html#blocking">39.13. Блокирующие вызовы</a></li>
+<li><a href="ch-39-asyncio.html#mistakes">39.14. Типичные ошибки</a></li>
+<li><a href="ch-39-asyncio.html#упражнения">39.15. Упражнения</a></li>
+<li><a href="ch-39-asyncio.html#check">39.16. Проверка понимания</a></li>
+<li><a href="ch-39-asyncio.html#links">39.17. Связи</a></li>
+</ul>
+</li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a>
+<ul class="topic-list">
+<li><a href="ch-40-performance.html#что-вы-сможете-после-этой-главы">40.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-40-performance.html#measure-first">40.2. Сначала измерение, потом изменение</a></li>
+<li><a href="ch-40-performance.html#complexity">40.3. Алгоритмическая сложность</a></li>
+<li><a href="ch-40-performance.html#profiling">40.4. Профилирование</a></li>
+<li><a href="ch-40-performance.html#bottleneck">40.5. Узкое место</a></li>
+<li><a href="ch-40-performance.html#memoization">40.6. Мемоизация</a></li>
+<li><a href="ch-40-performance.html#optimizations">40.7. Оптимизации, которые стоит знать</a></li>
+<li><a href="ch-40-performance.html#mistakes">40.8. Типичные ошибки</a></li>
+<li><a href="ch-40-performance.html#упражнения">40.9. Упражнения</a></li>
+<li><a href="ch-40-performance.html#check">40.10. Проверка понимания</a></li>
+<li><a href="ch-40-performance.html#links">40.11. Связи</a></li>
+</ul>
+</li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a>
+<ul class="topic-list">
+<li><a href="ch-41-security.html#что-вы-сможете-после-этой-главы">41.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-41-security.html#threat-model">41.2. Модель угроз и границы доверия</a></li>
+<li><a href="ch-41-security.html#validation">41.3. Валидация ввода</a></li>
+<li><a href="ch-41-security.html#injection">41.4. Инъекция</a></li>
+<li><a href="ch-41-security.html#secrets">41.5. Управление секретами</a></li>
+<li><a href="ch-41-security.html#password-hashing">41.6. Хеширование паролей</a></li>
+<li><a href="ch-41-security.html#deserialization">41.7. Небезопасная десериализация</a></li>
+<li><a href="ch-41-security.html#dependencies">41.8. Уязвимости зависимостей</a></li>
+<li><a href="ch-41-security.html#least-privilege">41.9. Принцип наименьших привилегий</a></li>
+<li><a href="ch-41-security.html#not-security">41.10. Что не защищает</a></li>
+<li><a href="ch-41-security.html#mistakes">41.11. Типичные ошибки</a></li>
+<li><a href="ch-41-security.html#упражнения">41.12. Упражнения</a></li>
+<li><a href="ch-41-security.html#check">41.13. Проверка понимания</a></li>
+<li><a href="ch-41-security.html#links">41.14. Связи</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<h2>Часть 8. Внутреннее устройство</h2>
+<p class="section-note">Как Python устроен внутри</p>
+<ul class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a>
+<ul class="topic-list">
+<li><a href="ch-42-internals.html#что-вы-сможете-после-этой-главы">42.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-42-internals.html#guarantees">42.2. Гарантия языка и деталь реализации</a></li>
+<li><a href="ch-42-internals.html#bytecode">42.3. От исходного кода к байткоду</a></li>
+<li><a href="ch-42-internals.html#interpreter-loop">42.4. Цикл интерпретатора</a></li>
+<li><a href="ch-42-internals.html#pyobject">42.5. PyObject: из чего состоит объект</a></li>
+<li><a href="ch-42-internals.html#refcounting">42.6. Подсчёт ссылок</a></li>
+<li><a href="ch-42-internals.html#garbage-collection">42.7. Сборка мусора</a></li>
+<li><a href="ch-42-internals.html#memory-management">42.8. Управление памятью</a></li>
+<li><a href="ch-42-internals.html#small-int-cache">42.9. Кэш малых целых</a></li>
+<li><a href="ch-42-internals.html#mistakes">42.10. Типичные ошибки</a></li>
+<li><a href="ch-42-internals.html#упражнения">42.11. Упражнения</a></li>
+<li><a href="ch-42-internals.html#check">42.12. Проверка понимания</a></li>
+<li><a href="ch-42-internals.html#links">42.13. Связи</a></li>
+</ul>
+</li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a>
+<ul class="topic-list">
+<li><a href="ch-43-metaprogramming.html#что-вы-сможете-после-этой-главы">43.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-43-metaprogramming.html#what-is">43.2. Что такое метапрограммирование</a></li>
+<li><a href="ch-43-metaprogramming.html#introspection">43.3. Интроспекция</a></li>
+<li><a href="ch-43-metaprogramming.html#attribute-lookup">43.4. Поиск атрибута</a></li>
+<li><a href="ch-43-metaprogramming.html#descriptors">43.5. Дескрипторы</a></li>
+<li><a href="ch-43-metaprogramming.html#dynamic-attributes">43.6. Динамические атрибуты</a></li>
+<li><a href="ch-43-metaprogramming.html#metaclasses">43.7. Метаклассы</a></li>
+<li><a href="ch-43-metaprogramming.html#class-decorators">43.8. Декораторы классов</a></li>
+<li><a href="ch-43-metaprogramming.html#when-justified">43.9. Когда это оправдано</a></li>
+<li><a href="ch-43-metaprogramming.html#testing">43.10. Как тестировать метапрограммирование</a></li>
+<li><a href="ch-43-metaprogramming.html#mistakes">43.11. Типичные ошибки</a></li>
+<li><a href="ch-43-metaprogramming.html#упражнения">43.12. Упражнения</a></li>
+<li><a href="ch-43-metaprogramming.html#check">43.13. Проверка понимания</a></li>
+<li><a href="ch-43-metaprogramming.html#links">43.14. Связи</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<h2>Часть 9. Инженерия и сопровождение</h2>
+<p class="section-note">Как проектировать и сопровождать системы</p>
+<ul class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a>
+<ul class="topic-list">
+<li><a href="ch-44-architecture.html#что-вы-сможете-после-этой-главы">44.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-44-architecture.html#architecture">44.2. Архитектура — это решения о зависимостях</a></li>
+<li><a href="ch-44-architecture.html#layering">44.3. Слоистость</a></li>
+<li><a href="ch-44-architecture.html#solid">44.4. SOLID</a></li>
+<li><a href="ch-44-architecture.html#dependency-injection">44.5. Внедрение зависимостей</a></li>
+<li><a href="ch-44-architecture.html#patterns">44.6. Паттерны проектирования</a></li>
+<li><a href="ch-44-architecture.html#how-to-choose">44.7. Как выбирать</a></li>
+<li><a href="ch-44-architecture.html#mistakes">44.8. Типичные ошибки</a></li>
+<li><a href="ch-44-architecture.html#упражнения">44.9. Упражнения</a></li>
+<li><a href="ch-44-architecture.html#check">44.10. Проверка понимания</a></li>
+<li><a href="ch-44-architecture.html#links">44.11. Связи</a></li>
+</ul>
+</li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a>
+<ul class="topic-list">
+<li><a href="ch-45-git-ci-releases.html#контроль-версий-зачем-он-нужен">45.1. Контроль версий: зачем он нужен</a></li>
+<li><a href="ch-45-git-ci-releases.html#базовый-цикл-git">45.2. Базовый цикл Git</a></li>
+<li><a href="ch-45-git-ci-releases.html#ветки-и-слияние">45.3. Ветки и слияние</a></li>
+<li><a href="ch-45-git-ci-releases.html#ревью-кода">45.4. Ревью кода</a></li>
+<li><a href="ch-45-git-ci-releases.html#непрерывная-интеграция">45.5. Непрерывная интеграция</a></li>
+<li><a href="ch-45-git-ci-releases.html#версионирование-и-релизы">45.6. Версионирование и релизы</a></li>
+<li><a href="ch-45-git-ci-releases.html#сопровождение-и-мониторинг">45.7. Сопровождение и мониторинг</a></li>
+<li><a href="ch-45-git-ci-releases.html#типичные-ошибки">45.8. Типичные ошибки</a></li>
+<li><a href="ch-45-git-ci-releases.html#упражнения">45.9. Упражнения</a></li>
+<li><a href="ch-45-git-ci-releases.html#проверка-понимания">45.10. Проверка понимания</a></li>
+<li><a href="ch-45-git-ci-releases.html#что-дальше">45.11. Что дальше</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<h2>Часть 10. Проекты</h2>
+<p class="section-note">Полные прикладные работы</p>
+<ul class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a>
+<ul class="topic-list">
+<li><a href="ch-46-project-cli.html#зачем-этот-проект">46.1. Зачем этот проект</a></li>
+<li><a href="ch-46-project-cli.html#что-должно-получиться">46.2. Что должно получиться</a></li>
+<li><a href="ch-46-project-cli.html#архитектура-три-слоя">46.3. Архитектура: три слоя</a></li>
+<li><a href="ch-46-project-cli.html#шаг-1-модель-и-валидация">46.4. Шаг 1. Модель и валидация</a></li>
+<li><a href="ch-46-project-cli.html#шаг-2-сервис">46.5. Шаг 2. Сервис</a></li>
+<li><a href="ch-46-project-cli.html#шаг-3-хранилище">46.6. Шаг 3. Хранилище</a></li>
+<li><a href="ch-46-project-cli.html#шаг-4-командная-строка">46.7. Шаг 4. Командная строка</a></li>
+<li><a href="ch-46-project-cli.html#шаг-5-тесты">46.8. Шаг 5. Тесты</a></li>
+<li><a href="ch-46-project-cli.html#шаг-6-упаковка-и-точка-входа">46.9. Шаг 6. Упаковка и точка входа</a></li>
+<li><a href="ch-46-project-cli.html#типичные-ошибки-проекта">46.10. Типичные ошибки проекта</a></li>
+<li><a href="ch-46-project-cli.html#упражнения">46.11. Упражнения</a></li>
+<li><a href="ch-46-project-cli.html#проверка-понимания">46.12. Проверка понимания</a></li>
+<li><a href="ch-46-project-cli.html#что-дальше">46.13. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a>
+<ul class="topic-list">
+<li><a href="ch-47-project-api.html#зачем-этот-проект">47.1. Зачем этот проект</a></li>
+<li><a href="ch-47-project-api.html#что-должно-получиться">47.2. Что должно получиться</a></li>
+<li><a href="ch-47-project-api.html#rest-ресурсы-и-методы">47.3. REST: ресурсы и методы</a></li>
+<li><a href="ch-47-project-api.html#путь-запроса">47.4. Путь запроса</a></li>
+<li><a href="ch-47-project-api.html#коды-состояния">47.5. Коды состояния</a></li>
+<li><a href="ch-47-project-api.html#валидация-полезной-нагрузки">47.6. Валидация полезной нагрузки</a></li>
+<li><a href="ch-47-project-api.html#хранилище-sqlite">47.7. Хранилище: SQLite</a></li>
+<li><a href="ch-47-project-api.html#обработчик-и-маршрутизация">47.8. Обработчик и маршрутизация</a></li>
+<li><a href="ch-47-project-api.html#промышленный-вариант-fastapi">47.9. Промышленный вариант: FastAPI</a></li>
+<li><a href="ch-47-project-api.html#тесты-api">47.10. Тесты API</a></li>
+<li><a href="ch-47-project-api.html#безопасность-и-типичные-ошибки">47.11. Безопасность и типичные ошибки</a></li>
+<li><a href="ch-47-project-api.html#упражнения">47.12. Упражнения</a></li>
+<li><a href="ch-47-project-api.html#проверка-понимания">47.13. Проверка понимания</a></li>
+<li><a href="ch-47-project-api.html#что-дальше">47.14. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a>
+<ul class="topic-list">
+<li><a href="ch-48-project-async.html#зачем-этот-проект">48.1. Зачем этот проект</a></li>
+<li><a href="ch-48-project-async.html#что-должно-получиться">48.2. Что должно получиться</a></li>
+<li><a href="ch-48-project-async.html#асинхронный-клиент">48.3. Асинхронный клиент</a></li>
+<li><a href="ch-48-project-async.html#ограничение-параллелизма">48.4. Ограничение параллелизма</a></li>
+<li><a href="ch-48-project-async.html#политика-повторов">48.5. Политика повторов</a></li>
+<li><a href="ch-48-project-async.html#идемпотентность">48.6. Идемпотентность</a></li>
+<li><a href="ch-48-project-async.html#наблюдаемость">48.7. Наблюдаемость</a></li>
+<li><a href="ch-48-project-async.html#сборка-проекта">48.8. Сборка проекта</a></li>
+<li><a href="ch-48-project-async.html#отмена-и-таймауты">48.9. Отмена и таймауты</a></li>
+<li><a href="ch-48-project-async.html#тесты">48.10. Тесты</a></li>
+<li><a href="ch-48-project-async.html#типичные-ошибки">48.11. Типичные ошибки</a></li>
+<li><a href="ch-48-project-async.html#упражнения">48.12. Упражнения</a></li>
+<li><a href="ch-48-project-async.html#проверка-понимания">48.13. Проверка понимания</a></li>
+<li><a href="ch-48-project-async.html#что-дальше">48.14. Что дальше</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<h2>Часть 11. Профессиональная практика и прикладные темы</h2>
+<p class="section-note">То, что отличает работающий код от профессионального</p>
+<ul class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a>
+<ul class="topic-list">
+<li><a href="ch-49-style-naming.html#что-вы-сможете-после-этой-главы">49.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-49-style-naming.html#why-style">49.2. Почему стиль — инженерный инструмент</a></li>
+<li><a href="ch-49-style-naming.html#pep8">49.3. PEP 8: что нормирует стандарт</a></li>
+<li><a href="ch-49-style-naming.html#tools">49.4. Форматтер и линтер: что автоматизируется</a></li>
+<li><a href="ch-49-style-naming.html#naming">49.5. Соглашение об именовании</a></li>
+<li><a href="ch-49-style-naming.html#comments">49.6. Комментарии: объяснять причину</a></li>
+<li><a href="ch-49-style-naming.html#docstrings">49.7. Стиль docstring</a></li>
+<li><a href="ch-49-style-naming.html#magic-numbers">49.8. Магические числа и константы</a></li>
+<li><a href="ch-49-style-naming.html#adoption">49.9. Как стиль закрепляется в проекте</a></li>
+<li><a href="ch-49-style-naming.html#mistakes">49.10. Типичные ошибки</a></li>
+<li><a href="ch-49-style-naming.html#упражнения">49.11. Упражнения</a></li>
+<li><a href="ch-49-style-naming.html#проверка-понимания">49.12. Проверка понимания</a></li>
+<li><a href="ch-49-style-naming.html#что-дальше">49.13. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a>
+<ul class="topic-list">
+<li><a href="ch-50-pythonic-gotchas.html#why">50.1. Зачем эта глава</a></li>
+<li><a href="ch-50-pythonic-gotchas.html#zen">50.2. Zen of Python</a></li>
+<li><a href="ch-50-pythonic-gotchas.html#idioms">50.3. Идиомы Python</a></li>
+<li><a href="ch-50-pythonic-gotchas.html#gotchas">50.4. Ловушки языка</a></li>
+<li><a href="ch-50-pythonic-gotchas.html#pythonic-vs-working">50.5. Питонический или просто работающий</a></li>
+<li><a href="ch-50-pythonic-gotchas.html#mistakes">50.6. Типичные ошибки</a></li>
+<li><a href="ch-50-pythonic-gotchas.html#упражнения">50.7. Упражнения</a></li>
+<li><a href="ch-50-pythonic-gotchas.html#проверка-понимания">50.8. Проверка понимания</a></li>
+<li><a href="ch-50-pythonic-gotchas.html#что-дальше">50.9. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a>
+<ul class="topic-list">
+<li><a href="ch-51-regex.html#что-вы-сможете-после-этой-главы">51.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-51-regex.html#why">51.2. Зачем нужны регулярные выражения</a></li>
+<li><a href="ch-51-regex.html#first-pattern">51.3. Первый шаблон: поиск по структуре</a></li>
+<li><a href="ch-51-regex.html#classes">51.4. Классы символов</a></li>
+<li><a href="ch-51-regex.html#quantifiers">51.5. Квантификаторы</a></li>
+<li><a href="ch-51-regex.html#anchors">51.6. Якоря и границы</a></li>
+<li><a href="ch-51-regex.html#groups">51.7. Группы и альтернативы</a></li>
+<li><a href="ch-51-regex.html#greedy">51.8. Жадность и ленивость</a></li>
+<li><a href="ch-51-regex.html#flags">51.9. Флаги</a></li>
+<li><a href="ch-51-regex.html#re-module">51.10. Модуль re: основные функции</a></li>
+<li><a href="ch-51-regex.html#practice">51.11. Практика: проверки, логи, замены</a></li>
+<li><a href="ch-51-regex.html#limits">51.12. Когда регулярные выражения — плохой выбор</a></li>
+<li><a href="ch-51-regex.html#mistakes">51.13. Типичные ошибки</a></li>
+<li><a href="ch-51-regex.html#упражнения">51.14. Упражнения</a></li>
+<li><a href="ch-51-regex.html#проверка-понимания">51.15. Проверка понимания</a></li>
+<li><a href="ch-51-regex.html#что-дальше">51.16. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a>
+<ul class="topic-list">
+<li><a href="ch-52-complexity.html#что-вы-сможете-после-этой-главы">52.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-52-complexity.html#why-growth">52.2. Почему «на моей машине быстро» — не аргумент</a></li>
+<li><a href="ch-52-complexity.html#big-o">52.3. O-нотация</a></li>
+<li><a href="ch-52-complexity.html#orders">52.4. Порядки роста</a></li>
+<li><a href="ch-52-complexity.html#measuring">52.5. Как измерять рост</a></li>
+<li><a href="ch-52-complexity.html#builtin">52.6. Сложность встроенных структур</a></li>
+<li><a href="ch-52-complexity.html#choice">52.7. Выбор структуры под задачу</a></li>
+<li><a href="ch-52-complexity.html#space">52.8. Пространственная сложность</a></li>
+<li><a href="ch-52-complexity.html#premature">52.9. Преждевременная оптимизация</a></li>
+<li><a href="ch-52-complexity.html#mistakes">52.10. Типичные ошибки</a></li>
+<li><a href="ch-52-complexity.html#упражнения">52.11. Упражнения</a></li>
+<li><a href="ch-52-complexity.html#check">52.12. Проверка понимания</a></li>
+<li><a href="ch-52-complexity.html#links">52.13. Связи</a></li>
+</ul>
+</li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a>
+<ul class="topic-list">
+<li><a href="ch-53-refactoring.html#why">53.1. Зачем это нужно</a></li>
+<li><a href="ch-53-refactoring.html#что-вы-сможете-после-этой-главы">53.2. Что вы сможете после этой главы</a></li>
+<li><a href="ch-53-refactoring.html#code-smells">53.3. Запахи кода</a></li>
+<li><a href="ch-53-refactoring.html#refactoring">53.4. Рефакторинг</a></li>
+<li><a href="ch-53-refactoring.html#technical-debt">53.5. Технический долг</a></li>
+<li><a href="ch-53-refactoring.html#legacy">53.6. Унаследованный код</a></li>
+<li><a href="ch-53-refactoring.html#incident">53.7. Инциденты и разбор без виноватых</a></li>
+<li><a href="ch-53-refactoring.html#review">53.8. Ревью изменений и когда рефакторить</a></li>
+<li><a href="ch-53-refactoring.html#mistakes">53.9. Типичные ошибки</a></li>
+<li><a href="ch-53-refactoring.html#упражнения">53.10. Упражнения</a></li>
+<li><a href="ch-53-refactoring.html#проверка-понимания">53.11. Проверка понимания</a></li>
+<li><a href="ch-53-refactoring.html#связи-и-что-дальше">53.12. Связи и что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a>
+<ul class="topic-list">
+<li><a href="ch-54-practice.html#что-вы-сможете-после-этой-главы">54.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-54-practice.html#method">54.2. Как решать незнакомую задачу</a></li>
+<li><a href="ch-54-practice.html#fizzbuzz">54.3. 1. FizzBuzz: порядок условий</a></li>
+<li><a href="ch-54-practice.html#hanoi">54.4. 2. Ханойская башня: рекурсия и индукция</a></li>
+<li><a href="ch-54-practice.html#stack">54.5. 3. Палиндром и скобочная последовательность</a></li>
+<li><a href="ch-54-practice.html#game">54.6. 4. «Угадай число»: игровой цикл и конечный автомат</a></li>
+<li><a href="ch-54-practice.html#collatz">54.7. 5. Collatz: while, границы и честность</a></li>
+<li><a href="ch-54-practice.html#caesar">54.8. 6. Шифр Цезаря: строки и обратимость</a></li>
+<li><a href="ch-54-practice.html#requirements">54.9. 7. От требований к тестам</a></li>
+<li><a href="ch-54-practice.html#mistakes">54.10. Типичные ошибки на практикумах</a></li>
+<li><a href="ch-54-practice.html#упражнения">54.11. Упражнения</a></li>
+<li><a href="ch-54-practice.html#проверка-понимания">54.12. Проверка понимания</a></li>
+<li><a href="ch-54-practice.html#что-дальше">54.13. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a>
+<ul class="topic-list">
+<li><a href="ch-55-tkinter.html#что-вы-сможете-после-этой-главы">55.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-55-tkinter.html#when">55.2. Зачем нужен GUI и когда он не нужен</a></li>
+<li><a href="ch-55-tkinter.html#window">55.3. Минимальное окно</a></li>
+<li><a href="ch-55-tkinter.html#widgets">55.4. Виджеты</a></li>
+<li><a href="ch-55-tkinter.html#layout">55.5. Компоновка</a></li>
+<li><a href="ch-55-tkinter.html#events">55.6. События и обработчики</a></li>
+<li><a href="ch-55-tkinter.html#model">55.7. Состояние приложения: модель отдельно от интерфейса</a></li>
+<li><a href="ch-55-tkinter.html#converter">55.8. Пример: конвертер единиц</a></li>
+<li><a href="ch-55-tkinter.html#mistakes">55.9. Типичные ошибки</a></li>
+<li><a href="ch-55-tkinter.html#testing">55.10. Как тестировать GUI-логику без окна</a></li>
+<li><a href="ch-55-tkinter.html#упражнения">55.11. Упражнения</a></li>
+<li><a href="ch-55-tkinter.html#проверка-понимания">55.12. Проверка понимания</a></li>
+<li><a href="ch-55-tkinter.html#что-дальше">55.13. Что дальше</a></li>
+</ul>
+</li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a>
+<ul class="topic-list">
+<li><a href="ch-56-dataviz.html#что-вы-сможете-после-этой-главы">56.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-56-dataviz.html#why">56.2. Зачем визуализация</a></li>
+<li><a href="ch-56-dataviz.html#anatomy">56.3. Из чего состоит график</a></li>
+<li><a href="ch-56-dataviz.html#types">56.4. Выбор типа диаграммы</a></li>
+<li><a href="ch-56-dataviz.html#matplotlib">56.5. matplotlib: фигура и оси</a></li>
+<li><a href="ch-56-dataviz.html#plot-kinds">56.6. Четыре базовых графика</a></li>
+<li><a href="ch-56-dataviz.html#axes">56.7. Оси, подписи и легенда</a></li>
+<li><a href="ch-56-dataviz.html#honesty">56.8. Честность графика</a></li>
+<li><a href="ch-56-dataviz.html#practice">56.9. Практика: от данных к графику</a></li>
+<li><a href="ch-56-dataviz.html#export">56.10. Экспорт рисунка</a></li>
+<li><a href="ch-56-dataviz.html#table">56.11. Когда лучше таблица</a></li>
+<li><a href="ch-56-dataviz.html#mistakes">56.12. Типичные ошибки</a></li>
+<li><a href="ch-56-dataviz.html#упражнения">56.13. Упражнения</a></li>
+<li><a href="ch-56-dataviz.html#check">56.14. Проверка понимания</a></li>
+<li><a href="ch-56-dataviz.html#links">56.15. Связи</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2>Справочники</h2><ul class="link-list"><li><a href="map.html">Карта обучения</a></li><li><a href="glossary.html">Глоссарий</a></li><li><a href="sources.html">Источники и лицензии</a></li></ul>
+<h2>После книги</h2><ul class="link-list"><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

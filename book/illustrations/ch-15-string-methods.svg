@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 400" role="img"
+     aria-labelledby="ttl15b desc15b" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl15b">Методы строки возвращают новую строку, а исходная остаётся прежней</title>
+  <desc id="desc15b">Исходная строка s содержит два пробела, слово Python и ещё два пробела. Метод strip убирает пробельные символы по краям и даёт строку Python. Метод upper переводит буквы в верхний регистр и даёт строку с пробелами и PYTHON. Метод replace заменяет Py на JS и даёт строку с пробелами и JSthon. Исходная строка s не меняется, потому что строки в Python неизменяемы.</desc>
+
+  <text x="30" y="32" font-size="17" font-weight="bold" fill="#1d3550">Методы строки создают новую строку</text>
+
+  <!-- исходная строка -->
+  <rect x="250" y="58" width="280" height="62" rx="9" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="390" y="84" text-anchor="middle" font-size="13" fill="#33557a">исходная строка</text>
+  <text x="390" y="108" text-anchor="middle" font-size="16" font-weight="bold" fill="#1d3550" font-family="'DejaVu Sans Mono', monospace">s = "  Python  "</text>
+
+  <!-- стрелки -->
+  <line x1="300" y1="120" x2="170" y2="186" stroke="#33557a" stroke-width="2"/>
+  <polygon points="166,192 172,181 179,188" fill="#33557a"/>
+  <line x1="390" y1="120" x2="390" y2="186" stroke="#33557a" stroke-width="2"/>
+  <polygon points="390,192 385,182 395,182" fill="#33557a"/>
+  <line x1="480" y1="120" x2="610" y2="186" stroke="#33557a" stroke-width="2"/>
+  <polygon points="614,192 607,181 601,188" fill="#33557a"/>
+
+  <!-- результаты -->
+  <rect x="40" y="192" width="220" height="96" rx="9" fill="#eaf3ea" stroke="#3c6b47" stroke-width="2"/>
+  <text x="56" y="216" font-size="13" font-weight="bold" fill="#254a2d" font-family="'DejaVu Sans Mono', monospace">s.strip()</text>
+  <text x="56" y="250" font-size="15" font-weight="bold" fill="#254a2d" font-family="'DejaVu Sans Mono', monospace">"Python"</text>
+  <text x="56" y="274" font-size="12" fill="#254a2d">пробельные символы убраны</text>
+
+  <rect x="290" y="192" width="220" height="96" rx="9" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="306" y="216" font-size="13" font-weight="bold" fill="#4b3a16" font-family="'DejaVu Sans Mono', monospace">s.upper()</text>
+  <text x="306" y="250" font-size="15" font-weight="bold" fill="#4b3a16" font-family="'DejaVu Sans Mono', monospace">"  PYTHON  "</text>
+  <text x="306" y="274" font-size="12" fill="#4b3a16">регистр изменён, пробелы нет</text>
+
+  <rect x="540" y="192" width="220" height="96" rx="9" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="556" y="216" font-size="13" font-weight="bold" fill="#1d3550" font-family="'DejaVu Sans Mono', monospace">s.replace("Py", "JS")</text>
+  <text x="556" y="250" font-size="15" font-weight="bold" fill="#1d3550" font-family="'DejaVu Sans Mono', monospace">"  JSthon  "</text>
+  <text x="556" y="274" font-size="12" fill="#1d3550">заменён только фрагмент</text>
+
+  <!-- исходная не изменилась -->
+  <rect x="250" y="308" width="280" height="52" rx="9" fill="#fdf1f1" stroke="#8a2b2b" stroke-width="2"/>
+  <text x="390" y="330" text-anchor="middle" font-size="13" fill="#8a2b2b">s по-прежнему</text>
+  <text x="390" y="350" text-anchor="middle" font-size="15" font-weight="bold" fill="#8a2b2b" font-family="'DejaVu Sans Mono', monospace">"  Python  "</text>
+
+  <line x1="30" y1="376" x2="750" y2="376" stroke="#c9c2b4" stroke-width="1.5"/>
+  <text x="30" y="394" font-size="13" fill="#4b3a16">Строки неизменяемы: без присваивания результат вызова теряется.</text>
+</svg>

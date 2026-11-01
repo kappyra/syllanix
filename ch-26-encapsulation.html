@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Атрибуты, свойства и инкапсуляция — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-26-encapsulation.html" aria-current="page">26. Атрибуты, свойства и инкапсуляция</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-26-encapsulation.html#why">26.1. Зачем это нужно</a></li>
+<li><a href="ch-26-encapsulation.html#что-вы-сможете-после-этой-главы">26.2. Что вы сможете после этой главы</a></li>
+<li><a href="ch-26-encapsulation.html#class-instance-attributes">26.3. Атрибуты класса и атрибуты экземпляра</a></li>
+<li><a href="ch-26-encapsulation.html#encapsulation">26.4. Инкапсуляция и соглашения об именах</a></li>
+<li><a href="ch-26-encapsulation.html#property">26.5. Свойства: вычисляемый атрибут</a></li>
+<li><a href="ch-26-encapsulation.html#setter">26.6. Сеттер и контроль инвариантов</a></li>
+<li><a href="ch-26-encapsulation.html#class-api">26.7. Границы API класса</a></li>
+<li><a href="ch-26-encapsulation.html#mistakes">26.8. Типичные ошибки</a></li>
+<li><a href="ch-26-encapsulation.html#упражнения">26.9. Упражнения</a></li>
+<li><a href="ch-26-encapsulation.html#проверка-понимания">26.10. Проверка понимания</a></li>
+<li><a href="ch-26-encapsulation.html#что-дальше">26.11. Что дальше</a></li>
+</ol></details></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 5. Объектно-ориентированное программирование</span><span class="sep">›</span><span>Глава 26</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Объектно-ориентированное программирование · глава 26</p>
+<h1 id="атрибуты-свойства-и-инкапсуляция">Атрибуты, свойства и инкапсуляция</h1>
+<p class="chapter-summary">Как управлять доступом к состоянию: атрибуты класса и экземпляра, соглашения об именах, свойства и контроль инвариантов.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#why"><span class="toc-number">26.1</span> Зачем это нужно</a></li>
+<li class="level-2"><a href="#что-вы-сможете-после-этой-главы"><span class="toc-number">26.2</span> Что вы сможете после этой главы</a></li>
+<li class="level-2"><a href="#class-instance-attributes"><span class="toc-number">26.3</span> Атрибуты класса и атрибуты экземпляра</a></li>
+<li class="level-2"><a href="#encapsulation"><span class="toc-number">26.4</span> Инкапсуляция и соглашения об именах</a></li>
+<li class="level-2"><a href="#property"><span class="toc-number">26.5</span> Свойства: вычисляемый атрибут</a></li>
+<li class="level-2"><a href="#setter"><span class="toc-number">26.6</span> Сеттер и контроль инвариантов</a></li>
+<li class="level-2"><a href="#class-api"><span class="toc-number">26.7</span> Границы API класса</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">26.8</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">26.9</span> Упражнения</a></li>
+<li class="level-2"><a href="#проверка-понимания"><span class="toc-number">26.10</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#что-дальше"><span class="toc-number">26.11</span> Что дальше</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#mutable-class-attribute">Ловушка изменяемого атрибута класса</a></li>
+<li class="level-3"><a href="#attribute-or-property">Атрибут или свойство: правило выбора</a></li>
+<li class="level-3"><a href="#public-surface">Что считать публичным</a></li>
+<li class="level-3"><a href="#ex-ch26-01">1. Прогноз вывода</a></li>
+<li class="level-3"><a href="#ex-ch26-02">2. Атрибут класса для константы</a></li>
+<li class="level-3"><a href="#ex-ch26-03">3. Исправление общей коллекции</a></li>
+<li class="level-3"><a href="#ex-ch26-04">4. Свойство только для чтения</a></li>
+<li class="level-3"><a href="#ex-ch26-05">5. Сеттер с проверкой</a></li>
+<li class="level-3"><a href="#ex-ch26-06">6. Искажение имён</a></li>
+<li class="level-3"><a href="#ex-ch26-07">7. Анализ: свойство вместо атрибута</a></li>
+<li class="level-3"><a href="#ex-ch26-08">8. Счётчик созданных объектов</a></li>
+<li class="level-3"><a href="#ex-ch26-09">9. Исправление рекурсии</a></li>
+<li class="level-3"><a href="#ex-ch26-10">10. Мини-проект: товар со скидкой</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>В предыдущей главе состояние объекта было открыто: любой код мог записать в
+атрибут что угодно, включая значение, нарушающее правила класса. Счёт
+допускал отрицательный баланс, прямоугольник — отрицательную сторону. Это
+не ошибка языка, а вопрос дисциплины: Python позволяет закрыть состояние, но
+не делает это автоматически. В этой главе вы научитесь разделять атрибуты
+класса и экземпляра, обозначать внутренние части класса соглашениями и
+проверять значения в момент присваивания с помощью свойств.</p>
+<h2 id="why"><span class="h-number">26.1</span> Зачем это нужно</h2>
+<p>Представьте, что класс <code>Account</code> из прошлой главы используется в большом
+приложении. Баланс хранится в атрибуте, и рано или поздно кто-то напишет
+<code>acc.balance = acc.balance - 500</code> без проверки. Отрицательный баланс не
+вызовет ошибки, но нарушит правило предметной области: списать больше, чем
+есть, нельзя. Найти потом, где именно это произошло, трудно, потому что
+присваивание атрибута нигде не отмечено в коде класса.</p>
+<p>Инкапсуляция решает эту задачу: состояние перестаёт быть доступным напрямую,
+а изменения проходят через методы и свойства, которые проверяют правила. У
+читателя кода появляется единственное место, где можно найти проверку, а у
+автора класса — возможность менять внутреннее устройство, не ломая чужие
+вызовы.</p>
+<h2 id="что-вы-сможете-после-этой-главы"><span class="h-number">26.2</span> Что вы сможете после этой главы</h2>
+<ul>
+<li>различать атрибуты класса и атрибуты экземпляра и объяснять порядок поиска;</li>
+<li>замечать классическую ловушку с изменяемым атрибутом класса;</li>
+<li>объяснять, что инкапсуляция в Python опирается на соглашения, а не на
+запреты;</li>
+<li>объявлять свойства, доступные без скобок, и управлять присваиванием через
+сеттер;</li>
+<li>применять искажение имён и понимать, от чего оно защищает.</li>
+</ul>
+<h2 id="class-instance-attributes"><span class="h-number">26.3</span> Атрибуты класса и атрибуты экземпляра</h2>
+<p><strong>Атрибут экземпляра</strong> — атрибут, хранящийся в конкретном экземпляре и
+образующий его состояние.</p>
+<p><strong>Атрибут класса</strong> — атрибут, хранящийся в классе и общий для всех
+экземпляров, если экземпляр не переопределил его.</p>
+<p>Разница видна, если объявить атрибут прямо в теле класса, вне методов:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Dog</span><span class="p">:</span>
+    <span class="n">species</span> <span class="o">=</span> <span class="s2">"Canis familiaris"</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">(</span><span class="s2">"Рекс"</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">(</span><span class="s2">"Бим"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Dog</span><span class="o">.</span><span class="n">species</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">species</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">species</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="n">a</span><span class="o">.</span><span class="n">species</span> <span class="o">=</span> <span class="s2">"волк"</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">species</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">species</span><span class="p">,</span> <span class="n">Dog</span><span class="o">.</span><span class="n">species</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>Canis familiaris
+Canis familiaris Canis familiaris
+Рекс Бим
+волк Canis familiaris Canis familiaris
+{&#x27;name&#x27;: &#x27;Рекс&#x27;, &#x27;species&#x27;: &#x27;волк&#x27;}
+{&#x27;name&#x27;: &#x27;Бим&#x27;}
+</code></pre>
+<p><code>species</code> объявлен в классе, поэтому доступен и через класс, и через любой
+экземпляр. <code>name</code> создаётся в методе инициализации у каждого экземпляра
+отдельно. Присваивание <code>a.species = &quot;волк&quot;</code> не изменило класс: оно создало
+атрибут экземпляра, который перекрыл классовый. Словари экземпляров
+показывают это прямо: у <code>a</code> два собственных атрибута, у <code>b</code> — один.</p>
+<p>Отсюда правило поиска атрибута: сначала экземпляр, затем класс, затем
+базовые классы. Чтение <code>a.species</code> ищет в <code>a.__dict__</code>, не находит и
+поднимается к классу. Именно поэтому атрибут класса удобно использовать для
+значений по умолчанию, одинаковых для всех.</p>
+<p><figure class="figure"><img src="illustrations/ch-26-attribute-lookup.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Вид</th>
+<th>Где хранится</th>
+<th>Кто видит</th>
+<th>Типичное применение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>атрибут экземпляра</td>
+<td><code>self.x = ...</code> в <code>__init__</code></td>
+<td>только этот экземпляр</td>
+<td>состояние объекта</td>
+</tr>
+<tr>
+<td>атрибут класса</td>
+<td>тело класса</td>
+<td>все экземпляры</td>
+<td>общие константы, счётчики</td>
+</tr>
+</tbody>
+</table>
+</div><p>Экземпляр может переопределить атрибут класса: тогда у него появится
+собственный атрибут с тем же именем, и чтение пойдёт по цепочке — сначала
+экземпляр, затем класс.</p>
+<h3 id="mutable-class-attribute">Ловушка изменяемого атрибута класса</h3>
+<p>Атрибут класса общий, поэтому изменяемое значение в нём опасно: все
+экземпляры увидят одни и те же изменения.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Box</span><span class="p">:</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">Box</span><span class="p">()</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">Box</span><span class="p">()</span>
+<span class="n">a</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"яблоко"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">items</span> <span class="ow">is</span> <span class="n">b</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>[&#x27;яблоко&#x27;]
+[&#x27;яблоко&#x27;]
+True
+</code></pre>
+<p><code>a.items</code> и <code>b.items</code> — один и тот же список, потому что чтение атрибута
+поднялось к классу, а метод <code>append</code> изменил найденный там объект. Ошибка
+тихая: ни исключения, ни предупреждения. Лечится она просто — создавать
+изменяемое состояние в методе инициализации:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Box</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">Box</span><span class="p">()</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">Box</span><span class="p">()</span>
+<span class="n">a</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"яблоко"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>[&#x27;яблоко&#x27;]
+[]
+</code></pre>
+<p>Правило короткое: неизменяемые значения (числа, строки, кортежи из
+неизменяемых элементов) можно держать в классе; списки, словари и множества —
+только в экземпляре.</p>
+<h2 id="encapsulation"><span class="h-number">26.4</span> Инкапсуляция и соглашения об именах</h2>
+<p><strong>Инкапсуляция</strong> — сокрытие внутреннего состояния за методами и свойствами,
+чтобы сохранять инварианты класса.</p>
+<p>В Python нет ключевого слова <code>private</code> и нет запрета на доступ к атрибуту.
+Инкапсуляция строится на соглашениях, и это осознанное решение языка:
+Python доверяет программисту и задаёт границы соглашениями, а не запретами.</p>
+<p>Граница обозначается именем. Атрибут или метод с одним подчёркиванием в
+начале считается внутренним: <code>_balance</code>, <code>_normalize</code>. Это сигнал «не
+трогайте снаружи, автор может изменить это без предупреждения». Python не
+мешает обратиться к <code>_balance</code>, но читатель кода понимает, что делает это
+на свой риск.</p>
+<p>Второй уровень — искажение имён. <strong>Искажение имён</strong> — автоматическое
+преобразование имени <code>__name</code> в <code>_Class__name</code>, не дающее случайно
+переопределить внутренний атрибут. Два подчёркивания в начале и не более
+одного в конце заставляют интерпретатор переименовать атрибут при разборе
+класса:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Wallet</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__balance</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__balance</span> <span class="o">+=</span> <span class="n">amount</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">balance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__balance</span>
+
+<span class="n">w</span> <span class="o">=</span> <span class="n">Wallet</span><span class="p">()</span>
+<span class="n">w</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">balance</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>100
+{&#x27;_Wallet__balance&#x27;: 100}
+</code></pre>
+<p>Внутри класса имя <code>self.__balance</code> читается и пишется нормально, а в словаре
+экземпляра видно итоговое <code>_Wallet__balance</code>. Зачем это нужно? Чтобы
+подкласс, объявив свой <code>__balance</code>, не перекрыл случайно внутренний атрибут
+базового класса: у каждого класса получится своё имя. От прямого доступа это
+не защищает — <code>w._Wallet__balance</code> по-прежнему доступно, — но защищает от
+случайного столкновения имён.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Имя</th>
+<th>Смысл</th>
+<th>Пример</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>публичное</td>
+<td><code>self.name</code></td>
+</tr>
+<tr>
+<td><code>_name</code></td>
+<td>внутреннее, по соглашению</td>
+<td><code>self._balance</code></td>
+</tr>
+<tr>
+<td><code>__name</code></td>
+<td>искажается в <code>_Class__name</code></td>
+<td><code>self.__balance</code></td>
+</tr>
+<tr>
+<td><code>__name__</code></td>
+<td>зарезервировано языком</td>
+<td><code>__init__</code></td>
+</tr>
+</tbody>
+</table>
+</div><p>Последняя строка важна: имена с двумя подчёркиваниями с обеих сторон
+(<code>__init__</code>, <code>__repr__</code>) не искажаются. Они принадлежат модели данных языка,
+и подменять их своим смыслом нельзя. Искажение работает только для имён,
+которые начинаются с двух подчёркиваний и заканчиваются не более чем одним.</p>
+<p>Как проверить, что инкапсуляция действительно работает? Попробуйте нарушить
+инвариант снаружи. Если получилось — граница проведена плохо. Для счёта
+проверка звучит так: «попробуйте сделать баланс отрицательным, не вызывая
+методов класса». Пока <code>balance</code> — обычный атрибут, это удаётся одной строкой.
+После перехода на свойство только для чтения такая попытка завершается
+ошибкой, и единственный путь изменить состояние проходит через проверку.
+Такой эксперимент полезнее чтения кода: он показывает, что именно гарантирует
+класс.</p>
+<h2 id="property"><span class="h-number">26.5</span> Свойства: вычисляемый атрибут</h2>
+<p>Инкапсуляция не обязана означать «методы вместо полей». Хороший интерфейс
+читается как обычное обращение к атрибуту, но позволяет проверить значение.
+Для этого служит свойство.</p>
+<p><strong>property</strong> — декоратор, превращающий метод в вычисляемый атрибут, доступный
+без скобок.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Temperature</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">celsius</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_celsius</span> <span class="o">=</span> <span class="n">celsius</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">celsius</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_celsius</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">Temperature</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">celsius</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">_celsius</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>20
+20
+</code></pre>
+<p>Метод <code>celsius</code> объявлен с декоратором <code>@property</code>, поэтому обращение
+<code>t.celsius</code> вызывает его без скобок. Снаружи это выглядит как атрибут, а
+внутри работает код. Приватного атрибута здесь нет: <code>t._celsius</code> доступен,
+но соглашение говорит, что изменять его напрямую не следует.</p>
+<p>Главное преимущество свойств в том, что переход от атрибута к свойству не
+ломает вызывающий код. Класс мог хранить <code>self.celsius</code> как обычный атрибут;
+когда понадобилась проверка, атрибут заменили свойством, а вызовы
+<code>t.celsius</code> и <code>t.celsius = 25</code> остались прежними. Именно поэтому в Python
+принято начинать с простого атрибута, а свойство добавлять тогда, когда
+появилось правило.</p>
+<p>Свойство может быть и только для чтения — достаточно объявить метод с
+<code>@property</code> и не добавлять сеттер:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Circle</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_radius</span> <span class="o">=</span> <span class="n">radius</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mf">3.14159</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_radius</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">area</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>12.57
+</code></pre>
+<p>Площадь не хранится: она вычисляется при каждом обращении. Так исключается
+рассинхронизация — нельзя забыть пересчитать площадь после изменения
+радиуса. Попытка присвоить значение свойству только для чтения завершается
+ошибкой:</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Circle</span><span class="p">:</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mf">1.0</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">area</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">area</span> <span class="o">=</span> <span class="mi">5</span>
+</code></pre></div>
+<pre class="output"><code>AttributeError: property &#x27;area&#x27; of &#x27;Circle&#x27; object has no setter
+</code></pre>
+<h2 id="setter"><span class="h-number">26.6</span> Сеттер и контроль инвариантов</h2>
+<p><strong>Сеттер</strong> — метод, вызываемый при присваивании значению свойства; он
+позволяет проверить значение до записи.</p>
+<p>Сеттер объявляется декоратором <code>@имя_свойства.setter</code> и носит то же имя,
+что и геттер:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Temperature</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">celsius</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">celsius</span> <span class="o">=</span> <span class="n">celsius</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">celsius</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_celsius</span>
+
+    <span class="nd">@celsius</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">celsius</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">273.15</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"ниже абсолютного нуля"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_celsius</span> <span class="o">=</span> <span class="n">value</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">Temperature</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">celsius</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">celsius</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">celsius</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">celsius</span> <span class="o">=</span> <span class="o">-</span><span class="mi">300</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"отказ:"</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">_celsius</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">Temperature</span><span class="p">(</span><span class="o">-</span><span class="mi">300</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"отказ при создании:"</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>20
+25
+отказ: ниже абсолютного нуля
+25
+отказ при создании: ниже абсолютного нуля
+</code></pre>
+<p>Присваивание <code>t.celsius = -300</code> вызвало сеттер, тот проверил значение и
+поднял исключение. Внутреннее поле осталось прежним — 25. Это и есть
+инвариант: объект либо находится в допустимом состоянии, либо изменение
+отклоняется с объяснением.</p>
+<p>Та же проверка работает при создании: конструктор присваивает через свойство,
+поэтому недопустимое значение не попадёт даже в новый объект.</p>
+<p>Так же защищают состояние, которое меняется только методами. Баланс счёта
+удобно сделать свойством только для чтения, а изменение — операциями:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Account</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">balance</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">balance</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"баланс не может быть отрицательным"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_balance</span> <span class="o">=</span> <span class="n">balance</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">balance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_balance</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">withdraw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">amount</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_balance</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"недостаточно средств"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_balance</span> <span class="o">-=</span> <span class="n">amount</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_balance</span>
+
+<span class="n">acc</span> <span class="o">=</span> <span class="n">Account</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">acc</span><span class="o">.</span><span class="n">balance</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">acc</span><span class="o">.</span><span class="n">withdraw</span><span class="p">(</span><span class="mi">30</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>100
+70
+</code></pre>
+<p>Снаружи баланс читается как атрибут, но записать его напрямую нельзя:
+сеттера нет, поэтому <code>acc.balance = 1000</code> поднимет <code>AttributeError</code>.
+Единственный путь изменить баланс — метод <code>withdraw</code>, где есть проверка.
+Граница API класса описана самим кодом, а не комментарием.</p>
+<p><figure class="figure"><img src="illustrations/ch-26-property-flow.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h2 id="class-api"><span class="h-number">26.7</span> Границы API класса</h2>
+<p>Инкапсуляция — это ещё и решение о том, что класс показывает наружу. У
+каждого класса есть публичная часть (то, чем пользуются снаружи) и
+внутренняя (то, что может измениться). Провести границу помогает вопрос:
+«если я изменю это завтра, сломаются ли чужие вызовы?»</p>
+<p>Публичным стоит делать минимум: методы, которые выражают намерение, и
+свойства для чтения состояния. Внутренние детали — промежуточные вычисления,
+служебные поля, кэши — помечают одним подчёркиванием и не обещают сохранить.
+Такой минимализм не про экономию строк: чем меньше поверхности, тем меньше
+придётся поддерживать и тем проще менять устройство класса.</p>
+<h3 id="attribute-or-property">Атрибут или свойство: правило выбора</h3>
+<p>Начинать почти всегда стоит с обычного атрибута. Свойство добавляют, когда
+появляется правило, которое нужно проверять при присваивании, или когда
+значение нужно вычислять. Проверка в отдельном методе <code>set_balance()</code> хуже
+свойства: её можно забыть вызвать, а присваивание свойству происходит в любом
+коде, который пишет в это имя.</p>
+<p>Есть и цена. Свойство медленнее прямого доступа к атрибуту, потому что за
+ним стоит вызов функции, и оно усложняет чтение класса. Если правило простое
+и никогда не изменится, обычного атрибута достаточно. Если правило есть —
+свойство делает его обязательным, а не рекомендованным.</p>
+<h3 id="public-surface">Что считать публичным</h3>
+<p>Полезно заранее перечислить публичный интерфейс класса: методы, которые
+образуют его смысл. Для счёта это <code>deposit</code>, <code>withdraw</code>, <code>balance</code>; для
+прямоугольника — <code>width</code>, <code>height</code>, <code>area</code>. Всё остальное — внутреннее.</p>
+<p>Признак хорошей границы: снаружи не нужно знать, как класс хранит состояние.
+Можно заменить <code>_celsius</code> на <code>_kelvin</code>, поправить методы — и ни один
+вызывающий код не заметит. Если же снаружи постоянно обращаются к
+<code>acc._balance</code>, граница проведена неправильно: либо поле должно быть
+публичным, либо для чтения нужно свойство.</p>
+<h2 id="mistakes"><span class="h-number">26.8</span> Типичные ошибки</h2>
+<ol>
+<li><strong>Хранить изменяемое значение в атрибуте класса.</strong> Список в теле класса
+общий для всех экземпляров; создавайте его в <code>__init__</code>.</li>
+<li><strong>Считать искажение имён защитой.</strong> <code>__balance</code> превращается в
+<code>_Class__balance</code> и остаётся доступным; это защита от столкновения имён,
+а не от чтения.</li>
+<li><strong>Писать в сеттере <code>self.celsius = value</code> вместо <code>self._celsius</code>.</strong> Такая
+запись снова вызовет сеттер, и получится бесконечная рекурсия.</li>
+<li><strong>Забывать сеттер и удивляться <code>AttributeError</code>.</strong> Свойство без сеттера
+доступно только для чтения; это осознанное решение, а не дефект.</li>
+<li><strong>Проверять значение в методе, но оставлять атрибут открытым.</strong> Пока
+<code>acc.balance</code> можно записать напрямую, инвариант не защищён.</li>
+<li><strong>Использовать <code>__</code> для публичных полей.</strong> Два подчёркивания усложняют
+доступ и подсказки, но ничего не скрывают; для публичного поля нужно имя
+без подчёркиваний.</li>
+<li><strong>Проверять значение только в конструкторе.</strong> Если сеттера нет, а поле
+открыто, проверка в <code>__init__</code> защищает ровно один момент — создание
+объекта. Дальше любой код изменит состояние в обход правила.</li>
+</ol>
+<h2 id="упражнения"><span class="h-number">26.9</span> Упражнения</h2>
+<h3 id="ex-ch26-01">1. Прогноз вывода</h3>
+<p>Определите, что напечатает программа, и объясните каждую строку:</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Cat</span><span class="p">:</span>
+    <span class="n">legs</span> <span class="o">=</span> <span class="mi">4</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">Cat</span><span class="p">(</span><span class="s2">"Мурка"</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">Cat</span><span class="p">(</span><span class="s2">"Барсик"</span><span class="p">)</span>
+<span class="n">b</span><span class="o">.</span><span class="n">legs</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">legs</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">legs</span><span class="p">,</span> <span class="n">Cat</span><span class="o">.</span><span class="n">legs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="ex-ch26-02">2. Атрибут класса для константы</h3>
+<p>Объявите класс <code>Circle</code> с атрибутом класса <code>PI = 3.14159</code> и атрибутом
+экземпляра <code>radius</code>. Метод <code>area()</code> должен использовать <code>PI</code>. Создайте два
+круга и проверьте, что оба видят одну и ту же константу, а радиусы у них
+разные.</p>
+<h3 id="ex-ch26-03">3. Исправление общей коллекции</h3>
+<p>Класс задуман так, чтобы у каждого студента был свой список оценок, но
+оценки появляются у всех сразу:</p>
+<pre class="text"><code>class Student:
+    grades = []
+
+    def add_grade(self, grade):
+        self.grades.append(grade)
+
+a = Student()
+b = Student()
+a.add_grade(5)
+print(b.grades)
+</code></pre>
+<p>Объясните причину и исправьте класс.</p>
+<h3 id="ex-ch26-04">4. Свойство только для чтения</h3>
+<p>Объявите класс <code>Rectangle</code> с шириной и высотой и свойством <code>area</code> только для
+чтения. Проверьте, что площадь считается, а присваивание <code>r.area = 10</code>
+поднимает ошибку.</p>
+<h3 id="ex-ch26-05">5. Сеттер с проверкой</h3>
+<p>Добавьте в класс <code>Rectangle</code> свойство <code>width</code> с сеттером: ширина обязана
+быть положительной, иначе поднимается <code>ValueError</code>. Проверьте корректное
+присваивание и отказ.</p>
+<h3 id="ex-ch26-06">6. Искажение имён</h3>
+<p>Объявите класс <code>Wallet</code> с внутренним атрибутом <code>__balance</code>, методом
+<code>add(amount)</code> и свойством <code>balance</code> только для чтения. Напечатайте словарь
+экземпляра и объясните, почему ключ выглядит не так, как в исходном коде.</p>
+<h3 id="ex-ch26-07">7. Анализ: свойство вместо атрибута</h3>
+<p>Класс хранил температуру как обычный атрибут <code>self.celsius</code>. Понадобилось
+запретить значения ниже абсолютного нуля. Объясните, почему можно заменить
+атрибут свойством и не менять ни одного вызова снаружи. Подтвердите примером
+кода, где старый и новый вариант вызываются одинаково.</p>
+<h3 id="ex-ch26-08">8. Счётчик созданных объектов</h3>
+<p>Объявите класс <code>Counter</code> с атрибутом класса <code>total</code>, который увеличивается
+в методе инициализации при создании каждого экземпляра. Создайте три
+экземпляра и напечатайте <code>total</code> через класс и через экземпляр. Объясните,
+почему запись <code>self.total += 1</code> работает не так, как <code>type(self).total += 1</code>.</p>
+<h3 id="ex-ch26-09">9. Исправление рекурсии</h3>
+<p>Свойство вызывает само себя и падает с <code>RecursionError</code>:</p>
+<pre class="text"><code>class Temperature:
+    def __init__(self, celsius):
+        self.celsius = celsius
+
+    @property
+    def celsius(self):
+        return self.celsius
+
+    @celsius.setter
+    def celsius(self, value):
+        self.celsius = value
+</code></pre>
+<p>Найдите ошибку и исправьте класс так, чтобы значение хранилось во внутреннем
+атрибуте.</p>
+<h3 id="ex-ch26-10">10. Мини-проект: товар со скидкой</h3>
+<p>Объявите класс <code>Product</code> с названием и ценой. Цена задаётся свойством с
+проверкой: отрицательная цена отклоняется. Добавьте свойство только для
+чтения <code>price_with_discount</code>, возвращающее цену со скидкой 10 % с
+округлением до двух знаков. Проверьте изменение цены и отказ при
+отрицательном значении.</p>
+<h2 id="проверка-понимания"><span class="h-number">26.10</span> Проверка понимания</h2>
+<ol>
+<li>Чем атрибут класса отличается от атрибута экземпляра? В каком порядке
+Python ищет атрибут при чтении?</li>
+<li>Почему список в теле класса опасен, а число — нет?</li>
+<li>Что такое инкапсуляция в Python, если запретов на доступ нет?</li>
+<li>От чего защищает искажение имён и от чего не защищает?</li>
+<li>Зачем нужен сеттер, если можно проверить значение в отдельном методе?</li>
+<li>Почему свойство только для чтения поднимает <code>AttributeError</code> при
+присваивании, а не принимает значение молча?</li>
+</ol>
+<h2 id="что-дальше"><span class="h-number">26.11</span> Что дальше</h2>
+<p>Состояние теперь защищено правилами класса. Следующий шаг — повторное
+использование: в главе <a href="ch-27-inheritance.html">«Наследование, полиморфизм и композиция»</a>
+вы увидите, как строить новые классы на основе существующих, когда это
+помогает, и почему композиция часто оказывается надёжнее.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-25-objects-classes.html"><span class="pager-label">← Назад</span><span class="pager-title">Объекты и классы</span></a><a class="pager-card next" rel="next" href="ch-27-inheritance.html"><span class="pager-label">Далее:</span><span class="pager-title">Наследование, полиморфизм и композиция</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

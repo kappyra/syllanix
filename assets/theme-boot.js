@@ -1,0 +1,1 @@
+(function(){try{var t=localStorage.getItem('syllanix-theme');if(t){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();

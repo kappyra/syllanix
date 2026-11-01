@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Архитектура, SOLID и паттерны — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><details class="chapter-current" open><summary>
+<a href="ch-44-architecture.html" aria-current="page">44. Архитектура, SOLID и паттерны</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-44-architecture.html#что-вы-сможете-после-этой-главы">44.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-44-architecture.html#architecture">44.2. Архитектура — это решения о зависимостях</a></li>
+<li><a href="ch-44-architecture.html#layering">44.3. Слоистость</a></li>
+<li><a href="ch-44-architecture.html#solid">44.4. SOLID</a></li>
+<li><a href="ch-44-architecture.html#dependency-injection">44.5. Внедрение зависимостей</a></li>
+<li><a href="ch-44-architecture.html#patterns">44.6. Паттерны проектирования</a></li>
+<li><a href="ch-44-architecture.html#how-to-choose">44.7. Как выбирать</a></li>
+<li><a href="ch-44-architecture.html#mistakes">44.8. Типичные ошибки</a></li>
+<li><a href="ch-44-architecture.html#упражнения">44.9. Упражнения</a></li>
+<li><a href="ch-44-architecture.html#check">44.10. Проверка понимания</a></li>
+<li><a href="ch-44-architecture.html#links">44.11. Связи</a></li>
+</ol></details></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 9. Инженерия и сопровождение</span><span class="sep">›</span><span>Глава 44</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Инженерия и сопровождение · глава 44</p>
+<h1 id="архитектура-solid-и-паттерны">Архитектура, SOLID и паттерны</h1>
+<p class="chapter-summary">Принципы проектирования систем и паттерны, которые решают реальные задачи.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#что-вы-сможете-после-этой-главы"><span class="toc-number">44.1</span> Что вы сможете после этой главы</a></li>
+<li class="level-2"><a href="#architecture"><span class="toc-number">44.2</span> Архитектура — это решения о зависимостях</a></li>
+<li class="level-2"><a href="#layering"><span class="toc-number">44.3</span> Слоистость</a></li>
+<li class="level-2"><a href="#solid"><span class="toc-number">44.4</span> SOLID</a></li>
+<li class="level-2"><a href="#dependency-injection"><span class="toc-number">44.5</span> Внедрение зависимостей</a></li>
+<li class="level-2"><a href="#patterns"><span class="toc-number">44.6</span> Паттерны проектирования</a></li>
+<li class="level-2"><a href="#how-to-choose"><span class="toc-number">44.7</span> Как выбирать</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">44.8</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">44.9</span> Упражнения</a></li>
+<li class="level-2"><a href="#check"><span class="toc-number">44.10</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#links"><span class="toc-number">44.11</span> Связи</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#углубление-как-проверить-границы">Углубление: как проверить границы</a></li>
+<li class="level-3"><a href="#srp">Единственная ответственность</a></li>
+<li class="level-3"><a href="#ocp">Открытость для расширения, закрытость для изменения</a></li>
+<li class="level-3"><a href="#lsp">Подстановочность Лисков</a></li>
+<li class="level-3"><a href="#isp">Разделение интерфейсов</a></li>
+<li class="level-3"><a href="#dip">Инверсия зависимостей</a></li>
+<li class="level-3"><a href="#adapter">Паттерн «адаптер»</a></li>
+<li class="level-3"><a href="#repository">Паттерн «репозиторий»</a></li>
+<li class="level-3"><a href="#другие-паттерны">Другие паттерны</a></li>
+<li class="level-3"><a href="#ex-ch44-01">1. Слои и импорты</a></li>
+<li class="level-3"><a href="#ex-ch44-02">2. Единственная ответственность</a></li>
+<li class="level-3"><a href="#ex-ch44-03">3. Открытость для расширения</a></li>
+<li class="level-3"><a href="#ex-ch44-04">4. Нарушение подстановки</a></li>
+<li class="level-3"><a href="#ex-ch44-05">5. Разделение интерфейсов</a></li>
+<li class="level-3"><a href="#ex-ch44-06">6. Инверсия зависимостей</a></li>
+<li class="level-3"><a href="#ex-ch44-07">7. Внедрение зависимостей</a></li>
+<li class="level-3"><a href="#ex-ch44-08">8. Адаптер</a></li>
+<li class="level-3"><a href="#ex-ch44-09">9. Репозиторий</a></li>
+<li class="level-3"><a href="#ex-ch44-10">10. Мини-задача: оформление заказа</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>Программа, которая работает сегодня, завтра должна меняться: добавляются
+функции, меняются требования, подключаются новые сервисы. Архитектура — это
+ответ на вопрос, насколько дорого обойдётся каждое такое изменение. В этой
+главе мы разберём, что делает структуру программы устойчивой, как
+принципы SOLID помогают принимать решения и почему паттерны — словарь для
+обсуждения, а не список обязательных конструкций.</p>
+<h2 id="что-вы-сможете-после-этой-главы"><span class="h-number">44.1</span> Что вы сможете после этой главы</h2>
+<ul>
+<li>объяснять архитектуру через направление зависимостей, а не через папки;</li>
+<li>раскладывать программу на слои так, чтобы бизнес-логика не зависела от базы
+и веб-фреймворка;</li>
+<li>применять пять принципов SOLID и видеть, когда они превращаются в догму;</li>
+<li>внедрять зависимости через конструктор и подменять их в тестах;</li>
+<li>узнавать паттерны «адаптер» и «репозиторий» в чужом коде и понимать, когда
+их стоит вводить.</li>
+</ul>
+<h2 id="architecture"><span class="h-number">44.2</span> Архитектура — это решения о зависимостях</h2>
+<p><strong>Архитектура</strong> — совокупность решений о структуре системы: какие в ней
+крупные части, где проведены границы и в какую сторону направлены
+зависимости. Не каталоги и не диаграммы сами по себе, а именно правила: что
+от чего может зависеть, а что — нет.</p>
+<p>Два понятия из главы 30 описывают качество этой структуры.</p>
+<ul>
+<li><strong>Связность</strong> (cohesion) — насколько содержимое одной части относится к
+одной задаче. Высокая связность означает, что модуль меняется целиком и по
+одной причине.</li>
+<li><strong>Связанность</strong> (coupling) — насколько части зависят друг от друга. Низкая
+связанность означает, что изменение одной части не тянет за собой другую.</li>
+</ul>
+<p>Хорошая архитектура повышает связность и понижает связанность. Практический
+критерий проще: <strong>сколько файлов нужно открыть, чтобы добавить одну функцию,
+и сколько сломается, если изменится формат хранения данных</strong>. Если ответ
+«пять» и «половина проекта», структура стоит внимания.</p>
+<h2 id="layering"><span class="h-number">44.3</span> Слоистость</h2>
+<p><strong>Слоистость</strong> — разделение системы на уровни, где зависимости направлены в
+одну сторону, к домену, а инфраструктура реализует интерфейсы, объявленные для
+домена. Типичный набор для прикладной программы:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Слой</th>
+<th>Ответственность</th>
+<th>Примеры</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>представление</td>
+<td>принимает запрос и показывает результат</td>
+<td>HTTP-обработчики, CLI, шаблоны</td>
+</tr>
+<tr>
+<td>приложение</td>
+<td>выполняет сценарии использования</td>
+<td>«оформить заказ», «пересчитать итог»</td>
+</tr>
+<tr>
+<td>домен</td>
+<td>правила предметной области</td>
+<td>суммы, скидки, инварианты</td>
+</tr>
+<tr>
+<td>инфраструктура</td>
+<td>детали внешнего мира</td>
+<td>база, сеть, файлы, очереди</td>
+</tr>
+</tbody>
+</table>
+</div><p><figure class="figure"><img src="illustrations/ch-44-layers.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Главное правило: <strong>зависимости направлены к домену</strong>. Домен описывает
+правила и не знает, откуда пришли данные и куда уйдут. Приложение вызывает
+домен и работает с внешним миром через интерфейсы. Представление
+преобразует запрос в вызов приложения. Инфраструктура реализует интерфейсы,
+объявленные внутри.</p>
+<p>Проверить слоистость можно вопросом: может ли функция домена импортировать
+<code>sqlite3</code> или <code>requests</code>? Если да, домен связан с деталями, и тестировать его
+придётся вместе с базой. Если нет, домен проверяется обычными тестами без
+подготовки окружения.</p>
+<p>Слоистость не обязана быть буквальной. В маленькой программе достаточно трёх
+модулей: правила, ввод-вывод, точка входа. Важно не число слоёв, а
+направление зависимостей и то, что правила не знают о деталях.</p>
+<h3 id="углубление-как-проверить-границы">Углубление: как проверить границы</h3>
+<p>Правило «домен не импортирует инфраструктуру» можно проверить машинно, пока
+нарушений мало: разобрать исходники через <code>ast</code> и посмотреть импорты. Такой
+тест ловит нарушения раньше ревью.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">ast</span>
+
+<span class="n">domain_sources</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"domain.py"</span><span class="p">:</span> <span class="s2">"from decimal import Decimal</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span>
+    <span class="s2">"domain_pricing.py"</span><span class="p">:</span> <span class="s2">"import sqlite3</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">forbidden</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"sqlite3"</span><span class="p">,</span> <span class="s2">"requests"</span><span class="p">,</span> <span class="s2">"flask"</span><span class="p">}</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">imports_of</span><span class="p">(</span><span class="n">source</span><span class="p">):</span>
+    <span class="n">tree</span> <span class="o">=</span> <span class="n">ast</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+    <span class="n">names</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">ast</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">tree</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">ast</span><span class="o">.</span><span class="n">Import</span><span class="p">):</span>
+            <span class="n">names</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">alias</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">alias</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">names</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">ast</span><span class="o">.</span><span class="n">ImportFrom</span><span class="p">)</span> <span class="ow">and</span> <span class="n">node</span><span class="o">.</span><span class="n">module</span><span class="p">:</span>
+            <span class="n">names</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">module</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">names</span>
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">source</span> <span class="ow">in</span> <span class="n">domain_sources</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">imports_of</span><span class="p">(</span><span class="n">source</span><span class="p">)))</span>
+
+<span class="n">violations</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">name</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">source</span> <span class="ow">in</span> <span class="n">domain_sources</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">imports_of</span><span class="p">(</span><span class="n">source</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">forbidden</span>
+<span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"нарушения:"</span><span class="p">,</span> <span class="n">violations</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>domain.py [&#x27;decimal&#x27;]
+domain_pricing.py [&#x27;sqlite3&#x27;]
+нарушения: [&#x27;domain_pricing.py&#x27;]
+</code></pre>
+<p>В реальном проекте вместо словаря строк читают файлы пакета, а проверку
+включают в набор тестов. Это дешёвая защита от постепенного «затягивания»
+инфраструктуры в домен: один импорт не выглядит проблемой, а через полгода
+домен уже невозможно протестировать без базы.</p>
+<h2 id="solid"><span class="h-number">44.4</span> SOLID</h2>
+<p><strong>SOLID</strong> — набор из пяти принципов объектного проектирования, которые
+сформулировал Роберт Мартин (аббревиатуру предложил Майкл Фезерс). Принципы
+описывают, как распределять ответственности между классами и как направлять
+зависимости. Это эвристики: они помогают принимать решения, но не заменяют
+их и не являются законами.</p>
+<p><figure class="figure"><img src="illustrations/ch-44-solid.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h3 id="srp">Единственная ответственность</h3>
+<p><strong>Единственная ответственность</strong> — у класса или модуля одна причина для
+изменения: одна группа людей или одно требование. Формулировка «делает одну
+вещь» вводит в заблуждение: класс может делать несколько операций, если все
+они служат одной причине.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Report</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rows</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rows</span> <span class="o">=</span> <span class="n">rows</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">as_text</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rows</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ReportStorage</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">saved</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">saved</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">saved</span><span class="p">)</span>
+
+<span class="n">report</span> <span class="o">=</span> <span class="n">Report</span><span class="p">([</span><span class="s2">"итог: 900"</span><span class="p">,</span> <span class="s2">"позиций: 2"</span><span class="p">])</span>
+<span class="n">storage</span> <span class="o">=</span> <span class="n">ReportStorage</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="o">.</span><span class="n">as_text</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"сохранено записей:"</span><span class="p">,</span> <span class="n">storage</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">report</span><span class="o">.</span><span class="n">as_text</span><span class="p">()))</span>
+</code></pre></div>
+<pre class="output"><code>итог: 900
+позиций: 2
+сохранено записей: 1
+</code></pre>
+<p>Пока формат отчёта и способ хранения в одном классе, изменение формата и
+переход на другой носитель — две причины менять один файл, и они мешают друг
+другу. Разделение даёт две независимые причины: <code>Report</code> меняется, когда
+меняется представление данных, <code>ReportStorage</code> — когда меняется хранение.</p>
+<p>Типичная ошибка — превращать принцип в дробление ради дробления. Класс из
+одного метода, который ничего не инкапсулирует, не стал лучше: он просто
+переехал в отдельный файл. Ответственность измеряется причинами изменения, а
+не числом строк.</p>
+<h3 id="ocp">Открытость для расширения, закрытость для изменения</h3>
+<p>Принцип требует, чтобы новое поведение добавлялось новым кодом, а не правкой
+существующего. На практике это означает замену цепочек условий на
+полиморфизм.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">NoDiscount</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">total</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">total</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">PercentDiscount</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">percent</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">percent</span> <span class="o">=</span> <span class="n">percent</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">total</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">total</span> <span class="o">-</span> <span class="n">total</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">percent</span> <span class="o">//</span> <span class="mi">100</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">FixedDiscount</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">amount</span> <span class="o">=</span> <span class="n">amount</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">total</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">total</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">amount</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">final_price</span><span class="p">(</span><span class="n">total</span><span class="p">,</span> <span class="n">discount</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">discount</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">final_price</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">NoDiscount</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">final_price</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">PercentDiscount</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">final_price</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">FixedDiscount</span><span class="p">(</span><span class="mi">150</span><span class="p">)))</span>
+</code></pre></div>
+<pre class="output"><code>1000
+900
+850
+</code></pre>
+<p>Новый вид скидки добавляется отдельным классом, а <code>final_price</code> не меняется.
+Абсолютной закрытости не бывает: рано или поздно интерфейс скидки придётся
+поменять. Принцип полезен как направление мысли, а не как обещание «никогда не
+трогать старый код».</p>
+<h3 id="lsp">Подстановочность Лисков</h3>
+<p>Принцип подстановки Барбары Лисков: объект подкласса должен заменять объект
+базового класса, не нарушая корректность программы. Речь не о синтаксисе
+наследования, а о поведении: клиент, написанный для базового типа, не должен
+узнавать, что получил другой.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Account</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">withdraw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">RegularAccount</span><span class="p">(</span><span class="n">Account</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">balance</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">balance</span> <span class="o">=</span> <span class="n">balance</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">withdraw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">balance</span> <span class="o">-=</span> <span class="n">amount</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">balance</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">FixedDeposit</span><span class="p">(</span><span class="n">Account</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">balance</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">balance</span> <span class="o">=</span> <span class="n">balance</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">withdraw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"снятие запрещено до окончания срока"</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">pay_rent</span><span class="p">(</span><span class="n">account</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">account</span><span class="o">.</span><span class="n">withdraw</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"обычный счёт:"</span><span class="p">,</span> <span class="n">pay_rent</span><span class="p">(</span><span class="n">RegularAccount</span><span class="p">(</span><span class="mi">1000</span><span class="p">),</span> <span class="mi">300</span><span class="p">))</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">pay_rent</span><span class="p">(</span><span class="n">FixedDeposit</span><span class="p">(</span><span class="mi">1000</span><span class="p">),</span> <span class="mi">300</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"подстановка сломана:"</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>обычный счёт: 700
+подстановка сломана: снятие запрещено до окончания срока
+</code></pre>
+<p><code>FixedDeposit</code> наследует <code>Account</code>, но не может использоваться там, где ждут
+счёт со снятием. Иерархия выглядит правильной, а контракт нарушен.
+Исправление — не наследование «похожего», а отдельные интерфейсы:
+<code>Withdrawable</code> с методом снятия и <code>Balanceable</code> с чтением баланса. Клиент
+зависит только от той возможности, которая ему нужна.</p>
+<h3 id="isp">Разделение интерфейсов</h3>
+<p>Клиент не должен зависеть от методов, которые он не использует. Большой
+интерфейс «устройство со всем сразу» заставляет реализовывать лишнее и ломает
+подстановку: принтер без сканера — не многофункциональное устройство.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">MultiFunctionDevice</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">print_document</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"печать: </span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">scan_document</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">"скан: страница"</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">PrinterOnly</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">print_document</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"печать: </span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">scan_document</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"сканер не поддерживается"</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">print_all</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">documents</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">device</span><span class="o">.</span><span class="n">print_document</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">documents</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">documents</span><span class="p">):</span>
+    <span class="n">printed</span> <span class="o">=</span> <span class="n">print_all</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">documents</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">printed</span><span class="p">,</span> <span class="n">device</span><span class="o">.</span><span class="n">scan_document</span><span class="p">()</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">process</span><span class="p">(</span><span class="n">PrinterOnly</span><span class="p">(),</span> <span class="p">[</span><span class="s2">"отчёт"</span><span class="p">])</span>
+<span class="k">except</span> <span class="ne">NotImplementedError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"толстый интерфейс:"</span><span class="p">,</span> <span class="n">exc</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">print_all</span><span class="p">(</span><span class="n">PrinterOnly</span><span class="p">(),</span> <span class="p">[</span><span class="s2">"отчёт"</span><span class="p">,</span> <span class="s2">"счёт"</span><span class="p">]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>толстый интерфейс: сканер не поддерживается
+печать: отчёт
+печать: счёт
+</code></pre>
+<p><code>process</code> требует и печать, и сканирование, поэтому принтер без сканера его
+ломает. <code>print_all</code> требует только печать и работает с тем же объектом. Значит,
+интерфейс нужно разделить: клиенту, которому нужна одна возможность, не следует
+зависеть от второй. В Python это делают через отдельные протоколы и абстрактные
+классы из главы 29, а не через один большой базовый класс.</p>
+<h3 id="dip">Инверсия зависимостей</h3>
+<p>Высокоуровневый модуль не должен зависеть от низкоуровневого; оба должны
+зависеть от абстракции. В Python абстракция — это протокол или абстрактный
+класс: описание того, что нужно, без указания, как это сделано.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Protocol</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">OrderRepository</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">total</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">total</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="o">...</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">InMemoryOrders</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order_id</span><span class="p">,</span> <span class="n">total</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">order_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">total</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">total</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order_id</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">order_id</span><span class="p">]</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">OrderService</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repository</span><span class="p">:</span> <span class="n">OrderRepository</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">repository</span><span class="p">:</span> <span class="n">OrderRepository</span> <span class="o">=</span> <span class="n">repository</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">place</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order_id</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="n">amount</span> <span class="o">*</span> <span class="mi">90</span> <span class="o">//</span> <span class="mi">100</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">repository</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">order_id</span><span class="p">,</span> <span class="n">total</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">total</span>
+
+<span class="n">service</span> <span class="o">=</span> <span class="n">OrderService</span><span class="p">(</span><span class="n">InMemoryOrders</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"итог:"</span><span class="p">,</span> <span class="n">service</span><span class="o">.</span><span class="n">place</span><span class="p">(</span><span class="s2">"A-1"</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"в хранилище:"</span><span class="p">,</span> <span class="n">service</span><span class="o">.</span><span class="n">repository</span><span class="o">.</span><span class="n">total</span><span class="p">(</span><span class="s2">"A-1"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>итог: 900
+в хранилище: 900
+</code></pre>
+<p><code>OrderService</code> не знает, где хранятся заказы: в памяти, в SQLite или в
+удалённом сервисе. Он зависит от протокола, а конкретную реализацию получает
+снаружи: аннотация <code>repository: OrderRepository</code> фиксирует контракт, а
+<code>InMemoryOrders</code> соответствует ему структурно, без наследования. Это и есть
+инверсия: направление зависимости развернулось, и деталь зависит от правила, а
+не наоборот.</p>
+<h2 id="dependency-injection"><span class="h-number">44.5</span> Внедрение зависимостей</h2>
+<p><strong>Внедрение зависимостей</strong> — приём, при котором объект получает нужные ему
+зависимости извне, а не создаёт их сам. В Python чаще всего это параметр
+конструктора: сервис принимает репозиторий, клиент или часы.</p>
+<div class="highlight"><pre><code class="language-python"><span class="c1"># test_orders.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">orders</span><span class="w"> </span><span class="kn">import</span> <span class="n">OrderService</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">FakeOrders</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">saved</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order_id</span><span class="p">,</span> <span class="n">total</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">saved</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">order_id</span><span class="p">,</span> <span class="n">total</span><span class="p">))</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">total</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order_id</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">"в тесте не нужен"</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_place_saves_total</span><span class="p">():</span>
+    <span class="n">fake</span> <span class="o">=</span> <span class="n">FakeOrders</span><span class="p">()</span>
+    <span class="n">service</span> <span class="o">=</span> <span class="n">OrderService</span><span class="p">(</span><span class="n">fake</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">service</span><span class="o">.</span><span class="n">place</span><span class="p">(</span><span class="s2">"A-1"</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">==</span> <span class="mi">900</span>
+    <span class="k">assert</span> <span class="n">fake</span><span class="o">.</span><span class="n">saved</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">"A-1"</span><span class="p">,</span> <span class="mi">900</span><span class="p">)]</span>
+</code></pre></div>
+<pre class="text"><code>$ uv run pytest -q
+1 passed in 0.02s
+</code></pre>
+<p>В тесте вместо базы подставлен <code>FakeOrders</code>, который записывает вызовы в
+список. <code>OrderService</code> — тот же класс из раздела об инверсии зависимостей: его
+конструктор уже принимает <code>OrderRepository</code>, поэтому подмена не требует
+отдельной копии сервиса. Тест работает без файлов и сети, а проверяет именно то,
+что нужно: правильную сумму и факт сохранения. Это главная практическая польза
+внедрения зависимостей — не «модная архитектура», а возможность подменить
+дорогую деталь дешёвой.</p>
+<p>Три способа внедрения:</p>
+<ol>
+<li><strong>Через конструктор</strong> — основной: зависимость обязательна и видна в
+сигнатуре.</li>
+<li><strong>Через параметр метода</strong> — когда зависимость нужна только одной операции.</li>
+<li><strong>Через контейнер</strong> — фреймворк собирает объекты по описанию; оправдан в
+больших приложениях, где ручная сборка стала громоздкой.</li>
+</ol>
+<p>Внедрение зависимостей не требует библиотеки. Фреймворк добавляет удобство
+конфигурации, но не меняет идею: зависимости приходят снаружи. И не путайте
+два термина: инверсия зависимостей — принцип про направление зависимостей,
+внедрение зависимостей — приём передачи готовых объектов.</p>
+<h2 id="patterns"><span class="h-number">44.6</span> Паттерны проектирования</h2>
+<p><strong>Паттерн проектирования</strong> — названное типовое решение повторяющейся задачи
+проектирования в определённом контексте. У паттерна есть имя, задача,
+решение и последствия. Имя — главная ценность: оно позволяет обсудить
+структуру одной фразой.</p>
+<p>Паттерны — не чек-лист и не доказательство качества. Применённый без задачи
+паттерн добавляет классы и уровни, не решая ничего. Полезен и обратный ход:
+сначала появляется повторяющаяся боль, потом — решение, и только потом
+выясняется, что у решения есть имя.</p>
+<h3 id="adapter">Паттерн «адаптер»</h3>
+<p><strong>Паттерн «адаптер»</strong> — обёртка, которая приводит интерфейс одного
+компонента к интерфейсу, ожидаемому другим. Он нужен, когда менять чужой код
+нельзя или невыгодно.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">ThirdPartyWeather</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fetch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">city</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">"temp"</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span> <span class="s2">"code"</span><span class="p">:</span> <span class="n">city</span><span class="o">.</span><span class="n">upper</span><span class="p">()}</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">WeatherAdapter</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">client</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_forecast</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">city_code</span><span class="p">):</span>
+        <span class="n">raw</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">city_code</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">"temperature_c"</span><span class="p">:</span> <span class="n">raw</span><span class="p">[</span><span class="s2">"temp"</span><span class="p">],</span> <span class="s2">"city_code"</span><span class="p">:</span> <span class="n">raw</span><span class="p">[</span><span class="s2">"code"</span><span class="p">]}</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">WeatherReport</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">source</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">summary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">city</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">get_forecast</span><span class="p">(</span><span class="n">city</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">'city_code'</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">'temperature_c'</span><span class="p">]</span><span class="si">}</span><span class="s2"> °C"</span>
+
+<span class="n">adapter</span> <span class="o">=</span> <span class="n">WeatherAdapter</span><span class="p">(</span><span class="n">ThirdPartyWeather</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">WeatherReport</span><span class="p">(</span><span class="n">adapter</span><span class="p">)</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="s2">"москва"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>МОСКВА: 21 °C
+</code></pre>
+<p>Чужой клиент умеет только <code>fetch</code> и отдаёт поля <code>temp</code> и <code>code</code>, а
+<code>WeatherReport</code> ждёт <code>get_forecast</code> и поля <code>temperature_c</code> и <code>city_code</code>.
+Адаптер переводит и имя метода, и формат данных: без него <code>WeatherReport</code> не
+мог бы работать с этим клиентом напрямую. Когда библиотеку заменят, изменится
+только адаптер.
+Адаптер особенно полезен для тестов: вместо чужого клиента подставляется
+адаптер с заранее заданным ответом.</p>
+<h3 id="repository">Паттерн «репозиторий»</h3>
+<p><strong>Паттерн «репозиторий»</strong> — посредник между доменом и хранилищем, который
+представляет хранилище как коллекцию объектов предметной области. Домен
+просит «все заметки» или «сохрани заметку», не зная про таблицы и SQL.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">InMemoryNoteRepository</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">all</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">SqliteNoteRepository</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span> <span class="o">=</span> <span class="n">connection</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"CREATE TABLE notes (id INTEGER PRIMARY KEY, text TEXT)"</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="n">cursor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"INSERT INTO notes (text) VALUES (?)"</span><span class="p">,</span> <span class="p">(</span><span class="n">text</span><span class="p">,))</span>
+        <span class="k">return</span> <span class="n">cursor</span><span class="o">.</span><span class="n">lastrowid</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">all</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"SELECT text FROM notes ORDER BY id"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">render</span><span class="p">(</span><span class="n">repository</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">" | "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">repository</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
+
+<span class="n">memory</span> <span class="o">=</span> <span class="n">InMemoryNoteRepository</span><span class="p">()</span>
+<span class="n">memory</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"первая"</span><span class="p">)</span>
+<span class="n">memory</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"вторая"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"в памяти:"</span><span class="p">,</span> <span class="n">render</span><span class="p">(</span><span class="n">memory</span><span class="p">))</span>
+
+<span class="n">connection</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">":memory:"</span><span class="p">)</span>
+<span class="n">sqlite_repo</span> <span class="o">=</span> <span class="n">SqliteNoteRepository</span><span class="p">(</span><span class="n">connection</span><span class="p">)</span>
+<span class="n">sqlite_repo</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"первая"</span><span class="p">)</span>
+<span class="n">sqlite_repo</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"вторая"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"в базе:"</span><span class="p">,</span> <span class="n">render</span><span class="p">(</span><span class="n">sqlite_repo</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>в памяти: первая | вторая
+в базе: первая | вторая
+</code></pre>
+<p>Одна и та же функция <code>render</code> работает с двумя реализациями: временной
+памятью для тестов и SQLite для работы. Запросы параметризованы — об этом
+заботится репозиторий, а не вызывающий код (глава 41).</p>
+<p>У репозитория есть границы. Если интерфейс начинает повторять SQL — с
+фильтрами, сортировками, соединениями, — абстракция протекает: домен всё
+равно зависит от возможностей базы. В таком случае честнее дать
+специализированный запрос с понятным именем, чем имитировать универсальный
+язык запросов. Репозиторий не заменяет знание SQL и не равен ORM.</p>
+<h3 id="другие-паттерны">Другие паттерны</h3>
+<p>Названия полезно знать, но вводить их стоит по задаче. <strong>Стратегия</strong> —
+взаимозаменяемые алгоритмы за общим интерфейсом; скидки выше — её частный
+случай. <strong>Фабрика</strong> — создание объектов, когда конструктор недостаточно
+выразителен. <strong>Фасад</strong> — простой интерфейс над сложной подсистемой.
+<strong>Декоратор</strong> в значении паттерна — добавление поведения обёрткой; в Python
+он часто реализуется декораторами из главы 22.</p>
+<h2 id="how-to-choose"><span class="h-number">44.7</span> Как выбирать</h2>
+<p>Три вопроса перед введением слоя, интерфейса или паттерна.</p>
+<ol>
+<li><strong>Какая боль решается?</strong> Если ответ «так принято» — не решается ничего.</li>
+<li><strong>Сколько изменений это упростит?</strong> Абстракция оправдана, когда
+подстановок две и больше: реализация, тестовая заглушка, вторая база.</li>
+<li><strong>Сколько стоит понимание?</strong> Каждый новый слой и интерфейс нужно читать.
+Выигрыш в гибкости оплачивается ясностью.</li>
+</ol>
+<p>Полезное правило: <strong>третье повторение</strong>. Два похожих места — совпадение, три —
+закономерность. Абстракция, введённая после третьего повторения, обычно
+удачнее, чем угаданная заранее. И обратное: если абстракция оказалась
+неудобной, её нужно упрощать, а не защищать.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Ситуация</th>
+<th>Инструмент</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>нужно подменить базу в тестах</td>
+<td>интерфейс репозитория и внедрение через конструктор</td>
+</tr>
+<tr>
+<td>чужой API отдаёт данные в другом формате</td>
+<td>адаптер</td>
+</tr>
+<tr>
+<td>правила смешаны с обработкой запроса</td>
+<td>разделение слоёв</td>
+</tr>
+<tr>
+<td>одна функция выбирает поведение по типу</td>
+<td>полиморфизм вместо условий</td>
+</tr>
+<tr>
+<td>класс меняется по нескольким причинам</td>
+<td>разделение ответственностей</td>
+</tr>
+</tbody>
+</table>
+</div><h2 id="mistakes"><span class="h-number">44.8</span> Типичные ошибки</h2>
+<ol>
+<li><strong>Слои на бумаге.</strong> Каталоги <code>domain</code>, <code>services</code>, <code>infrastructure</code> есть, а
+домен импортирует <code>sqlite3</code> и <code>requests</code>. Смотрите на импорты, а не на
+названия папок.</li>
+<li><strong>SOLID как догма.</strong> Дробление классов ради «одной ответственности» и
+интерфейсы ради «инверсии» без второй реализации дают сложность без пользы.</li>
+<li><strong>Наследование вместо контракта.</strong> Подкласс, который не может делать то,
+что обещает базовый класс, ломает подстановку.</li>
+<li><strong>Паттерн вместо решения.</strong> Паттерн, введённый до появления задачи,
+добавляет код, который никто не просил.</li>
+<li><strong>Протекающая абстракция.</strong> Репозиторий, который повторяет SQL, или
+«универсальный» интерфейс, который всё равно требует деталей базы.</li>
+<li><strong>Фреймворк внедрения зависимостей в маленьком проекте.</strong> Для трёх классов
+достаточно параметров конструктора.</li>
+<li><strong>Отсутствие тестов на границах.</strong> Архитектура без тестов не проверяется:
+слои ломаются незаметно, пока кто-то не импортирует базу в домен.</li>
+</ol>
+<h2 id="упражнения"><span class="h-number">44.9</span> Упражнения</h2>
+<h3 id="ex-ch44-01">1. Слои и импорты</h3>
+<p>Дан набор модулей: <code>domain.py</code>, <code>storage.py</code>, <code>handlers.py</code>, <code>app.py</code>.
+<code>domain.py</code> импортирует <code>sqlite3</code>, <code>handlers.py</code> содержит расчёт скидки,
+<code>storage.py</code> импортирует <code>handlers.py</code>. Нарисуйте текущее направление
+зависимостей, найдите нарушения слоистости и предложите исправление.</p>
+<h3 id="ex-ch44-02">2. Единственная ответственность</h3>
+<p>Класс <code>Invoice</code> умеет считать сумму, форматировать её в текст и отправлять по
+электронной почте. Разделите его на части с одной причиной изменения каждая и
+объясните, какие требования будут менять каждую часть.</p>
+<h3 id="ex-ch44-03">3. Открытость для расширения</h3>
+<p>Функция <code>shipping_cost(country, weight)</code> содержит цепочку <code>if</code> для пяти стран.
+Перепишите её так, чтобы новая страна добавлялась новым классом или записью,
+а не правкой функции. Объясните, что именно стало закрыто для изменения.</p>
+<h3 id="ex-ch44-04">4. Нарушение подстановки</h3>
+<p>Класс <code>ReadOnlyList</code> наследует <code>list</code> и поднимает <code>ValueError</code> в <code>append</code>.
+Покажите, как это ломает функцию, написанную для <code>list</code>, и предложите
+исправление через композицию или отдельный интерфейс.</p>
+<h3 id="ex-ch44-05">5. Разделение интерфейсов</h3>
+<p>Опишите протокол <code>Storage</code> с методами <code>read</code>, <code>write</code>, <code>delete</code>, <code>list</code>.
+Клиенту, который только читает, нужен один метод. Разделите протокол на части
+и покажите, как клиент зависит только от нужной.</p>
+<h3 id="ex-ch44-06">6. Инверсия зависимостей</h3>
+<p>Сервис уведомлений создаёт <code>SmtpClient</code> внутри конструктора. Перепишите его
+так, чтобы клиент передавался снаружи, и покажите два варианта подстановки:
+настоящий клиент и заглушка, записывающая вызовы.</p>
+<h3 id="ex-ch44-07">7. Внедрение зависимостей</h3>
+<p>Напишите сервис <code>PriceService</code>, который зависит от источника курсов валют.
+Реализуйте два источника: фиксированный словарь и заглушку с журналом
+вызовов. Проверьте расчёт цены в обоих случаях.</p>
+<h3 id="ex-ch44-08">8. Адаптер</h3>
+<p>Есть чужой клиент с методом <code>fetch(city)</code> и структурой ответа
+<code>{&quot;temp&quot;: 21, &quot;code&quot;: &quot;MSK&quot;}</code>. Напишите адаптер к интерфейсу
+<code>get_forecast(city_code) -&gt; {&quot;temperature_c&quot;: int, &quot;city_code&quot;: str}</code> и
+проверьте его на фиктивном клиенте.</p>
+<h3 id="ex-ch44-09">9. Репозиторий</h3>
+<p>Реализуйте репозиторий заметок с методами <code>add</code>, <code>all</code> в двух вариантах: в
+памяти и на SQLite. Проверьте, что одна и та же функция отчёта работает с
+обоими. Объясните, где заканчиваются возможности такого репозитория.</p>
+<h3 id="ex-ch44-10">10. Мини-задача: оформление заказа</h3>
+<p>Спроектируйте небольшой сценарий: домен считает итог заказа со скидкой,
+приложение сохраняет его через репозиторий, представление печатает строку.
+Реализуйте три слоя так, чтобы домен не импортировал хранилище, и напишите
+тест с репозиторием в памяти.</p>
+<h2 id="check"><span class="h-number">44.10</span> Проверка понимания</h2>
+<ol>
+<li>Что делает архитектуру хорошей: структура каталогов или направление
+зависимостей?</li>
+<li>Что такое связность и связанность и как они соотносятся?</li>
+<li>Почему домен не должен импортировать <code>sqlite3</code> или <code>requests</code>?</li>
+<li>Сформулируйте принцип единственной ответственности без слов «делает одну
+вещь».</li>
+<li>Почему подстановочность Лисков — про поведение, а не про наследование?</li>
+<li>Чем инверсия зависимостей отличается от внедрения зависимостей?</li>
+<li>Когда паттерн «адаптер» оправдан, а когда это лишний слой?</li>
+<li>Почему репозиторий может «протекать» и что с этим делать?</li>
+</ol>
+<h2 id="links"><span class="h-number">44.11</span> Связи</h2>
+<p>Глава завершает линию объектного проектирования: связность и связанность из
+главы 30, композиция из главы 27, интерфейсы и протоколы из главы 29. Тесты
+из главы 32 дают инструмент проверки границ, а параметризованные запросы из
+глав 36 и 41 — безопасную работу репозитория. Декораторы из главы 22 и
+метапрограммирование из главы 43 объясняют, как устроены инфраструктурные
+решения, которые в этой главе стали архитектурными.</p>
+<p>Дальше — <a href="ch-45-git-ci-releases.html">Git, CI, релизы и сопровождение</a>: архитектура
+проверяется не на диаграммах, а в командной работе, автоматических проверках
+и выпусках.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-43-metaprogramming.html"><span class="pager-label">← Назад</span><span class="pager-title">Метапрограммирование и дескрипторы</span></a><a class="pager-card next" rel="next" href="ch-45-git-ci-releases.html"><span class="pager-label">Далее:</span><span class="pager-title">Git, CI, релизы и сопровождение</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

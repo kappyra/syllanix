@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 460" role="img"
+     aria-labelledby="task-model-title task-model-desc"
+     font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="task-model-title">Состояния задачи в модели выполнения</title>
+  <desc id="task-model-desc">Задача находится в одном из четырёх состояний: готова, выполняется, ждёт события, завершена. Планировщик выбирает готовую задачу, она выполняется до ближайшего await, затем переходит в ожидание. Когда событие наступило, задача возвращается в очередь готовых. Завершается задача результатом, ошибкой или отменой.</desc>
+
+  <text x="30" y="32" font-size="18" font-weight="bold" fill="#1d3550">Четыре состояния задачи</text>
+  <text x="30" y="58" font-size="13" fill="#33557a">Исполнитель один: в каждый момент выполняется одна задача.</text>
+
+  <!-- готова -->
+  <rect x="60" y="100" width="210" height="82" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="165" y="130" text-anchor="middle" font-size="16" font-weight="bold" fill="#1d3550">готова</text>
+  <text x="165" y="152" text-anchor="middle" font-size="13" fill="#1d3550">может выполняться,</text>
+  <text x="165" y="170" text-anchor="middle" font-size="13" fill="#1d3550">ждёт очереди</text>
+
+  <!-- выполняется -->
+  <rect x="330" y="100" width="210" height="82" rx="10" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="435" y="130" text-anchor="middle" font-size="16" font-weight="bold" fill="#4b3a16">выполняется</text>
+  <text x="435" y="152" text-anchor="middle" font-size="13" fill="#4b3a16">занимает</text>
+  <text x="435" y="170" text-anchor="middle" font-size="13" fill="#4b3a16">исполнитель</text>
+
+  <!-- завершена -->
+  <rect x="600" y="100" width="190" height="82" rx="10" fill="#f2f6ee" stroke="#4a6b35" stroke-width="2"/>
+  <text x="695" y="130" text-anchor="middle" font-size="16" font-weight="bold" fill="#2f4a20">завершена</text>
+  <text x="695" y="152" text-anchor="middle" font-size="13" fill="#2f4a20">результат, ошибка</text>
+  <text x="695" y="170" text-anchor="middle" font-size="13" fill="#2f4a20">или отмена</text>
+
+  <!-- ждёт -->
+  <rect x="330" y="270" width="210" height="82" rx="10" fill="#fdf1f1" stroke="#8c2f2f" stroke-width="2"/>
+  <text x="435" y="300" text-anchor="middle" font-size="16" font-weight="bold" fill="#6b2020">ждёт</text>
+  <text x="435" y="322" text-anchor="middle" font-size="13" fill="#6b2020">приостановлена</text>
+  <text x="435" y="340" text-anchor="middle" font-size="13" fill="#6b2020">до события</text>
+
+  <!-- стрелка готова -> выполняется -->
+  <line x1="272" y1="141" x2="322" y2="141" stroke="#33557a" stroke-width="2.5"/>
+  <polygon points="326,141 314,134 314,148" fill="#33557a"/>
+  <text x="299" y="129" text-anchor="middle" font-size="12" fill="#33557a">выбор</text>
+
+  <!-- стрелка выполняется -> завершена -->
+  <line x1="542" y1="141" x2="592" y2="141" stroke="#33557a" stroke-width="2.5"/>
+  <polygon points="596,141 584,134 584,148" fill="#33557a"/>
+  <text x="569" y="129" text-anchor="middle" font-size="12" fill="#33557a">итог</text>
+
+  <!-- стрелка выполняется -> ждёт -->
+  <line x1="435" y1="184" x2="435" y2="264" stroke="#8c2f2f" stroke-width="2.5"/>
+  <polygon points="435,268 428,256 442,256" fill="#8c2f2f"/>
+  <text x="450" y="228" font-size="12" fill="#6b2020">await: нужно событие</text>
+
+  <!-- стрелка ждёт -> готова -->
+  <line x1="330" y1="311" x2="165" y2="311" stroke="#8c2f2f" stroke-width="2.5"/>
+  <line x1="165" y1="311" x2="165" y2="190" stroke="#8c2f2f" stroke-width="2.5"/>
+  <polygon points="165,184 158,196 172,196" fill="#8c2f2f"/>
+  <text x="247" y="303" text-anchor="middle" font-size="12" fill="#6b2020">событие наступило</text>
+
+  <!-- пояснение -->
+  <rect x="60" y="384" width="730" height="58" rx="10" fill="#ffffff" stroke="#9aa7b5" stroke-width="1.5"/>
+  <text x="78" y="408" font-size="13" fill="#1d3550">Между точками await задача не прерывается. Один долгий вызов без await</text>
+  <text x="78" y="430" font-size="13" fill="#1d3550">останавливает все остальные задачи: планировщик не может переключиться.</text>
+</svg>

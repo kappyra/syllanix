@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Итераторы и протокол итерации — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><details class="chapter-current" open><summary>
+<a href="ch-20-iterators.html" aria-current="page">20. Итераторы и протокол итерации</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-20-iterators.html#что-вы-сможете-после-этой-главы">20.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-20-iterators.html#why">20.2. Загадка цикла for</a></li>
+<li><a href="ch-20-iterators.html#iterable-vs-iterator">20.3. Итерируемый объект и итератор</a></li>
+<li><a href="ch-20-iterators.html#iter-next">20.4. iter и next</a></li>
+<li><a href="ch-20-iterators.html#protocol">20.5. Протокол итерации</a></li>
+<li><a href="ch-20-iterators.html#state">20.6. Состояние и исчерпание</a></li>
+<li><a href="ch-20-iterators.html#everywhere">20.7. Где в Python живут итераторы</a></li>
+<li><a href="ch-20-iterators.html#design">20.8. Что передавать в функцию</a></li>
+<li><a href="ch-20-iterators.html#memory">20.9. Итератор и память</a></li>
+<li><a href="ch-20-iterators.html#mistakes">20.10. Типичные ошибки</a></li>
+<li><a href="ch-20-iterators.html#упражнения">20.11. Упражнения</a></li>
+<li><a href="ch-20-iterators.html#проверка-понимания">20.12. Проверка понимания</a></li>
+<li><a href="ch-20-iterators.html#что-дальше">20.13. Что дальше</a></li>
+</ol></details></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 4. Итерация и функции высшего порядка</span><span class="sep">›</span><span>Глава 20</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Итерация и функции высшего порядка · глава 20</p>
+<h1 id="итераторы-и-протокол-итерации">Итераторы и протокол итерации</h1>
+<p class="chapter-summary">Что происходит в цикле for, чем итератор отличается от итерируемого объекта, как работают iter, next и StopIteration.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#что-вы-сможете-после-этой-главы"><span class="toc-number">20.1</span> Что вы сможете после этой главы</a></li>
+<li class="level-2"><a href="#why"><span class="toc-number">20.2</span> Загадка цикла for</a></li>
+<li class="level-2"><a href="#iterable-vs-iterator"><span class="toc-number">20.3</span> Итерируемый объект и итератор</a></li>
+<li class="level-2"><a href="#iter-next"><span class="toc-number">20.4</span> iter и next</a></li>
+<li class="level-2"><a href="#protocol"><span class="toc-number">20.5</span> Протокол итерации</a></li>
+<li class="level-2"><a href="#state"><span class="toc-number">20.6</span> Состояние и исчерпание</a></li>
+<li class="level-2"><a href="#everywhere"><span class="toc-number">20.7</span> Где в Python живут итераторы</a></li>
+<li class="level-2"><a href="#design"><span class="toc-number">20.8</span> Что передавать в функцию</a></li>
+<li class="level-2"><a href="#memory"><span class="toc-number">20.9</span> Итератор и память</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">20.10</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">20.11</span> Упражнения</a></li>
+<li class="level-2"><a href="#проверка-понимания"><span class="toc-number">20.12</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#что-дальше"><span class="toc-number">20.13</span> Что дальше</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#ex-ch20-01">1. Прогнозирование вывода</a></li>
+<li class="level-3"><a href="#ex-ch20-02">2. Список или итератор</a></li>
+<li class="level-3"><a href="#ex-ch20-03">3. Ручной перебор</a></li>
+<li class="level-3"><a href="#ex-ch20-04">4. Безопасное чтение</a></li>
+<li class="level-3"><a href="#ex-ch20-05">5. Почему второй цикл пуст</a></li>
+<li class="level-3"><a href="#ex-ch20-06">6. Итераторы независимы</a></li>
+<li class="level-3"><a href="#ex-ch20-07">7. Словарное представление</a></li>
+<li class="level-3"><a href="#ex-ch20-08">8. Файл как итератор</a></li>
+<li class="level-3"><a href="#ex-ch20-09">9. Мини-проект: порционное чтение</a></li>
+<li class="level-3"><a href="#ex-ch20-10">10. Что произойдёт с StopIteration</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>Цикл <code>for</code> кажется волшебным: он одинаково перебирает список, строку,
+словарь, диапазон <code>range</code> и файл. У этих объектов почти нет общего в
+устройстве — разные типы, разное хранение, разное назначение. Общее у них
+одно: все они умеют выдать <strong>итератор</strong> — объект, который по запросу отдаёт
+элементы по одному. Цикл <code>for</code> не знает, что перебирает; он работает только
+с итератором.</p>
+<p>В этой главе вы увидите, что стоит за строкой <code>for x in items</code>, научитесь
+запускать итерацию вручную через <code>iter</code> и <code>next</code>, поймёте, откуда берётся
+<code>StopIteration</code>, и узнаете, почему один и тот же «перебор» иногда работает
+дважды, а иногда — только один раз.</p>
+<h2 id="что-вы-сможете-после-этой-главы"><span class="h-number">20.1</span> Что вы сможете после этой главы</h2>
+<ul>
+<li>объяснять разницу между итерируемым объектом и итератором;</li>
+<li>получать итератор из коллекции и вручную запрашивать элементы через <code>next</code>;</li>
+<li>распознавать исчерпание итератора и правильно обрабатывать <code>StopIteration</code>;</li>
+<li>объяснять, что именно делает цикл <code>for</code> на каждом шаге;</li>
+<li>находить дефекты, связанные с повторным использованием исчерпанного
+итератора.</li>
+</ul>
+<h2 id="why"><span class="h-number">20.2</span> Загадка цикла for</h2>
+<p>Посмотрим на четыре цикла, которые вы уже писали.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"яблоко"</span><span class="p">,</span> <span class="s2">"банан"</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">symbol</span> <span class="ow">in</span> <span class="s2">"аб"</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">"a"</span><span class="p">:</span> <span class="mi">1</span><span class="p">}:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>яблоко
+банан
+а
+б
+0
+1
+a
+</code></pre>
+<p>Список, строка, диапазон и словарь устроены по-разному, но <code>for</code> работает со
+всеми одинаково. Причина в том, что <code>for</code> не требует от объекта «быть
+коллекцией». Ему достаточно, чтобы объект умел выдать итератор — объект с
+состоянием обхода. Дальше цикл просто просит у итератора следующий элемент,
+пока элементы не закончатся.</p>
+<p>Это объясняет и поведение с файлом из предыдущей главы: строки читаются по
+одной, а не загружаются в память целиком. Файл — тоже источник итератора, и
+каждый запрос возвращает очередную строку.</p>
+<h2 id="iterable-vs-iterator"><span class="h-number">20.3</span> Итерируемый объект и итератор</h2>
+<p>Два термина, которые легко перепутать, но различать их обязательно.</p>
+<p><strong>Итерируемый объект</strong> — объект, по которому можно пройти циклом: он умеет
+выдать итератор. Примеры: список, кортеж, строка, словарь, множество,
+<code>range</code>, файл.</p>
+<p><strong>Итератор</strong> — объект, выдающий элементы по одному через <code>next</code> и хранящий
+текущее состояние обхода. Пример: то, что возвращает функция <code>iter</code> от списка.</p>
+<p>Ключевое различие: итерируемый объект — это <strong>источник</strong>, а итератор —
+<strong>курсор</strong> с текущей позицией. Из одного списка можно получить сколько угодно
+независимых итераторов; каждый будет помнить свою позицию.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">it</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>list_iterator
+1
+2
+</code></pre>
+<p>Сам список — не итератор: у него нет состояния обхода. Поэтому
+<code>next</code> от списка — ошибка.</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+</code></pre></div>
+<pre class="output"><code>TypeError: &#x27;list&#x27; object is not an iterator
+</code></pre>
+<p>Обратное неверно: итератор — ещё и итерируемый объект. Если
+попросить у итератора итератор, он вернёт самого себя — ведь его собственная
+позиция и есть позиция обхода.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">it</span><span class="p">)</span> <span class="ow">is</span> <span class="n">it</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">it</span><span class="o">.</span><span class="fm">__iter__</span><span class="p">()</span> <span class="ow">is</span> <span class="n">it</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>True
+True
+</code></pre>
+<p>Сравним свойства в таблице.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Свойство</th>
+<th>Итерируемый объект</th>
+<th>Итератор</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>можно перебрать в <code>for</code></td>
+<td>да</td>
+<td>да</td>
+</tr>
+<tr>
+<td>выдаёт элементы через <code>next</code></td>
+<td>нет</td>
+<td>да</td>
+</tr>
+<tr>
+<td>хранит позицию обхода</td>
+<td>нет</td>
+<td>да</td>
+</tr>
+<tr>
+<td>можно использовать повторно</td>
+<td>да, каждый <code>for</code> начинает заново</td>
+<td>нет, после исчерпания пуст</td>
+</tr>
+<tr>
+<td>пример</td>
+<td><code>[1, 2]</code>, <code>&quot;аб&quot;</code>, <code>range(3)</code></td>
+<td><code>iter([1, 2])</code></td>
+</tr>
+</tbody>
+</table>
+</div><p>В разговорной речи слово «итератор» иногда применяют к любому объекту,
+который можно перебрать. В этой книге термины употребляются строго: список —
+итерируемый объект, но не итератор; объект, который вернул <code>iter</code>, —
+итератор. Такое различение не формальность: от него зависит, можно ли
+перебрать объект дважды и стоит ли ожидать от него <code>next</code>.</p>
+<h2 id="iter-next"><span class="h-number">20.4</span> iter и next</h2>
+<p><strong>iter</strong> — встроенная функция, получающая итератор из итерируемого объекта.
+<strong>next</strong> — встроенная функция, запрашивающая у итератора следующий элемент;
+может иметь значение по умолчанию.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="s2">"элементы закончились"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>1
+2
+3
+элементы закончились
+</code></pre>
+<p>Четвёртый вызов <code>next</code> без запасного значения поднял бы <code>StopIteration</code>.
+Второй аргумент <code>next</code> превращает «элементов больше нет» в обычное значение и
+избавляет от исключения — это самый удобный способ, когда исчерпание
+ожидаемо.</p>
+<p><strong>StopIteration</strong> — исключение, сигнализирующее, что элементы итератора
+закончились; не следует перехватывать его вручную без нужды.</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>StopIteration
+</code></pre>
+<p><code>StopIteration</code> — не ошибка программы, а штатный сигнал «конец». Цикл <code>for</code>
+ловит его сам и завершает работу; вам об этом думать не нужно. Исключение
+становится проблемой только тогда, когда вы вызываете <code>next</code> вручную и
+забываете, что элементы могут закончиться.</p>
+<h2 id="protocol"><span class="h-number">20.5</span> Протокол итерации</h2>
+<p><strong>Протокол итерации</strong> — договорённость: <code>__iter__</code> возвращает итератор,
+<code>__next__</code> возвращает следующий элемент или поднимает <code>StopIteration</code>.
+Именно этой договорённости достаточно, чтобы объект работал в <code>for</code>, в
+<code>list(...)</code>, в <code>sum(...)</code> и в других местах, где нужен перебор.</p>
+<p>Ручная итерация повторяет то, что делает <code>for</code>: получить итератор, затем в
+цикле запрашивать элементы до <code>StopIteration</code>.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>1
+2
+3
+</code></pre>
+<p>Сравните с обычным циклом:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>1
+2
+3
+</code></pre>
+<p>Второй вариант короче и безопаснее: <code>for</code> сам получает итератор, сам ловит
+<code>StopIteration</code> и сам завершает цикл. Ручная схема полезна для понимания, но
+в рабочем коде её заменяют на <code>for</code>, <code>list</code>, <code>sum</code> или <code>next</code> со значением по
+умолчанию.</p>
+<p>Если объект не умеет выдать итератор, <code>for</code> не начинает работу и сообщает об
+этом.</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>TypeError: &#x27;int&#x27; object is not iterable
+</code></pre>
+<p>Смысл сообщения прост: объект типа int перебирать нельзя. Число — не
+коллекция и не умеет выдавать элементы, поэтому <code>for</code> даже не начинает
+работу. Та же ошибка возникает при попытке передать число в <code>list</code>, <code>sum</code> или
+<code>tuple</code>.</p>
+<p><figure class="figure"><img src="illustrations/ch-20-iterator-state.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h2 id="state"><span class="h-number">20.6</span> Состояние и исчерпание</h2>
+<p>Итератор хранит позицию. Каждый вызов <code>next</code> сдвигает её вперёд, и вернуться
+назад нельзя. Когда элементы заканчиваются, итератор остаётся исчерпанным
+навсегда: новые элементы из него не появятся.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">it</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">it</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>[1, 2]
+[]
+</code></pre>
+<p>Первый <code>list(it)</code> забрал оба элемента и довёл итератор до конца. Второй
+получил уже пустой итератор и вернул пустой список. Это не дефект, а прямое
+следствие модели: итератор — одноразовый курсор.</p>
+<p>Отсюда важное различие в поведении циклов. Если перебирать <strong>итерируемый
+объект</strong>, каждый <code>for</code> получает новый итератор и начинает с начала. Если
+перебирать <strong>итератор</strong>, второй цикл ничего не выведет.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"---"</span><span class="p">)</span>
+<span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>1
+2
+1
+2
+---
+1
+2
+</code></pre>
+<p>После разделителя напечатаны только две строки: второй проход по <code>it</code> уже
+ничего не нашёл. Программа при этом не падает и не сообщает об ошибке —
+именно поэтому такой дефект трудно заметить.</p>
+<p>Два итератора одного списка независимы: у каждого своя позиция.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">first</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">second</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">first</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">second</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">first</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>1
+1
+2
+</code></pre>
+<h2 id="everywhere"><span class="h-number">20.7</span> Где в Python живут итераторы</h2>
+<p>Понимание протокола объясняет знакомые конструкции. <code>range</code> возвращает
+итерируемый объект, а <code>iter(range(3))</code> — итератор <code>range_iterator</code>. Строка
+даёт <code>str_iterator</code>, словарь — итератор по ключам.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)))</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="s2">"абв"</span><span class="p">))</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="nb">iter</span><span class="p">({</span><span class="mi">1</span><span class="p">:</span> <span class="s2">"a"</span><span class="p">}))</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>range_iterator
+str_iterator
+dict_keyiterator
+</code></pre>
+<p>Методы словаря <code>keys</code>, <code>values</code> и <code>items</code> возвращают не итераторы, а
+представления — итерируемые объекты. Поэтому <code>next</code> напрямую к ним не
+применяется, но итератор из них получается.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"a"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">d</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="nb">next</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+<span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"представление — не итератор"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>a
+[&#x27;a&#x27;, &#x27;b&#x27;]
+представление — не итератор
+</code></pre>
+<p>Порядок обхода словаря — это порядок появления ключей, о котором вы читали в
+главе о словарях. Итератор по представлению опирается на внутреннее состояние
+таблицы, поэтому изменение размера словаря во время обхода прерывает работу
+<code>RuntimeError</code>. Если словарь нужно менять, сначала снимите снимок ключей
+списком: список независим от словаря, и его спокойно можно обходить.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"a"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+<span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="n">d</span><span class="p">[</span><span class="s2">"c"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>[&#x27;a&#x27;, &#x27;b&#x27;]
+[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]
+</code></pre>
+<p>Файл, в отличие от словарного представления, сам итератор: его
+<code>next</code> возвращает очередную строку. Поэтому файл нельзя «перебрать дважды»
+без повторного открытия.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">tmp</span><span class="p">:</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span> <span class="o">/</span> <span class="s2">"lines.txt"</span>
+    <span class="n">path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="s2">"раз</span><span class="se">\n</span><span class="s2">два</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">file</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s2">"конец"</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s2">"конец"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>раз
+два
+конец
+</code></pre>
+<p>Функция <code>enumerate</code> возвращает итератор пар «номер, элемент» — ещё один
+пример объекта с состоянием. <code>sum</code> и <code>sorted</code> тоже принимают итератор: они
+забирают из него элементы так же, как это делает <code>for</code>.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">pairs</span> <span class="o">=</span> <span class="nb">enumerate</span><span class="p">([</span><span class="s2">"а"</span><span class="p">,</span> <span class="s2">"б"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">pairs</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">pairs</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">pairs</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="nb">iter</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">iter</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])))</span>
+</code></pre></div>
+<pre class="output"><code>enumerate
+(0, &#x27;а&#x27;)
+(1, &#x27;б&#x27;)
+6
+[1, 2, 3]
+</code></pre>
+<p>Наконец, проверка вхождения <code>in</code> для объектов без собственной операции поиска
+тоже опирается на перебор: элементы запрашиваются по одному, пока не найдётся
+нужный. Именно поэтому <code>in</code> по итератору сдвигает его позицию — ещё одна
+причина не хранить итератор дольше необходимого.</p>
+<p><figure class="figure"><img src="illustrations/ch-20-for-protocol.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h2 id="design"><span class="h-number">20.8</span> Что передавать в функцию</h2>
+<p>Из модели «источник и курсор» вытекает практическое правило проектирования.
+Функция, которой нужен один проход, может принимать итерируемый объект и не
+заботиться о том, коллекция это или итератор. Функция, которой нужны два
+прохода, обязана получить коллекцию: если ей передать итератор, второй проход
+окажется пустым.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">describe</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+    <span class="n">first_pass</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="n">first_pass</span> <span class="o">=</span> <span class="n">first_pass</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">second_pass</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="n">second_pass</span> <span class="o">=</span> <span class="n">second_pass</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">first_pass</span><span class="p">,</span> <span class="n">second_pass</span>
+
+
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">describe</span><span class="p">(</span><span class="n">numbers</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">describe</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">numbers</span><span class="p">)))</span>
+</code></pre></div>
+<pre class="output"><code>(3, 3)
+(3, 0)
+</code></pre>
+<p>Первая строка показывает нормальную работу: список обойдён дважды. Вторая
+строка — дефект: итератор отдан в функцию, первый проход его исчерпал, второй
+ничего не нашёл. Ошибки не произошло, результат просто неверен. Такой дефект
+опаснее исключения, потому что программа продолжает работать.</p>
+<p>Отсюда два вывода. Если функция принимает итерируемый объект и обходит его
+один раз, ей можно передавать итератор — так экономятся память и время.
+Если функция может обходить объект дважды (например, сначала считает, потом
+печатает), она должна либо потребовать коллекцию, либо один раз собрать
+элементы в список. Документация функции — место, где это фиксируется.</p>
+<p>Второе следствие: не храните итератор как «отложенный результат». Пока он
+лежит, его может вычитать кто-то другой, и вы получите не то, что ожидали.
+Храните коллекцию, а итератор создавайте в момент использования.</p>
+<h2 id="memory"><span class="h-number">20.9</span> Итератор и память</h2>
+<p>Различие «источник и курсор» объясняет ещё одно важное свойство: итератор не
+хранит копию элементов. Он хранит только позицию и правило, по которому
+получается следующий элемент. Список из миллиона чисел занимает память под
+миллион чисел; <code>range(1_000_000)</code> хранит начало, конец и шаг, а элементы
+выдаёт по одному в момент запроса.</p>
+<p>То же происходит с файлом: строки читаются по мере обхода, поэтому можно
+обработать файл, который не помещается в память целиком. Если бы <code>for</code> по
+файлу сначала собирал все строки в список, большие файлы были бы недоступны.</p>
+<p>Отсюда практическое правило: если сведения нужны один раз и по порядку,
+работайте с итератором. Если нужен случайный доступ, повторные проходы или
+длина, нужна коллекция: список или кортеж. Преобразование итератора в список
+выполняется функцией <code>list</code> и стоит памяти, пропорциональной числу элементов.</p>
+<p>Полезно увидеть, что цикл продолжает обход с той позиции, где остановились
+ручные вызовы <code>next</code>.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">numbers</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>0
+1
+2
+3
+4
+</code></pre>
+<p>Первые два значения забрал <code>next</code>, поэтому цикл начал с <code>2</code>. Это ещё раз
+показывает: состояние принадлежит итератору, а не циклу.</p>
+<h2 id="mistakes"><span class="h-number">20.10</span> Типичные ошибки</h2>
+<ol>
+<li><strong>Путать итерируемый объект и итератор.</strong> Список можно перебрать, но
+<code>next</code> к нему не применим: сначала нужен <code>iter</code>.</li>
+<li><strong>Перебирать исчерпанный итератор.</strong> Второй <code>for</code> по тому же итератору
+ничего не сделает и не сообщит об этом.</li>
+<li><strong>Сохранять итератор «на потом».</strong> Если между созданием и использованием
+итератор уже кем-то вычитан, вы получите не то, что ожидали. Надёжнее
+хранить коллекцию, а итератор создавать на месте.</li>
+<li><strong>Ловить <code>StopIteration</code> вручную без нужды.</strong> В обычном цикле это делает
+<code>for</code>; для «взять один элемент, если он есть» есть <code>next(it, default)</code>.</li>
+<li><strong>Менять коллекцию во время обхода.</strong> Для словаря это даёт
+<code>RuntimeError</code>, для списка — пропуски элементов.</li>
+<li><strong>Ожидать, что <code>next</code> вернёт <code>None</code> в конце.</strong> Он поднимает
+<code>StopIteration</code>; <code>None</code> — обычное значение и может быть элементом.</li>
+</ol>
+<p>Проверим последнюю ловушку: <code>None</code> может быть настоящим элементом, поэтому
+отличить «конец» от «значение None» можно только по исключению или по
+запасному значению.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">([</span><span class="kc">None</span><span class="p">,</span> <span class="s2">"значение"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="s2">"элементы закончились"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>None
+значение
+элементы закончились
+</code></pre>
+<p>Отдельно стоит увидеть, как ведёт себя обход при изменении списка. В отличие
+от словаря, список не поднимает исключение: итератор просто идёт по позициям,
+и после удаления элемента следующие сдвигаются, из-за чего часть из них
+остаётся непосещённой.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">visited</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+    <span class="n">visited</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">number</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">numbers</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">visited</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>[1, 2, 4]
+[1, 3, 4]
+</code></pre>
+<p>Число <code>3</code> не попало в <code>visited</code>: после удаления двойки итератор перешёл к
+позиции, где теперь стояло <code>4</code>. Программа не сообщила об ошибке — снова
+«тихий» дефект, который обнаруживается только проверкой результата.</p>
+<h2 id="упражнения"><span class="h-number">20.11</span> Упражнения</h2>
+<h3 id="ex-ch20-01">1. Прогнозирование вывода</h3>
+<p>Не запуская код, запишите результат. Затем проверьте и объясните каждую
+строку.</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+<span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">it</span><span class="p">))</span>
+</code></pre></div>
+<h3 id="ex-ch20-02">2. Список или итератор</h3>
+<p>Для каждого объекта определите, итератор ли это, и проверьте
+догадку вызовом <code>next</code> в <code>try</code>/<code>except</code>:</p>
+<ul>
+<li><code>[1, 2, 3]</code></li>
+<li><code>iter([1, 2, 3])</code></li>
+<li><code>&quot;абв&quot;</code></li>
+<li><code>iter(&quot;абв&quot;)</code></li>
+<li><code>range(3)</code></li>
+</ul>
+<h3 id="ex-ch20-03">3. Ручной перебор</h3>
+<p>Дан итератор по списку <code>[&quot;а&quot;, &quot;б&quot;, &quot;в&quot;]</code>. Напишите цикл <code>while</code>, который
+печатает элементы до исчерпания, не используя <code>for</code> и не используя <code>list()</code>.</p>
+<h3 id="ex-ch20-04">4. Безопасное чтение</h3>
+<p>Напишите функцию <code>take_one(it)</code>, которая возвращает следующий элемент
+итератора или строку <code>&quot;пусто&quot;</code>, если элементы закончились. Проверьте её на
+итераторе из одного элемента, вызвав дважды.</p>
+<h3 id="ex-ch20-05">5. Почему второй цикл пуст</h3>
+<p>Объясните, почему программа печатает только <code>1 2</code>, и предложите два
+исправления, чтобы оба цикла сработали:</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="ex-ch20-06">6. Итераторы независимы</h3>
+<p>Получите из одного списка два итератора. Прочитайте из них элементы в
+порядке: первый, первый, второй, первый — и выведите. Объясните, почему
+результат такой.</p>
+<h3 id="ex-ch20-07">7. Словарное представление</h3>
+<p>Дан словарь <code>{&quot;a&quot;: 1, &quot;b&quot;: 2, &quot;c&quot;: 3}</code>. Получите итератор по значениям и
+выведите два значения через <code>next</code>, затем остаток через <code>list</code>. Объясните,
+почему <code>next(d.values())</code> напрямую не работает.</p>
+<h3 id="ex-ch20-08">8. Файл как итератор</h3>
+<p>Во временном каталоге создайте файл из трёх строк. Откройте его и прочитайте
+две строки через <code>next</code>, затем оставшуюся — через <code>for</code>. Объясните, почему
+цикл <code>for</code> не начал с первой строки.</p>
+<h3 id="ex-ch20-09">9. Мини-проект: порционное чтение</h3>
+<p>Напишите функцию <code>chunks(iterable, size)</code>, которая возвращает список порций
+(списков) по <code>size</code> элементов, не используя срезы коллекции. Например, для
+<code>[1, 2, 3, 4, 5]</code> и <code>size=2</code> результат — <code>[[1, 2], [3, 4], [5]]</code>.
+Подсказка: получите итератор и набирайте элементы через <code>next</code> с запасным
+значением-маркером.</p>
+<h3 id="ex-ch20-10">10. Что произойдёт с StopIteration</h3>
+<p>Объясните, что выведет каждая программа и почему:</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><code class="language-python"><span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">))</span>
+</code></pre></div>
+<p>Для второй программы опишите, как <code>for</code> обрабатывает ту же ситуацию иначе.</p>
+<h2 id="проверка-понимания"><span class="h-number">20.12</span> Проверка понимания</h2>
+<ol>
+<li>Чем итерируемый объект отличается от итератора? Приведите пример каждого.</li>
+<li>Что делает <code>iter</code> и что делает <code>next</code>?</li>
+<li>Почему <code>next</code> к списку не применяется, а <code>for</code> по списку работает?</li>
+<li>Когда возникает <code>StopIteration</code> и почему в обычном цикле о нём не думают?</li>
+<li>Почему после исчерпания итератора он не начинается заново?</li>
+<li>Что вернёт <code>next(it, &quot;конец&quot;)</code>, если элементы ещё есть? А если нет?</li>
+<li>Что именно делает <code>for</code> на каждом шаге?</li>
+</ol>
+<h2 id="что-дальше"><span class="h-number">20.13</span> Что дальше</h2>
+<p>Протокол итерации объясняет, как устроен перебор, но писать собственный
+итератор вручную неудобно: нужно хранить состояние и следить за
+<code>StopIteration</code>. Следующая глава покажет, как получить итератор гораздо
+проще — описать функцию, которая выдаёт значения по одному, и позволить
+Python запомнить состояние за вас.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-19-files-formats.html"><span class="pager-label">← Назад</span><span class="pager-title">Файлы, пути и текстовые форматы</span></a><a class="pager-card next" rel="next" href="ch-21-generators.html"><span class="pager-label">Далее:</span><span class="pager-title">Генераторы и ленивые вычисления</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

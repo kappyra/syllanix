@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 430" role="img"
+     aria-labelledby="injection-title injection-desc"
+     font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="injection-title">Инъекция: склейка строк против параметров</title>
+  <desc id="injection-desc">Слева значение из формы подставляется в f-строку, поэтому запрос превращается в один текст, и условие OR 1=1 возвращает все строки таблицы. Справа шаблон запроса и значение приходят в базу по отдельным каналам, значение сравнивается буквально, и совпадений нет.</desc>
+
+  <text x="24" y="30" font-size="18" font-weight="bold" fill="#1d3550">Почему параметры защищают</text>
+  <text x="24" y="54" font-size="13" fill="#33557a">Данные и код должны идти в интерпретатор разными каналами.</text>
+
+  <!-- панель A -->
+  <rect x="20" y="70" width="390" height="300" rx="10" fill="#fdf1f1" stroke="#8c2f2f" stroke-width="1.8"/>
+  <text x="36" y="96" font-size="15" font-weight="bold" fill="#6b2020">Одна строка: код и данные слиты</text>
+
+  <rect x="36" y="110" width="358" height="56" rx="8" fill="#ffffff" stroke="#8c2f2f" stroke-width="1.4"/>
+  <text x="50" y="130" font-size="12" fill="#6b2020">значение из формы:</text>
+  <text x="50" y="152" font-size="13" font-weight="bold" fill="#6b2020">anna' OR '1'='1</text>
+
+  <line x1="215" y1="168" x2="215" y2="194" stroke="#8c2f2f" stroke-width="2.5"/>
+  <polygon points="215,198 208,188 222,188" fill="#8c2f2f"/>
+  <text x="228" y="188" font-size="12" fill="#6b2020">f-строка склеивает</text>
+
+  <rect x="36" y="200" width="358" height="82" rx="8" fill="#ffffff" stroke="#8c2f2f" stroke-width="1.4"/>
+  <text x="50" y="220" font-size="12" fill="#6b2020">получился запрос:</text>
+  <text x="50" y="242" font-size="12" fill="#6b2020">SELECT name FROM users</text>
+  <text x="50" y="262" font-size="12" font-weight="bold" fill="#8c2f2f">WHERE name = 'anna' OR '1'='1'</text>
+
+  <line x1="215" y1="284" x2="215" y2="310" stroke="#8c2f2f" stroke-width="2.5"/>
+  <polygon points="215,314 208,304 222,304" fill="#8c2f2f"/>
+  <text x="228" y="302" font-size="12" fill="#6b2020">база читает как код</text>
+
+  <rect x="36" y="316" width="358" height="42" rx="8" fill="#ffffff" stroke="#8c2f2f" stroke-width="1.4" stroke-dasharray="6 4"/>
+  <text x="50" y="342" font-size="13" fill="#6b2020">результат: все строки, включая админа</text>
+
+  <!-- панель B -->
+  <rect x="450" y="70" width="390" height="300" rx="10" fill="#f2f6ee" stroke="#4a6b35" stroke-width="1.8"/>
+  <text x="466" y="96" font-size="15" font-weight="bold" fill="#2f4a20">Два канала: данные отдельно</text>
+
+  <rect x="466" y="110" width="270" height="56" rx="8" fill="#ffffff" stroke="#4a6b35" stroke-width="1.4"/>
+  <text x="480" y="130" font-size="12" fill="#2f4a20">шаблон запроса (код):</text>
+  <text x="480" y="152" font-size="13" font-weight="bold" fill="#2f4a20">SELECT ... WHERE name = ?</text>
+
+  <rect x="466" y="182" width="270" height="56" rx="8" fill="#ffffff" stroke="#4a6b35" stroke-width="1.4"/>
+  <text x="480" y="202" font-size="12" fill="#2f4a20">параметр (значение):</text>
+  <text x="480" y="224" font-size="13" font-weight="bold" fill="#2f4a20">anna' OR '1'='1</text>
+
+  <line x1="736" y1="138" x2="774" y2="138" stroke="#4a6b35" stroke-width="2.5"/>
+  <line x1="736" y1="210" x2="774" y2="210" stroke="#4a6b35" stroke-width="2.5"/>
+  <line x1="774" y1="138" x2="774" y2="252" stroke="#4a6b35" stroke-width="2.5"/>
+  <polygon points="774,256 767,246 781,246" fill="#4a6b35"/>
+
+  <rect x="466" y="258" width="340" height="50" rx="8" fill="#ffffff" stroke="#4a6b35" stroke-width="1.4"/>
+  <text x="480" y="278" font-size="12" fill="#2f4a20">база получает запрос и значение</text>
+  <text x="480" y="298" font-size="12" fill="#2f4a20">по отдельности</text>
+
+  <line x1="636" y1="310" x2="636" y2="320" stroke="#4a6b35" stroke-width="2.5"/>
+  <polygon points="636,324 629,314 643,314" fill="#4a6b35"/>
+
+  <rect x="466" y="326" width="340" height="32" rx="8" fill="#ffffff" stroke="#4a6b35" stroke-width="1.4" stroke-dasharray="6 4"/>
+  <text x="480" y="347" font-size="13" fill="#2f4a20">результат: совпадений нет</text>
+
+  <!-- пояснение -->
+  <rect x="20" y="386" width="820" height="32" rx="6" fill="#ffffff" stroke="#9aa7b5" stroke-width="1.2"/>
+  <text x="34" y="407" font-size="13" fill="#1d3550">Правило общее для SQL, оболочки и шаблонов: значение передаётся отдельно и остаётся значением.</text>
+</svg>

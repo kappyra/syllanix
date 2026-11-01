@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Выражения, операторы и ввод данных — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details open><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-04-expressions-input.html" aria-current="page">04. Выражения, операторы и ввод данных</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-04-expressions-input.html#что-вы-сможете-после-этой-главы">4.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-04-expressions-input.html#precedence">4.2. Порядок вычисления выражения</a></li>
+<li><a href="ch-04-expressions-input.html#comparisons">4.3. Сравнения и значения True и False</a></li>
+<li><a href="ch-04-expressions-input.html#logical">4.4. Логические операторы</a></li>
+<li><a href="ch-04-expressions-input.html#short-circuit">4.5. Сокращённое вычисление</a></li>
+<li><a href="ch-04-expressions-input.html#augmented">4.6. Расширенное присваивание</a></li>
+<li><a href="ch-04-expressions-input.html#input">4.7. Ввод данных с клавиатуры</a></li>
+<li><a href="ch-04-expressions-input.html#conversion">4.8. Преобразование типа</a></li>
+<li><a href="ch-04-expressions-input.html#fstrings">4.9. Форматирование строк: f-строки</a></li>
+<li><a href="ch-04-expressions-input.html#putting-together">4.10. Собираем вместе</a></li>
+<li><a href="ch-04-expressions-input.html#mistakes">4.11. Типичные ошибки</a></li>
+<li><a href="ch-04-expressions-input.html#упражнения">4.12. Упражнения</a></li>
+<li><a href="ch-04-expressions-input.html#проверка-понимания">4.13. Проверка понимания</a></li>
+<li><a href="ch-04-expressions-input.html#что-дальше">4.14. Что дальше</a></li>
+</ol></details></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 1. Начало</span><span class="sep">›</span><span>Глава 4</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Начало · глава 4</p>
+<h1 id="выражения-операторы-и-ввод-данных">Выражения, операторы и ввод данных</h1>
+<p class="chapter-summary">Приоритет операций, сравнения, логические связки, ввод с клавиатуры и форматирование строк.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#что-вы-сможете-после-этой-главы"><span class="toc-number">4.1</span> Что вы сможете после этой главы</a></li>
+<li class="level-2"><a href="#precedence"><span class="toc-number">4.2</span> Порядок вычисления выражения</a></li>
+<li class="level-2"><a href="#comparisons"><span class="toc-number">4.3</span> Сравнения и значения True и False</a></li>
+<li class="level-2"><a href="#logical"><span class="toc-number">4.4</span> Логические операторы</a></li>
+<li class="level-2"><a href="#short-circuit"><span class="toc-number">4.5</span> Сокращённое вычисление</a></li>
+<li class="level-2"><a href="#augmented"><span class="toc-number">4.6</span> Расширенное присваивание</a></li>
+<li class="level-2"><a href="#input"><span class="toc-number">4.7</span> Ввод данных с клавиатуры</a></li>
+<li class="level-2"><a href="#conversion"><span class="toc-number">4.8</span> Преобразование типа</a></li>
+<li class="level-2"><a href="#fstrings"><span class="toc-number">4.9</span> Форматирование строк: f-строки</a></li>
+<li class="level-2"><a href="#putting-together"><span class="toc-number">4.10</span> Собираем вместе</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">4.11</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">4.12</span> Упражнения</a></li>
+<li class="level-2"><a href="#проверка-понимания"><span class="toc-number">4.13</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#что-дальше"><span class="toc-number">4.14</span> Что дальше</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#ex-ch04-01">1. Порядок действий</a></li>
+<li class="level-3"><a href="#ex-ch04-02">2. Скобки по делу</a></li>
+<li class="level-3"><a href="#ex-ch04-03">3. Прогнозирование сравнений</a></li>
+<li class="level-3"><a href="#ex-ch04-04">4. Цепочка сравнений</a></li>
+<li class="level-3"><a href="#ex-ch04-05">5. Логические связки</a></li>
+<li class="level-3"><a href="#ex-ch04-06">6. Сокращённое вычисление</a></li>
+<li class="level-3"><a href="#ex-ch04-07">7. Исправление ошибки преобразования</a></li>
+<li class="level-3"><a href="#ex-ch04-08">8. Расширенное присваивание</a></li>
+<li class="level-3"><a href="#ex-ch04-09">9. Формат отчёта</a></li>
+<li class="level-3"><a href="#ex-ch04-10">10. Мини-задача: чек</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>До сих пор программа знала всё заранее: числа были записаны прямо в тексте, и
+результат зависел только от них. Настоящая программа ведёт себя иначе — она
+получает входные значения от человека, проверяет условия и подставляет ответы в текст
+сообщения. Чтобы это стало возможным, нужны три вещи: умение строить сложные
+выражения и понимать, в каком порядке они вычисляются; умение сравнивать
+значения и получать ответ «да» или «нет»; умение читать ввод с клавиатуры и превращать
+введённый текст в число. Всё это — содержание текущей главы.</p>
+<p>Вы уже познакомились со значениями, именами и объектами. Теперь значения
+начнут соединяться в выражения, а выражения — в вычисления, которые описывают
+реальную задачу: стоимость заказа, проверку возраста, подсчёт итога.</p>
+<h2 id="что-вы-сможете-после-этой-главы"><span class="h-number">4.1</span> Что вы сможете после этой главы</h2>
+<ul>
+<li>читать сложное выражение и определять порядок его вычисления;</li>
+<li>применять скобки осознанно, а не наугад;</li>
+<li>получать значения <code>True</code> и <code>False</code> при помощи сравнений;</li>
+<li>соединять условия логическими операторами и понимать, почему <code>and</code> иногда
+не вычисляет второй операнд;</li>
+<li>читать ввод с клавиатуры и преобразовывать его к нужному типу;</li>
+<li>собирать сообщения при помощи f-строк и управлять форматом чисел.</li>
+</ul>
+<h2 id="precedence"><span class="h-number">4.2</span> Порядок вычисления выражения</h2>
+<p>Выражение вычисляется не слева направо, как читается текст, а по правилам
+старшинства операций. Это старшинство называется <strong>приоритет операторов</strong>: оно
+задано языком и одинаково для всех программ на Python — его определяет не
+конкретная реализация, а спецификация языка.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">((</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>14
+20
+</code></pre>
+<p>В первом случае умножение выполняется раньше сложения, поэтому <code>3 * 4</code>
+превращается в <code>12</code>, и только потом считается <code>2 + 12</code>. Во втором случае
+скобки меняют порядок: сначала вычисляется <code>2 + 3</code>, затем результат умножается.
+Скобки — единственный способ переопределить приоритет, и это законный
+инженерный приём: читаемость важнее краткости.</p>
+<p>Таблица старшинства для операторов, которые вы уже знаете (от самого высокого
+приоритета к самому низкому):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Приоритет</th>
+<th>Операторы</th>
+<th>Что делают</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 (высший)</td>
+<td><code>**</code></td>
+<td>возведение в степень</td>
+</tr>
+<tr>
+<td>2</td>
+<td>унарные <code>+</code>, <code>-</code></td>
+<td>знак числа</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>*</code>, <code>/</code>, <code>//</code>, <code>%</code></td>
+<td>умножение, деление, остаток</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>+</code>, <code>-</code></td>
+<td>сложение, вычитание</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code></td>
+<td>сравнения</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>not</code></td>
+<td>логическое отрицание</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>and</code></td>
+<td>логическое «и»</td>
+</tr>
+<tr>
+<td>8 (низший)</td>
+<td><code>or</code></td>
+<td>логическое «или»</td>
+</tr>
+</tbody>
+</table>
+</div><p>Две тонкости, которые часто удивляют новичков. Первая: возведение в степень
+связывает операнды <strong>справа налево</strong>, поэтому <code>2 ** 3 ** 2</code> означает
+<code>2 ** (3 ** 2)</code>, а не <code>(2 ** 3) ** 2</code>.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">3</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">((</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">3</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>512
+64
+</code></pre>
+<p>Вторая тонкость: унарный минус слабее возведения в степень. Запись <code>-3 ** 2</code>
+читается как <code>-(3 ** 2)</code>, то есть даёт <code>-9</code>, а не <code>9</code>.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">((</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>-9
+9
+</code></pre>
+<p>Когда выражение становится длинным, его удобно представлять деревом: каждая
+операция — узел, её операнды — ветви. Вычисление идёт от листьев к корню, от
+самых старших операций к самым младшим.</p>
+<p><figure class="figure"><img src="illustrations/ch-04-precedence.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Практический вывод прост: если сомневаетесь в порядке — ставьте скобки. Они
+ничего не ломают и снимают вопрос при чтении кода.</p>
+<h2 id="comparisons"><span class="h-number">4.3</span> Сравнения и значения True и False</h2>
+<p><strong>Оператор сравнения</strong> сопоставляет два значения и даёт результат типа <code>bool</code>:
+<code>True</code> или <code>False</code>. Таких операторов шесть.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Оператор</th>
+<th>Смысл</th>
+<th>Пример</th>
+<th>Результат</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>==</code></td>
+<td>равно</td>
+<td><code>3 == 3</code></td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td><code>!=</code></td>
+<td>не равно</td>
+<td><code>3 != 4</code></td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td>меньше</td>
+<td><code>3 &lt; 4</code></td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td><code>&lt;=</code></td>
+<td>меньше или равно</td>
+<td><code>4 &lt;= 4</code></td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>больше</td>
+<td><code>5 &gt; 4</code></td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td><code>&gt;=</code></td>
+<td>больше или равно</td>
+<td><code>5 &gt;= 6</code></td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+</div><p>Отдельно стоит <strong>равенство (==)</strong>: этот оператор сравнивает именно значения, а
+не идентичность объектов. Два разных объекта с одинаковым содержимым равны.
+Не путайте его с <code>is</code> из предыдущей главы: <code>is</code> отвечает на вопрос «это тот же
+самый объект?», а <code>==</code> — «эти значения одинаковы?».</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="mi">7</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">7</span> <span class="o">==</span> <span class="mi">7</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"abc"</span> <span class="o">&lt;</span> <span class="s2">"abd"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Python"</span> <span class="o">==</span> <span class="s2">"python"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>True
+True
+True
+False
+</code></pre>
+<p>Строки сравниваются посимвольно, по кодам символов Unicode. Отсюда следует
+коварное следствие: <code>&quot;10&quot; &lt; &quot;9&quot;</code> истинно, потому что сравнивается первый
+символ (<code>&quot;1&quot;</code> меньше <code>&quot;9&quot;</code>), а не числа десять и девять. Сортировка текста и
+сортировка чисел — разные операции.</p>
+<p>Результат сравнения можно сразу использовать как значение:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>True
+True
+</code></pre>
+<p>Запись <code>1 &lt; x &lt; 10</code> — это <strong>цепочка сравнений</strong>, а не два независимых
+сравнения, соединённых оператором <code>and</code>. Python читает её как «<code>1 &lt; x</code> и при этом
+<code>x &lt; 10</code>», причём <code>x</code> вычисляется один раз. Цепочка удобна для проверки
+диапазона и работает только с операторами сравнения: <code>1 &lt; x and x &lt; 10</code> —
+эквивалентная, но более длинная запись.</p>
+<p>Сравнивать значения разных несовместимых типов нельзя: Python не станет
+угадывать, что имелось в виду.</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="mi">3</span> <span class="o">&lt;</span> <span class="s2">"4"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>TypeError: &#x27;&lt;&#x27; not supported between instances of &#x27;int&#x27; and &#x27;str&#x27;
+</code></pre>
+<p>Числа разных типов сравнивать можно: <code>1 == 1.0</code> истинно, потому что значение
+одно и то же. Логические значения тоже участвуют в сравнениях: <code>True == 1</code>
+даёт <code>True</code>.</p>
+<p>Из сравнений складываются <strong>логические выражения</strong> — выражения, значением
+которых служит <code>True</code> или <code>False</code>. Одно сравнение уже логическое выражение;
+несколько сравнений соединяются логическими операторами.</p>
+<h2 id="logical"><span class="h-number">4.4</span> Логические операторы</h2>
+<p><strong>Логический оператор</strong> соединяет логические выражения. В Python их три:
+<code>and</code> («и»), <code>or</code> («или») и <code>not</code> («не»).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Оператор</th>
+<th>Результат истинен, когда…</th>
+<th>Пример</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>and</code></td>
+<td>истинны оба операнда</td>
+<td><code>2 &lt; 3 and 3 &lt; 4</code></td>
+</tr>
+<tr>
+<td><code>or</code></td>
+<td>истинен хотя бы один операнд</td>
+<td><code>2 &gt; 3 or 3 &lt; 4</code></td>
+</tr>
+<tr>
+<td><code>not</code></td>
+<td>операнд ложен</td>
+<td><code>not 2 &gt; 3</code></td>
+</tr>
+</tbody>
+</table>
+</div><div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">&lt;</span> <span class="mi">3</span> <span class="ow">and</span> <span class="mi">3</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">&gt;</span> <span class="mi">3</span> <span class="ow">or</span> <span class="mi">3</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="ow">not</span> <span class="mi">2</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="kc">True</span> <span class="ow">and</span> <span class="ow">not</span> <span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>True
+True
+True
+True
+</code></pre>
+<p>Здесь есть важное отличие от многих других языков: <code>and</code> и <code>or</code> возвращают не
+обязательно <code>True</code> или <code>False</code>, а <strong>один из своих операндов</strong>. Если первый
+операнд уже решает исход, возвращается он сам; иначе возвращается второй.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="mi">5</span> <span class="ow">and</span> <span class="mi">7</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">0</span> <span class="ow">and</span> <span class="mi">7</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">0</span> <span class="ow">or</span> <span class="s2">"по умолчанию"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">""</span> <span class="ow">or</span> <span class="s2">"запасной"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>7
+0
+по умолчанию
+запасной
+</code></pre>
+<p>Почему так? Python трактует значения в логическом контексте: одни значения
+считаются «истинными», другие — «ложными»; полное правило разберём в
+следующей главе. Пока достаточно наблюдения: <code>0</code> и пустая строка ведут себя
+как ложь, а ненулевое число и непустая строка — как истина. Отсюда практичный
+приём <code>значение or запасное_значение</code>: если первое ложно, получим второе.</p>
+<p>Обратите внимание, что <code>print(0 and 7)</code> выводит <code>0</code>, а не <code>False</code>: оператор
+вернул первый операнд, потому что второй ему уже не нужен.</p>
+<h2 id="short-circuit"><span class="h-number">4.5</span> Сокращённое вычисление</h2>
+<p><strong>Сокращённое вычисление</strong> — свойство <code>and</code> и <code>or</code> не вычислять второй операнд,
+если результат уже известен по первому. Для <code>and</code> это происходит, когда первый
+операнд ложен: каким бы ни был второй, результат уже известен — он ложен и
+равен первому операнду. Для <code>or</code> — когда первый операнд истинен.</p>
+<p>Свойство кажется мелочью, но оно определяет поведение реального кода. Проверим
+его, поставив в обе части связки вызов <code>print</code>: он печатает текст и ничего не
+возвращает, а значит, возвращает <code>None</code>.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="s2">"левая часть"</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">print</span><span class="p">(</span><span class="s2">"правая часть"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"---"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"левая часть"</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">print</span><span class="p">(</span><span class="s2">"правая часть"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>левая часть
+---
+левая часть
+правая часть
+</code></pre>
+<p>В первой связке <code>and</code> увидел слева <code>None</code>, счёл его ложным и не стал вычислять
+правую часть — второй строки в выводе нет. Во второй связке <code>or</code> увидел слева
+<code>None</code>, счёл его ложным и поэтому вычислил правую часть — обе строки на месте.</p>
+<p>Из этого правила следует и практическое следствие, и источник ошибок:
+побочные эффекты в правой части <code>and</code> или <code>or</code> могут не выполниться. Если
+вызов функции обязателен, не прячьте его в логическую связку.</p>
+<h2 id="augmented"><span class="h-number">4.6</span> Расширенное присваивание</h2>
+<p><strong>Расширенное присваивание</strong> — краткая форма, которая одновременно читает имя
+и записывает в него результат операции: <code>x += 1</code> вместо <code>x = x + 1</code>. Форма
+работает со всеми арифметическими операторами: <code>-=</code>, <code>*=</code>, <code>/=</code>, <code>//=</code>, <code>%=</code>,
+<code>**=</code>.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">x</span> <span class="o">+=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">-=</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">*=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">//=</span> <span class="mi">4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">**=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>15
+12
+24
+6
+36
+</code></pre>
+<p>Такая запись короче и яснее, когда имя длинное: <code>total_price += item_price</code>
+читается лучше, чем <code>total_price = total_price + item_price</code>. Для неизменяемых
+значений — чисел и строк — разницы в поведении нет: создаётся новый объект и
+связывается с тем же именем.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">s</span> <span class="o">=</span> <span class="s2">"abc"</span>
+<span class="n">s</span> <span class="o">+=</span> <span class="s2">"!"</span> <span class="o">*</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>abc!!!
+</code></pre>
+<p>Два ограничения, о которых стоит знать сразу. Первое: <code>+=</code> для строк создаёт
+новую строку и не меняет старую, потому что строки неизменяемы. Второе:
+расширенное присваивание — это инструкция, а не выражение; у неё нет значения,
+поэтому её нельзя вставить внутрь другого выражения.</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<p>Здесь интерпретатор сообщает синтаксическую ошибку: расширенное присваивание
+нельзя использовать как значение, поэтому такая запись не разбирается вовсе.</p>
+<h2 id="input"><span class="h-number">4.7</span> Ввод данных с клавиатуры</h2>
+<p>Встроенная <strong>функция input</strong> читает одну строку из стандартного ввода и
+возвращает её как текст. Необязательный аргумент задаёт приглашение, которое
+печатается перед чтением.</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Как вас зовут? "</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Привет, "</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
+</code></pre></div>
+<p>В интерактивном сеансе это выглядит так (строки, введённые человеком, отмечены
+в комментарии):</p>
+<pre class="text"><code>Как вас зовут? Анна
+Привет, Анна
+</code></pre>
+<p>Главное свойство <code>input</code>: <strong>она всегда возвращает <code>str</code></strong>, даже если человек
+набрал число. Ввод <code>42</code> даёт строку <code>&quot;42&quot;</code>, а не число <code>42</code>. Это не
+случайность, а сознательное решение: до преобразования программа не знает,
+что именно хотел ввести человек.</p>
+<p>Проверим это без клавиатуры — возьмём строку и посмотрим, что с ней можно
+делать:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">raw</span> <span class="o">=</span> <span class="s2">"42"</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">raw</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw</span> <span class="o">+</span> <span class="n">raw</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>&lt;class &#x27;str&#x27;&gt;
+4242
+</code></pre>
+<p>Сложение строк дало <code>4242</code>, а не <code>84</code>. Чтобы получить число, строку нужно
+преобразовать.</p>
+<h2 id="conversion"><span class="h-number">4.8</span> Преобразование типа</h2>
+<p><strong>Преобразование типа</strong> — явное получение значения другого типа встроенными
+функциями <code>int</code>, <code>float</code> и <code>str</code>. Программа сама решает, когда и к какому типу
+преобразовывать, и это делает намерение видимым.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="s2">"42"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="s2">"3.5"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="mf">3.5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="s2">"101"</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>42
+3.5
+3.5
+5
+</code></pre>
+<p>Разберём подробно, потому что здесь легко ошибиться.</p>
+<ul>
+<li><code>int(&quot;42&quot;)</code> разбирает текст как десятичное целое. Пробелы по краям
+игнорируются, поэтому <code>int(&quot;  42  &quot;)</code> тоже даёт <code>42</code>.</li>
+<li><code>float(&quot;3.5&quot;)</code> разбирает текст как число с дробной частью. Точка — десятичный
+разделитель; запятая не подходит, о ней ниже.</li>
+<li><code>str(3.5)</code> делает обратное: превращает число в текст. Это нужно, чтобы
+соединить число со строкой оператором <code>+</code>.</li>
+<li><code>int(&quot;101&quot;, 2)</code> разбирает текст в системе счисления с основанием 2 и даёт
+<code>5</code>. Второй аргумент пригодится, если вы работаете с двоичными данными.</li>
+</ul>
+<p>Преобразование к целому отбрасывает дробную часть по направлению к нулю, но не
+округляет:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mf">3.9</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="o">-</span><span class="mf">3.9</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mf">2.5</span><span class="p">),</span> <span class="nb">round</span><span class="p">(</span><span class="mf">3.5</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>3
+-3
+2 4
+</code></pre>
+<p><code>int(3.9)</code> даёт <code>3</code>, <code>int(-3.9)</code> даёт <code>-3</code>: дробная часть отбрасывается.
+Встроенная функция <code>round</code> ведёт себя иначе — округляет к ближайшему целому, а
+при ровно половине выбирает чётное число, поэтому <code>round(2.5)</code> равно <code>2</code>, а
+<code>round(3.5)</code> равно <code>4</code>. Если нужна «школьная» арифметика, проверяйте результат
+на своих данных, а не полагайтесь на интуицию.</p>
+<p>Если текст не похож на число, преобразование не выполнится, и программа
+сообщит об ошибке времени выполнения с типом <code>ValueError</code>:</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="s2">"3.5"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>ValueError: invalid literal for int() with base 10: &#x27;3.5&#x27;
+</code></pre>
+<p>Сообщение буквально говорит: «некорректный литерал для int по основанию 10».
+Причина в том, что <code>int</code> не разбирает дробную запись — для неё нужен <code>float</code>.
+Вот исправление:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="s2">"3.5"</span><span class="p">)))</span>
+</code></pre></div>
+<pre class="output"><code>3
+</code></pre>
+<p>Запятая в русской записи числа — тоже источник ошибки: <code>float(&quot;3,5&quot;)</code>
+завершится <code>ValueError</code>, потому что Python ожидает точку. Если значения вводит
+человек, запятую обычно заменяют на точку, но этот приём требует работы со
+строками, которую мы разберём в главе 15.</p>
+<h2 id="fstrings"><span class="h-number">4.9</span> Форматирование строк: f-строки</h2>
+<p>Собирать сообщение из частей через <code>+</code> неудобно: приходится преобразовывать
+каждое число в строку и следить за пробелами. <strong>f-строка</strong> решает эту задачу:
+это строковый литерал с префиксом <code>f</code>, в котором выражения в фигурных скобках
+подставляются прямо в текст.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">price</span> <span class="o">=</span> <span class="mi">250</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Итого: </span><span class="si">{</span><span class="n">price</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">count</span><span class="si">}</span><span class="s2"> рублей"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Скидка 10 %: </span><span class="si">{</span><span class="n">price</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.1</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> рубля"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>Итого: 750 рублей
+Скидка 10 %: 75.00 рубля
+</code></pre>
+<p>Внутри <code>{}</code> может стоять любое выражение: имя, арифметика, вызов функции.
+После двоеточия задаётся формат. Запись <code>:.2f</code> означает «число с плавающей
+точкой, два знака после точки».</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">name</span> <span class="o">=</span> <span class="s2">"Анна"</span>
+<span class="n">score</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">score</span><span class="si">:</span><span class="s2">&gt;3</span><span class="si">}</span><span class="s2"> из 10"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="mf">3.14159</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">score</span><span class="si">=}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>Анна:   7 из 10
+3.142
+score=7
+</code></pre>
+<p>Здесь <code>&gt;3</code> выравнивает число по правому краю в поле шириной три символа,
+<code>:.3f</code> оставляет три знака после точки, а сокращение <code>{score=}</code> печатает само
+выражение и его значение — удобно при отладке.</p>
+<p>Сравните два способа собрать одну и ту же строку:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">total</span> <span class="o">=</span> <span class="mi">675</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Итого: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">total</span><span class="p">)</span> <span class="o">+</span> <span class="s2">" рублей"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Итого: </span><span class="si">{</span><span class="n">total</span><span class="si">}</span><span class="s2"> рублей"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>Итого: 675 рублей
+Итого: 675 рублей
+</code></pre>
+<p>Результат одинаков, но во втором случае не нужно помнить о <code>str</code> и легче
+заметить, где именно в строке стоит значение. Конкатенация строк, знакомая вам
+по главе 2, требует, чтобы все части уже были строками; f-строка снимает это
+требование и почти всегда читается лучше.</p>
+<h2 id="putting-together"><span class="h-number">4.10</span> Собираем вместе</h2>
+<p>Вернёмся к задаче, с которой начиналась глава: посчитать стоимость заказа,
+введённого пользователем. Программа получает две строки, преобразует их в
+числа, выполняет вычисления и печатает отчёт.</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">raw_price</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Цена товара: "</span><span class="p">)</span>
+<span class="n">raw_count</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Количество: "</span><span class="p">)</span>
+<span class="n">price</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">raw_price</span><span class="p">)</span>
+<span class="n">count</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">raw_count</span><span class="p">)</span>
+<span class="n">total</span> <span class="o">=</span> <span class="n">price</span> <span class="o">*</span> <span class="n">count</span>
+<span class="n">discount</span> <span class="o">=</span> <span class="n">total</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">//</span> <span class="mi">100</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Товаров: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">, сумма: </span><span class="si">{</span><span class="n">total</span><span class="si">}</span><span class="s2">, скидка: </span><span class="si">{</span><span class="n">discount</span><span class="si">}</span><span class="s2">, к оплате: </span><span class="si">{</span><span class="n">total</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">discount</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<p>Проверим ту же логику на конкретных данных, без клавиатуры:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">raw_price</span> <span class="o">=</span> <span class="s2">"250"</span>
+<span class="n">raw_count</span> <span class="o">=</span> <span class="s2">"3"</span>
+<span class="n">price</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">raw_price</span><span class="p">)</span>
+<span class="n">count</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">raw_count</span><span class="p">)</span>
+<span class="n">total</span> <span class="o">=</span> <span class="n">price</span> <span class="o">*</span> <span class="n">count</span>
+<span class="n">discount</span> <span class="o">=</span> <span class="n">total</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">//</span> <span class="mi">100</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Товаров: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">, сумма: </span><span class="si">{</span><span class="n">total</span><span class="si">}</span><span class="s2">, скидка: </span><span class="si">{</span><span class="n">discount</span><span class="si">}</span><span class="s2">, к оплате: </span><span class="si">{</span><span class="n">total</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">discount</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>Товаров: 3, сумма: 750, скидка: 75, к оплате: 675
+</code></pre>
+<p>Обратите внимание на порядок действий: сначала ввод, затем преобразование,
+затем вычисление, в конце форматирование. Каждый шаг виден в тексте программы,
+и это главное достоинство явных преобразований.</p>
+<p><figure class="figure"><img src="illustrations/ch-04-input-pipeline.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h2 id="mistakes"><span class="h-number">4.11</span> Типичные ошибки</h2>
+<ol>
+<li><strong>Забыть преобразовать ввод.</strong> <code>input()</code> возвращает строку, поэтому
+<code>age + 1</code> для введённого <code>&quot;20&quot;</code> даст <code>TypeError</code>, а не <code>21</code>. Сначала
+<code>int(...)</code> или <code>float(...)</code>.</li>
+<li><strong>Сравнивать строки как числа.</strong> <code>&quot;10&quot; &lt; &quot;9&quot;</code> истинно. Если значения пришли текстом, преобразуйте их до сравнения.</li>
+<li><strong>Путать <code>==</code> и <code>=</code>.</strong> Одиночное <code>=</code> связывает имя, двойное <code>==</code> сравнивает.
+В условии это различие решает, работает программа или нет.</li>
+<li><strong>Ожидать от <code>int</code> округления.</strong> <code>int(2.9)</code> даёт <code>2</code>: дробная часть
+отбрасывается. Для округления есть <code>round</code>, и правило у него своё.</li>
+<li><strong>Прятать важный вызов в <code>and</code>/<code>or</code>.</strong> Из-за сокращённого вычисления
+функция в правой части может не выполниться.</li>
+<li><strong>Считать <code>and</code>/<code>or</code> строго логическими.</strong> Они возвращают операнд, поэтому
+<code>print(0 and 7)</code> выводит <code>0</code>, а не <code>False</code>.</li>
+<li><strong>Забыть про запятую как десятичный разделитель.</strong> <code>float(&quot;3,5&quot;)</code> — ошибка;
+Python ожидает точку.</li>
+<li><strong>Писать <code>not</code> не там, где нужно.</strong> <code>not x == y</code> означает <code>not (x == y)</code>,
+потому что сравнение старше <code>not</code>.</li>
+</ol>
+<h2 id="упражнения"><span class="h-number">4.12</span> Упражнения</h2>
+<h3 id="ex-ch04-01">1. Порядок действий</h3>
+<p>Не запуская код, вычислите значения выражений: <code>8 + 2 * 5</code>, <code>(8 + 2) * 5</code>,
+<code>2 ** 2 ** 3</code>, <code>-2 ** 2</code>, <code>17 % 5 + 17 // 5</code>. Затем проверьте программой и
+объясните каждое расхождение, если оно обнаружится.</p>
+<h3 id="ex-ch04-02">2. Скобки по делу</h3>
+<p>Запишите выражение для средней температуры трёх дней: <code>t1</code>, <code>t2</code>, <code>t3</code>.
+Проверьте его на значениях <code>10</code>, <code>12</code>, <code>14</code> и объясните, почему без скобок
+результат был бы другим.</p>
+<h3 id="ex-ch04-03">3. Прогнозирование сравнений</h3>
+<p>Что выведет программа? Запишите ответы, затем проверьте.</p>
+<div class="highlight"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"a"</span> <span class="o">&lt;</span> <span class="s2">"b"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"abc"</span> <span class="o">==</span> <span class="s2">"abc "</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="ex-ch04-04">4. Цепочка сравнений</h3>
+<p>Пользователь ввёл число. Напишите выражение, которое истинно, когда число
+лежит в диапазоне от 1 до 100 включительно, и используйте цепочку сравнений.
+Проверьте на значениях <code>0</code>, <code>1</code>, <code>100</code>, <code>101</code>.</p>
+<h3 id="ex-ch04-05">5. Логические связки</h3>
+<p>Для значений <code>a = 3</code>, <code>b = 7</code>, <code>c = 10</code> вычислите: <code>a &lt; b and b &lt; c</code>,
+<code>a &gt; b or b &lt; c</code>, <code>not a == 3</code>. Объясните результат каждого выражения.</p>
+<h3 id="ex-ch04-06">6. Сокращённое вычисление</h3>
+<p>Объясните, почему выражение <code>print(&quot;&quot; or &quot;нет данных&quot;)</code> выводит <code>нет данных</code>,
+а <code>print(&quot;есть&quot; or &quot;нет данных&quot;)</code> — <code>есть</code>. Как это связано с сокращённым
+вычислением?</p>
+<h3 id="ex-ch04-07">7. Исправление ошибки преобразования</h3>
+<p>Код падает:</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">age</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Возраст: "</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">age</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<p>Определите тип ошибки, объясните причину и исправьте код так, чтобы программа
+работала для ввода <code>20</code>. Что произойдёт, если человек введёт <code>двадцать</code>?</p>
+<h3 id="ex-ch04-08">8. Расширенное присваивание</h3>
+<p>Перепишите последовательность инструкций, используя расширенное присваивание:</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">score</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">score</span> <span class="o">+</span> <span class="mi">10</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">score</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">score</span> <span class="o">-</span> <span class="mi">20</span>
+</code></pre></div>
+<p>Вычислите итог вручную, затем проверьте программой.</p>
+<h3 id="ex-ch04-09">9. Формат отчёта</h3>
+<p>Напишите программу, которая для <code>name = &quot;Анна&quot;</code>, <code>score = 7</code>, <code>total = 10</code>
+выводит ровно одну строку:</p>
+<pre class="text"><code>Анна: 7 из 10 (70.0 %)
+</code></pre>
+<p>Используйте f-строку и формат с одним знаком после точки для процента.</p>
+<h3 id="ex-ch04-10">10. Мини-задача: чек</h3>
+<p>Программа получает три значения: цену товара, количество и процент скидки —
+как строки. Преобразуйте их, вычислите сумму без скидки, размер скидки в целых
+рублях и итог, затем выведите одну строку отчёта вида
+<code>Товаров: 3, сумма: 750, скидка: 75, к оплате: 675</code>. Проверьте на цене <code>250</code>,
+количестве <code>3</code> и скидке <code>10</code>.</p>
+<h2 id="проверка-понимания"><span class="h-number">4.13</span> Проверка понимания</h2>
+<ol>
+<li>Почему <code>2 + 3 * 4</code> равно <code>14</code>, а не <code>20</code>? Как изменить порядок?</li>
+<li>В каком порядке вычисляется <code>2 ** 3 ** 2</code> и почему?</li>
+<li>Чем <code>==</code> отличается от <code>is</code>? Какой оператор отвечает за равенство значений?</li>
+<li>Что такое логическое выражение и какого типа его результат?</li>
+<li>Почему <code>and</code> и <code>or</code> возвращают не обязательно <code>True</code> или <code>False</code>?</li>
+<li>В чём польза сокращённого вычисления и в чём его опасность?</li>
+<li>Какого типа значение возвращает <code>input</code> и почему это важно?</li>
+<li>Чем <code>int(2.9)</code> отличается от <code>round(2.9)</code>?</li>
+<li>Чем f-строка удобнее конкатенации строк?</li>
+<li>Почему <code>float(&quot;3,5&quot;)</code> завершается ошибкой?</li>
+</ol>
+<h2 id="что-дальше"><span class="h-number">4.14</span> Что дальше</h2>
+<p>Вы научились строить выражения, получать ответы «да» и «нет» и читать ввод у
+человека. Но пока программа выполняет все инструкции подряд: она не умеет
+выбирать, что делать в зависимости от ответа. Дальше появятся
+<a href="ch-05-control-flow.html">условия и ветвление</a> — и сравнения, которые вы только что
+освоили, станут управляющей силой программы.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-03-values-names-objects.html"><span class="pager-label">← Назад</span><span class="pager-title">Значения, имена, объекты и типы</span></a><a class="pager-card next" rel="next" href="ch-05-control-flow.html"><span class="pager-label">Далее:</span><span class="pager-title">Логика и управление потоком</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 470" role="img"
+     aria-labelledby="ie ied" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ie">Разница между == и is</title>
+  <desc id="ied">В верхней части два разных объекта с одинаковым содержимым: при == получается True, потому что значения равны, а при is — False, потому что объекты разные. В нижней части одно имя присвоено другому: оба имени указывают на один объект, поэтому и ==, и is дают True.</desc>
+
+  <text x="30" y="32" font-size="17" font-weight="bold" fill="#1d3550">== сравнивает значения, is — идентичность</text>
+
+  <!-- upper panel -->
+  <rect x="24" y="52" width="772" height="186" rx="10" fill="#fbfaf7" stroke="#c9c2b4" stroke-width="1.5"/>
+  <text x="44" y="78" font-size="14" font-weight="bold" fill="#1d3550">Случай 1: x = [1, 2] и y = [1, 2] — два разных объекта</text>
+
+  <rect x="60" y="96" width="150" height="44" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="135" y="124" text-anchor="middle" font-size="15" fill="#1d3550">x</text>
+  <line x1="210" y1="118" x2="268" y2="118" stroke="#33557a" stroke-width="2.5"/>
+  <polygon points="272,118 260,111 260,125" fill="#33557a"/>
+
+  <rect x="280" y="92" width="150" height="60" rx="8" fill="#ffffff" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="355" y="116" text-anchor="middle" font-size="13" fill="#4b3a16">[1, 2]</text>
+  <text x="355" y="138" text-anchor="middle" font-size="12" fill="#8a6a2f">объект № 1</text>
+
+  <rect x="520" y="96" width="150" height="44" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="595" y="124" text-anchor="middle" font-size="15" fill="#1d3550">y</text>
+  <line x1="670" y1="118" x2="612" y2="118" stroke="#33557a" stroke-width="2.5"/>
+  <polygon points="608,118 620,111 620,125" fill="#33557a"/>
+
+  <rect x="450" y="168" width="150" height="60" rx="8" fill="#ffffff" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="525" y="192" text-anchor="middle" font-size="13" fill="#4b3a16">[1, 2]</text>
+  <text x="525" y="214" text-anchor="middle" font-size="12" fill="#8a6a2f">объект № 2</text>
+  <line x1="595" y1="140" x2="546" y2="164" stroke="#33557a" stroke-width="2.5"/>
+  <polygon points="543,166 556,164 550,176" fill="#33557a"/>
+
+  <text x="620" y="88" font-size="13" fill="#204a28">x == y → True</text>
+  <text x="620" y="200" font-size="13" fill="#6b2020">x is y → False</text>
+
+  <!-- lower panel -->
+  <rect x="24" y="258" width="772" height="190" rx="10" fill="#fbfaf7" stroke="#c9c2b4" stroke-width="1.5"/>
+  <text x="44" y="284" font-size="14" font-weight="bold" fill="#1d3550">Случай 2: y = x — оба имени указывают на один объект</text>
+
+  <rect x="60" y="304" width="150" height="44" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="135" y="332" text-anchor="middle" font-size="15" fill="#1d3550">x</text>
+  <rect x="60" y="372" width="150" height="44" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="135" y="400" text-anchor="middle" font-size="15" fill="#1d3550">y</text>
+
+  <line x1="210" y1="326" x2="388" y2="326" stroke="#33557a" stroke-width="2.5"/>
+  <polygon points="392,326 380,319 380,333" fill="#33557a"/>
+  <line x1="210" y1="394" x2="388" y2="360" stroke="#33557a" stroke-width="2.5"/>
+  <polygon points="392,358 379,353 382,366" fill="#33557a"/>
+
+  <rect x="400" y="296" width="190" height="80" rx="8" fill="#ffffff" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="495" y="324" text-anchor="middle" font-size="13" fill="#4b3a16">[1, 2]</text>
+  <text x="495" y="346" text-anchor="middle" font-size="12" fill="#8a6a2f">один объект</text>
+  <text x="495" y="364" text-anchor="middle" font-size="12" fill="#8a6a2f">две ссылки</text>
+
+  <text x="620" y="318" font-size="13" fill="#204a28">x == y → True</text>
+  <text x="620" y="346" font-size="13" fill="#204a28">x is y → True</text>
+</svg>

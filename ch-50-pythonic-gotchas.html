@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Pythonic-код и типичные ловушки — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-50-pythonic-gotchas.html" aria-current="page">50. Pythonic-код и типичные ловушки</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-50-pythonic-gotchas.html#why">50.1. Зачем эта глава</a></li>
+<li><a href="ch-50-pythonic-gotchas.html#zen">50.2. Zen of Python</a></li>
+<li><a href="ch-50-pythonic-gotchas.html#idioms">50.3. Идиомы Python</a></li>
+<li><a href="ch-50-pythonic-gotchas.html#gotchas">50.4. Ловушки языка</a></li>
+<li><a href="ch-50-pythonic-gotchas.html#pythonic-vs-working">50.5. Питонический или просто работающий</a></li>
+<li><a href="ch-50-pythonic-gotchas.html#mistakes">50.6. Типичные ошибки</a></li>
+<li><a href="ch-50-pythonic-gotchas.html#упражнения">50.7. Упражнения</a></li>
+<li><a href="ch-50-pythonic-gotchas.html#проверка-понимания">50.8. Проверка понимания</a></li>
+<li><a href="ch-50-pythonic-gotchas.html#что-дальше">50.9. Что дальше</a></li>
+</ol></details></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 11. Профессиональная практика и прикладные темы</span><span class="sep">›</span><span>Глава 50</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Профессиональная практика и прикладные темы · глава 50</p>
+<h1 id="pythonic-код-и-типичные-ловушки">Pythonic-код и типичные ловушки</h1>
+<p class="chapter-summary">Идиомы Python, Zen of Python и классические ловушки, на которых спотыкаются даже опытные разработчики.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#why"><span class="toc-number">50.1</span> Зачем эта глава</a></li>
+<li class="level-2"><a href="#zen"><span class="toc-number">50.2</span> Zen of Python</a></li>
+<li class="level-2"><a href="#idioms"><span class="toc-number">50.3</span> Идиомы Python</a></li>
+<li class="level-2"><a href="#gotchas"><span class="toc-number">50.4</span> Ловушки языка</a></li>
+<li class="level-2"><a href="#pythonic-vs-working"><span class="toc-number">50.5</span> Питонический или просто работающий</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">50.6</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">50.7</span> Упражнения</a></li>
+<li class="level-2"><a href="#проверка-понимания"><span class="toc-number">50.8</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#что-дальше"><span class="toc-number">50.9</span> Что дальше</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#enumerate-zip">enumerate и zip</a></li>
+<li class="level-3"><a href="#is-none">is None</a></li>
+<li class="level-3"><a href="#f-strings">f-строки</a></li>
+<li class="level-3"><a href="#dict-get">dict.get и setdefault</a></li>
+<li class="level-3"><a href="#with">with</a></li>
+<li class="level-3"><a href="#comprehensions">включения</a></li>
+<li class="level-3"><a href="#unpacking-idiom">распаковка</a></li>
+<li class="level-3"><a href="#for-else">for ... else</a></li>
+<li class="level-3"><a href="#mutable-default">Изменяемое значение по умолчанию</a></li>
+<li class="level-3"><a href="#is-vs-eq">is и ==</a></li>
+<li class="level-3"><a href="#small-int-cache">Кэш малых целых</a></li>
+<li class="level-3"><a href="#string-interning">Интернирование строк</a></li>
+<li class="level-3"><a href="#bool-int">bool как подкласс int</a></li>
+<li class="level-3"><a href="#tuple-comma">Запятая в одноэлементном кортеже</a></li>
+<li class="level-3"><a href="#float-trap">Ловушка сравнения float</a></li>
+<li class="level-3"><a href="#string-sort">Сортировка строк и locale</a></li>
+<li class="level-3"><a href="#string-concat-loop">Конкатенация строк в цикле</a></li>
+<li class="level-3"><a href="#ex-ch50-01">1. Прогнозирование `is` и `==`</a></li>
+<li class="level-3"><a href="#ex-ch50-02">2. Исправление изменяемого значения по умолчанию</a></li>
+<li class="level-3"><a href="#ex-ch50-03">3. enumerate вместо счётчика</a></li>
+<li class="level-3"><a href="#ex-ch50-04">4. zip и строгая проверка</a></li>
+<li class="level-3"><a href="#ex-ch50-05">5. dict.get для подсчёта</a></li>
+<li class="level-3"><a href="#ex-ch50-06">6. for ... else</a></li>
+<li class="level-3"><a href="#ex-ch50-07">7. Запятая в кортеже</a></li>
+<li class="level-3"><a href="#ex-ch50-08">8. Сравнение float</a></li>
+<li class="level-3"><a href="#ex-ch50-09">9. Сортировка без учёта регистра</a></li>
+<li class="level-3"><a href="#ex-ch50-10">10. Мини-задача: питоническая сводка</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>Код может работать и при этом быть плохим. Он может решать задачу и при
+этом удивлять читателя, прятать ошибку до определённых данных или
+повторять то, для чего в языке уже есть понятная конструкция. В
+предыдущей главе речь шла о стиле: об именах, отступах и docstring. Эта
+глава о другом слое — об идиомах, которыми пользуются опытные
+разработчики, и о ловушках, в которые попадают даже они.</p>
+<h2 id="why"><span class="h-number">50.1</span> Зачем эта глава</h2>
+<p>Python ценит читаемость: программа читается людьми чаще, чем пишется.
+<strong>Идиома Python</strong> — устойчивый приём, принятый в сообществе, который
+делает код короче и понятнее для того, кто знает язык. <code>for index, item in enumerate(values)</code> вместо ручного счётчика, <code>with</code> вместо ручного
+закрытия файла, <code>if value is None</code> вместо сравнения с <code>None</code> через <code>==</code> —
+всё это идиомы.</p>
+<p>У идиом есть обратная сторона. Тот, кто выучил форму, но не понял смысл,
+применяет её не к месту. Ещё хуже — <strong>ловушка языка</strong>: поведение, которое
+кажется очевидным, но устроено иначе. Изменяемое значение по умолчанию
+накапливает данные между вызовами; <code>is</code> сравнивает не значения; сумма
+<code>0.1 + 0.2</code> не равна <code>0.3</code>. Каждая такая ловушка когда-то стоила кому-то
+часа отладки.</p>
+<p>После этой главы вы сможете:</p>
+<ul>
+<li>объяснять принципы Zen of Python и узнавать их в коде;</li>
+<li>применять основные идиомы и понимать, зачем они нужны;</li>
+<li>распознавать классические ловушки до того, как они проявятся;</li>
+<li>отличать питонический код от просто работающего;</li>
+<li>понимать, когда идиома ухудшает читаемость.</li>
+</ul>
+<h2 id="zen"><span class="h-number">50.2</span> Zen of Python</h2>
+<p><strong>Zen of Python</strong> — короткий свод принципов дизайна языка, написанный
+Тимом Петерсом (PEP 20). Посмотреть его можно командой <code>python -m this</code>.</p>
+<pre class="text"><code>$ python -m this
+The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+...
+</code></pre>
+<p>Вывод сокращён; полностью его покажет любой интерпретатор Python.</p>
+<p>Пять принципов из этого списка прямо влияют на повседневный код.
+«Красивое лучше уродливого» — оформление не украшение, а часть
+восприятия. «Явное лучше неявного» — не прячьте важное поведение за
+магией. «Простое лучше сложного» — не решайте задачу конструкцией
+посложнее, если хватает простой. «Плоское лучше вложенного» — глубокая
+вложенность условий хуже последовательности проверок. «Читаемость имеет
+значение» — главный критерий выбора между двумя работающими решениями.</p>
+<p>Есть и ещё один принцип, о котором вспоминают реже: «ошибки не должны
+замалчиваться без явного намерения». Он объясняет, почему <code>except Exception: pass</code> считается плохим кодом, даже если программа продолжает
+работать.</p>
+<h2 id="idioms"><span class="h-number">50.3</span> Идиомы Python</h2>
+<p>Идиома экономит не только строки, но и внимание читателя: знакомый
+шаблон распознаётся сразу, без разбора деталей. Ниже — приёмы, которые
+встречаются в любом профессиональном коде.</p>
+<h3 id="enumerate-zip">enumerate и zip</h3>
+<p>Когда нужны и элементы, и их позиции, вместо ручного счётчика
+используют <code>enumerate</code>.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">letters</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">position</span><span class="p">,</span> <span class="n">letter</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">letters</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">position</span><span class="p">,</span> <span class="n">letter</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>1 a
+2 b
+</code></pre>
+<p><code>zip</code> соединяет несколько последовательностей поэлементно.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">]</span>
+<span class="n">ages</span> <span class="o">=</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">ages</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>a 30
+b 25
+</code></pre>
+<p><code>zip</code> останавливается на самой короткой последовательности. Если
+разная длина — признак ошибки данных, включите <code>strict=True</code>: тогда
+несовпадение длин даст <code>ValueError</code> вместо молчаливого усечения.</p>
+<h3 id="is-none">is None</h3>
+<p>Для проверки на <code>None</code> принято использовать <code>is</code>, а не <code>==</code>: <code>None</code> —
+единственный объект своего типа, и сравнение идентичности точнее
+выражает намерение.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">value</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>True
+False
+</code></pre>
+<h3 id="f-strings">f-строки</h3>
+<p>Вместо склейки через <code>+</code> и <code>str()</code> используйте f-строки: они короче и
+позволяют управлять форматом.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">name</span> <span class="o">=</span> <span class="s2">"мир"</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"привет, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">! раз: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">count</span><span class="si">:</span><span class="s2">03d</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>привет, мир! раз: 3
+&#x27;мир&#x27;
+003
+</code></pre>
+<h3 id="dict-get">dict.get и setdefault</h3>
+<p><code>get</code> возвращает значение по ключу или значение по умолчанию, не
+поднимая <code>KeyError</code>.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">config</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"host"</span><span class="p">:</span> <span class="s2">"localhost"</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"port"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"port"</span><span class="p">,</span> <span class="mi">8080</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>None
+8080
+</code></pre>
+<p>Подсчёт вхождений через <code>get</code> — классическая идиома.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">text</span> <span class="o">=</span> <span class="s2">"раз два раз"</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+    <span class="n">counts</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>{&#x27;раз&#x27;: 2, &#x27;два&#x27;: 1}
+</code></pre>
+<h3 id="with">with</h3>
+<p>Инструкция <code>with</code> гарантирует освобождение ресурса, даже если внутри
+блока произошло исключение. Файл закрывается автоматически.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"note.txt"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"привет"</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"note.txt"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>привет
+</code></pre>
+<p>Ручная пара <code>open</code>/<code>close</code> требует <code>try</code>/<code>finally</code> и легко забывается.
+<code>with</code> выражает намерение короче и надёжнее.</p>
+<h3 id="comprehensions">включения</h3>
+<p>Списковое включение заменяет цикл с <code>append</code>, когда нужно получить новый
+список.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="n">number</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">squares</span><span class="p">)</span>
+<span class="n">evens</span> <span class="o">=</span> <span class="p">[</span><span class="n">number</span> <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evens</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>[1, 4, 9, 16, 25]
+[0, 2, 4, 6, 8]
+</code></pre>
+<p>Словарное включение строит словарь по правилу.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">prices</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"a"</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">:</span> <span class="mi">200</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">({</span><span class="n">name</span><span class="p">:</span> <span class="n">price</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">price</span> <span class="ow">in</span> <span class="n">prices</span><span class="o">.</span><span class="n">items</span><span class="p">()})</span>
+</code></pre></div>
+<pre class="output"><code>{&#x27;a&#x27;: 200, &#x27;b&#x27;: 400}
+</code></pre>
+<h3 id="unpacking-idiom">распаковка</h3>
+<p>Распаковка заменяет серию присваиваний по индексам.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">first</span><span class="p">,</span> <span class="o">*</span><span class="n">rest</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">rest</span><span class="p">)</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>1 [2, 3, 4]
+2 1
+</code></pre>
+<h3 id="for-else">for ... else</h3>
+<p>Ветвь <code>else</code> цикла выполняется, если цикл завершился без <code>break</code>. Это
+избавляет от флага «нашли или нет».</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"нашли нечётное:"</span><span class="p">,</span> <span class="n">number</span><span class="p">)</span>
+        <span class="k">break</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"все чётные"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>нашли нечётное: 7
+</code></pre>
+<p>Читается как «для всех чисел: если нашли — стоп; иначе — сообщить». Без
+<code>else</code> понадобилась бы переменная-флаг и проверка после цикла.</p>
+<h2 id="gotchas"><span class="h-number">50.4</span> Ловушки языка</h2>
+<p><strong>Ловушка языка</strong> — поведение, которое противоречит интуиции, но
+входит в семантику Python. Ловушки не случайны: у каждой есть
+причина. Проблема в том, что причина видна не сразу, а последствия
+проявляются позже.</p>
+<h3 id="mutable-default">Изменяемое значение по умолчанию</h3>
+<p>Аргумент по умолчанию вычисляется один раз — при создании функции.
+Если это изменяемый объект, он сохраняется между вызовами.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">items</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>[1]
+[1, 2]
+[1, 2, 3]
+</code></pre>
+<p>Ожидалось, что каждый вызов начнёт с пустого списка, но список один и
+тот же. Ловушка особенно опасна в библиотечном коде: данные «протекают»
+из одного вызова в другой.</p>
+<p><figure class="figure"><img src="illustrations/ch-50-mutable-default.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Правильная идиома — <code>None</code> как признак «аргумент не передан».</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">items</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">items</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">10</span><span class="p">]))</span>
+</code></pre></div>
+<pre class="output"><code>[1]
+[2]
+[10, 3]
+</code></pre>
+<p>Теперь каждый вызов без аргумента получает новый список. Обратите
+внимание на третий вызов: переданный список изменяется на месте — это
+нормальное поведение, если функция явно обещает дополнить переданный
+объект.</p>
+<h3 id="is-vs-eq">is и ==</h3>
+<p>Оператор <code>==</code> сравнивает значения, <code>is</code> — идентичность, то есть тот ли
+это объект. Для чисел и строк разница незаметна, пока не посмотришь на
+внутреннее устройство.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>True
+False
+</code></pre>
+<p>Два списка содержат одинаковые значения, но это разные объекты. Для
+<code>None</code>, <code>True</code> и <code>False</code> идентичность совпадает с единственностью
+объекта, поэтому <code>is None</code> корректен. Для чисел и строк <code>is</code> зависит от
+деталей реализации — и это ловушка.</p>
+<h3 id="small-int-cache">Кэш малых целых</h3>
+<p>CPython хранит заранее созданные объекты для целых чисел от −5 до 256.
+Такие числа не создаются заново: <code>256</code> из любого места программы — это
+один и тот же объект.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">a</span> <span class="o">=</span> <span class="mi">256</span>
+<span class="n">b</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s2">"256"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mi">257</span>
+<span class="n">d</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s2">"257"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span> <span class="ow">is</span> <span class="n">d</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="n">d</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>True
+False
+True
+</code></pre>
+<p>Граница 256 — особенность CPython, а не гарантия языка. В другой
+реализации Python результат <code>is</code> может отличаться. Поэтому сравнивать
+числа через <code>is</code> нельзя: только <code>==</code>.</p>
+<p><figure class="figure"><img src="illustrations/ch-50-int-cache.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h3 id="string-interning">Интернирование строк</h3>
+<p><strong>Интернирование строк</strong> — повторное использование одного объекта для
+одинаковых строк. Литералы, встречающиеся в коде, обычно интернируются
+автоматически, а строки, собранные во время выполнения, — нет.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s2">"python"</span>
+<span class="n">b</span> <span class="o">=</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s2">"py"</span><span class="p">,</span> <span class="s2">"thon"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="ow">is</span> <span class="n">sys</span><span class="o">.</span><span class="n">intern</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>True
+False
+True
+</code></pre>
+<p><code>sys.intern</code> возвращает канонический объект строки. Но опираться на
+идентичность строк в обычном коде не нужно: для сравнения текста есть
+<code>==</code>.</p>
+<h3 id="bool-int">bool как подкласс int</h3>
+<p><code>bool</code> — подкласс <code>int</code>: <code>True</code> равен 1, <code>False</code> равен 0. Это удобно для
+подсчётов и опасно для логики.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">flags</span> <span class="o">=</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">flags</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="kc">True</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>2
+True
+True
+</code></pre>
+<p>Сумма флагов даёт число истинных. Но обратное неверно: число 2 — не
+<code>True</code>, а <code>bool(2)</code> — <code>True</code>. Если функция обещает вернуть флаг, не
+возвращайте из неё счётчик: читатель запутается.</p>
+<h3 id="tuple-comma">Запятая в одноэлементном кортеже</h3>
+<p><strong>Запятая в одноэлементном кортеже</strong> — обязательный элемент записи
+<code>(value,)</code>. Без запятой скобки не создают кортеж.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">((</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">((</span><span class="mi">1</span><span class="p">,))</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>int
+tuple
+</code></pre>
+<p>Ловушка проявляется в возврате значений и в преобразованиях.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">items</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">value</span> <span class="o">=</span> <span class="n">items</span><span class="p">(),</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>tuple 1
+([1],)
+</code></pre>
+<p>Здесь кортеж создан запятой после вызова, а не круглыми скобками.
+Ошибка на единицу в структуре данных обнаруживается далеко от места
+возникновения — типичный признак ловушки.</p>
+<h3 id="float-trap">Ловушка сравнения float</h3>
+<p><strong>Ловушка сравнения float</strong> — прямое сравнение чисел с плавающей точкой
+через <code>==</code> почти всегда неверно: двоичное представление не хранит
+десятичные дроби точно.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">isclose</span>
+<span class="nb">print</span><span class="p">(</span><span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="o">==</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">isclose</span><span class="p">(</span><span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.3</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>False
+True
+True
+</code></pre>
+<p><code>isclose</code> сравнивает с допуском и подходит для большинства задач.
+Округление тоже работает, но требует понимать, сколько знаков нужно.
+Для денег и точных расчётов используют целые единицы (копейки) или
+<code>decimal.Decimal</code>.</p>
+<h3 id="string-sort">Сортировка строк и locale</h3>
+<p>Сортировка строк идёт по кодовым точкам, а не по правилам языка.
+Заглавные буквы оказываются раньше строчных, а <code>ё</code> — после <code>я</code>.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Zebra"</span><span class="p">,</span> <span class="s2">"apple"</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">words</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">words</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>[&#x27;Zebra&#x27;, &#x27;apple&#x27;]
+[&#x27;apple&#x27;, &#x27;Zebra&#x27;]
+</code></pre>
+<p>Ключ сортировки <code>str.lower</code> даёт порядок без учёта регистра. Полное
+соблюдение алфавита конкретного языка требует <code>locale.strxfrm</code> и
+настройки локали; поведение зависит от системы, поэтому в переносимом
+коде его применяют осознанно.</p>
+<h3 id="string-concat-loop">Конкатенация строк в цикле</h3>
+<p>Склейка строк через <code>+=</code> в цикле создаёт новую строку на каждом шаге:
+строки неизменяемы. На больших данных это заметно медленно.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">parts</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"2026"</span><span class="p">,</span> <span class="s2">"01"</span><span class="p">,</span> <span class="s2">"31"</span><span class="p">]</span>
+<span class="n">date</span> <span class="o">=</span> <span class="s2">"-"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>2026-01-31
+</code></pre>
+<p>Идиома — собрать части в список и соединить один раз через <code>join</code>.
+Такой код и быстрее, и яснее: видно, что строится строка из фрагментов
+с разделителем.</p>
+<h2 id="pythonic-vs-working"><span class="h-number">50.5</span> Питонический или просто работающий</h2>
+<p>Питонический код — не тот, где использовано больше идиом, а тот, где
+решение понятно с первого чтения. Три вопроса помогают отличить одно от
+другого.</p>
+<p>Первый: видно ли намерение? <code>[x for x in values if x]</code> читается как
+«все истинные значения». Вложенное включение из трёх циклов читается
+хуже обычного <code>for</code>.</p>
+<p>Второй: нет ли скрытых эффектов? Включение с <code>append</code> внутри создаёт
+список ради побочного эффекта. Это работает, но обманывает ожидание:
+включение должно строить значение, а не менять чужой объект.</p>
+<p>Третий: не нарушает ли идиома границы? Короткое замыкание <code>and</code>/<code>or</code>
+удобно, но <code>value = user or default</code> скрывает разницу между «нет
+значения» и «пустое значение». Явная проверка длиннее, зато честнее.</p>
+<p>Идиома — инструмент, а не цель. Если она делает код непонятным для
+команды, лучше написать длиннее и проще. Стиль служит читателю, а не
+наоборот.</p>
+<h2 id="mistakes"><span class="h-number">50.6</span> Типичные ошибки</h2>
+<p><strong>Изменяемый аргумент по умолчанию.</strong> <code>def f(x=[])</code> накапливает данные
+между вызовами. Используйте <code>None</code> и создавайте объект внутри.</p>
+<p><strong>Сравнение через <code>is</code> для значений.</strong> <code>is</code> проверяет идентичность;
+результат зависит от реализации. Для чисел и строк нужен <code>==</code>.</p>
+<p><strong>Ожидание, что <code>is</code> покажет равенство.</strong> Это разные вопросы: «тот же
+объект» и «такое же значение».</p>
+<p><strong>Забытая запятая в кортеже.</strong> <code>(1)</code> — число; кортеж из одного элемента —
+<code>(1,)</code>.</p>
+<p><strong>Прямое сравнение float.</strong> <code>0.1 + 0.2 == 0.3</code> ложно. Используйте
+<code>isclose</code> или целые единицы.</p>
+<p><strong>Сортировка строк без ключа.</strong> Заглавные и строчные буквы перемешаны,
+<code>ё</code> стоит не там, где ожидает читатель. Задайте <code>key</code>.</p>
+<p><strong>Склейка строк в цикле.</strong> <code>result += fragment</code> на большом объёме
+медленно. Собирайте части и используйте <code>join</code>.</p>
+<p><strong>Идиома ради идиомы.</strong> Вложенные включения и цепочки <code>and</code>/<code>or</code>
+усложняют чтение. Простое явное решение предпочтительнее.</p>
+<h2 id="упражнения"><span class="h-number">50.7</span> Упражнения</h2>
+<h3 id="ex-ch50-01">1. Прогнозирование <code>is</code> и <code>==</code></h3>
+<p>Не запуская код, предскажите вывод. Затем проверьте и объясните
+результат.</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">a</span> <span class="o">=</span> <span class="s2">"python"</span>
+<span class="n">b</span> <span class="o">=</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s2">"py"</span><span class="p">,</span> <span class="s2">"thon"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="ex-ch50-02">2. Исправление изменяемого значения по умолчанию</h3>
+<p>Функция ниже накапливает элементы между вызовами:</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">collect</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">items</span>
+</code></pre></div>
+<p>Перепишите её так, чтобы каждый вызов без второго аргумента начинал с
+пустого списка. Покажите работу на трёх вызовах.</p>
+<h3 id="ex-ch50-03">3. enumerate вместо счётчика</h3>
+<p>Перепишите цикл так, чтобы позиции считались идиоматично и начинались
+с 1.</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"раз"</span><span class="p">,</span> <span class="s2">"два"</span><span class="p">,</span> <span class="s2">"три"</span><span class="p">]</span>
+<span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+    <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">word</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="ex-ch50-04">4. zip и строгая проверка</h3>
+<p>Соедините имена и возрасты через <code>zip</code>. Сначала покажите поведение при
+разной длине без <code>strict</code>, затем — с <code>strict=True</code> и объясните
+исключение.</p>
+<h3 id="ex-ch50-05">5. dict.get для подсчёта</h3>
+<p>Подсчитайте частоты слов в строке <code>&quot;раз два раз три раз&quot;</code> через
+<code>dict.get</code>, не используя <code>try</code>/<code>except</code>.</p>
+<h3 id="ex-ch50-06">6. for ... else</h3>
+<p>Напишите цикл, который ищет первое нечётное число в списке и сообщает
+<code>&quot;все чётные&quot;</code>, если такого нет. Используйте ветвь <code>else</code> цикла, без
+переменной-флага.</p>
+<h3 id="ex-ch50-07">7. Запятая в кортеже</h3>
+<p>Объясните, почему функция возвращает не то, что ожидалось:</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">one</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">one</span><span class="p">(),</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+</code></pre></div>
+<p>Исправьте код так, чтобы <code>value</code> было списком.</p>
+<h3 id="ex-ch50-08">8. Сравнение float</h3>
+<p>Проверьте, равны ли <code>0.1 + 0.2</code> и <code>0.3</code>. Затем сравните их через
+<code>math.isclose</code>. Объясните, почему результаты различаются и какой способ
+выбрать для денежных расчётов.</p>
+<h3 id="ex-ch50-09">9. Сортировка без учёта регистра</h3>
+<p>Отсортируйте <code>[&quot;Zebra&quot;, &quot;apple&quot;, &quot;Banana&quot;]</code> двумя способами: по кодовым
+точкам и без учёта регистра. Объясните разницу и что произойдёт с
+русскими словами.</p>
+<h3 id="ex-ch50-10">10. Мини-задача: питоническая сводка</h3>
+<p>Дан список слов. Напишите функцию, которая возвращает словарь «слово →
+количество вхождений», а затем список слов, встречающихся больше одного
+раза. Используйте <code>get</code>, словарное включение и включение с условием.
+Объясните, почему выбранные идиомы делают код понятнее.</p>
+<h2 id="проверка-понимания"><span class="h-number">50.8</span> Проверка понимания</h2>
+<ol>
+<li>Что означает «питонический код» и почему это не то же самое, что
+«код, который работает»?</li>
+<li>Какой принцип Zen of Python объясняет вред <code>except Exception: pass</code>?</li>
+<li>Почему изменяемое значение по умолчанию сохраняется между вызовами?</li>
+<li>Чем <code>is</code> отличается от <code>==</code> и почему для чисел и строк нужен второй?</li>
+<li>Почему <code>256 is int(&quot;256&quot;)</code> истинно, а <code>257 is int(&quot;257&quot;)</code> ложно в
+CPython?</li>
+<li>Что такое интернирование строк и почему на него нельзя опираться?</li>
+<li>Почему <code>(1)</code> — не кортеж?</li>
+<li>Почему прямое сравнение float через <code>==</code> почти всегда неверно?</li>
+<li>Когда идиома ухудшает читаемость?</li>
+</ol>
+<h2 id="что-дальше"><span class="h-number">50.9</span> Что дальше</h2>
+<p>Вы научились писать идиоматичный код и обходить классические ловушки.
+Следующая тема — регулярные выражения: язык шаблонов для поиска и
+разбора текста, который заменяет длинные цепочки условий и методов
+строк. Об этом — в главе о регулярных выражениях.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-49-style-naming.html"><span class="pager-label">← Назад</span><span class="pager-title">Стиль, форматирование и именование кода</span></a><a class="pager-card next" rel="next" href="ch-51-regex.html"><span class="pager-label">Далее:</span><span class="pager-title">Регулярные выражения</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 330" role="img"
+     aria-labelledby="ttl25b desc25b" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl25b">Порядок создания экземпляра при вызове Point(3, 4)</title>
+  <desc id="desc25b">Четыре шага: вызов класса Point с аргументами 3 и 4, создание пустого экземпляра, автоматический вызов метода __init__, в котором записываются атрибуты x и y, и возврат готового экземпляра p. Метод __init__ возвращает None, объект возвращает вызов класса.</desc>
+
+  <rect x="0" y="0" width="880" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arr25b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#33557a"/>
+    </marker>
+  </defs>
+
+  <text x="28" y="30" font-size="17" font-weight="bold" fill="#1d3550">Что происходит при вызове Point(3, 4)</text>
+
+  <!-- шаг 1 -->
+  <rect x="28" y="64" width="176" height="112" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="1.8"/>
+  <circle cx="50" cy="86" r="12" fill="#33557a"/>
+  <text x="50" y="91" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffffff">1</text>
+  <text x="72" y="91" font-size="14" font-weight="bold" fill="#1d3550">вызов класса</text>
+  <text x="46" y="126" font-size="13" fill="#1d3550" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">Point(3, 4)</text>
+  <text x="46" y="156" font-size="13" fill="#4b5563">аргументы 3 и 4</text>
+
+  <!-- шаг 2 -->
+  <rect x="238" y="64" width="176" height="112" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="1.8"/>
+  <circle cx="260" cy="86" r="12" fill="#33557a"/>
+  <text x="260" y="91" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffffff">2</text>
+  <text x="282" y="91" font-size="14" font-weight="bold" fill="#1d3550">создание</text>
+  <text x="256" y="126" font-size="13" fill="#1d3550">пустой объект</text>
+  <text x="256" y="156" font-size="13" fill="#4b5563">атрибутов пока нет</text>
+
+  <!-- шаг 3 -->
+  <rect x="448" y="64" width="176" height="112" rx="8" fill="#fdf3e3" stroke="#8a5a13" stroke-width="1.8"/>
+  <circle cx="470" cy="86" r="12" fill="#8a5a13"/>
+  <text x="470" y="91" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffffff">3</text>
+  <text x="492" y="91" font-size="14" font-weight="bold" fill="#1d3550">вызов</text>
+  <text x="466" y="120" font-size="13" fill="#1d3550" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">__init__</text>
+  <text x="466" y="142" font-size="12" fill="#33557a" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">(self, 3, 4)</text>
+  <text x="466" y="164" font-size="12" fill="#4b5563">запись x и y</text>
+
+  <!-- шаг 4 -->
+  <rect x="658" y="64" width="176" height="112" rx="8" fill="#e8f5ec" stroke="#2f6b45" stroke-width="1.8"/>
+  <circle cx="680" cy="86" r="12" fill="#2f6b45"/>
+  <text x="680" y="91" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffffff">4</text>
+  <text x="702" y="91" font-size="14" font-weight="bold" fill="#1d3550">готовый</text>
+  <text x="676" y="126" font-size="13" fill="#1d3550">объект p</text>
+  <text x="676" y="156" font-size="13" fill="#4b5563">x=3, y=4</text>
+
+  <!-- стрелки -->
+  <path d="M204 120 L 232 120" fill="none" stroke="#33557a" stroke-width="2" marker-end="url(#arr25b)"/>
+  <path d="M414 120 L 442 120" fill="none" stroke="#33557a" stroke-width="2" marker-end="url(#arr25b)"/>
+  <path d="M624 120 L 652 120" fill="none" stroke="#33557a" stroke-width="2" marker-end="url(#arr25b)"/>
+
+  <!-- пояснения -->
+  <rect x="28" y="196" width="390" height="86" rx="8" fill="#ffffff" stroke="#c9d3e0" stroke-width="1.2"/>
+  <text x="44" y="222" font-size="13" fill="#1d3550">Внутри __init__: self — созданный объект,</text>
+  <text x="44" y="244" font-size="13" fill="#1d3550">а 3 и 4 — аргументы вызова.</text>
+  <text x="44" y="268" font-size="12" fill="#4b5563">метод пишет в self.x и self.y</text>
+
+  <rect x="446" y="196" width="406" height="86" rx="8" fill="#ffffff" stroke="#c9d3e0" stroke-width="1.2"/>
+  <text x="462" y="222" font-size="13" fill="#1d3550">Вызов класса создаёт объект и возвращает его;</text>
+  <text x="462" y="244" font-size="13" fill="#1d3550">сам __init__ возвращает None.</text>
+  <text x="462" y="268" font-size="12" fill="#4b5563">поэтому p = Point(3, 4) получает готовый объект</text>
+</svg>

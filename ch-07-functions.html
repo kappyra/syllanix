@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Функции: параметры, аргументы и области видимости — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details open><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-07-functions.html" aria-current="page">07. Функции: параметры, аргументы и области видимости</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-07-functions.html#что-вы-сможете-после-этой-главы">7.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-07-functions.html#why">7.2. Зачем нужна функция</a></li>
+<li><a href="ch-07-functions.html#def">7.3. Инструкция def и вызов функции</a></li>
+<li><a href="ch-07-functions.html#parameters">7.4. Параметры и аргументы</a></li>
+<li><a href="ch-07-functions.html#return">7.5. Возвращаемое значение и return</a></li>
+<li><a href="ch-07-functions.html#args-kinds">7.6. Позиционные и именованные аргументы</a></li>
+<li><a href="ch-07-functions.html#defaults">7.7. Аргументы по умолчанию</a></li>
+<li><a href="ch-07-functions.html#local-scope">7.8. Локальная область видимости</a></li>
+<li><a href="ch-07-functions.html#docstring">7.9. docstring: документация внутри функции</a></li>
+<li><a href="ch-07-functions.html#design">7.10. Как проектировать функцию</a></li>
+<li><a href="ch-07-functions.html#example">7.11. Собираем вместе</a></li>
+<li><a href="ch-07-functions.html#mistakes">7.12. Типичные ошибки</a></li>
+<li><a href="ch-07-functions.html#упражнения">7.13. Упражнения</a></li>
+<li><a href="ch-07-functions.html#проверка-понимания">7.14. Проверка понимания</a></li>
+<li><a href="ch-07-functions.html#что-дальше">7.15. Что дальше</a></li>
+</ol></details></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 1. Начало</span><span class="sep">›</span><span>Глава 7</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Начало · глава 7</p>
+<h1 id="функции-параметры-аргументы-и-области-видимости">Функции: параметры, аргументы и области видимости</h1>
+<p class="chapter-summary">Как выделять поведение в функцию, передавать данные и возвращать результат.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#что-вы-сможете-после-этой-главы"><span class="toc-number">7.1</span> Что вы сможете после этой главы</a></li>
+<li class="level-2"><a href="#why"><span class="toc-number">7.2</span> Зачем нужна функция</a></li>
+<li class="level-2"><a href="#def"><span class="toc-number">7.3</span> Инструкция def и вызов функции</a></li>
+<li class="level-2"><a href="#parameters"><span class="toc-number">7.4</span> Параметры и аргументы</a></li>
+<li class="level-2"><a href="#return"><span class="toc-number">7.5</span> Возвращаемое значение и return</a></li>
+<li class="level-2"><a href="#args-kinds"><span class="toc-number">7.6</span> Позиционные и именованные аргументы</a></li>
+<li class="level-2"><a href="#defaults"><span class="toc-number">7.7</span> Аргументы по умолчанию</a></li>
+<li class="level-2"><a href="#local-scope"><span class="toc-number">7.8</span> Локальная область видимости</a></li>
+<li class="level-2"><a href="#docstring"><span class="toc-number">7.9</span> docstring: документация внутри функции</a></li>
+<li class="level-2"><a href="#design"><span class="toc-number">7.10</span> Как проектировать функцию</a></li>
+<li class="level-2"><a href="#example"><span class="toc-number">7.11</span> Собираем вместе</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">7.12</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">7.13</span> Упражнения</a></li>
+<li class="level-2"><a href="#проверка-понимания"><span class="toc-number">7.14</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#что-дальше"><span class="toc-number">7.15</span> Что дальше</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#print-не-возвращает-значение">print не возвращает значение</a></li>
+<li class="level-3"><a href="#ex-ch07-01">1. Первая функция</a></li>
+<li class="level-3"><a href="#ex-ch07-02">2. Параметр или аргумент</a></li>
+<li class="level-3"><a href="#ex-ch07-03">3. Печать или возврат</a></li>
+<li class="level-3"><a href="#ex-ch07-04">4. Порядок аргументов</a></li>
+<li class="level-3"><a href="#ex-ch07-05">5. Аргумент по умолчанию</a></li>
+<li class="level-3"><a href="#ex-ch07-06">6. Исправление ошибки вызова</a></li>
+<li class="level-3"><a href="#ex-ch07-07">7. Локальная область</a></li>
+<li class="level-3"><a href="#ex-ch07-08">8. docstring</a></li>
+<li class="level-3"><a href="#ex-ch07-09">9. Функция из функции</a></li>
+<li class="level-3"><a href="#ex-ch07-10">10. Мини-задача: чек</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>К этой главе программа умеет вычислять, выбирать и повторять, но остаётся
+одним длинным списком инструкций. Чем больше задач, тем труднее такой список
+читать: через сто строк уже не помнишь, зачем нужна переменная <code>t</code>, а
+одинаковые вычисления приходится копировать в нескольких местах и потом
+исправлять во всех сразу.</p>
+<p>Функция решает обе проблемы. Она даёт <strong>имя</strong> фрагменту работы, а значит,
+позволяет вызвать этот фрагмент из любого места и описать его поведение один
+раз. Функция принимает данные через параметры и возвращает результат, поэтому
+её можно использовать как строительный блок: собирать из маленьких понятных
+частей большие программы.</p>
+<p>Эта глава — поворотная. До сих пор вы писали линейные сценарии; после неё
+программа становится набором функций с именами, и именно так выглядит
+профессиональный код.</p>
+<h2 id="что-вы-сможете-после-этой-главы"><span class="h-number">7.1</span> Что вы сможете после этой главы</h2>
+<p>К концу главы вы будете уметь следующее.</p>
+<ul>
+<li>выделять повторяющееся вычисление в функцию с понятным именем;</li>
+<li>различать параметр и аргумент и не путать их в объяснениях;</li>
+<li>возвращать результат и объяснять, чем <code>return</code> отличается от <code>print</code>;</li>
+<li>передавать аргументы по позиции и по имени;</li>
+<li>задавать аргументы по умолчанию и понимать, когда они вычисляются;</li>
+<li>объяснять, почему имя, созданное внутри функции, не видно снаружи.</li>
+</ul>
+<h2 id="why"><span class="h-number">7.2</span> Зачем нужна функция</h2>
+<p>Начнём с задачи, в которой видно проблему. Нужно посчитать площадь двух
+прямоугольников и их суммарную площадь.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">first</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span>
+<span class="n">second</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">first</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">second</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">first</span> <span class="o">+</span> <span class="n">second</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>12
+6
+18
+</code></pre>
+<p>Пока вычислений два, всё просто. Но представьте, что формула изменится —
+например, понадобится округлять результат или учитывать единицы измерения.
+Придётся найти все места с <code>*</code> и исправить каждое, ничего не пропустив. Чем
+больше копий, тем выше риск.</p>
+<p>Перепишем программу с функцией:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">area</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">area</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">area</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">area</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="n">area</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>12
+6
+18
+</code></pre>
+<p>Результат тот же, но теперь формула записана <strong>один раз</strong> и у неё есть имя
+<code>area</code>. Если правило изменится, править нужно одну строку. Если понадобится
+третий прямоугольник, добавится одна строка вызова, а не три строки
+вычислений.</p>
+<p><strong>Функция</strong> — именованный блок кода, который можно вызывать многократно. У неё
+есть имя, а параметры и возвращаемое значение — не всегда:</p>
+<ol>
+<li><strong>имя</strong> — по нему функцию вызывают; оно есть у любой функции;</li>
+<li><strong>параметры</strong> — данные, которые функция принимает; их может не быть;</li>
+<li><strong>результат</strong> — значение, которое она возвращает вызывающему коду; если
+<code>return</code> нет, результатом становится <code>None</code>.</li>
+</ol>
+<h2 id="def"><span class="h-number">7.3</span> Инструкция def и вызов функции</h2>
+<p>Функцию создаёт <strong>инструкция def</strong>. Она связывает имя с объектом-функцией: до
+вызова тело не исполняется, интерпретатор только запоминает, что делать при
+вызове.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">greet</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Привет!"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"функция определена"</span><span class="p">)</span>
+<span class="n">greet</span><span class="p">()</span>
+<span class="n">greet</span><span class="p">()</span>
+</code></pre></div>
+<pre class="output"><code>функция определена
+Привет!
+Привет!
+</code></pre>
+<p>Обратите внимание на порядок: строка <code>функция определена</code> печатается раньше
+приветствия, хотя <code>def</code> записан выше. Определение лишь создаёт функцию; работа
+начинается в момент <strong>вызова функции</strong> — выражения <code>имя(аргументы)</code>.</p>
+<p>Тело функции выделяется отступом, как тело условия или цикла. Всё, что
+относится к функции, сдвинуто вправо; строка без отступа — уже не часть
+функции.</p>
+<p>У функции может не быть параметров: <code>greet()</code> ничего не принимает. Но чаще
+данные нужны, и тогда в скобках <code>def</code> перечисляются имена.</p>
+<h2 id="parameters"><span class="h-number">7.4</span> Параметры и аргументы</h2>
+<p>Два слова, которые постоянно путают, и различать их нужно строго.</p>
+<ul>
+<li><strong>Параметр</strong> — имя в определении функции. В записи <code>def greet(name):</code> слово
+<code>name</code> — параметр.</li>
+<li><strong>Аргумент</strong> — значение, которое передаётся при вызове. В записи
+<code>greet(&quot;Анна&quot;)</code> строка <code>&quot;Анна&quot;</code> — аргумент.</li>
+</ul>
+<p>Проще говоря: параметр — это «место» в определении, аргумент — то, что в это
+место попало при конкретном вызове. У одной функции много вызовов, и у каждого
+свой аргумент.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">greet</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"Привет, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!"</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">greet</span><span class="p">(</span><span class="s2">"Анна"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">greet</span><span class="p">(</span><span class="s2">"Борис"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>Привет, Анна!
+Привет, Борис!
+</code></pre>
+<p>При вызове Python сопоставляет аргументы параметрам и создаёт для них имена
+внутри функции. <code>name</code> существует только во время этого вызова: в следующем
+вызове появится новое <code>name</code> с новым значением.</p>
+<p><figure class="figure"><img src="illustrations/ch-07-call.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Сопоставление по порядку работает так: первый аргумент попадает первому
+параметру, второй — второму.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">power</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">exp</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">base</span> <span class="o">**</span> <span class="n">exp</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">power</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">power</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>1024
+100
+</code></pre>
+<p>Два вызова с одинаковыми числами и разными результатами: <code>2 в степени 10</code>
+равно <code>1024</code>, а <code>10 в степени 2</code> равно <code>100</code>. Порядок аргументов значим, и
+перепутать его легко, потому что оба числа выглядят одинаково допустимо.</p>
+<h2 id="return"><span class="h-number">7.5</span> Возвращаемое значение и return</h2>
+<p><strong>Инструкция return</strong> завершает функцию и передаёт вызывающему коду
+<strong>возвращаемое значение</strong>. Именно это значение подставляется вместо вызова в
+выражении.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">area</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">area</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">area</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="n">area</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>12
+26
+</code></pre>
+<p>Во второй строке два вызова участвуют в сложении: каждый вернул число, и <code>+</code>
+сложил числа. Функция, которая возвращает результат, ведёт себя как обычное
+значение — её можно сравнивать, складывать и подставлять в f-строку.</p>
+<p><code>return</code> завершает функцию немедленно: код после него в этом вызове не
+выполняется. Это позволяет записать проверку и сразу выйти:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">check</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">"отрицательное"</span>
+    <span class="k">return</span> <span class="s2">"неотрицательное"</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">check</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">check</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>отрицательное
+неотрицательное
+</code></pre>
+<p>Для <code>-5</code> сработал первый <code>return</code>, и до второго дело не дошло. Для <code>0</code> первое
+условие ложно, поэтому выполнился второй <code>return</code>.</p>
+<p>Если функция дошла до конца, не встретив <code>return</code>, её результатом становится
+<code>None</code>. То же происходит при <code>return</code> без выражения:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">nothing</span><span class="p">():</span>
+    <span class="k">return</span>
+
+<span class="n">value</span> <span class="o">=</span> <span class="n">nothing</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nothing</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>None
+True
+</code></pre>
+<p>Это не мелочь: функция без <code>return</code> возвращает <code>None</code>, и попытка использовать
+такой результат в арифметике приведёт к ошибке <code>TypeError</code>.</p>
+<h3 id="print-не-возвращает-значение">print не возвращает значение</h3>
+<p>Самое частое непонимание на этом этапе — путать печать и возврат. <code>print</code>
+показывает значение в терминале, но сам ничего не возвращает. Проверим:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">result</span> <span class="o">=</span> <span class="nb">print</span><span class="p">(</span><span class="s2">"печатаю"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>печатаю
+None
+</code></pre>
+<p>Сначала <code>print</code> вывел строку, затем вернул <code>None</code>, и этот <code>None</code> был присвоен
+имени <code>result</code>. Если бы функция должна была вернуть число, а вместо <code>return</code>
+внутри стоял <code>print</code>, снаружи получился бы <code>None</code>, а не число.</p>
+<p><figure class="figure"><img src="illustrations/ch-07-print-vs-return.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Правило: <code>return</code> — для того, кто вызывает; <code>print</code> — для человека, который
+смотрит на экран. Обычно функция должна возвращать результат, а печатать его
+будет тот код, который отвечает за вывод.</p>
+<h2 id="args-kinds"><span class="h-number">7.6</span> Позиционные и именованные аргументы</h2>
+<p>Аргумент можно передать двумя способами. <strong>Позиционный аргумент</strong> сопоставляется
+параметрам по порядку. <strong>Именованный аргумент</strong> записывается как
+<code>параметр=значение</code> и сопоставляется по имени, независимо от порядка.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">power</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">exp</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">base</span> <span class="o">**</span> <span class="n">exp</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">power</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">power</span><span class="p">(</span><span class="n">exp</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>1024
+1024
+</code></pre>
+<p>Результат один и тот же: во втором вызове порядок задан именами. Именованный
+аргумент удобен, когда у функции много параметров и хочется явно показать, что
+куда передаётся.</p>
+<p>Правила смешивания простые: позиционные аргументы идут первыми, именованные —
+после них. Именованный аргумент перед позиционным — синтаксическая ошибка,
+потому что Python не смог бы понять, какому параметру отдать позицию.</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">power</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">exp</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">base</span> <span class="o">**</span> <span class="n">exp</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">power</span><span class="p">(</span><span class="n">base</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+</code></pre></div>
+<p>Вот как выглядит корректное смешивание:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">power</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">exp</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">base</span> <span class="o">**</span> <span class="n">exp</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">power</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">exp</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>8
+</code></pre>
+<p>Если аргументов не хватает или их слишком много, вызов завершается ошибкой
+<code>TypeError</code> с точным описанием. Такие сообщения полезно читать, а не
+игнорировать: в них указано имя функции и имя параметра.</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">power</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">exp</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">base</span> <span class="o">**</span> <span class="n">exp</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">power</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>TypeError: power() missing 1 required positional argument: &#x27;exp&#x27;
+</code></pre>
+<h2 id="defaults"><span class="h-number">7.7</span> Аргументы по умолчанию</h2>
+<p><strong>Аргумент по умолчанию</strong> задаёт значение параметра на случай, если при вызове
+его не передали. В определении это выглядит как <code>параметр=значение</code>.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">greet</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">greeting</span><span class="o">=</span><span class="s2">"Привет"</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">greeting</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!"</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">greet</span><span class="p">(</span><span class="s2">"Анна"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">greet</span><span class="p">(</span><span class="s2">"Анна"</span><span class="p">,</span> <span class="s2">"Здравствуй"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">greet</span><span class="p">(</span><span class="s2">"Анна"</span><span class="p">,</span> <span class="n">greeting</span><span class="o">=</span><span class="s2">"Добрый день"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>Привет, Анна!
+Здравствуй, Анна!
+Добрый день, Анна!
+</code></pre>
+<p>Три вызова — три способа: без второго аргумента, с позиционным вторым и с
+именованным вторым. Все три работают, потому что у <code>greeting</code> есть значение по
+умолчанию.</p>
+<p>Важная деталь: значение по умолчанию вычисляется <strong>один раз</strong>, в момент
+определения функции, а не при каждом вызове. Для чисел и строк это не
+заметно, потому что они неизменяемы. Но если однажды значением по умолчанию
+станет изменяемый объект, все вызовы будут делить одно и то же состояние —
+подробный разбор этого случая будет в главе 18. Пока достаточно запомнить
+правило: значение по умолчанию вычисляется один раз.</p>
+<p>Параметры с умолчаниями должны идти после параметров без них. Иначе получится
+неоднозначность: непонятно, какому параметру отдать единственный позиционный
+аргумент.</p>
+<h2 id="local-scope"><span class="h-number">7.8</span> Локальная область видимости</h2>
+<p><strong>Локальная область видимости</strong> — область, в которой видны имена, созданные
+внутри функции. Эти имена существуют только во время вызова и исчезают после
+его завершения.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">make</span><span class="p">():</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="k">return</span> <span class="n">y</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">make</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>10
+</code></pre>
+<p>Имя <code>y</code> создано внутри функции. Снаружи его нет:</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">make</span><span class="p">():</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="k">return</span> <span class="n">y</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">make</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>NameError: name &#x27;y&#x27; is not defined
+</code></pre>
+<p>Именно <code>NameError</code>: имя <code>y</code> не определено в том месте, где его пытаются
+прочитать. Это не сбой, а следствие того, что у функции своя область имён.</p>
+<p>Параметры тоже локальны: <code>name</code> из <code>greet</code> существует только внутри вызова.</p>
+<p>Снаружи внутрь, однако, смотреть можно: глобальные имена видны в функции.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">show</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<pre class="output"><code>5
+</code></pre>
+<p>А вот переприсвоить глобальное имя из функции простая запись не позволяет.
+Если имя присваивается внутри функции, Python считает его локальным — и тогда
+чтение до присваивания становится ошибкой.</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">broken</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">broken</span><span class="p">()</span>
+</code></pre></div>
+<pre class="output"><code>UnboundLocalError: cannot access local variable &#x27;x&#x27; where it is not associated with a value
+</code></pre>
+<p>Сообщение точное: <code>x</code> считается локальным именем, но к моменту чтения ещё не
+связан со значением. Полная модель областей видимости, включая инструкцию
+<code>global</code>, будет в следующей главе. Пока достаточно правила: имена, которым
+функция присваивает значения, локальны для неё.</p>
+<p>Практический вывод: не делайте функцию неявно зависящей от глобальных имён.
+Передавайте данные через параметры и возвращайте результат — тогда функцию
+можно понять, не читая всю программу.</p>
+<h2 id="docstring"><span class="h-number">7.9</span> docstring: документация внутри функции</h2>
+<p>Первая инструкция функции может быть строковым литералом — <strong>docstring (строка
+документации)</strong>. Это не комментарий: строка остаётся частью функции и доступна
+через атрибут <code>__doc__</code>, а инструменты показывают её в справке.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">area</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Вернуть площадь прямоугольника."""</span>
+    <span class="k">return</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">area</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">area</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>12
+Вернуть площадь прямоугольника.
+</code></pre>
+<p>Запись <code>area.__doc__</code> — обращение к атрибуту объекта через точку; подробно
+атрибуты разбираются в главе 25.</p>
+<p>Хороший docstring отвечает на вопрос «что делает функция и что она возвращает»,
+а не пересказывает код. Договорённость о формате описана в PEP 257; для
+небольших учебных функций достаточно одной точной фразы. В английских docstring
+PEP 257 рекомендует повелительное наклонение, а в русскоязычной документации
+принят инфинитив: «Вернуть площадь прямоугольника».</p>
+<p>Комментарий <code># умножаем ширину на высоту</code> здесь бесполезен: это видно из кода.
+Строка «Вернуть площадь прямоугольника» полезна: она называет смысл операции и
+единицу измерения результата.</p>
+<h2 id="design"><span class="h-number">7.10</span> Как проектировать функцию</h2>
+<p>Функция — не просто способ сократить запись. Это способ назвать часть задачи.
+Несколько правил, которые делают функции полезными.</p>
+<p><strong>Одна ответственность.</strong> Функция должна делать одну вещь, и её имя должно
+называть эту вещь. <code>area(width, height)</code> — хорошо. <code>process(width, height)</code> —
+плохо: непонятно, что значит «обработать».</p>
+<p><strong>Параметры вместо глобальных имён.</strong> Если функция читает глобальную
+переменную, её поведение зависит от состояния всей программы. С параметрами
+функция самодостаточна и её легко проверить.</p>
+<p><strong>Результат вместо печати.</strong> Функция, которая возвращает значение, годится и
+для вывода, и для дальнейших вычислений. Функция, которая только печатает,
+годится только для вывода.</p>
+<p><strong>Короткое тело.</strong> Если функция не помещается на экран, скорее всего, внутри
+несколько задач. Их стоит разделить.</p>
+<p>Функции можно вызывать друг из друга. Это естественный способ строить
+программы: маленькие функции складываются в более крупные.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">double</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="mi">2</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">quadruple</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">double</span><span class="p">(</span><span class="n">double</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">quadruple</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>20
+</code></pre>
+<p><code>quadruple</code> не знает, как удваивать число, — она поручает это <code>double</code>.
+Каждая функция описывает свой уровень задачи, и читать такую программу легче,
+чем одну длинную формулу.</p>
+<h2 id="example"><span class="h-number">7.11</span> Собираем вместе</h2>
+<p>Соберём функцию, которая считает итог заказа со скидкой. Скидка —
+необязательный параметр, поэтому у неё есть аргумент по умолчанию.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">order_total</span><span class="p">(</span><span class="n">price</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">discount</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">price</span> <span class="o">*</span> <span class="n">count</span>
+    <span class="k">return</span> <span class="n">total</span> <span class="o">-</span> <span class="n">total</span> <span class="o">*</span> <span class="n">discount</span> <span class="o">//</span> <span class="mi">100</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">order_total</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">order_total</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"К оплате: </span><span class="si">{</span><span class="n">order_total</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="si">}</span><span class="s2"> рублей"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>750
+675
+К оплате: 675 рублей
+</code></pre>
+<p>Разберём устройство: <code>price</code> и <code>count</code> — обязательные параметры, <code>discount</code> —
+параметр со значением по умолчанию. Внутри создаётся локальное имя <code>total</code>,
+которое не видно снаружи и не мешает другим функциям. Возвращается число,
+поэтому результат можно напечатать, подставить в f-строку или передать дальше.</p>
+<p>Проверить функцию на разных данных теперь легко: меняются только аргументы, а
+тело остаётся прежним.</p>
+<h2 id="mistakes"><span class="h-number">7.12</span> Типичные ошибки</h2>
+<ol>
+<li><strong>Путать print и return.</strong> Функция с <code>print</code> вместо <code>return</code> возвращает
+<code>None</code>; снаружи вместо числа будет <code>None</code>.</li>
+<li><strong>Забыть вызвать функцию.</strong> Запись <code>area</code> без скобок — это ссылка на
+функцию, а не результат. <code>print(area)</code> выведет служебное представление
+объекта, а не площадь.</li>
+<li><strong>Перепутать порядок позиционных аргументов.</strong> <code>power(10, 2)</code> — не то же
+самое, что <code>power(2, 10)</code>. При сомнении используйте именованные аргументы.</li>
+<li><strong>Считать, что имя из функции видно снаружи.</strong> Локальные имена исчезают
+после завершения вызова.</li>
+<li><strong>Присваивать глобальному имени внутри функции без подготовки.</strong> Python
+сделает имя локальным и чтение до присваивания даст <code>UnboundLocalError</code>.</li>
+<li><strong>Ставить параметр с умолчанием перед обязательным.</strong> Такой <code>def</code> не
+разбирается: непонятно, как сопоставлять аргументы.</li>
+<li><strong>Ожидать нового значения по умолчанию при каждом вызове.</strong> Оно вычисляется
+один раз при определении функции.</li>
+<li><strong>Давать функции имя, не описывающее результат.</strong> <code>do_it</code>, <code>handle</code>,
+<code>process</code> ничего не сообщают читателю.</li>
+</ol>
+<h2 id="упражнения"><span class="h-number">7.13</span> Упражнения</h2>
+<h3 id="ex-ch07-01">1. Первая функция</h3>
+<p>Напишите функцию <code>rectangle_area(width, height)</code>, которая возвращает площадь
+прямоугольника. Вызовите её для <code>3</code> и <code>4</code>, напечатайте результат.</p>
+<h3 id="ex-ch07-02">2. Параметр или аргумент</h3>
+<p>В коде ниже выпишите параметры и аргументы отдельными списками:</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">times</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">text</span> <span class="o">*</span> <span class="n">times</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">repeat</span><span class="p">(</span><span class="s2">"да"</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</code></pre></div>
+<p>Сколько параметров у функции? Сколько аргументов в вызове?</p>
+<h3 id="ex-ch07-03">3. Печать или возврат</h3>
+<p>Сравните две функции:</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">show_area</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">width</span> <span class="o">*</span> <span class="n">height</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_area</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span>
+</code></pre></div>
+<p>Что выведет <code>show_area(2, 5)</code>? Что вернёт <code>get_area(2, 5)</code>? Почему
+<code>print(show_area(2, 5) + 1)</code> приводит к ошибке, а
+<code>print(get_area(2, 5) + 1)</code> — нет?</p>
+<h3 id="ex-ch07-04">4. Порядок аргументов</h3>
+<p>Функция <code>power(base, exp)</code> возвращает <code>base ** exp</code>. Что вернут вызовы
+<code>power(2, 5)</code>, <code>power(5, 2)</code>, <code>power(exp=2, base=5)</code>? Объясните разницу.</p>
+<h3 id="ex-ch07-05">5. Аргумент по умолчанию</h3>
+<p>Напишите функцию <code>ticket_price(age, base=600)</code>, которая возвращает цену
+билета: для возраста до 18 лет — половина базовой цены, иначе базовая. Проверьте
+на возрастах <code>12</code> и <code>30</code>.</p>
+<h3 id="ex-ch07-06">6. Исправление ошибки вызова</h3>
+<p>Код падает:</p>
+<pre class="text"><code>TypeError: power() missing 1 required positional argument: &#x27;exp&#x27;
+</code></pre>
+<p>Вот функция и вызов:</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">power</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">exp</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">base</span> <span class="o">**</span> <span class="n">exp</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">power</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+<p>Объясните причину и исправьте вызов двумя способами: позиционным аргументом и
+именованным.</p>
+<h3 id="ex-ch07-07">7. Локальная область</h3>
+<p>Что произойдёт при выполнении программы? Объясните.</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">compute</span><span class="p">():</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">42</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">compute</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="ex-ch07-08">8. docstring</h3>
+<p>Напишите функцию <code>celsius_to_fahrenheit(celsius)</code>, которая переводит
+температуру по формуле <code>celsius * 9 / 5 + 32</code>. Добавьте docstring и напечатайте
+его через <code>__doc__</code>. Проверьте на <code>0</code> и <code>100</code>.</p>
+<h3 id="ex-ch07-09">9. Функция из функции</h3>
+<p>Напишите функции <code>square(n)</code> и <code>sum_of_squares(a, b)</code>, где вторая использует
+первую. Проверьте на <code>a = 3</code>, <code>b = 4</code>.</p>
+<h3 id="ex-ch07-10">10. Мини-задача: чек</h3>
+<p>Напишите функцию <code>order_total(price, count, discount=0)</code>, которая возвращает
+итог заказа: стоимость без скидки минус скидка в целых рублях. Затем напишите
+функцию <code>format_receipt(price, count, discount=0)</code>, которая вызывает первую и
+возвращает строку вида <code>Товаров: 3, к оплате: 675 рублей</code>. Проверьте на
+<code>250</code>, <code>3</code> и скидке <code>10</code>.</p>
+<h2 id="проверка-понимания"><span class="h-number">7.14</span> Проверка понимания</h2>
+<ol>
+<li>Чем параметр отличается от аргумента?</li>
+<li>Почему тело функции не выполняется в момент определения?</li>
+<li>Чем <code>return</code> отличается от <code>print</code> и почему это важно?</li>
+<li>Что вернёт функция, в которой нет <code>return</code>?</li>
+<li>Как передать аргумент по имени и зачем это нужно?</li>
+<li>Когда вычисляется значение аргумента по умолчанию?</li>
+<li>Почему локальное имя не видно снаружи функции?</li>
+<li>Почему <code>power(base=2, 10)</code> — синтаксическая ошибка?</li>
+<li>Зачем нужен docstring, если есть комментарии?</li>
+</ol>
+<h2 id="что-дальше"><span class="h-number">7.15</span> Что дальше</h2>
+<p>Функции уже позволяют строить программы из частей. Но осталось много вопросов:
+сколько вызовов может быть активно одновременно, откуда функция знает о
+внешних именах, как работает вызов функции из неё самой. Дальше появятся
+<a href="ch-08-recursion-scope.html#call-stack">стек вызовов</a>, полная модель
+<a href="ch-08-recursion-scope.html#scope">областей видимости</a> и
+<a href="ch-08-recursion-scope.html#recursion">рекурсия</a> — приём, который делает функции
+особенно выразительными.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-06-loops.html"><span class="pager-label">← Назад</span><span class="pager-title">Циклы: while и for</span></a><a class="pager-card next" rel="next" href="ch-08-recursion-scope.html"><span class="pager-label">Далее:</span><span class="pager-title">Стек вызовов, области видимости и рекурсия</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

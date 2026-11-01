@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" role="img"
+     aria-labelledby="ttl24 desc24" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl24">Анатомия сигнатуры функции с *args, **kwargs и keyword-only параметрами</title>
+  <desc id="desc24">Сигнатура def f(a, b=2, *args, c, d=4, **kwargs) разобрана по столбцам. Параметры a и b=2 принимают позиционные аргументы, *args собирает остальные позиционные в кортеж, c и d=4 доступны только по имени, **kwargs собирает остальные именованные аргументы в словарь.</desc>
+
+  <rect x="0" y="0" width="880" height="420" fill="#ffffff"/>
+
+  <text x="28" y="32" font-size="17" font-weight="bold" fill="#1d3550">Сигнатура функции: куда попадает каждый аргумент</text>
+  <text x="28" y="60" font-size="15" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" fill="#33557a">def f(a, b=2, *args, c, d=4, **kwargs)</text>
+
+  <!-- столбец 1: a -->
+  <rect x="28" y="76" width="130" height="40" rx="6" fill="#ffffff" stroke="#33557a" stroke-width="1.6"/>
+  <text x="93" y="102" text-anchor="middle" font-size="15" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" fill="#1d3550">a</text>
+  <rect x="28" y="122" width="130" height="118" rx="6" fill="#eef4fb" stroke="#33557a" stroke-width="1.4"/>
+  <text x="93" y="148" text-anchor="middle" font-size="13" fill="#1d3550">обычный</text>
+  <text x="93" y="168" text-anchor="middle" font-size="13" fill="#1d3550">параметр</text>
+  <text x="93" y="188" text-anchor="middle" font-size="13" fill="#33557a">по месту</text>
+  <text x="93" y="208" text-anchor="middle" font-size="13" fill="#33557a">или по имени</text>
+
+  <!-- столбец 2: b=2 -->
+  <rect x="166" y="76" width="130" height="40" rx="6" fill="#ffffff" stroke="#33557a" stroke-width="1.6"/>
+  <text x="231" y="102" text-anchor="middle" font-size="15" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" fill="#1d3550">b=2</text>
+  <rect x="166" y="122" width="130" height="118" rx="6" fill="#eef4fb" stroke="#33557a" stroke-width="1.4"/>
+  <text x="231" y="148" text-anchor="middle" font-size="13" fill="#1d3550">значение</text>
+  <text x="231" y="168" text-anchor="middle" font-size="13" fill="#1d3550">по умолчанию</text>
+  <text x="231" y="188" text-anchor="middle" font-size="13" fill="#33557a">можно</text>
+  <text x="231" y="208" text-anchor="middle" font-size="13" fill="#33557a">не передавать</text>
+
+  <!-- столбец 3: *args -->
+  <rect x="304" y="76" width="130" height="40" rx="6" fill="#ffffff" stroke="#2f6b45" stroke-width="1.6"/>
+  <text x="369" y="102" text-anchor="middle" font-size="15" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" fill="#1d3550">*args</text>
+  <rect x="304" y="122" width="130" height="118" rx="6" fill="#e8f5ec" stroke="#2f6b45" stroke-width="1.6" stroke-dasharray="7 5"/>
+  <text x="369" y="148" text-anchor="middle" font-size="13" fill="#1d3550">собирает</text>
+  <text x="369" y="168" text-anchor="middle" font-size="13" fill="#1d3550">лишние</text>
+  <text x="369" y="188" text-anchor="middle" font-size="13" fill="#2f6b45">позиционные</text>
+  <text x="369" y="208" text-anchor="middle" font-size="13" fill="#2f6b45">в кортеж</text>
+
+  <!-- столбец 4: c -->
+  <rect x="442" y="76" width="130" height="40" rx="6" fill="#ffffff" stroke="#8a5a13" stroke-width="1.6"/>
+  <text x="507" y="102" text-anchor="middle" font-size="15" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" fill="#1d3550">c</text>
+  <rect x="442" y="122" width="130" height="118" rx="6" fill="#fdf3e3" stroke="#8a5a13" stroke-width="1.4"/>
+  <text x="507" y="148" text-anchor="middle" font-size="13" fill="#1d3550">только</text>
+  <text x="507" y="168" text-anchor="middle" font-size="13" fill="#1d3550">по имени</text>
+  <text x="507" y="188" text-anchor="middle" font-size="13" fill="#8a5a13">обязательный</text>
+  <text x="507" y="208" text-anchor="middle" font-size="13" fill="#8a5a13">параметр</text>
+
+  <!-- столбец 5: d=4 -->
+  <rect x="580" y="76" width="130" height="40" rx="6" fill="#ffffff" stroke="#8a5a13" stroke-width="1.6"/>
+  <text x="645" y="102" text-anchor="middle" font-size="15" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" fill="#1d3550">d=4</text>
+  <rect x="580" y="122" width="130" height="118" rx="6" fill="#fdf3e3" stroke="#8a5a13" stroke-width="1.4"/>
+  <text x="645" y="148" text-anchor="middle" font-size="13" fill="#1d3550">только</text>
+  <text x="645" y="168" text-anchor="middle" font-size="13" fill="#1d3550">по имени</text>
+  <text x="645" y="188" text-anchor="middle" font-size="13" fill="#8a5a13">есть значение</text>
+  <text x="645" y="208" text-anchor="middle" font-size="13" fill="#8a5a13">по умолчанию</text>
+
+  <!-- столбец 6: **kwargs -->
+  <rect x="718" y="76" width="130" height="40" rx="6" fill="#ffffff" stroke="#2f6b45" stroke-width="1.6"/>
+  <text x="783" y="102" text-anchor="middle" font-size="15" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" fill="#1d3550">**kwargs</text>
+  <rect x="718" y="122" width="130" height="118" rx="6" fill="#e8f5ec" stroke="#2f6b45" stroke-width="1.6" stroke-dasharray="7 5"/>
+  <text x="783" y="148" text-anchor="middle" font-size="13" fill="#1d3550">собирает</text>
+  <text x="783" y="168" text-anchor="middle" font-size="13" fill="#1d3550">лишние</text>
+  <text x="783" y="188" text-anchor="middle" font-size="13" fill="#2f6b45">именованные</text>
+  <text x="783" y="208" text-anchor="middle" font-size="13" fill="#2f6b45">в словарь</text>
+
+  <!-- граница групп -->
+  <line x1="438" y1="70" x2="438" y2="248" stroke="#b08a3e" stroke-width="1.5" stroke-dasharray="6 5"/>
+
+  <!-- полосы групп -->
+  <rect x="28" y="262" width="406" height="38" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="1.4"/>
+  <text x="231" y="286" text-anchor="middle" font-size="13" fill="#1d3550">позиционные аргументы: по порядку</text>
+  <rect x="442" y="262" width="406" height="38" rx="8" fill="#fdf3e3" stroke="#8a5a13" stroke-width="1.4"/>
+  <text x="645" y="286" text-anchor="middle" font-size="13" fill="#1d3550">именованные аргументы: по имени</text>
+
+  <text x="28" y="326" font-size="13" fill="#4b5563">Маркер * (или *args) отделяет параметры, доступные только по имени.</text>
+
+  <rect x="28" y="340" width="820" height="64" rx="8" fill="#f7f9fc" stroke="#c9d3e0" stroke-width="1.2"/>
+  <text x="44" y="366" font-size="14" fill="#1d3550">Внутри функции: args — кортеж, kwargs — словарь.</text>
+  <text x="44" y="390" font-size="14" fill="#33557a">При вызове те же символы работают наоборот: f(*seq, **mapping) распаковывает.</text>
+</svg>

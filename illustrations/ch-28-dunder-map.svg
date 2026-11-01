@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" role="img"
+     aria-labelledby="ttl28a desc28a" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl28a">Встроенные операции и dunder-методы, которые они вызывают</title>
+  <desc id="desc28a">Восемь соответствий: print вызывает __str__, repr вызывает __repr__, сравнение == вызывает __eq__, hash вызывает __hash__, len вызывает __len__, оператор меньше вызывает __lt__, плюс вызывает __add__, вызов объекта вызывает __call__. Методы вызывает интерпретатор, а в коде пишется обычная операция.</desc>
+
+  <rect x="0" y="0" width="880" height="400" fill="#ffffff"/>
+  <defs>
+    <marker id="arr28a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#33557a"/>
+    </marker>
+  </defs>
+
+  <text x="28" y="32" font-size="17" font-weight="bold" fill="#1d3550">Операция в коде → dunder-метод</text>
+
+  <!-- левая половина -->
+  <rect x="28" y="60" width="150" height="46" rx="6" fill="#eef4fb" stroke="#33557a" stroke-width="1.4"/>
+  <text x="44" y="88" font-size="13" fill="#1d3550" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">print(x)</text>
+  <path d="M178 83 L 190 83" fill="none" stroke="#33557a" stroke-width="1.6" marker-end="url(#arr28a)"/>
+  <rect x="196" y="60" width="212" height="46" rx="6" fill="#ffffff" stroke="#33557a" stroke-width="1.4"/>
+  <text x="212" y="88" font-size="13" fill="#33557a" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">__str__(self)</text>
+
+  <rect x="28" y="120" width="150" height="46" rx="6" fill="#eef4fb" stroke="#33557a" stroke-width="1.4"/>
+  <text x="44" y="148" font-size="13" fill="#1d3550" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">repr(x)</text>
+  <path d="M178 143 L 190 143" fill="none" stroke="#33557a" stroke-width="1.6" marker-end="url(#arr28a)"/>
+  <rect x="196" y="120" width="212" height="46" rx="6" fill="#ffffff" stroke="#33557a" stroke-width="1.4"/>
+  <text x="212" y="148" font-size="13" fill="#33557a" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">__repr__(self)</text>
+
+  <rect x="28" y="180" width="150" height="46" rx="6" fill="#eef4fb" stroke="#33557a" stroke-width="1.4"/>
+  <text x="44" y="208" font-size="13" fill="#1d3550" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">x == y</text>
+  <path d="M178 203 L 190 203" fill="none" stroke="#33557a" stroke-width="1.6" marker-end="url(#arr28a)"/>
+  <rect x="196" y="180" width="212" height="46" rx="6" fill="#ffffff" stroke="#33557a" stroke-width="1.4"/>
+  <text x="212" y="208" font-size="13" fill="#33557a" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">__eq__(self, other)</text>
+
+  <rect x="28" y="240" width="150" height="46" rx="6" fill="#eef4fb" stroke="#33557a" stroke-width="1.4"/>
+  <text x="44" y="268" font-size="13" fill="#1d3550" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">hash(x)</text>
+  <path d="M178 263 L 190 263" fill="none" stroke="#33557a" stroke-width="1.6" marker-end="url(#arr28a)"/>
+  <rect x="196" y="240" width="212" height="46" rx="6" fill="#ffffff" stroke="#33557a" stroke-width="1.4"/>
+  <text x="212" y="268" font-size="13" fill="#33557a" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">__hash__(self)</text>
+
+  <!-- правая половина -->
+  <rect x="440" y="60" width="150" height="46" rx="6" fill="#fdf3e3" stroke="#8a5a13" stroke-width="1.4"/>
+  <text x="456" y="88" font-size="13" fill="#1d3550" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">len(x)</text>
+  <path d="M590 83 L 602 83" fill="none" stroke="#8a5a13" stroke-width="1.6" marker-end="url(#arr28a)"/>
+  <rect x="608" y="60" width="244" height="46" rx="6" fill="#ffffff" stroke="#8a5a13" stroke-width="1.4"/>
+  <text x="624" y="88" font-size="13" fill="#8a5a13" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">__len__(self)</text>
+
+  <rect x="440" y="120" width="150" height="46" rx="6" fill="#fdf3e3" stroke="#8a5a13" stroke-width="1.4"/>
+  <text x="456" y="148" font-size="13" fill="#1d3550" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">x &lt; y</text>
+  <path d="M590 143 L 602 143" fill="none" stroke="#8a5a13" stroke-width="1.6" marker-end="url(#arr28a)"/>
+  <rect x="608" y="120" width="244" height="46" rx="6" fill="#ffffff" stroke="#8a5a13" stroke-width="1.4"/>
+  <text x="624" y="148" font-size="13" fill="#8a5a13" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">__lt__(self, other)</text>
+
+  <rect x="440" y="180" width="150" height="46" rx="6" fill="#fdf3e3" stroke="#8a5a13" stroke-width="1.4"/>
+  <text x="456" y="208" font-size="13" fill="#1d3550" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">x + y</text>
+  <path d="M590 203 L 602 203" fill="none" stroke="#8a5a13" stroke-width="1.6" marker-end="url(#arr28a)"/>
+  <rect x="608" y="180" width="244" height="46" rx="6" fill="#ffffff" stroke="#8a5a13" stroke-width="1.4"/>
+  <text x="624" y="208" font-size="13" fill="#8a5a13" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">__add__(self, other)</text>
+
+  <rect x="440" y="240" width="150" height="46" rx="6" fill="#fdf3e3" stroke="#8a5a13" stroke-width="1.4"/>
+  <text x="456" y="268" font-size="13" fill="#1d3550" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">x()</text>
+  <path d="M590 263 L 602 263" fill="none" stroke="#8a5a13" stroke-width="1.6" marker-end="url(#arr28a)"/>
+  <rect x="608" y="240" width="244" height="46" rx="6" fill="#ffffff" stroke="#8a5a13" stroke-width="1.4"/>
+  <text x="624" y="268" font-size="13" fill="#8a5a13" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">__call__(self, ...)</text>
+
+  <!-- итог -->
+  <rect x="28" y="312" width="824" height="62" rx="8" fill="#f7f9fc" stroke="#c9d3e0" stroke-width="1.2"/>
+  <text x="44" y="338" font-size="14" fill="#1d3550">В коде вы пишете обычную операцию, а нужный метод находит интерпретатор.</text>
+  <text x="44" y="360" font-size="13" fill="#33557a">Прямой вызов x.__eq__(y) возможен, но в прикладном коде так не пишут.</text>
+</svg>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" role="img"
+     aria-labelledby="ttl19f desc19f" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl19f">Жизненный цикл файла: путь, open, файловый объект и закрытие через with</title>
+  <desc id="desc19f">Путь указывает на файл, open открывает его и возвращает файловый объект, через который идёт чтение и запись. Инструкция with гарантирует закрытие файла и при обычном выходе, и при исключении. Внизу четыре режима открытия: r, w, a, x.</desc>
+
+  <text x="32" y="34" font-size="17" font-weight="bold" fill="#1d3550">От пути до закрытия: как программа работает с файлом</text>
+
+  <!-- цепочка -->
+  <rect x="24" y="66" width="150" height="58" rx="9" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="99" y="90" text-anchor="middle" font-size="13" font-weight="bold" fill="#1d3550">путь (Path)</text>
+  <text x="99" y="110" text-anchor="middle" font-size="11" fill="#33557a">data/notes.txt</text>
+
+  <line x1="174" y1="95" x2="194" y2="95" stroke="#33557a" stroke-width="2"/>
+  <polygon points="194,95 183,89 183,101" fill="#33557a"/>
+
+  <rect x="198" y="66" width="180" height="58" rx="9" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="288" y="90" text-anchor="middle" font-size="13" font-weight="bold" fill="#1d3550">open(путь, режим)</text>
+  <text x="288" y="110" text-anchor="middle" font-size="11" fill="#33557a">открывает файл</text>
+
+  <line x1="378" y1="95" x2="398" y2="95" stroke="#33557a" stroke-width="2"/>
+  <polygon points="398,95 387,89 387,101" fill="#33557a"/>
+
+  <rect x="402" y="66" width="160" height="58" rx="9" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="482" y="90" text-anchor="middle" font-size="13" font-weight="bold" fill="#4b3a16">файловый объект</text>
+  <text x="482" y="110" text-anchor="middle" font-size="11" fill="#6b5a34">read / write</text>
+
+  <line x1="562" y1="95" x2="582" y2="95" stroke="#33557a" stroke-width="2"/>
+  <polygon points="582,95 571,89 571,101" fill="#33557a"/>
+
+  <rect x="586" y="66" width="150" height="58" rx="9" fill="#f1f8f2" stroke="#2f6b3f" stroke-width="2"/>
+  <text x="661" y="90" text-anchor="middle" font-size="13" font-weight="bold" fill="#2f6b3f">закрытие</text>
+  <text x="661" y="110" text-anchor="middle" font-size="11" fill="#2f6b3f">close()</text>
+
+  <!-- with -->
+  <rect x="198" y="148" width="538" height="104" rx="10" fill="#f5f8fc" stroke="#33557a" stroke-width="2" stroke-dasharray="8 5"/>
+  <text x="214" y="172" font-size="13" font-weight="bold" fill="#1d3550">инструкция with гарантирует закрытие файла</text>
+  <text x="214" y="196" font-size="12" fill="#33557a">обычный выход из блока → файл закрыт</text>
+  <text x="214" y="218" font-size="12" fill="#33557a">исключение внутри блока → файл всё равно закрыт</text>
+  <text x="214" y="240" font-size="12" fill="#5a6b7d">with open(путь, encoding="utf-8") as file:</text>
+
+  <!-- режимы -->
+  <text x="32" y="288" font-size="14" font-weight="bold" fill="#1d3550">Режим открытия файла</text>
+
+  <rect x="24" y="304" width="170" height="112" rx="9" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="40" y="328" font-size="14" font-weight="bold" fill="#1d3550">"r"</text>
+  <text x="40" y="350" font-size="12" fill="#33557a">чтение</text>
+  <text x="40" y="370" font-size="12" fill="#33557a">файл должен</text>
+  <text x="40" y="388" font-size="12" fill="#33557a">существовать</text>
+
+  <rect x="208" y="304" width="170" height="112" rx="9" fill="#fdf3f1" stroke="#8a3030" stroke-width="2"/>
+  <text x="224" y="328" font-size="14" font-weight="bold" fill="#8a3030">"w"</text>
+  <text x="224" y="350" font-size="12" fill="#8a3030">запись</text>
+  <text x="224" y="370" font-size="12" fill="#8a3030">прежнее содержимое</text>
+  <text x="224" y="388" font-size="12" fill="#8a3030">стирается</text>
+
+  <rect x="392" y="304" width="170" height="112" rx="9" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="408" y="328" font-size="14" font-weight="bold" fill="#1d3550">"a"</text>
+  <text x="408" y="350" font-size="12" fill="#33557a">добавление</text>
+  <text x="408" y="370" font-size="12" fill="#33557a">в конец; файл</text>
+  <text x="408" y="388" font-size="12" fill="#33557a">создаётся</text>
+
+  <rect x="576" y="304" width="160" height="112" rx="9" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="592" y="328" font-size="14" font-weight="bold" fill="#1d3550">"x"</text>
+  <text x="592" y="350" font-size="12" fill="#33557a">только новый</text>
+  <text x="592" y="370" font-size="12" fill="#33557a">файл; иначе</text>
+  <text x="592" y="388" font-size="12" fill="#33557a">FileExistsError</text>
+</svg>

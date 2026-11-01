@@ -1,0 +1,6 @@
+source_url: https://github.com/fluentpython/example-code-2e
+commit: cf3161ca006b106bfc0ba698e9135e9cdfb51e55
+commit_date: 2025-06-04
+verified_at: 2026-11-01
+file: LICENSE sha256=cf78a8069491d057b14ed6bdf077dac126060bfa825e48ad90018f7ac3762d3b
+file: METADATA.txt sha256=d1860c9048262c931031515c52f2b43511d5ebdacfdc7e3902d11f99f2b6ea90

@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Проект: асинхронный сборщик данных — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-48-project-async.html" aria-current="page">48. Проект: асинхронный сборщик данных</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-48-project-async.html#зачем-этот-проект">48.1. Зачем этот проект</a></li>
+<li><a href="ch-48-project-async.html#что-должно-получиться">48.2. Что должно получиться</a></li>
+<li><a href="ch-48-project-async.html#асинхронный-клиент">48.3. Асинхронный клиент</a></li>
+<li><a href="ch-48-project-async.html#ограничение-параллелизма">48.4. Ограничение параллелизма</a></li>
+<li><a href="ch-48-project-async.html#политика-повторов">48.5. Политика повторов</a></li>
+<li><a href="ch-48-project-async.html#идемпотентность">48.6. Идемпотентность</a></li>
+<li><a href="ch-48-project-async.html#наблюдаемость">48.7. Наблюдаемость</a></li>
+<li><a href="ch-48-project-async.html#сборка-проекта">48.8. Сборка проекта</a></li>
+<li><a href="ch-48-project-async.html#отмена-и-таймауты">48.9. Отмена и таймауты</a></li>
+<li><a href="ch-48-project-async.html#тесты">48.10. Тесты</a></li>
+<li><a href="ch-48-project-async.html#типичные-ошибки">48.11. Типичные ошибки</a></li>
+<li><a href="ch-48-project-async.html#упражнения">48.12. Упражнения</a></li>
+<li><a href="ch-48-project-async.html#проверка-понимания">48.13. Проверка понимания</a></li>
+<li><a href="ch-48-project-async.html#что-дальше">48.14. Что дальше</a></li>
+</ol></details></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 10. Проекты</span><span class="sep">›</span><span>Глава 48</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Проекты · глава 48</p>
+<h1 id="проект-асинхронный-сборщик-данных">Проект: асинхронный сборщик данных</h1>
+<p class="chapter-summary">Полный проект: конкурентные запросы с лимитом, повторы с задержкой, сохранение данных и наблюдаемость.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#зачем-этот-проект"><span class="toc-number">48.1</span> Зачем этот проект</a></li>
+<li class="level-2"><a href="#что-должно-получиться"><span class="toc-number">48.2</span> Что должно получиться</a></li>
+<li class="level-2"><a href="#асинхронный-клиент"><span class="toc-number">48.3</span> Асинхронный клиент</a></li>
+<li class="level-2"><a href="#ограничение-параллелизма"><span class="toc-number">48.4</span> Ограничение параллелизма</a></li>
+<li class="level-2"><a href="#политика-повторов"><span class="toc-number">48.5</span> Политика повторов</a></li>
+<li class="level-2"><a href="#идемпотентность"><span class="toc-number">48.6</span> Идемпотентность</a></li>
+<li class="level-2"><a href="#наблюдаемость"><span class="toc-number">48.7</span> Наблюдаемость</a></li>
+<li class="level-2"><a href="#сборка-проекта"><span class="toc-number">48.8</span> Сборка проекта</a></li>
+<li class="level-2"><a href="#отмена-и-таймауты"><span class="toc-number">48.9</span> Отмена и таймауты</a></li>
+<li class="level-2"><a href="#тесты"><span class="toc-number">48.10</span> Тесты</a></li>
+<li class="level-2"><a href="#типичные-ошибки"><span class="toc-number">48.11</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">48.12</span> Упражнения</a></li>
+<li class="level-2"><a href="#проверка-понимания"><span class="toc-number">48.13</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#что-дальше"><span class="toc-number">48.14</span> Что дальше</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#ex-ch48-01">1. Почему конкурентно быстрее</a></li>
+<li class="level-3"><a href="#ex-ch48-02">2. Семафор</a></li>
+<li class="level-3"><a href="#ex-ch48-03">3. Политика повторов</a></li>
+<li class="level-3"><a href="#ex-ch48-04">4. Экспоненциальная задержка</a></li>
+<li class="level-3"><a href="#ex-ch48-05">5. Таймауты</a></li>
+<li class="level-3"><a href="#ex-ch48-06">6. Отмена задачи</a></li>
+<li class="level-3"><a href="#ex-ch48-07">7. Ошибки не останавливают сбор</a></li>
+<li class="level-3"><a href="#ex-ch48-08">8. Наблюдаемость</a></li>
+<li class="level-3"><a href="#ex-ch48-09">9. Идемпотентность</a></li>
+<li class="level-3"><a href="#ex-ch48-10">10. Мини-релиз сборщика</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>Последний проект — о программах, которые большую часть времени <strong>ждут</strong>.
+Сетевой запрос, ответ базы, чтение файла: процессор простаивает, пока данные
+идут по сети. Асинхронный код позволяет одному потоку обслуживать сотни
+ожиданий одновременно. Но вместе с возможностями приходят новые способы
+сломаться: перегрузка чужого сервиса, бесконечные повторы, «зависшие» задачи,
+потерянные ошибки.</p>
+<p>Мы построим <strong>сборщик данных</strong>: он принимает список адресов, конкурентно
+загружает их, повторяет неудачные запросы с задержкой, сохраняет результат и
+оставляет след для диагностики.</p>
+<h2 id="зачем-этот-проект"><span class="h-number">48.1</span> Зачем этот проект</h2>
+<p>Асинхронность — не «более быстрый Python», а инструмент для задач, где узкое
+место — ожидание ввода-вывода. Три инженерных навыка из этого проекта
+применяются в любой системе, работающей с внешними сервисами:</p>
+<ol>
+<li><strong>Ограничение параллелизма.</strong> Слишком много одновременных запросов — это
+отказ в обслуживании чужого сервиса и ваших сокетов.</li>
+<li><strong>Повторы с задержкой.</strong> Сбой сети — норма, а не исключение; повтор должен
+быть обоснованным и ограниченным.</li>
+<li><strong>Наблюдаемость.</strong> Без логов и метрик невозможно понять, почему сборщик
+вернул 47 записей вместо 50.</li>
+</ol>
+<h2 id="что-должно-получиться"><span class="h-number">48.2</span> Что должно получиться</h2>
+<ul>
+<li>вход: файл <code>urls.txt</code> со списком адресов;</li>
+<li>выход: <code>result.json</code> — успешно загруженные записи; <code>errors.json</code> — неудачи;</li>
+<li>ограничение: не более <code>K</code> одновременных запросов (например, <code>K = 5</code>);</li>
+<li>повторы: при сетевых ошибках и ответах <code>429</code>, <code>5xx</code> — до 4 попыток с
+задержками <code>1, 2, 4</code> секунды;</li>
+<li>таймаут на запрос — обязателен;</li>
+<li>каждая неудача фиксируется с адресом и причиной;</li>
+<li>итоговый отчёт: сколько успешно, сколько ошибок, сколько повторов.</li>
+</ul>
+<h2 id="асинхронный-клиент"><span class="h-number">48.3</span> Асинхронный клиент</h2>
+<p><strong>Асинхронный клиент</strong> — HTTP-клиент, который не блокирует цикл событий: пока
+один запрос ждёт ответа, другие выполняются. В промышленном коде используют
+<code>httpx</code> или <code>aiohttp</code>; в примерах этой главы сеть заменена управляемой
+имитацией, потому что песочница книги запрещает сетевые вызовы.</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">httpx</span>
+
+<span class="n">RETRYABLE_STATUSES</span> <span class="o">=</span> <span class="p">{</span><span class="mi">429</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">502</span><span class="p">,</span> <span class="mi">503</span><span class="p">,</span> <span class="mi">504</span><span class="p">}</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TransientError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Ошибка, которую имеет смысл повторить."""</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">HttpClient</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">httpx</span><span class="o">.</span><span class="n">AsyncClient</span><span class="p">(</span>
+            <span class="n">timeout</span><span class="o">=</span><span class="n">httpx</span><span class="o">.</span><span class="n">Timeout</span><span class="p">(</span><span class="n">timeout</span><span class="p">),</span>
+            <span class="n">limits</span><span class="o">=</span><span class="n">httpx</span><span class="o">.</span><span class="n">Limits</span><span class="p">(</span><span class="n">max_connections</span><span class="o">=</span><span class="n">limit</span><span class="p">),</span>
+            <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">"User-Agent"</span><span class="p">:</span> <span class="s2">"syllanix-collector/1.0"</span><span class="p">},</span>
+        <span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="n">httpx</span><span class="o">.</span><span class="n">TimeoutException</span><span class="p">,</span> <span class="n">httpx</span><span class="o">.</span><span class="n">TransportError</span><span class="p">)</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">TransientError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"сетевая ошибка: </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span>
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="ow">in</span> <span class="n">RETRYABLE_STATUSES</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">TransientError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"статус </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">&gt;=</span> <span class="mi">400</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">httpx</span><span class="o">.</span><span class="n">HTTPStatusError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">"статус </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+                <span class="n">request</span><span class="o">=</span><span class="n">response</span><span class="o">.</span><span class="n">request</span><span class="p">,</span>
+                <span class="n">response</span><span class="o">=</span><span class="n">response</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">aclose</span><span class="p">()</span>
+</code></pre></div>
+<p>Две детали важны: <strong>таймаут</strong> (иначе задача может ждать вечно) и <strong>лимит
+соединений</strong> (иначе клиент откроет сотни сокетов). Оба параметра — часть
+контракта надёжности, а не «настройки на потом».</p>
+<p>Клиент классифицирует ошибки у границы: таймауты, обрывы соединения и ответы
+<code>429</code>/<code>5xx</code> он превращает в <code>TransientError</code>, а остальные <code>4xx</code> — в
+<code>httpx.HTTPStatusError</code>. Благодаря этому политике повторов достаточно ловить
+один тип, и она не зависит от деталей <code>httpx</code>.</p>
+<h2 id="ограничение-параллелизма"><span class="h-number">48.4</span> Ограничение параллелизма</h2>
+<p>Ограничение параллелизма реализуется <strong>семафором</strong>: счётчиком, который
+пропускает не более <code>K</code> задач одновременно.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">collect_limited</span><span class="p">(</span><span class="n">count</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="nb">int</span><span class="p">]:</span>
+    <span class="n">semaphore</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Semaphore</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span>
+    <span class="n">active</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">peak</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">job</span><span class="p">(</span><span class="n">number</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">nonlocal</span> <span class="n">active</span><span class="p">,</span> <span class="n">peak</span>
+        <span class="k">async</span> <span class="k">with</span> <span class="n">semaphore</span><span class="p">:</span>
+            <span class="n">active</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">peak</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">peak</span><span class="p">,</span> <span class="n">active</span><span class="p">)</span>
+            <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>   <span class="c1"># имитация сетевого ожидания</span>
+            <span class="n">active</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="k">return</span> <span class="n">number</span>
+
+    <span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">job</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">count</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="p">),</span> <span class="n">peak</span>
+
+<span class="n">results</span><span class="p">,</span> <span class="n">peak</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">collect_limited</span><span class="p">(</span><span class="n">count</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"обработано:"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"пик одновременно:"</span><span class="p">,</span> <span class="n">peak</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>обработано: 9
+пик одновременно: 3
+</code></pre>
+<p>Семафор не ускоряет саму работу, он <strong>ограничивает</strong> её. Это осознанный
+компромисс: мы жертвуем максимальной скоростью ради предсказуемой нагрузки на
+внешний сервис и собственные ресурсы.</p>
+<p><strong>Ограничение частоты</strong> (rate limiting) — другое ограничение: сколько запросов
+отправляется в единицу времени. Семафор его не обеспечивает: при быстрых
+ответах <code>K</code> одновременных задач успевают отправить сотни запросов в секунду.
+Если сервис задаёт квоту, нужен отдельный ограничитель — пауза между запусками
+или token bucket. В этом проекте мы ограничиваем параллелизм, а частоту
+оговариваем отдельно, чтобы не путать два разных механизма.</p>
+<p><figure class="figure"><img src="illustrations/ch-48-async-pipeline.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h2 id="политика-повторов"><span class="h-number">48.5</span> Политика повторов</h2>
+<p><strong>Политика повторов</strong> отвечает на три вопроса: что повторять, сколько раз и с
+какой задержкой.</p>
+<p>Что повторять:</p>
+<ul>
+<li>сетевые ошибки (таймаут, обрыв соединения);</li>
+<li>ответы <code>429 Too Many Requests</code> (после задержки);</li>
+<li>ответы <code>5xx</code>.</li>
+</ul>
+<p>Что <strong>не</strong> повторять:</p>
+<ul>
+<li><code>400</code>, <code>401</code>, <code>403</code>, <code>404</code> — повтор не изменит результат, только потратит
+время и нагрузку.</li>
+</ul>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">RETRYABLE_STATUSES</span> <span class="o">=</span> <span class="p">{</span><span class="mi">429</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">502</span><span class="p">,</span> <span class="mi">503</span><span class="p">,</span> <span class="mi">504</span><span class="p">}</span>
+<span class="k">for</span> <span class="n">status</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">401</span><span class="p">,</span> <span class="mi">404</span><span class="p">,</span> <span class="mi">429</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">503</span><span class="p">):</span>
+    <span class="n">verdict</span> <span class="o">=</span> <span class="s2">"повторять"</span> <span class="k">if</span> <span class="n">status</span> <span class="ow">in</span> <span class="n">RETRYABLE_STATUSES</span> <span class="k">else</span> <span class="s2">"не повторять"</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="s2">"-&gt;"</span><span class="p">,</span> <span class="n">verdict</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>200 -&gt; не повторять
+400 -&gt; не повторять
+401 -&gt; не повторять
+404 -&gt; не повторять
+429 -&gt; повторять
+500 -&gt; повторять
+503 -&gt; повторять
+</code></pre>
+<p>Тот же набор статусов использует <code>HttpClient</code> из предыдущего раздела: политика
+и клиент не расходятся в том, что считать временным сбоем.</p>
+<p><strong>Экспоненциальная задержка</strong> (backoff) увеличивает паузу между попытками:
+<code>1, 2, 4</code> секунды. Это снижает нагрузку на сбойную систему и даёт ей время
+восстановиться. Полезно добавлять небольшой случайный разброс, чтобы клиенты
+не повторяли синхронно («стадо»), но в учебном примере достаточно чистой
+экспоненты.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TransientError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">flaky_fetch</span><span class="p">(</span><span class="n">attempt</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">attempt</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">TransientError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"временный сбой, попытка </span><span class="si">{</span><span class="n">attempt</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">"данные получены"</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">with_retry</span><span class="p">(</span>
+    <span class="n">fetch</span><span class="p">,</span> <span class="n">attempts</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">base_delay</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">object</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+    <span class="n">last_error</span><span class="p">:</span> <span class="ne">Exception</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">attempt</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">attempts</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="k">await</span> <span class="n">fetch</span><span class="p">(</span><span class="n">attempt</span><span class="p">),</span> <span class="n">attempt</span>
+        <span class="k">except</span> <span class="n">TransientError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+            <span class="n">last_error</span> <span class="o">=</span> <span class="n">exc</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"попытка </span><span class="si">{</span><span class="n">attempt</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">exc</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">attempt</span> <span class="o">&lt;</span> <span class="n">attempts</span><span class="p">:</span>
+                <span class="n">delay</span> <span class="o">=</span> <span class="n">base_delay</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="p">(</span><span class="n">attempt</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  пауза </span><span class="si">{</span><span class="n">delay</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> с"</span><span class="p">)</span>
+                <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">"все попытки исчерпаны"</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">last_error</span>
+
+<span class="n">value</span><span class="p">,</span> <span class="n">used</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">with_retry</span><span class="p">(</span><span class="n">flaky_fetch</span><span class="p">,</span> <span class="n">base_delay</span><span class="o">=</span><span class="mf">0.01</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"попыток:"</span><span class="p">,</span> <span class="n">used</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>попытка 1: временный сбой, попытка 1
+  пауза 0.010 с
+попытка 2: временный сбой, попытка 2
+  пауза 0.020 с
+данные получены
+попыток: 3
+</code></pre>
+<p>В демонстрации паузы сжаты до миллисекунд, чтобы пример выполнялся быстро; в
+собранном проекте <code>base_delay=1.0</code>, то есть паузы <code>1</code> и <code>2</code> секунды перед второй
+и третьей попытками (и <code>4</code> — перед четвёртой). <code>with_retry</code> возвращает не только
+результат, но и номер успешной попытки: по нему <code>collect</code> считает повторы.</p>
+<p>Повтор не должен быть бесконечным: ограничение попыток и общего времени —
+обязательно. Иначе сбойный сервис получает бесконечный поток запросов, а
+сборщик никогда не завершается.</p>
+<h2 id="идемпотентность"><span class="h-number">48.6</span> Идемпотентность</h2>
+<p><strong>Идемпотентность</strong> — свойство операции давать тот же результат при повторном
+выполнении. <code>GET</code> идемпотентен по определению: чтение не меняет состояние.
+С <code>POST</code> сложнее: повторное создание задачи создаст дубликат.</p>
+<p><figure class="figure"><img src="illustrations/ch-48-idempotency.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Практические правила:</p>
+<ul>
+<li>для операций, которые можно повторять, используйте идемпотентные методы
+(<code>GET</code>, <code>PUT</code>, <code>DELETE</code>) там, где это уместно;</li>
+<li>для создания ресурсов передавайте <strong>ключ идемпотентности</strong> — уникальный
+идентификатор запроса; сервер сохраняет результат и при повторе с тем же
+ключом возвращает его, а не создаёт новую запись;</li>
+<li>в сборщике данных (только чтение) проблема дубликатов не возникает, но
+правило важно для любого кода, который что-то меняет.</li>
+</ul>
+<h2 id="наблюдаемость"><span class="h-number">48.7</span> Наблюдаемость</h2>
+<p><strong>Наблюдаемость</strong> — способность понять состояние системы по её выходам.
+Минимальный набор для сборщика:</p>
+<ul>
+<li><strong>счётчики</strong>: успешно, ошибок, повторов, отброшено;</li>
+<li><strong>логи</strong> с полями: адрес, попытка, статус, длительность, идентификатор
+запуска;</li>
+<li><strong>итоговый отчёт</strong> с числами, а не только «готово».</li>
+</ul>
+<div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">"collector"</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">log_request</span><span class="p">(</span>
+    <span class="o">*</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">attempt</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">status</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">duration_ms</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">run_id</span><span class="p">:</span> <span class="nb">str</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+        <span class="s2">"запрос завершён"</span><span class="p">,</span>
+        <span class="n">extra</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">"url"</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span>
+            <span class="s2">"attempt"</span><span class="p">:</span> <span class="n">attempt</span><span class="p">,</span>
+            <span class="s2">"status"</span><span class="p">:</span> <span class="n">status</span><span class="p">,</span>
+            <span class="s2">"duration_ms"</span><span class="p">:</span> <span class="n">duration_ms</span><span class="p">,</span>
+            <span class="s2">"run_id"</span><span class="p">:</span> <span class="n">run_id</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">)</span>
+</code></pre></div>
+<p>Структурированные поля позволяют искать «все ошибки по адресу X» и считать
+статистику без регулярных выражений. Строка «что-то пошло не так» бесполезна:
+в ней нет ни адреса, ни причины, ни попытки.</p>
+<h2 id="сборка-проекта"><span class="h-number">48.8</span> Сборка проекта</h2>
+<p>Полный цикл в файле <code>collector.py</code> выглядит так:</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">collect</span><span class="p">(</span><span class="n">urls</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">client</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="n">semaphore</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Semaphore</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span>
+    <span class="n">results</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">errors</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">stats</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"ok"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"errors"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"retries"</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">one</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">async</span> <span class="k">with</span> <span class="n">semaphore</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">data</span><span class="p">,</span> <span class="n">attempts</span> <span class="o">=</span> <span class="k">await</span> <span class="n">with_retry</span><span class="p">(</span>
+                    <span class="k">lambda</span> <span class="n">attempt</span><span class="p">:</span> <span class="n">client</span><span class="o">.</span><span class="n">get_json</span><span class="p">(</span><span class="n">url</span><span class="p">),</span> <span class="n">base_delay</span><span class="o">=</span><span class="mf">1.0</span>
+                <span class="p">)</span>
+                <span class="n">stats</span><span class="p">[</span><span class="s2">"retries"</span><span class="p">]</span> <span class="o">+=</span> <span class="n">attempts</span> <span class="o">-</span> <span class="mi">1</span>
+                <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"url"</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span> <span class="s2">"data"</span><span class="p">:</span> <span class="n">data</span><span class="p">})</span>
+                <span class="n">stats</span><span class="p">[</span><span class="s2">"ok"</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>  <span class="c1"># намеренно широкий перехват на границе</span>
+                <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"url"</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span> <span class="s2">"error"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">)})</span>
+                <span class="n">stats</span><span class="p">[</span><span class="s2">"errors"</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">one</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">"results"</span><span class="p">:</span> <span class="n">results</span><span class="p">,</span> <span class="s2">"errors"</span><span class="p">:</span> <span class="n">errors</span><span class="p">,</span> <span class="s2">"stats"</span><span class="p">:</span> <span class="n">stats</span><span class="p">}</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">build_parser</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">:</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">"Асинхронный сборщик данных"</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">"--urls"</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">"urls.txt"</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">"файл со списком адресов"</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">"--limit"</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">"одновременных запросов"</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">"--timeout"</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">"таймаут запроса"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">parser</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">argv</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">build_parser</span><span class="p">()</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span>
+    <span class="n">urls</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">Path</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">urls</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="p">]</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">HttpClient</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">timeout</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">limit</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">report</span> <span class="o">=</span> <span class="k">await</span> <span class="n">collect</span><span class="p">(</span><span class="n">urls</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">limit</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">Path</span><span class="p">(</span><span class="s2">"result.json"</span><span class="p">)</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span>
+        <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">report</span><span class="p">[</span><span class="s2">"results"</span><span class="p">],</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span>
+    <span class="p">)</span>
+    <span class="n">Path</span><span class="p">(</span><span class="s2">"errors.json"</span><span class="p">)</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span>
+        <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">report</span><span class="p">[</span><span class="s2">"errors"</span><span class="p">],</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span>
+    <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="p">[</span><span class="s2">"stats"</span><span class="p">])</span>
+    <span class="k">return</span> <span class="mi">0</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">report</span><span class="p">[</span><span class="s2">"errors"</span><span class="p">]</span> <span class="k">else</span> <span class="mi">1</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">()))</span>
+</code></pre></div>
+<p>Четыре решения, которые стоит заметить:</p>
+<ol>
+<li><strong><code>finally</code></strong> гарантирует закрытие клиента даже при исключении.</li>
+<li><strong>Ошибка одной задачи не останавливает остальные</strong> — сборщик продолжает
+работу и фиксирует неудачу.</li>
+<li><strong>Код возврата</strong> отражает наличие ошибок: скрипт можно использовать в CI и
+мониторинге.</li>
+<li><strong>Счётчик повторов</strong> берётся из <code>with_retry</code>: <code>attempts - 1</code> — это число
+неудачных попыток перед успехом, поэтому <code>stats[&quot;retries&quot;]</code> не остаётся
+нулём.</li>
+</ol>
+<p><code>if __name__ == &quot;__main__&quot;</code> превращает <code>main</code> в точку входа: без него запуск
+файла только определил бы функции и ничего не сделал. <code>argparse</code> позволяет
+запускать сборщик в CI с другим входным файлом и лимитами, не правя код:
+<code>python collector.py --urls urls.txt --limit 5 --timeout 10</code>.</p>
+<h2 id="отмена-и-таймауты"><span class="h-number">48.9</span> Отмена и таймауты</h2>
+<p>Асинхронные задачи могут «зависнуть», если внешний сервис не отвечает.
+<code>asyncio.timeout</code> ограничивает общее время операции, а отмена задачи
+освобождает ресурсы.</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">fetch_with_deadline</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">seconds</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">seconds</span><span class="p">):</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">get_json</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</code></pre></div>
+<p>При отмене внутри задачи может быть занятый ресурс; используйте
+<code>try/finally</code> или асинхронные контекстные менеджеры, чтобы освободить его.
+Подавление <code>CancelledError</code> без повторного поднятия — ошибка: задача будет
+считать себя выполненной, хотя её прервали.</p>
+<h2 id="тесты"><span class="h-number">48.10</span> Тесты</h2>
+<div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">collector</span><span class="w"> </span><span class="kn">import</span> <span class="n">collect</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">FakeClient</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">responses</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">object</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">responses</span> <span class="o">=</span> <span class="n">responses</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">calls</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">calls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">responses</span><span class="p">[</span><span class="n">url</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="ne">Exception</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">value</span>
+        <span class="k">return</span> <span class="n">value</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">SlowClient</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delay</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">delay</span> <span class="o">=</span> <span class="n">delay</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">active</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">peak</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">active</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">peak</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">peak</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">active</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delay</span><span class="p">)</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">"url"</span><span class="p">:</span> <span class="n">url</span><span class="p">}</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">active</span> <span class="o">-=</span> <span class="mi">1</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_collect_records_errors_without_stopping</span><span class="p">():</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">FakeClient</span><span class="p">({</span>
+        <span class="s2">"https://a.example"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"id"</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+        <span class="s2">"https://b.example"</span><span class="p">:</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">"сбой"</span><span class="p">),</span>
+        <span class="s2">"https://c.example"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"id"</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+    <span class="p">})</span>
+    <span class="n">report</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">collect</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="p">),</span> <span class="n">client</span><span class="p">))</span>
+    <span class="k">assert</span> <span class="n">report</span><span class="p">[</span><span class="s2">"stats"</span><span class="p">][</span><span class="s2">"ok"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span>
+    <span class="k">assert</span> <span class="n">report</span><span class="p">[</span><span class="s2">"stats"</span><span class="p">][</span><span class="s2">"errors"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="k">assert</span> <span class="p">[</span><span class="n">error</span><span class="p">[</span><span class="s2">"url"</span><span class="p">]</span> <span class="k">for</span> <span class="n">error</span> <span class="ow">in</span> <span class="n">report</span><span class="p">[</span><span class="s2">"errors"</span><span class="p">]]</span> <span class="o">==</span> <span class="p">[</span><span class="s2">"https://b.example"</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_limit_is_respected_never_exceeded</span><span class="p">():</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">SlowClient</span><span class="p">()</span>
+    <span class="n">urls</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">"https://example.com/</span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">)]</span>
+    <span class="n">report</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">collect</span><span class="p">(</span><span class="n">urls</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+    <span class="k">assert</span> <span class="n">report</span><span class="p">[</span><span class="s2">"stats"</span><span class="p">][</span><span class="s2">"ok"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">12</span>
+    <span class="k">assert</span> <span class="n">client</span><span class="o">.</span><span class="n">peak</span> <span class="o">&lt;=</span> <span class="mi">3</span>
+</code></pre></div>
+<p>Тест с <code>FakeClient</code> не ходит в сеть: он детерминирован, быстр и проверяет
+именно логику обработки ошибок. Тест с <code>SlowClient</code> считает активные задачи и
+проверяет, что семафор не пропустил больше <code>K</code> одновременно.</p>
+<h2 id="типичные-ошибки"><span class="h-number">48.11</span> Типичные ошибки</h2>
+<ol>
+<li><strong><code>await</code> внутри цикла без параллелизма.</strong> <code>for url in urls: await fetch(url)</code>
+выполняет запросы последовательно; если хотите конкурентность — <code>gather</code>.</li>
+<li><strong>Бесконечные повторы.</strong> Ограничивайте попытки и общее время.</li>
+<li><strong>Повтор <code>4xx</code>.</strong> Бессмысленно и вредно.</li>
+<li><strong>Отсутствие таймаута.</strong> «Зависшая» задача не завершится никогда.</li>
+<li><strong><code>time.sleep</code> вместо <code>asyncio.sleep</code>.</strong> Синхронный сон блокирует весь цикл
+событий, и остальные задачи не могут выполняться.</li>
+<li><strong>Неконтролируемое число задач.</strong> <code>gather</code> на 100 000 адресов создаст
+100 000 задач и исчерпает память; используйте лимит и очереди.</li>
+<li><strong>Подавление <code>CancelledError</code>.</strong> Задача должна корректно завершаться.</li>
+<li><strong>Логи без идентификаторов.</strong> Невозможно сопоставить записи одного запуска.</li>
+</ol>
+<h2 id="упражнения"><span class="h-number">48.12</span> Упражнения</h2>
+<h3 id="ex-ch48-01">1. Почему конкурентно быстрее</h3>
+<p>Объясните, почему 10 запросов по одной секунде последовательно занимают около
+10 секунд, а конкурентно — около одной. В каком случае конкурентность не
+поможет?</p>
+<h3 id="ex-ch48-02">2. Семафор</h3>
+<p>Объясните, что произойдёт, если убрать семафор. Какие риски для внешнего
+сервиса и для вашей программы?</p>
+<h3 id="ex-ch48-03">3. Политика повторов</h3>
+<p>Составьте таблицу: тип ошибки → повторять или нет → почему. Включите таймаут,
+обрыв соединения, <code>429</code>, <code>400</code>, <code>500</code>, <code>404</code>.</p>
+<h3 id="ex-ch48-04">4. Экспоненциальная задержка</h3>
+<p>Вычислите задержки для 5 попыток при базе 1 секунда. Почему чистую экспоненту
+часто дополняют случайным разбросом?</p>
+<h3 id="ex-ch48-05">5. Таймауты</h3>
+<p>Где нужно ставить таймаут: на отдельный запрос, на всю задачу, на весь запуск?
+Приведите аргументы и предложите значения.</p>
+<h3 id="ex-ch48-06">6. Отмена задачи</h3>
+<p>Что произойдёт с открытым соединением, если задачу отменить? Как гарантировать
+освобождение ресурса?</p>
+<h3 id="ex-ch48-07">7. Ошибки не останавливают сбор</h3>
+<p>Почему ошибка одного адреса не должна останавливать остальные? Как сообщить о
+частичном успехе вызывающему коду?</p>
+<h3 id="ex-ch48-08">8. Наблюдаемость</h3>
+<p>Предложите набор полей для структурированного лога одного запроса. Какие
+метрики вы бы собирали для сборщика?</p>
+<h3 id="ex-ch48-09">9. Идемпотентность</h3>
+<p>Почему <code>GET</code> можно повторять без ключа идемпотентности, а <code>POST</code> — нет?
+Приведите пример сценария, где повтор <code>POST</code> создаёт проблему.</p>
+<h3 id="ex-ch48-10">10. Мини-релиз сборщика</h3>
+<p>Опишите запуск сборщика в CI: входной файл, лимиты, таймауты, коды возврата,
+сохранение артефактов, уведомление о частичном успехе. Что должно быть
+зелёным до публикации?</p>
+<h2 id="проверка-понимания"><span class="h-number">48.13</span> Проверка понимания</h2>
+<ol>
+<li>Чем конкурентность отличается от параллелизма и почему для сетевых
+запросов достаточно первой?</li>
+<li>Зачем нужен семафор и что произойдёт без него?</li>
+<li>Какие ошибки имеет смысл повторять и почему?</li>
+<li>Что такое экспоненциальная задержка и какую проблему она решает?</li>
+<li>Почему операция должна быть идемпотентной, если её можно повторить?</li>
+<li>Что делает <code>asyncio.timeout</code> и почему таймаут обязателен?</li>
+<li>Какие поля должны быть в структурированном логе запроса?</li>
+</ol>
+<h2 id="что-дальше"><span class="h-number">48.14</span> Что дальше</h2>
+<p>На этом основной маршрут книги завершён. Вы прошли путь от первого выражения
+до асинхронного проекта с ограничениями, повторами и наблюдаемостью. Дальше —
+практика: расширяйте проекты, читайте чужой код, участвуйте в открытых
+проектах и возвращайтесь к главам как к справочнику. Хороший следующий шаг —
+взять один из проектов и довести его до состояния, которым не стыдно
+поделиться: тесты, документация, CI, релиз.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-47-project-api.html"><span class="pager-label">← Назад</span><span class="pager-title">Проект: HTTP API и база данных</span></a><a class="pager-card next" rel="next" href="ch-49-style-naming.html"><span class="pager-label">Далее:</span><span class="pager-title">Стиль, форматирование и именование кода</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

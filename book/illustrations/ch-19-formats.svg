@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 450" role="img"
+     aria-labelledby="ttl19j desc19j" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl19j">Одни и те же записи в CSV и в JSON</title>
+  <desc id="desc19j">Список словарей в программе можно записать двумя способами. В CSV получается плоская таблица: заголовок «товар,цена» и строки, где все значения текст. В JSON сохраняется структура: массив объектов с полями и числами. Стрелки показывают сериализацию при записи и восстановление при чтении.</desc>
+
+  <text x="32" y="34" font-size="17" font-weight="bold" fill="#1d3550">Одни записи — два текстовых формата</text>
+
+  <!-- объекты программы -->
+  <rect x="268" y="56" width="224" height="64" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="380" y="82" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3550">объекты Python</text>
+  <text x="380" y="104" text-anchor="middle" font-size="12" fill="#33557a">список словарей</text>
+
+  <!-- стрелки к панелям -->
+  <line x1="300" y1="120" x2="206" y2="176" stroke="#33557a" stroke-width="2"/>
+  <polygon points="206,176 218,174 212,164" fill="#33557a"/>
+  <line x1="460" y1="120" x2="554" y2="176" stroke="#33557a" stroke-width="2"/>
+  <polygon points="554,176 548,164 542,174" fill="#33557a"/>
+  <text x="150" y="152" text-anchor="middle" font-size="12" fill="#5a6b7d">сериализация</text>
+  <text x="614" y="152" text-anchor="middle" font-size="12" fill="#5a6b7d">сериализация</text>
+
+  <!-- CSV -->
+  <rect x="24" y="182" width="350" height="206" rx="10" fill="#fdfaf4" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="44" y="208" font-size="14" font-weight="bold" fill="#4b3a16">CSV: плоская таблица</text>
+  <rect x="44" y="222" width="310" height="112" rx="8" fill="#ffffff" stroke="#c9c2b4" stroke-width="1.5"/>
+  <g font-size="13" fill="#3d3320" font-family="'DejaVu Sans Mono', monospace">
+    <text x="58" y="248">товар,цена</text>
+    <text x="58" y="274">яблоко,90</text>
+    <text x="58" y="300">банан,120</text>
+  </g>
+  <text x="44" y="356" font-size="12" fill="#6b5a34">строки и столбцы; все значения — текст,</text>
+  <text x="44" y="374" font-size="12" fill="#6b5a34">числа придётся преобразовать вручную</text>
+
+  <!-- JSON -->
+  <rect x="386" y="182" width="350" height="206" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="406" y="208" font-size="14" font-weight="bold" fill="#1d3550">JSON: структура</text>
+  <rect x="406" y="222" width="310" height="112" rx="8" fill="#ffffff" stroke="#c9d6e3" stroke-width="1.5"/>
+  <g font-size="12" fill="#1d3550" font-family="'DejaVu Sans Mono', monospace">
+    <text x="420" y="246">[{"товар": "яблоко",</text>
+    <text x="420" y="268">  "цена": 90},</text>
+    <text x="420" y="290"> {"товар": "банан",</text>
+    <text x="420" y="312">  "цена": 120}]</text>
+  </g>
+  <text x="406" y="356" font-size="12" fill="#33557a">вложенные объекты и числа; числа и структура</text>
+  <text x="406" y="374" font-size="12" fill="#33557a">сохраняются, кортеж вернётся списком</text>
+
+  <!-- обратное чтение -->
+  <rect x="24" y="400" width="712" height="28" rx="8" fill="#ffffff" stroke="#c9c2b4" stroke-width="1.5"/>
+  <text x="380" y="419" text-anchor="middle" font-size="12" font-weight="bold" fill="#5a6b7d">обратное чтение: csv.reader и json.load возвращают объекты Python</text>
+
+  <text x="32" y="444" font-size="12" fill="#5a6b7d">Выбор формата: таблица для людей и редакторов — CSV; вложенная структура для программ — JSON.</text>
+</svg>

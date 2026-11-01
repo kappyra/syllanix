@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Строки: методы, форматирование и Unicode — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-15-strings.html" aria-current="page">15. Строки: методы, форматирование и Unicode</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-15-strings.html#why">15.1. Зачем эта глава</a></li>
+<li><a href="ch-15-strings.html#strings">15.2. Строковый тип</a></li>
+<li><a href="ch-15-strings.html#unicode">15.3. Unicode</a></li>
+<li><a href="ch-15-strings.html#encoding">15.4. Кодировка</a></li>
+<li><a href="ch-15-strings.html#escapes">15.5. Escape-последовательности</a></li>
+<li><a href="ch-15-strings.html#string-methods">15.6. Методы строки</a></li>
+<li><a href="ch-15-strings.html#split-join">15.7. split и join</a></li>
+<li><a href="ch-15-strings.html#string-comparison">15.8. Сравнение строк</a></li>
+<li><a href="ch-15-strings.html#formatting">15.9. Форматирование</a></li>
+<li><a href="ch-15-strings.html#mistakes">15.10. Типичные ошибки</a></li>
+<li><a href="ch-15-strings.html#упражнения">15.11. Упражнения</a></li>
+<li><a href="ch-15-strings.html#проверка-понимания">15.12. Проверка понимания</a></li>
+<li><a href="ch-15-strings.html#что-дальше">15.13. Что дальше</a></li>
+</ol></details></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 3. Коллекции и данные</span><span class="sep">›</span><span>Глава 15</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Коллекции и данные · глава 15</p>
+<h1 id="строки-методы-форматирование-и-unicode">Строки: методы, форматирование и Unicode</h1>
+<p class="chapter-summary">Текст как последовательность символов, кодировки, методы строк и f-строки.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#why"><span class="toc-number">15.1</span> Зачем эта глава</a></li>
+<li class="level-2"><a href="#strings"><span class="toc-number">15.2</span> Строковый тип</a></li>
+<li class="level-2"><a href="#unicode"><span class="toc-number">15.3</span> Unicode</a></li>
+<li class="level-2"><a href="#encoding"><span class="toc-number">15.4</span> Кодировка</a></li>
+<li class="level-2"><a href="#escapes"><span class="toc-number">15.5</span> Escape-последовательности</a></li>
+<li class="level-2"><a href="#string-methods"><span class="toc-number">15.6</span> Методы строки</a></li>
+<li class="level-2"><a href="#split-join"><span class="toc-number">15.7</span> split и join</a></li>
+<li class="level-2"><a href="#string-comparison"><span class="toc-number">15.8</span> Сравнение строк</a></li>
+<li class="level-2"><a href="#formatting"><span class="toc-number">15.9</span> Форматирование</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">15.10</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">15.11</span> Упражнения</a></li>
+<li class="level-2"><a href="#проверка-понимания"><span class="toc-number">15.12</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#что-дальше"><span class="toc-number">15.13</span> Что дальше</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#why-immutable">Почему строки неизменяемы</a></li>
+<li class="level-3"><a href="#ex-ch15-01">1. Строка как последовательность</a></li>
+<li class="level-3"><a href="#ex-ch15-02">2. Символы и байты</a></li>
+<li class="level-3"><a href="#ex-ch15-03">3. Escape-последовательности</a></li>
+<li class="level-3"><a href="#ex-ch15-04">4. Чистка текста</a></li>
+<li class="level-3"><a href="#ex-ch15-05">5. Разбор предложения</a></li>
+<li class="level-3"><a href="#ex-ch15-06">6. Нормализация имени</a></li>
+<li class="level-3"><a href="#ex-ch15-07">7. Сравнение и регистр</a></li>
+<li class="level-3"><a href="#ex-ch15-08">8. Слова и длины</a></li>
+<li class="level-3"><a href="#ex-ch15-09">9. Форматирование</a></li>
+<li class="level-3"><a href="#ex-ch15-10">10. Мини-задача: инициалы</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>Строки появились ещё во второй главе — как текст в кавычках. С тех пор они
+использовались для вывода, но не как данные, которые нужно обрабатывать.
+Между тем почти любая программа имеет дело с текстом: имена
+пользователей, адреса, сообщения, файлы, ответы сети. В этой главе строка
+становится полноценной последовательностью: вы научитесь разбирать её на
+части, соединять обратно, сравнивать и форматировать, а также поймёте,
+чем символ отличается от байта.</p>
+<h2 id="why"><span class="h-number">15.1</span> Зачем эта глава</h2>
+<p>Текст — самый распространённый формат обмена данными между программами
+и людьми. Пользователь вводит имя, программа сохраняет его в базе,
+отправляет в письме, показывает на странице. На каждом шаге строку нужно
+привести к нужному виду: убрать лишние пробелы, привести к нижнему
+регистру, разделить на слова, собрать обратно с разделителями.</p>
+<p>Кроме того, текст связан с представлением данных в памяти и в файлах.
+Строка в Python — последовательность символов Unicode, а файл хранит
+байты. Понимание разницы между ними избавляет от половины загадочных
+ошибок при чтении данных из внешнего мира.</p>
+<p>После этой главы вы сможете:</p>
+<ul>
+<li>обращаться со строкой как с последовательностью символов;</li>
+<li>объяснять, что такое Unicode, кодовая точка и кодировка;</li>
+<li>применять основные методы строк и понимать, что они возвращают новый
+объект;</li>
+<li>разбирать текст через <code>split</code> и собирать через <code>join</code>;</li>
+<li>сравнивать строки и понимать, почему порядок не равен алфавитному;</li>
+<li>форматировать значения в f-строках.</li>
+</ul>
+<h2 id="strings"><span class="h-number">15.2</span> Строковый тип</h2>
+<p><strong>Строковый тип</strong> — неизменяемая последовательность символов Unicode;
+индексация и срезы работают как у других последовательностей. Строка
+поддерживает всё, что вы уже знаете о последовательностях: длину,
+индексы, отрицательные индексы, срезы, проверку вхождения и перебор.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">word</span> <span class="o">=</span> <span class="s2">"Python"</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">word</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"th"</span> <span class="ow">in</span> <span class="n">word</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>6
+P n
+yth
+True
+PYTHON
+</code></pre>
+<p>Длина строки — количество символов, а не байтов. Индекс указывает на
+символ, срез вырезает подстроку. Проверка вхождения для строки ищет
+подстроку, а не отдельный символ: <code>&quot;th&quot; in &quot;Python&quot;</code> истинно, потому что
+такая последовательность символов встречается.</p>
+<p>Неизменяемость строки означает, что её нельзя поменять на месте: нельзя
+присвоить символ по индексу. Методы, которые преобразуют текст (<code>upper</code>,
+<code>lower</code>, <code>strip</code>, <code>replace</code>), возвращают новую строку; методы поиска и
+проверки возвращают число, <code>bool</code> или список.</p>
+<h2 id="unicode"><span class="h-number">15.3</span> Unicode</h2>
+<p><strong>Unicode</strong> — стандарт кодирования символов всех письменностей. Строки
+Python — последовательности кодовых точек Unicode: каждая позиция в
+строке соответствует одному символу стандарта, независимо от того, буква
+это, цифра, иероглиф или эмодзи.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">text</span> <span class="o">=</span> <span class="s2">"Ёж!"</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s2">"Ё"</span><span class="p">),</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">"ж"</span><span class="p">),</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">"!"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="mh">0x0401</span><span class="p">),</span> <span class="nb">chr</span><span class="p">(</span><span class="mh">0x0436</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>Ёж!
+3
+1025 1078 33
+Ё ж
+</code></pre>
+<p>Функция <code>ord</code> возвращает кодовую точку символа — целое число, под
+которым символ зарегистрирован в Unicode. Функция <code>chr</code> выполняет
+обратное преобразование. Кодовая точка <code>Ё</code> — 1025, <code>ж</code> — 1078. Символы
+русского алфавита занимают диапазон вокруг 1024–1103, поэтому длина строки
+«Ёж!» равна трём символам, хотя в UTF-8 она занимает пять байтов.</p>
+<p>Одна тонкость: некоторые видимые символы состоят из нескольких кодовых
+точек, например буква с комбинирующим ударением. В таких случаях <code>len</code>
+считает кодовые точки, а не «глазом различимые знаки». Для повседневной
+работы этого достаточно; более сложную обработку текста выполняют
+специальные библиотеки.</p>
+<h2 id="encoding"><span class="h-number">15.4</span> Кодировка</h2>
+<p><strong>Кодировка</strong> — правило перевода строки в байты и обратно. Байты — это
+то, что реально хранится в файле или передаётся по сети. Самая
+распространённая кодировка современного мира — UTF-8: она представляет
+каждую кодовую точку одним–четырьмя байтами.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">encoded</span> <span class="o">=</span> <span class="s2">"Ёж"</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="s2">"Ёж"</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">encoded</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">encoded</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Python"</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>b&#x27;\xd0\x81\xd0\xb6&#x27;
+2 4
+Ёж
+b&#x27;Python&#x27;
+</code></pre>
+<p>Строка из двух символов занимает четыре байта: кириллическая буква в
+UTF-8 кодируется двумя байтами, а латинская — одним. Печать байтов
+показывает их шестнадцатеричные значения. Обратное преобразование
+<code>decode</code> возвращает строку.</p>
+<p>Если декодировать байты не той кодировкой, Python сообщит об ошибке.</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="sa">b</span><span class="s2">"</span><span class="se">\xff</span><span class="s2">"</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>UnicodeDecodeError: &#x27;utf-8&#x27; codec can&#x27;t decode byte 0xff in position 0: invalid start byte
+</code></pre>
+<p>Сообщение говорит, какой байт и в какой позиции не похож на корректное
+начало символа UTF-8. Такая ошибка типична при чтении файла, записанного
+в другой кодировке. Правило простое: кодировка чтения должна совпадать с
+кодировкой записи.</p>
+<p><figure class="figure"><img src="illustrations/ch-15-unicode.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h2 id="escapes"><span class="h-number">15.5</span> Escape-последовательности</h2>
+<p><strong>Escape-последовательность</strong> — запись специального символа обратной
+косой чертой: <code>\n</code> — перевод строки, <code>\t</code> — табуляция, <code>\\</code> —
+обратная косая черта, <code>\&quot;</code> — кавычка. С их помощью в строковый литерал
+попадают символы, которые нельзя набрать напрямую или которые иначе
+закончили бы строку.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="s2">"первая строка</span><span class="se">\n</span><span class="s2">вторая строка"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"a</span><span class="se">\t</span><span class="s2">b</span><span class="se">\t</span><span class="s2">c"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"кавычки: </span><span class="se">\"</span><span class="s2">текст</span><span class="se">\"</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"обратная косая: </span><span class="se">\\</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">r</span><span class="s2">"C:\temp\new"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>первая строка
+вторая строка
+a	b	c
+кавычки: &quot;текст&quot;
+обратная косая: \
+C:\temp\new
+</code></pre>
+<p>Последняя строка использует <strong>«сырую» строку</strong> — литерал с префиксом
+<code>r</code>, в котором обратная косая черта не образует escape-последовательностей.
+Так удобно записывать пути Windows и регулярные выражения. Обратите
+внимание: <code>r&quot;\n&quot;</code> — это два символа, обратная косая черта и <code>n</code>, а не
+перевод строки.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="sa">r</span><span class="s2">"\n"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>2
+1
+</code></pre>
+<h2 id="string-methods"><span class="h-number">15.6</span> Методы строки</h2>
+<p><strong>Метод строки</strong> — операция над строкой, вызываемая через точку. Метод может
+вернуть новую строку (<code>upper</code>, <code>lower</code>, <code>strip</code>, <code>replace</code>), результат поиска
+или проверки (<code>find</code>, <code>count</code>, <code>startswith</code>), а также список (<code>split</code>). Строка
+неизменяема, поэтому методы не меняют исходный объект, а возвращают результат.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Что делает</th>
+<th>Пример</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>upper()</code></td>
+<td>переводит в верхний регистр</td>
+<td><code>&quot;abc&quot;.upper()</code> → <code>&quot;ABC&quot;</code></td>
+</tr>
+<tr>
+<td><code>lower()</code></td>
+<td>переводит в нижний регистр</td>
+<td><code>&quot;ABC&quot;.lower()</code> → <code>&quot;abc&quot;</code></td>
+</tr>
+<tr>
+<td><code>strip()</code></td>
+<td>убирает пробельные символы по краям</td>
+<td><code>&quot; a &quot;.strip()</code> → <code>&quot;a&quot;</code></td>
+</tr>
+<tr>
+<td><code>replace(a, b)</code></td>
+<td>заменяет все вхождения</td>
+<td><code>&quot;aXa&quot;.replace(&quot;X&quot;, &quot;-&quot;)</code> → <code>&quot;a-a&quot;</code></td>
+</tr>
+<tr>
+<td><code>startswith(p)</code></td>
+<td>проверяет начало</td>
+<td><code>&quot;file.txt&quot;.startswith(&quot;file&quot;)</code> → <code>True</code></td>
+</tr>
+<tr>
+<td><code>endswith(s)</code></td>
+<td>проверяет конец</td>
+<td><code>&quot;file.txt&quot;.endswith(&quot;.txt&quot;)</code> → <code>True</code></td>
+</tr>
+<tr>
+<td><code>find(p)</code></td>
+<td>индекс первого вхождения или <code>-1</code></td>
+<td><code>&quot;banana&quot;.find(&quot;na&quot;)</code> → <code>2</code></td>
+</tr>
+<tr>
+<td><code>count(p)</code></td>
+<td>число вхождений</td>
+<td><code>&quot;banana&quot;.count(&quot;na&quot;)</code> → <code>2</code></td>
+</tr>
+</tbody>
+</table>
+</div><p><code>strip()</code> удаляет все пробельные символы — пробелы, табуляцию, переводы
+строк, — а не только пробелы.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">word</span> <span class="o">=</span> <span class="s2">"  Python  "</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"Py"</span><span class="p">,</span> <span class="s2">"JS"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>Python
+  PYTHON  
+  python  
+  JSthon  
+  Python  
+</code></pre>
+<p>Обратите внимание на последнюю строку: исходная строка не изменилась.
+Методы вернули новые строки, а <code>word</code> осталось прежним. Именно поэтому
+запись <code>word.upper()</code> без присваивания ничего не делает — результат
+просто теряется.</p>
+<p>Для поиска подстроки есть ещё методы, которые возвращают позицию.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">name</span> <span class="o">=</span> <span class="s2">"report.csv"</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"report"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">".csv"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"banana"</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"na"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"banana"</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"zz"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"banana"</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">"na"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>True
+True
+2
+-1
+2
+</code></pre>
+<p><code>find</code> возвращает <code>-1</code>, если подстрока не найдена: это значение удобно
+проверять, но легко забыть, что оно означает «нет», а не «позиция
+минус один». <code>count</code> считает вхождения без перекрытий: в <code>banana</code>
+подстрока <code>na</code> встречается дважды.</p>
+<p><figure class="figure"><img src="illustrations/ch-15-string-methods.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h2 id="split-join"><span class="h-number">15.7</span> split и join</h2>
+<p><strong>split и join</strong> — пара операций, которая разбирает строку на части и
+собирает обратно. <code>split</code> возвращает список строк, <code>join</code> собирает одну
+строку из последовательности строк.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">sentence</span> <span class="o">=</span> <span class="s2">"раз два три"</span>
+<span class="n">parts</span> <span class="o">=</span> <span class="n">sentence</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parts</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"a,b,c"</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"a,,b"</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>[&#x27;раз&#x27;, &#x27;два&#x27;, &#x27;три&#x27;]
+раз-два-три
+[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]
+[&#x27;a&#x27;, &#x27;&#x27;, &#x27;b&#x27;]
+</code></pre>
+<p><code>split()</code> без аргумента делит по любым пробельным символам и отбрасывает
+пустые части. <code>split(&quot;,&quot;)</code> делит строго по запятой, поэтому пустое поле
+между двумя запятыми превращается в пустую строку — это важно при разборе
+CSV-подобных данных.</p>
+<p>У <code>join</code> порядок обратный: метод вызывается у разделителя, а аргументом
+служит последовательность строк. Все элементы должны быть строками.</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="s2">","</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]))</span>
+</code></pre></div>
+<pre class="output"><code>TypeError: sequence item 0: expected str instance, int found
+</code></pre>
+<p>Сообщение указывает на первый неподходящий элемент: ожидалась строка,
+получено число. Перед <code>join</code> числа преобразуют функцией <code>str</code> или
+f-строкой.</p>
+<h2 id="string-comparison"><span class="h-number">15.8</span> Сравнение строк</h2>
+<p><strong>Сравнение строк</strong> происходит по кодовым точкам символов, а не по
+алфавиту языка. Строки сравниваются посимвольно, пока не найдётся
+различие; если одна строка служит началом другой, меньшей считается
+короткая.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="s2">"Ё"</span> <span class="o">&lt;</span> <span class="s2">"А"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Ё"</span> <span class="o">&lt;</span> <span class="s2">"Я"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"ё"</span> <span class="o">==</span> <span class="s2">"Ё"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Python"</span> <span class="o">&lt;</span> <span class="s2">"python"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"apple"</span> <span class="o">&lt;</span> <span class="s2">"banana"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">([</span><span class="s2">"ёж"</span><span class="p">,</span> <span class="s2">"арбуз"</span><span class="p">,</span> <span class="s2">"яблоко"</span><span class="p">]))</span>
+</code></pre></div>
+<pre class="output"><code>True
+True
+False
+True
+True
+[&#x27;арбуз&#x27;, &#x27;яблоко&#x27;, &#x27;ёж&#x27;]
+</code></pre>
+<p>Результаты удивляют, пока не посмотреть на кодовые точки. Буква <code>Ё</code>
+имеет код 1025, а <code>А</code> — 1040, поэтому <code>Ё</code> меньше <code>А</code>, хотя в русском
+алфавите стоит позже. Заглавные латинские буквы имеют меньшие коды, чем
+строчные, поэтому <code>&quot;Python&quot; &lt; &quot;python&quot;</code> истинно. И <code>ё</code> оказалась после
+<code>я</code> при сортировке.</p>
+<p>Практический вывод: для сравнения текста без учёта регистра приводите
+обе строки к одному регистру. Для «человеческой» сортировки, где <code>ё</code> стоит
+после <code>е</code>, а <code>Ё</code> не уезжает в начало, нужны отдельные правила сопоставления:
+их задаёт локаль (например, <code>locale.strxfrm</code>) или сторонняя библиотека.</p>
+<h3 id="why-immutable">Почему строки неизменяемы</h3>
+<p>Неизменяемость строк — не ограничение, а полезное свойство. Строка
+широко используется как значение: её передают в функции, складывают в
+коллекции, используют как часть ключей и словарей. Если бы строку можно
+было менять на месте, любая функция могла бы испортить текст, который ей
+передали, и ошибка проявилась бы далеко от места вызова.</p>
+<p>Кроме того, неизменяемость позволяет безопасно разделять одну строку
+между разными частями программы: никто не изменит её незаметно для
+остальных. Именно поэтому все методы возвращают новую строку, а не правят
+исходную. Привычка «присвоить результат обратно в имя» —
+<code>text = text.strip()</code> — становится естественной уже после нескольких
+примеров: вы явно решаете, что дальше работаете с очищенным текстом, а
+прежнее значение остаётся доступным, если оно понадобится.</p>
+<p>Отсюда же следует практическое правило для интерфейсов: функция, которая
+принимает строку, не может испортить её у вызывающего кода. Всё, что она
+делает, — возвращает новую строку. Это упрощает рассуждение о программе:
+достаточно смотреть на возвращаемые значения, а не следить за побочными
+изменениями аргументов.</p>
+<h2 id="formatting"><span class="h-number">15.9</span> Форматирование</h2>
+<p>f-строки позволяют вставлять значения в текст и управлять их видом.
+После двоеточия указывается формат: количество знаков после запятой,
+ширина поля, выравнивание, заполнитель.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">price</span> <span class="o">=</span> <span class="mf">1234.5</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"цена: </span><span class="si">{</span><span class="n">price</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"цена: </span><span class="si">{</span><span class="n">price</span><span class="si">:</span><span class="s2">&gt;12,.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"код: </span><span class="si">{</span><span class="n">count</span><span class="si">:</span><span class="s2">03d</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"скидка: </span><span class="si">{</span><span class="mf">0.15</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>цена: 1234.50
+цена:     1,234.50
+код: 007
+скидка: 15%
+</code></pre>
+<p><code>.2f</code> задаёт два знака после запятой, <code>,</code> включает разделители тысяч,
+<code>&gt;12</code> выравнивает по правому краю в поле шириной 12, <code>03d</code> дополняет
+число нулями до трёх знаков, <code>.0%</code> показывает долю в процентах без
+дробной части. Форматирование не меняет значение — оно меняет только
+его представление в строке.</p>
+<h2 id="mistakes"><span class="h-number">15.10</span> Типичные ошибки</h2>
+<p><strong>Складывать строку с числом.</strong> <code>&quot;возраст: &quot; + 42</code> — <code>TypeError</code>.
+Используйте f-строку <code>f&quot;возраст: {42}&quot;</code> или <code>str(42)</code>.</p>
+<p><strong>Ждать, что метод изменит строку.</strong> <code>word.upper()</code> возвращает новую
+строку; без присваивания результат теряется. Строка неизменяема.</p>
+<p><strong>Путать длину строки и длину байтов.</strong> <code>len(&quot;Ёж&quot;)</code> равно 2, а
+<code>len(&quot;Ёж&quot;.encode(&quot;utf-8&quot;))</code> — 4. Это разные величины.</p>
+<p><strong>Считать порядок кодовых точек алфавитным.</strong> <code>&quot;Ё&quot; &lt; &quot;А&quot;</code> истинно, хотя
+в алфавите наоборот. Для сравнения без учёта регистра приводите регистр.</p>
+<p><strong>Делить по запятой и удивляться пустым строкам.</strong> <code>&quot;a,,b&quot;.split(&quot;,&quot;)</code>
+даёт пустой элемент. Это корректное поведение, а не дефект.</p>
+<p><strong>Передавать в <code>join</code> не строки.</strong> Нужны строки; числа преобразуются
+явно.</p>
+<p><strong>Декодировать не той кодировкой.</strong> Файл, записанный в CP1251, нельзя
+читать как UTF-8: получите <code>UnicodeDecodeError</code> или неверные символы.</p>
+<h2 id="упражнения"><span class="h-number">15.11</span> Упражнения</h2>
+<h3 id="ex-ch15-01">1. Строка как последовательность</h3>
+<p>Для строки <code>&quot;Python&quot;</code> определите длину, первый и последний символы,
+срез <code>&quot;Python&quot;[2:5]</code> (символы с индексами 2, 3 и 4) и результат
+проверки вхождения <code>&quot;th&quot;</code>.
+Проверьте ответы программой.</p>
+<h3 id="ex-ch15-02">2. Символы и байты</h3>
+<p>Для строки <code>&quot;Ёж&quot;</code> выведите длину, кодовые точки обоих символов и
+результат кодирования в UTF-8. Объясните, почему длина строки и длина
+байтов различаются.</p>
+<h3 id="ex-ch15-03">3. Escape-последовательности</h3>
+<p>Посчитайте, сколько строк выведет <code>print(&quot;a\nb&quot;)</code> и какова длина строки
+<code>&quot;a\nb&quot;</code>. Объясните разницу и проверьте с помощью <code>repr</code>.</p>
+<h3 id="ex-ch15-04">4. Чистка текста</h3>
+<p>Дана строка <code>&quot;  Hello, World!  &quot;</code>. Уберите пробелы по краям, приведите
+к нижнему регистру и замените <code>&quot;World&quot;</code> на <code>&quot;Python&quot;</code>. Выведите
+результат в читаемом виде через <code>repr</code>.</p>
+<h3 id="ex-ch15-05">5. Разбор предложения</h3>
+<p>Разделите строку <code>&quot;яблоко банан груша&quot;</code> на слова, выведите список слов
+и отсортированный список. Объясните, почему порядок после сортировки
+такой.</p>
+<h3 id="ex-ch15-06">6. Нормализация имени</h3>
+<p>Напишите функцию <code>normalize(name)</code>, которая убирает пробелы по краям и
+приводит имя к нижнему регистру. Проверьте на <code>&quot;  Alice &quot;</code> и <code>&quot;BOB&quot;</code>.</p>
+<h3 id="ex-ch15-07">7. Сравнение и регистр</h3>
+<p>Проверьте, истинно ли <code>&quot;Python&quot; &lt; &quot;python&quot;</code> и почему. Посчитайте
+количество вхождений <code>&quot;a&quot;</code> в <code>&quot;banana&quot;</code> и позицию первого вхождения.</p>
+<h3 id="ex-ch15-08">8. Слова и длины</h3>
+<p>Разделите строку <code>&quot;раз два три&quot;</code> на слова и для каждого слова выведите
+само слово и его длину.</p>
+<h3 id="ex-ch15-09">9. Форматирование</h3>
+<p>Выведите число <code>3.14159</code> с двумя знаками после запятой, число <code>42</code> в
+поле шириной 5 с ведущими нулями и строку <code>&quot;ok&quot;</code> по центру поля шириной
+10. Объясните каждый элемент формата.</p>
+<h3 id="ex-ch15-10">10. Мини-задача: инициалы</h3>
+<p>Напишите функцию <code>initials(full_name)</code>, которая возвращает инициалы:
+первые буквы слов, переведённые в верхний регистр. Проверьте на
+<code>&quot;иван петров&quot;</code> и <code>&quot;анна сергеевна сидорова&quot;</code>. Объясните, какие методы
+строки понадобились.</p>
+<h2 id="проверка-понимания"><span class="h-number">15.12</span> Проверка понимания</h2>
+<ol>
+<li>Почему строка называется неизменяемой и что это значит для методов?</li>
+<li>Чем кодовая точка отличается от байта? Что считает <code>len</code>?</li>
+<li>Зачем нужна кодировка и что произойдёт при неверной?</li>
+<li>Чем «сырая» строка отличается от обычной?</li>
+<li>Что возвращает <code>split</code> и что принимает <code>join</code>?</li>
+<li>Почему <code>&quot;Ё&quot; &lt; &quot;А&quot;</code> истинно, хотя в алфавите наоборот?</li>
+<li>Что делает формат <code>:&gt;12,.2f</code> и из каких частей он состоит?</li>
+</ol>
+<h2 id="что-дальше"><span class="h-number">15.13</span> Что дальше</h2>
+<p>Строки, списки и кортежи хранят элементы в порядке и допускают повторы.
+Но иногда важнее другое: знать, встречалось ли значение раньше, и не
+хранить дубликаты. Для этого служат множества — коллекции уникальных
+элементов, устроенные на хешировании. Об этом — в главе
+<a href="ch-16-sets.html#sets">«Множества и хеширование»</a>.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-14-tuples.html"><span class="pager-label">← Назад</span><span class="pager-title">Кортежи, распаковка и неизменяемость</span></a><a class="pager-card next" rel="next" href="ch-16-sets.html"><span class="pager-label">Далее:</span><span class="pager-title">Множества и хеширование</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

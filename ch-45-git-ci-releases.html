@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Git, CI, релизы и сопровождение — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-45-git-ci-releases.html" aria-current="page">45. Git, CI, релизы и сопровождение</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-45-git-ci-releases.html#контроль-версий-зачем-он-нужен">45.1. Контроль версий: зачем он нужен</a></li>
+<li><a href="ch-45-git-ci-releases.html#базовый-цикл-git">45.2. Базовый цикл Git</a></li>
+<li><a href="ch-45-git-ci-releases.html#ветки-и-слияние">45.3. Ветки и слияние</a></li>
+<li><a href="ch-45-git-ci-releases.html#ревью-кода">45.4. Ревью кода</a></li>
+<li><a href="ch-45-git-ci-releases.html#непрерывная-интеграция">45.5. Непрерывная интеграция</a></li>
+<li><a href="ch-45-git-ci-releases.html#версионирование-и-релизы">45.6. Версионирование и релизы</a></li>
+<li><a href="ch-45-git-ci-releases.html#сопровождение-и-мониторинг">45.7. Сопровождение и мониторинг</a></li>
+<li><a href="ch-45-git-ci-releases.html#типичные-ошибки">45.8. Типичные ошибки</a></li>
+<li><a href="ch-45-git-ci-releases.html#упражнения">45.9. Упражнения</a></li>
+<li><a href="ch-45-git-ci-releases.html#проверка-понимания">45.10. Проверка понимания</a></li>
+<li><a href="ch-45-git-ci-releases.html#что-дальше">45.11. Что дальше</a></li>
+</ol></details></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 9. Инженерия и сопровождение</span><span class="sep">›</span><span>Глава 45</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Инженерия и сопровождение · глава 45</p>
+<h1 id="git-ci-релизы-и-сопровождение">Git, CI, релизы и сопровождение</h1>
+<p class="chapter-summary">Командная работа с кодом, автоматические проверки, версионирование и поддержка системы в эксплуатации.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#контроль-версий-зачем-он-нужен"><span class="toc-number">45.1</span> Контроль версий: зачем он нужен</a></li>
+<li class="level-2"><a href="#базовый-цикл-git"><span class="toc-number">45.2</span> Базовый цикл Git</a></li>
+<li class="level-2"><a href="#ветки-и-слияние"><span class="toc-number">45.3</span> Ветки и слияние</a></li>
+<li class="level-2"><a href="#ревью-кода"><span class="toc-number">45.4</span> Ревью кода</a></li>
+<li class="level-2"><a href="#непрерывная-интеграция"><span class="toc-number">45.5</span> Непрерывная интеграция</a></li>
+<li class="level-2"><a href="#версионирование-и-релизы"><span class="toc-number">45.6</span> Версионирование и релизы</a></li>
+<li class="level-2"><a href="#сопровождение-и-мониторинг"><span class="toc-number">45.7</span> Сопровождение и мониторинг</a></li>
+<li class="level-2"><a href="#типичные-ошибки"><span class="toc-number">45.8</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">45.9</span> Упражнения</a></li>
+<li class="level-2"><a href="#проверка-понимания"><span class="toc-number">45.10</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#что-дальше"><span class="toc-number">45.11</span> Что дальше</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#ex-ch45-01">1. Первый репозиторий</a></li>
+<li class="level-3"><a href="#ex-ch45-02">2. Статус и diff</a></li>
+<li class="level-3"><a href="#ex-ch45-03">3. Хорошее сообщение коммита</a></li>
+<li class="level-3"><a href="#ex-ch45-04">4. Ветка и слияние</a></li>
+<li class="level-3"><a href="#ex-ch45-05">5. Что не коммитить</a></li>
+<li class="level-3"><a href="#ex-ch45-06">6. Красный конвейер</a></li>
+<li class="level-3"><a href="#ex-ch45-07">7. Семантическое версионирование</a></li>
+<li class="level-3"><a href="#ex-ch45-08">8. Журнал изменений</a></li>
+<li class="level-3"><a href="#ex-ch45-09">9. Метрики и оповещения</a></li>
+<li class="level-3"><a href="#ex-ch45-10">10. План отката</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>До этой главы вы работали с кодом в одиночку и «здесь и сейчас». Настоящая
+разработка устроена иначе: код меняется десятки раз в день, изменения делают
+несколько человек, а ошибка в выпущенной версии стоит дорого. Поэтому
+инженерная практика строится вокруг трёх механизмов: <strong>истории изменений</strong>,
+<strong>автоматической проверки каждого изменения</strong> и <strong>управляемого выпуска</strong>.</p>
+<p>Эта глава — о том, как код живёт во времени: как фиксировать изменения, как не
+пускать дефекты в основную ветку, как выпускать версии и как понимать, что
+происходит в работающей системе.</p>
+<h2 id="контроль-версий-зачем-он-нужен"><span class="h-number">45.1</span> Контроль версий: зачем он нужен</h2>
+<p><strong>Контроль версий</strong> — система, которая хранит историю изменений файлов и
+позволяет вернуться к любому зафиксированному состоянию. Он решает четыре
+задачи, с которыми «папка с копиями» не справляется:</p>
+<ol>
+<li><strong>История.</strong> Видно, кто, когда и зачем изменил каждую строку.</li>
+<li><strong>Воспроизводимость.</strong> Любую версию можно получить точно в том виде, в
+котором она была.</li>
+<li><strong>Совместная работа.</strong> Изменения нескольких людей объединяются
+контролируемо, а конфликты обнаруживаются явно.</li>
+<li><strong>Эксперименты без риска.</strong> Ветка позволяет пробовать идею, не ломая
+основную версию.</li>
+</ol>
+<p><strong>Git</strong> — распределённая система контроля версий: у каждого разработчика есть
+полная история, а не только последняя версия файлов. Это стандарт индустрии;
+в этой главе мы разберём минимальный рабочий набор команд. Git — инструмент, а
+не религия: цель не «идеальная история», а понятность изменений и возможность
+безопасно откатиться.</p>
+<h2 id="базовый-цикл-git"><span class="h-number">45.2</span> Базовый цикл Git</h2>
+<p>Рабочий цикл состоит из трёх шагов: изменить файлы, зафиксировать изменения,
+отправить их в общий репозиторий.</p>
+<pre class="text"><code>$ git status
+On branch main
+Changes not staged for commit:
+  modified:   calculator.py
+
+$ git diff calculator.py
+diff --git a/calculator.py b/calculator.py
+index 3f9c1a2..8b7d4e1 100644
+--- a/calculator.py
++++ b/calculator.py
+@@ -3,6 +3,9 @@ def add(a, b):
+     return a + b
+
++def subtract(a, b):
++    return a - b
++
+$ git add calculator.py
+$ git commit -m &quot;Добавить функцию вычитания&quot;
+[main 3f9c1a2] Добавить функцию вычитания
+ 1 file changed, 3 insertions(+)
+
+$ git push origin main
+</code></pre>
+<p>Обратите внимание на <code>git status</code> и <code>git diff</code> — это две команды, которые
+стоит выполнять перед каждым коммитом. Они отвечают на вопросы «что я изменил»
+и «то ли я изменил», и предотвращают большинство случайных коммитов.</p>
+<p><strong>Коммит</strong> — зафиксированная версия изменений с сообщением и автором. Хороший
+коммит обладает двумя свойствами:</p>
+<ul>
+<li><strong>атомарность</strong>: одна логическая порция изменений, а не «всё за день»;</li>
+<li><strong>понятное сообщение</strong>: что изменилось и, главное, зачем.</li>
+</ul>
+<p>Плохо: <code>fix</code>, <code>update</code>, <code>правки</code>. Хорошо: <code>Исправить округление при расчёте скидки</code>, <code>Вынести валидацию в отдельный модуль</code>. Сообщение пишется в
+повелительном наклонении, как указание: «Добавить», «Исправить», «Удалить».</p>
+<h2 id="ветки-и-слияние"><span class="h-number">45.3</span> Ветки и слияние</h2>
+<p><strong>Ветка</strong> — независимая линия изменений. Основная ветка (<code>main</code>) всегда должна
+быть в рабочем состоянии; новая функциональность разрабатывается в отдельной
+ветке и затем сливается.</p>
+<p><figure class="figure"><img src="illustrations/ch-45-branching.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<pre class="text"><code>$ git switch -c feature/validation
+$ # ... изменения, коммиты ...
+$ git push -u origin feature/validation
+$ # ... после ревью и зелёного CI ...
+$ git switch main
+$ git merge feature/validation
+</code></pre>
+<p><strong>Слияние</strong> объединяет изменения. Если две ветки изменили одни и те же строки,
+возникает <strong>конфликт</strong>: Git не угадывает, какой вариант правильный, и просит
+человека решить. Конфликт — не сбой, а нормальный сигнал: две линии изменений
+пересеклись, нужно осознанно выбрать результат.</p>
+<p>Практические правила:</p>
+<ul>
+<li>ветка живёт недолго; чем дольше, тем больше конфликтов;</li>
+<li>из основной ветки регулярно забирайте изменения (<code>git pull</code>), чтобы
+расходиться меньше;</li>
+<li>не делайте <code>push --force</code> в общую ветку: это переписывает историю и ломает
+работу коллег;</li>
+<li>удаляйте слитые ветки, иначе их список превращается в свалку.</li>
+</ul>
+<h2 id="ревью-кода"><span class="h-number">45.4</span> Ревью кода</h2>
+<p><strong>Ревью кода</strong> — проверка изменения другим человеком до включения в основную
+ветку. Цели: найти дефекты, передать знание, выровнять стиль. Ревью — не
+контроль и не демонстрация превосходства; это дешёвый способ найти проблему до
+пользователя.</p>
+<p>Что смотреть в первую очередь:</p>
+<ol>
+<li><strong>Корректность</strong> — решает ли код задачу, есть ли граничные случаи.</li>
+<li><strong>Читаемость</strong> — поймёт ли это через полгода другой человек.</li>
+<li><strong>Тесты</strong> — покрывают ли они новое поведение и его отсутствие.</li>
+<li><strong>Безопасность</strong> — не появляются ли секреты, небезопасный ввод, новые
+зависимости без причины.</li>
+<li><strong>Область изменения</strong> — не затронуто ли лишнее.</li>
+</ol>
+<p>Как давать замечания: конкретно, с аргументом, без оценки личности. «Здесь
+возможна ошибка на пустом списке, предлагаю тест» полезнее, чем «плохо».</p>
+<h2 id="непрерывная-интеграция"><span class="h-number">45.5</span> Непрерывная интеграция</h2>
+<p><strong>CI (непрерывная интеграция)</strong> — автоматическая проверка каждого изменения:
+линтеры, проверка типов, тесты, сборка. Конвейер запускается на каждый коммит и
+останавливает изменение на первом провале.</p>
+<p><figure class="figure"><img src="illustrations/ch-45-ci-pipeline.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Почему это важнее, чем кажется:</p>
+<ul>
+<li><strong>Проверки не забываются.</strong> Человек может забыть запустить тесты; конвейер —
+нет.</li>
+<li><strong>Обратная связь быстрая.</strong> Ошибка обнаруживается через минуты, а не через
+неделю.</li>
+<li><strong>Основная ветка всегда работоспособна.</strong> Красный конвейер — стоп-сигнал для
+слияния.</li>
+</ul>
+<p>Минимальный пример конфигурации для GitHub Actions:</p>
+<div class="highlight"><pre><code class="language-yaml"><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ci</span>
+<span class="nt">on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">push</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">pull_request</span><span class="p p-Indicator">]</span>
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">test</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">astral-sh/setup-uv@v5</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="s">"3.14"</span>
+<span class="w">          </span><span class="nt">enable-cache</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv sync --frozen</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv run ruff check .</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv run mypy src</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv run pytest -q</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv build</span>
+</code></pre></div>
+<p>Ключевые принципы: зафиксированные версии Python и зависимостей (<code>uv.lock</code> +
+<code>--frozen</code>), быстрые шаги сначала, кэширование зависимостей, одинаковые команды
+локально и в CI. Локально те же проверки запускаются так:</p>
+<pre class="text"><code>$ uv run ruff check .
+$ uv run mypy src
+$ uv run pytest -q
+</code></pre>
+<p><code>mypy src</code> соответствует раскладке с каталогом <code>src/</code> из главы 33; если пакет
+проекта лежит в <code>tasks/</code>, замените путь на <code>tasks</code>.</p>
+<p>Если проверка проходит только в CI — это дефект конфигурации.</p>
+<h2 id="версионирование-и-релизы"><span class="h-number">45.6</span> Версионирование и релизы</h2>
+<p><strong>Семантическое версионирование</strong> задаёт номер версии из трёх чисел
+<code>MAJOR.MINOR.PATCH</code>:</p>
+<ul>
+<li><code>MAJOR</code> увеличивается при несовместимых изменениях;</li>
+<li><code>MINOR</code> — при добавлении совместимых возможностей;</li>
+<li><code>PATCH</code> — при исправлениях без изменения API.</li>
+</ul>
+<p>Проверить формат версии можно программно — это типичная проверка в конвейере:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">version</span> <span class="o">=</span> <span class="s2">"1.4.2"</span>
+<span class="n">major</span><span class="p">,</span> <span class="n">minor</span><span class="p">,</span> <span class="n">patch</span> <span class="o">=</span> <span class="n">version</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"."</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">major</span><span class="p">,</span> <span class="n">minor</span><span class="p">,</span> <span class="n">patch</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">all</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span> <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="p">(</span><span class="n">major</span><span class="p">,</span> <span class="n">minor</span><span class="p">,</span> <span class="n">patch</span><span class="p">)))</span>
+</code></pre></div>
+<pre class="output"><code>1 4 2
+True
+</code></pre>
+<p><strong>Журнал изменений</strong> (<code>CHANGELOG.md</code>) — понятный пользователю перечень
+изменений по версиям. Он нужен не для отчётности, а чтобы потребитель мог
+понять, что сломается при обновлении.</p>
+<pre class="text"><code># Changelog
+
+## [1.5.0] — 2026-11-01
+### Добавлено
+- Проверка дубликатов при импорте задач.
+### Изменено
+- Команда `tasks list` сортирует задачи по статусу.
+### Удалено
+- Устаревший флаг `--legacy`.
+### Исправлено
+- Ошибка при пустом названии задачи.
+</code></pre>
+<p><strong>Тег</strong> — неизменяемая метка коммита, из которой собирается выпуск. Версия в
+<code>pyproject.toml</code> и заголовок <code>CHANGELOG.md</code> должны совпадать с тегом; иначе
+потребитель не поймёт, что именно ему поставили. Минимальный сценарий релиза:</p>
+<pre class="text"><code>$ git tag v1.5.0
+$ git push --tags
+$ uv build
+$ ls dist
+tasks_cli-1.5.0-py3-none-any.whl
+tasks_cli-1.5.0.tar.gz
+</code></pre>
+<p>Артефакт собирается из тега, а не из рабочей копии: так релиз можно
+воспроизвести позже. CI может запускать <code>uv build</code> на теге и прикреплять
+<code>dist/*</code> к релизу. Если сборка из тега не воспроизводится, тег не годится для
+поставки.</p>
+<p><strong>CD (непрерывная доставка)</strong> — автоматизированная поставка проверенной версии
+в среду эксплуатации. Ключевые понятия: артефакт (то, что поставляется),
+окружение (где запускается), откат (как вернуться к предыдущей версии). Откат
+проектируется заранее: если вы не знаете, как откатить релиз, вы не готовы его
+выпускать.</p>
+<h2 id="сопровождение-и-мониторинг"><span class="h-number">45.7</span> Сопровождение и мониторинг</h2>
+<p>После выпуска начинается самая длинная фаза — сопровождение. <strong>Мониторинг</strong> —
+наблюдение за системой через метрики, логи и оповещения. Минимальный набор:</p>
+<ul>
+<li><strong>доступность</strong> — работает ли система;</li>
+<li><strong>задержка</strong> — сколько времени занимают операции;</li>
+<li><strong>ошибки</strong> — доля неуспешных запросов;</li>
+<li><strong>насыщение</strong> — не кончаются ли ресурсы (память, диск, соединения).</li>
+</ul>
+<p>Оповещение должно быть привязано к действию: если на сигнал никто не реагирует,
+это шум, а не мониторинг. Логи без структуры и уровней превращаются в свалку;
+структурированное логирование разбирается в главе 37.</p>
+<p>Сопровождение — это ещё и работа с долгом: устаревшие зависимости, обходные
+решения, отсутствие тестов. <strong>Технический долг</strong> не плох сам по себе; плохо,
+когда он невидим. Ведите список известных проблем и возвращайтесь к нему
+регулярно, а не только при аварии.</p>
+<h2 id="типичные-ошибки"><span class="h-number">45.8</span> Типичные ошибки</h2>
+<ol>
+<li><strong>Коммит секретов.</strong> Ключ, попавший в историю Git, остаётся там навсегда;
+его нужно считать скомпрометированным и заменить. Секреты хранят в
+переменных окружения или хранилищах секретов (глава 41), а <code>.gitignore</code>
+защищает от случайного добавления.</li>
+<li><strong>Гигантские коммиты.</strong> Такой коммит невозможно осмысленно проверить и
+трудно откатить. Дробите изменения.</li>
+<li><strong>Красный CI «потом починим».</strong> Разрешение мержить при красном конвейере
+быстро превращает проверки в декорацию.</li>
+<li><strong>Релиз без плана отката.</strong> Любой выпуск может сломать систему; план отката
+обязателен.</li>
+<li><strong>Force push в общую ветку.</strong> Переписывает историю у всех и ломает чужие
+ветки.</li>
+<li><strong>Мониторинг без владельца.</strong> Оповещения, на которые никто не смотрит, —
+иллюзия контроля.</li>
+</ol>
+<h2 id="упражнения"><span class="h-number">45.9</span> Упражнения</h2>
+<h3 id="ex-ch45-01">1. Первый репозиторий</h3>
+<p>Создайте локальный репозиторий, добавьте файл, сделайте два коммита. Покажите
+вывод <code>git log --oneline</code> и объясните, чем <code>git add</code> отличается от
+<code>git commit</code>.</p>
+<h3 id="ex-ch45-02">2. Статус и diff</h3>
+<p>Измените файл, но не коммитьте. Объясните, что покажут <code>git status</code> и
+<code>git diff</code>, и почему эти команды полезно запускать перед коммитом.</p>
+<h3 id="ex-ch45-03">3. Хорошее сообщение коммита</h3>
+<p>Для каждого плохого сообщения предложите хорошее: <code>fix</code>, <code>update code</code>,
+<code>правки после обеда</code>. Сформулируйте правило, которому должны соответствовать
+сообщения.</p>
+<h3 id="ex-ch45-04">4. Ветка и слияние</h3>
+<p>Опишите последовательность команд: создать ветку <code>feature/calc</code>, внести
+изменение, слить в <code>main</code>. Что произойдёт, если обе ветки изменили одну и ту же
+строку?</p>
+<h3 id="ex-ch45-05">5. Что не коммитить</h3>
+<p>Составьте <code>.gitignore</code> для Python-проекта: виртуальное окружение, кэш,
+собранные файлы, файлы с секретами. Объясните, почему <code>.env</code> не должен
+попадать в репозиторий.</p>
+<h3 id="ex-ch45-06">6. Красный конвейер</h3>
+<p>Конвейер падает на шаге тестов. Какие действия правильные? Перечислите не менее
+четырёх, включая то, что делать нельзя.</p>
+<h3 id="ex-ch45-07">7. Семантическое версионирование</h3>
+<p>Определите, какую часть версии нужно увеличить: (а) добавлен новый
+необязательный аргумент функции; (б) удалён параметр; (в) исправлена опечатка в
+сообщении об ошибке.</p>
+<h3 id="ex-ch45-08">8. Журнал изменений</h3>
+<p>Напишите фрагмент <code>CHANGELOG.md</code> для версии <code>1.5.0</code>, в которой добавлена
+возможность и исправлена ошибка. Какие разделы нужны и почему?</p>
+<h3 id="ex-ch45-09">9. Метрики и оповещения</h3>
+<p>Предложите четыре метрики для веб-сервиса и по одному оповещению на каждую.
+Объясните, почему оповещение без действия бесполезно.</p>
+<h3 id="ex-ch45-10">10. План отката</h3>
+<p>Опишите план отката для сервиса, развёрнутого из артефакта версии <code>1.5.0</code>.
+Что должно быть готово до выпуска, чтобы откат занял минуты, а не часы?</p>
+<h2 id="проверка-понимания"><span class="h-number">45.10</span> Проверка понимания</h2>
+<ol>
+<li>Какие задачи решает контроль версий и почему папка с копиями их не решает?</li>
+<li>Чем <code>git add</code> отличается от <code>git commit</code>, а <code>commit</code> — от <code>push</code>?</li>
+<li>Что такое ветка и зачем она нужна?</li>
+<li>Почему конфликт при слиянии — не сбой?</li>
+<li>Что проверяет CI и почему основная ветка должна быть всегда работоспособной?</li>
+<li>Как семантическое версионирование сообщает потребителю о несовместимости?</li>
+<li>Чем мониторинг отличается от логирования и зачем нужны оба?</li>
+</ol>
+<h2 id="что-дальше"><span class="h-number">45.11</span> Что дальше</h2>
+<p>Сопровождение, технический долг и рефакторинг — в главе 53.</p>
+<p>Вы прошли путь от основ языка до инженерной практики. Осталась часть 10 —
+проекты, где все изученные инструменты нужно применить вместе: спроектировать,
+реализовать, протестировать, упаковать и задокументировать работающую систему.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-44-architecture.html"><span class="pager-label">← Назад</span><span class="pager-title">Архитектура, SOLID и паттерны</span></a><a class="pager-card next" rel="next" href="ch-46-project-cli.html"><span class="pager-label">Далее:</span><span class="pager-title">Проект: консольный менеджер задач</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

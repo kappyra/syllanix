@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 420" role="img"
+     aria-labelledby="t36qp d36qp" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="t36qp">Склейка строк и параметры: почему запрос с параметром безопаснее</title>
+  <desc id="d36qp">Слева показан небезопасный запрос, где ввод пользователя склеивается с текстом SQL. Ввод с кавычкой и условием OR меняет логику WHERE, и запрос возвращает все строки. Справа тот же ввод передаётся параметром: база считает его данными, а не кодом, и возвращает пустой результат. Вывод: значения передаются только через параметры, а имена таблиц и столбцов берут из белого списка.</desc>
+
+  <text x="24" y="30" font-size="17" font-weight="bold" fill="#1d3550">Один и тот же ввод — два разных запроса</text>
+
+  <rect x="36" y="54" width="340" height="286" rx="10" fill="#fdecea" stroke="#a33a2c" stroke-width="2"/>
+  <text x="54" y="82" font-size="14" font-weight="bold" fill="#7a2b20">Склейка строк — опасно</text>
+  <text x="54" y="112" font-size="12" fill="#7a2b20">query = f"SELECT * FROM users</text>
+  <text x="54" y="132" font-size="12" fill="#7a2b20">          WHERE name = '{user_input}'"</text>
+  <text x="54" y="164" font-size="12" fill="#7a2b20">ввод: ' OR '1'='1</text>
+  <text x="54" y="186" font-size="12" fill="#7a2b20">получилось условие:</text>
+  <text x="54" y="206" font-size="12" fill="#7a2b20">WHERE name = '' OR '1'='1'</text>
+  <rect x="54" y="224" width="300" height="58" rx="8" fill="#ffffff" stroke="#a33a2c" stroke-width="1.5"/>
+  <text x="70" y="248" font-size="12.5" font-weight="bold" fill="#7a2b20">результат: все строки</text>
+  <text x="70" y="270" font-size="12" fill="#7a2b20">Аня, Борис — условие всегда истинно</text>
+  <text x="54" y="308" font-size="12" fill="#7a2b20">данные стали частью запроса</text>
+  <text x="54" y="328" font-size="12" fill="#7a2b20">и изменили его структуру</text>
+
+  <rect x="404" y="54" width="340" height="286" rx="10" fill="#e8f5ec" stroke="#2f7a45" stroke-width="2"/>
+  <text x="422" y="82" font-size="14" font-weight="bold" fill="#1f5c33">Параметры — безопасно</text>
+  <text x="422" y="112" font-size="12" fill="#1f5c33">query = "SELECT * FROM users</text>
+  <text x="422" y="132" font-size="12" fill="#1f5c33">          WHERE name = ?"</text>
+  <text x="422" y="164" font-size="12" fill="#1f5c33">значение: (user_input,)</text>
+  <text x="422" y="186" font-size="12" fill="#1f5c33">база трактует ввод</text>
+  <text x="422" y="206" font-size="12" fill="#1f5c33">как данные, а не как SQL</text>
+  <rect x="422" y="224" width="300" height="58" rx="8" fill="#ffffff" stroke="#2f7a45" stroke-width="1.5"/>
+  <text x="438" y="248" font-size="12.5" font-weight="bold" fill="#1f5c33">результат: пусто</text>
+  <text x="438" y="270" font-size="12" fill="#1f5c33">такого имени нет — условие ложно</text>
+  <text x="422" y="308" font-size="12" fill="#1f5c33">структура запроса не меняется</text>
+  <text x="422" y="328" font-size="12" fill="#1f5c33">ни при каком вводе</text>
+
+  <line x1="376" y1="200" x2="400" y2="200" stroke="#33557a" stroke-width="2"/>
+
+  <text x="390" y="376" text-anchor="middle" font-size="12.5" fill="#33557a">Имена таблиц и столбцов параметризовать нельзя — их берут из белого списка допустимых значений</text>
+  <text x="390" y="400" text-anchor="middle" font-size="12.5" fill="#33557a">Опасен не сам ввод, а его попадание в текст запроса</text>
+</svg>

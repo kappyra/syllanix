@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" role="img"
+     aria-labelledby="ttl28b desc28b" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl28b">Контракт __eq__ и __hash__: равные объекты и одинаковый хеш</title>
+  <desc id="desc28b">Если объекты равны по __eq__, их хеши обязаны совпадать. Равные точки с одинаковым хешем схлопываются в множестве в один элемент. Разные объекты с одинаковым хешем допустимы. Если изменить поля объекта после вставки в множество, поиск по нему перестанет находить элемент.</desc>
+
+  <rect x="0" y="0" width="880" height="420" fill="#ffffff"/>
+  <defs>
+    <marker id="arr28b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#33557a"/>
+    </marker>
+  </defs>
+
+  <text x="28" y="32" font-size="17" font-weight="bold" fill="#1d3550">Контракт равенства и хеша</text>
+
+  <rect x="28" y="58" width="380" height="70" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="1.8"/>
+  <text x="44" y="84" font-size="14" font-weight="bold" fill="#1d3550">__eq__: p == q</text>
+  <text x="44" y="110" font-size="13" fill="#33557a">объекты равны по значению полей</text>
+
+  <rect x="472" y="58" width="380" height="70" rx="8" fill="#e8f5ec" stroke="#2f6b45" stroke-width="1.8"/>
+  <text x="488" y="84" font-size="14" font-weight="bold" fill="#1d3550">__hash__: hash(p) == hash(q)</text>
+  <text x="488" y="110" font-size="13" fill="#2f6b45">хеши обязаны совпадать</text>
+
+  <path d="M412 93 L 464 93" fill="none" stroke="#33557a" stroke-width="2.2" marker-end="url(#arr28b)"/>
+  <text x="416" y="82" font-size="12" fill="#33557a">значит</text>
+
+  <!-- случай 1 -->
+  <rect x="28" y="156" width="824" height="64" rx="8" fill="#f3faf5" stroke="#2f6b45" stroke-width="1.4"/>
+  <text x="44" y="182" font-size="13" font-weight="bold" fill="#1f5233">так правильно</text>
+  <text x="44" y="204" font-size="13" fill="#1d3550">Равные точки (1, 2): hash равен, множество {p, q} содержит 1 элемент.</text>
+
+  <!-- случай 2 -->
+  <rect x="28" y="232" width="824" height="64" rx="8" fill="#fdf8ec" stroke="#8a5a13" stroke-width="1.4"/>
+  <text x="44" y="258" font-size="13" font-weight="bold" fill="#6b4610">допустимо</text>
+  <text x="44" y="280" font-size="13" fill="#1d3550">Разные объекты с одинаковым хешем — коллизия; множество проверит их через __eq__.</text>
+
+  <!-- случай 3 -->
+  <rect x="28" y="308" width="824" height="64" rx="8" fill="#fdf0ee" stroke="#a33a2a" stroke-width="1.4"/>
+  <text x="44" y="334" font-size="13" font-weight="bold" fill="#8f2d1f">так неправильно</text>
+  <text x="44" y="356" font-size="13" fill="#1d3550">p.x = 5 после вставки в множество: хеш изменился, p in {p} даёт False.</text>
+
+  <text x="28" y="400" font-size="13" fill="#4b5563">Хешируемые объекты не меняют те поля, из которых считается хеш.</text>
+</svg>

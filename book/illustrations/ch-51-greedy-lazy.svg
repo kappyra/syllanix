@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 460" role="img"
+     aria-labelledby="ttl51g desc51g" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl51g">Жадный и ленивый квантификаторы на одной строке</title>
+  <desc id="desc51g">Одна и та же строка с двумя тегами. Жадный шаблон &lt;.+&gt; даёт одно совпадение, которое начинается с первого открывающего углового символа и заканчивается последним закрывающим, поглощая оба тега. Ленивый шаблон &lt;.+?&gt; даёт четыре отдельных совпадения: два открывающих и два закрывающих тега.</desc>
+
+  <text x="32" y="32" font-size="17" font-weight="bold" fill="#1d3550">Одна строка, два шаблона: &lt;.+&gt; и &lt;.+?&gt;</text>
+
+  <!-- исходная строка -->
+  <text x="32" y="62" font-size="12" fill="#5a6b7d">строка: &lt;b&gt;жирный&lt;/b&gt; и &lt;i&gt;курсив&lt;/i&gt;</text>
+
+  <!-- жадный блок -->
+  <text x="32" y="96" font-size="13" font-weight="bold" fill="#8a3030">жадный &lt;.+&gt;: одно совпадение</text>
+  <rect x="32" y="108" width="700" height="34" rx="6" fill="#fdf3f1" stroke="#8a3030" stroke-width="2" stroke-dasharray="7 4"/>
+  <text x="44" y="131" font-size="12" fill="#8a3030">начало — первый «&lt;», конец — последний «&gt;»: внутри оказались оба тега</text>
+
+  <rect x="32" y="152" width="86" height="36" rx="5" fill="#ffffff" stroke="#8a3030" stroke-width="2"/>
+  <text x="75" y="176" text-anchor="middle" font-size="14" fill="#8a3030" font-family="'DejaVu Sans Mono', monospace">&lt;b&gt;</text>
+  <rect x="122" y="152" width="110" height="36" rx="5" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="1.5"/>
+  <text x="177" y="176" text-anchor="middle" font-size="14" fill="#4b3a16" font-family="'DejaVu Sans Mono', monospace">жирный</text>
+  <rect x="236" y="152" width="104" height="36" rx="5" fill="#ffffff" stroke="#8a3030" stroke-width="2"/>
+  <text x="288" y="176" text-anchor="middle" font-size="14" fill="#8a3030" font-family="'DejaVu Sans Mono', monospace">&lt;/b&gt;</text>
+  <rect x="344" y="152" width="80" height="36" rx="5" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="1.5"/>
+  <text x="384" y="176" text-anchor="middle" font-size="14" fill="#4b3a16" font-family="'DejaVu Sans Mono', monospace">и</text>
+  <rect x="428" y="152" width="70" height="36" rx="5" fill="#ffffff" stroke="#8a3030" stroke-width="2"/>
+  <text x="463" y="176" text-anchor="middle" font-size="14" fill="#8a3030" font-family="'DejaVu Sans Mono', monospace">&lt;i&gt;</text>
+  <rect x="502" y="152" width="106" height="36" rx="5" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="1.5"/>
+  <text x="555" y="176" text-anchor="middle" font-size="14" fill="#4b3a16" font-family="'DejaVu Sans Mono', monospace">курсив</text>
+  <rect x="612" y="152" width="88" height="36" rx="5" fill="#ffffff" stroke="#8a3030" stroke-width="2"/>
+  <text x="656" y="176" text-anchor="middle" font-size="14" fill="#8a3030" font-family="'DejaVu Sans Mono', monospace">&lt;/i&gt;</text>
+
+  <!-- ленивый блок -->
+  <text x="32" y="228" font-size="13" font-weight="bold" fill="#2f6b3f">ленивый &lt;.+?&gt;: четыре совпадения</text>
+
+  <rect x="32" y="240" width="86" height="34" rx="5" fill="#f1f8f2" stroke="#2f6b3f" stroke-width="2"/>
+  <text x="75" y="263" text-anchor="middle" font-size="13" fill="#2f6b3f" font-family="'DejaVu Sans Mono', monospace">&lt;b&gt;</text>
+  <rect x="122" y="240" width="110" height="34" rx="5" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="1.5"/>
+  <text x="177" y="263" text-anchor="middle" font-size="13" fill="#4b3a16" font-family="'DejaVu Sans Mono', monospace">жирный</text>
+  <rect x="236" y="240" width="104" height="34" rx="5" fill="#f1f8f2" stroke="#2f6b3f" stroke-width="2"/>
+  <text x="288" y="263" text-anchor="middle" font-size="13" fill="#2f6b3f" font-family="'DejaVu Sans Mono', monospace">&lt;/b&gt;</text>
+  <rect x="344" y="240" width="80" height="34" rx="5" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="1.5"/>
+  <text x="384" y="263" text-anchor="middle" font-size="13" fill="#4b3a16" font-family="'DejaVu Sans Mono', monospace">и</text>
+  <rect x="428" y="240" width="70" height="34" rx="5" fill="#f1f8f2" stroke="#2f6b3f" stroke-width="2"/>
+  <text x="463" y="263" text-anchor="middle" font-size="13" fill="#2f6b3f" font-family="'DejaVu Sans Mono', monospace">&lt;i&gt;</text>
+  <rect x="502" y="240" width="106" height="34" rx="5" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="1.5"/>
+  <text x="555" y="263" text-anchor="middle" font-size="13" fill="#4b3a16" font-family="'DejaVu Sans Mono', monospace">курсив</text>
+  <rect x="612" y="240" width="88" height="34" rx="5" fill="#f1f8f2" stroke="#2f6b3f" stroke-width="2"/>
+  <text x="656" y="263" text-anchor="middle" font-size="13" fill="#2f6b3f" font-family="'DejaVu Sans Mono', monospace">&lt;/i&gt;</text>
+
+  <!-- номера совпадений -->
+  <g font-size="11" fill="#2f6b3f" text-anchor="middle">
+    <text x="75" y="292">1</text>
+    <text x="288" y="292">2</text>
+    <text x="463" y="292">3</text>
+    <text x="656" y="292">4</text>
+  </g>
+
+  <!-- сравнение -->
+  <rect x="32" y="308" width="700" height="92" rx="9" fill="#ffffff" stroke="#5a6b7d" stroke-width="2"/>
+  <text x="48" y="332" font-size="12" fill="#1d3550">Жадный квантификатор берёт максимум, который допускает остальная часть шаблона.</text>
+  <text x="48" y="354" font-size="12" fill="#1d3550">Ленивый (со знаком «?» после квантификатора) берёт минимум, достаточный для совпадения.</text>
+  <text x="48" y="376" font-size="12" fill="#5a6b7d">Правило: «съедает лишнее» — добавьте «?»; слишком медленно — проверьте вложенность.</text>
+
+  <text x="32" y="424" font-size="12" fill="#5a6b7d">Подсветка: зелёные рамки — части, вошедшие в совпадение; жёлтые — текст между тегами.</text>
+  <text x="32" y="444" font-size="12" fill="#5a6b7d">Смысл рисунка: один и тот же текст разбирается по-разному в зависимости от режима квантификатора.</text>
+</svg>

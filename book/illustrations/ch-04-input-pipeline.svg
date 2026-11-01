@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 648" role="img"
+     aria-labelledby="ttl4b desc4b" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl4b">Путь данных от ввода с клавиатуры до вывода: строка, число, сообщение</title>
+  <desc id="desc4b">Пять шагов обработки. Функция input читает строку, поэтому значение имеет тип str. Функция int выполняет преобразование типа и делает из строки целое число. Умножение вычисляет сумму. f-строка собирает из числа текст. print выводит текст в терминал. Справа показан тип значения на каждом шаге. Если int не может разобрать текст, поднимается ошибка ValueError и поток данных прерывается.</desc>
+
+  <text x="30" y="34" font-size="16" font-weight="bold" fill="#1d3550">Путь данных: от клавиатуры до сообщения на экране</text>
+  <text x="30" y="56" font-size="13" fill="#4a5a6a">слева — шаг программы, справа — тип значения после этого шага</text>
+
+  <!-- шаг 1 -->
+  <rect x="60" y="74" width="440" height="68" rx="10" fill="#fdf1dc" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="80" y="102" font-size="15" font-weight="bold" fill="#4b3a16">1. input("Цена товара: ")</text>
+  <text x="80" y="126" font-size="14" fill="#4b3a16">читает то, что набрал человек; ввели 250</text>
+  <rect x="560" y="86" width="120" height="34" rx="8" fill="#ffffff" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="620" y="108" text-anchor="middle" font-size="14" fill="#4b3a16">тип str</text>
+  <line x1="280" y1="142" x2="280" y2="166" stroke="#33557a" stroke-width="2.5"/>
+  <path d="M 272 160 L 280 172 L 288 160" fill="none" stroke="#33557a" stroke-width="2.5"/>
+
+  <!-- шаг 2 -->
+  <rect x="60" y="174" width="440" height="68" rx="10" fill="#e8f0fa" stroke="#33557a" stroke-width="2"/>
+  <text x="80" y="202" font-size="15" font-weight="bold" fill="#1d3550">2. int(raw_price)</text>
+  <text x="80" y="226" font-size="14" fill="#1d3550">преобразование типа: текст становится числом</text>
+  <rect x="560" y="186" width="120" height="34" rx="8" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="620" y="208" text-anchor="middle" font-size="14" fill="#1d3550">тип int</text>
+  <line x1="280" y1="242" x2="280" y2="266" stroke="#33557a" stroke-width="2.5"/>
+  <path d="M 272 260 L 280 272 L 288 260" fill="none" stroke="#33557a" stroke-width="2.5"/>
+
+  <!-- шаг 3 -->
+  <rect x="60" y="274" width="440" height="68" rx="10" fill="#eef7ee" stroke="#3f6b3f" stroke-width="2"/>
+  <text x="80" y="302" font-size="15" font-weight="bold" fill="#264a26">3. price * count</text>
+  <text x="80" y="326" font-size="14" fill="#264a26">вычисление: 250 * 3 даёт сумму заказа</text>
+  <rect x="560" y="286" width="120" height="34" rx="8" fill="#ffffff" stroke="#3f6b3f" stroke-width="2"/>
+  <text x="620" y="308" text-anchor="middle" font-size="14" fill="#264a26">тип int</text>
+  <line x1="280" y1="342" x2="280" y2="366" stroke="#33557a" stroke-width="2.5"/>
+  <path d="M 272 360 L 280 372 L 288 360" fill="none" stroke="#33557a" stroke-width="2.5"/>
+
+  <!-- шаг 4 -->
+  <rect x="60" y="374" width="440" height="68" rx="10" fill="#e8f0fa" stroke="#33557a" stroke-width="2"/>
+  <text x="80" y="402" font-size="15" font-weight="bold" fill="#1d3550">4. f"Итого: {total} рублей"</text>
+  <text x="80" y="426" font-size="14" fill="#1d3550">f-строка подставляет число в текст сообщения</text>
+  <rect x="560" y="386" width="120" height="34" rx="8" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="620" y="408" text-anchor="middle" font-size="14" fill="#1d3550">тип str</text>
+  <line x1="280" y1="442" x2="280" y2="466" stroke="#33557a" stroke-width="2.5"/>
+  <path d="M 272 460 L 280 472 L 288 460" fill="none" stroke="#33557a" stroke-width="2.5"/>
+
+  <!-- шаг 5 -->
+  <rect x="60" y="474" width="440" height="64" rx="10" fill="#f2f2f2" stroke="#555555" stroke-width="2"/>
+  <text x="80" y="502" font-size="15" font-weight="bold" fill="#222222">5. print(...)</text>
+  <text x="80" y="526" font-size="14" fill="#222222">вывод в терминал: «Итого: 750 рублей»</text>
+
+  <!-- ошибка -->
+  <rect x="60" y="558" width="620" height="78" rx="10" fill="#fff5f5" stroke="#a33a3a" stroke-width="2" stroke-dasharray="8 5"/>
+  <text x="80" y="581" font-size="14" font-weight="bold" fill="#7a2222">Если текст не похож на число, шаг 2 завершится ошибкой</text>
+  <text x="80" y="602" font-size="12.5" fill="#7a2222">int("3.5") и int("двадцать") дают ValueError,</text>
+  <text x="80" y="622" font-size="12.5" fill="#7a2222">и поток данных прерывается на этом шаге</text>
+</svg>

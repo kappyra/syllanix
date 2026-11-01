@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Практикум: классические задачи и разбор решений — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-54-practice.html" aria-current="page">54. Практикум: классические задачи и разбор решений</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-54-practice.html#что-вы-сможете-после-этой-главы">54.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-54-practice.html#method">54.2. Как решать незнакомую задачу</a></li>
+<li><a href="ch-54-practice.html#fizzbuzz">54.3. 1. FizzBuzz: порядок условий</a></li>
+<li><a href="ch-54-practice.html#hanoi">54.4. 2. Ханойская башня: рекурсия и индукция</a></li>
+<li><a href="ch-54-practice.html#stack">54.5. 3. Палиндром и скобочная последовательность</a></li>
+<li><a href="ch-54-practice.html#game">54.6. 4. «Угадай число»: игровой цикл и конечный автомат</a></li>
+<li><a href="ch-54-practice.html#collatz">54.7. 5. Collatz: while, границы и честность</a></li>
+<li><a href="ch-54-practice.html#caesar">54.8. 6. Шифр Цезаря: строки и обратимость</a></li>
+<li><a href="ch-54-practice.html#requirements">54.9. 7. От требований к тестам</a></li>
+<li><a href="ch-54-practice.html#mistakes">54.10. Типичные ошибки на практикумах</a></li>
+<li><a href="ch-54-practice.html#упражнения">54.11. Упражнения</a></li>
+<li><a href="ch-54-practice.html#проверка-понимания">54.12. Проверка понимания</a></li>
+<li><a href="ch-54-practice.html#что-дальше">54.13. Что дальше</a></li>
+</ol></details></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 11. Профессиональная практика и прикладные темы</span><span class="sep">›</span><span>Глава 54</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Профессиональная практика и прикладные темы · глава 54</p>
+<h1 id="практикум-классические-задачи-и-разбор-решений">Практикум: классические задачи и разбор решений</h1>
+<p class="chapter-summary">Задачи на декомпозицию, состояние, игровой цикл и алгоритмы — с полным разбором решений.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#что-вы-сможете-после-этой-главы"><span class="toc-number">54.1</span> Что вы сможете после этой главы</a></li>
+<li class="level-2"><a href="#method"><span class="toc-number">54.2</span> Как решать незнакомую задачу</a></li>
+<li class="level-2"><a href="#fizzbuzz"><span class="toc-number">54.3</span> 1. FizzBuzz: порядок условий</a></li>
+<li class="level-2"><a href="#hanoi"><span class="toc-number">54.4</span> 2. Ханойская башня: рекурсия и индукция</a></li>
+<li class="level-2"><a href="#stack"><span class="toc-number">54.5</span> 3. Палиндром и скобочная последовательность</a></li>
+<li class="level-2"><a href="#game"><span class="toc-number">54.6</span> 4. «Угадай число»: игровой цикл и конечный автомат</a></li>
+<li class="level-2"><a href="#collatz"><span class="toc-number">54.7</span> 5. Collatz: while, границы и честность</a></li>
+<li class="level-2"><a href="#caesar"><span class="toc-number">54.8</span> 6. Шифр Цезаря: строки и обратимость</a></li>
+<li class="level-2"><a href="#requirements"><span class="toc-number">54.9</span> 7. От требований к тестам</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">54.10</span> Типичные ошибки на практикумах</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">54.11</span> Упражнения</a></li>
+<li class="level-2"><a href="#проверка-понимания"><span class="toc-number">54.12</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#что-дальше"><span class="toc-number">54.13</span> Что дальше</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#ex-ch54-01">1. Обобщённый FizzBuzz</a></li>
+<li class="level-3"><a href="#ex-ch54-02">2. Подсчёт ходов Ханойской башни</a></li>
+<li class="level-3"><a href="#ex-ch54-03">3. Палиндром без нормализации</a></li>
+<li class="level-3"><a href="#ex-ch54-04">4. Скобки нескольких видов</a></li>
+<li class="level-3"><a href="#ex-ch54-05">5. Оптимальная стратегия угадывания</a></li>
+<li class="level-3"><a href="#ex-ch54-06">6. Самая длинная цепочка Коллатца</a></li>
+<li class="level-3"><a href="#ex-ch54-07">7. Расшифровка Цезаря перебором</a></li>
+<li class="level-3"><a href="#ex-ch54-08">8. Частоты с игнорированием слов</a></li>
+<li class="level-3"><a href="#ex-ch54-09">9. Поиск ошибки в игре</a></li>
+<li class="level-3"><a href="#ex-ch54-10">10. Мини-проект: игра «камень — ножницы — бумага»</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>Умение писать код складывается не из знания синтаксиса, а из опыта решения
+задач. И здесь важно не «увидеть правильный ответ», а научиться получать его
+самому: понимать условие, находить идею, проверять границы и доказывать, что
+решение работает.</p>
+<p>Эта глава — практикум. В ней семь классических задач, каждая разобрана
+целиком: постановка своими словами, идея, код, сложность, граничные случаи и
+вывод о том, что именно она тренирует. Общие приёмы — <strong>декомпозиция задачи</strong>,
+<strong>проектирование алгоритма</strong>, <strong>конечный автомат</strong> и <strong>игровой цикл</strong> — вы
+увидите в действии, а не в виде определений.</p>
+<h2 id="что-вы-сможете-после-этой-главы"><span class="h-number">54.1</span> Что вы сможете после этой главы</h2>
+<p>К концу главы у вас будет рабочий метод решения незнакомых задач и разбор
+семи типовых сюжетов, на которых этот метод удобно тренировать. Вы сможете:</p>
+<ul>
+<li>разбивать задачу на подзадачи с ясными входами и выходами;</li>
+<li>выбирать между перебором, рекурсией и моделированием состояний;</li>
+<li>оценивать сложность и объяснять, почему решение не «зависнет»;</li>
+<li>находить граничные случаи до запуска кода;</li>
+<li>превращать требования в набор тестов и проверять реализацию.</li>
+</ul>
+<h2 id="method"><span class="h-number">54.2</span> Как решать незнакомую задачу</h2>
+<p>У опытного программиста нет «озарений» — есть последовательность шагов.
+Пять из них закрывают большинство учебных и рабочих задач.</p>
+<ol>
+<li><strong>Понять вход и выход.</strong> Что подаётся на вход: число, строка, список,
+поток данных? Что требуется вернуть: значение, новую структуру, строки
+вывода? Что считается ошибкой входа?</li>
+<li><strong>Разобрать примеры.</strong> Возьмите два-три примера, включая пустой и
+граничный. Если условие неоднозначно, примеры вскроют это раньше кода.</li>
+<li><strong>Разбить на подзадачи.</strong> <strong>Декомпозиция задачи</strong> — разбиение задачи на
+подзадачи с ясными входами, выходами и критериями проверки. Вместо одной
+большой функции появляется несколько маленьких, каждую из которых можно
+проверить отдельно.</li>
+<li><strong>Проверить на бумаге.</strong> Прогоните идею вручную на маленьком примере.
+Так вы найдёте ошибку до того, как напишете код, и поймёте, какие
+переменные понадобятся.</li>
+<li><strong>Написать тест и только потом реализацию.</strong> <strong>Проектирование алгоритма</strong>
+— построение решения: выбор стратегии (перебор, рекурсия, динамическое
+программирование), оценка сложности и проверка на примерах. Тест фиксирует
+договорённость о поведении и не даёт подогнать решение под случайный
+результат.</li>
+</ol>
+<p><figure class="figure"><img src="illustrations/ch-54-decomposition.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Полезно сразу оценить масштаб. Если вход размером <code>n</code>, а внутри двойной цикл
+по всем элементам, получится квадратичный рост — при больших <code>n</code> решение
+может не уложиться во время. Оценка сложности не требует точной формулы:
+достаточно понять, сколько раз в зависимости от <code>n</code> выполняется основной цикл.
+Подробнее об этом — в <a href="ch-52-complexity.html">главе 52</a>.</p>
+<h2 id="fizzbuzz"><span class="h-number">54.3</span> 1. FizzBuzz: порядок условий</h2>
+<p><strong>Постановка.</strong> Для чисел от 1 до <code>n</code> выведите строку: <code>Fizz</code>, если число
+делится на 3; <code>Buzz</code>, если делится на 5; <code>FizzBuzz</code>, если делится и на 3,
+и на 5; иначе само число.</p>
+<p><strong>Идея.</strong> Каждое число проверяется независимо, поэтому достаточно одного
+цикла. Главная тонкость — порядок проверок: условие «делится и на 3, и на 5»
+должно стоять первым, иначе более общие ветки перехватят его.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">fizzbuzz</span><span class="p">(</span><span class="n">limit</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="n">result</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">limit</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"FizzBuzz"</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"Fizz"</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"Buzz"</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">number</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">fizzbuzz</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>[&#x27;1&#x27;, &#x27;2&#x27;, &#x27;Fizz&#x27;, &#x27;4&#x27;, &#x27;Buzz&#x27;, &#x27;Fizz&#x27;, &#x27;7&#x27;, &#x27;8&#x27;, &#x27;Fizz&#x27;, &#x27;Buzz&#x27;, &#x27;11&#x27;, &#x27;Fizz&#x27;, &#x27;13&#x27;, &#x27;14&#x27;, &#x27;FizzBuzz&#x27;]
+</code></pre>
+<p><strong>Типичные ошибки.</strong> Первая — проверить <code>% 3</code>, затем <code>% 5</code>, а <code>FizzBuzz</code> не
+предусмотреть вовсе: число 15 получит <code>Fizz</code>. Вторая — написать три отдельных
+<code>if</code> без <code>elif</code>: строка может быть добавлена несколько раз. Третья —
+возвращать числа как числа, а строки как строки, получая список смешанных
+типов. Четвёртая — забыть, что диапазон начинается с 1, а не с 0.</p>
+<p><strong>Сложность и границы.</strong> Время <code>O(n)</code>, память <code>O(n)</code>, если собирать список;
+при печати по одному память <code>O(1)</code>. Границы: <code>n = 0</code> даёт пустой список,
+<code>n &lt; 0</code> — тоже пустой; стоит ли это ошибкой, решает условие задачи.</p>
+<p><strong>Что тренирует.</strong> Порядок проверок, остаток от деления, аккуратность с
+типами и границами диапазона.</p>
+<h2 id="hanoi"><span class="h-number">54.4</span> 2. Ханойская башня: рекурсия и индукция</h2>
+<p><strong>Постановка.</strong> Есть три стержня (<code>A</code>, <code>B</code>, <code>C</code>) и <code>n</code> дисков разного
+размера на первом. Нужно перенести все диски на третий, перемещая по одному
+диску за раз и не кладя больший диск на меньший. Требуется перечислить ходы
+или хотя бы посчитать их число.</p>
+<p><strong>Идея.</strong> Рекурсия строится на индукции. Чтобы перенести <code>n</code> дисков с <code>A</code> на
+<code>C</code>, нужно: перенести <code>n−1</code> дисков с <code>A</code> на вспомогательный <code>B</code>, переместить
+самый большой диск с <code>A</code> на <code>C</code>, затем перенести <code>n−1</code> дисков с <code>B</code> на <code>C</code>.
+База — <code>n = 0</code>: ничего делать не нужно.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">hanoi_moves</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"A"</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"C"</span><span class="p">,</span> <span class="n">spare</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"B"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[]</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">hanoi_moves</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">spare</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+        <span class="o">+</span> <span class="p">[(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">)]</span>
+        <span class="o">+</span> <span class="n">hanoi_moves</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">spare</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
+    <span class="p">)</span>
+
+
+<span class="n">moves</span> <span class="o">=</span> <span class="n">hanoi_moves</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">moves</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">moves</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">hanoi_moves</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
+</code></pre></div>
+<pre class="output"><code>7
+[(&#x27;A&#x27;, &#x27;C&#x27;), (&#x27;A&#x27;, &#x27;B&#x27;), (&#x27;C&#x27;, &#x27;B&#x27;)]
+1023
+</code></pre>
+<p><strong>Вывод числа ходов.</strong> Каждый вызов делает два рекурсивных вызова и один ход:
+<code>T(n) = 2T(n−1) + 1</code>, <code>T(0) = 0</code>. Решение — <code>T(n) = 2ⁿ − 1</code>: для десяти
+дисков 1023 хода, для шестидесяти — больше, чем атомов в наблюдаемой
+Вселенной. Это пример экспоненциальной сложности <code>O(2ⁿ)</code>, а не «медленного
+компьютера».</p>
+<p><strong>Границы.</strong> <code>n = 0</code> — пустой список; отрицательное <code>n</code> по смыслу неверно и
+должно приводить к ошибке, а не к бесконечной рекурсии. Для больших <code>n</code>
+сработает ограничение глубины рекурсии: список ходов тоже не поместится в
+память. Рекурсию здесь можно заменить явным стеком, но выигрыша по сложности
+не будет.</p>
+<p><strong>Что тренирует.</strong> Рекурсию, базовый случай, индуктивное рассуждение и
+понимание того, что экспоненциальный рост — свойство задачи, а не языка.</p>
+<h2 id="stack"><span class="h-number">54.5</span> 3. Палиндром и скобочная последовательность</h2>
+<p><strong>Постановка.</strong> Проверить, читается ли строка одинаково в обе стороны
+(палиндром), игнорируя регистр и знаки препинания. Отдельно — проверить,
+правильно ли расставлены скобки <code>()</code>, <code>[]</code>, <code>{}</code> в выражении.</p>
+<p><strong>Идея для палиндрома.</strong> Сначала нормализация: оставить только буквы и
+привести их к нижнему регистру. Затем два указателя сходятся к середине,
+сравнивая символы.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">normalize</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">text</span> <span class="k">if</span> <span class="n">ch</span><span class="o">.</span><span class="n">isalpha</span><span class="p">())</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_palindrome</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">clean</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">clean</span> <span class="o">==</span> <span class="n">clean</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">is_palindrome</span><span class="p">(</span><span class="s2">"А роза упала на лапу Азора"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">is_palindrome</span><span class="p">(</span><span class="s2">"Привет"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">is_palindrome</span><span class="p">(</span><span class="s2">""</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>True
+False
+True
+</code></pre>
+<p><strong>Идея для скобок.</strong> Здесь нужен стек: открывающая скобка кладётся сверху,
+закрывающая должна совпасть с последней открытой. Если в конце стек не пуст
+или закрывающая пришла к пустому стеку — последовательность неверна.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">PAIRS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">")"</span><span class="p">:</span> <span class="s2">"("</span><span class="p">,</span> <span class="s2">"]"</span><span class="p">:</span> <span class="s2">"["</span><span class="p">,</span> <span class="s2">"}"</span><span class="p">:</span> <span class="s2">"{"</span><span class="p">}</span>
+<span class="n">OPENING</span> <span class="o">=</span> <span class="s2">"([{"</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_balanced</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">stack</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">OPENING</span><span class="p">:</span>
+            <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">PAIRS</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">stack</span> <span class="ow">or</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span> <span class="o">!=</span> <span class="n">PAIRS</span><span class="p">[</span><span class="n">char</span><span class="p">]:</span>
+                <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="ow">not</span> <span class="n">stack</span>
+
+
+<span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"([]</span><span class="si">{}</span><span class="s2">)"</span><span class="p">,</span> <span class="s2">"(]"</span><span class="p">,</span> <span class="s2">"([)]"</span><span class="p">,</span> <span class="s2">""</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">sample</span><span class="p">),</span> <span class="n">is_balanced</span><span class="p">(</span><span class="n">sample</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>&#x27;([]{})&#x27; True
+&#x27;(]&#x27; False
+&#x27;([)]&#x27; False
+&#x27;&#x27; True
+</code></pre>
+<p><strong>Типичные ошибки.</strong> Для палиндрома — забыть нормализацию или нормализовать
+не полностью: тогда <code>&quot;А роза...&quot;</code> не совпадёт сама с собой. Для скобок —
+проверять только количество скобок, а не порядок: <code>&quot;([)]&quot;</code> содержит по паре
+каждого вида, но неверна. Ещё одна ошибка — не обработать пустой стек перед
+<code>pop</code>.</p>
+<p><strong>Сложность.</strong> Обе задачи линейны: <code>O(n)</code> по времени, <code>O(n)</code> памяти в худшем
+случае (стек или нормализованная строка). Сравнение двух указателей можно
+сделать без копии строки, если нормализовать «на лету».</p>
+<p><strong>Что тренирует.</strong> Работу со строками и индексами, идею стека как
+«последним пришёл — первым вышел», проверку границ.</p>
+<h2 id="game"><span class="h-number">54.6</span> 4. «Угадай число»: игровой цикл и конечный автомат</h2>
+<p><strong>Постановка.</strong> Программа загадывает число от 1 до 100. Игрок вводит
+догадки; программа сообщает «больше», «меньше» или «угадал». Игра
+заканчивается победой или после фиксированного числа попыток.</p>
+<p><strong>Идея.</strong> Это <strong>конечный автомат</strong>: у игры есть состояния и правила перехода
+между ними. Состояния: ожидание догадки, «загаданное больше», «загаданное
+меньше», победа, поражение. <strong>Игровой цикл</strong> — цикл, который повторяет
+чтение ввода, обновление состояния и отрисовку, поддерживая интерактивность.</p>
+<p>В учебном примере ввод заменён списком догадок: так результат детерминирован
+и проверяем.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">play_guess</span><span class="p">(</span><span class="n">secret</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">guesses</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">max_attempts</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+    <span class="n">attempts</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">guess</span> <span class="ow">in</span> <span class="n">guesses</span><span class="p">:</span>
+        <span class="n">attempts</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">attempts</span> <span class="o">&gt;</span> <span class="n">max_attempts</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">"поражение"</span><span class="p">,</span> <span class="n">max_attempts</span>
+        <span class="k">if</span> <span class="n">guess</span> <span class="o">&lt;</span> <span class="n">secret</span><span class="p">:</span>
+            <span class="n">state</span> <span class="o">=</span> <span class="s2">"больше"</span>
+        <span class="k">elif</span> <span class="n">guess</span> <span class="o">&gt;</span> <span class="n">secret</span><span class="p">:</span>
+            <span class="n">state</span> <span class="o">=</span> <span class="s2">"меньше"</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">"победа"</span><span class="p">,</span> <span class="n">attempts</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"попытка </span><span class="si">{</span><span class="n">attempts</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">guess</span><span class="si">}</span><span class="s2"> — загаданное </span><span class="si">{</span><span class="n">state</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">"не завершено"</span><span class="p">,</span> <span class="n">attempts</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">play_guess</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">42</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">play_guess</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">]))</span>
+</code></pre></div>
+<pre class="output"><code>попытка 1: 50 — загаданное меньше
+попытка 2: 25 — загаданное больше
+попытка 3: 37 — загаданное больше
+(&#x27;победа&#x27;, 4)
+попытка 1: 10 — загаданное больше
+попытка 2: 20 — загаданное больше
+попытка 3: 30 — загаданное больше
+попытка 4: 40 — загаданное больше
+попытка 5: 50 — загаданное меньше
+(&#x27;поражение&#x27;, 5)
+</code></pre>
+<p><strong>Почему цикл обязан завершаться.</strong> У цикла три выхода: победа, исчерпание
+попыток, конец входных данных. Если забыть хотя бы один, игра может зависнуть
+в ожидании. В интерактивной версии добавляется четвёртый выход — команда
+«выход». Явное перечисление выходов и есть проектирование состояний.</p>
+<p><strong>Границы.</strong> Пустой список догадок даёт «не завершено»; <code>max_attempts = 0</code>
+сразу приводит к поражению. Секрет вне диапазона — ошибка входных данных, её
+лучше проверять до цикла.</p>
+<p><strong>Что тренирует.</strong> <code>while</code>/<code>for</code> с несколькими выходами, счётчик попыток,
+моделирование состояний и дисциплину завершения цикла.</p>
+<h2 id="collatz"><span class="h-number">54.7</span> 5. Collatz: while, границы и честность</h2>
+<p><strong>Постановка.</strong> Для положительного целого <code>n</code> постройте последовательность:
+если <code>n</code> чётно, разделите на 2; если нечётно — умножьте на 3 и прибавьте 1.
+Повторяйте, пока не получится 1. Посчитайте число шагов.</p>
+<p><strong>Идея.</strong> Простой <code>while</code> с двумя ветками. Важно не перепутать порядок: для
+нечётного числа <code>3n + 1</code> всегда чётно, но это не повод объединять шаги.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">collatz_steps</span><span class="p">(</span><span class="n">start</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"нужно положительное целое"</span><span class="p">)</span>
+    <span class="n">number</span> <span class="o">=</span> <span class="n">start</span>
+    <span class="n">steps</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">number</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">number</span> <span class="o">=</span> <span class="n">number</span> <span class="o">//</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">number</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">steps</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">steps</span>
+
+
+<span class="nb">print</span><span class="p">([</span><span class="n">collatz_steps</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="n">collatz_steps</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>[0, 1, 7, 2, 5, 8, 16, 3, 19, 6]
+97
+</code></pre>
+<p><strong>Границы и честность.</strong> <code>n = 1</code> даёт 0 шагов — цикл не выполняется ни разу.
+<code>n ≤ 0</code> — ошибка: для нуля последовательность зациклится на 0, для
+отрицательных правило не определено. Отдельно стоит сказать о гипотезе
+Коллатца: неизвестно, завершается ли последовательность для <strong>всех</strong>
+положительных чисел. Наш код честно работает для проверенных значений, но
+доказательства завершения в общем случае у человечества нет. Это хороший
+пример различия между «работает на моих тестах» и «доказано».</p>
+<p><strong>Сложность.</strong> Число шагов не имеет известной формулы; оценивают эмпирически.
+Внутри шага — константное число операций, память <code>O(1)</code>.</p>
+<p><strong>Что тренирует.</strong> <code>while</code> с условием на состоянии, обработку неверного
+входа, аккуратность в утверждениях о завершении.</p>
+<h2 id="caesar"><span class="h-number">54.8</span> 6. Шифр Цезаря: строки и обратимость</h2>
+<p><strong>Постановка.</strong> Зашифровать текст сдвигом каждой латинской буквы на <code>k</code>
+позиций по кругу, не трогая регистр и остальные символы. Расшифровка —
+тот же сдвиг в обратную сторону.</p>
+<p><strong>Идея.</strong> Для буквы берём её код через <code>ord</code>, вычитаем код <code>a</code> или <code>A</code>,
+прибавляем сдвиг, берём остаток по модулю 26 и возвращаем букву через <code>chr</code>.
+Остаток по модулю и обеспечивает «кольцо» алфавита.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">caesar</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">shift</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">result</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s2">"a"</span> <span class="o">&lt;=</span> <span class="n">char</span> <span class="o">&lt;=</span> <span class="s2">"z"</span><span class="p">:</span>
+            <span class="n">code</span> <span class="o">=</span> <span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">char</span><span class="p">)</span> <span class="o">-</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">"a"</span><span class="p">)</span> <span class="o">+</span> <span class="n">shift</span><span class="p">)</span> <span class="o">%</span> <span class="mi">26</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">code</span> <span class="o">+</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">"a"</span><span class="p">)))</span>
+        <span class="k">elif</span> <span class="s2">"A"</span> <span class="o">&lt;=</span> <span class="n">char</span> <span class="o">&lt;=</span> <span class="s2">"Z"</span><span class="p">:</span>
+            <span class="n">code</span> <span class="o">=</span> <span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">char</span><span class="p">)</span> <span class="o">-</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">"A"</span><span class="p">)</span> <span class="o">+</span> <span class="n">shift</span><span class="p">)</span> <span class="o">%</span> <span class="mi">26</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">code</span> <span class="o">+</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">"A"</span><span class="p">)))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+
+<span class="n">secret</span> <span class="o">=</span> <span class="n">caesar</span><span class="p">(</span><span class="s2">"Python 3.14 — это здорово!"</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">secret</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">caesar</span><span class="p">(</span><span class="n">secret</span><span class="p">,</span> <span class="mi">13</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>Clguba 3.14 — это здорово!
+Python 3.14 — это здорово!
+</code></pre>
+<p><strong>Почему это обратимо.</strong> Сдвиг на <code>k</code> — перестановка букв; обратная
+перестановка — сдвиг на <code>26 − k</code>. Для ROT13 (<code>k = 13</code>) обратная операция
+совпадает с прямой: два применения возвращают исходный текст.</p>
+<p><strong>Типичные ошибки.</strong> Применить сдвиг к кириллице или цифрам и получить
+нечитаемый набор символов; забыть про верхний регистр; использовать <code>% 26</code>
+для кода символа целиком, а не для позиции в алфавите. Последняя ошибка
+особенно коварна: код заглавной и строчной буквы различается, и «единый»
+модуль даёт разные результаты.</p>
+<p><strong>Сложность.</strong> <code>O(n)</code> по времени и памяти; операция над каждым символом
+константна.</p>
+<p><strong>Что тренирует.</strong> Работу с кодами символов, остаток по модулю, обратимость
+преобразований и внимание к диапазонам.</p>
+<h2 id="requirements"><span class="h-number">54.9</span> 7. От требований к тестам</h2>
+<p><strong>Постановка.</strong> Дан текст. Нужно вернуть <code>N</code> самых частых слов с количеством
+вхождений. Требования нужно уточнить: регистр не важен; слова — только буквы;
+при равенстве частот порядок алфавитный; пустой текст даёт пустой результат.</p>
+<p><strong>Декомпозиция.</strong> Задача распадается на три подзадачи с ясными контрактами:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Подзадача</th>
+<th>Вход</th>
+<th>Выход</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>нормализация</td>
+<td>строка</td>
+<td>строка в нижнем регистре</td>
+</tr>
+<tr>
+<td>разбиение</td>
+<td>строка</td>
+<td>список слов</td>
+</tr>
+<tr>
+<td>подсчёт и выбор</td>
+<td>список слов</td>
+<td>список пар <code>(слово, число)</code></td>
+</tr>
+</tbody>
+</table>
+</div><div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">words</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">"[а-яёa-z]+"</span><span class="p">,</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">top_words</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]:</span>
+    <span class="n">counts</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+        <span class="n">counts</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">counts</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]))[:</span><span class="n">limit</span><span class="p">]</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">top_words</span><span class="p">(</span><span class="s2">"Кот и пёс. Кот спит, а пёс ест. Кот ест."</span><span class="p">))</span>
+
+<span class="k">assert</span> <span class="n">top_words</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">top_words</span><span class="p">(</span><span class="s2">"Кот кот КОТ"</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">"кот"</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="n">top_words</span><span class="p">(</span><span class="s2">"б а б"</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">"б"</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s2">"а"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"тесты прошли"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>[(&#x27;кот&#x27;, 3), (&#x27;ест&#x27;, 2), (&#x27;пёс&#x27;, 2)]
+тесты прошли
+</code></pre>
+<p>Сортировка по ключу <code>(-count, word)</code> задаёт сразу два правила: сначала по
+убыванию частоты, при равенстве — по алфавиту. Без второго правила порядок
+зависел бы от порядка вставки, и тест «прыгал» бы при изменении текста.</p>
+<p><strong>Тестовые случаи</strong> стоит выбирать по риску: пустая строка, текст из одного
+слова, слова в разном регистре, равные частоты, <code>limit</code> больше числа
+уникальных слов. Каждый случай проверяет своё требование, а не «всё сразу».</p>
+<p><strong>Что тренирует.</strong> Превращение размытого требования в контракт, декомпозицию,
+подбор тестов и аккуратную сортировку по нескольким ключам.</p>
+<p><figure class="figure"><img src="illustrations/ch-54-game-states.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h2 id="mistakes"><span class="h-number">54.10</span> Типичные ошибки на практикумах</h2>
+<ol>
+<li><strong>Начинать с кода.</strong> Без понятых входа, выхода и примеров решение почти
+всегда уходит не туда.</li>
+<li><strong>Игнорировать границы.</strong> Пустой ввод, ноль, отрицательные числа и
+максимальные значения ломают больше решений, чем сложные алгоритмы.</li>
+<li><strong>Проверять условия не в том порядке.</strong> FizzBuzz и обработка скобок
+чувствительны к порядку веток.</li>
+<li><strong>Забыть выход из цикла.</strong> Игра или поиск должны завершаться при любом
+допустимом вводе; перечислите все выходы заранее.</li>
+<li><strong>Подгонять тест под результат.</strong> Если тест написан после кода и
+«подкручен», он закрепляет ошибку.</li>
+<li><strong>Считать сложность по количеству строк.</strong> Сложность определяется числом
+операций в зависимости от размера входа, а не длиной кода.</li>
+<li><strong>Утверждать больше, чем доказано.</strong> «Работает на тестах» и «доказано» —
+разные утверждения; в задачах вроде Collatz это принципиально.</li>
+</ol>
+<h2 id="упражнения"><span class="h-number">54.11</span> Упражнения</h2>
+<h3 id="ex-ch54-01">1. Обобщённый FizzBuzz</h3>
+<p>Напишите <code>fizzbuzz_custom(limit, divisors)</code> для словаря вида
+<code>{3: &quot;Fizz&quot;, 5: &quot;Buzz&quot;, 7: &quot;Boom&quot;}</code>: число заменяется конкатенацией меток
+всех подходящих делителей. Если подходящих нет — само число. Проверьте на
+числах до 21 и объясните, как порядок ключей влияет на результат.</p>
+<h3 id="ex-ch54-02">2. Подсчёт ходов Ханойской башни</h3>
+<p>Реализуйте две функции: рекурсивную <code>hanoi_count(n)</code> и проверочную
+<code>hanoi_formula(n) = 2**n - 1</code>. Сравните результаты для <code>n</code> от 0 до 12 и
+объясните, почему рекурсивная версия работает за то же время, что и формула,
+но требует больше памяти.</p>
+<h3 id="ex-ch54-03">3. Палиндром без нормализации</h3>
+<p>Проверьте палиндром двумя указателями, игнорируя небуквенные символы «на
+лету», без создания нормализованной копии. Проверьте на строках
+<code>&quot;А роза упала на лапу Азора&quot;</code>, <code>&quot;Я иду с мечем судия&quot;</code>, <code>&quot;Привет&quot;</code>.</p>
+<h3 id="ex-ch54-04">4. Скобки нескольких видов</h3>
+<p>Проверьте правильность расстановки скобок <code>()</code>, <code>[]</code>, <code>{}</code> и верните позицию
+первой ошибки (индекс символа) или <code>-1</code>, если всё верно. Проверьте на
+<code>&quot;a(b[c]d)e&quot;</code>, <code>&quot;a(b[c)d]e&quot;</code>, <code>&quot;((()))&quot;</code>.</p>
+<h3 id="ex-ch54-05">5. Оптимальная стратегия угадывания</h3>
+<p>Для секрета от 1 до 100 реализуйте функцию <code>best_guess(secret)</code>, которая
+играет по стратегии деления пополам и возвращает число попыток. Проверьте на
+секретах 1, 50, 100 и объясните, почему стратегия даёт не больше семи попыток.</p>
+<h3 id="ex-ch54-06">6. Самая длинная цепочка Коллатца</h3>
+<p>Найдите число от 1 до 1000 с самой длинной последовательностью Коллатца.
+При равенстве выбирайте меньшее число. Выведите число и длину цепочки,
+объясните, почему повторные вычисления для разных чисел — приемлемая цена.</p>
+<h3 id="ex-ch54-07">7. Расшифровка Цезаря перебором</h3>
+<p>Дан шифртекст <code>&quot;Clguba 3.14 — это здорово!&quot;</code>. Переберите все 26 сдвигов,
+расшифруйте каждым и найдите вариант, содержащий слово <code>&quot;Python&quot;</code>. Объясните,
+почему перебор всех ключей допустим в этой задаче.</p>
+<h3 id="ex-ch54-08">8. Частоты с игнорированием слов</h3>
+<p>Расширьте <code>top_words</code> так, чтобы можно было передать набор стоп-слов.
+Проверьте на тексте «кот и пёс и кот», исключив слово «и»; сравните результат
+с версией без стоп-слов.</p>
+<h3 id="ex-ch54-09">9. Поиск ошибки в игре</h3>
+<p>В игре «угадай число» счётчик попыток увеличивается только при неверной
+догадке, поэтому при угадывании с первой попытки он равен нулю. Найдите
+ошибку, исправьте её и напишите два теста: на победу с первой попытки и на
+победу с третьей.</p>
+<h3 id="ex-ch54-10">10. Мини-проект: игра «камень — ножницы — бумага»</h3>
+<p>Смоделируйте игру по заранее заданным ходам двух игроков. Состояния:
+<code>раунд</code>, <code>победа игрока 1</code>, <code>победа игрока 2</code>, <code>ничья</code>. Реализуйте
+<code>play_rounds(moves)</code> с игровым циклом, счётом и явными правилами переходов.
+Проверьте на наборе из пяти раундов и объясните, почему такой дизайн удобно
+тестировать.</p>
+<h2 id="проверка-понимания"><span class="h-number">54.12</span> Проверка понимания</h2>
+<ol>
+<li>Зачем разбивать задачу на подзадачи, если её можно решить одной функцией?</li>
+<li>Как порядок проверок влияет на FizzBuzz и на обработку скобок?</li>
+<li>Почему число ходов Ханойской башни растёт экспоненциально?</li>
+<li>Что такое конечный автомат и какие элементы он включает в игре?</li>
+<li>Почему цикл в игре должен иметь явно перечисленные выходы?</li>
+<li>Чем «работает на тестах» отличается от «доказано» на примере Collatz?</li>
+<li>Зачем в задаче о частотах слов фиксировать порядок при равных частотах?</li>
+</ol>
+<h2 id="что-дальше"><span class="h-number">54.13</span> Что дальше</h2>
+<p>Практикум заканчивается, но практика — нет. Дальше — проекты, где те же
+приёмы применяются к полноценным приложениям: консольному менеджеру задач,
+HTTP-API и асинхронному сборщику данных. Обратите внимание, как в проекте
+повторяются знакомые шаги: понять требования, разбить на модули, покрыть
+тестами, проверить границы. О рекурсии и стеке вызовов говорилось в
+<a href="ch-08-recursion-scope.html">главе 8</a>, о сложности — в <a href="ch-52-complexity.html">главе 52</a>,
+о тестах — в <a href="ch-32-testing.html">главе 32</a>.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-53-refactoring.html"><span class="pager-label">← Назад</span><span class="pager-title">Запахи кода, рефакторинг и сопровождение</span></a><a class="pager-card next" rel="next" href="ch-55-tkinter.html"><span class="pager-label">Далее:</span><span class="pager-title">Графический интерфейс на tkinter</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

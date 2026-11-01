@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Наследование, полиморфизм и композиция — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-27-inheritance.html" aria-current="page">27. Наследование, полиморфизм и композиция</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-27-inheritance.html#why">27.1. Зачем это нужно</a></li>
+<li><a href="ch-27-inheritance.html#что-вы-сможете-после-этой-главы">27.2. Что вы сможете после этой главы</a></li>
+<li><a href="ch-27-inheritance.html#inheritance">27.3. Наследование: базовый класс и подкласс</a></li>
+<li><a href="ch-27-inheritance.html#override-super">27.4. Переопределение и super()</a></li>
+<li><a href="ch-27-inheritance.html#polymorphism">27.5. Полиморфизм</a></li>
+<li><a href="ch-27-inheritance.html#when-inheritance">27.6. Когда наследование уместно</a></li>
+<li><a href="ch-27-inheritance.html#isinstance">27.7. isinstance, issubclass и проверки типов</a></li>
+<li><a href="ch-27-inheritance.html#mro">27.8. Порядок разрешения методов</a></li>
+<li><a href="ch-27-inheritance.html#composition">27.9. Композиция</a></li>
+<li><a href="ch-27-inheritance.html#inheritance-from-builtins">27.10. Наследование от встроенных классов: чего избегать</a></li>
+<li><a href="ch-27-inheritance.html#mistakes">27.11. Типичные ошибки</a></li>
+<li><a href="ch-27-inheritance.html#упражнения">27.12. Упражнения</a></li>
+<li><a href="ch-27-inheritance.html#проверка-понимания">27.13. Проверка понимания</a></li>
+<li><a href="ch-27-inheritance.html#что-дальше">27.14. Что дальше</a></li>
+</ol></details></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 5. Объектно-ориентированное программирование</span><span class="sep">›</span><span>Глава 27</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Объектно-ориентированное программирование · глава 27</p>
+<h1 id="наследование-полиморфизм-и-композиция">Наследование, полиморфизм и композиция</h1>
+<p class="chapter-summary">Повторное использование кода и подстановочность: базовые классы, переопределение, порядок разрешения методов и композиция.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#why"><span class="toc-number">27.1</span> Зачем это нужно</a></li>
+<li class="level-2"><a href="#что-вы-сможете-после-этой-главы"><span class="toc-number">27.2</span> Что вы сможете после этой главы</a></li>
+<li class="level-2"><a href="#inheritance"><span class="toc-number">27.3</span> Наследование: базовый класс и подкласс</a></li>
+<li class="level-2"><a href="#override-super"><span class="toc-number">27.4</span> Переопределение и super()</a></li>
+<li class="level-2"><a href="#polymorphism"><span class="toc-number">27.5</span> Полиморфизм</a></li>
+<li class="level-2"><a href="#when-inheritance"><span class="toc-number">27.6</span> Когда наследование уместно</a></li>
+<li class="level-2"><a href="#isinstance"><span class="toc-number">27.7</span> isinstance, issubclass и проверки типов</a></li>
+<li class="level-2"><a href="#mro"><span class="toc-number">27.8</span> Порядок разрешения методов</a></li>
+<li class="level-2"><a href="#composition"><span class="toc-number">27.9</span> Композиция</a></li>
+<li class="level-2"><a href="#inheritance-from-builtins"><span class="toc-number">27.10</span> Наследование от встроенных классов: чего избегать</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">27.11</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">27.12</span> Упражнения</a></li>
+<li class="level-2"><a href="#проверка-понимания"><span class="toc-number">27.13</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#что-дальше"><span class="toc-number">27.14</span> Что дальше</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#duck-typing">Полиморфизм без общего базового класса</a></li>
+<li class="level-3"><a href="#ex-ch27-01">1. Прогноз вывода</a></li>
+<li class="level-3"><a href="#ex-ch27-02">2. Базовый класс и два подкласса</a></li>
+<li class="level-3"><a href="#ex-ch27-03">3. Исправление конструктора</a></li>
+<li class="level-3"><a href="#ex-ch27-04">4. Расширение через super()</a></li>
+<li class="level-3"><a href="#ex-ch27-05">5. Полиморфная функция</a></li>
+<li class="level-3"><a href="#ex-ch27-06">6. isinstance против type</a></li>
+<li class="level-3"><a href="#ex-ch27-07">7. Порядок разрешения методов</a></li>
+<li class="level-3"><a href="#ex-ch27-08">8. Композиция</a></li>
+<li class="level-3"><a href="#ex-ch27-09">9. Стек без наследования</a></li>
+<li class="level-3"><a href="#ex-ch27-10">10. Мини-проект: расчёт зарплат</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>До сих пор каждый класс стоял сам по себе. Но у разных сущностей часто
+совпадает поведение: у собаки и кошки есть имя и общий способ представиться,
+у квадрата и круга есть площадь. Копировать одинаковые методы в каждый класс
+плохо: исправление придётся повторять в нескольких местах, а забытое —
+превратится в дефект. В этой главе вы научитесь строить классы на основе
+существующих, подменять одни объекты другими через общий интерфейс и
+выбирать между наследованием и композицией.</p>
+<h2 id="why"><span class="h-number">27.1</span> Зачем это нужно</h2>
+<p>Представьте программу, которая считает суммарную площадь фигур. Если фигур
+две — квадрат и круг, — можно написать две функции и две ветви условия. С
+третьей фигурой появляется третья ветвь, и каждая новая фигура требует
+правки в нескольких местах. Ошибка в одной ветви не видна компилятору и
+проявляется только на конкретном наборе данных.</p>
+<p>Полиморфизм убирает ветвления: функция просит у каждой фигуры её площадь и
+не интересуется, какого та типа. Новый класс подключается без правки этой
+функции. Наследование помогает описать общий контракт и переиспользовать
+готовое поведение, а композиция — собрать объект из других объектов, когда
+отношение «частный случай» не подходит.</p>
+<p>Третья причина — единая точка изменения. Если у всех животных способ
+представиться устроен одинаково, его место в базовом классе, а не в каждом
+подклассе. Тогда исправление формата затрагивает одну строку.</p>
+<h2 id="что-вы-сможете-после-этой-главы"><span class="h-number">27.2</span> Что вы сможете после этой главы</h2>
+<ul>
+<li>описывать базовый класс и подклассы, переопределять методы;</li>
+<li>вызывать поведение базового класса через <code>super()</code> и объяснять, зачем это
+нужно;</li>
+<li>писать функции, которые работают с объектами разных классов через общий
+интерфейс;</li>
+<li>читать порядок разрешения методов и понимать, откуда взялся вызванный
+метод;</li>
+<li>отличать отношение «частный случай» от отношения «содержит» и выбирать
+подходящий инструмент;</li>
+<li>проверять типы функциями <code>isinstance</code> и <code>issubclass</code>, не превращая код в
+набор проверок.</li>
+</ul>
+<h2 id="inheritance"><span class="h-number">27.3</span> Наследование: базовый класс и подкласс</h2>
+<p><strong>Наследование</strong> — создание класса на основе другого с наследованием его
+поведения и возможностью расширения.</p>
+<p><strong>Базовый класс</strong> — класс, от которого наследует другой класс.</p>
+<p><strong>Подкласс</strong> — класс, наследующий поведение базового класса.</p>
+<p>Синтаксис прост: имя базового класса указывают в скобках после имени нового.
+Подкласс получает унаследованные атрибуты и методы базового класса (с учётом
+порядка разрешения методов) и может добавить свои или заменить существующие.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Animal</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">speak</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">"..."</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">describe</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">speak</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Dog</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">speak</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">"гав"</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Cat</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">speak</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">"мяу"</span>
+
+<span class="k">for</span> <span class="n">animal</span> <span class="ow">in</span> <span class="p">(</span><span class="n">Dog</span><span class="p">(</span><span class="s2">"Рекс"</span><span class="p">),</span> <span class="n">Cat</span><span class="p">(</span><span class="s2">"Мурка"</span><span class="p">),</span> <span class="n">Animal</span><span class="p">(</span><span class="s2">"неизвестный"</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">animal</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>Рекс: гав
+Мурка: мяу
+неизвестный: ...
+</code></pre>
+<p>Разберём, что произошло. Метод <code>describe</code> объявлен один раз в <code>Animal</code> и
+вызывает <code>self.speak()</code>. Подклассы не повторяют <code>describe</code>: они получают его
+по наследству. Но <code>speak</code> они переопределяют, поэтому в момент вызова
+<code>self.speak()</code> выбирается метод фактического класса объекта, а не базового.
+Именно на этом держится весь дальнейший механизм.</p>
+<p>Наследование задаёт отношение «частный случай»: собака — животное, поэтому
+всё, что умеет животное, умеет и собака. Обратное неверно: не каждое
+животное — собака.</p>
+<h2 id="override-super"><span class="h-number">27.4</span> Переопределение и super()</h2>
+<p><strong>Переопределение</strong> — замена метода базового класса одноимённым методом
+подкласса.</p>
+<p>Заменить поведение целиком просто: достаточно объявить метод с тем же именем.
+Чаще нужно не заменить, а дополнить. Для этого служит <strong><code>super()</code></strong> —
+функция, дающая доступ к методам базового класса из переопределённого метода.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Animal</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Dog</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">breed</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">breed</span> <span class="o">=</span> <span class="n">breed</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">(</span><span class="s2">"Рекс"</span><span class="p">,</span> <span class="s2">"лабрадор"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">breed</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">Dog</span><span class="p">),</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">Animal</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">issubclass</span><span class="p">(</span><span class="n">Dog</span><span class="p">,</span> <span class="n">Animal</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>Рекс лабрадор
+True True
+True
+</code></pre>
+<p>Конструктор подкласса обязан позаботиться о состоянии базового класса.
+Вызов <code>super().__init__(name)</code> передаёт имя в родительский метод, который
+записывает <code>self.name</code>. Затем подкласс добавляет своё поле <code>breed</code>. Такой
+порядок — сначала база, потом расширение — стандартный.</p>
+<p>Если забыть про <code>super()</code>, объект окажется «недоделанным»: часть состояния
+базового класса не создана. Ошибка проявится не в конструкторе, а позже, при
+обращении к отсутствующему атрибуту:</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Animal</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Dog</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">breed</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">breed</span> <span class="o">=</span> <span class="n">breed</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">(</span><span class="s2">"Рекс"</span><span class="p">,</span> <span class="s2">"лабрадор"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>AttributeError: &#x27;Dog&#x27; object has no attribute &#x27;name&#x27;
+</code></pre>
+<p><code>super()</code> полезен и в обычных методах, когда нужно расширить поведение, а не
+выбросить его:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Logger</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s2">"log: "</span> <span class="o">+</span> <span class="n">message</span><span class="p">]</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TimestampLogger</span><span class="p">(</span><span class="n">Logger</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="n">records</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+        <span class="n">records</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"готово"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">records</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">TimestampLogger</span><span class="p">()</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">"старт"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>[&#x27;log: старт&#x27;, &#x27;готово&#x27;]
+</code></pre>
+<p>Подкласс получил результат базового метода и дополнил его. Если бы он
+переписал <code>log</code> целиком, формат записи пришлось бы дублировать.</p>
+<h2 id="polymorphism"><span class="h-number">27.5</span> Полиморфизм</h2>
+<p><strong>Полиморфизм</strong> — возможность работать с объектами разных классов через
+общий интерфейс, не проверяя их конкретный тип.</p>
+<p>Посмотрите, как выглядит функция, которая считает суммарную площадь:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Shape</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Square</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">side</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">side</span> <span class="o">=</span> <span class="n">side</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">side</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Circle</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">radius</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="mf">3.14159</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">total_area</span><span class="p">(</span><span class="n">shapes</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">shape</span><span class="o">.</span><span class="n">area</span><span class="p">()</span> <span class="k">for</span> <span class="n">shape</span> <span class="ow">in</span> <span class="n">shapes</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">total_area</span><span class="p">([</span><span class="n">Square</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">Circle</span><span class="p">(</span><span class="mi">1</span><span class="p">)]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Square</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">area</span><span class="p">(),</span> <span class="n">Circle</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">area</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>7.14
+4 3.14
+</code></pre>
+<p>Функция <code>total_area</code> не знает, какие именно фигуры ей передали: ей достаточно,
+что у каждой есть метод <code>area</code>. Квадрат и круг здесь связаны общим базовым
+классом <code>Shape</code>, но функция работает и без него — это показано ниже, в разделе
+«Полиморфизм без общего базового класса». Для <code>total_area</code> важен не тип
+объекта, а наличие метода <code>area</code>.</p>
+<p>Базовый класс <code>Shape</code> здесь играет роль контракта: он объявляет <code>area</code> и
+сообщает, что подкласс обязан её реализовать. Строка <code>raise NotImplementedError</code>
+— обещание, что метод без реализации использовать нельзя. Формально Python
+не требует общего базового класса: достаточно, чтобы метод существовал. Но
+общий базовый класс делает контракт видимым и даёт общий тип для документации.</p>
+<p>Добавление новой фигуры не требует правки <code>total_area</code>. Это главный признак
+полиморфного решения: новый код подключается, а старый не меняется.</p>
+<h3 id="duck-typing">Полиморфизм без общего базового класса</h3>
+<p>Общий базовый класс помогает описать контракт, но не обязателен. Python
+смотрит на поведение объекта, а не на его родословную: если у объекта есть
+метод <code>area</code>, его можно передать в <code>total_area</code>.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Square</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">side</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">side</span> <span class="o">=</span> <span class="n">side</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">side</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Circle</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">radius</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="mf">3.14159</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">total</span><span class="p">(</span><span class="n">shapes</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">shape</span><span class="o">.</span><span class="n">area</span><span class="p">()</span> <span class="k">for</span> <span class="n">shape</span> <span class="ow">in</span> <span class="n">shapes</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">([</span><span class="n">Square</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">Circle</span><span class="p">(</span><span class="mi">2</span><span class="p">)]))</span>
+</code></pre></div>
+<pre class="output"><code>21.57
+</code></pre>
+<p>Здесь у <code>Square</code> и <code>Circle</code> нет общего предка, и это не мешает функции.
+Такой стиль называют утиной типизацией: «если это крякает как утка, то это
+утка». У него есть цена: ошибка в имени метода обнаружится только при
+вызове, а не при объявлении класса. Поэтому в больших программах общий
+базовый класс или протокол (о них в главе 29) всё же полезен: он делает
+контракт явным и позволяет проверить реализацию заранее.</p>
+<h2 id="when-inheritance"><span class="h-number">27.6</span> Когда наследование уместно</h2>
+<p>Наследование — сильная связь. Подкласс зависит не только от имён методов
+базового класса, но и от их поведения: если база изменит смысл метода,
+подкласс может сломаться. Поэтому решение стоит принимать по трём вопросам.</p>
+<p>Первый: <strong>верно ли отношение «частный случай»</strong>? Собака — животное, квадрат —
+фигура, наследование уместно. Автомобиль — не двигатель, отчёт — не логгер,
+здесь нужна композиция.</p>
+<p>Второй: <strong>можно ли подставить подкласс вместо базового класса</strong>? Если
+функция принимает <code>Animal</code> и вызывает <code>speak</code>, любой подкласс обязан
+поддерживать этот вызов. Подкласс, который «почти подходит», но требует
+особого обращения, ломает подстановочность и делает общий код хрупким.</p>
+<p>Третий: <strong>не придётся ли отключать унаследованное поведение</strong>? Если подкласс
+вынужден переопределять половину методов пустыми телами или запрещать часть
+операций, иерархия выбрана неверно. Это сигнал, что общий базовый класс
+объединяет слишком разные сущности.</p>
+<p>Хороший пример наследования — иерархия исключений: <code>ValueError</code> — подкласс
+<code>Exception</code>, и код, который ловит <code>Exception</code>, корректно работает с любым
+подклассом. Хороший пример композиции — класс отчёта, который пишет в
+логгер: отчёт — не логгер, он им пользуется. В сомнительных случаях
+начинайте с композиции: её проще заменить на наследование позже, чем
+наоборот.</p>
+<h2 id="isinstance"><span class="h-number">27.7</span> isinstance, issubclass и проверки типов</h2>
+<p><strong><code>isinstance</code></strong> — встроенная функция, которая отвечает на вопрос,
+принадлежит ли объект классу или его подклассу.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Animal</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Dog</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">Dog</span><span class="p">),</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">Animal</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="ow">is</span> <span class="n">Dog</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="ow">is</span> <span class="n">Animal</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">issubclass</span><span class="p">(</span><span class="n">Dog</span><span class="p">,</span> <span class="n">Animal</span><span class="p">),</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">Animal</span><span class="p">,</span> <span class="n">Dog</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>True True True False
+True False
+</code></pre>
+<p><code>isinstance</code> учитывает наследование: собака — экземпляр и <code>Dog</code>, и <code>Animal</code>.
+<code>type</code> наследование не учитывает и возвращает ровно класс объекта, поэтому
+сравнение <code>type(d) is Animal</code> даёт <code>False</code>. <code>issubclass</code> проверяет сами классы.</p>
+<p>Проверка типа уместна на границе программы: например, при разборе входных
+данных или в отладочном утверждении. Внутри объектного кода она часто
+признак того, что полиморфизм не использован: вместо <code>if isinstance(...)</code>
+стоит объявить общий метод и вызвать его. Каждая проверка типа добавляет
+ветвь, которую придётся править при появлении нового класса.</p>
+<h2 id="mro"><span class="h-number">27.8</span> Порядок разрешения методов</h2>
+<p>Когда классов несколько, важно понимать, в каком порядке Python ищет метод.
+<strong>Порядок разрешения методов (MRO)</strong> — линейный порядок, в котором Python
+ищет метод в иерархии классов; при множественном наследовании он строится
+алгоритмом C3.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">A</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">who</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">"A"</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">B</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">who</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">"B + "</span> <span class="o">+</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">who</span><span class="p">()</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">C</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">who</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">"C + "</span> <span class="o">+</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">who</span><span class="p">()</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">D</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">D</span><span class="p">()</span><span class="o">.</span><span class="n">who</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">([</span><span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span> <span class="k">for</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="n">D</span><span class="o">.</span><span class="vm">__mro__</span><span class="p">])</span>
+</code></pre></div>
+<pre class="output"><code>B + C + A
+[&#x27;D&#x27;, &#x27;B&#x27;, &#x27;C&#x27;, &#x27;A&#x27;, &#x27;object&#x27;]
+</code></pre>
+<p>Класс <code>D</code> наследует от <code>B</code> и <code>C</code>, оба наследуют от <code>A</code>. Порядок поиска:
+<code>D</code>, <code>B</code>, <code>C</code>, <code>A</code>, <code>object</code>. У <code>D</code> своего <code>who</code> нет, поэтому находится
+метод <code>B</code>. Внутри него <code>super().who()</code> идёт дальше по цепочке и попадает в
+<code>C</code>, а не в <code>A</code> — вот почему получилось <code>B + C + A</code>, а не <code>B + A</code>.
+<code>super()</code> не «вызывает базовый класс» вообще, а вызывает следующий класс в
+порядке разрешения методов.</p>
+<p><figure class="figure"><img src="illustrations/ch-27-mro.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Для одиночного наследования порядок очевиден: класс, его база, база базы.
+Множественное наследование усложняет картину, и без необходимости его лучше
+избегать: цепочка <code>super()</code> становится трудной для чтения. Если классы всё
+же совмещают, помогает привычка смотреть на <code>__mro__</code> и не полагаться на
+догадки.</p>
+<h2 id="composition"><span class="h-number">27.9</span> Композиция</h2>
+<p><strong>Композиция</strong> — построение объекта из других объектов: «has-a» вместо
+«is-a».</p>
+<p>Объект хранит другой объект в атрибуте и вызывает его методы. Отношение
+«содержит» не требует родства классов:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Engine</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">power</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">power</span> <span class="o">=</span> <span class="n">power</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"двигатель </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">power</span><span class="si">}</span><span class="s2"> л.с. запущен"</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Car</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">engine</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="n">engine</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">start</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span>
+
+<span class="n">car</span> <span class="o">=</span> <span class="n">Car</span><span class="p">(</span><span class="s2">"Седан"</span><span class="p">,</span> <span class="n">Engine</span><span class="p">(</span><span class="mi">150</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">car</span><span class="o">.</span><span class="n">start</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">car</span><span class="p">,</span> <span class="n">Engine</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>Седан: двигатель 150 л.с. запущен
+False
+</code></pre>
+<p><code>Car</code> — не двигатель, поэтому наследование здесь было бы ошибкой.
+Машина содержит двигатель и делегирует ему работу: метод <code>start</code> автомобиля
+вызывает <code>start</code> двигателя. Такая связь гибче: двигатель можно заменить на
+другой, не меняя класс автомобиля.</p>
+<p>Сравним два отношения:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Признак</th>
+<th>Наследование</th>
+<th>Композиция</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Отношение</td>
+<td>«частный случай»</td>
+<td>«содержит»</td>
+</tr>
+<tr>
+<td>Что даёт</td>
+<td>поведение базового класса</td>
+<td>делегирование вызовов</td>
+</tr>
+<tr>
+<td>Изменение</td>
+<td>правка иерархии</td>
+<td>замена вложенного объекта</td>
+</tr>
+<tr>
+<td>Риск</td>
+<td>жёсткая структура</td>
+<td>больше кода-обёрток</td>
+</tr>
+</tbody>
+</table>
+</div><p><figure class="figure"><img src="illustrations/ch-27-composition-vs-inheritance.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h2 id="inheritance-from-builtins"><span class="h-number">27.10</span> Наследование от встроенных классов: чего избегать</h2>
+<p>Соблазн велик: список уже умеет хранить элементы, значит, стек можно сделать
+наследником <code>list</code>. Проблема в том, что наследник получает все методы
+родителя, включая те, что нарушают правила нового класса:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Stack</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">Stack</span><span class="p">()</span>
+<span class="n">s</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">s</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">99</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>[99, 1, 2]
+</code></pre>
+<p>Метод <code>push</code> добавлен, но <code>append</code> и <code>insert</code> остались доступны и позволяют
+обойти правило «элементы добавляются только в конец». Композиция решает
+задачу иначе: список хранится внутри и доступен только через нужные методы.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Stack</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_items</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">)</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">Stack</span><span class="p">()</span>
+<span class="n">s</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="s2">"a"</span><span class="p">)</span>
+<span class="n">s</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="s2">"b"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">pop</span><span class="p">(),</span> <span class="n">s</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s2">"append"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>b 1
+False
+</code></pre>
+<p>Наружу видны только <code>push</code>, <code>pop</code> и <code>size</code>. Внутренний список скрыт за
+соглашением об имени, поэтому случайно обойти инвариант снаружи нельзя.
+Сознательно — можно: <code>s._items.append(...)</code> доступен, но это явное нарушение
+соглашения, как и любое обращение к имени с подчёркиванием. Правило простое:
+наследование от встроенных коллекций оправдано редко; чаще достаточно
+композиции или модуля <code>collections</code>, о котором пойдёт речь в главе 34.</p>
+<h2 id="mistakes"><span class="h-number">27.11</span> Типичные ошибки</h2>
+<ol>
+<li><strong>Забыть <code>super().__init__()</code> в конструкторе подкласса.</strong> Состояние
+базового класса не создаётся, и ошибка всплывает позже.</li>
+<li><strong>Наследовать ради повторного использования кода, а не ради отношения
+«частный случай».</strong> Класс <code>Car(Engine)</code> формально переиспользует методы,
+но ломает смысл: автомобиль — не двигатель.</li>
+<li><strong>Считать, что <code>super()</code> вызывает базовый класс.</strong> Он вызывает следующий
+класс в порядке разрешения методов, и при множественном наследовании это
+не обязательно прямой родитель.</li>
+<li><strong>Проверять типы вместо полиморфизма.</strong> Цепочка <code>isinstance</code> требует
+правки при каждом новом классе и плохо читается.</li>
+<li><strong>Менять сигнатуру переопределённого метода.</strong> Если базовый метод
+принимает два аргумента, подкласс должен принимать их же: иначе вызов
+через общий интерфейс сломается.</li>
+<li><strong>Строить глубокую иерархию «на будущее».</strong> Каждый уровень добавляет
+связь, которую потом трудно разорвать; начинайте с композиции.</li>
+</ol>
+<h2 id="упражнения"><span class="h-number">27.12</span> Упражнения</h2>
+<h3 id="ex-ch27-01">1. Прогноз вывода</h3>
+<p>Определите, что напечатает программа, и объясните, откуда берётся каждый
+метод:</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Animal</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">speak</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">"..."</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Dog</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">speak</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">"гав"</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Dog</span><span class="p">(</span><span class="s2">"Рекс"</span><span class="p">)</span><span class="o">.</span><span class="n">speak</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Animal</span><span class="p">(</span><span class="s2">"кто-то"</span><span class="p">)</span><span class="o">.</span><span class="n">speak</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Dog</span><span class="p">(</span><span class="s2">"Рекс"</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="ex-ch27-02">2. Базовый класс и два подкласса</h3>
+<p>Объявите класс <code>Vehicle</code> с <code>describe()</code>, возвращающим строку
+<code>&quot;&lt;имя&gt;: &lt;скорость&gt; км/ч&quot;</code>. Сделайте подклассы <code>Car</code> (без изменений) и
+<code>Truck</code>, который дополняет описание словом «грузовик». Проверьте оба.</p>
+<h3 id="ex-ch27-03">3. Исправление конструктора</h3>
+<p>Программа падает с <code>AttributeError</code>, потому что подкласс не вызвал
+конструктор базового класса. Найдите ошибку и исправьте:</p>
+<pre class="text"><code>class Animal:
+    def __init__(self, name):
+        self.name = name
+
+class Dog(Animal):
+    def __init__(self, name, breed):
+        self.breed = breed
+
+d = Dog(&quot;Рекс&quot;, &quot;лабрадор&quot;)
+print(d.name)
+</code></pre>
+<h3 id="ex-ch27-04">4. Расширение через super()</h3>
+<p>Объявите класс <code>Logger</code> с методом <code>log(message)</code>, возвращающим список
+<code>[&quot;log: &quot; + message]</code>. Подкласс <code>TimestampLogger</code> должен вызвать базовый
+метод, добавить в список строку <code>&quot;готово&quot;</code> и вернуть его. Проверьте вывод.</p>
+<h3 id="ex-ch27-05">5. Полиморфная функция</h3>
+<p>Объявите классы <code>Square</code> и <code>Circle</code> с методом <code>area()</code> и функцию <code>total</code>,
+которая принимает список объектов и возвращает суммарную площадь с
+округлением до двух знаков. Проверьте на квадрате со стороной 3 и круге
+радиуса 2.</p>
+<h3 id="ex-ch27-06">6. isinstance против type</h3>
+<p>Для пары классов «животное — собака» выведите результаты проверок
+<code>isinstance(d, Animal)</code>, <code>type(d) is Animal</code>, <code>issubclass(Dog, Animal)</code> и
+<code>issubclass(Animal, Dog)</code>. Объясните разницу между функциями.</p>
+<h3 id="ex-ch27-07">7. Порядок разрешения методов</h3>
+<p>Дана иерархия <code>A ← B</code>, <code>A ← C</code>, <code>D(B, C)</code>, где каждый метод <code>who</code> добавляет
+к результату префикс и вызывает <code>super().who()</code>. Предскажите результат
+<code>D().who()</code> и выведите список имён классов из <code>__mro__</code>.</p>
+<h3 id="ex-ch27-08">8. Композиция</h3>
+<p>Объявите класс <code>Logger</code> с методом <code>write(message)</code> и класс <code>Report</code>, который
+содержит логгер и в методе <code>build()</code> пишет в него строку отчёта, возвращая
+словарь с названием и списком строк. Проверьте, что <code>Report</code> — не
+<code>Logger</code>.</p>
+<h3 id="ex-ch27-09">9. Стек без наследования</h3>
+<p>Класс <code>Stack</code> унаследован от <code>list</code> и поэтому позволяет обходить правило
+добавления. Перепишите его через композицию: внутренний список, методы
+<code>push</code>, <code>pop</code>, <code>size</code>. Убедитесь, что <code>append</code> у нового класса отсутствует.</p>
+<h3 id="ex-ch27-10">10. Мини-проект: расчёт зарплат</h3>
+<p>Объявите базовый класс <code>Employee</code> с именем и окладом и методом <code>salary()</code>.
+Подклассы: <code>Manager</code> с премией (оклад плюс премия) и <code>Intern</code>, получающий
+половину оклада. Соберите список сотрудников разных классов, напечатайте
+зарплату каждого и общую сумму. Объясните, почему функция подсчёта не
+содержит проверок типа.</p>
+<h2 id="проверка-понимания"><span class="h-number">27.13</span> Проверка понимания</h2>
+<ol>
+<li>Какое отношение описывает наследование, а какое — композиция?</li>
+<li>Что делает <code>super()</code> и почему при множественном наследовании он может
+вызвать не прямой родительский класс?</li>
+<li>Зачем базовому классу метод с <code>raise NotImplementedError</code>?</li>
+<li>Чем <code>isinstance</code> отличается от <code>type(d) is X</code>?</li>
+<li>Почему функция, работающая через общий интерфейс, лучше цепочки
+<code>isinstance</code>?</li>
+<li>Почему наследование от <code>list</code> для стека может нарушить инвариант?</li>
+</ol>
+<h2 id="что-дальше"><span class="h-number">27.14</span> Что дальше</h2>
+<p>Вы умеете строить иерархии и подменять объекты через общий интерфейс. Но
+пока ваши классы не вписываются в синтаксис языка: <code>print(point)</code> печатает
+адрес, а <code>point1 == point2</code> сравнивает ссылки. В главе
+<a href="ch-28-dunder.html">«Модель данных: dunder-методы»</a> вы научитесь встраивать свои
+типы в операторы, сравнения и встроенные функции.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-26-encapsulation.html"><span class="pager-label">← Назад</span><span class="pager-title">Атрибуты, свойства и инкапсуляция</span></a><a class="pager-card next" rel="next" href="ch-28-dunder.html"><span class="pager-label">Далее:</span><span class="pager-title">Модель данных: dunder-методы</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

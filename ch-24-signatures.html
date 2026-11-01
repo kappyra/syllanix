@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Гибкие сигнатуры: *args, **kwargs и распаковка — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-24-signatures.html" aria-current="page">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-24-signatures.html#why">24.1. Зачем это нужно</a></li>
+<li><a href="ch-24-signatures.html#что-вы-сможете-после-этой-главы">24.2. Что вы сможете после этой главы</a></li>
+<li><a href="ch-24-signatures.html#signature">24.3. Сигнатура как контракт</a></li>
+<li><a href="ch-24-signatures.html#varargs">24.4. Параметр *args: лишние позиционные аргументы</a></li>
+<li><a href="ch-24-signatures.html#kwargs">24.5. Параметр **kwargs: лишние именованные аргументы</a></li>
+<li><a href="ch-24-signatures.html#markers">24.6. Маркеры / и *: кто как передаётся</a></li>
+<li><a href="ch-24-signatures.html#unpacking-arguments">24.7. Распаковка аргументов</a></li>
+<li><a href="ch-24-signatures.html#forwarding">24.8. Форвардинг: зачем это на практике</a></li>
+<li><a href="ch-24-signatures.html#stdlib-signatures">24.9. Сигнатуры в стандартной библиотеке</a></li>
+<li><a href="ch-24-signatures.html#mistakes">24.10. Типичные ошибки</a></li>
+<li><a href="ch-24-signatures.html#упражнения">24.11. Упражнения</a></li>
+<li><a href="ch-24-signatures.html#проверка-понимания">24.12. Проверка понимания</a></li>
+<li><a href="ch-24-signatures.html#что-дальше">24.13. Что дальше</a></li>
+</ol></details></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 4. Итерация и функции высшего порядка</span><span class="sep">›</span><span>Глава 24</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Итерация и функции высшего порядка · глава 24</p>
+<h1 id="гибкие-сигнатуры-args-kwargs-и-распаковка">Гибкие сигнатуры: *args, **kwargs и распаковка</h1>
+<p class="chapter-summary">Как проектировать универсальные функции, не теряя ясность контракта: сбор аргументов, маркеры / и *, распаковка при вызове.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#why"><span class="toc-number">24.1</span> Зачем это нужно</a></li>
+<li class="level-2"><a href="#что-вы-сможете-после-этой-главы"><span class="toc-number">24.2</span> Что вы сможете после этой главы</a></li>
+<li class="level-2"><a href="#signature"><span class="toc-number">24.3</span> Сигнатура как контракт</a></li>
+<li class="level-2"><a href="#varargs"><span class="toc-number">24.4</span> Параметр *args: лишние позиционные аргументы</a></li>
+<li class="level-2"><a href="#kwargs"><span class="toc-number">24.5</span> Параметр **kwargs: лишние именованные аргументы</a></li>
+<li class="level-2"><a href="#markers"><span class="toc-number">24.6</span> Маркеры / и *: кто как передаётся</a></li>
+<li class="level-2"><a href="#unpacking-arguments"><span class="toc-number">24.7</span> Распаковка аргументов</a></li>
+<li class="level-2"><a href="#forwarding"><span class="toc-number">24.8</span> Форвардинг: зачем это на практике</a></li>
+<li class="level-2"><a href="#stdlib-signatures"><span class="toc-number">24.9</span> Сигнатуры в стандартной библиотеке</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">24.10</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">24.11</span> Упражнения</a></li>
+<li class="level-2"><a href="#проверка-понимания"><span class="toc-number">24.12</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#что-дальше"><span class="toc-number">24.13</span> Что дальше</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#ex-ch24-01">1. Прогноз вывода</a></li>
+<li class="level-3"><a href="#ex-ch24-02">2. Сборка строки с keyword-only параметром</a></li>
+<li class="level-3"><a href="#ex-ch24-03">3. Исправление сигнатуры</a></li>
+<li class="level-3"><a href="#ex-ch24-04">4. Распаковка при вызове</a></li>
+<li class="level-3"><a href="#ex-ch24-05">5. Сумма произвольного числа значений</a></li>
+<li class="level-3"><a href="#ex-ch24-06">6. Смешанная сигнатура</a></li>
+<li class="level-3"><a href="#ex-ch24-07">7. Анализ: чем плоха универсальная функция</a></li>
+<li class="level-3"><a href="#ex-ch24-08">8. Только позиционный параметр</a></li>
+<li class="level-3"><a href="#ex-ch24-09">9. Мини-проект: сборка адреса</a></li>
+<li class="level-3"><a href="#ex-ch24-10">10. Форвардинг с отчётом</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>Функция с неизменным списком параметров удобна, пока все вызовы похожи друг
+на друга. Но есть задачи, где число аргументов заранее неизвестно: обёртка,
+которая должна передать вызов дальше без потерь; <code>print</code>, принимающий сколько
+угодно значений; сборщик адреса с произвольным набором параметров запроса.
+Для таких случаев Python позволяет описать параметры, которые забирают «всё
+остальное». В этой главе вы научитесь читать и писать подобные сигнатуры,
+отличать объявление параметра от распаковки в вызове и ограничивать гибкость
+там, где она мешает ловить ошибки.</p>
+<h2 id="why"><span class="h-number">24.1</span> Зачем это нужно</h2>
+<p>Представьте обёртку над функцией: она печатает имя функции, вызывает её с
+теми же аргументами и возвращает результат. Если у функции два параметра,
+их можно повторить в обёртке. Если параметров десять или их состав меняется,
+повторять бессмысленно: обёртка должна принять любые аргументы и передать их
+дальше без изменений. Именно так устроены декораторы из главы 22.</p>
+<p>Вторая причина — интерфейсы с переменным числом однотипных значений. <code>print</code>
+принимает любое количество объектов, <code>max</code> тоже. Такой контракт естественно
+описывается параметром, который собирает остаток аргументов в одну структуру.</p>
+<p>У гибкости есть цена. Функция, принимающая «что угодно», не сообщит, что вы
+перепутали имя аргумента: лишнее имя молча попадёт во внутренний словарь.
+Поэтому вторая половина главы — о том, как сузить способы вызова. Маркеры <code>/</code>
+и <code>*</code> в сигнатуре говорят, какой аргумент передаётся по месту, а какой только
+по имени.</p>
+<h2 id="что-вы-сможете-после-этой-главы"><span class="h-number">24.2</span> Что вы сможете после этой главы</h2>
+<ul>
+<li>читать сигнатуру любой сложности и объяснять, куда попадёт каждый аргумент;</li>
+<li>объявлять параметры <code>*args</code> и <code>**kwargs</code> и понимать, какие значения
+получаются внутри функции;</li>
+<li>ограничивать способы передачи аргументов маркерами <code>/</code> и <code>*</code>;</li>
+<li>распаковывать последовательности и словари в момент вызова;</li>
+<li>отличать объявление параметра от распаковки аргументов.</li>
+</ul>
+<h2 id="signature"><span class="h-number">24.3</span> Сигнатура как контракт</h2>
+<p><strong>Сигнатура</strong> — это описание того, как функцию разрешено вызывать: список её
+параметров, их порядок, виды и значения по умолчанию. В обиходе сигнатуру
+называют вместе с именем функции, но <code>inspect.signature</code> показывает только
+список параметров.</p>
+<p>Три способа связи параметра и аргумента вы уже знаете: аргумент может быть
+позиционным (передаётся по месту), именованным (передаётся по имени
+параметра) и может отсутствовать, если у параметра есть значение по
+умолчанию. Вот как выглядит простая сигнатура, если попросить Python
+показать её:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">area</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">area</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">area</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">area</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">area</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>(width, height=1)
+6
+2
+6
+</code></pre>
+<p><code>inspect.signature</code> возвращает описание сигнатуры; при печати оно выглядит
+почти как строка <code>def</code>, только без имени функции и двоеточия. Уже здесь
+видно правило: параметр со значением по умолчанию можно не передавать.
+Обратите внимание, что <code>area(2)</code> и <code>area(2, 3)</code> дают разные результаты, но
+оба вызова корректны.</p>
+<p>Когда параметров много, а вызовов ещё больше, сигнатура становится главным
+документом функции. Человек читает её раньше, чем тело, и строит по ней
+вызов. Дальше мы расширим набор инструментов, которым описывается контракт.</p>
+<h2 id="varargs"><span class="h-number">24.4</span> Параметр *args: лишние позиционные аргументы</h2>
+<p>*<em>Параметр <em>args</em></em> — параметр с одной звёздочкой, который собирает лишние
+позиционные аргументы в кортеж.</p>
+<p>Слово «лишние» здесь ключевое. Обычные параметры получают свои значения по
+порядку, а всё, что осталось после них, попадает в кортеж:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">total</span><span class="p">(</span><span class="o">*</span><span class="n">numbers</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"получено:"</span><span class="p">,</span> <span class="n">numbers</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>получено: (1, 2, 3)
+6
+получено: ()
+0
+получено: (10,)
+10
+</code></pre>
+<p>Разберём вывод. В первом вызове переданы три аргумента, и все три оказались
+в кортеже <code>numbers</code>. Во втором вызове аргументов нет вовсе, поэтому кортеж
+пуст, а <code>sum</code> от пустой последовательности даёт <code>0</code>. В третьем вызове
+кортеж состоит из одного элемента — обратите внимание на запятую в <code>(10,)</code>:
+именно она отличает кортеж от простого числа в скобках.</p>
+<p>Имя <code>args</code> — соглашение, а не требование языка: параметр можно назвать
+<code>numbers</code>, <code>values</code> или как угодно иначе. Значение имеет звёздочка. При этом
+внутри функции параметр ведёт себя как обычный кортеж: его нельзя изменить,
+но можно перебрать в цикле, взять длину или распаковать.</p>
+<p>Обычные параметры должны стоять до <code>*args</code>; сам <code>*args</code> может быть и первым —
+пример <code>def total(*numbers)</code> это показывает. После <code>*args</code> нельзя объявить
+обычный позиционный параметр: всё, что идёт дальше, доступно только по имени
+(об этом — ниже, в разделе о маркерах).</p>
+<h2 id="kwargs"><span class="h-number">24.5</span> Параметр **kwargs: лишние именованные аргументы</h2>
+<p>**Параметр <strong>kwargs</strong> — параметр с двумя звёздочками, который собирает лишние
+именованные аргументы в словарь.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">describe</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">extra</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"имя:"</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"остальное:"</span><span class="p">,</span> <span class="n">extra</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"ключи по алфавиту:"</span><span class="p">,</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">extra</span><span class="p">))</span>
+
+<span class="n">describe</span><span class="p">(</span><span class="s2">"Аня"</span><span class="p">,</span> <span class="n">city</span><span class="o">=</span><span class="s2">"Москва"</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">describe</span><span class="p">(</span><span class="s2">"Боря"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>имя: Аня
+остальное: {&#x27;city&#x27;: &#x27;Москва&#x27;, &#x27;age&#x27;: 30}
+ключи по алфавиту: [&#x27;age&#x27;, &#x27;city&#x27;]
+имя: Боря
+остальное: {}
+ключи по алфавиту: []
+</code></pre>
+<p>Здесь <code>name</code> получил значение по месту, а два именованных аргумента попали в
+словарь. Порядок ключей в словаре сохраняется в порядке передачи: <code>city</code>
+идёт раньше <code>age</code>. Функция <code>sorted</code> возвращает список ключей по алфавиту,
+поэтому порядок в последней строке другой — <code>['age', 'city']</code>. Это полезное
+наблюдение: словарь помнит порядок вставки, а сортировка его меняет.</p>
+<p>Ключи в <code>**kwargs</code> всегда строки. Если попытаться передать что-то иное,
+Python откажется ещё до входа в тело функции, и это защищает от путаницы
+между позиционными и именованными аргументами.</p>
+<h2 id="markers"><span class="h-number">24.6</span> Маркеры / и *: кто как передаётся</h2>
+<p>Гибкость удобна не всегда. Публичной функции полезно запретить часть способов
+вызова: например, разрешить передавать число только по месту, чтобы имя
+параметра можно было потом изменить, не ломая чужие вызовы.</p>
+<p><strong>Параметр только для позиционных аргументов</strong> — параметр, перечисленный до
+маркера <code>/</code>; передать его по имени нельзя.</p>
+<p><strong>Параметр только для именованных аргументов</strong> — параметр, стоящий после
+маркера <code>*</code> или после <code>*args</code>; передать его по месту нельзя.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">percent</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="o">/</span><span class="p">,</span> <span class="n">total</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">number</span> <span class="o">/</span> <span class="n">total</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">percent</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">percent</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">total</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>25.0
+25.0
+</code></pre>
+<p>Параметр <code>number</code> стоит до <code>/</code>, поэтому его можно передать только по месту.
+Параметр <code>total</code> — обычный, для него допустимы оба способа. Проверим запрет:</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">percent</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="o">/</span><span class="p">,</span> <span class="n">total</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">number</span> <span class="o">/</span> <span class="n">total</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">percent</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">total</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>TypeError: percent() got some positional-only arguments passed as keyword arguments: &#x27;number&#x27;
+</code></pre>
+<p>Сообщение буквально говорит: «функция получила позиционно-только аргументы,
+переданные как именованные», и называет виновника. Теперь обратный случай —
+маркер <code>*</code> делает параметры именованными:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">format_price</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">currency</span><span class="o">=</span><span class="s2">"руб."</span><span class="p">,</span> <span class="n">digits</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">amount</span><span class="si">:</span><span class="s2">.</span><span class="si">{</span><span class="n">digits</span><span class="si">}</span><span class="s2">f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">currency</span><span class="si">}</span><span class="s2">"</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">format_price</span><span class="p">(</span><span class="mf">1234.5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">format_price</span><span class="p">(</span><span class="mf">1234.5</span><span class="p">,</span> <span class="n">currency</span><span class="o">=</span><span class="s2">"$"</span><span class="p">,</span> <span class="n">digits</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>1234.50 руб.
+1234 $
+</code></pre>
+<p>Второй вызов передаёт <code>currency</code> и <code>digits</code> по имени, и порядок имён не важен.
+Позиционная передача после <code>*</code> запрещена:</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">format_price</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">currency</span><span class="o">=</span><span class="s2">"руб."</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">amount</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">currency</span><span class="si">}</span><span class="s2">"</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">format_price</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s2">"руб."</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>TypeError: format_price() takes 1 positional argument but 2 were given
+</code></pre>
+<p>Полная сигнатура собирается из всех видов параметров в строгом порядке:
+позиционно-только, обычные, <code>*args</code>, только именованные, <code>**kwargs</code>. Вот
+пример, где присутствуют все пять видов:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+
+<span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">e</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>1 2 () 3 4 {}
+1 2 (3, 4) 5 6 {&#x27;e&#x27;: 7}
+</code></pre>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Вид параметра</th>
+<th>Запись</th>
+<th>Как передать</th>
+<th>Что внутри</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>обычный</td>
+<td><code>a</code></td>
+<td>по месту или по имени</td>
+<td>значение</td>
+</tr>
+<tr>
+<td>только позиционный</td>
+<td><code>a, /</code></td>
+<td>только по месту</td>
+<td>значение</td>
+</tr>
+<tr>
+<td>только именованный</td>
+<td><code>*, c</code></td>
+<td>только по имени</td>
+<td>значение</td>
+</tr>
+<tr>
+<td>сбор позиционных</td>
+<td><code>*args</code></td>
+<td>по месту, сколько угодно</td>
+<td>кортеж</td>
+</tr>
+<tr>
+<td>сбор именованных</td>
+<td><code>**kwargs</code></td>
+<td>по имени, сколько угодно</td>
+<td>словарь</td>
+</tr>
+</tbody>
+</table>
+</div><p><figure class="figure"><img src="illustrations/ch-24-signature-map.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Порядок в <code>def</code> не случайность, а требование грамматики. Каждый вид отвечает
+за свой участок вызова, и Python проверяет вызов именно по этому порядку:
+сначала раздаёт значения обычным параметрам, затем складывает остаток в
+<code>*args</code>, потом ищет именованные параметры и только после этого наполняет
+<code>**kwargs</code>.</p>
+<h2 id="unpacking-arguments"><span class="h-number">24.7</span> Распаковка аргументов</h2>
+<p><strong>Распаковка аргументов</strong> — передача последовательности как набора
+позиционных аргументов (<code>*seq</code>) и словаря как набора именованных (<code>**mapping</code>).</p>
+<p>Здесь легко запутаться, потому что символ тот же, а направление обратное. В
+объявлении звёздочка собирает аргументы в кортеж или словарь; в вызове она их
+разбирает на отдельные аргументы:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">box</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span> <span class="o">*</span> <span class="n">depth</span>
+
+<span class="n">sizes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"depth"</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">box</span><span class="p">(</span><span class="o">*</span><span class="n">sizes</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">box</span><span class="p">(</span><span class="o">*</span><span class="n">sizes</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">box</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="s2">"height"</span><span class="p">:</span> <span class="mi">3</span><span class="p">}))</span>
+<span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">sizes</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>6
+30
+6
+2 3
+</code></pre>
+<p>В первом вызове список из двух элементов превратился в два позиционных
+аргумента. Во втором добавился словарь: ключ <code>depth</code> совпал с именем
+параметра. Третий вызов смешивает обычный аргумент и распаковку словаря.
+Последняя строка показывает, что распаковка работает с любой функцией:
+<code>print(*sizes)</code> напечатал два числа через пробел.</p>
+<p>Распаковка подчиняется тем же правилам, что и обычная передача, поэтому
+конфликты видны сразу:</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">box</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">box</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>TypeError: box() got multiple values for argument &#x27;width&#x27;
+</code></pre>
+<p>Один и тот же параметр получил значение дважды: сначала по месту, потом по
+имени. Второй типичный случай — нестроковые ключи в словаре:</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">box</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">box</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="mi">2</span><span class="p">}))</span>
+</code></pre></div>
+<pre class="output"><code>TypeError: keywords must be strings
+</code></pre>
+<p>Распаковка при вызове работает с любым итерируемым объектом, а не только со
+списком: подойдут кортеж, множество, генератор. Важно лишь, чтобы число
+элементов совпало с числом свободных позиционных параметров.</p>
+<h2 id="forwarding"><span class="h-number">24.8</span> Форвардинг: зачем это на практике</h2>
+<p>Самое частое применение сборных параметров — передать вызов дальше, не
+разбирая его на части. Так устроены обёртки, декораторы и функции-посредники:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">trace</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"вызов:"</span><span class="p">,</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"результат:"</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">trace</span><span class="p">(</span><span class="n">add</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">trace</span><span class="p">(</span><span class="n">add</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>вызов: add (2, 3) {}
+результат: 5
+5
+вызов: add () {&#x27;a&#x27;: 2, &#x27;b&#x27;: 3}
+результат: 5
+5
+</code></pre>
+<p>Обёртка не знает, как именно вызовут <code>add</code>: по месту или по имени. Она
+принимает любые аргументы и возвращает их функции в том же виде. В главе 22
+такой приём оформляют декоратором, а <code>functools.wraps</code> сохраняет у обёртки
+имя и строку документации исходной функции.</p>
+<p>У форвардинга есть тёмная сторона: он скрывает контракт. Функция вида
+<code>def handler(*args, **kwargs)</code> принимает любую опечатку в имени аргумента и
+не сообщает об ошибке. Если такая функция — часть публичного интерфейса,
+читатель не узнает из сигнатуры, что ей нужно передать. Поэтому общее правило
+простое: сборные параметры уместны в обёртках и в функциях с действительно
+переменным набором значений, а в прикладном коде лучше перечислить параметры
+явно.</p>
+<h2 id="stdlib-signatures"><span class="h-number">24.9</span> Сигнатуры в стандартной библиотеке</h2>
+<p>Маркеры и сборные параметры — не экзотика для учебных примеров. Функции
+стандартной библиотеки описаны так же, и их сигнатуру можно прочитать тем же
+<code>inspect.signature</code>:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="nb">print</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="nb">sorted</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>(*args, sep=&#x27; &#x27;, end=&#x27;\n&#x27;, file=None, flush=False)
+(iterable, /, *, key=None, reverse=False)
+[3, 2, 1]
+</code></pre>
+<p>Читаем первую строку: <code>print</code> принимает любое число позиционных аргументов
+(<code>*args</code>), а <code>sep</code>, <code>end</code>, <code>file</code> и <code>flush</code> доступны только по имени. Именно
+поэтому <code>print(&quot;a&quot;, &quot;b&quot;, sep=&quot;-&quot;)</code> работает, а <code>print(&quot;a&quot;, &quot;b&quot;, &quot;-&quot;)</code> просто
+напечатает три значения через пробел — третий аргумент попадёт в <code>*args</code>, а
+не в <code>sep</code>.</p>
+<p>Вторая строка показывает оба маркера сразу. <code>iterable</code> стоит до <code>/</code>, то есть
+передаётся только по месту. <code>key</code> и <code>reverse</code> стоят после <code>*</code>, то есть
+доступны только по имени: <code>sorted(data, my_key)</code> вызовет ошибку, а
+<code>sorted(data, key=my_key)</code> сработает. У этого решения есть причина: имена
+<code>key</code> и <code>reverse</code> читаются как часть смысла, а позиционный порядок легко
+перепутать.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Функция</th>
+<th>Что собирает</th>
+<th>Что только по имени</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>print</code></td>
+<td>все значения для печати</td>
+<td><code>sep</code>, <code>end</code>, <code>file</code>, <code>flush</code></td>
+</tr>
+<tr>
+<td><code>sorted</code></td>
+<td>итерируемое значение</td>
+<td><code>key</code>, <code>reverse</code></td>
+</tr>
+<tr>
+<td><code>max</code></td>
+<td>значения для сравнения</td>
+<td><code>key</code>, <code>default</code></td>
+</tr>
+</tbody>
+</table>
+</div><p>Такой стиль проектирования полезен и в своём коде: обязательные данные
+передаются по месту, настройки — по имени. Читатель сразу видит, что
+влияет на результат, а что лишь уточняет поведение.</p>
+<h2 id="mistakes"><span class="h-number">24.10</span> Типичные ошибки</h2>
+<ol>
+<li><strong>Считать, что внутри <code>*args</code> лежит список.</strong> Там кортеж: <code>numbers</code> нельзя
+дополнить методом <code>append</code>, зато можно распаковать и перебрать.</li>
+<li><strong>Путать сбор и распаковку.</strong> <code>def f(*args)</code> собирает аргументы, а <code>f(*seq)</code>
+разбирает последовательность. Один символ, два противоположных действия.</li>
+<li><strong>Оставлять <code>def f(*args, **kwargs)</code> в публичном API.</strong> Любая опечатка в
+имени проходит молча, а документация перестаёт быть обязательной.</li>
+<li><strong>Забывать про маркер <code>*</code>.</strong> После него позиционная передача запрещена, и
+вызов <code>f(10, &quot;руб.&quot;)</code> падает, хотя выглядит естественно.</li>
+<li><strong>Передавать в <code>**</code> словарь с нестроковыми ключами.</strong> Ключи обязаны быть
+строками, иначе <code>TypeError: keywords must be strings</code>.</li>
+<li><strong>Думать, что значение по умолчанию защищает от изменяемых объектов.</strong>
+Параметр по умолчанию вычисляется один раз при определении функции; эту
+ловушку мы разбирали в главе 18, и сборные параметры её не отменяют.</li>
+</ol>
+<h2 id="упражнения"><span class="h-number">24.11</span> Упражнения</h2>
+<h3 id="ex-ch24-01">1. Прогноз вывода</h3>
+<p>Не запуская код, определите, что напечатает программа, и объясните каждый
+результат:</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+<p>Запишите три строки вывода, затем проверьте себя запуском.</p>
+<h3 id="ex-ch24-02">2. Сборка строки с keyword-only параметром</h3>
+<p>Напишите функцию <code>join_words(*words, sep=&quot; &quot;)</code>, которая соединяет слова
+разделителем <code>sep</code> и возвращает одну строку. Вызов <code>join_words(&quot;a&quot;, &quot;b&quot;)</code>
+должен дать <code>a b</code>, а <code>join_words(&quot;a&quot;, &quot;b&quot;, sep=&quot;-&quot;)</code> — <code>a-b</code>. Объясните,
+почему <code>sep</code> нельзя передать позиционно.</p>
+<h3 id="ex-ch24-03">3. Исправление сигнатуры</h3>
+<p>Программа падает:</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">area</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">area</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</code></pre></div>
+<p>Объясните причину ошибки и предложите два исправления: одно через <code>*args</code>,
+другое через явный третий параметр со значением по умолчанию.</p>
+<h3 id="ex-ch24-04">4. Распаковка при вызове</h3>
+<p>Даны <code>coords = [2, 3]</code> и <code>opts = {&quot;depth&quot;: 5}</code>. Есть функция
+<code>box(width, height, depth=1)</code>, возвращающая произведение трёх аргументов.
+Вызовите её так, чтобы получить <code>30</code>, используя обе распаковки. Сколько
+вариантов вызова вы можете предложить?</p>
+<h3 id="ex-ch24-05">5. Сумма произвольного числа значений</h3>
+<p>Напишите функцию <code>sum_all(*numbers)</code>, возвращающую сумму всех аргументов.
+Проверьте четыре случая: без аргументов, одно значение, целые числа, числа
+с дробной частью. Объясните, что вернётся в каждом случае и почему.</p>
+<h3 id="ex-ch24-06">6. Смешанная сигнатура</h3>
+<p>Объявите функцию <code>describe(name, /, *tags, **meta)</code>, которая печатает имя,
+кортеж меток и словарь дополнительных сведений. Вызовите её так, чтобы имя
+было передано по месту, две метки — позиционно, а город — по имени. Какие
+вызовы этой функции невозможны?</p>
+<h3 id="ex-ch24-07">7. Анализ: чем плоха универсальная функция</h3>
+<p>Сравните две сигнатуры: <code>def send(*args, **kwargs)</code> и
+<code>def send(recipient, text, *, urgent=False)</code>. Для каждой ответьте, что
+произойдёт при вызове с опечаткой <code>urgentt=True</code>. Подтвердите ответ кодом.</p>
+<h3 id="ex-ch24-08">8. Только позиционный параметр</h3>
+<p>Напишите функцию <code>divide(dividend, divisor, /)</code>, возвращающую результат
+деления. Убедитесь, что вызов по имени невозможен, и объясните, зачем в
+библиотеках объявляют такие параметры.</p>
+<h3 id="ex-ch24-09">9. Мини-проект: сборка адреса</h3>
+<p>Напишите функцию <code>build_url(base, *segments, **query)</code>, которая соединяет
+базовый адрес и сегменты пути через <code>/</code>, а параметры запроса добавляет через
+<code>?</code> и <code>&amp;</code>. Вызов
+<code>build_url(&quot;https://example.com&quot;, &quot;api&quot;, &quot;users&quot;, page=1, limit=10)</code> должен
+дать <code>https://example.com/api/users?page=1&amp;limit=10</code>. Предусмотрите случай
+без параметров запроса.</p>
+<h3 id="ex-ch24-10">10. Форвардинг с отчётом</h3>
+<p>Напишите функцию <code>trace(func, *args, **kwargs)</code>, которая печатает имя
+функции, полученные аргументы, затем вызывает <code>func</code> с теми же аргументами
+и печатает результат. Проверьте её на функции умножения двух чисел при
+вызове по месту и по имени.</p>
+<h2 id="проверка-понимания"><span class="h-number">24.12</span> Проверка понимания</h2>
+<ol>
+<li>Чем параметр отличается от аргумента? Приведите пример объявления и
+пример вызова, где одно и то же слово играет разные роли.</li>
+<li>Какого типа значение получает параметр <code>*args</code> внутри функции? Почему это
+важно для изменений?</li>
+<li>Что делает маркер <code>/</code> в сигнатуре? А маркер <code>*</code> без имени параметра?</li>
+<li>В чём разница между <code>def f(*args)</code> и <code>f(*values)</code>? Направление действия
+какого символа меняется?</li>
+<li>Почему <code>f(**{1: 2})</code> завершается ошибкой ещё до выполнения тела функции?</li>
+<li>Когда универсальная сигнатура <code>*args, **kwargs</code> уместна, а когда вредит?</li>
+</ol>
+<h2 id="что-дальше"><span class="h-number">24.13</span> Что дальше</h2>
+<p>Сборные параметры и маркеры дают контроль над тем, как вызывают функцию. С
+этого места начинается переход к объектам: в следующей главе
+<a href="ch-25-objects-classes.html">«Объекты и классы»</a> вы увидите, что класс — это тоже
+способ описать контракт, только вместо списка параметров у него есть
+атрибуты и методы, а вызов класса создаёт значение нового типа.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-23-functional.html"><span class="pager-label">← Назад</span><span class="pager-title">Функциональные приёмы и включения</span></a><a class="pager-card next" rel="next" href="ch-25-objects-classes.html"><span class="pager-label">Далее:</span><span class="pager-title">Объекты и классы</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

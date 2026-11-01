@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Отладка и трассировка — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-11-debugging.html" aria-current="page">11. Отладка и трассировка</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-11-debugging.html#зачем-эта-глава">11.1. Зачем эта глава</a></li>
+<li><a href="ch-11-debugging.html#traceback">11.2. Трассировка: отчёт о цепочке вызовов</a></li>
+<li><a href="ch-11-debugging.html#frames">11.3. Что даёт трассировка при поиске дефекта</a></li>
+<li><a href="ch-11-debugging.html#print-debugging">11.4. Отладка через print</a></li>
+<li><a href="ch-11-debugging.html#logging">11.5. Логирование</a></li>
+<li><a href="ch-11-debugging.html#debugger">11.6. Отладчик и точки останова</a></li>
+<li><a href="ch-11-debugging.html#method">11.7. Систематический поиск дефекта</a></li>
+<li><a href="ch-11-debugging.html#ask-help">11.8. Как сообщить о проблеме, чтобы вам помогли</a></li>
+<li><a href="ch-11-debugging.html#mistakes">11.9. Типичные ошибки</a></li>
+<li><a href="ch-11-debugging.html#упражнения">11.10. Упражнения</a></li>
+<li><a href="ch-11-debugging.html#проверка-понимания">11.11. Проверка понимания</a></li>
+<li><a href="ch-11-debugging.html#что-дальше">11.12. Что дальше</a></li>
+</ol></details></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 2. Функции и структура программы</span><span class="sep">›</span><span>Глава 11</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Функции и структура программы · глава 11</p>
+<h1 id="отладка-и-трассировка">Отладка и трассировка</h1>
+<p class="chapter-summary">Чтение traceback, отладчик, логирование и систематический поиск дефектов.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#зачем-эта-глава"><span class="toc-number">11.1</span> Зачем эта глава</a></li>
+<li class="level-2"><a href="#traceback"><span class="toc-number">11.2</span> Трассировка: отчёт о цепочке вызовов</a></li>
+<li class="level-2"><a href="#frames"><span class="toc-number">11.3</span> Что даёт трассировка при поиске дефекта</a></li>
+<li class="level-2"><a href="#print-debugging"><span class="toc-number">11.4</span> Отладка через print</a></li>
+<li class="level-2"><a href="#logging"><span class="toc-number">11.5</span> Логирование</a></li>
+<li class="level-2"><a href="#debugger"><span class="toc-number">11.6</span> Отладчик и точки останова</a></li>
+<li class="level-2"><a href="#method"><span class="toc-number">11.7</span> Систематический поиск дефекта</a></li>
+<li class="level-2"><a href="#ask-help"><span class="toc-number">11.8</span> Как сообщить о проблеме, чтобы вам помогли</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">11.9</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">11.10</span> Упражнения</a></li>
+<li class="level-2"><a href="#проверка-понимания"><span class="toc-number">11.11</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#что-дальше"><span class="toc-number">11.12</span> Что дальше</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#ex-ch11-01">1. Порядок кадров</a></li>
+<li class="level-3"><a href="#ex-ch11-02">2. Чтение отчёта</a></li>
+<li class="level-3"><a href="#ex-ch11-03">3. Отладка через print</a></li>
+<li class="level-3"><a href="#ex-ch11-04">4. Уровни журнала</a></li>
+<li class="level-3"><a href="#ex-ch11-05">5. Выбор уровня</a></li>
+<li class="level-3"><a href="#ex-ch11-06">6. Команды отладчика</a></li>
+<li class="level-3"><a href="#ex-ch11-07">7. Минимальный пример</a></li>
+<li class="level-3"><a href="#ex-ch11-08">8. print или логирование</a></li>
+<li class="level-3"><a href="#ex-ch11-09">9. Дефект в цикле</a></li>
+<li class="level-3"><a href="#ex-ch11-10">10. Мини-задача: журнал перевода</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>Исключение — это честный сбой: программа сама сообщила, что не может
+продолжить. Хуже обстоит дело, когда программа работает без ошибок и
+выдаёт неверный результат. Интерпретатор молчит, исключений нет, а число
+на экране неправильное. Такой дефект нужно найти самому. В этой главе вы
+научитесь читать отчёт об ошибке, останавливать программу в нужном месте,
+записывать события в журнал и искать причину дефекта последовательно, а не
+перебором случайных правок.</p>
+<h2 id="зачем-эта-глава"><span class="h-number">11.1</span> Зачем эта глава</h2>
+<p>Отладка занимает у разработчика больше времени, чем написание кода.
+Причина проста: код пишется один раз по понятному плану, а дефект
+проявляется в неожиданном месте и при неожиданных данных. Пока вы
+действуете наугад — меняете строку, запускаете, смотрите, — время уходит
+на догадки.</p>
+<p>Инструменты отладки отвечают на конкретные вопросы. Трассировка
+показывает, где именно и при какой цепочке вызовов возник сбой. Отладчик
+позволяет остановить программу и посмотреть значения переменных в этот
+момент. Логирование рассказывает, что происходило до сбоя, даже если
+сбоя уже нет. Вместе они превращают поиск дефекта в проверяемую
+процедуру.</p>
+<p>После этой главы вы сможете:</p>
+<ul>
+<li>читать трассировку и находить в ней причину, а не только последнюю
+строку;</li>
+<li>использовать отладку через print осознанно и вовремя её убирать;</li>
+<li>настраивать логирование и выбирать уровень записи;</li>
+<li>ставить точку останова в отладчике и исследовать состояние программы;</li>
+<li>применять последовательный метод поиска дефекта вместо перебора
+правок.</li>
+</ul>
+<h2 id="traceback"><span class="h-number">11.2</span> Трассировка: отчёт о цепочке вызовов</h2>
+<p>Когда исключение никто не перехватил, интерпретатор печатает
+<strong>трассировку</strong> (traceback) — отчёт о месте и цепочке вызовов, которые
+привели к исключению. Это не текст «что-то пошло не так», а точная карта
+пути исполнения.</p>
+<p>Покажем типичную ситуацию: функция <code>ratio</code> делит на ноль, её вызвала
+функция <code>report</code>, а ту вызвал код верхнего уровня.</p>
+<pre class="text"><code>Traceback (most recent call last):
+  File &quot;report.py&quot;, line 10, in &lt;module&gt;
+    report(10, 0)
+  File &quot;report.py&quot;, line 7, in report
+    return f&quot;среднее: {ratio(total, count)}&quot;
+  File &quot;report.py&quot;, line 4, in ratio
+    return total / count
+ZeroDivisionError: division by zero
+</code></pre>
+<p>Читать отчёт нужно с двух концов. Последняя строка называет тип
+исключения и его сообщение: <code>ZeroDivisionError: division by zero</code>. Это
+ответ на вопрос «что случилось». Верхние строки называют кадры стека
+вызовов: сначала код модуля, затем <code>report</code>, затем <code>ratio</code>. Последний
+кадр перед сообщением — место сбоя: строка 4 в функции <code>ratio</code>.</p>
+<p>Слово <code>Traceback (most recent call last)</code> переводится буквально:
+«трассировка, последний вызов в конце». Поэтому история вызовов идёт
+сверху вниз от старого к новому, а причина сбоя — в самом низу.</p>
+<p><figure class="figure"><img src="illustrations/ch-11-traceback.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Тот же путь можно получить программно: у объекта исключения есть
+атрибут <code>__traceback__</code>, а модуль <code>traceback</code> умеет разбирать его на
+кадры.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">traceback</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">ratio</span><span class="p">(</span><span class="n">total</span><span class="p">,</span> <span class="n">count</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">total</span> <span class="o">/</span> <span class="n">count</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">report</span><span class="p">(</span><span class="n">total</span><span class="p">,</span> <span class="n">count</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"среднее: </span><span class="si">{</span><span class="n">ratio</span><span class="p">(</span><span class="n">total</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">report</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ZeroDivisionError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">traceback</span><span class="o">.</span><span class="n">extract_tb</span><span class="p">(</span><span class="n">error</span><span class="o">.</span><span class="n">__traceback__</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">"строка"</span><span class="p">,</span> <span class="n">frame</span><span class="o">.</span><span class="n">lineno</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">error</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="s2">"|"</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>&lt;module&gt; строка 10
+report строка 7
+ratio строка 4
+ZeroDivisionError | division by zero
+</code></pre>
+<p>Номера строк здесь считаются от начала примера. Порядок кадров совпадает
+с отчётом интерпретатора: <code>report</code> вызвала <code>ratio</code>, поэтому <code>ratio</code>
+оказалась последней.</p>
+<h2 id="frames"><span class="h-number">11.3</span> Что даёт трассировка при поиске дефекта</h2>
+<p>Первое, что даёт трассировка — точку, с которой начинать. Не нужно
+искать по всему файлу: интерпретатор назвал функцию и строку. Второе —
+цепочку вызовов: видно, какие аргументы пришли в проблемную функцию и кто
+их передал. Третье — тип исключения: он подсказывает категорию причины.</p>
+<p>Полезно задавать по отчёту три вопроса подряд.</p>
+<ul>
+<li>Где сбой? Последний кадр: функция и строка.</li>
+<li>Откуда пришли аргументы? Предыдущий кадр: что передали в функцию.</li>
+<li>Почему они такие? Ещё выше: кто сформировал значения.</li>
+</ul>
+<p>Часто дефект находится не там, где произошёл сбой, а на один-два кадра
+выше. Деление на ноль случилось в <code>ratio</code>, но причина — пустые аргументы,
+которые подготовила вызывающая функция. Поэтому трассировку читают
+целиком, а не только последнюю строку.</p>
+<p>Отчёт об ошибке ничего не говорит о том, что происходило до вызова.
+Если программа обработала тысячу записей и упала на последней, вам нужна
+история, а не снимок. Для истории служит логирование, о нём ниже.</p>
+<h2 id="print-debugging"><span class="h-number">11.4</span> Отладка через print</h2>
+<p>Самый быстрый способ узнать, что происходит, — напечатать промежуточные
+значения. Это <strong>отладка через print</strong>: временные <code>print</code> в местах, где
+поведение расходится с ожиданием.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">average</span><span class="p">(</span><span class="n">total</span><span class="p">,</span> <span class="n">count</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"total ="</span><span class="p">,</span> <span class="n">total</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"count ="</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">total</span> <span class="o">/</span> <span class="n">count</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"результат ="</span><span class="p">,</span> <span class="n">average</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>total = 10
+count = 4
+результат = 2.5
+</code></pre>
+<p>Приём рабочий, но у него есть правила. Подписывайте значения: <code>print(10)</code>
+бесполезен, <code>print(&quot;count =&quot;, count)</code> понятен. Печатайте на границах
+функции — вход и выход. Убирайте отладочные строки перед сдачей: забытый
+<code>print</code> засоряет вывод и иногда раскрывает внутренние значения, которые
+показывать нельзя.</p>
+<p>Главное ограничение: print показывает только то, что вы догадались
+напечатать. Если дефект в неожиданном месте, десять отладочных строк
+ничего не покажут. Для случаев, когда нужен обзор, есть отладчик и
+логирование.</p>
+<h2 id="logging"><span class="h-number">11.5</span> Логирование</h2>
+<p><strong>Логирование</strong> — запись событий программы в журнал с уровнями важности.
+В отличие от print, записи остаются в файле или потоке журнала, имеют
+время, источник и уровень, и их можно включать и выключать настройкой.</p>
+<p><strong>Уровень логирования</strong> — степень важности записи. Стандартные уровни
+идут по возрастанию: <code>DEBUG</code>, <code>INFO</code>, <code>WARNING</code>, <code>ERROR</code>, <code>CRITICAL</code>.
+Сообщения ниже установленного уровня отбрасываются, поэтому в рабочей
+среде журнал не забивается подробностями.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">stream</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+                    <span class="nb">format</span><span class="o">=</span><span class="s2">"</span><span class="si">%(levelname)s</span><span class="s2"> </span><span class="si">%(message)s</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">"подробность для разработчика"</span><span class="p">)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"запуск обработки"</span><span class="p">)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">"значение близко к границе"</span><span class="p">)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">"обработка не удалась"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>INFO запуск обработки
+WARNING значение близко к границе
+ERROR обработка не удалась
+</code></pre>
+<p>Запись уровня <code>DEBUG</code> не появилась: установленный уровень <code>INFO</code> её
+отбрасывает. Параметр <code>stream=sys.stdout</code> в примере нужен только для
+того, чтобы вывод попал в тот же поток, что и остальной вывод программы;
+по умолчанию журнал пишется в стандартный поток ошибок.</p>
+<p>Повысим порог — и журнал станет короче.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">stream</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span><span class="p">,</span>
+                    <span class="nb">format</span><span class="o">=</span><span class="s2">"</span><span class="si">%(levelname)s</span><span class="s2"> </span><span class="si">%(message)s</span><span class="s2">"</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">"это сообщение не появится"</span><span class="p">)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">"а это появится"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>ERROR а это появится
+</code></pre>
+<p>Здесь важен <code>force=True</code>: без него повторный <code>basicConfig</code> ничего не делает,
+если корневой журнал уже настроен, и уровень остался бы прежним. В отдельных
+запусках это незаметно, но в одном сеансе настройка не изменилась бы.</p>
+<p>Выбор уровня — проектное решение, а не вкусовщина. <code>DEBUG</code> — подробности
+для разработчика: значения переменных, ветви условий. <code>INFO</code> — значимые
+события: запуск, завершение, количество обработанных записей. <code>WARNING</code> —
+неожиданность, которую программа пережила. <code>ERROR</code> — операция не
+выполнена. <code>CRITICAL</code> — программа не может продолжать работу.</p>
+<p>Логируйте причину и контекст, а не только факт: <code>&quot;недостаточно средств: нужно 300, доступно 100&quot;</code> полезнее, чем <code>&quot;ошибка&quot;</code>. И никогда не
+записывайте в журнал пароли, токены и персональные данные: журнал живёт
+долго и читается многими.</p>
+<h2 id="debugger"><span class="h-number">11.6</span> Отладчик и точки останова</h2>
+<p><strong>Отладчик</strong> — инструмент пошагового исполнения с остановками и
+просмотром значений. <strong>Точка останова</strong> — место в коде, на котором
+отладчик приостанавливает исполнение. В Python отладчик входит в
+стандартную библиотеку: модуль <code>pdb</code>.</p>
+<p>Самый простой способ войти в отладчик — вызвать встроенную функцию
+<code>breakpoint()</code> в том месте, которое нужно исследовать. Запущенная
+программа остановится и покажет приглашение <code>(Pdb)</code>. В редакторах и
+средах разработки та же функция открывает графический отладчик, если он
+настроен.</p>
+<p>Основные команды <code>pdb</code> стоит знать наизусть:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Команда</th>
+<th>Смысл</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>n</code> (next)</td>
+<td>выполнить строку, не заходя внутрь вызовов</td>
+</tr>
+<tr>
+<td><code>s</code> (step)</td>
+<td>выполнить строку, заходя внутрь вызова</td>
+</tr>
+<tr>
+<td><code>c</code> (continue)</td>
+<td>продолжить до следующей точки останова</td>
+</tr>
+<tr>
+<td><code>p имя</code></td>
+<td>напечатать значение переменной</td>
+</tr>
+<tr>
+<td><code>pp имя</code></td>
+<td>напечатать значение подробно</td>
+</tr>
+<tr>
+<td><code>l</code> (list)</td>
+<td>показать окружающие строки кода</td>
+</tr>
+<tr>
+<td><code>b место</code></td>
+<td>поставить точку останова</td>
+</tr>
+<tr>
+<td><code>q</code> (quit)</td>
+<td>выйти из отладчика</td>
+</tr>
+</tbody>
+</table>
+</div><p>Сокращённый сеанс выглядит так (пути к файлу для читаемости укорочены):</p>
+<pre class="text"><code>$ python3 -m pdb report.py
+&gt; report.py(1)&lt;module&gt;()
+-&gt; def ratio(total, count):
+(Pdb) break report
+Breakpoint 1 at report.py:6
+(Pdb) continue
+&gt; report.py(6)report()
+-&gt; return f&quot;среднее: {ratio(total, count)}&quot;
+(Pdb) p total
+10
+(Pdb) s
+--Call--
+&gt; report.py(1)ratio()
+-&gt; def ratio(total, count):
+(Pdb) p count
+0
+(Pdb) s
+&gt; report.py(2)ratio()
+-&gt; return total / count
+(Pdb) n
+ZeroDivisionError: division by zero
+</code></pre>
+<p>Сеанс показывает главное преимущество отладчика: вы видите значения
+непосредственно перед сбоем. <code>total</code> равно 10, <code>count</code> равно 0 — причина
+найдена без правок кода и повторных запусков.</p>
+<p>Отладчик удобен, когда нужно исследовать состояние. Логирование удобно,
+когда состояние нужно сохранить на будущее. Отладка через print удобна,
+когда нужно проверить одну гипотезу за десять секунд. Опытный разработчик
+выбирает инструмент по задаче, а не по привычке.</p>
+<h2 id="method"><span class="h-number">11.7</span> Систематический поиск дефекта</h2>
+<p>Дефект — это расхождение между ожидаемым и фактическим поведением.
+Искать его лучше по процедуре, а не случайными правками.</p>
+<p><figure class="figure"><img src="illustrations/ch-11-debug-loop.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<ol>
+<li><strong>Воспроизведите.</strong> Добейтесь, чтобы дефект возникал по команде и
+всегда, а не «иногда». Запишите входные данные. Если воспроизвести не
+удаётся, у вас пока нет воспроизводимого дефекта — есть только гипотеза;
+сначала добейтесь воспроизведения, при необходимости создав особые
+условия: нагрузку, окружение, порядок событий.</li>
+<li><strong>Сузьте.</strong> Уберите всё лишнее: оставьте минимальный код и минимальные
+данные, при которых проблема сохраняется. Часто дефект исчезает при
+сужении — это тоже результат: вы нашли условие.</li>
+<li><strong>Сформулируйте гипотезу.</strong> «Функция получает <code>count = 0</code>, потому что
+фильтр отбросил все записи». Гипотеза должна быть проверяемой.</li>
+<li><strong>Проверьте.</strong> Напечатайте значение, поставьте точку останова,
+добавьте запись в журнал. Не меняйте код по интуиции.</li>
+<li><strong>Исправьте.</strong> Исправляйте причину, а не симптом. Если деление на ноль
+спрятано за проверкой <code>if count:</code>, подумайте, почему <code>count</code> стал нулём.</li>
+<li><strong>Закрепите.</strong> Повторите исходный сценарий и убедитесь, что дефект
+исчез, а остальное поведение не изменилось.</li>
+</ol>
+<p>Шаг проверки гипотезы — ключевой. Пока гипотеза не проверена, любая
+правка кода гадание. Полезно формулировать гипотезу как предсказание:
+«если причина в нулевом <code>count</code>, то <code>print(count)</code> перед делением покажет
+0». Предсказание либо сбывается, либо нет — и то и другое двигает поиск.</p>
+<h2 id="ask-help"><span class="h-number">11.8</span> Как сообщить о проблеме, чтобы вам помогли</h2>
+<p>Постановка вопроса — инженерный навык, а не формальность. Хороший вопрос
+экономит часы, плохой — дни. Минимальный набор сведений:</p>
+<ol>
+<li><strong>Что вы хотели сделать</strong> — цель, а не только шаг, на котором всё встало.</li>
+<li><strong>Что сделали</strong> — команда или код, минимально воспроизводящий проблему.</li>
+<li><strong>Что ожидали</strong> — конкретно: «должно вывести 850», а не «должно работать».</li>
+<li><strong>Что получили</strong> — полный текст ошибки и трассировка, а не «ошибка».</li>
+<li><strong>Окружение</strong> — версия Python (<code>python3 --version</code>), операционная система,
+версии библиотек (<code>uv run python -m pip freeze</code>), как запускали.</li>
+<li><strong>Что уже проверили</strong> — чтобы вам не советовали то же самое.</li>
+</ol>
+<p>Правило минимального примера: уберите из кода всё, что не нужно для
+воспроизведения. Часто уже на этом шаге ошибка становится очевидной — это
+главная причина, почему минимальный пример требуют на форумах.</p>
+<p>Что делает вопрос плохим: «не работает, помогите», скриншот вместо текста,
+несколько проблем в одном сообщении, отсутствие версии и кода. Что делает
+хорошим: воспроизводимый пример и точная формулировка ожидания.</p>
+<p>И ещё: перед вопросом проверьте, что вы читали сообщение до конца. В
+трассировке последняя строка — тип ошибки, а строки выше — место и цепочка
+вызовов; в большинстве случаев ответ там уже есть.</p>
+<h2 id="mistakes"><span class="h-number">11.9</span> Типичные ошибки</h2>
+<p><strong>Читать только последнюю строку.</strong> Тип и сообщение отвечают на вопрос
+«что», но не «где» и не «почему». Смотрите последний кадр и цепочку
+вызовов.</p>
+<p><strong>Менять код наугад.</strong> Правка «на всякий случай» иногда скрывает симптом
+и почти всегда добавляет новый дефект. Сначала гипотеза, потом правка.</p>
+<p><strong>Печатать без подписей.</strong> <code>print(count)</code> в большом выводе бесполезен.
+Печатайте имя и значение, а лучше используйте логирование с уровнями.</p>
+<p><strong>Оставлять отладку в коде.</strong> Забытые <code>print</code>, <code>breakpoint()</code> и
+подробные журналы попадают в рабочую версию. <code>breakpoint()</code> в
+неинтерактивном процессе может остановить программу и ждать ввода, которого
+не будет.</p>
+<p><strong>Логировать слишком поздно.</strong> Если журнал включается только после сбоя,
+в нём нет данных о том, что к сбою привело. Логирование настраивают
+заранее.</p>
+<p><strong>Логировать секреты.</strong> Пароль, токен или номер карты в журнале — это
+утечка, которая переживёт сам дефект. Маскируйте такие значения.</p>
+<p><strong>Игнорировать предупреждения.</strong> Строка <code>SyntaxWarning</code> или сообщение
+библиотеки часто указывает на будущую ошибку. Их разбирают, а не
+отключают.</p>
+<h2 id="упражнения"><span class="h-number">11.10</span> Упражнения</h2>
+<h3 id="ex-ch11-01">1. Порядок кадров</h3>
+<p>В программе три функции: <code>level_one</code> вызывает <code>level_two</code>, та вызывает
+<code>level_three</code>, в которой происходит деление на ноль. Перехватите
+исключение и напечатайте имена кадров из <code>traceback.extract_tb</code> в том
+порядке, в котором они идут. Объясните, совпадает ли этот порядок с
+текстом трассировки.</p>
+<h3 id="ex-ch11-02">2. Чтение отчёта</h3>
+<p>Дан отчёт об ошибке:</p>
+<pre class="text"><code>Traceback (most recent call last):
+  File &quot;stats.py&quot;, line 12, in &lt;module&gt;
+    print(ratio(10, 0))
+  File &quot;stats.py&quot;, line 5, in ratio
+    return total / count
+ZeroDivisionError: division by zero
+</code></pre>
+<p>Ответьте: в какой функции произошёл сбой, какая строка виновата, кто
+вызвал функцию и как исправить код, чтобы деление на ноль не завершало
+программу.</p>
+<h3 id="ex-ch11-03">3. Отладка через print</h3>
+<p>Функция <code>average(total, count)</code> иногда падает. Добавьте отладочные
+<code>print</code> так, чтобы по выводу было видно, какие значения пришли в функцию.
+Проверьте на двух вызовах: с нормальными данными и с <code>count = 0</code>.
+Объясните, почему после отладки строки нужно убрать.</p>
+<h3 id="ex-ch11-04">4. Уровни журнала</h3>
+<p>Настройте логирование с уровнем <code>WARNING</code> и запишите по одному сообщению
+каждого уровня: <code>DEBUG</code>, <code>INFO</code>, <code>WARNING</code>, <code>ERROR</code>. Какие строки
+появятся в выводе и почему? Проверьте ответ запуском.</p>
+<h3 id="ex-ch11-05">5. Выбор уровня</h3>
+<p>Для каждого события выберите уровень логирования и обоснуйте выбор:</p>
+<ol>
+<li>программа запустилась и прочитала настройки;</li>
+<li>значение из файла оказалось больше ожидаемого, но обработка
+продолжилась;</li>
+<li>платёж отклонён банком;</li>
+<li>недоступна база данных, без которой работа невозможна;</li>
+<li>промежуточная сумма на каждом шаге расчёта.</li>
+</ol>
+<h3 id="ex-ch11-06">6. Команды отладчика</h3>
+<p>Вы остановились в отладчике на строке, где переменная <code>amount</code> должна
+быть равна 300, но результат неверный. Запишите последовательность команд
+<code>pdb</code>, которая позволит: посмотреть значение <code>amount</code>, выполнить одну
+строку, не заходя в вызовы, и выйти из отладчика. Объясните разницу между
+<code>n</code> и <code>s</code>.</p>
+<h3 id="ex-ch11-07">7. Минимальный пример</h3>
+<p>Функция <code>final_price</code> из большого расчёта возвращает <code>-14000</code> вместо
+<code>850</code>. Опишите, как свести задачу к минимальному примеру, и напишите
+такой пример: только функция и два вызова. Найдите ошибку и исправьте её.</p>
+<h3 id="ex-ch11-08">8. print или логирование</h3>
+<p>Для двух ситуаций выберите инструмент и объясните выбор:</p>
+<ol>
+<li>нужно понять, почему функция вернула не то значение, прямо сейчас, на
+своей машине;</li>
+<li>нужно понять, почему обработка заказов раз в неделю завершается
+ошибкой на рабочем сервере.</li>
+</ol>
+<h3 id="ex-ch11-09">9. Дефект в цикле</h3>
+<p>Функция должна возвращать сумму чисел от 1 до <code>n</code> включительно, но
+возвращает меньше. Найдите дефект, исправьте его и объясните, какое
+отношение к нему имеет граница диапазона <code>range</code>.</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">sum_to</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">number</span>
+    <span class="k">return</span> <span class="n">total</span>
+</code></pre></div>
+<h3 id="ex-ch11-10">10. Мини-задача: журнал перевода</h3>
+<p>Напишите функцию <code>transfer(balance, amount)</code>, которая переводит деньги со
+счёта. Требования:</p>
+<ul>
+<li>при входе записывайте в журнал уровня <code>INFO</code> сумму перевода и остаток;</li>
+<li>если сумма больше остатка, записывайте <code>ERROR</code> с обоими значениями и
+возвращайте <code>None</code>;</li>
+<li>при успехе возвращайте новый остаток.</li>
+</ul>
+<p>Проверьте на успешном переводе и на переводе больше остатка. Настройте
+формат журнала так, чтобы были видны уровень и сообщение.</p>
+<h2 id="проверка-понимания"><span class="h-number">11.11</span> Проверка понимания</h2>
+<ol>
+<li>Что означает строка <code>Traceback (most recent call last)</code> и в каком
+порядке читать кадры?</li>
+<li>Почему причина дефекта часто находится выше места сбоя в трассировке?</li>
+<li>Чем отладка через print отличается от логирования по назначению и по
+срокам жизни информации?</li>
+<li>Зачем нужны уровни логирования и что происходит с сообщением ниже
+установленного уровня?</li>
+<li>Чем команда <code>n</code> отличается от <code>s</code> в отладчике?</li>
+<li>Почему нельзя оставлять <code>breakpoint()</code> в рабочем коде?</li>
+<li>Какой шаг поиска дефекта превращает догадку в проверяемую гипотезу?</li>
+</ol>
+<h2 id="что-дальше"><span class="h-number">11.12</span> Что дальше</h2>
+<p>Вы умеете замечать сбой, объяснять его и находить причину. До сих пор
+программы работали с отдельными значениями. Дальше начинается работа с
+наборами данных: коллекциями и последовательностями, где на первый план
+выходят порядок, индексы и длина. Об этом — в главе
+<a href="ch-12-collections-intro.html#collections">«Коллекции и последовательности: введение»</a>.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-10-errors-exceptions.html"><span class="pager-label">← Назад</span><span class="pager-title">Ошибки и исключения</span></a><a class="pager-card next" rel="next" href="ch-12-collections-intro.html"><span class="pager-label">Далее:</span><span class="pager-title">Коллекции и последовательности: введение</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

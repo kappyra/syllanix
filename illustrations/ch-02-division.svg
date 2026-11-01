@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 380" role="img"
+     aria-labelledby="ttl2 desc2" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl2">Целочисленное деление и остаток: 7 яблок по 2</title>
+  <desc id="desc2">Семь яблок раскладываются по две штуки в корзину. Получается три полных корзины и одно яблоко в остатке. Поэтому 7 // 2 равно 3, а 7 % 2 равно 1.</desc>
+
+  <text x="30" y="36" font-size="16" font-weight="bold" fill="#1d3550">7 яблок, по 2 в каждую корзину</text>
+
+  <!-- пары в корзинах -->
+  <g>
+    <rect x="34" y="66" width="120" height="96" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+    <circle cx="68" cy="100" r="15" fill="#f3c04a" stroke="#8a6a2f" stroke-width="1.5"/>
+    <circle cx="112" cy="100" r="15" fill="#f3c04a" stroke="#8a6a2f" stroke-width="1.5"/>
+    <text x="94" y="150" text-anchor="middle" font-size="13" fill="#33557a">корзина 1: 2</text>
+  </g>
+  <g>
+    <rect x="178" y="66" width="120" height="96" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+    <circle cx="212" cy="100" r="15" fill="#f3c04a" stroke="#8a6a2f" stroke-width="1.5"/>
+    <circle cx="256" cy="100" r="15" fill="#f3c04a" stroke="#8a6a2f" stroke-width="1.5"/>
+    <text x="238" y="150" text-anchor="middle" font-size="13" fill="#33557a">корзина 2: 2</text>
+  </g>
+  <g>
+    <rect x="322" y="66" width="120" height="96" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+    <circle cx="356" cy="100" r="15" fill="#f3c04a" stroke="#8a6a2f" stroke-width="1.5"/>
+    <circle cx="400" cy="100" r="15" fill="#f3c04a" stroke="#8a6a2f" stroke-width="1.5"/>
+    <text x="382" y="150" text-anchor="middle" font-size="13" fill="#33557a">корзина 3: 2</text>
+  </g>
+  <!-- остаток -->
+  <g>
+    <rect x="466" y="66" width="120" height="96" rx="10" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2" stroke-dasharray="7 5"/>
+    <circle cx="526" cy="100" r="15" fill="#f3c04a" stroke="#8a6a2f" stroke-width="1.5"/>
+    <text x="526" y="150" text-anchor="middle" font-size="13" fill="#4b3a16">остаток: 1</text>
+  </g>
+
+  <!-- пояснения -->
+  <line x1="34" y1="196" x2="586" y2="196" stroke="#c9c2b4" stroke-width="1.5"/>
+  <rect x="34" y="222" width="330" height="118" rx="10" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="52" y="252" font-size="15" font-weight="bold" fill="#1d3550">7 // 2 = 3</text>
+  <text x="52" y="278" font-size="14" fill="#1d3550">Сколько получилось полных</text>
+  <text x="52" y="298" font-size="14" fill="#1d3550">групп по 2? Ровно 3.</text>
+  <text x="52" y="324" font-size="13" fill="#33557a">оператор // — целочисленное деление</text>
+
+  <rect x="384" y="222" width="330" height="118" rx="10" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="402" y="252" font-size="15" font-weight="bold" fill="#1d3550">7 % 2 = 1</text>
+  <text x="402" y="278" font-size="14" fill="#1d3550">Что осталось после</text>
+  <text x="402" y="298" font-size="14" fill="#1d3550">раскладки по группам? 1.</text>
+  <text x="402" y="324" font-size="13" fill="#33557a">оператор % — остаток от деления</text>
+</svg>

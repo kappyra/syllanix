@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 460" role="img"
+     aria-labelledby="ttl22d desc22d" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl22d">Декоратор как обёртка вокруг функции</title>
+  <desc id="desc22d">До декорирования имя greet указывает на исходную функцию. После @announce имя greet указывает на обёртку wrapper, внутри которой вызывается исходная функция: до вызова добавляется печать, после — возврат результата. functools.wraps копирует в обёртку имя и документацию исходной функции.</desc>
+
+  <text x="32" y="34" font-size="17" font-weight="bold" fill="#1d3550">Декоратор: новое имя указывает на обёртку</text>
+
+  <!-- до -->
+  <text x="32" y="70" font-size="13" font-weight="bold" fill="#5a6b7d">до декорирования</text>
+  <rect x="32" y="82" width="196" height="72" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="130" y="112" text-anchor="middle" font-size="14" fill="#1d3550" font-family="'DejaVu Sans Mono', monospace">greet</text>
+  <text x="130" y="136" text-anchor="middle" font-size="11" fill="#33557a">имя → исходная функция</text>
+
+  <line x1="228" y1="118" x2="292" y2="118" stroke="#33557a" stroke-width="2"/>
+  <polygon points="292,118 281,112 281,124" fill="#33557a"/>
+  <text x="260" y="106" text-anchor="middle" font-size="11" fill="#33557a">@announce</text>
+
+  <!-- после -->
+  <text x="304" y="70" font-size="13" font-weight="bold" fill="#2f6b3f">после декорирования</text>
+  <rect x="304" y="82" width="424" height="300" rx="12" fill="#f1f8f2" stroke="#2f6b3f" stroke-width="2"/>
+  <text x="516" y="108" text-anchor="middle" font-size="13" font-weight="bold" fill="#2f6b3f">обёртка wrapper (на неё теперь указывает greet)</text>
+
+  <rect x="324" y="122" width="384" height="56" rx="8" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="340" y="146" font-size="12" font-weight="bold" fill="#1d3550">до вызова:</text>
+  <text x="340" y="166" font-size="11" fill="#33557a" font-family="'DejaVu Sans Mono', monospace">print("вызов", func.__name__)</text>
+
+  <rect x="324" y="192" width="384" height="64" rx="8" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="340" y="216" font-size="12" font-weight="bold" fill="#4b3a16">исходная функция</text>
+  <text x="340" y="238" font-size="11" fill="#6b5a34" font-family="'DejaVu Sans Mono', monospace">result = func(value)</text>
+
+  <rect x="324" y="270" width="384" height="56" rx="8" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="340" y="294" font-size="12" font-weight="bold" fill="#1d3550">после вызова:</text>
+  <text x="340" y="314" font-size="11" fill="#33557a" font-family="'DejaVu Sans Mono', monospace">return result</text>
+
+  <text x="324" y="356" font-size="12" fill="#2f6b3f">Исходная функция не изменилась — изменилось только имя greet.</text>
+
+  <!-- wraps -->
+  <rect x="32" y="182" width="196" height="120" rx="10" fill="#fdfaf4" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="130" y="206" text-anchor="middle" font-size="12" font-weight="bold" fill="#4b3a16">functools.wraps</text>
+  <text x="46" y="230" font-size="11" fill="#6b5a34">копирует в обёртку:</text>
+  <text x="46" y="252" font-size="11" fill="#4b3a16" font-family="'DejaVu Sans Mono', monospace">__name__</text>
+  <text x="46" y="272" font-size="11" fill="#4b3a16" font-family="'DejaVu Sans Mono', monospace">__doc__</text>
+  <text x="46" y="292" font-size="11" fill="#6b5a34">иначе отладка видит wrapper</text>
+
+  <text x="32" y="418" font-size="12" fill="#5a6b7d">Запись @announce перед определением — то же самое, что greet = announce(greet).</text>
+  <text x="32" y="438" font-size="12" fill="#5a6b7d">Несколько декораторов применяются снизу вверх: ближайший к функции — первым.</text>
+</svg>

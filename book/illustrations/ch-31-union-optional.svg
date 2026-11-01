@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 436" role="img"
+     aria-labelledby="t31un d31un" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="t31un">Объединение типов: одна переменная и три ветки обработки</title>
+  <desc id="d31un">Переменная value имеет тип int | str | None. Проверка isinstance(value, str) выделяет строковую ветку, isinstance(value, int) — числовую, а сравнение value is None — ветку отсутствия значения. Optional[str] — это то же объединение str | None, а не признак необязательного аргумента: необязательность задаёт значение по умолчанию. Пропущенная ветка остаётся потенциальной ошибкой.</desc>
+  <defs>
+    <marker id="arr31b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#33557a"/>
+    </marker>
+  </defs>
+
+  <text x="24" y="32" font-size="17" font-weight="bold" fill="#1d3550">Объединение типов: одна переменная, три ветки</text>
+
+  <rect x="200" y="54" width="380" height="64" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="390" y="80" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3550">value: int | str | None</text>
+  <text x="390" y="102" text-anchor="middle" font-size="13" fill="#33557a">одно значение — три допустимых типа</text>
+
+  <line x1="390" y1="118" x2="390" y2="140" stroke="#33557a" stroke-width="2"/>
+  <line x1="140" y1="140" x2="640" y2="140" stroke="#33557a" stroke-width="2"/>
+  <line x1="140" y1="140" x2="140" y2="162" stroke="#33557a" stroke-width="2" marker-end="url(#arr31b)"/>
+  <line x1="390" y1="140" x2="390" y2="162" stroke="#33557a" stroke-width="2" marker-end="url(#arr31b)"/>
+  <line x1="640" y1="140" x2="640" y2="162" stroke="#33557a" stroke-width="2" marker-end="url(#arr31b)"/>
+
+  <rect x="40" y="164" width="200" height="112" rx="10" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="140" y="190" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3550">строка</text>
+  <text x="56" y="214" font-size="12.5" fill="#1d3550">isinstance(value, str)</text>
+  <text x="56" y="236" font-size="12.5" fill="#1d3550">ветка: вернуть value</text>
+  <text x="56" y="258" font-size="12" fill="#33557a">тип сужен до str</text>
+
+  <rect x="290" y="164" width="200" height="112" rx="10" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="390" y="190" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3550">число</text>
+  <text x="306" y="214" font-size="12.5" fill="#1d3550">isinstance(value, int)</text>
+  <text x="306" y="236" font-size="12.5" fill="#1d3550">ветка: число в текст</text>
+  <text x="306" y="258" font-size="12" fill="#33557a">тип сужен до int</text>
+
+  <rect x="540" y="164" width="200" height="112" rx="10" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="640" y="190" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3550">отсутствие значения</text>
+  <text x="556" y="214" font-size="12.5" fill="#1d3550">value is None</text>
+  <text x="556" y="236" font-size="12.5" fill="#1d3550">ветка: вернуть «пусто»</text>
+  <text x="556" y="258" font-size="12" fill="#33557a">тип сужен до None</text>
+
+  <rect x="40" y="288" width="700" height="112" rx="10" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="58" y="314" font-size="14" font-weight="bold" fill="#4b3a16">Optional[str] — это str | None</text>
+  <text x="58" y="338" font-size="12.5" fill="#4b3a16">Optional не делает аргумент необязательным:</text>
+  <text x="58" y="358" font-size="12.5" fill="#4b3a16">необязательность задаёт значение по умолчанию = None.</text>
+  <text x="58" y="378" font-size="12.5" fill="#4b3a16">Optional говорит лишь о том, что самого значения может не быть,</text>
+  <text x="58" y="396" font-size="12.5" fill="#4b3a16">и требует явно обработать случай отсутствия.</text>
+
+  <text x="390" y="426" text-anchor="middle" font-size="12.5" fill="#33557a">Анализатор требует рассмотреть все ветки; пропущенная ветка — потенциальная ошибка</text>
+</svg>

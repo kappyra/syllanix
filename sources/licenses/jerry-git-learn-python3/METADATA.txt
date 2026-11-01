@@ -1,0 +1,6 @@
+source_url: https://github.com/jerry-git/learn-python3
+commit: 85e30d370ec20618ac27b802c4d35876d7031b67
+commit_date: 2023-04-25
+verified_at: 2026-11-01
+file: LICENSE sha256=8da0fed6e4687b02152f2180cf352bba0e972d87f9ca7fa3b3a52c7571d4c43f
+file: METADATA.txt sha256=5a1d56576e8c26e6bed7562dfb7c35382ae155184ebd677a3f868dd37784451d

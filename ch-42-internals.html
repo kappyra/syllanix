@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Внутреннее устройство Python — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><details class="chapter-current" open><summary>
+<a href="ch-42-internals.html" aria-current="page">42. Внутреннее устройство Python</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-42-internals.html#что-вы-сможете-после-этой-главы">42.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-42-internals.html#guarantees">42.2. Гарантия языка и деталь реализации</a></li>
+<li><a href="ch-42-internals.html#bytecode">42.3. От исходного кода к байткоду</a></li>
+<li><a href="ch-42-internals.html#interpreter-loop">42.4. Цикл интерпретатора</a></li>
+<li><a href="ch-42-internals.html#pyobject">42.5. PyObject: из чего состоит объект</a></li>
+<li><a href="ch-42-internals.html#refcounting">42.6. Подсчёт ссылок</a></li>
+<li><a href="ch-42-internals.html#garbage-collection">42.7. Сборка мусора</a></li>
+<li><a href="ch-42-internals.html#memory-management">42.8. Управление памятью</a></li>
+<li><a href="ch-42-internals.html#small-int-cache">42.9. Кэш малых целых</a></li>
+<li><a href="ch-42-internals.html#mistakes">42.10. Типичные ошибки</a></li>
+<li><a href="ch-42-internals.html#упражнения">42.11. Упражнения</a></li>
+<li><a href="ch-42-internals.html#check">42.12. Проверка понимания</a></li>
+<li><a href="ch-42-internals.html#links">42.13. Связи</a></li>
+</ol></details></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 8. Внутреннее устройство</span><span class="sep">›</span><span>Глава 42</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Внутреннее устройство · глава 42</p>
+<h1 id="внутреннее-устройство-python">Внутреннее устройство Python</h1>
+<p class="chapter-summary">Байткод, интерпретатор, сборка мусора, память и объектная модель CPython.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#что-вы-сможете-после-этой-главы"><span class="toc-number">42.1</span> Что вы сможете после этой главы</a></li>
+<li class="level-2"><a href="#guarantees"><span class="toc-number">42.2</span> Гарантия языка и деталь реализации</a></li>
+<li class="level-2"><a href="#bytecode"><span class="toc-number">42.3</span> От исходного кода к байткоду</a></li>
+<li class="level-2"><a href="#interpreter-loop"><span class="toc-number">42.4</span> Цикл интерпретатора</a></li>
+<li class="level-2"><a href="#pyobject"><span class="toc-number">42.5</span> PyObject: из чего состоит объект</a></li>
+<li class="level-2"><a href="#refcounting"><span class="toc-number">42.6</span> Подсчёт ссылок</a></li>
+<li class="level-2"><a href="#garbage-collection"><span class="toc-number">42.7</span> Сборка мусора</a></li>
+<li class="level-2"><a href="#memory-management"><span class="toc-number">42.8</span> Управление памятью</a></li>
+<li class="level-2"><a href="#small-int-cache"><span class="toc-number">42.9</span> Кэш малых целых</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">42.10</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">42.11</span> Упражнения</a></li>
+<li class="level-2"><a href="#check"><span class="toc-number">42.12</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#links"><span class="toc-number">42.13</span> Связи</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#углубление-адаптивная-специализация">Углубление: адаптивная специализация</a></li>
+<li class="level-3"><a href="#углубление-подсчёт-ссылок-не-гарантия-языка">Углубление: подсчёт ссылок — не гарантия языка</a></li>
+<li class="level-3"><a href="#углубление-почему-is-иногда-работает">Углубление: почему `is` иногда «работает»</a></li>
+<li class="level-3"><a href="#ex-ch42-01">1. Гарантия или деталь</a></li>
+<li class="level-3"><a href="#ex-ch42-02">2. Чтение байткода</a></li>
+<li class="level-3"><a href="#ex-ch42-03">3. Константные выражения</a></li>
+<li class="level-3"><a href="#ex-ch42-04">4. Размер объекта</a></li>
+<li class="level-3"><a href="#ex-ch42-05">5. Подсчёт ссылок</a></li>
+<li class="level-3"><a href="#ex-ch42-06">6. Цикл и сборщик</a></li>
+<li class="level-3"><a href="#ex-ch42-07">7. Кэш малых целых</a></li>
+<li class="level-3"><a href="#ex-ch42-08">8. Наблюдение за памятью</a></li>
+<li class="level-3"><a href="#ex-ch42-09">9. Утечка через кэш</a></li>
+<li class="level-3"><a href="#ex-ch42-10">10. Мини-задача: отчёт о памяти</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>Обычно Python воспринимают как чёрный ящик: пишем текст, запускаем, получаем
+результат. Пока всё работает, этого достаточно. Но стоит столкнуться с
+утечкой памяти, странным поведением <code>is</code> или медленным участком кода, как
+полезно заглянуть внутрь. Эта глава открывает коробку: вы увидите, как
+программа превращается в байткод, как исполняется, как устроены объекты и
+как освобождается память.</p>
+<p>Сразу важная оговорка, которая будет повторяться: <strong>Python — это язык, а
+CPython — его основная реализация</strong>. Часть того, что мы разберём, описывает
+сам язык и верно всегда. Другая часть — детали CPython, которые могут
+отличаться в другой реализации и даже в другой версии. Смешивать их —
+источник ложных выводов, поэтому мы будем размечать каждое утверждение.</p>
+<h2 id="что-вы-сможете-после-этой-главы"><span class="h-number">42.1</span> Что вы сможете после этой главы</h2>
+<ul>
+<li>отличать гарантии языка от деталей реализации CPython;</li>
+<li>читать байткод через <code>dis</code> и понимать, что он не обещает стабильности;</li>
+<li>объяснять, как устроен объект и почему переменная — это ссылка;</li>
+<li>понимать подсчёт ссылок, циклическую сборку мусора и их ограничения;</li>
+<li>объяснять, почему память не возвращается системе сразу, и что показывает
+<code>sys.getsizeof</code>;</li>
+<li>не полагаться на кэш малых целых и другие оптимизации там, где нужна
+переносимость.</li>
+</ul>
+<h2 id="guarantees"><span class="h-number">42.2</span> Гарантия языка и деталь реализации</h2>
+<p><strong>Гарантия языка</strong> — поведение, описанное в спецификации и обязательное для
+любой реализации Python. <strong>Деталь реализации</strong> — особенность конкретной
+реализации, которую можно наблюдать, но нельзя требовать: она меняется между
+версиями и не обязана повторяться в PyPy, GraalPy или другой реализации.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Вопрос</th>
+<th>Статус</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>порядок вычисления операндов слева направо</td>
+<td>гарантия языка</td>
+</tr>
+<tr>
+<td>что переменная — ссылка на объект</td>
+<td>гарантия языка</td>
+</tr>
+<tr>
+<td>что память освобождается сразу после удаления последней ссылки</td>
+<td>деталь CPython (подсчёт ссылок)</td>
+</tr>
+<tr>
+<td>что байткод такой, как в этой главе</td>
+<td>деталь CPython, меняется между версиями</td>
+</tr>
+<tr>
+<td>что <code>int</code> от −5 до 256 переиспользуются</td>
+<td>деталь CPython (кэш малых целых)</td>
+</tr>
+<tr>
+<td>что <code>sys.getsizeof</code> показывает размер памяти</td>
+<td>деталь CPython (и только часть правды)</td>
+</tr>
+<tr>
+<td>что циклы без внешних ссылок будут собраны сборщиком</td>
+<td>деталь CPython, время не гарантируется</td>
+</tr>
+<tr>
+<td>что <code>__del__</code> вызовется в известный момент</td>
+<td>не гарантируется</td>
+</tr>
+</tbody>
+</table>
+</div><p>Проверим гарантию порядка вычислений — она пригодится, чтобы отличать её от
+оптимизаций.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">first</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"первый"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">1</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">second</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"второй"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">first</span><span class="p">()</span> <span class="o">+</span> <span class="n">second</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>первый
+второй
+3
+</code></pre>
+<p>Операнды вычисляются слева направо, и это свойство языка, а не случайность
+CPython: на него можно опираться в любом коде. Дальше пойдут утверждения
+слабее: их можно наблюдать в CPython 3.14.4, но переносить на другие условия
+нельзя.</p>
+<h2 id="bytecode"><span class="h-number">42.3</span> От исходного кода к байткоду</h2>
+<p><strong>Байткод</strong> — внутреннее представление программы в виде последовательности
+простых инструкций для виртуальной машины CPython. Исходный текст не
+исполняется напрямую: сначала его разбирают, затем компилируют в байткод, и
+только потом исполняют.</p>
+<p><figure class="figure"><img src="illustrations/ch-42-bytecode-pipeline.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Блоки в <code>dis</code> показывают ровно эти шаги. Начнём с объектов кода: у каждого
+код-объекта есть имена, локальные переменные и константы.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">dis</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">greet</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="s2">"привет, "</span> <span class="o">+</span> <span class="n">name</span>
+    <span class="k">return</span> <span class="n">message</span>
+
+<span class="n">code</span> <span class="o">=</span> <span class="n">greet</span><span class="o">.</span><span class="vm">__code__</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"имена:"</span><span class="p">,</span> <span class="n">code</span><span class="o">.</span><span class="n">co_names</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"локальные:"</span><span class="p">,</span> <span class="n">code</span><span class="o">.</span><span class="n">co_varnames</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"константы:"</span><span class="p">,</span> <span class="n">code</span><span class="o">.</span><span class="n">co_consts</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"инструкции:"</span><span class="p">,</span> <span class="p">[</span><span class="n">instruction</span><span class="o">.</span><span class="n">opname</span> <span class="k">for</span> <span class="n">instruction</span> <span class="ow">in</span> <span class="n">dis</span><span class="o">.</span><span class="n">get_instructions</span><span class="p">(</span><span class="n">greet</span><span class="p">)])</span>
+</code></pre></div>
+<pre class="output"><code>имена: ()
+локальные: (&#x27;name&#x27;, &#x27;message&#x27;)
+константы: (&#x27;привет, &#x27;,)
+инструкции: [&#x27;RESUME&#x27;, &#x27;LOAD_CONST&#x27;, &#x27;LOAD_FAST_BORROW&#x27;, &#x27;BINARY_OP&#x27;, &#x27;STORE_FAST&#x27;, &#x27;LOAD_FAST_BORROW&#x27;, &#x27;RETURN_VALUE&#x27;]
+</code></pre>
+<p>Читать последовательность инструкций можно как рецепт для стека. <code>LOAD_CONST</code>
+кладёт значение на стек, <code>LOAD_FAST_BORROW</code> — локальную переменную,
+<code>BINARY_OP</code> снимает два значения и кладёт результат, <code>STORE_FAST</code> сохраняет в
+локальную переменную, <code>RETURN_VALUE</code> возвращает верхушку стека. Подробности
+имён меняются от версии к версии: в Python 3.12 здесь были бы <code>LOAD_FAST</code> и
+<code>BINARY_OP</code> иначе, а в 3.11 — ещё другие. Это и есть деталь реализации.</p>
+<p><strong>Модуль <code>dis</code></strong> — дизассемблер байткода из стандартной библиотеки. Он
+показывает инструкции, которые исполнит интерпретатор, и помогает понять, что
+на самом деле делает ваш код.</p>
+<pre class="text"><code>$ python3 -c &quot;import dis; dis.dis(&#x27;result = 1 + 2&#x27;)&quot;
+  0           RESUME                   0
+
+  1           LOAD_SMALL_INT           3
+              STORE_NAME               0 (result)
+              LOAD_CONST               1 (None)
+              RETURN_VALUE
+</code></pre>
+<p>Обратите внимание: сложение <code>1 + 2</code> исчезло ещё на этапе компиляции. Компилятор
+вычислил константное выражение и оставил только загрузку результата. Такая
+оптимизация допустима, потому что на результат она не влияет, — ещё один
+пример того, что байткод свободен меняться, пока выполняется обещанное
+поведение. Проверить это можно и программно: сравните инструкции для
+<code>x = 2 * 3</code> и для <code>x = a * b</code>.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">dis</span>
+
+<span class="n">folded</span> <span class="o">=</span> <span class="nb">compile</span><span class="p">(</span><span class="s2">"x = 2 * 3"</span><span class="p">,</span> <span class="s2">"&lt;пример&gt;"</span><span class="p">,</span> <span class="s2">"exec"</span><span class="p">)</span>
+<span class="n">dynamic</span> <span class="o">=</span> <span class="nb">compile</span><span class="p">(</span><span class="s2">"x = a * b"</span><span class="p">,</span> <span class="s2">"&lt;пример&gt;"</span><span class="p">,</span> <span class="s2">"exec"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"2 * 3:"</span><span class="p">,</span> <span class="p">[</span><span class="n">instruction</span><span class="o">.</span><span class="n">opname</span> <span class="k">for</span> <span class="n">instruction</span> <span class="ow">in</span> <span class="n">dis</span><span class="o">.</span><span class="n">get_instructions</span><span class="p">(</span><span class="n">folded</span><span class="p">)])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"a * b:"</span><span class="p">,</span> <span class="p">[</span><span class="n">instruction</span><span class="o">.</span><span class="n">opname</span> <span class="k">for</span> <span class="n">instruction</span> <span class="ow">in</span> <span class="n">dis</span><span class="o">.</span><span class="n">get_instructions</span><span class="p">(</span><span class="n">dynamic</span><span class="p">)])</span>
+</code></pre></div>
+<pre class="output"><code>2 * 3: [&#x27;RESUME&#x27;, &#x27;LOAD_SMALL_INT&#x27;, &#x27;STORE_NAME&#x27;, &#x27;LOAD_CONST&#x27;, &#x27;RETURN_VALUE&#x27;]
+a * b: [&#x27;RESUME&#x27;, &#x27;LOAD_NAME&#x27;, &#x27;LOAD_NAME&#x27;, &#x27;BINARY_OP&#x27;, &#x27;STORE_NAME&#x27;, &#x27;LOAD_CONST&#x27;, &#x27;RETURN_VALUE&#x27;]
+</code></pre>
+<p>В первом случае нет ни загрузки двух операндов, ни операции умножения: остался
+один загрузчик готового числа. Во втором случае видны <code>LOAD_NAME</code> и
+<code>BINARY_OP</code>: значения известны только во время исполнения.</p>
+<h2 id="interpreter-loop"><span class="h-number">42.4</span> Цикл интерпретатора</h2>
+<p><strong>Цикл интерпретатора</strong> — главный цикл CPython, который берёт очередную
+инструкцию байткода, выполняет её и переходит к следующей. Он устроен как
+большой выбор по коду операции; в исходниках CPython это функция <code>_PyEval_EvalFrameDefault</code>
+в файле <code>ceval.c</code>. Каждая инструкция работает со стеком значений: загружает,
+складывает, вызывает, сохраняет.</p>
+<p>Стек объясняет, почему байткод выглядит именно так. Для <code>a + b</code> нужно сначала
+положить на стек <code>a</code>, затем <code>b</code>, затем выполнить сложение, которое снимет оба
+значения и положит результат. Инструкции не знают имён переменных — они знают
+индексы в таблице локальных имён, поэтому <code>co_varnames</code> и индексы в байткоде
+связаны.</p>
+<h3 id="углубление-адаптивная-специализация">Углубление: адаптивная специализация</h3>
+<p>Начиная с Python 3.11 цикл интерпретатора адаптивный: горячие инструкции
+заменяются специализированными вариантами под конкретные типы данных. Пока
+функция не прогрета, <code>dis</code> показывает базовые инструкции. После многих вызовов
+с одинаковыми типами интерпретатор подставляет вариант, который не проверяет
+типы заново, а если предположение нарушается — возвращается к общей версии.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">dis</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20_000</span><span class="p">):</span>
+    <span class="n">add</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="n">number</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"базовый вариант:"</span><span class="p">,</span> <span class="p">[</span><span class="n">instruction</span><span class="o">.</span><span class="n">opname</span> <span class="k">for</span> <span class="n">instruction</span> <span class="ow">in</span> <span class="n">dis</span><span class="o">.</span><span class="n">get_instructions</span><span class="p">(</span><span class="n">add</span><span class="p">)])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"адаптивный вариант:"</span><span class="p">,</span> <span class="p">[</span><span class="n">instruction</span><span class="o">.</span><span class="n">opname</span> <span class="k">for</span> <span class="n">instruction</span> <span class="ow">in</span> <span class="n">dis</span><span class="o">.</span><span class="n">get_instructions</span><span class="p">(</span><span class="n">add</span><span class="p">,</span> <span class="n">adaptive</span><span class="o">=</span><span class="kc">True</span><span class="p">)])</span>
+</code></pre></div>
+<pre class="output"><code>базовый вариант: [&#x27;RESUME&#x27;, &#x27;LOAD_FAST_BORROW_LOAD_FAST_BORROW&#x27;, &#x27;BINARY_OP&#x27;, &#x27;RETURN_VALUE&#x27;]
+адаптивный вариант: [&#x27;RESUME_CHECK&#x27;, &#x27;LOAD_FAST_BORROW_LOAD_FAST_BORROW&#x27;, &#x27;BINARY_OP_ADD_INT&#x27;, &#x27;RETURN_VALUE&#x27;]
+</code></pre>
+<p>В адаптивном варианте <code>BINARY_OP</code> стала <code>BINARY_OP_ADD_INT</code>, а <code>RESUME</code> —
+<code>RESUME_CHECK</code>: интерпретатор уже знает, что складываются целые числа, и
+проверяет это быстрее. Ускорение достигается не изменением языка, а
+перестройкой инструкций под наблюдаемое поведение. Имена таких инструкций —
+самая изменчивая часть байткода, поэтому в учебных целях их читают, но в коде
+на них не опираются.</p>
+<p>Из устройства цикла следуют практические выводы. Каждая инструкция — это
+небольшая работа интерпретатора, поэтому длинные цепочки простых операций
+дороже, чем одна встроенная функция, написанная на C. Именно поэтому встроенные
+<code>sum</code>, <code>min</code>, <code>sorted</code> обычно быстрее ручных циклов: работа выполняется в C, без
+накладных расходов на каждую инструкцию.</p>
+<h2 id="pyobject"><span class="h-number">42.5</span> PyObject: из чего состоит объект</h2>
+<p><strong>PyObject</strong> — базовая структура C, с которой начинается любой объект CPython.
+В ней два обязательных поля: счётчик ссылок и указатель на тип. Конкретные
+значения — число, строка, список — хранятся в структуре-расширении, которая
+начинается с <code>PyObject</code>.</p>
+<p><figure class="figure"><img src="illustrations/ch-42-pyobject.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Отсюда два следствия, которые важны каждый день.</p>
+<ol>
+<li><strong>У каждого объекта есть тип, и он не меняется.</strong> Тип хранится в самом
+объекте, поэтому <code>type(x)</code> работает для любого значения и не зависит от
+того, в какой переменной оно лежит. Это гарантия языка, хотя конкретное
+расположение поля — деталь CPython.</li>
+<li><strong>Переменная — это имя, связанное со ссылкой на объект</strong>, а не «коробка» со
+значением. Присваивание копирует ссылку, а не объект (глава 18). Именно
+поэтому два имени видят изменения одного списка.</li>
+</ol>
+<p>Размер объекта можно посмотреть функцией <code>sys.getsizeof</code>. Она возвращает
+размер самого объекта в байтах, без объектов, на которые он ссылается.
+Конкретные числа — деталь CPython, но соотношения полезны.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"int 0:"</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">getsizeof</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"float:"</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">getsizeof</span><span class="p">(</span><span class="mf">1.0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"str пустая:"</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">getsizeof</span><span class="p">(</span><span class="s2">""</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"str 10 символов:"</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">getsizeof</span><span class="p">(</span><span class="s2">"0123456789"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"tuple пустой:"</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">getsizeof</span><span class="p">(()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"list пустой:"</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">getsizeof</span><span class="p">([]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"dict пустой:"</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">getsizeof</span><span class="p">({}))</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1000</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"list из 1000 элементов:"</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">getsizeof</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"элементы не учтены:"</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">getsizeof</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">sum</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">getsizeof</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>int 0: 28
+float: 24
+str пустая: 41
+str 10 символов: 51
+tuple пустой: 48
+list пустой: 56
+dict пустой: 64
+list из 1000 элементов: 8056
+элементы не учтены: True
+</code></pre>
+<p>Последняя строка важна: <code>getsizeof</code> списка считает только массив ссылок, а не
+тысячу объектов, на которые он указывает. Для оценки реального потребления
+памяти такой подсчёт нужно дополнять обходом структуры или <code>tracemalloc</code>.</p>
+<h2 id="refcounting"><span class="h-number">42.6</span> Подсчёт ссылок</h2>
+<p><strong>Подсчёт ссылок</strong> — стратегия управления памятью: каждый объект хранит число
+ссылок на себя, и когда оно достигает нуля, память освобождается немедленно.
+В CPython это основная стратегия. <code>sys.getrefcount</code> показывает текущее число
+ссылок; переданный аргумент добавляет одну временную ссылку, поэтому
+абсолютное число зависит от контекста. Надёжнее смотреть на изменения.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">demo</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+    <span class="n">base</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">getrefcount</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="n">data</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"прибавка ссылок:"</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">getrefcount</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="n">base</span><span class="p">)</span>
+    <span class="k">del</span> <span class="n">alias</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"после del:"</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">getrefcount</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">==</span> <span class="n">base</span><span class="p">)</span>
+
+<span class="n">demo</span><span class="p">()</span>
+</code></pre></div>
+<pre class="output"><code>прибавка ссылок: 1
+после del: True
+</code></pre>
+<p>Здесь видны обе стороны механизма: новая ссылка увеличивает счётчик, удаление
+имени уменьшает его. Когда счётчик становится нулём, объект освобождается
+сразу — это и есть причина, по которой в CPython файл закрывается, как только
+на объект не осталось ссылок, без ожидания сборщика.</p>
+<p>Но у подсчёта ссылок есть слабое место — циклы. Объект, который ссылается сам
+на себя, никогда не получит ноль ссылок, даже если извне на него никто не
+указывает. Для таких случаев нужен <strong>сборщик мусора</strong>.</p>
+<h3 id="углубление-подсчёт-ссылок-не-гарантия-языка">Углубление: подсчёт ссылок — не гарантия языка</h3>
+<p>В PyPy и многих других реализациях подсчёта ссылок нет: память освобождает
+сборщик мусора, и объект может жить после удаления последней ссылки. Поэтому
+код, который полагается на немедленное освобождение (например, на закрытие
+файла «само собой»), переносится плохо. Правильный способ освобождать
+ресурсы — контекстный менеджер <code>with</code> из главы 19, а не надежда на счётчик.</p>
+<h2 id="garbage-collection"><span class="h-number">42.7</span> Сборка мусора</h2>
+<p><strong>Сборка мусора</strong> — поиск и освобождение объектов, которые недостижимы из
+корней программы, но не освобождены подсчётом ссылок. В CPython сборщик
+занимается прежде всего циклами: он находит группы объектов, ссылающихся друг
+на друга, и освобождает те, до которых нельзя добраться снаружи.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">gc</span><span class="o">,</span><span class="w"> </span><span class="nn">weakref</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Node</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+<span class="n">cyclic</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="s2">"цикл"</span><span class="p">)</span>
+<span class="n">cyclic</span><span class="o">.</span><span class="n">peer</span> <span class="o">=</span> <span class="n">cyclic</span>
+<span class="n">cyclic_ref</span> <span class="o">=</span> <span class="n">weakref</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="n">cyclic</span><span class="p">)</span>
+<span class="k">del</span> <span class="n">cyclic</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"циклический жив после del:"</span><span class="p">,</span> <span class="n">cyclic_ref</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"после gc.collect:"</span><span class="p">,</span> <span class="n">cyclic_ref</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
+
+<span class="n">plain</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="s2">"обычный"</span><span class="p">)</span>
+<span class="n">plain_ref</span> <span class="o">=</span> <span class="n">weakref</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="n">plain</span><span class="p">)</span>
+<span class="k">del</span> <span class="n">plain</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"обычный жив после del:"</span><span class="p">,</span> <span class="n">plain_ref</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>циклический жив после del: True
+после gc.collect: False
+обычный жив после del: False
+</code></pre>
+<p>Разница наглядна. Обычный объект освободился сразу: счётчик ссылок дошёл до
+нуля. Циклический остался жить, потому что ссылка внутри самого цикла
+поддерживает счётчик, и только явный вызов сборщика освободил его.
+<code>weakref</code> здесь — слабая ссылка, которая не увеличивает счётчик и позволяет
+проверить, жив ли объект.</p>
+<p>Сборщик в CPython поколенческий: объекты переживают несколько проходов, и
+молодые проверяются чаще. Порог срабатывания настраивается и по умолчанию в
+CPython 3.14 равен <code>(2000, 10, 0)</code> — это деталь реализации, её не нужно
+запоминать как свойство языка. Время сборки тоже не гарантируется: объект
+может быть освобождён при следующем проходе, а может — только при явном
+<code>gc.collect()</code>.</p>
+<h2 id="memory-management"><span class="h-number">42.8</span> Управление памятью</h2>
+<p><strong>Управление памятью</strong> — то, как интерпретатор выделяет память под объекты и
+возвращает её. В CPython есть собственный распределитель для мелких объектов:
+память берётся у системы крупными блоками (аренами) и нарезается на мелкие
+куски. Благодаря этому создание множества небольших объектов дешевле, чем
+обращение к системе за каждым из них.</p>
+<p>Практические следствия:</p>
+<ol>
+<li><strong>Освобождённая память не всегда возвращается системе.</strong> Она остаётся в
+аренах и переиспользуется. Поэтому «процесс занимает много памяти» не
+обязательно означает утечку: он мог один раз обработать большой объём
+данных и сохранить арены.</li>
+<li><strong>Пик памяти важнее среднего.</strong> Если программа на пике держит в памяти
+большой список, а потом освобождает, процесс может остаться большим.</li>
+<li><strong>Утечки бывают логическими.</strong> Объект остаётся достижимым через глобальный
+кэш или список — сборщик его не тронет, потому что формально он нужен.</li>
+</ol>
+<p>Для наблюдения за памятью полезна функция <code>tracemalloc</code>: она записывает
+выделения и показывает текущий и пиковый объём.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">tracemalloc</span>
+
+<span class="n">tracemalloc</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="nb">bytes</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="n">current</span><span class="p">,</span> <span class="n">peak</span> <span class="o">=</span> <span class="n">tracemalloc</span><span class="o">.</span><span class="n">get_traced_memory</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"текущий размер больше нуля:"</span><span class="p">,</span> <span class="n">current</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"пик не меньше текущего:"</span><span class="p">,</span> <span class="n">peak</span> <span class="o">&gt;=</span> <span class="n">current</span><span class="p">)</span>
+<span class="n">tracemalloc</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</code></pre></div>
+<pre class="output"><code>текущий размер больше нуля: True
+пик не меньше текущего: True
+</code></pre>
+<h2 id="small-int-cache"><span class="h-number">42.9</span> Кэш малых целых</h2>
+<p><strong>Кэш малых целых</strong> — оптимизация CPython: объекты <code>int</code> в диапазоне от −5 до
+256 создаются заранее и переиспользуются. Поэтому два независимо полученных
+числа из этого диапазона могут оказаться одним и тем же объектом.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">a</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s2">"256"</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s2">"256"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"256:"</span><span class="p">,</span> <span class="n">a</span> <span class="ow">is</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s2">"257"</span><span class="p">)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s2">"257"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"257:"</span><span class="p">,</span> <span class="n">c</span> <span class="ow">is</span> <span class="n">d</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"граница снизу:"</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="s2">"-5"</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">int</span><span class="p">(</span><span class="s2">"-5"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"за границей снизу:"</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="s2">"-6"</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">int</span><span class="p">(</span><span class="s2">"-6"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>256: True
+257: False
+граница снизу: True
+за границей снизу: False
+</code></pre>
+<p>Это деталь CPython, а не гарантия языка. Использовать <code>is</code> для сравнения чисел
+нельзя: результат зависит от реализации и версии. Для значений есть <code>==</code>,
+для проверки одного и того же объекта — <code>is</code>, и эти операторы отвечают на
+разные вопросы (глава 3). Кэш существует ради скорости: небольшие числа
+встречаются в программах постоянно, и переиспользование экономит выделения.</p>
+<h3 id="углубление-почему-is-иногда-работает">Углубление: почему <code>is</code> иногда «работает»</h3>
+<p>В интерактивной сессии <code>a = 1000; b = 1000; a is b</code> может дать <code>True</code>, потому
+что компилятор сложил одинаковые константы в один объект в код-объекте. Это
+тоже следствие конкретной реализации конкретной версии. Правило остаётся
+одним: <code>is</code> проверяет идентичность объектов, а не равенство значений, и
+опираться на него для чисел, строк и кортежей нельзя.</p>
+<h2 id="mistakes"><span class="h-number">42.10</span> Типичные ошибки</h2>
+<ol>
+<li><strong>Полагаться на <code>is</code> для значений.</strong> Кэш малых целых и интернирование строк
+делают результат непредсказуемым между версиями.</li>
+<li><strong>Ждать немедленного освобождения памяти.</strong> В другой реализации объект
+живёт дольше; освобождайте ресурсы через <code>with</code> и <code>finally</code>.</li>
+<li><strong>Считать <code>sys.getsizeof</code> полным размером структуры.</strong> Он не учитывает
+объекты, на которые ссылается контейнер.</li>
+<li><strong>Принимать «процесс занимает много памяти» за утечку.</strong> Арены остаются
+выделенными; измеряйте <code>tracemalloc</code> и пики.</li>
+<li><strong>Верить, что байткод стабилен.</strong> Он меняется между версиями; код,
+зависящий от конкретных инструкций, ломается при обновлении Python.</li>
+<li><strong>Держать большие данные в глобальном кэше.</strong> Сборщик не освободит то, что
+достижимо; кэш без ограничения размера — это утечка.</li>
+<li><strong>Считать сборку мусора гарантией времени.</strong> Момент освобождения цикла не
+определён; не полагайтесь на него в логике.</li>
+</ol>
+<h2 id="упражнения"><span class="h-number">42.11</span> Упражнения</h2>
+<h3 id="ex-ch42-01">1. Гарантия или деталь</h3>
+<p>Для каждого утверждения укажите, гарантия это языка или деталь CPython:
+«операнды вычисляются слева направо», «удаление последней ссылки освобождает
+память немедленно», «<code>int</code> от −5 до 256 переиспользуются», «переменная хранит
+ссылку на объект», «байткод состоит из инструкций <code>LOAD_FAST</code>». Объясните
+каждое решение.</p>
+<h3 id="ex-ch42-02">2. Чтение байткода</h3>
+<p>Скомпилируйте функцию, которая возвращает <code>a + b</code>, и выведите список имён
+инструкций через <code>dis.get_instructions</code>. Объясните, что делает каждая
+инструкция со стеком. Сравните с функцией, которая вызывает <code>print(a + b)</code>.</p>
+<h3 id="ex-ch42-03">3. Константные выражения</h3>
+<p>Сравните инструкции для <code>x = 2 * 3</code> и <code>x = a * b</code>. Почему в первом случае нет
+умножения? Что это говорит о свободе реализации менять байткод?</p>
+<h3 id="ex-ch42-04">4. Размер объекта</h3>
+<p>Напишите функцию, которая печатает <code>sys.getsizeof</code> для пустых <code>int</code>, <code>str</code>,
+<code>list</code>, <code>dict</code> и для списка из 1000 нулей. Объясните, почему размер списка из
+1000 элементов не равен тысяче размеров элемента.</p>
+<h3 id="ex-ch42-05">5. Подсчёт ссылок</h3>
+<p>Создайте список, измерьте число ссылок через <code>sys.getrefcount</code>, добавьте
+второе имя и измерьте снова. Объясните разницу значений. Почему абсолютное
+число зависит от контекста вызова?</p>
+<h3 id="ex-ch42-06">6. Цикл и сборщик</h3>
+<p>Создайте класс, экземпляр которого ссылается сам на себя. С помощью <code>weakref</code>
+проверьте, что после <code>del</code> объект остаётся живым, а после <code>gc.collect()</code>
+освобождается. Объясните, почему подсчёт ссылок не справился.</p>
+<h3 id="ex-ch42-07">7. Кэш малых целых</h3>
+<p>Проверьте через <code>is</code>, переиспользуются ли числа 256 и 257, полученные как
+<code>int(&quot;256&quot;)</code> и <code>int(&quot;257&quot;)</code>. Объясните результат и сформулируйте правило,
+когда <code>is</code> уместен.</p>
+<h3 id="ex-ch42-08">8. Наблюдение за памятью</h3>
+<p>Запустите <code>tracemalloc</code>, создайте список из 100 объектов <code>bytes(1000)</code>,
+выведите текущий и пиковый объём. Объясните, почему текущий объём меньше
+пикового или равен ему, и почему после <code>tracemalloc.stop()</code> измерения
+прекращаются.</p>
+<h3 id="ex-ch42-09">9. Утечка через кэш</h3>
+<p>Функция складывает результаты в глобальный словарь и никогда их не удаляет.
+Объясните, почему сборщик мусора не решит проблему, и предложите два
+ограничения: по размеру кэша и по времени жизни записей.</p>
+<h3 id="ex-ch42-10">10. Мини-задача: отчёт о памяти</h3>
+<p>Напишите функцию <code>memory_report(objects)</code>, которая для каждого объекта
+выводит его тип и <code>sys.getsizeof</code>, а затем общий размер контейнера и сумму
+размеров элементов. Объясните расхождение между этими числами на примере
+списка строк.</p>
+<h2 id="check"><span class="h-number">42.12</span> Проверка понимания</h2>
+<ol>
+<li>Чем гарантия языка отличается от детали реализации? Приведите два примера
+каждого.</li>
+<li>Зачем нужен байткод, если есть исходный код?</li>
+<li>Что делает цикл интерпретатора и почему встроенные функции часто быстрее
+циклов на Python?</li>
+<li>Из каких полей начинается любой объект CPython и что это объясняет?</li>
+<li>Почему подсчёт ссылок не освобождает циклические структуры?</li>
+<li>Что делает сборщик мусора и почему время сборки не гарантируется?</li>
+<li>Почему <code>sys.getsizeof</code> списка не равен сумме размеров его элементов?</li>
+<li>Почему <code>is</code> нельзя использовать для сравнения чисел?</li>
+</ol>
+<h2 id="links"><span class="h-number">42.13</span> Связи</h2>
+<p>Глава опирается на объектную модель из глав 3 и 18: переменная — ссылка,
+объект — значение с типом. Модель данных из главы 28 объясняет, как тип
+объекта влияет на операции. Контекстные менеджеры из главы 19 — правильный
+способ освобождать ресурсы вместо надежды на подсчёт ссылок.</p>
+<p>Дальше — <a href="ch-43-metaprogramming.html">метапрограммирование и дескрипторы</a>: зная,
+как устроен поиск атрибутов и объекты, можно понять, зачем классам нужны
+дескрипторы и метаклассы.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-41-security.html"><span class="pager-label">← Назад</span><span class="pager-title">Безопасность приложений</span></a><a class="pager-card next" rel="next" href="ch-43-metaprogramming.html"><span class="pager-label">Далее:</span><span class="pager-title">Метапрограммирование и дескрипторы</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

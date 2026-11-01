@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Объекты и классы — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><details class="chapter-current" open><summary>
+<a href="ch-25-objects-classes.html" aria-current="page">25. Объекты и классы</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-25-objects-classes.html#why">25.1. Зачем это нужно</a></li>
+<li><a href="ch-25-objects-classes.html#что-вы-сможете-после-этой-главы">25.2. Что вы сможете после этой главы</a></li>
+<li><a href="ch-25-objects-classes.html#class-instance">25.3. Класс — это тип, экземпляр — значение</a></li>
+<li><a href="ch-25-objects-classes.html#attributes">25.4. Атрибуты экземпляра</a></li>
+<li><a href="ch-25-objects-classes.html#methods">25.5. Методы и параметр self</a></li>
+<li><a href="ch-25-objects-classes.html#init">25.6. Метод инициализации и конструктор</a></li>
+<li><a href="ch-25-objects-classes.html#account">25.7. Состояние и поведение: счёт</a></li>
+<li><a href="ch-25-objects-classes.html#independent-state">25.8. У каждого экземпляра своё состояние</a></li>
+<li><a href="ch-25-objects-classes.html#objects-references">25.9. Объекты и ссылки</a></li>
+<li><a href="ch-25-objects-classes.html#objects-everywhere">25.10. Объекты вокруг нас</a></li>
+<li><a href="ch-25-objects-classes.html#when-not">25.11. Углубление: когда класс лишний</a></li>
+<li><a href="ch-25-objects-classes.html#mistakes">25.12. Типичные ошибки</a></li>
+<li><a href="ch-25-objects-classes.html#упражнения">25.13. Упражнения</a></li>
+<li><a href="ch-25-objects-classes.html#проверка-понимания">25.14. Проверка понимания</a></li>
+<li><a href="ch-25-objects-classes.html#что-дальше">25.15. Что дальше</a></li>
+</ol></details></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 5. Объектно-ориентированное программирование</span><span class="sep">›</span><span>Глава 25</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Объектно-ориентированное программирование · глава 25</p>
+<h1 id="объекты-и-классы">Объекты и классы</h1>
+<p class="chapter-summary">Класс как описание типа, экземпляр как значение: атрибуты, методы, параметр self и метод инициализации.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#why"><span class="toc-number">25.1</span> Зачем это нужно</a></li>
+<li class="level-2"><a href="#что-вы-сможете-после-этой-главы"><span class="toc-number">25.2</span> Что вы сможете после этой главы</a></li>
+<li class="level-2"><a href="#class-instance"><span class="toc-number">25.3</span> Класс — это тип, экземпляр — значение</a></li>
+<li class="level-2"><a href="#attributes"><span class="toc-number">25.4</span> Атрибуты экземпляра</a></li>
+<li class="level-2"><a href="#methods"><span class="toc-number">25.5</span> Методы и параметр self</a></li>
+<li class="level-2"><a href="#init"><span class="toc-number">25.6</span> Метод инициализации и конструктор</a></li>
+<li class="level-2"><a href="#account"><span class="toc-number">25.7</span> Состояние и поведение: счёт</a></li>
+<li class="level-2"><a href="#independent-state"><span class="toc-number">25.8</span> У каждого экземпляра своё состояние</a></li>
+<li class="level-2"><a href="#objects-references"><span class="toc-number">25.9</span> Объекты и ссылки</a></li>
+<li class="level-2"><a href="#objects-everywhere"><span class="toc-number">25.10</span> Объекты вокруг нас</a></li>
+<li class="level-2"><a href="#when-not"><span class="toc-number">25.11</span> Углубление: когда класс лишний</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">25.12</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">25.13</span> Упражнения</a></li>
+<li class="level-2"><a href="#проверка-понимания"><span class="toc-number">25.14</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#что-дальше"><span class="toc-number">25.15</span> Что дальше</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#ex-ch25-01">1. Прогноз вывода</a></li>
+<li class="level-3"><a href="#ex-ch25-02">2. Класс Rectangle</a></li>
+<li class="level-3"><a href="#ex-ch25-03">3. Исправление ошибки</a></li>
+<li class="level-3"><a href="#ex-ch25-04">4. Счётчик с командами</a></li>
+<li class="level-3"><a href="#ex-ch25-05">5. Анализ ссылок</a></li>
+<li class="level-3"><a href="#ex-ch25-06">6. Класс Temperature</a></li>
+<li class="level-3"><a href="#ex-ch25-07">7. Валидация в инициализации</a></li>
+<li class="level-3"><a href="#ex-ch25-08">8. Стек</a></li>
+<li class="level-3"><a href="#ex-ch25-09">9. Мини-проект: библиотека</a></li>
+<li class="level-3"><a href="#ex-ch25-10">10. Словарь или класс</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>До сих пор вы работали со значениями, которые придумал кто-то другой: числа,
+строки, списки, словари. Их типы уже описаны в языке, и вам оставалось
+пользоваться готовым набором операций. Дальше начинается следующий уровень:
+вы описываете собственный тип, соединяете в нём данные и поведение и создаёте
+сколько угодно значений этого типа. Так программисты моделируют предметную
+область — счёт в банке, точку на плоскости, заказ в интернет-магазине.</p>
+<h2 id="why"><span class="h-number">25.1</span> Зачем это нужно</h2>
+<p>Представьте точку на плоскости. Её можно описать словарём:
+<code>{&quot;x&quot;: 3, &quot;y&quot;: 4}</code>. Работает, пока точек немного и пока все помнят, какие
+ключи обязательны. Но словарь не мешает опечататься: <code>{&quot;x&quot;: 3, &quot;z&quot;: 4}</code>
+выглядит так же правдоподобно, а функция, считающая расстояние, обнаружит
+проблему только в момент вызова. Поведение — расстояние, сдвиг, отражение —
+приходится хранить отдельно от данных, и связь между ними держится на
+договорённости.</p>
+<p>Класс убирает эту договорённость из головы программиста и переносит в код.
+Он описывает, какие атрибуты есть у значения и какие операции с ним
+возможны. Второй вызов класса создаёт второе независимое значение с тем же
+набором возможностей. Это и есть главная идея объектного подхода: тип
+описывается один раз, а значений этого типа может быть сколько угодно.</p>
+<h2 id="что-вы-сможете-после-этой-главы"><span class="h-number">25.2</span> Что вы сможете после этой главы</h2>
+<ul>
+<li>объявлять класс и создавать его экземпляры;</li>
+<li>объяснять разницу между классом и экземпляром;</li>
+<li>объявлять атрибуты и методы и понимать роль параметра <code>self</code>;</li>
+<li>писать метод инициализации и объяснять, чем конструктор отличается от
+этого метода;</li>
+<li>читать тип и состояние созданного объекта и замечать, когда состояние
+нарушено.</li>
+</ul>
+<h2 id="class-instance"><span class="h-number">25.3</span> Класс — это тип, экземпляр — значение</h2>
+<p><strong>Класс</strong> — описание нового типа: какие атрибуты и методы имеют его
+экземпляры.</p>
+<p><strong>Экземпляр</strong> — объект, созданный по описанию класса и имеющий собственное
+состояние.</p>
+<p>Объявление класса начинается со слова <code>class</code>, за которым идёт имя и
+двоеточие; тело класса — обычный блок с отступом. Простейший класс может
+быть пустым:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Point</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">Point</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">Point</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>&lt;class &#x27;__main__.Point&#x27;&gt;
+&lt;class &#x27;type&#x27;&gt;
+Point
+</code></pre>
+<p>Обратите внимание: имя <code>Point</code> обозначает сразу две вещи, но в разных ролях.
+Слева от вызова <code>Point()</code> оно означает класс — описание. Результат вызова,
+связанный с именем <code>p</code>, — экземпляр. Проверка <code>type(p)</code> сообщает, что тип
+экземпляра — <code>Point</code>, а <code>type(Point)</code> показывает, что сам класс имеет тип
+<code>type</code>. Класс и экземпляр не одно и то же: первый описывает, второй существует.</p>
+<p>Слово <code>pass</code> в теле означает «здесь пока ничего нет». Вызов
+класса создаёт экземпляр, даже если класс пуст: у него есть тип, но нет
+своего состояния.</p>
+<p><figure class="figure"><img src="illustrations/ch-25-class-vs-instance.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h2 id="attributes"><span class="h-number">25.4</span> Атрибуты экземпляра</h2>
+<p><strong>Атрибут</strong> — именованное значение, связанное с объектом и доступное через
+точку.</p>
+<p>Пока класс пуст, состояние можно добавить снаружи: достаточно присвоить
+значение атрибуту экземпляра. Синтаксис тот же, что при обращении к методам
+строки: имя объекта, точка, имя атрибута.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Point</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">Point</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">p</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">q</span> <span class="o">=</span> <span class="n">Point</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>3 4
+10
+False
+</code></pre>
+<p>Первые два присваивания создают у <code>p</code> два атрибута. Второе присваивание
+<code>p.x = 10</code> не создаёт новый атрибут, а заменяет значение существующего.
+Второй экземпляр <code>q</code> чист: <code>hasattr(q, &quot;x&quot;)</code> возвращает <code>False</code>, потому что
+атрибуты принадлежат экземпляру, а не классу и не другому экземпляру.</p>
+<p>Гибкость здесь обманчива. Присваивание атрибута никогда не проверяет, что
+вы написали правильное имя: <code>p.collor = &quot;red&quot;</code> создаст третий атрибут вместо
+ошибки. Кроме того, пока атрибут не присвоен, его нет, и чтение даёт
+<code>AttributeError</code>. Оба неудобства лечатся дисциплиной: атрибуты объявляют в
+одном месте, а доступ к ним ограничивают методами. Об этом — следующая глава.</p>
+<h2 id="methods"><span class="h-number">25.5</span> Методы и параметр self</h2>
+<p><strong>Метод</strong> — функция, определённая в классе и получающая экземпляр первым
+аргументом.</p>
+<p><strong><code>self</code></strong> — первый параметр обычного метода, ссылающийся на экземпляр, у
+которого метод вызван.</p>
+<p>Объявление метода ничем не отличается от объявления функции, кроме места:
+оно находится внутри тела класса. Первый параметр по соглашению называют
+<code>self</code>, и через него метод обращается к состоянию своего экземпляра.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Point</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">distance_from_origin</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mf">0.5</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">Point</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">p</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">distance_from_origin</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Point</span><span class="o">.</span><span class="n">distance_from_origin</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>5.0
+5.0
+</code></pre>
+<p>Оба вызова равносильны. Запись <code>p.distance_from_origin()</code> — сокращение:
+Python сам подставляет <code>p</code> первым аргументом, поэтому <code>self</code> внутри метода
+указывает на <code>p</code>. Запись <code>Point.distance_from_origin(p)</code> делает то же самое
+явно: метод берётся у класса и вызывается с экземпляром. Второй вариант
+показывает механизм, первый — то, как им пользуются.</p>
+<p>Отсюда следует типичная ошибка новичка: вызвать метод у класса, забыв
+экземпляр.</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Point</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">distance_from_origin</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Point</span><span class="o">.</span><span class="n">distance_from_origin</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>TypeError: Point.distance_from_origin() missing 1 required positional argument: &#x27;self&#x27;
+</code></pre>
+<p>Сообщение точное: не хватает одного позиционного аргумента <code>self</code>. Метод —
+обычная функция, и без экземпляра ему не с чем работать.</p>
+<h2 id="init"><span class="h-number">25.6</span> Метод инициализации и конструктор</h2>
+<p>Присваивать атрибуты снаружи неудобно: легко создать объект, у которого
+забыли половину состояния. Правильное место для начальных значений — метод
+инициализации.</p>
+<p><strong>Метод инициализации <code>__init__</code></strong> — метод, который Python вызывает
+автоматически после создания экземпляра; в нём задают начальное состояние.</p>
+<p><strong>Конструктор</strong> — операция создания экземпляра (вызов класса), за которой
+следует <code>__init__</code>.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Point</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">distance_from_origin</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mf">0.5</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">distance_from_origin</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">Point</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>3 4
+5.0
+True
+</code></pre>
+<p>Что происходит при вызове <code>Point(3, 4)</code>:</p>
+<ol>
+<li>создаётся новый экземпляр класса <code>Point</code>;</li>
+<li>Python вызывает <code>__init__</code> и передаёт ему этот экземпляр первым
+аргументом, а следом — аргументы из вызова;</li>
+<li>метод записывает значения в атрибуты экземпляра;</li>
+<li>готовый экземпляр возвращается как результат вызова.</li>
+</ol>
+<p><figure class="figure"><img src="illustrations/ch-25-init-flow.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Слово «конструктор» здесь стоит употреблять аккуратно. В Python конструктор —
+это вызов класса, который создаёт объект; <code>__init__</code> лишь заполняет уже
+созданный экземпляр и ничего не возвращает. Если попытаться вернуть из него
+значение, Python откажется:</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Point</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="k">return</span> <span class="mi">1</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>TypeError: __init__() should return None, not &#x27;int&#x27;
+</code></pre>
+<p>Второй важный факт: <code>__init__</code> — обычный метод по правилам вызова. У него
+есть параметр <code>self</code>, и его можно вызвать вручную, хотя нужно это редко.
+Двойное подчёркивание в имени означает, что метод участвует в модели данных
+языка, а не просто лежит в классе. Подробно такие имена разберём в главе 28.</p>
+<h2 id="account"><span class="h-number">25.7</span> Состояние и поведение: счёт</h2>
+<p>Класс полезен, когда между атрибутами есть связь, которую нельзя нарушать.
+Счёт в банке: баланс не должен уходить в минус, а операции меняют его
+согласованно.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Account</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">owner</span><span class="p">,</span> <span class="n">balance</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">balance</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"баланс не может быть отрицательным"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">owner</span> <span class="o">=</span> <span class="n">owner</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">balance</span> <span class="o">=</span> <span class="n">balance</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">deposit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">amount</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"сумма должна быть положительной"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">balance</span> <span class="o">+=</span> <span class="n">amount</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">balance</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">withdraw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">amount</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">balance</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"недостаточно средств"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">balance</span> <span class="o">-=</span> <span class="n">amount</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">balance</span>
+
+<span class="n">acc</span> <span class="o">=</span> <span class="n">Account</span><span class="p">(</span><span class="s2">"Аня"</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">acc</span><span class="o">.</span><span class="n">deposit</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">acc</span><span class="o">.</span><span class="n">withdraw</span><span class="p">(</span><span class="mi">30</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">acc</span><span class="o">.</span><span class="n">balance</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">acc</span><span class="o">.</span><span class="n">withdraw</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"отказ:"</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>150
+120
+120
+отказ: недостаточно средств
+</code></pre>
+<p>Здесь видно разделение обязанностей. Атрибуты <code>owner</code> и <code>balance</code> хранят
+состояние. Методы <code>deposit</code> и <code>withdraw</code> — единственный предусмотренный способ
+изменить баланс, и каждый проверяет условие перед изменением. Проверка в
+<code>__init__</code> не даёт создать счёт сразу с отрицательным балансом. Пока внешний
+код пользуется методами, инвариант «баланс не отрицателен» сохраняется.
+Нарушить его можно только прямым присваиванием <code>acc.balance = -1</code> в обход
+методов, и именно от этого защищает инкапсуляция — тема следующей главы.</p>
+<h2 id="independent-state"><span class="h-number">25.8</span> У каждого экземпляра своё состояние</h2>
+<p>Методы хранятся в классе и общие для всех экземпляров, а атрибуты — у каждого
+свои. Поэтому два счётчика считают независимо:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Counter</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">click</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">click</span><span class="p">(),</span> <span class="n">a</span><span class="o">.</span><span class="n">click</span><span class="p">(),</span> <span class="n">b</span><span class="o">.</span><span class="n">click</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>1 2 1
+2 1
+</code></pre>
+<p>Три вызова идут слева направо: два раза щёлкает <code>a</code>, один раз <code>b</code>. В конце
+у <code>a</code> значение 2, у <code>b</code> — 1. Каждый экземпляр хранит собственный набор
+атрибутов; общим остаётся только описание класса.</p>
+<h2 id="objects-references"><span class="h-number">25.9</span> Объекты и ссылки</h2>
+<p>Присваивание в Python не копирует объект, а связывает имя со значением. Для
+классов это особенно заметно, потому что экземпляр — изменяемое значение.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Counter</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">b</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>5
+True
+</code></pre>
+<p>Имена <code>a</code> и <code>b</code> указывают на один и тот же объект, поэтому изменение через
+<code>b</code> видно через <code>a</code>. Проверка <code>is</code> подтверждает тождество. Если нужен
+независимый объект, его создают вторым вызовом класса, а не вторым именем.
+Ссылочная семантика и копирование подробно разобраны в главе 18; для классов
+действует то же правило.</p>
+<h2 id="objects-everywhere"><span class="h-number">25.10</span> Объекты вокруг нас</h2>
+<p>Собственные классы — не отдельный мир, а продолжение того, что вы уже
+используете. Каждое значение в Python — экземпляр какого-нибудь класса, и
+методы, которыми вы пользовались с первых глав, объявлены именно в классах:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">text</span> <span class="o">=</span> <span class="s2">"Python"</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">" "</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">]))</span>
+</code></pre></div>
+<pre class="output"><code>&lt;class &#x27;str&#x27;&gt;
+&lt;class &#x27;int&#x27;&gt;
+&lt;class &#x27;list&#x27;&gt;
+PYTHON
+a b
+</code></pre>
+<p><code>type</code> возвращает класс значения. Запись <code>text.upper()</code> — тот же механизм,
+что <code>p.distance_from_origin()</code>: метод получает строку как первый аргумент.
+Её можно переписать явно: <code>str.upper(text)</code>. То же с <code>&quot; &quot;.join([...])</code>:
+разделитель — строка, у которой вызван метод, а список — обычный аргумент.</p>
+<p>Отсюда следует полезная привычка: читая незнакомый метод, спрашивайте, у
+какого класса он вызван. <code>sort</code> — метод списка: он сортирует на месте и
+возвращает <code>None</code>. <code>sorted</code> — встроенная функция: она возвращает новый список
+и не меняет исходный. Путать их опасно. Собственный класс отличается от встроенного
+только тем, что его описали вы.</p>
+<h2 id="when-not"><span class="h-number">25.11</span> Углубление: когда класс лишний</h2>
+<p>Класс — не универсальный ответ на любую задачу. Если сущность только хранит
+несколько связанных значений и не имеет собственного поведения, класс
+добавляет церемонию без пользы: словарь, кортеж или специальный класс данных
+(о них в главе 29) справятся короче.</p>
+<p>Класс оправдан, когда выполняется хотя бы одно условие:</p>
+<ul>
+<li>есть <strong>инвариант</strong> — правило, которое нельзя нарушать (баланс не
+отрицателен, ширина положительна);</li>
+<li>несколько операций работают с одним и тем же состоянием, и логика их
+связана (положить и снять деньги, добавить и удалить книгу);</li>
+<li>объект нельзя позволить собрать «наполовину»: все обязательные значения
+задаются в методе инициализации.</li>
+</ul>
+<p>Для точки с двумя координатами без операций достаточно кортежа. Для счёта с
+балансом и правилом «не уходить в минус» класс уместен, потому что правило
+живёт в методах и проверяется при каждом изменении. Выбор структуры данных —
+часть проектирования, и следующий раздел объясняет, как защитить инвариант
+от обхода снаружи.</p>
+<h2 id="mistakes"><span class="h-number">25.12</span> Типичные ошибки</h2>
+<ol>
+<li><strong>Забыть <code>self</code> в объявлении метода.</strong> Обычно это проявляется как
+<code>TypeError</code> — неверное число аргументов или несовместимый тип. Но если
+первый параметр случайно совместим по типу, ошибка может выглядеть как
+неверное значение, а не как падение.</li>
+<li><strong>Забыть присвоить атрибут в <code>__init__</code>.</strong> Чтение даёт <code>AttributeError</code>,
+а не значение по умолчанию.</li>
+<li><strong>Опечататься в имени атрибута.</strong> <code>p.collor = &quot;red&quot;</code> создаст новый
+атрибут: присваивание не проверяет имена.</li>
+<li><strong>Ждать от <code>print(p)</code> содержательного вывода.</strong> По умолчанию печатается
+имя класса и адрес объекта; читаемое представление задаётся отдельно,
+в главе 28.</li>
+<li><strong>Считать, что <code>b = a</code> копирует объект.</strong> Оба имени указывают на один
+экземпляр.</li>
+<li><strong>Возвращать значение из <code>__init__</code>.</strong> Метод обязан вернуть <code>None</code>.</li>
+<li><strong>Путать класс и экземпляр.</strong> <code>Point</code> описывает, <code>Point()</code> создаёт;
+методы первого уровня вызываются у экземпляра.</li>
+</ol>
+<h2 id="упражнения"><span class="h-number">25.13</span> Упражнения</h2>
+<h3 id="ex-ch25-01">1. Прогноз вывода</h3>
+<p>Не запуская код, определите, что напечатает программа:</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">Box</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">Box</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">area</span><span class="p">())</span>
+<span class="n">b</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">area</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+</code></pre></div>
+<p>Запишите три строки и объясните, почему вторая отличается от первой.</p>
+<h3 id="ex-ch25-02">2. Класс Rectangle</h3>
+<p>Объявите класс <code>Rectangle</code> с методом инициализации, принимающим ширину и
+высоту. Добавьте методы <code>area()</code> и <code>perimeter()</code>. Создайте прямоугольник
+3×4 и напечатайте площадь и периметр.</p>
+<h3 id="ex-ch25-03">3. Исправление ошибки</h3>
+<p>Класс задуман так, чтобы метод возвращал приветствие, но вызов падает:</p>
+<pre class="text"><code>class Greeter:
+    def greet(name):
+        return &quot;Привет, &quot; + name
+
+g = Greeter()
+print(g.greet())
+</code></pre>
+<p>Объясните, чего не хватает, и исправьте класс двумя способами: добавив
+параметр <code>self</code> и вызвав метод через класс с явной передачей экземпляра.</p>
+<h3 id="ex-ch25-04">4. Счётчик с командами</h3>
+<p>Объявите класс <code>Counter</code> с методами <code>click()</code>, <code>reset()</code> и <code>value()</code>,
+который возвращает текущее значение. Проверьте последовательность: два
+щелчка, сброс, один щелчок. Обратите внимание, что имя метода не должно
+совпадать с именем атрибута — объясните, почему.</p>
+<h3 id="ex-ch25-05">5. Анализ ссылок</h3>
+<p>Создайте один экземпляр класса <code>Counter</code>, свяжите с ним два имени, измените
+значение через второе имя и проверьте первое. Затем создайте второй
+экземпляр и повторите проверку. Объясните разницу результатами и кодом.</p>
+<h3 id="ex-ch25-06">6. Класс Temperature</h3>
+<p>Объявите класс <code>Temperature</code> с атрибутом в градусах Цельсия и методами
+<code>to_fahrenheit()</code> и <code>is_freezing()</code>. Проверьте на значениях 0, 100 и −10.
+Методы не должны изменять состояние объекта.</p>
+<h3 id="ex-ch25-07">7. Валидация в инициализации</h3>
+<p>Добавьте в класс <code>Rectangle</code> проверку: ширина и высота обязаны быть
+положительными, иначе поднимается <code>ValueError</code> с понятным сообщением.
+Проверьте оба случая: корректный и некорректный.</p>
+<h3 id="ex-ch25-08">8. Стек</h3>
+<p>Объявите класс <code>Stack</code> с методами <code>push(value)</code>, <code>pop()</code> и <code>size()</code>.
+Внутреннее хранилище — список, созданный в <code>__init__</code>. Проверьте:
+положили два значения, сняли одно, посмотрели размер. Что произойдёт при
+попытке снять значение из пустого стека?</p>
+<h3 id="ex-ch25-09">9. Мини-проект: библиотека</h3>
+<p>Объявите два класса: <code>Book</code> (название, автор, год) и <code>Library</code> (список книг,
+методы <code>add(book)</code> и <code>titles()</code>). Добавьте две книги и напечатайте их
+названия. Подумайте, почему список книг должен принадлежать экземпляру
+<code>Library</code>, а не классу.</p>
+<h3 id="ex-ch25-10">10. Словарь или класс</h3>
+<p>Одну и ту же сущность — книгу с названием, автором и годом — опишите двумя
+способами: словарём и классом с методом <code>describe()</code>. Напишите короткий
+вывод о том, какой способ лучше защищает от опечаток и почему. Подтвердите
+вывод примером кода.</p>
+<h2 id="проверка-понимания"><span class="h-number">25.14</span> Проверка понимания</h2>
+<ol>
+<li>Чем класс отличается от экземпляра? Что означает <code>type(p)</code> и что —
+<code>type(Point)</code>?</li>
+<li>Почему метод получает <code>self</code> первым аргументом, хотя при вызове
+<code>p.method()</code> вы его не передаёте?</li>
+<li>Что произойдёт, если убрать <code>self</code> из объявления метода? А если забыть
+присвоить атрибут в <code>__init__</code>?</li>
+<li>Чем конструктор отличается от метода инициализации? Что возвращает
+<code>__init__</code>?</li>
+<li>Почему <code>b = a</code> не создаёт второй объект? Как получить независимый
+экземпляр?</li>
+<li>Зачем хранить данные и поведение в одном классе, если можно держать
+словарь и отдельные функции?</li>
+</ol>
+<h2 id="что-дальше"><span class="h-number">25.15</span> Что дальше</h2>
+<p>Вы научились описывать типы и создавать значения, но состояние пока открыто:
+любой код может записать в атрибут что угодно. В следующей главе
+<a href="ch-26-encapsulation.html">«Атрибуты, свойства и инкапсуляция»</a> вы увидите, как
+закрыть состояние за методами и свойствами, чтобы инварианты класса нельзя
+было нарушить случайно.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-24-signatures.html"><span class="pager-label">← Назад</span><span class="pager-title">Гибкие сигнатуры: *args, **kwargs и распаковка</span></a><a class="pager-card next" rel="next" href="ch-26-encapsulation.html"><span class="pager-label">Далее:</span><span class="pager-title">Атрибуты, свойства и инкапсуляция</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

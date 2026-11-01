@@ -1,0 +1,468 @@
+# Манифест книги. Единственный источник правды о порядке глав и частях.
+# Концепты главы выводятся из knowledge/concepts.yaml (поле chapter),
+# поэтому здесь они не дублируются.
+schema: 1
+id: python-zero-to-pro
+title: "Python: от нуля до профессиональной разработки"
+subtitle: "Практический курс с проверяемыми примерами"
+language: ru
+edition: "1.0"
+status: in-progress
+license: CC-BY-SA-4.0
+license_file: ../../LICENSE-CONTENT
+python_version: "3.14"
+python_min_version: "3.11"
+description: >
+  Учебник Python для читателя без опыта программирования, доводящий до уровня
+  профессиональной разработки: от вычислений и типов до асинхронности,
+  тестирования, безопасности, внутреннего устройства и прикладных проектов.
+
+parts:
+  - number: 1
+    title: "Начало"
+    epigraph: "Язык, среда и первые программы"
+  - number: 2
+    title: "Функции и структура программы"
+    epigraph: "Как разбивать задачу на части"
+  - number: 3
+    title: "Коллекции и данные"
+    epigraph: "Как хранить и обрабатывать множество значений"
+  - number: 4
+    title: "Итерация и функции высшего порядка"
+    epigraph: "Как выражать повторяющиеся вычисления"
+  - number: 5
+    title: "Объектно-ориентированное программирование"
+    epigraph: "Как моделировать предметную область"
+  - number: 6
+    title: "Типизация, тестирование и инструменты"
+    epigraph: "Как делать код надёжным и поддерживаемым"
+  - number: 7
+    title: "Практическая разработка"
+    epigraph: "Стандартная библиотека, данные, сеть, конкурентность"
+  - number: 8
+    title: "Внутреннее устройство"
+    epigraph: "Как Python устроен внутри"
+  - number: 9
+    title: "Инженерия и сопровождение"
+    epigraph: "Как проектировать и сопровождать системы"
+  - number: 10
+    title: "Проекты"
+    epigraph: "Полные прикладные работы"
+  - number: 11
+    title: "Профессиональная практика и прикладные темы"
+    epigraph: "То, что отличает работающий код от профессионального"
+
+chapters:
+  - id: ch-01-introduction
+    number: 1
+    part: 1
+    slug: 01-introduction
+    title: "Зачем Python и как устроена эта книга"
+    summary: "Что такое Python, где он применяется, как читать книгу и как настроить рабочую среду."
+    prerequisites: []
+  - id: ch-02-first-program
+    number: 2
+    part: 1
+    slug: 02-first-program
+    title: "Первая программа: вычисления и вывод"
+    summary: "Выражения, арифметика, строки, print и первые ошибки — на работающих примерах."
+    prerequisites: [ch-01-introduction]
+  - id: ch-03-values-names-objects
+    number: 3
+    part: 1
+    slug: 03-values-names-objects
+    title: "Значения, имена, объекты и типы"
+    summary: "Из чего состоит программа: значения, объекты, типы, имена и присваивание."
+    prerequisites: [ch-02-first-program]
+  - id: ch-04-expressions-input
+    number: 4
+    part: 1
+    slug: 04-expressions-input
+    title: "Выражения, операторы и ввод данных"
+    summary: "Приоритет операций, сравнения, логические связки, ввод с клавиатуры и форматирование строк."
+    prerequisites: [ch-03-values-names-objects]
+  - id: ch-05-control-flow
+    number: 5
+    part: 1
+    slug: 05-control-flow
+    title: "Логика и управление потоком"
+    summary: "Истинность значений, условные конструкции, отступы и выбор ветви исполнения."
+    prerequisites: [ch-04-expressions-input]
+  - id: ch-06-loops
+    number: 6
+    part: 1
+    slug: 06-loops
+    title: "Циклы: while и for"
+    summary: "Повторение действий, range, break и continue, типичные ошибки циклов."
+    prerequisites: [ch-05-control-flow]
+  - id: ch-07-functions
+    number: 7
+    part: 1
+    slug: 07-functions
+    title: "Функции: параметры, аргументы и области видимости"
+    summary: "Как выделять поведение в функцию, передавать данные и возвращать результат."
+    prerequisites: [ch-06-loops]
+
+  - id: ch-08-recursion-scope
+    number: 8
+    part: 2
+    slug: 08-recursion-scope
+    title: "Стек вызовов, области видимости и рекурсия"
+    summary: "Как исполняется вызов функции, зачем нужна рекурсия и как устроены области видимости."
+    prerequisites: [ch-07-functions]
+  - id: ch-09-modules
+    number: 9
+    part: 2
+    slug: 09-modules
+    title: "Модули, пакеты и импорты"
+    summary: "Как организовывать код в модули, что такое пакет, namespace и точка входа программы."
+    prerequisites: [ch-08-recursion-scope]
+  - id: ch-10-errors-exceptions
+    number: 10
+    part: 2
+    slug: 10-errors-exceptions
+    title: "Ошибки и исключения"
+    summary: "Как Python сообщает об ошибках, как их обрабатывать, поднимать и не подавлять."
+    prerequisites: [ch-09-modules]
+  - id: ch-11-debugging
+    number: 11
+    part: 2
+    slug: 11-debugging
+    title: "Отладка и трассировка"
+    summary: "Чтение traceback, отладчик, логирование и систематический поиск дефектов."
+    prerequisites: [ch-10-errors-exceptions]
+
+  - id: ch-12-collections-intro
+    number: 12
+    part: 3
+    slug: 12-collections-intro
+    title: "Коллекции и последовательности: введение"
+    summary: "Зачем нужны коллекции, что такое последовательность, элемент, позиция и длина."
+    prerequisites: [ch-10-errors-exceptions]
+  - id: ch-13-lists
+    number: 13
+    part: 3
+    slug: 13-lists
+    title: "Списки: индексы, срезы и методы"
+    summary: "Изменяемые последовательности: доступ, изменение, срезы и основные методы."
+    prerequisites: [ch-12-collections-intro]
+  - id: ch-14-tuples
+    number: 14
+    part: 3
+    slug: 14-tuples
+    title: "Кортежи, распаковка и неизменяемость"
+    summary: "Неизменяемые последовательности, распаковка и роль кортежей в дизайне данных."
+    prerequisites: [ch-13-lists]
+  - id: ch-15-strings
+    number: 15
+    part: 3
+    slug: 15-strings
+    title: "Строки: методы, форматирование и Unicode"
+    summary: "Текст как последовательность символов, кодировки, методы строк и f-строки."
+    prerequisites: [ch-14-tuples]
+  - id: ch-16-sets
+    number: 16
+    part: 3
+    slug: 16-sets
+    title: "Множества и хеширование"
+    summary: "Уникальность, операции над множествами и требования к хешируемым объектам."
+    prerequisites: [ch-15-strings]
+  - id: ch-17-dicts
+    number: 17
+    part: 3
+    slug: 17-dicts
+    title: "Словари: отображения и структурирование данных"
+    summary: "Пары ключ–значение, методы словарей и моделирование реальных данных."
+    prerequisites: [ch-16-sets]
+  - id: ch-18-references-copy
+    number: 18
+    part: 3
+    slug: 18-references-copy
+    title: "Ссылки, алиасы и копирование"
+    summary: "Почему изменения видны «в другом месте»: ссылочная семантика, поверхностное и глубокое копирование."
+    prerequisites: [ch-17-dicts]
+  - id: ch-19-files-formats
+    number: 19
+    part: 3
+    slug: 19-files-formats
+    title: "Файлы, пути и текстовые форматы"
+    summary: "Чтение и запись файлов, pathlib, CSV и JSON, безопасная работа с путями."
+    prerequisites: [ch-18-references-copy]
+
+  - id: ch-20-iterators
+    number: 20
+    part: 4
+    slug: 20-iterators
+    title: "Итераторы и протокол итерации"
+    summary: "Что происходит в цикле for, чем итератор отличается от итерируемого объекта."
+    prerequisites: [ch-19-files-formats]
+  - id: ch-21-generators
+    number: 21
+    part: 4
+    slug: 21-generators
+    title: "Генераторы и ленивые вычисления"
+    summary: "yield, генераторные выражения и вычисления без лишней памяти."
+    prerequisites: [ch-20-iterators]
+  - id: ch-22-higher-order
+    number: 22
+    part: 4
+    slug: 22-higher-order
+    title: "Функции как объекты: замыкания и декораторы"
+    summary: "Функции первого класса, замыкания, декораторы и их практическое применение."
+    prerequisites: [ch-21-generators]
+  - id: ch-23-functional
+    number: 23
+    part: 4
+    slug: 23-functional
+    title: "Функциональные приёмы и включения"
+    summary: "Включения, lambda, map/filter, сортировка по ключу и стиль функциональных преобразований."
+    prerequisites: [ch-22-higher-order]
+  - id: ch-24-signatures
+    number: 24
+    part: 4
+    slug: 24-signatures
+    title: "Гибкие сигнатуры: *args, **kwargs и распаковка"
+    summary: "Как проектировать универсальные функции, не теряя ясность контракта."
+    prerequisites: [ch-23-functional]
+
+  - id: ch-25-objects-classes
+    number: 25
+    part: 5
+    slug: 25-objects-classes
+    title: "Объекты и классы"
+    summary: "Класс как тип, экземпляр как значение: атрибуты, методы и конструктор."
+    prerequisites: [ch-24-signatures]
+  - id: ch-26-encapsulation
+    number: 26
+    part: 5
+    slug: 26-encapsulation
+    title: "Атрибуты, свойства и инкапсуляция"
+    summary: "Как управлять доступом к состоянию: property, соглашения и границы API класса."
+    prerequisites: [ch-25-objects-classes]
+  - id: ch-27-inheritance
+    number: 27
+    part: 5
+    slug: 27-inheritance
+    title: "Наследование, полиморфизм и композиция"
+    summary: "Повторное использование кода и подстановочность: когда наследование помогает, а когда вредит."
+    prerequisites: [ch-26-encapsulation]
+  - id: ch-28-dunder
+    number: 28
+    part: 5
+    slug: 28-dunder
+    title: "Модель данных: dunder-методы"
+    summary: "Как встроить свои типы в синтаксис Python: repr, равенство, хеширование, операторы."
+    prerequisites: [ch-27-inheritance]
+  - id: ch-29-dataclasses-protocols
+    number: 29
+    part: 5
+    slug: 29-dataclasses-protocols
+    title: "Dataclasses, протоколы и абстрактные классы"
+    summary: "Практичные инструменты описания типов данных и контрактов."
+    prerequisites: [ch-28-dunder]
+  - id: ch-30-oop-design
+    number: 30
+    part: 5
+    slug: 30-oop-design
+    title: "Проектирование классов и API"
+    summary: "Связность, связанность, композиция и дизайн исключений в объектном коде."
+    prerequisites: [ch-29-dataclasses-protocols]
+
+  - id: ch-31-typing
+    number: 31
+    part: 6
+    slug: 31-typing
+    title: "Аннотации типов и статическая проверка"
+    summary: "Аннотации, дженерики, union и Optional, проверка mypy и её границы."
+    prerequisites: [ch-30-oop-design]
+  - id: ch-32-testing
+    number: 32
+    part: 6
+    slug: 32-testing
+    title: "Тестирование: pytest и TDD"
+    summary: "Как писать тесты, которые находят дефекты, и как строить работу от тестов."
+    prerequisites: [ch-31-typing]
+  - id: ch-33-project-tooling
+    number: 33
+    part: 6
+    slug: 33-project-tooling
+    title: "Структура проекта, зависимости и инструменты"
+    summary: "pyproject, виртуальные окружения, uv, линтеры, форматирование и качество кода."
+    prerequisites: [ch-32-testing]
+
+  - id: ch-34-stdlib
+    number: 34
+    part: 7
+    slug: 34-stdlib
+    title: "Стандартная библиотека: collections, itertools, functools, pathlib"
+    summary: "Инструменты, которые закрывают большинство повседневных задач."
+    prerequisites: [ch-33-project-tooling]
+  - id: ch-35-os-network
+    number: 35
+    part: 7
+    slug: 35-os-network
+    title: "ОС, процессы, сеть и API"
+    summary: "Взаимодействие с системой, запуск процессов, HTTP-клиенты и работа с API."
+    prerequisites: [ch-34-stdlib]
+  - id: ch-36-data-storage
+    number: 36
+    part: 7
+    slug: 36-data-storage
+    title: "Данные: SQLite, SQL и сериализация"
+    summary: "Хранение структурированных данных, запросы, транзакции и форматы обмена."
+    prerequisites: [ch-35-os-network]
+  - id: ch-37-time-logging
+    number: 37
+    part: 7
+    slug: 37-time-logging
+    title: "Время, даты и логирование"
+    summary: "Корректная работа со временем и часовыми поясами, логи как источник истины при сбоях."
+    prerequisites: [ch-36-data-storage]
+  - id: ch-38-concurrency
+    number: 38
+    part: 7
+    slug: 38-concurrency
+    title: "Конкурентность: потоки, процессы и GIL"
+    summary: "Когда нужна конкурентность, что такое GIL и как безопасно делить состояние."
+    prerequisites: [ch-37-time-logging]
+  - id: ch-39-asyncio
+    number: 39
+    part: 7
+    slug: 39-asyncio
+    title: "Асинхронность: asyncio"
+    summary: "Модель задач, корутины, await, отмена и типичные ошибки асинхронного кода."
+    prerequisites: [ch-38-concurrency]
+  - id: ch-40-performance
+    number: 40
+    part: 7
+    slug: 40-performance
+    title: "Производительность и профилирование"
+    summary: "Как измерять, где узкие места, какие оптимизации оправданы."
+    prerequisites: [ch-39-asyncio]
+  - id: ch-41-security
+    number: 41
+    part: 7
+    slug: 41-security
+    title: "Безопасность приложений"
+    summary: "Секреты, инъекции, небезопасная десериализация и работа с зависимостями."
+    prerequisites: [ch-40-performance]
+
+  - id: ch-42-internals
+    number: 42
+    part: 8
+    slug: 42-internals
+    title: "Внутреннее устройство Python"
+    summary: "Байткод, интерпретатор, сборка мусора, память и объектная модель CPython."
+    prerequisites: [ch-41-security]
+  - id: ch-43-metaprogramming
+    number: 43
+    part: 8
+    slug: 43-metaprogramming
+    title: "Метапрограммирование и дескрипторы"
+    summary: "Как Python позволяет программам изменять собственное поведение — и когда это оправдано."
+    prerequisites: [ch-42-internals]
+
+  - id: ch-44-architecture
+    number: 44
+    part: 9
+    slug: 44-architecture
+    title: "Архитектура, SOLID и паттерны"
+    summary: "Принципы проектирования систем и паттерны, которые решают реальные задачи."
+    prerequisites: [ch-43-metaprogramming]
+  - id: ch-45-git-ci-releases
+    number: 45
+    part: 9
+    slug: 45-git-ci-releases
+    title: "Git, CI, релизы и сопровождение"
+    summary: "Командная работа, автоматические проверки, версионирование и поддержка кода в эксплуатации."
+    prerequisites: [ch-44-architecture]
+
+  - id: ch-46-project-cli
+    number: 46
+    part: 10
+    slug: 46-project-cli
+    title: "Проект: консольный менеджер задач"
+    summary: "Полный проект: CLI, хранение данных, тесты, упаковка и документация."
+    prerequisites: [ch-45-git-ci-releases]
+  - id: ch-47-project-api
+    number: 47
+    part: 10
+    slug: 47-project-api
+    title: "Проект: HTTP API и база данных"
+    summary: "Полный проект: веб-API, база данных, валидация, тесты и запуск."
+    prerequisites: [ch-46-project-cli]
+  - id: ch-48-project-async
+    number: 48
+    part: 10
+    slug: 48-project-async
+    title: "Проект: асинхронный сборщик данных"
+    summary: "Полный проект: конкурентная загрузка, обработка ошибок, сохранение и наблюдаемость."
+    prerequisites: [ch-47-project-api]
+
+# Дополнительные страницы книги (не главы): рендерятся сайтом как <slug>.html.
+# Markdown-файлы лежат в books/python-zero-to-pro/<slug>.md.
+  - id: ch-49-style-naming
+    number: 49
+    part: 11
+    slug: 49-style-naming
+    title: "Стиль, форматирование и именование кода"
+    summary: "PEP 8, автоформатирование, имена, комментарии и docstring как часть инженерной дисциплины."
+    prerequisites: [ch-33-project-tooling]
+  - id: ch-50-pythonic-gotchas
+    number: 50
+    part: 11
+    slug: 50-pythonic-gotchas
+    title: "Pythonic-код и типичные ловушки"
+    summary: "Идиомы Python, Zen of Python и классические ловушки, на которых спотыкаются даже опытные разработчики."
+    prerequisites: [ch-49-style-naming]
+  - id: ch-51-regex
+    number: 51
+    part: 11
+    slug: 51-regex
+    title: "Регулярные выражения"
+    summary: "Синтаксис, группы, жадность, флаги и практическая обработка текста средствами модуля re."
+    prerequisites: [ch-50-pythonic-gotchas]
+  - id: ch-52-complexity
+    number: 52
+    part: 11
+    slug: 52-complexity
+    title: "Алгоритмическое мышление: сложность и выбор структур"
+    summary: "Big O, измерение роста, выбор структуры данных и цена преждевременной оптимизации."
+    prerequisites: [ch-51-regex]
+  - id: ch-53-refactoring
+    number: 53
+    part: 11
+    slug: 53-refactoring
+    title: "Запахи кода, рефакторинг и сопровождение"
+    summary: "Как распознавать деградацию кода, безопасно улучшать его и сопровождать систему в эксплуатации."
+    prerequisites: [ch-52-complexity]
+  - id: ch-54-practice
+    number: 54
+    part: 11
+    slug: 54-practice
+    title: "Практикум: классические задачи и разбор решений"
+    summary: "Задачи на декомпозицию, состояние, игровой цикл и алгоритмы — с полным разбором решений."
+    prerequisites: [ch-53-refactoring]
+
+  - id: ch-55-tkinter
+    number: 55
+    part: 11
+    slug: 55-tkinter
+    title: "Графический интерфейс на tkinter"
+    summary: "Окна, виджеты, компоновка, события и первое настольное приложение на стандартной библиотеке."
+    prerequisites: [ch-54-practice]
+  - id: ch-56-dataviz
+    number: 56
+    part: 11
+    slug: 56-dataviz
+    title: "Визуализация данных"
+    summary: "Как превращать данные в понятные графики: выбор типа диаграммы, оси, подписи, честность и экспорт."
+    prerequisites: [ch-55-tkinter]
+
+extra_pages:
+  - {slug: history, title: "История и философия Python"}
+  - {slug: glossary-guide, title: "Словарь программиста"}
+  - {slug: preface, title: "Предисловие"}
+  - {slug: learning-map, title: "Карта обучения"}
+  - {slug: acknowledgements, title: "Благодарности и происхождение материалов"}
+repository: "https://github.com/vutienthan/syllanix"

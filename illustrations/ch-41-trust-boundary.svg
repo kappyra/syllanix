@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 410" role="img"
+     aria-labelledby="trust-title trust-desc"
+     font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="trust-title">Граница доверия и валидация на входе</title>
+  <desc id="trust-desc">Слева расположена недоверенная зона: браузер, файлы, сеть и переменные окружения. Все данные пересекают границу доверия и попадают в валидацию, которая проверяет тип, формат и диапазон. Проверенные значения идут в доверенную зону к бизнес-логике и базе данных, а отклонённые возвращаются клиенту как ошибка.</desc>
+
+  <text x="24" y="30" font-size="18" font-weight="bold" fill="#1d3550">Граница доверия</text>
+  <text x="24" y="54" font-size="13" fill="#33557a">Всё, что приходит извне, проверяется в одной точке — на входе.</text>
+
+  <!-- недоверенная зона -->
+  <text x="24" y="86" font-size="14" font-weight="bold" fill="#6b2020">недоверенная зона</text>
+
+  <rect x="24" y="100" width="200" height="52" rx="8" fill="#fdf1f1" stroke="#8c2f2f" stroke-width="1.6"/>
+  <text x="38" y="122" font-size="13" font-weight="bold" fill="#6b2020">браузер</text>
+  <text x="38" y="142" font-size="12" fill="#6b2020">форма, JSON-запрос</text>
+
+  <rect x="24" y="162" width="200" height="52" rx="8" fill="#fdf1f1" stroke="#8c2f2f" stroke-width="1.6"/>
+  <text x="38" y="184" font-size="13" font-weight="bold" fill="#6b2020">файлы</text>
+  <text x="38" y="204" font-size="12" fill="#6b2020">загрузки, CSV</text>
+
+  <rect x="24" y="224" width="200" height="52" rx="8" fill="#fdf1f1" stroke="#8c2f2f" stroke-width="1.6"/>
+  <text x="38" y="246" font-size="13" font-weight="bold" fill="#6b2020">сеть</text>
+  <text x="38" y="266" font-size="12" fill="#6b2020">ответы чужих API</text>
+
+  <rect x="24" y="286" width="200" height="52" rx="8" fill="#fdf1f1" stroke="#8c2f2f" stroke-width="1.6"/>
+  <text x="38" y="308" font-size="13" font-weight="bold" fill="#6b2020">окружение</text>
+  <text x="38" y="328" font-size="12" fill="#6b2020">переменные, конфиг</text>
+
+  <!-- стрелки к границе -->
+  <line x1="226" y1="126" x2="290" y2="126" stroke="#8c2f2f" stroke-width="2"/>
+  <polygon points="290,126 280,120 280,132" fill="#8c2f2f"/>
+  <line x1="226" y1="188" x2="290" y2="188" stroke="#8c2f2f" stroke-width="2"/>
+  <polygon points="290,188 280,182 280,194" fill="#8c2f2f"/>
+  <line x1="226" y1="250" x2="290" y2="250" stroke="#8c2f2f" stroke-width="2"/>
+  <polygon points="290,250 280,244 280,256" fill="#8c2f2f"/>
+  <line x1="226" y1="312" x2="290" y2="312" stroke="#8c2f2f" stroke-width="2"/>
+  <polygon points="290,312 280,306 280,318" fill="#8c2f2f"/>
+
+  <!-- граница -->
+  <line x1="298" y1="84" x2="298" y2="352" stroke="#33557a" stroke-width="2" stroke-dasharray="8 6"/>
+  <text x="306" y="78" font-size="12" fill="#33557a">граница доверия</text>
+
+  <!-- валидация -->
+  <rect x="322" y="136" width="200" height="144" rx="10" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="422" y="164" text-anchor="middle" font-size="15" font-weight="bold" fill="#4b3a16">валидация</text>
+  <text x="422" y="188" text-anchor="middle" font-size="13" fill="#4b3a16">тип</text>
+  <text x="422" y="208" text-anchor="middle" font-size="13" fill="#4b3a16">формат и диапазон</text>
+  <text x="422" y="228" text-anchor="middle" font-size="13" fill="#4b3a16">отказ по умолчанию</text>
+  <text x="422" y="250" text-anchor="middle" font-size="12" fill="#8a6a2f">дальше идут</text>
+  <text x="422" y="268" text-anchor="middle" font-size="12" fill="#8a6a2f">проверенные данные</text>
+
+  <line x1="300" y1="200" x2="318" y2="200" stroke="#33557a" stroke-width="2.5"/>
+  <polygon points="322,200 312,194 312,206" fill="#33557a"/>
+
+  <!-- отказ -->
+  <line x1="422" y1="282" x2="422" y2="296" stroke="#8c2f2f" stroke-width="2.5"/>
+  <polygon points="422,300 415,290 429,290" fill="#8c2f2f"/>
+  <rect x="332" y="302" width="180" height="48" rx="8" fill="#fdf1f1" stroke="#8c2f2f" stroke-width="1.6"/>
+  <text x="422" y="322" text-anchor="middle" font-size="13" font-weight="bold" fill="#6b2020">отказ</text>
+  <text x="422" y="340" text-anchor="middle" font-size="12" fill="#6b2020">ошибка клиенту</text>
+
+  <!-- доверенная зона -->
+  <text x="560" y="86" font-size="14" font-weight="bold" fill="#2f4a20">доверенная зона</text>
+
+  <line x1="524" y1="200" x2="554" y2="200" stroke="#4a6b35" stroke-width="2.5"/>
+  <polygon points="558,200 548,194 548,206" fill="#4a6b35"/>
+
+  <rect x="560" y="108" width="252" height="52" rx="8" fill="#f2f6ee" stroke="#4a6b35" stroke-width="1.6"/>
+  <text x="574" y="130" font-size="13" font-weight="bold" fill="#2f4a20">проверенные данные</text>
+  <text x="574" y="150" font-size="12" fill="#2f4a20">числа, строки в известном формате</text>
+
+  <rect x="560" y="176" width="252" height="52" rx="8" fill="#f2f6ee" stroke="#4a6b35" stroke-width="1.6"/>
+  <text x="574" y="198" font-size="13" font-weight="bold" fill="#2f4a20">бизнес-логика</text>
+  <text x="574" y="218" font-size="12" fill="#2f4a20">правила и решения</text>
+
+  <rect x="560" y="244" width="252" height="52" rx="8" fill="#f2f6ee" stroke="#4a6b35" stroke-width="1.6"/>
+  <text x="574" y="266" font-size="13" font-weight="bold" fill="#2f4a20">база данных</text>
+  <text x="574" y="286" font-size="12" fill="#2f4a20">параметризованные запросы</text>
+
+  <rect x="24" y="368" width="788" height="30" rx="6" fill="#ffffff" stroke="#9aa7b5" stroke-width="1.2"/>
+  <text x="38" y="388" font-size="13" fill="#1d3550">Проверка стоит на границе; внутренний код получает данные уже приведёнными к типу.</text>
+</svg>

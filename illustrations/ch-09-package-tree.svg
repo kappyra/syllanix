@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 480" role="img"
+     aria-labelledby="ttl9b desc9b" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl9b">Модуль и пакет: один файл против каталога с модулями</title>
+  <desc id="desc9b">Слева модуль: один файл geometry.py с функциями rectangle и circle, у него собственное пространство имён, а обращение идёт через точку: geometry.rectangle. Справа пакет: каталог shop с файлом __init__.py и модулями pricing, storage и cli. Обращение проходит по всей иерархии имён: shop.pricing.order_total. Пакет нужен, когда модулей много и их группируют по смыслу.</desc>
+
+  <text x="30" y="30" font-size="16" font-weight="bold" fill="#1d3550">Модуль и пакет</text>
+
+  <!-- ===== модуль ===== -->
+  <rect x="24" y="48" width="336" height="360" rx="12" fill="#f7fafd" stroke="#33557a" stroke-width="2"/>
+  <text x="192" y="76" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3550">модуль — один файл</text>
+
+  <rect x="72" y="96" width="240" height="112" rx="8" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="88" y="120" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" fill="#1d3550">geometry.py</text>
+  <line x1="88" y1="130" x2="296" y2="130" stroke="#c9c2b4" stroke-width="1.5"/>
+  <text x="88" y="152" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" fill="#4a5a6a">def rectangle(...)</text>
+  <text x="88" y="174" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" fill="#4a5a6a">def circle(...)</text>
+  <text x="88" y="196" font-size="12.5" fill="#4a5a6a">одно пространство имён</text>
+
+  <line x1="192" y1="208" x2="192" y2="234" stroke="#33557a" stroke-width="2"/>
+  <path d="M 185 229 L 192 241 L 199 229" fill="none" stroke="#33557a" stroke-width="2"/>
+
+  <rect x="52" y="244" width="280" height="38" rx="8" fill="#eef7ee" stroke="#3f6b3f" stroke-width="2"/>
+  <text x="192" y="268" text-anchor="middle" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" fill="#264a26">geometry.rectangle(3, 4)</text>
+
+  <rect x="44" y="298" width="296" height="82" rx="8" fill="#ffffff" stroke="#33557a" stroke-width="1.5"/>
+  <text x="60" y="322" font-size="13" fill="#1d3550">Модуль — это файл .py.</text>
+  <text x="60" y="344" font-size="13" fill="#1d3550">Имя модуля = имя файла без .py.</text>
+  <text x="60" y="366" font-size="13" fill="#1d3550">Доступ к коду — через точку.</text>
+
+  <!-- ===== пакет ===== -->
+  <rect x="380" y="48" width="336" height="360" rx="12" fill="#f7fafd" stroke="#33557a" stroke-width="2"/>
+  <text x="548" y="76" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3550">пакет — каталог с модулями</text>
+
+  <!-- каталог -->
+  <rect x="420" y="96" width="176" height="38" rx="8" fill="#fdf1dc" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="508" y="120" text-anchor="middle" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" fill="#4b3a16">shop/</text>
+
+  <line x1="440" y1="134" x2="440" y2="252" stroke="#8a6a2f" stroke-width="1.8"/>
+  <line x1="440" y1="160" x2="464" y2="160" stroke="#8a6a2f" stroke-width="1.8"/>
+  <line x1="440" y1="192" x2="464" y2="192" stroke="#8a6a2f" stroke-width="1.8"/>
+  <line x1="440" y1="224" x2="464" y2="224" stroke="#8a6a2f" stroke-width="1.8"/>
+  <line x1="440" y1="252" x2="464" y2="252" stroke="#8a6a2f" stroke-width="1.8"/>
+
+  <rect x="464" y="145" width="212" height="30" rx="6" fill="#ffffff" stroke="#8a6a2f" stroke-width="1.5"/>
+  <text x="478" y="165" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12.5" fill="#4b3a16">__init__.py</text>
+
+  <rect x="464" y="177" width="212" height="30" rx="6" fill="#ffffff" stroke="#33557a" stroke-width="1.5"/>
+  <text x="478" y="197" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12.5" fill="#1d3550">pricing.py</text>
+
+  <rect x="464" y="209" width="212" height="30" rx="6" fill="#ffffff" stroke="#33557a" stroke-width="1.5"/>
+  <text x="478" y="229" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12.5" fill="#1d3550">storage.py</text>
+
+  <rect x="464" y="241" width="212" height="30" rx="6" fill="#ffffff" stroke="#33557a" stroke-width="1.5"/>
+  <text x="478" y="261" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12.5" fill="#1d3550">cli.py</text>
+
+  <line x1="548" y1="271" x2="548" y2="292" stroke="#33557a" stroke-width="2"/>
+  <path d="M 541 287 L 548 299 L 555 287" fill="none" stroke="#33557a" stroke-width="2"/>
+
+  <rect x="404" y="302" width="288" height="38" rx="8" fill="#eef7ee" stroke="#3f6b3f" stroke-width="2"/>
+  <text x="548" y="326" text-anchor="middle" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12.5" fill="#264a26">shop.pricing.order_total</text>
+
+  <text x="404" y="362" font-size="13" fill="#1d3550">Пакет группирует модули по смыслу.</text>
+  <text x="404" y="384" font-size="13" fill="#1d3550">Точка означает уровень иерархии.</text>
+
+  <text x="30" y="440" font-size="14" font-weight="bold" fill="#1d3550">Один файл — для одной темы; каталог с пакетом — когда тем становится много.</text>
+  <text x="30" y="464" font-size="14" fill="#1d3550">Пока модулей мало, пакет не нужен: лишний уровень усложняет импорты.</text>
+</svg>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 480" role="img"
+     aria-labelledby="measure-loop-title measure-loop-desc"
+     font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="measure-loop-title">Цикл работы с производительностью</title>
+  <desc id="measure-loop-desc">Работа над производительностью идёт по кругу: измерить и зафиксировать базовую линию, построить профиль, найти узкое место, изменить одну вещь и снова измерить. Результат сравнивают с базовой линией: если стало быстрее, изменение оставляют, если нет — откатывают. Без повторного измерения оптимизация остаётся догадкой.</desc>
+
+  <text x="30" y="32" font-size="18" font-weight="bold" fill="#1d3550">Цикл оптимизации</text>
+  <text x="30" y="58" font-size="13" fill="#33557a">Один шаг — одно изменение. Возврат к измерению обязателен.</text>
+
+  <!-- 1. измерить -->
+  <rect x="330" y="70" width="210" height="92" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="435" y="98" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3550">1. измерить</text>
+  <text x="435" y="122" text-anchor="middle" font-size="13" fill="#1d3550">базовая линия:</text>
+  <text x="435" y="142" text-anchor="middle" font-size="13" fill="#1d3550">данные, время, повторы</text>
+
+  <!-- 2. профилировать -->
+  <rect x="620" y="190" width="210" height="92" rx="10" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="725" y="218" text-anchor="middle" font-size="15" font-weight="bold" fill="#4b3a16">2. профиль</text>
+  <text x="725" y="242" text-anchor="middle" font-size="13" fill="#4b3a16">cProfile: вызовы</text>
+  <text x="725" y="262" text-anchor="middle" font-size="13" fill="#4b3a16">и время по функциям</text>
+
+  <!-- 3. узкое место -->
+  <rect x="330" y="310" width="210" height="92" rx="10" fill="#fdf1f1" stroke="#8c2f2f" stroke-width="2"/>
+  <text x="435" y="338" text-anchor="middle" font-size="15" font-weight="bold" fill="#6b2020">3. узкое место</text>
+  <text x="435" y="362" text-anchor="middle" font-size="13" fill="#6b2020">гипотеза об одном</text>
+  <text x="435" y="382" text-anchor="middle" font-size="13" fill="#6b2020">участке</text>
+
+  <!-- 4. изменить и измерить -->
+  <rect x="30" y="190" width="210" height="92" rx="10" fill="#f2f6ee" stroke="#4a6b35" stroke-width="2"/>
+  <text x="135" y="218" text-anchor="middle" font-size="15" font-weight="bold" fill="#2f4a20">4. изменить</text>
+  <text x="135" y="242" text-anchor="middle" font-size="13" fill="#2f4a20">одну вещь</text>
+  <text x="135" y="262" text-anchor="middle" font-size="13" fill="#2f4a20">и снова измерить</text>
+
+  <!-- стрелки по кругу -->
+  <line x1="542" y1="122" x2="618" y2="196" stroke="#33557a" stroke-width="2.5"/>
+  <polygon points="622,202 610,197 618,189" fill="#33557a"/>
+  <text x="600" y="150" text-anchor="middle" font-size="12" fill="#33557a">профиль</text>
+
+  <line x1="720" y1="282" x2="546" y2="340" stroke="#8c2f2f" stroke-width="2.5"/>
+  <polygon points="540,342 552,334 554,344" fill="#8c2f2f"/>
+  <text x="622" y="348" text-anchor="middle" font-size="12" fill="#6b2020">где время</text>
+
+  <line x1="328" y1="346" x2="242" y2="300" stroke="#4a6b35" stroke-width="2.5"/>
+  <polygon points="236,296 248,298 242,308" fill="#4a6b35"/>
+  <text x="252" y="362" text-anchor="middle" font-size="12" fill="#2f4a20">изменить</text>
+
+  <line x1="230" y1="190" x2="326" y2="132" stroke="#33557a" stroke-width="2.5"/>
+  <polygon points="332,128 320,130 326,138" fill="#33557a"/>
+  <text x="238" y="146" text-anchor="middle" font-size="12" fill="#33557a">сравнить</text>
+
+  <!-- центр -->
+  <text x="435" y="232" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3550">быстрее</text>
+  <text x="435" y="252" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3550">базовой линии?</text>
+
+  <!-- пояснение -->
+  <rect x="30" y="418" width="800" height="48" rx="8" fill="#ffffff" stroke="#9aa7b5" stroke-width="1.5"/>
+  <text x="48" y="440" font-size="13" fill="#1d3550">Быстрее — оставьте изменение и продолжайте. Не быстрее — откатите и вернитесь к профилю.</text>
+  <text x="48" y="458" font-size="12" fill="#33557a">Оптимизация без повторного замера — вера, а не инженерия.</text>
+</svg>

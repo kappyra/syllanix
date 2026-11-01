@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" role="img"
+     aria-labelledby="ttl10a desc10a" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl10a">Какие части инструкции try выполняются при разных исходах</title>
+  <desc id="desc10a">Три сценария. Если ошибки не было, выполняются только блок try и ветвь finally. Если исключение поймано подходящей ветвью except, выполняются try до сбоя, эта ветвь и finally. Если подходящей ветви нет, выполняются try до сбоя и finally, после чего исключение уходит вызывающему коду.</desc>
+
+  <text x="30" y="36" font-size="17" font-weight="bold" fill="#1d3550">Что выполняется при разных исходах</text>
+
+  <!-- Сценарий 1 -->
+  <text x="30" y="95" font-size="14" fill="#33557a">Ошибки не было</text>
+  <rect x="280" y="72" width="110" height="46" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="335" y="101" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3550">try</text>
+  <line x1="395" y1="95" x2="455" y2="95" stroke="#33557a" stroke-width="2"/>
+  <polygon points="455,95 445,90 445,100" fill="#33557a"/>
+  <rect x="462" y="72" width="120" height="46" rx="8" fill="#eaf3ea" stroke="#3c6b47" stroke-width="2"/>
+  <text x="522" y="101" text-anchor="middle" font-size="14" font-weight="bold" fill="#254a2d">finally</text>
+  <text x="596" y="101" font-size="13" fill="#33557a">затем продолжение</text>
+
+  <!-- Сценарий 2 -->
+  <text x="30" y="205" font-size="14" fill="#33557a">Исключение поймано</text>
+  <text x="30" y="225" font-size="13" fill="#33557a">подходящей ветвью</text>
+  <rect x="280" y="182" width="105" height="46" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="332" y="211" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3550">try</text>
+  <line x1="390" y1="205" x2="415" y2="205" stroke="#33557a" stroke-width="2"/>
+  <polygon points="415,205 405,200 405,210" fill="#33557a"/>
+  <rect x="422" y="182" width="120" height="46" rx="8" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="482" y="211" text-anchor="middle" font-size="14" font-weight="bold" fill="#4b3a16">except</text>
+  <line x1="547" y1="205" x2="572" y2="205" stroke="#33557a" stroke-width="2"/>
+  <polygon points="572,205 562,200 562,210" fill="#33557a"/>
+  <rect x="579" y="182" width="120" height="46" rx="8" fill="#eaf3ea" stroke="#3c6b47" stroke-width="2"/>
+  <text x="639" y="211" text-anchor="middle" font-size="14" font-weight="bold" fill="#254a2d">finally</text>
+
+  <!-- Сценарий 3 -->
+  <text x="30" y="315" font-size="14" fill="#33557a">Исключение не поймано</text>
+  <text x="30" y="335" font-size="13" fill="#8a2b2b">(нет подходящей ветви)</text>
+  <rect x="280" y="292" width="105" height="46" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="332" y="321" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3550">try</text>
+  <line x1="390" y1="315" x2="415" y2="315" stroke="#33557a" stroke-width="2"/>
+  <polygon points="415,315 405,310 405,320" fill="#33557a"/>
+  <rect x="422" y="292" width="120" height="46" rx="8" fill="#eaf3ea" stroke="#3c6b47" stroke-width="2"/>
+  <text x="482" y="321" text-anchor="middle" font-size="14" font-weight="bold" fill="#254a2d">finally</text>
+  <line x1="547" y1="315" x2="572" y2="315" stroke="#8a2b2b" stroke-width="2"/>
+  <polygon points="572,315 562,310 562,320" fill="#8a2b2b"/>
+  <text x="580" y="304" font-size="13" fill="#8a2b2b">исключение уходит</text>
+  <text x="580" y="322" font-size="13" fill="#8a2b2b">вызывающему коду</text>
+  <text x="580" y="340" font-size="13" fill="#8a2b2b">программа завершается</text>
+
+  <line x1="30" y1="365" x2="730" y2="365" stroke="#c9c2b4" stroke-width="1.5"/>
+  <text x="30" y="388" font-size="13" fill="#4b3a16">Во всех трёх случаях ветвь finally исполняется: она не зависит от исхода.</text>
+</svg>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 430" role="img"
+     aria-labelledby="ttl26a desc26a" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl26a">Порядок поиска атрибута: экземпляр, класс, базовые классы</title>
+  <desc id="desc26a">Три шага поиска атрибута: сначала словарь экземпляра, затем класс, затем базовые классы. Для a.species значение нашлось в экземпляре после присваивания, для b.species поиск дошёл до класса Dog, а Dog.species найден сразу в классе.</desc>
+
+  <rect x="0" y="0" width="880" height="430" fill="#ffffff"/>
+  <defs>
+    <marker id="arr26a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#33557a"/>
+    </marker>
+  </defs>
+
+  <text x="28" y="32" font-size="17" font-weight="bold" fill="#1d3550">Где Python ищет атрибут: три шага</text>
+
+  <!-- шаг 1 -->
+  <rect x="28" y="62" width="250" height="86" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="1.8"/>
+  <text x="44" y="88" font-size="14" font-weight="bold" fill="#1d3550">1. экземпляр</text>
+  <text x="44" y="114" font-size="13" fill="#33557a" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">a.__dict__</text>
+  <text x="44" y="136" font-size="12" fill="#4b5563">собственные атрибуты</text>
+
+  <!-- шаг 2 -->
+  <rect x="28" y="164" width="250" height="86" rx="8" fill="#fdf3e3" stroke="#8a5a13" stroke-width="1.8"/>
+  <text x="44" y="190" font-size="14" font-weight="bold" fill="#1d3550">2. класс</text>
+  <text x="44" y="216" font-size="13" fill="#8a5a13" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">Dog.__dict__</text>
+  <text x="44" y="238" font-size="12" fill="#4b5563">атрибуты класса</text>
+
+  <!-- шаг 3 -->
+  <rect x="28" y="266" width="250" height="86" rx="8" fill="#e8f5ec" stroke="#2f6b45" stroke-width="1.8" stroke-dasharray="7 5"/>
+  <text x="44" y="292" font-size="14" font-weight="bold" fill="#1d3550">3. базовые классы</text>
+  <text x="44" y="318" font-size="13" fill="#2f6b45" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">object</text>
+  <text x="44" y="340" font-size="12" fill="#4b5563">если атрибута нет выше</text>
+
+  <!-- стрелки поиска -->
+  <path d="M153 148 L 153 158" fill="none" stroke="#33557a" stroke-width="2" marker-end="url(#arr26a)"/>
+  <path d="M153 250 L 153 260" fill="none" stroke="#33557a" stroke-width="2" marker-end="url(#arr26a)"/>
+  <text x="164" y="159" font-size="11" fill="#4b5563">не нашли</text>
+  <text x="164" y="261" font-size="11" fill="#4b5563">не нашли</text>
+
+  <!-- примеры -->
+  <rect x="310" y="62" width="542" height="86" rx="8" fill="#ffffff" stroke="#33557a" stroke-width="1.4"/>
+  <text x="326" y="88" font-size="14" font-weight="bold" fill="#1d3550">a.species → «волк» (шаг 1)</text>
+  <text x="326" y="112" font-size="13" fill="#33557a" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">{'name': 'Рекс', 'species': 'волк'}</text>
+  <text x="326" y="134" font-size="12" fill="#4b5563">атрибут создан присваиванием a.species = «волк»</text>
+
+  <rect x="310" y="164" width="542" height="86" rx="8" fill="#ffffff" stroke="#33557a" stroke-width="1.4"/>
+  <text x="326" y="190" font-size="14" font-weight="bold" fill="#1d3550">b.species → «Canis familiaris» (шаг 2)</text>
+  <text x="326" y="214" font-size="13" fill="#33557a" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">{'name': 'Бим'}</text>
+  <text x="326" y="236" font-size="12" fill="#4b5563">в экземпляре ключа нет — читаем атрибут класса</text>
+
+  <rect x="310" y="266" width="542" height="86" rx="8" fill="#ffffff" stroke="#33557a" stroke-width="1.4"/>
+  <text x="326" y="292" font-size="14" font-weight="bold" fill="#1d3550">Dog.species → «Canis familiaris» (шаг 2)</text>
+  <text x="326" y="316" font-size="13" fill="#33557a" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace">Dog.species</text>
+  <text x="326" y="338" font-size="12" fill="#4b5563">обращение к классу сразу начинает со второго шага</text>
+
+  <!-- итог -->
+  <rect x="28" y="372" width="824" height="48" rx="8" fill="#f7f9fc" stroke="#c9d3e0" stroke-width="1.2"/>
+  <text x="44" y="394" font-size="13" fill="#1d3550">Чтение идёт по цепочке, запись всегда создаёт атрибут у экземпляра.</text>
+  <text x="44" y="412" font-size="13" fill="#33557a">Поэтому a.species = «волк» не изменил Dog.species.</text>
+</svg>

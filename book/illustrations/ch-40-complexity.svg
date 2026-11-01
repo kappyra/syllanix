@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 450" role="img"
+     aria-labelledby="complexity-title complexity-desc"
+     font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="complexity-title">Рост числа операций для разных классов сложности</title>
+  <desc id="complexity-desc">Четыре панели с линейным масштабом показывают форму роста при n от 1 до 16: константа остаётся горизонтальной линией, логарифм быстро выходит на плато, линейная функция растёт прямой, квадратичная уходит вверх круче всех. При n равном 1000 это соответственно 1, 10, 1000 и 1 000 000 операций.</desc>
+
+  <text x="30" y="32" font-size="18" font-weight="bold" fill="#1d3550">Как растёт объём работы</text>
+  <text x="30" y="58" font-size="13" fill="#33557a">Оси линейные, масштаб у панелей разный: важна форма кривой, а не её высота.</text>
+
+  <rect x="30" y="90" width="190" height="230" rx="10" fill="#ffffff" stroke="#c9c2b4" stroke-width="1.5"/>
+  <text x="125" y="112" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3550">O(1)</text>
+  <line x1="60" y1="120" x2="60" y2="290" stroke="#9aa7b5" stroke-width="1.8"/>
+  <line x1="60" y1="290" x2="200" y2="290" stroke="#9aa7b5" stroke-width="1.8"/>
+  <text x="52" y="125" text-anchor="end" font-size="11" fill="#33557a">2</text>
+  <text x="52" y="294" text-anchor="end" font-size="11" fill="#33557a">0</text>
+  <polyline points="60.0,205.0 200.0,205.0" fill="none" stroke="#33557a" stroke-width="2.6"/>
+
+  <rect x="240" y="90" width="190" height="230" rx="10" fill="#ffffff" stroke="#c9c2b4" stroke-width="1.5"/>
+  <text x="335" y="112" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3550">O(log n)</text>
+  <line x1="270" y1="120" x2="270" y2="290" stroke="#9aa7b5" stroke-width="1.8"/>
+  <line x1="270" y1="290" x2="410" y2="290" stroke="#9aa7b5" stroke-width="1.8"/>
+  <text x="262" y="125" text-anchor="end" font-size="11" fill="#33557a">4</text>
+  <text x="262" y="294" text-anchor="end" font-size="11" fill="#33557a">0</text>
+  <polyline points="270.0,290.0 279.3,247.5 288.7,222.6 298.0,205.0 307.3,191.3 316.7,180.1 326.0,170.7 335.3,162.5 344.7,155.3 354.0,148.8 363.3,143.0 372.7,137.6 382.0,132.7 391.3,128.2 400.7,124.0 410.0,120.0" fill="none" stroke="#33557a" stroke-width="2.6"/>
+
+  <rect x="450" y="90" width="190" height="230" rx="10" fill="#ffffff" stroke="#c9c2b4" stroke-width="1.5"/>
+  <text x="545" y="112" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3550">O(n)</text>
+  <line x1="480" y1="120" x2="480" y2="290" stroke="#9aa7b5" stroke-width="1.8"/>
+  <line x1="480" y1="290" x2="620" y2="290" stroke="#9aa7b5" stroke-width="1.8"/>
+  <text x="472" y="125" text-anchor="end" font-size="11" fill="#33557a">16</text>
+  <text x="472" y="294" text-anchor="end" font-size="11" fill="#33557a">0</text>
+  <polyline points="480.0,279.4 489.3,268.8 498.7,258.1 508.0,247.5 517.3,236.9 526.7,226.2 536.0,215.6 545.3,205.0 554.7,194.4 564.0,183.8 573.3,173.1 582.7,162.5 592.0,151.9 601.3,141.2 610.7,130.6 620.0,120.0" fill="none" stroke="#33557a" stroke-width="2.6"/>
+
+  <rect x="660" y="90" width="190" height="230" rx="10" fill="#ffffff" stroke="#c9c2b4" stroke-width="1.5"/>
+  <text x="755" y="112" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3550">O(n²)</text>
+  <line x1="690" y1="120" x2="690" y2="290" stroke="#9aa7b5" stroke-width="1.8"/>
+  <line x1="690" y1="290" x2="830" y2="290" stroke="#9aa7b5" stroke-width="1.8"/>
+  <text x="682" y="125" text-anchor="end" font-size="11" fill="#33557a">256</text>
+  <text x="682" y="294" text-anchor="end" font-size="11" fill="#33557a">0</text>
+  <polyline points="690.0,289.3 699.3,287.3 708.7,284.0 718.0,279.4 727.3,273.4 736.7,266.1 746.0,257.5 755.3,247.5 764.7,236.2 774.0,223.6 783.3,209.6 792.7,194.4 802.0,177.8 811.3,159.8 820.7,140.6 830.0,120.0" fill="none" stroke="#33557a" stroke-width="2.6"/>
+
+  <text x="125" y="310" text-anchor="middle" font-size="11" fill="#33557a">n: 1…16</text>
+  <text x="335" y="310" text-anchor="middle" font-size="11" fill="#33557a">n: 1…16</text>
+  <text x="545" y="310" text-anchor="middle" font-size="11" fill="#33557a">n: 1…16</text>
+  <text x="755" y="310" text-anchor="middle" font-size="11" fill="#33557a">n: 1…16</text>
+
+  <rect x="30" y="330" width="800" height="94" rx="10" fill="#f7f8fa" stroke="#c9c2b4" stroke-width="1.2"/>
+  <text x="48" y="356" font-size="13" font-weight="bold" fill="#1d3550">Сколько операций при n = 1000</text>
+  <text x="48" y="380" font-size="13" fill="#1d3550">O(1) — 1</text>
+  <text x="180" y="380" font-size="13" fill="#1d3550">O(log n) — 10</text>
+  <text x="340" y="380" font-size="13" fill="#1d3550">O(n) — 1000</text>
+  <text x="500" y="380" font-size="13" fill="#1d3550">O(n²) — 1 000 000</text>
+  <text x="48" y="406" font-size="12" fill="#33557a">Смена класса сложности меняет рост; оптимизация внутри цикла меняет только множитель.</text>
+</svg>

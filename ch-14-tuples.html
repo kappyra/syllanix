@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Кортежи, распаковка и неизменяемость — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-14-tuples.html" aria-current="page">14. Кортежи, распаковка и неизменяемость</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-14-tuples.html#why">14.1. Зачем нужна неизменяемость</a></li>
+<li><a href="ch-14-tuples.html#tuples">14.2. Создание кортежа</a></li>
+<li><a href="ch-14-tuples.html#sequence">14.3. Кортеж — это последовательность</a></li>
+<li><a href="ch-14-tuples.html#immutability">14.4. Неизменяемость</a></li>
+<li><a href="ch-14-tuples.html#unpacking">14.5. Распаковка</a></li>
+<li><a href="ch-14-tuples.html#packing">14.6. Упаковка кортежа</a></li>
+<li><a href="ch-14-tuples.html#unpacking-loop">14.7. Распаковка в цикле</a></li>
+<li><a href="ch-14-tuples.html#mistakes">14.8. Типичные ошибки</a></li>
+<li><a href="ch-14-tuples.html#choosing">14.9. Как выбрать структуру</a></li>
+<li><a href="ch-14-tuples.html#упражнения">14.10. Упражнения</a></li>
+<li><a href="ch-14-tuples.html#проверка-понимания">14.11. Проверка понимания</a></li>
+<li><a href="ch-14-tuples.html#что-дальше">14.12. Что дальше</a></li>
+</ol></details></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 3. Коллекции и данные</span><span class="sep">›</span><span>Глава 14</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Коллекции и данные · глава 14</p>
+<h1 id="кортежи-распаковка-и-неизменяемость">Кортежи, распаковка и неизменяемость</h1>
+<p class="chapter-summary">Неизменяемые последовательности, распаковка и роль кортежей в дизайне данных.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#why"><span class="toc-number">14.1</span> Зачем нужна неизменяемость</a></li>
+<li class="level-2"><a href="#tuples"><span class="toc-number">14.2</span> Создание кортежа</a></li>
+<li class="level-2"><a href="#sequence"><span class="toc-number">14.3</span> Кортеж — это последовательность</a></li>
+<li class="level-2"><a href="#immutability"><span class="toc-number">14.4</span> Неизменяемость</a></li>
+<li class="level-2"><a href="#unpacking"><span class="toc-number">14.5</span> Распаковка</a></li>
+<li class="level-2"><a href="#packing"><span class="toc-number">14.6</span> Упаковка кортежа</a></li>
+<li class="level-2"><a href="#unpacking-loop"><span class="toc-number">14.7</span> Распаковка в цикле</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">14.8</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#choosing"><span class="toc-number">14.9</span> Как выбрать структуру</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">14.10</span> Упражнения</a></li>
+<li class="level-2"><a href="#проверка-понимания"><span class="toc-number">14.11</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#что-дальше"><span class="toc-number">14.12</span> Что дальше</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#tuple-comparison">Сравнение кортежей</a></li>
+<li class="level-3"><a href="#conversion">Преобразование между списком и кортежем</a></li>
+<li class="level-3"><a href="#tuple-records">Кортежи как строки таблицы</a></li>
+<li class="level-3"><a href="#ex-ch14-01">1. Чтение кортежа</a></li>
+<li class="level-3"><a href="#ex-ch14-02">2. Кортеж из одного элемента</a></li>
+<li class="level-3"><a href="#ex-ch14-03">3. Срезы кортежа</a></li>
+<li class="level-3"><a href="#ex-ch14-04">4. Обойти неизменяемость</a></li>
+<li class="level-3"><a href="#ex-ch14-05">5. Обмен значений</a></li>
+<li class="level-3"><a href="#ex-ch14-06">6. Звёздочка</a></li>
+<li class="level-3"><a href="#ex-ch14-07">7. Несколько значений из функции</a></li>
+<li class="level-3"><a href="#ex-ch14-08">8. Кортежи в цикле</a></li>
+<li class="level-3"><a href="#ex-ch14-09">9. Возврат двух значений</a></li>
+<li class="level-3"><a href="#ex-ch14-10">10. Мини-задача: расстояние от начала</a></li>
+<li class="level-3"><a href="#ex-ch14-11">11. Сумма произведений</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>Список удобен, когда данные меняются. Но у изменяемости есть цена:
+любой, кому доступен список, может его испортить. Для набора значений,
+который должен остаться таким, каким его создали, Python предлагает
+другую последовательность — кортеж. В этой главе вы познакомитесь с
+кортежами, свойством неизменяемости и приёмом распаковки, который
+экономит строки и делает намерение кода яснее.</p>
+<h2 id="why"><span class="h-number">14.1</span> Зачем нужна неизменяемость</h2>
+<p>Представьте координату точки на плоскости: пара чисел <code>(3, 4)</code>. Если
+хранить её в списке, любая функция может написать <code>point[0] = 100</code>, и
+координата молча изменится. Иногда это допустимо, но для координаты,
+цвета, диапазона дат или записи из базы данных изменение обычно означает
+дефект. Хочется, чтобы сама структура данных защищала смысл.</p>
+<p><strong>Неизменяемость</strong> — свойство объекта не менять состояние после
+создания. Неизменяемый объект можно безопасно передавать в функции и
+хранить дольше: никто не сможет его испортить. <strong>Кортеж</strong> — неизменяемая
+упорядоченная последовательность; он используется для фиксированных
+наборов значений, которые логически едины.</p>
+<p>После этой главы вы сможете:</p>
+<ul>
+<li>создавать кортежи, в том числе из одного элемента;</li>
+<li>отличать кортеж от списка по поведению и по назначению;</li>
+<li>распаковывать последовательности в имена одной инструкцией;</li>
+<li>возвращать из функции несколько значений;</li>
+<li>объяснять, что неизменяемость защищает, а что нет.</li>
+</ul>
+<h2 id="tuples"><span class="h-number">14.2</span> Создание кортежа</h2>
+<p>Кортеж записывается перечислением значений через запятую; скобки
+необязательны.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">point</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">point</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">point</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">point</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">4</span> <span class="ow">in</span> <span class="n">point</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">point</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>(3, 4)
+2
+3 4
+True
+tuple
+</code></pre>
+<p>Скобки часто пишут для читаемости, но решающую роль играет запятая.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>(1, 2, 3)
+True
+tuple
+</code></pre>
+<p>Обе записи создают кортеж, и они равны: сравниваются значения, а не форма
+записи. Запятая — то, что превращает перечисление в кортеж.</p>
+<p>Отсюда следует знаменитая ловушка с одним элементом. Запись <code>(5)</code> — это
+не кортеж, а число в скобках. Кортеж из одного элемента требует запятой.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">one</span> <span class="o">=</span> <span class="p">(</span><span class="mi">5</span><span class="p">,)</span>
+<span class="n">not_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">one</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">one</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">not_tuple</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">not_tuple</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">one</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</code></pre></div>
+<pre class="output"><code>tuple 1
+int 5
+5
+</code></pre>
+<p>Пустой кортеж записывается как <code>()</code>. Он полезен как нейтральное значение:
+например, когда функция по умолчанию возвращает «ничего».</p>
+<h2 id="sequence"><span class="h-number">14.3</span> Кортеж — это последовательность</h2>
+<p>Кортеж поддерживает всё, что умеет последовательность из
+<a href="ch-12-collections-intro.html#collections">двенадцатой главы</a>: длину, индексы,
+отрицательные индексы, срезы, проверку вхождения и перебор.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">values</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">values</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="ow">in</span> <span class="n">values</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>(1, 2)
+4
+(4, 3, 2, 1, 0)
+True
+</code></pre>
+<p>Срез кортежа возвращает кортеж, а не список. Это логично: часть
+неизменяемой последовательности тоже неизменяема. Перебор работает как
+обычно: <code>for value in values</code> обходит элементы в порядке их записи.</p>
+<h3 id="tuple-comparison">Сравнение кортежей</h3>
+<p>Кортежи сравниваются по элементам слева направо, как слова в словаре:
+сначала сравнивается первый элемент, при равенстве — второй, и так до
+первого различия.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>True
+True
+True
+False
+</code></pre>
+<p>Первая пара различается вторым элементом: 2 меньше 3. Вторая — первым:
+1 меньше 2, поэтому второй элемент уже не важен. Равные кортежи содержат
+одинаковые элементы в одинаковом порядке. Последний пример показывает
+правило для разной длины: если все общие элементы равны, более короткий
+кортеж считается меньшим, поэтому <code>(1, 2)</code> меньше <code>(1, 2, 3)</code>, и
+выражение с перевёрнутым порядком даёт <code>False</code>.</p>
+<p>Такое сравнение работает, когда элементы сравнимы между собой. Кортеж с
+числом и строкой на одной позиции сравнить не получится: Python не
+знает, что больше.</p>
+<h2 id="immutability"><span class="h-number">14.4</span> Неизменяемость</h2>
+<p>Главное отличие от списка: кортеж нельзя изменить после создания.
+Попытка присвоить значение элементу поднимает <code>TypeError</code>.</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="n">values</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+</code></pre></div>
+<pre class="output"><code>TypeError: &#x27;tuple&#x27; object does not support item assignment
+</code></pre>
+<p>Сообщение говорит буквально: объект типа <code>tuple</code> не поддерживает
+присваивание элементам. Нет ни <code>append</code>, ни <code>remove</code>, ни <code>sort</code> — этих
+методов у кортежа нет вовсе.</p>
+<p>Обратите внимание на важное различие: неизменяемость запрещает менять
+объект, но не запрещает связать его имя с новым объектом.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">values</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">values</span> <span class="o">+</span> <span class="p">(</span><span class="mi">3</span><span class="p">,)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>(1, 2, 3)
+</code></pre>
+<p>Здесь создан новый кортеж из двух старых, и имя <code>values</code> теперь указывает
+на него. Старый кортеж <code>(1, 2)</code> не изменился — он просто больше не связан
+с этим именем. Это то же поведение, что у строк: операции создают новые
+значения.</p>
+<p><figure class="figure"><img src="illustrations/ch-14-tuple-vs-list.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Неизменяемость кортежа поверхностна. Если внутри кортежа лежит список,
+сам список остаётся изменяемым.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">record</span> <span class="o">=</span> <span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s2">"данные"</span><span class="p">)</span>
+<span class="n">record</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>([1, 2, 3], &#x27;данные&#x27;)
+</code></pre>
+<p>Кортеж не даёт заменить элемент, но внутренний список можно менять, пока
+он остаётся тем же объектом. Неизменяемость защищает структуру, а не
+глубину вложенности.</p>
+<h2 id="unpacking"><span class="h-number">14.5</span> Распаковка</h2>
+<p><strong>Распаковка</strong> — присваивание элементов последовательности нескольким
+именам одной инструкцией. Вы уже пользовались частным случаем: <code>a, b = b, a</code> меняет значения местами без промежуточной переменной.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>10 20
+20 10
+</code></pre>
+<p>Слева стоят имена, справа — последовательность. Python проходит по
+элементам и связывает их с именами по порядку. Справа при этом сначала
+создаётся кортеж <code>(b, a)</code>, поэтому обмен работает: старые значения уже
+зафиксированы до присваивания.</p>
+<p>Число имён должно совпадать с числом элементов, иначе будет ошибка.</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">,</span> <span class="n">third</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>ValueError: not enough values to unpack (expected 3, got 2)
+</code></pre>
+<p>Сообщение точно называет, сколько значений ожидалось и сколько пришло.
+Такая ошибка возникает при неверном предположении о длине данных.</p>
+<p>Если элементов больше, чем имён, помогает звёздочка: она собирает
+остаток в список.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">first</span><span class="p">,</span> <span class="o">*</span><span class="n">rest</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">rest</span><span class="p">)</span>
+<span class="o">*</span><span class="n">start</span><span class="p">,</span> <span class="n">last</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">last</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>1 [2, 3, 4]
+[1, 2, 3] 4
+</code></pre>
+<p>Звёздочка может стоять в любом месте, но одна на инструкцию. Собранный
+остаток всегда список — даже если исходная последовательность была
+кортежем, поскольку длина остатка заранее неизвестна.</p>
+<p>Распаковка умеет заглядывать внутрь: если элемент сам по себе
+последовательность, его можно распаковать на месте, взяв шаблон в
+скобки.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">point</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="n">point</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>1 2 3
+</code></pre>
+<p>Шаблон слева повторяет структуру справа: первый элемент — число, второй —
+пара чисел. Такая запись встречается, когда функция возвращает пару
+«значение и его характеристики» и обе части нужны по отдельности.</p>
+<p>Если структура не совпадает, ошибка зависит от того, чем именно. Когда во
+вложенной части элементов больше, чем имён, возникает
+<code>ValueError: too many values to unpack</code>; когда вложенный элемент вообще не
+последовательность (например, число) — <code>TypeError: cannot unpack non-iterable int object</code>.</p>
+<p><figure class="figure"><img src="illustrations/ch-14-unpacking.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h2 id="packing"><span class="h-number">14.6</span> Упаковка кортежа</h2>
+<p><strong>Упаковка кортежа</strong> — неявное создание кортежа перечислением значений
+через запятую. Именно она делает распаковку симметричной: справа кортеж
+упаковывается, слева распаковывается.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">divide_with_remainder</span><span class="p">(</span><span class="n">total</span><span class="p">,</span> <span class="n">divisor</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">total</span> <span class="o">//</span> <span class="n">divisor</span><span class="p">,</span> <span class="n">total</span> <span class="o">%</span> <span class="n">divisor</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">divide_with_remainder</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="n">quotient</span><span class="p">,</span> <span class="n">remainder</span> <span class="o">=</span> <span class="n">divide_with_remainder</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">quotient</span><span class="p">,</span> <span class="n">remainder</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>(3, 2)
+3 2
+</code></pre>
+<p>Функция возвращает одно значение — кортеж, который создан упаковкой без
+скобок. Вызывающий код может принять его как кортеж целиком или сразу
+распаковать в два имени. Так в Python возвращают несколько значений: это
+не особая конструкция языка, а обычный кортеж.</p>
+<p>Тот же приём встроен в некоторые функции стандартной библиотеки.
+Например, <code>divmod</code> возвращает частное и остаток.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">quotient</span><span class="p">,</span> <span class="n">remainder</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">quotient</span><span class="p">,</span> <span class="n">remainder</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>3 2
+</code></pre>
+<p>Возврат кортежа — часть контракта функции, и его стоит описать в
+docstring: сколько значений, в каком порядке, что означает каждое.
+Особенно это важно, когда значения одного типа: перепутать «часы» и
+«минуты» легко, а ошибка проявится далеко от места вызова.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">split_time</span><span class="p">(</span><span class="n">minutes</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Вернуть пару (часы, минуты) для заданного числа минут."""</span>
+    <span class="k">if</span> <span class="n">minutes</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"минуты не могут быть отрицательными: </span><span class="si">{</span><span class="n">minutes</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">minutes</span> <span class="o">//</span> <span class="mi">60</span><span class="p">,</span> <span class="n">minutes</span> <span class="o">%</span> <span class="mi">60</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">split_time</span><span class="p">(</span><span class="mi">150</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>(2, 30)
+</code></pre>
+<p>Docstring называет порядок элементов, поэтому вызывающий код знает, что
+первое значение — часы. Проверка на отрицательное значение показывает
+ещё одно преимущество: функция сама сообщает о неверном аргументе, а не
+возвращает бессмысленную пару.</p>
+<h3 id="conversion">Преобразование между списком и кортежем</h3>
+<p>Список и кортеж легко превращаются друг в друга встроенными функциями
+<code>list</code> и <code>tuple</code>. Это создаёт новый объект нужного типа и копирует
+элементы.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">tuple</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">tuple</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])))</span>
+</code></pre></div>
+<pre class="output"><code>[1, 2, 3]
+(4, 5)
+2
+</code></pre>
+<p>Преобразование полезно на границах: функция вернула кортеж, а дальше
+нужен изменяемый список — сделайте <code>list(...)</code> явно. Обратное
+преобразование <code>tuple(...)</code> фиксирует набор значений, полученный из
+изменяемого источника.</p>
+<h2 id="unpacking-loop"><span class="h-number">14.7</span> Распаковка в цикле</h2>
+<p>Распаковка работает везде, где ожидается последовательность, в том числе
+в заголовке цикла.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">pairs</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">left</span> <span class="o">+</span> <span class="n">right</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>3
+7
+11
+</code></pre>
+<p>На каждом шаге <code>for</code> получает очередной кортеж и распаковывает его в
+<code>left</code> и <code>right</code>. Такой код читается лучше, чем обращение по индексам
+<code>pair[0]</code> и <code>pair[1]</code>: имена объясняют смысл значений.</p>
+<h3 id="tuple-records">Кортежи как строки таблицы</h3>
+<p>Кортеж хорошо подходит для записи с фиксированным набором полей: пара
+«название — значение», координата, результат измерения. Набор таких
+записей удобно хранить списком и обходить циклом с распаковкой.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">months</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">"январь"</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span> <span class="p">(</span><span class="s2">"февраль"</span><span class="p">,</span> <span class="mi">90</span><span class="p">),</span> <span class="p">(</span><span class="s2">"март"</span><span class="p">,</span> <span class="mi">150</span><span class="p">)]</span>
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">amount</span> <span class="ow">in</span> <span class="n">months</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
+    <span class="n">total</span> <span class="o">+=</span> <span class="n">amount</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"итого:"</span><span class="p">,</span> <span class="n">total</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>январь 120
+февраль 90
+март 150
+итого: 360
+</code></pre>
+<p>Каждая строка данных — кортеж из двух элементов. Распаковка в заголовке
+цикла сразу даёт осмысленные имена, поэтому в коде нет «магических»
+индексов. Но порядок полей при этом фиксирован структурой записи: если в
+кортеже поменять местами название и сумму, имена получат неверные значения.
+Порядок стоит описать в docstring функции или в комментарии к данным. Если
+позже понадобится изменить запись — добавить поле или поправить значение, —
+кортеж придётся заменить новым, и это заметное место в коде: случайно
+испортить данные труднее.</p>
+<h2 id="mistakes"><span class="h-number">14.8</span> Типичные ошибки</h2>
+<p><strong>Считать <code>(5)</code> кортежем.</strong> Это число в скобках. Кортеж из одного
+элемента — <code>(5,)</code>, с запятой.</p>
+<p><strong>Пытаться изменить кортеж.</strong> <code>values[0] = 10</code>, <code>values.append(1)</code> и
+<code>values.sort()</code> невозможны. Если нужна изменяемость, берите список.</p>
+<p><strong>Смешивать кортеж и список в одной операции.</strong> <code>(1, 2) + [3]</code> —
+<code>TypeError</code>: складывать можно только последовательности одного типа.
+Преобразование делается явно: <code>list(...)</code> или <code>tuple(...)</code>.</p>
+<p><strong>Ошибаться в числе имён при распаковке.</strong> <code>a, b = (1, 2, 3)</code> даёт
+<code>ValueError</code>. Если длина заранее неизвестна, используйте звёздочку.</p>
+<p><strong>Забывать про вложенные изменяемые объекты.</strong> Кортеж с кортежами внутри
+неизменяем полностью, только если все вложенные объекты неизменяемы; кортеж
+со списком внутри — лишь поверхностно.</p>
+<p><strong>Использовать кортеж там, где данные будут меняться.</strong> Тогда каждая
+правка превращается в создание нового кортежа: <code>values = values + (x,)</code>.
+Иногда это нормально, но для накопления результатов лучше список.</p>
+<h2 id="choosing"><span class="h-number">14.9</span> Как выбрать структуру</h2>
+<p>Выбор между списком и кортежем — это выбор между «будет меняться» и
+«должно остаться как есть». Полезно задать три вопроса.</p>
+<p>Первый: нужно ли добавлять или удалять элементы после создания? Если да,
+нужен список: у кортежа таких операций нет.</p>
+<p>Второй: означает ли набор значений одну сущность? Координата <code>(3, 4)</code>,
+диапазон <code>(0, 100)</code>, пара «часы, минуты» — это единые значения, у
+которых нет смысла менять одну часть отдельно. Для них кортеж точнее
+выражает намерение.</p>
+<p>Третий: будет ли структура использоваться как неизменяемый ключ или
+храниться долго? Неизменяемость делает такое использование безопасным:
+никто не испортит данные «на месте». Подробнее о том, какие объекты
+подходят для ключей, — в главе о множествах.</p>
+<p>Если ответы противоречат друг другу, начинайте со списка: он
+универсальнее, а перейти к кортежу можно позже, когда станет ясно, что
+изменяемость не нужна. Обратный переход тоже возможен, но обычно он
+означает, что структура выбрана неверно.</p>
+<h2 id="упражнения"><span class="h-number">14.10</span> Упражнения</h2>
+<h3 id="ex-ch14-01">1. Чтение кортежа</h3>
+<p>Дан кортеж <code>point = (10, 20)</code>. Не запуская код, определите: первый
+элемент, последний элемент, длину и результат проверки <code>5 in point</code>.
+Проверьте ответы программой.</p>
+<h3 id="ex-ch14-02">2. Кортеж из одного элемента</h3>
+<p>Объясните, чем отличаются записи <code>(7)</code> и <code>(7,)</code>. Создайте кортеж из
+одного элемента, выведите его тип, длину и единственный элемент.</p>
+<h3 id="ex-ch14-03">3. Срезы кортежа</h3>
+<p>Для <code>values = (1, 2, 3, 4, 5)</code> запишите, что вернут <code>values[1:4]</code>,
+<code>values[::2]</code> и <code>values[-2:]</code>. Проверьте и объясните, почему срез
+кортежа — кортеж, а не список.</p>
+<h3 id="ex-ch14-04">4. Обойти неизменяемость</h3>
+<p>Дан кортеж <code>values = (1, 2, 3)</code>. Покажите, что присваивание элемента
+невозможно, и получите кортеж <code>(1, 2, 20)</code> без изменения исходного
+объекта. Объясните, что именно произошло.</p>
+<h3 id="ex-ch14-05">5. Обмен значений</h3>
+<p>Поменяйте местами значения двух имён <code>a = 1</code> и <code>b = 2</code> одной инструкцией
+распаковки. Объясните, почему для этого не нужна третья переменная.</p>
+<h3 id="ex-ch14-06">6. Звёздочка</h3>
+<p>Для кортежа <code>(1, 2, 3, 4, 5)</code> распакуйте первое значение, остаток в
+середине и последнее значение. Какие типы получились у трёх имён?</p>
+<h3 id="ex-ch14-07">7. Несколько значений из функции</h3>
+<p>Напишите функцию <code>split_time(minutes)</code>, которая возвращает часы и
+остаток минут. Распакуйте результат в два имени и выведите, затем
+выведите результат целиком для 75 минут.</p>
+<h3 id="ex-ch14-08">8. Кортежи в цикле</h3>
+<p>Дан список пар <code>[(1, &quot;один&quot;), (2, &quot;два&quot;)]</code>. Пройдите по нему циклом,
+распаковывая каждую пару, и выведите номер и название через дефис.</p>
+<h3 id="ex-ch14-09">9. Возврат двух значений</h3>
+<p>Напишите функцию <code>min_and_max(a, b)</code>, которая возвращает меньшее и
+большее значение в этом порядке. Распакуйте результат для <code>(9, 4)</code>.</p>
+<h3 id="ex-ch14-10">10. Мини-задача: расстояние от начала</h3>
+<p>Дан кортеж <code>point = (3, 4)</code>. Распакуйте его в <code>x</code> и <code>y</code>, вычислите
+квадрат расстояния от начала координат <code>x ** 2 + y ** 2</code>. Объясните,
+почему для координаты выбран кортеж, а не список.</p>
+<h3 id="ex-ch14-11">11. Сумма произведений</h3>
+<p>Напишите функцию, которая принимает список пар и возвращает сумму
+произведений элементов каждой пары. Проверьте на
+<code>[(1, 2), (3, 4), (5, 6)]</code>.</p>
+<h2 id="проверка-понимания"><span class="h-number">14.11</span> Проверка понимания</h2>
+<ol>
+<li>Чем кортеж отличается от списка по набору операций и по назначению?</li>
+<li>Почему запись <code>(5)</code> не создаёт кортеж?</li>
+<li>Что означает неизменяемость и почему она полезна при передаче данных
+в функцию?</li>
+<li>Почему кортеж со списком внутри нельзя назвать полностью неизменяемым?</li>
+<li>Чем упаковка отличается от распаковки кортежа?</li>
+<li>Как с помощью одной инструкции поменять значения двух имён местами?</li>
+<li>Что произойдёт при несовпадении числа имён и элементов при
+распаковке?</li>
+</ol>
+<h2 id="что-дальше"><span class="h-number">14.12</span> Что дальше</h2>
+<p>Кортежи и списки задают последовательности, но текст — особая
+последовательность: его элементы — символы Unicode, а операции над
+текстом нужны почти в каждой программе. Об этом — в главе
+<a href="ch-15-strings.html#strings">«Строки: методы, форматирование и Unicode»</a>.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-13-lists.html"><span class="pager-label">← Назад</span><span class="pager-title">Списки: индексы, срезы и методы</span></a><a class="pager-card next" rel="next" href="ch-15-strings.html"><span class="pager-label">Далее:</span><span class="pager-title">Строки: методы, форматирование и Unicode</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

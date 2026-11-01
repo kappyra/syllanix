@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 300" role="img"
+     aria-labelledby="st std" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="st">Семейства кодов состояния HTTP</title>
+  <desc id="std">Две сотни означают успех: 200 OK, 201 Created, 204 No Content. Три сотни — перенаправление. Четыре сотни — ошибка клиента: 400 неверный запрос, 401 не авторизован, 403 запрещено, 404 не найдено, 409 конфликт. Пять сотен — ошибка сервера: 500 внутренняя ошибка, 503 сервис недоступен.</desc>
+
+  <text x="26" y="32" font-size="17" font-weight="bold" fill="#1d3550">Коды состояния: кто виноват и что делать</text>
+
+  <rect x="24" y="60" width="240" height="196" rx="10" fill="#eef7ef" stroke="#2f6b3a" stroke-width="2"/>
+  <text x="144" y="88" text-anchor="middle" font-size="15" font-weight="bold" fill="#204a28">2xx — успех</text>
+  <text x="42" y="118" font-size="12.5" fill="#204a28">200 OK — есть тело ответа</text>
+  <text x="42" y="142" font-size="12.5" fill="#204a28">201 Created — создан ресурс</text>
+  <text x="42" y="166" font-size="12.5" fill="#204a28">204 No Content — успех</text>
+  <text x="42" y="190" font-size="12.5" fill="#204a28">   без тела</text>
+  <text x="42" y="226" font-size="12" fill="#2f6b3a">Клиент может продолжать.</text>
+
+  <rect x="280" y="60" width="240" height="196" rx="10" fill="#fff7e6" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="400" y="88" text-anchor="middle" font-size="15" font-weight="bold" fill="#4b3a16">4xx — ошибка клиента</text>
+  <text x="298" y="118" font-size="12.5" fill="#4b3a16">400 Bad Request</text>
+  <text x="298" y="142" font-size="12.5" fill="#4b3a16">401 Unauthorized</text>
+  <text x="298" y="166" font-size="12.5" fill="#4b3a16">403 Forbidden</text>
+  <text x="298" y="190" font-size="12.5" fill="#4b3a16">404 Not Found</text>
+  <text x="298" y="214" font-size="12.5" fill="#4b3a16">409 Conflict</text>
+  <text x="298" y="240" font-size="12" fill="#8a6a2f">Запрос нужно исправить.</text>
+
+  <rect x="536" y="60" width="258" height="196" rx="10" fill="#fdf1f1" stroke="#8c2f2f" stroke-width="2"/>
+  <text x="665" y="88" text-anchor="middle" font-size="15" font-weight="bold" fill="#6b2020">5xx — ошибка сервера</text>
+  <text x="554" y="118" font-size="12.5" fill="#6b2020">500 Internal Server Error</text>
+  <text x="554" y="142" font-size="12.5" fill="#6b2020">502 Bad Gateway</text>
+  <text x="554" y="166" font-size="12.5" fill="#6b2020">503 Service Unavailable</text>
+  <text x="554" y="198" font-size="12" fill="#8c2f2f">Клиент не виноват: повтор может</text>
+  <text x="554" y="218" font-size="12" fill="#8c2f2f">помочь, но нужен обработчик</text>
+  <text x="554" y="238" font-size="12" fill="#8c2f2f">сбоев и мониторинг.</text>
+</svg>

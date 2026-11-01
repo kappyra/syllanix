@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>ОС, процессы, сеть и API — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-35-os-network.html" aria-current="page">35. ОС, процессы, сеть и API</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-35-os-network.html#что-вы-сможете-после-этой-главы">35.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-35-os-network.html#os">35.2. Модуль os: система и пути</a></li>
+<li><a href="ch-35-os-network.html#env">35.3. Переменные окружения</a></li>
+<li><a href="ch-35-os-network.html#subprocess">35.4. Процессы и subprocess</a></li>
+<li><a href="ch-35-os-network.html#http">35.5. URL и HTTP-запрос</a></li>
+<li><a href="ch-35-os-network.html#api-client">35.6. Клиент API</a></li>
+<li><a href="ch-35-os-network.html#mistakes">35.7. Типичные ошибки</a></li>
+<li><a href="ch-35-os-network.html#упражнения">35.8. Упражнения</a></li>
+<li><a href="ch-35-os-network.html#проверка-понимания">35.9. Проверка понимания</a></li>
+<li><a href="ch-35-os-network.html#что-дальше">35.10. Что дальше</a></li>
+</ol></details></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 7. Практическая разработка</span><span class="sep">›</span><span>Глава 35</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Практическая разработка · глава 35</p>
+<h1 id="ос-процессы-сеть-и-api">ОС, процессы, сеть и API</h1>
+<p class="chapter-summary">Как программа взаимодействует с системой: переменные окружения, внешние процессы, HTTP-запросы и клиенты API.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#что-вы-сможете-после-этой-главы"><span class="toc-number">35.1</span> Что вы сможете после этой главы</a></li>
+<li class="level-2"><a href="#os"><span class="toc-number">35.2</span> Модуль os: система и пути</a></li>
+<li class="level-2"><a href="#env"><span class="toc-number">35.3</span> Переменные окружения</a></li>
+<li class="level-2"><a href="#subprocess"><span class="toc-number">35.4</span> Процессы и subprocess</a></li>
+<li class="level-2"><a href="#http"><span class="toc-number">35.5</span> URL и HTTP-запрос</a></li>
+<li class="level-2"><a href="#api-client"><span class="toc-number">35.6</span> Клиент API</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">35.7</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">35.8</span> Упражнения</a></li>
+<li class="level-2"><a href="#проверка-понимания"><span class="toc-number">35.9</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#что-дальше"><span class="toc-number">35.10</span> Что дальше</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#платформенные-различия">Платформенные различия</a></li>
+<li class="level-3"><a href="#настройки-и-среды">Настройки и среды</a></li>
+<li class="level-3"><a href="#методы-и-повторные-запросы">Методы и повторные запросы</a></li>
+<li class="level-3"><a href="#ошибки-как-часть-интерфейса">Ошибки как часть интерфейса</a></li>
+<li class="level-3"><a href="#пример-клиента-на-httpx">Пример клиента на httpx</a></li>
+<li class="level-3"><a href="#ex-ch35-01">1. Разбор URL</a></li>
+<li class="level-3"><a href="#ex-ch35-02">2. Сборка параметров</a></li>
+<li class="level-3"><a href="#ex-ch35-03">3. Пути через os.path</a></li>
+<li class="level-3"><a href="#ex-ch35-04">4. Настройки из окружения</a></li>
+<li class="level-3"><a href="#ex-ch35-05">5. Команда процесса</a></li>
+<li class="level-3"><a href="#ex-ch35-06">6. Коды состояния</a></li>
+<li class="level-3"><a href="#ex-ch35-07">7. Клиент API</a></li>
+<li class="level-3"><a href="#ex-ch35-08">8. Безопасность команды</a></li>
+<li class="level-3"><a href="#ex-ch35-09">9. Ошибка сети</a></li>
+<li class="level-3"><a href="#ex-ch35-10">10. Мини-проект: описание клиента</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>До сих пор программы работали с данными, которые создавали сами. Настоящее
+приложение взаимодействует с миром: читает настройки из окружения, запускает
+внешние команды, обращается к серверам по HTTP и разбирает ответы. Каждое
+такое взаимодействие пересекает границу процесса, а значит, требует аккуратной
+обработки ошибок и внимания к безопасности.</p>
+<p>В этой главе — четыре границы. Модуль <code>os</code> даёт доступ к системе и
+<strong>переменным окружения</strong>. Модуль <code>subprocess</code> запускает внешние процессы.
+HTTP-клиент отправляет запросы по <strong>URL</strong> и получает ответы с <strong>кодом
+состояния HTTP</strong>. Вместе они позволяют построить <strong>клиент API</strong> — код,
+который инкапсулирует работу с внешним сервисом.</p>
+<h2 id="что-вы-сможете-после-этой-главы"><span class="h-number">35.1</span> Что вы сможете после этой главы</h2>
+<p>К концу главы программа научится безопасно выходить во внешний мир и
+возвращаться с данными. Вы сможете:</p>
+<ul>
+<li>читать настройки из переменных окружения и не хранить секреты в коде;</li>
+<li>безопасно запускать внешние процессы и проверять код возврата;</li>
+<li>разбирать и собирать URL, понимать структуру HTTP-запроса;</li>
+<li>обрабатывать коды состояния и ошибки сети;</li>
+<li>проектировать клиент API с таймаутами и явными ошибками.</li>
+</ul>
+<h2 id="os"><span class="h-number">35.2</span> Модуль os: система и пути</h2>
+<p><strong>Модуль os</strong> — модуль взаимодействия с операционной системой: каталоги,
+переменные окружения, процессы. В современном Python часть его задач
+перекрывается <code>pathlib</code>, но <code>os.path</code> и переменные окружения по-прежнему
+нужны.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">"data"</span><span class="p">,</span> <span class="s2">"reports"</span><span class="p">,</span> <span class="s2">"2026-11-01.csv"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="s2">"data/./reports/../reports/file.csv"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>data/reports/2026-11-01.csv
+2026-11-01.csv
+(&#x27;data/reports/2026-11-01&#x27;, &#x27;.csv&#x27;)
+data/reports/file.csv
+</code></pre>
+<p><code>os.path.join</code> собирает путь, подставляя разделитель, принятый в системе.
+<code>os.path.normpath</code> убирает <code>.</code> и разрешает <code>..</code> без обращения к диску. Эти
+функции работают со строками, а не с объектами <code>Path</code>; в новом коде чаще
+используют <code>pathlib</code>, но при работе с чужими библиотеками оба стиля
+встречаются.</p>
+<p>Важно различать «путь как строка» и «путь как файл». Функции <code>os.path</code> ничего
+не читают с диска и не проверяют существование. Если файла нет, вы узнаете об
+этом только при попытке открыть его — и это нормально: проверка существования
+затем открытие создаёт <strong>состояние гонки</strong>, когда файл удаляют между двумя
+действиями. Правильный подход — открывать и обрабатывать <code>FileNotFoundError</code>.</p>
+<h3 id="платформенные-различия">Платформенные различия</h3>
+<p>Модуль <code>os</code> скрывает часть различий между системами, но не все. Разделитель
+пути, регистр букв в именах файлов, права доступа и переменные окружения
+устроены по-разному. Поэтому код, который работает с путями, должен
+использовать <code>os.path</code> или <code>pathlib</code>, а не жёстко вписанные <code>/</code> и <code>\</code>. Если
+программа зависит от платформы, это стоит проверить в непрерывной интеграции
+на целевой системе, а не обнаружить в production.</p>
+<p>Ещё одно различие — кодировка имён файлов и текста. <code>pathlib</code> и <code>open</code>
+принимают <code>encoding</code> явно; полагаться на локаль по умолчанию опасно, потому
+что на разных машинах она разная.</p>
+<p><figure class="figure"><img src="illustrations/ch-35-os-boundaries.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h2 id="env"><span class="h-number">35.3</span> Переменные окружения</h2>
+<p><strong>Переменная окружения</strong> — пара «имя — значение», передаваемая процессу извне;
+стандартный способ конфигурации без секретов в коде. Один и тот же код в
+разработке и в production отличается именно окружением: адресом базы, уровнем
+журналирования, ключами доступа.</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="n">database_url</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"DATABASE_URL"</span><span class="p">,</span> <span class="s2">"sqlite:///local.db"</span><span class="p">)</span>
+<span class="n">debug</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"DEBUG"</span><span class="p">,</span> <span class="s2">"0"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"1"</span>
+</code></pre></div>
+<p><code>os.environ</code> ведёт себя как словарь, но изменения в нём влияют на дочерние
+процессы. Чтение через <code>os.environ[&quot;NAME&quot;]</code> поднимает <code>KeyError</code>, если
+переменной нет; <code>os.getenv(&quot;NAME&quot;, default)</code> возвращает значение по умолчанию.
+Для необязательных настроек предпочтителен второй вариант: программа должна
+запускаться с разумными значениями по умолчанию.</p>
+<h3 id="настройки-и-среды">Настройки и среды</h3>
+<p>Один и тот же код обычно запускается в нескольких средах: локально, на
+тестовом стенде и в production. Отличаются адреса сервисов, уровни
+журналирования и ключи. Хранить все варианты в коде плохо: секреты попадут в
+репозиторий, а ветвления по имени среды расползутся по программе. Переменные
+окружения разделяют код и конфигурацию: артефакт собирается один раз, а
+поведение задаётся при запуске.</p>
+<p>Для проверки удобно передавать окружение в функцию словарём, как обычные
+сведения. Тогда тест не зависит от машины, а настройки читаются в одном месте.</p>
+<p>Секреты — отдельная и самая важная тема. Токен, пароль или ключ доступа не
+должны попадать в код, git и логи. Их передают через переменную окружения или
+менеджер секретов, а в коде читают один раз при старте и проверяют, что
+значение задано. Сообщение об ошибке должно говорить «переменная не задана», а не
+печатать её значение.</p>
+<h2 id="subprocess"><span class="h-number">35.4</span> Процессы и subprocess</h2>
+<p><strong>Модуль subprocess</strong> — модуль запуска внешних процессов с контролем
+аргументов, потоков ввода-вывода и кода возврата. Программа на Python может
+вызвать <code>git</code>, <code>ffmpeg</code> или собственный скрипт и получить результат.</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">"python"</span><span class="p">,</span> <span class="s2">"-V"</span><span class="p">],</span>
+    <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">timeout</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">returncode</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</code></pre></div>
+<p>Параметры важны. <code>capture_output=True</code> перехватывает потоки, <code>text=True</code>
+декодирует байты в строку, <code>timeout=5</code> не даёт процессу зависнуть навсегда.
+Аргументы передаются списком: первый элемент — программа, остальные —
+аргументы. Такой вызов не проходит через оболочку, поэтому пробелы и кавычки в
+данных не превращаются в команды.</p>
+<pre class="text"><code>$ python -c &quot;print(&#x27;привет&#x27;)&quot;
+привет
+</code></pre>
+<p>Опасный вариант — <code>shell=True</code> со склейкой строки из пользовательских данных.
+Если пользователь введёт <code>; rm -rf ~</code>, оболочка выполнит и вторую команду.
+Запускайте процессы без оболочки и передавайте аргументы списком; если
+оболочка действительно нужна, экранируйте значения или не используйте их вовсе.</p>
+<h2 id="http"><span class="h-number">35.5</span> URL и HTTP-запрос</h2>
+<p><strong>URL</strong> — адрес ресурса в сети: схема, хост, путь, параметры запроса. Разбор
+URL — обычная работа со строками, и стандартная библиотека умеет её делать без
+сети.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">parse_qs</span><span class="p">,</span> <span class="n">urlencode</span><span class="p">,</span> <span class="n">urljoin</span><span class="p">,</span> <span class="n">urlparse</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://api.example.com/v1/items?limit=5&amp;page=2"</span>
+<span class="n">parsed</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">parsed</span><span class="o">.</span><span class="n">scheme</span><span class="p">,</span> <span class="n">parsed</span><span class="o">.</span><span class="n">netloc</span><span class="p">,</span> <span class="n">parsed</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">parse_qs</span><span class="p">(</span><span class="n">parsed</span><span class="o">.</span><span class="n">query</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">urlencode</span><span class="p">({</span><span class="s2">"q"</span><span class="p">:</span> <span class="s2">"python 3.14"</span><span class="p">,</span> <span class="s2">"page"</span><span class="p">:</span> <span class="mi">2</span><span class="p">}))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">urljoin</span><span class="p">(</span><span class="s2">"https://api.example.com/v1/"</span><span class="p">,</span> <span class="s2">"items/42"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>https api.example.com /v1/items
+{&#x27;limit&#x27;: [&#x27;5&#x27;], &#x27;page&#x27;: [&#x27;2&#x27;]}
+q=python+3.14&amp;page=2
+https://api.example.com/v1/items/42
+</code></pre>
+<p><code>urlparse</code> разделяет адрес на части, <code>parse_qs</code> разбирает параметры, а
+<code>urlencode</code> собирает их обратно, корректно экранируя пробелы и специальные
+символы. <code>urljoin</code> соединяет базовый адрес с относительным — незаменим при
+построении ссылок на ресурсы API.</p>
+<p><strong>HTTP-клиент</strong> — клиент, отправляющий HTTP-запросы и получающий ответы от
+сервера. Запрос состоит из метода (<code>GET</code>, <code>POST</code>, …), пути, заголовков и
+необязательного тела. Ответ содержит код состояния, заголовки и тело.</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">urllib.request</span><span class="w"> </span><span class="kn">import</span> <span class="n">urlopen</span>
+
+<span class="k">with</span> <span class="n">urlopen</span><span class="p">(</span><span class="s2">"https://api.example.com/v1/items"</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="k">as</span> <span class="n">response</span><span class="p">:</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status</span><span class="p">)</span>
+</code></pre></div>
+<p>Сетевой вызов в книге не исполняется: пример зависит от внешнего сервера.
+Важно другое — таймаут указывается всегда. Без него программа может ждать
+ответа бесконечно, и никакой <code>try</code> не поможет. На 4xx и 5xx <code>urlopen</code>
+поднимает <code>HTTPError</code>, а не возвращает ответ молча: тело ошибки доступно
+через объект исключения, поэтому статус проверяют в <code>except</code>.</p>
+<p><strong>Код состояния HTTP</strong> — трёхзначный код ответа сервера: 2xx успех, 4xx
+ошибка клиента, 5xx ошибка сервера.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Диапазон</th>
+<th>Значение</th>
+<th>Примеры</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2xx</td>
+<td>успех</td>
+<td>200 OK, 201 Created, 204 No Content</td>
+</tr>
+<tr>
+<td>3xx</td>
+<td>перенаправление</td>
+<td>301 Moved Permanently, 304 Not Modified</td>
+</tr>
+<tr>
+<td>4xx</td>
+<td>ошибка клиента</td>
+<td>400 Bad Request, 401 Unauthorized, 404 Not Found, 408 Request Timeout, 429 Too Many Requests</td>
+</tr>
+<tr>
+<td>5xx</td>
+<td>ошибка сервера</td>
+<td>500 Internal Server Error, 503 Service Unavailable</td>
+</tr>
+</tbody>
+</table>
+</div><p><figure class="figure"><img src="illustrations/ch-35-http-exchange.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h3 id="методы-и-повторные-запросы">Методы и повторные запросы</h3>
+<p>HTTP-метод сообщает намерение. <code>GET</code> читает записи и не меняет состояние
+сервера; <code>POST</code> создаёт ресурс; <code>PUT</code> и <code>PATCH</code> обновляют; <code>DELETE</code> удаляет.
+Повторная отправка <code>GET</code> безопасна: если ответ потерялся, запрос можно
+повторить. Повтор <code>POST</code> без защиты может создать дубликат заказа, поэтому
+операции создания либо не повторяют автоматически, либо снабжают ключом
+уникальности. Это различие важно для клиента API: политика повторов зависит
+от метода, а не только от кода ошибки.</p>
+<p>Код — часть контракта. Успешный статус не означает «значения верные»: тело
+ответа всё равно нужно проверить. Ошибка клиента означает, что запрос
+некорректен или не авторизован; ошибка сервера — что проблема на стороне
+сервиса и запрос можно повторить позже. Повторять <code>4xx</code> обычно бессмысленно:
+без изменений запрос получит тот же ответ. Исключения — <code>408 Request Timeout</code>
+и <code>429 Too Many Requests</code>: протокол прямо предусматривает здесь повтор с
+задержкой, а заголовок <code>Retry-After</code> подсказывает, сколько ждать. <code>5xx</code> и
+сетевые таймауты тоже имеет смысл повторить с задержкой.</p>
+<h2 id="api-client"><span class="h-number">35.6</span> Клиент API</h2>
+<p><strong>Клиент API</strong> — код, инкапсулирующий обращение к внешнему API: формирование
+запросов, разбор ответов, обработка ошибок. Разбрасывать вызовы HTTP по всему
+проекту плохо: адреса, заголовки и обработка ошибок дублируются, а изменить
+поведение потом трудно. Клиент собирает это в одном месте.</p>
+<p><strong>requests / httpx</strong> — сторонние HTTP-клиенты с удобным API; выбираются по
+требованиям проекта и фиксируются как зависимость. Оба умеют таймауты,
+сессии и разбор JSON; повторные попытки настраивают отдельно или пишут
+вручную — как в примере ниже. Выбор между ними — вопрос требований: <code>httpx</code>
+поддерживает и синхронный, и асинхронный стиль, <code>requests</code> проще и шире
+распространён.</p>
+<p>Ответ API обычно приходит в JSON, а разбор — это уже знакомая работа со
+словарями и списками. Покажем разбор на заранее подготовленном теле, без
+сети:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">urljoin</span>
+
+<span class="n">BASE_URL</span> <span class="o">=</span> <span class="s2">"https://api.example.com/v1/"</span>
+<span class="n">raw</span> <span class="o">=</span> <span class="s1">'{"id": 42, "name": "Аня", "tags": ["admin", "dev"]}'</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">parse_user</span><span class="p">(</span><span class="n">payload</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">object</span><span class="p">]:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">"id"</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s2">"id"</span><span class="p">],</span> <span class="s2">"name"</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s2">"name"</span><span class="p">],</span> <span class="s2">"tags"</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s2">"tags"</span><span class="p">]}</span>
+
+
+<span class="n">user</span> <span class="o">=</span> <span class="n">parse_user</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">urljoin</span><span class="p">(</span><span class="n">BASE_URL</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"users/</span><span class="si">{</span><span class="n">user</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>{&#x27;id&#x27;: 42, &#x27;name&#x27;: &#x27;Аня&#x27;, &#x27;tags&#x27;: [&#x27;admin&#x27;, &#x27;dev&#x27;]}
+https://api.example.com/v1/users/42
+</code></pre>
+<h3 id="ошибки-как-часть-интерфейса">Ошибки как часть интерфейса</h3>
+<p>Клиент API должен различать ситуации, а не сообщать «что-то пошло не так».
+Отсутствие ресурса (<code>404</code>) — нормальный сценарий для <code>get_note</code>: вызывающий
+код решает, показать пустую страницу или создать заметку. Отказ в доступе
+(<code>401</code>) требует обновить токен или сообщить пользователю. Ошибка сервера
+(<code>5xx</code>) означает, что проблема временная и запрос можно повторить позже.
+Разные исключения позволяют обработать каждый случай отдельно и не
+превращать всю программу в один <code>except Exception</code>.</p>
+<p>Хороший клиент API:</p>
+<ul>
+<li>задаёт базовый адрес и версию API в одном месте;</li>
+<li>указывает таймаут на каждый запрос;</li>
+<li>проверяет код состояния и поднимает понятное исключение;</li>
+<li>разбирает JSON и проверяет обязательные поля;</li>
+<li>не логирует токены и тела с персональными данными;</li>
+<li>имеет отдельные исключения для «не найдено», «нет доступа» и «сбой сервера».</li>
+</ul>
+<h3 id="пример-клиента-на-httpx">Пример клиента на httpx</h3>
+<p>Соберём эти правила в код. Соединение создаётся один раз: <code>httpx.Client</code>
+держит пул соединений и общие заголовки, поэтому токен и базовый адрес не
+повторяются в каждом вызове.</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">httpx</span>
+
+<span class="n">token</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"API_TOKEN"</span><span class="p">]</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">httpx</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span>
+    <span class="n">base_url</span><span class="o">=</span><span class="s2">"https://api.example.com/v1/"</span><span class="p">,</span>
+    <span class="n">timeout</span><span class="o">=</span><span class="n">httpx</span><span class="o">.</span><span class="n">Timeout</span><span class="p">(</span><span class="mf">5.0</span><span class="p">),</span>
+    <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"Bearer </span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s2">"</span><span class="p">},</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>Клиент закрывают через <code>client.close()</code> или создают в блоке
+<code>with httpx.Client(...) as client:</code> — тогда соединения освобождаются
+автоматически. <code>raise_for_status()</code> превращает ответ 4xx/5xx в
+<code>httpx.HTTPStatusError</code>; без него тело ошибки легко принять за данные.
+Повторяем только случаи, где он предусмотрен: <code>429</code> и <code>5xx</code>, удваивая
+задержку, чтобы не добить перегруженный сервер.</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">httpx</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">fetch_with_retry</span><span class="p">(</span>
+    <span class="n">client</span><span class="p">:</span> <span class="n">httpx</span><span class="o">.</span><span class="n">Client</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">attempts</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">httpx</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+    <span class="n">delay</span> <span class="o">=</span> <span class="mf">0.5</span>
+    <span class="k">for</span> <span class="n">attempt</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">attempts</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+            <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">response</span>
+        <span class="k">except</span> <span class="n">httpx</span><span class="o">.</span><span class="n">HTTPStatusError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+            <span class="n">status</span> <span class="o">=</span> <span class="n">exc</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span>
+            <span class="n">retryable</span> <span class="o">=</span> <span class="n">status</span> <span class="o">==</span> <span class="mi">429</span> <span class="ow">or</span> <span class="n">status</span> <span class="o">&gt;=</span> <span class="mi">500</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">retryable</span> <span class="ow">or</span> <span class="n">attempt</span> <span class="o">==</span> <span class="n">attempts</span><span class="p">:</span>
+                <span class="k">raise</span>
+        <span class="k">except</span> <span class="n">httpx</span><span class="o">.</span><span class="n">TransportError</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">attempt</span> <span class="o">==</span> <span class="n">attempts</span><span class="p">:</span>
+                <span class="k">raise</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
+        <span class="n">delay</span> <span class="o">*=</span> <span class="mi">2</span>
+    <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">"цикл всегда возвращает или поднимает исключение"</span><span class="p">)</span>
+
+
+<span class="n">user</span> <span class="o">=</span> <span class="n">fetch_with_retry</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="s2">"users/42"</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="p">[</span><span class="s2">"name"</span><span class="p">])</span>
+</code></pre></div>
+<p>Если сервер вернул <code>404</code>, исключение уходит вызывающему коду сразу: это не
+временная ошибка, и повтор её не исправит. Сетевые сбои <code>httpx</code> сообщает
+исключениями семейства <code>TransportError</code> — их и перехватывает вторая ветка.</p>
+<h2 id="mistakes"><span class="h-number">35.7</span> Типичные ошибки</h2>
+<ol>
+<li><strong>Нет таймаута.</strong> Запрос без таймаута может висеть бесконечно. Таймаут —
+обязательный параметр любого сетевого вызова.</li>
+<li><strong>Игнорировать код состояния.</strong> <code>urlopen</code> поднимает <code>HTTPError</code> на
+4xx/5xx, а клиенты вроде <code>requests</code> по умолчанию возвращают ответ: без
+<code>raise_for_status()</code> тело ошибки легко принять за данные.</li>
+<li><strong>Складывать URL строками.</strong> Ручная конкатенация теряет экранирование и
+ломается на параметрах с пробелами; используйте <code>urlencode</code> и <code>urljoin</code>.</li>
+<li><strong>Запускать процесс с <code>shell=True</code>.</strong> Пользовательский ввод попадает в
+оболочку и могут выполнить произвольную команду.</li>
+<li><strong>Хранить секреты в коде.</strong> Токен в репозитории — утечка; используйте
+переменные окружения или менеджер секретов.</li>
+<li><strong>Смешивать транспорт и логику.</strong> Функция, которая одновременно строит
+запрос, ходит в сеть и печатает отчёт, непроверяема. Разделяйте слои.</li>
+<li><strong>Печатать секреты в логах.</strong> Даже отладочный вывод заголовков может
+содержать <code>Authorization</code>.</li>
+<li><strong>Считать, что сеть всегда доступна.</strong> Мобильный интернет пропадает,
+сервер перезагружается, прокси отвечает ошибкой. Клиент должен уметь
+завершаться с понятной ошибкой, а не зависать.</li>
+<li><strong>Доверять <code>Content-Type</code> без проверки.</strong> Сервер может объявить
+<code>application/json</code>, а вернуть HTML страницы ошибки; проверяйте заголовок и
+статус до <code>json.loads</code>, иначе разбор упадёт с невнятной ошибкой.</li>
+</ol>
+<h2 id="упражнения"><span class="h-number">35.8</span> Упражнения</h2>
+<h3 id="ex-ch35-01">1. Разбор URL</h3>
+<p>Разберите адрес <code>https://shop.example.com/catalog/items?category=books&amp;page=3</code>
+на схему, хост, путь и параметры. Выведите параметры как словарь.</p>
+<h3 id="ex-ch35-02">2. Сборка параметров</h3>
+<p>Соберите строку запроса для параметров <code>{&quot;q&quot;: &quot;язык python&quot;, &quot;limit&quot;: 10}</code>.
+Убедитесь, что пробел закодирован, а не потерян.</p>
+<h3 id="ex-ch35-03">3. Пути через os.path</h3>
+<p>Из пути <code>&quot;backups/2026/october.tar.gz&quot;</code> получите каталог, имя файла и
+расширение. Соберите обратно полный путь и сравните с исходным.</p>
+<h3 id="ex-ch35-04">4. Настройки из окружения</h3>
+<p>Напишите функцию <code>load_settings(env: dict[str, str]) -&gt; dict[str, object]</code>,
+которая читает <code>DEBUG</code>, <code>PORT</code> и <code>DATABASE_URL</code> со значениями по умолчанию
+<code>0</code>, <code>8000</code> и <code>sqlite:///local.db</code>. Проверьте пустое окружение и заполненное.</p>
+<h3 id="ex-ch35-05">5. Команда процесса</h3>
+<p>Напишите функцию, которая запускает <code>git status --short</code> в текущем каталоге и
+возвращает код возврата и вывод. Объясните, почему аргументы передаются
+списком и зачем нужен таймаут. Запускать в песочнице не нужно.</p>
+<h3 id="ex-ch35-06">6. Коды состояния</h3>
+<p>Реализуйте <code>classify(status: int) -&gt; str</code>, которая возвращает <code>&quot;успех&quot;</code>,
+<code>&quot;перенаправление&quot;</code>, <code>&quot;ошибка клиента&quot;</code> или <code>&quot;ошибка сервера&quot;</code>. Проверьте на
+кодах 200, 301, 404, 503.</p>
+<h3 id="ex-ch35-07">7. Клиент API</h3>
+<p>Напишите <code>parse_items(payload: str) -&gt; list[dict[str, object]]</code>, которая
+разбирает JSON-массив товаров и возвращает список словарей с полями <code>id</code>,
+<code>name</code>, <code>price</code>. Для отсутствующего поля поднимайте <code>ValueError</code>.</p>
+<h3 id="ex-ch35-08">8. Безопасность команды</h3>
+<p>Объясните, почему опасно выполнять
+<code>subprocess.run(f&quot;ls {user_input}&quot;, shell=True)</code>. Приведите пример
+пользовательского ввода, который выполнит лишнюю команду, и покажите
+безопасный вариант.</p>
+<h3 id="ex-ch35-09">9. Ошибка сети</h3>
+<p>Напишите функцию <code>safe_get(url: str, opener) -&gt; str</code>, которая возвращает тело
+ответа или строку <code>&quot;недоступно&quot;</code> при сетевой ошибке; <code>opener</code> — функция вроде
+<code>urlopen</code>, параметр позволяет подменить транспорт в тесте. Опишите, какие
+исключения перехватывать и почему нельзя глушить все ошибки подряд.</p>
+<h3 id="ex-ch35-10">10. Мини-проект: описание клиента</h3>
+<p>Спроектируйте клиент API для сервиса заметок: базовый адрес, методы
+<code>list_notes</code>, <code>get_note</code>, <code>create_note</code>. Опишите структуру класса, обработку
+кодов 404 и 401, таймауты и формат возвращаемых данных. Реализуйте разбор
+ответа на подготовленном JSON без сетевых вызовов.</p>
+<h2 id="проверка-понимания"><span class="h-number">35.9</span> Проверка понимания</h2>
+<ol>
+<li>Чем <code>os.path</code> отличается от <code>pathlib</code> и когда нужен каждый?</li>
+<li>Почему настройки лучше хранить в переменных окружения, а не в коде?</li>
+<li>Зачем нужен <code>timeout</code> при запуске процесса и сетевого запроса?</li>
+<li>Чем опасен <code>shell=True</code> и как его избежать?</li>
+<li>Что означают группы кодов 2xx, 4xx и 5xx для клиента?</li>
+<li>Зачем выделять клиент API в отдельный слой?</li>
+<li>Почему проверка «файл существует, затем открыть» считается ошибкой?</li>
+</ol>
+<h2 id="что-дальше"><span class="h-number">35.10</span> Что дальше</h2>
+<p>Внешний мир отвечает сведениями, и эти сведения нужно где-то хранить. Следующая
+глава — о SQLite, SQL и сериализации: как сохранять структурированные записи,
+делать запросы и не терять целостность. О путях и файлах говорилось в
+<a href="ch-19-files-formats.html">главе 19</a>, о JSON — там же; о зависимостях и их
+фиксации — в <a href="ch-33-project-tooling.html">главе 33</a>.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-34-stdlib.html"><span class="pager-label">← Назад</span><span class="pager-title">Стандартная библиотека: collections, itertools, functools, pathlib</span></a><a class="pager-card next" rel="next" href="ch-36-data-storage.html"><span class="pager-label">Далее:</span><span class="pager-title">Данные: SQLite, SQL и сериализация</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

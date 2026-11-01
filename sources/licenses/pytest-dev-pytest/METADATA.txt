@@ -1,0 +1,7 @@
+source_url: https://github.com/pytest-dev/pytest
+commit: 0212785e34eb635b3359e4eccc757de95bf39036
+commit_date: 2026-10-30
+verified_at: 2026-11-01
+file: AUTHORS sha256=03e25c9a6839b292fd396c3508a6065db42e8bb5b4bea25f2f2ddd5238d1688b
+file: LICENSE sha256=ca836a5f9ecca3b2f350230faa20a48fb8b145653b5568d784862df864706b9b
+file: METADATA.txt sha256=ebd92c40fbf96adf9ad16a14eed433704900dc7741e8a80401446752ebb6ee9e

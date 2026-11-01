@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Аннотации типов и статическая проверка — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><details class="chapter-current" open><summary>
+<a href="ch-31-typing.html" aria-current="page">31. Аннотации типов и статическая проверка</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-31-typing.html#что-вы-сможете-после-этой-главы">31.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-31-typing.html#annotations">31.2. Аннотация: синтаксис и смысл</a></li>
+<li><a href="ch-31-typing.html#mypy">31.3. mypy: статическая проверка</a></li>
+<li><a href="ch-31-typing.html#union">31.4. Объединение типов и Optional</a></li>
+<li><a href="ch-31-typing.html#generics">31.5. Обобщённые типы</a></li>
+<li><a href="ch-31-typing.html#runtime">31.6. Типы во время выполнения</a></li>
+<li><a href="ch-31-typing.html#mistakes">31.7. Типичные ошибки</a></li>
+<li><a href="ch-31-typing.html#упражнения">31.8. Упражнения</a></li>
+<li><a href="ch-31-typing.html#проверка-понимания">31.9. Проверка понимания</a></li>
+<li><a href="ch-31-typing.html#что-дальше">31.10. Что дальше</a></li>
+</ol></details></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 6. Типизация, тестирование и инструменты</span><span class="sep">›</span><span>Глава 31</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Типизация, тестирование и инструменты · глава 31</p>
+<h1 id="аннотации-типов-и-статическая-проверка">Аннотации типов и статическая проверка</h1>
+<p class="chapter-summary">Как описывать типы в коде, что проверяет mypy и почему аннотации не защищают программу во время выполнения.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#что-вы-сможете-после-этой-главы"><span class="toc-number">31.1</span> Что вы сможете после этой главы</a></li>
+<li class="level-2"><a href="#annotations"><span class="toc-number">31.2</span> Аннотация: синтаксис и смысл</a></li>
+<li class="level-2"><a href="#mypy"><span class="toc-number">31.3</span> mypy: статическая проверка</a></li>
+<li class="level-2"><a href="#union"><span class="toc-number">31.4</span> Объединение типов и Optional</a></li>
+<li class="level-2"><a href="#generics"><span class="toc-number">31.5</span> Обобщённые типы</a></li>
+<li class="level-2"><a href="#runtime"><span class="toc-number">31.6</span> Типы во время выполнения</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">31.7</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">31.8</span> Упражнения</a></li>
+<li class="level-2"><a href="#проверка-понимания"><span class="toc-number">31.9</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#что-дальше"><span class="toc-number">31.10</span> Что дальше</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#аннотации-и-docstring">Аннотации и docstring</a></li>
+<li class="level-3"><a href="#строгий-и-мягкий-режимы">Строгий и мягкий режимы</a></li>
+<li class="level-3"><a href="#обобщённые-контейнеры-на-практике">Обобщённые контейнеры на практике</a></li>
+<li class="level-3"><a href="#ex-ch31-01">1. Аннотации простой функции</a></li>
+<li class="level-3"><a href="#ex-ch31-02">2. Прогнозирование вывода</a></li>
+<li class="level-3"><a href="#ex-ch31-03">3. Исправление Optional</a></li>
+<li class="level-3"><a href="#ex-ch31-04">4. Объединение типов</a></li>
+<li class="level-3"><a href="#ex-ch31-05">5. Обобщённый минимум</a></li>
+<li class="level-3"><a href="#ex-ch31-06">6. mypy по описанию</a></li>
+<li class="level-3"><a href="#ex-ch31-07">7. Сужение типа</a></li>
+<li class="level-3"><a href="#ex-ch31-08">8. Проверка на границе</a></li>
+<li class="level-3"><a href="#ex-ch31-09">9. Аннотации и реальность</a></li>
+<li class="level-3"><a href="#ex-ch31-10">10. Мини-проект: контракт функции</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>К этому моменту вы умеете писать программы, в которых типы определяются
+значениями: одно и то же имя может хранить число, затем строку, затем список.
+Такая гибкость удобна в небольших сценариях и опасна в больших: читателю
+приходится угадывать, что функция ожидает на входе и что обещает вернуть,
+а ошибка обнаруживается только тогда, когда до неё дойдёт исполнение.</p>
+<p><strong>Аннотация типа</strong> — это запись ожидаемого типа рядом с именем или сигнатурой.
+Она не меняет поведение программы, но служит документацией для людей и
+входными данными для статических анализаторов. В этой главе вы научитесь
+описывать контракты функций и структур данных, поймёте, что именно проверяет
+<strong>mypy</strong> и где заканчиваются его гарантии.</p>
+<p>Аннотации окупаются не сразу. В программе на пятьдесят строк они выглядят
+канцелярией, зато в проекте на несколько тысяч строк экономят часы: вместо
+чтения тела функции достаточно взглянуть на сигнатуру, а вместо отладки
+<code>AttributeError</code> на проде — увидеть предупреждение до коммита. Плата за это —
+дисциплина: аннотировать нужно последовательно, а результаты проверки
+исправлять, а не подавлять.</p>
+<h2 id="что-вы-сможете-после-этой-главы"><span class="h-number">31.1</span> Что вы сможете после этой главы</h2>
+<ul>
+<li>аннотировать переменные, параметры и возвращаемые значения;</li>
+<li>записывать «одно из нескольких» через <strong>объединение типов</strong> и честно
+обрабатывать отсутствие значения;</li>
+<li>описывать контейнеры <strong>обобщёнными типами</strong> и связывать типы входа и выхода
+через <strong>TypeVar</strong>;</li>
+<li>понимать разницу между статической проверкой и <strong>типами во время
+выполнения</strong>;</li>
+<li>читать сообщения mypy и не превращать аннотации в формальность.</li>
+</ul>
+<h2 id="annotations"><span class="h-number">31.2</span> Аннотация: синтаксис и смысл</h2>
+<p><strong>Аннотация</strong> — синтаксическая запись типа рядом с именем: <code>x: int = 0</code>,
+<code>def f(a: str) -&gt; bool</code>. Двоеточие после имени вводит тип переменной,
+стрелка <code>-&gt;</code> — тип результата функции. Синтаксис доступен и для атрибутов
+класса, и для элементов контейнеров.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">greet</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">times</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="p">(</span><span class="s2">"Привет, "</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s2">"! "</span><span class="p">)</span> <span class="o">*</span> <span class="n">times</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">greet</span><span class="p">(</span><span class="s2">"Аня"</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">greet</span><span class="o">.</span><span class="vm">__annotations__</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>Привет, Аня! Привет, Аня!
+{&#x27;name&#x27;: &lt;class &#x27;str&#x27;&gt;, &#x27;times&#x27;: &lt;class &#x27;int&#x27;&gt;, &#x27;return&#x27;: &lt;class &#x27;str&#x27;&gt;}
+</code></pre>
+<p>Аннотации не исчезают: интерпретатор собирает их в словарь
+<code>__annotations__</code>. Это обычные объекты Python, и их можно прочитать в
+программе, например в библиотеке, которая строит документацию или
+валидирует данные.</p>
+<p>Важно различать два близких термина.</p>
+<ul>
+<li><strong>Аннотация</strong> — синтаксическая запись: <code>count: int</code>.</li>
+<li><strong>Аннотация типа</strong> (type hint) — указание ожидаемого типа, которое
+проверяют статические анализаторы, но не сам интерпретатор.</li>
+</ul>
+<p>Разница проявляется при запуске: аннотация существует как объект, а
+проверки типа при вызове не происходит.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">double</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">value</span> <span class="o">*</span> <span class="mi">2</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">double</span><span class="p">(</span><span class="mi">21</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">double</span><span class="p">(</span><span class="s2">"21"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>42
+2121
+</code></pre>
+<p>Второй вызов не вызвал ошибку: Python умножил строку на два. Аннотация
+<code>int</code> — обещание, а не ограничение. Именно поэтому нужен отдельный
+инструмент, который читает код, не исполняя его.</p>
+<h3 id="аннотации-и-docstring">Аннотации и docstring</h3>
+<p>Строка документации описывает назначение функции словами, а аннотации
+фиксируют её контракт в машиночитаемом виде. Эти два инструмента не
+конкурируют: docstring отвечает на вопрос «зачем и при каких условиях», а
+аннотации — на вопрос «какие типы на входе и выходе».</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">convert</span><span class="p">(</span><span class="n">amount</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">rate</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Переводит сумму по курсу.</span>
+
+<span class="sd">    amount — сумма в копейках, rate — множитель курса.</span>
+<span class="sd">    Возвращает сумму в рублях с дробной частью.</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="n">amount</span> <span class="o">*</span> <span class="n">rate</span> <span class="o">/</span> <span class="mi">100</span>
+</code></pre></div>
+<p>Читатель видит и смысл, и типы. Редактор кода, получив аннотации, подсказывает
+аргументы и проверяет вызовы ещё до запуска. Если аннотации расходятся с
+docstring, доверять стоит аннотациям: их проверяет инструмент, а текст
+docstring — только человек на ревью. Поэтому контракт лучше держать в одном
+месте, а в docstring описывать то, что из типов не видно: единицы измерения,
+допустимые диапазоны, смысл исключений.</p>
+<h2 id="mypy"><span class="h-number">31.3</span> mypy: статическая проверка</h2>
+<p><strong>mypy</strong> — статический анализатор типов для Python, проверяющий аннотации без
+запуска кода. Он разбирает программу, выводит типы выражений и сообщает о
+местах, где фактический тип не совпадает с обещанным. mypy не входит в
+стандартную библиотеку: это внешняя зависимость, которую устанавливают в
+виртуальное окружение проекта.</p>
+<p>Пусть файл <code>app.py</code> содержит такой код:</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">double</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">value</span> <span class="o">*</span> <span class="mi">2</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">double</span><span class="p">(</span><span class="s2">"21"</span><span class="p">))</span>
+</code></pre></div>
+<p>Запуск анализатора даёт ошибку:</p>
+<pre class="text"><code>$ mypy app.py
+app.py:5: error: Argument 1 to &quot;double&quot; has incompatible type &quot;str&quot;; expected &quot;int&quot;  [arg-type]
+Found 1 error in 1 file (checked 1 source file)
+</code></pre>
+<p>Сообщение читается слева направо: файл и строка, уровень, суть, код правила.
+<code>arg-type</code> — необязательная метка, по ней удобно искать объяснение в
+документации. Анализатор не исполнял программу: ошибка найдена до запуска,
+как синтаксическая, но, в отличие от неё, код остаётся синтаксически
+корректным и запускается. Имя правила зависит от механизма: <code>arg-type</code> —
+неверный аргумент вызова, <code>call-overload</code> — не подошла ни одна перегрузка
+(например, индекс списка оказался строкой), <code>union-attr</code> — обращение к
+атрибуту, которого нет у одного из вариантов объединения.</p>
+<p>Что mypy проверяет уверенно:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Ситуация</th>
+<th>Реакция mypy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>передали <code>str</code> туда, где обещан <code>int</code></td>
+<td>ошибка <code>arg-type</code></td>
+</tr>
+<tr>
+<td>вернули не тот тип, что в <code>-&gt;</code></td>
+<td>ошибка <code>return-value</code></td>
+</tr>
+<tr>
+<td>обратились к атрибуту, которого нет у типа</td>
+<td>ошибка <code>attr-defined</code></td>
+</tr>
+<tr>
+<td>передали в метод контейнера аргумент не того типа</td>
+<td>ошибка <code>arg-type</code></td>
+</tr>
+<tr>
+<td>проиндексировали контейнер неподходящим типом</td>
+<td>ошибка <code>call-overload</code></td>
+</tr>
+<tr>
+<td>значение может быть <code>None</code>, а код этого не учитывает</td>
+<td>ошибка <code>union-attr</code></td>
+</tr>
+</tbody>
+</table>
+</div><p>Чего mypy <strong>не</strong> делает: не проверяет значения, не ловит деление на ноль, не
+доказывает, что ветка <code>if</code> недостижима, и не гарантирует соответствие
+аннотаций реальным данным, если они пришли извне. Статический анализ
+сужает пространство ошибок, но не заменяет тесты (глава 32).</p>
+<p><figure class="figure"><img src="illustrations/ch-31-static-vs-runtime.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h3 id="строгий-и-мягкий-режимы">Строгий и мягкий режимы</h3>
+<p>У анализатора есть настройки строгости. В <code>pyproject.toml</code> проекта указывают
+режим и исключения:</p>
+<div class="highlight"><pre><code class="language-toml"><span class="k">[tool.mypy]</span>
+<span class="n">python_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"3.14"</span>
+<span class="n">strict</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">warn_unused_ignores</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</code></pre></div>
+<p>При <code>strict = true</code> mypy требует аннотаций у функций, запрещает неявный
+<code>Any</code> и неразмеченные контейнеры. Начинать с полного <code>strict</code> в старом
+проекте болезненно: сотни сообщений закрывают полезный сигнал. Разумнее
+включать строгость постепенно.</p>
+<p>Работающая стратегия внедрения выглядит так. Сначала аннотируют публичные
+функции и границы модулей — там, где контракт важен другим людям. Затем
+включают проверку в непрерывной интеграции, чтобы новые изменения не
+добавляли ошибок. Старые модули переводят по одному и фиксируют прогресс
+числом подавлений. На каждом шаге важно, чтобы отчёт оставался коротким:
+если mypy выдаёт двести сообщений, его перестают читать, и проверка
+превращается в формальность.</p>
+<h2 id="union"><span class="h-number">31.4</span> Объединение типов и Optional</h2>
+<p>Иногда значение может быть одного из нескольких типов. <strong>Объединение типов</strong> —
+тип «одно из нескольких»: <code>int | str</code> (в старом синтаксисе
+<code>Union[int, str]</code>). Проверяющая программа должна рассмотреть каждую ветку.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">stringify</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">value</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"число: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">"</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">stringify</span><span class="p">(</span><span class="s2">"готово"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stringify</span><span class="p">(</span><span class="mf">3.5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stringify</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>готово
+число: 3.5
+число: 7
+</code></pre>
+<p><code>isinstance</code> не только выбирает ветку исполнения, но и сужает тип для
+анализатора: внутри <code>if</code> значение считается строкой. Этот приём называют
+сужением типа.</p>
+<p>Отдельный и самый частый случай — «значение или ничего». <strong>Optional</strong> —
+объединение типа с <code>None</code>: <code>str | None</code>. Историческое имя <code>Optional</code> пришло
+из модуля <code>typing</code>; смысл тот же, но новое написание короче.</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">find_user</span><span class="p">(</span><span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="o">...</span>  <span class="c1"># вернёт имя пользователя или None, если его нет</span>
+</code></pre></div>
+<p>Почему это важно? <code>dict.get</code> возвращает не значение, а «значение или <code>None</code>».
+Если забыть о второй возможности, программа упадёт на первом же отсутствующем
+ключе.</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="n">prices</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"яблоко"</span><span class="p">:</span> <span class="mi">50</span><span class="p">}</span>
+<span class="n">price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"слива"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">price</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>TypeError: unsupported operand type(s) for +: &#x27;NoneType&#x27; and &#x27;int&#x27;
+</code></pre>
+<p>Правильный код явно обрабатывает отсутствие значения:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">prices</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"яблоко"</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="s2">"груша"</span><span class="p">:</span> <span class="mi">80</span><span class="p">}</span>
+<span class="n">price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"слива"</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">price</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"нет в продаже"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">price</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>нет в продаже
+</code></pre>
+<p>Обратите внимание: <code>Optional[str]</code> — это не «необязательный аргумент». За
+необязательность аргумента отвечает значение по умолчанию, а <code>Optional</code>
+говорит лишь о том, что само значение может отсутствовать. Путаница между
+этими двумя вещами — постоянный источник ошибок.</p>
+<p><figure class="figure"><img src="illustrations/ch-31-union-optional.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h2 id="generics"><span class="h-number">31.5</span> Обобщённые типы</h2>
+<p>Контейнер хранит элементы, и хочется описать не только «список», но и «список
+чисел». <strong>Обобщённый тип</strong> — тип с параметрами: <code>list[int]</code>,
+<code>dict[str, float]</code>, <code>tuple[int, ...]</code>. Параметры уточняют, что внутри.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypeVar</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">"T"</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">first</span><span class="p">(</span><span class="n">items</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">items</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+
+<span class="n">numbers</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<span class="n">names</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Аня"</span><span class="p">,</span> <span class="s2">"Борис"</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">first</span><span class="p">(</span><span class="n">numbers</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">first</span><span class="p">(</span><span class="n">names</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">first</span><span class="o">.</span><span class="vm">__annotations__</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>10
+Аня
+{&#x27;items&#x27;: list[~T], &#x27;return&#x27;: ~T}
+</code></pre>
+<p><strong>TypeVar</strong> — переменная типа, связывающая типы входа и выхода обобщённой
+функции. Запись <code>list[T] -&gt; T</code> обещает: если на вход пришёл список чисел, на
+выходе будет число; если список строк — строка. Без такой связи пришлось бы
+писать <code>object</code>, теряя информацию.</p>
+<p>Параметры типов доступны и для анализа, и для интроспекции:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_args</span><span class="p">,</span> <span class="n">get_origin</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">get_origin</span><span class="p">(</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">get_args</span><span class="p">(</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">get_args</span><span class="p">(</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="o">...</span><span class="p">]))</span>
+</code></pre></div>
+<pre class="output"><code>&lt;class &#x27;dict&#x27;&gt;
+(&lt;class &#x27;str&#x27;&gt;, &lt;class &#x27;float&#x27;&gt;)
+(&lt;class &#x27;int&#x27;&gt;, Ellipsis)
+</code></pre>
+<p><code>dict[str, float]</code> — это объект-описание типа, а не сам словарь. Создать
+значение из него нельзя: обобщённые типы существуют для проверки и
+документирования, а не для конструирования.</p>
+<p>Начиная с Python 3.12 появился более короткий синтаксис параметров типа:</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">first</span><span class="p">[</span><span class="n">T</span><span class="p">](</span><span class="n">items</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">items</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+
+<span class="nb">type</span> <span class="n">Pair</span><span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="n">T</span><span class="p">]</span>
+</code></pre></div>
+<p>Он читается лучше, но требует 3.12+. Книга минимально поддерживает 3.11,
+поэтому в примерах выше используется <code>TypeVar</code>: этот вариант работает во всех
+поддерживаемых версиях.</p>
+<h3 id="обобщённые-контейнеры-на-практике">Обобщённые контейнеры на практике</h3>
+<p>Обобщённые типы описывают не только отдельное значение, но и форму данных.
+Функция, которая раскладывает числа по группам, возвращает словарь списков;
+аннотация фиксирует и тип ключей, и тип элементов.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">group_by_parity</span><span class="p">(</span><span class="n">numbers</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+    <span class="n">groups</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"чётные"</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">"нечётные"</span><span class="p">:</span> <span class="p">[]}</span>
+    <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="s2">"чётные"</span> <span class="k">if</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">"нечётные"</span>
+        <span class="n">groups</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">groups</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">group_by_parity</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]))</span>
+</code></pre></div>
+<pre class="output"><code>{&#x27;чётные&#x27;: [2, 4], &#x27;нечётные&#x27;: [1, 3]}
+</code></pre>
+<p>Без параметров типа пришлось бы писать <code>dict</code> и <code>list</code>, теряя информацию о
+том, что внутри. С ними читатель видит форму результата без запуска кода, а
+анализатор проверяет, что <code>append</code> получает именно числа.</p>
+<h2 id="runtime"><span class="h-number">31.6</span> Типы во время выполнения</h2>
+<p>Фраза «типы во время выполнения» описывает ограниченность аннотаций: они не
+проверяются при запуске. Интерпретатор не сверяет аргументы с аннотациями и не
+останавливает вызов. Проверку можно сделать вручную — через <code>isinstance</code>, — но
+это уже отдельный код, а не свойство аннотации.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">area</span><span class="p">(</span><span class="n">width</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">"ширина и высота должны быть числами"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">area</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>7.0
+</code></pre>
+<p>Такая проверка полезна на границе программы, где данные приходят из файла,
+сети или командной строки. Внутри программы, где типы уже известны из кода,
+ручные проверки чаще мешают: они дублируют то, что должен был поймать
+анализатор.</p>
+<p>Отдельного разговора заслуживает тип <code>Any</code>. Он отключает проверку для
+значения: с <code>Any</code> разрешено всё, и ошибка не будет найдена ни анализатором,
+ни, возможно, тестами. <code>Any</code> неизбежен на границах, где данные ещё не
+разобраны: JSON-ответ, аргументы командной строки, результат чтения файла.
+Правило простое: <code>Any</code> допустим на входе границы, но сразу после проверки
+значение должно получить конкретный тип. Если <code>Any</code> расползается по
+программе, статическая проверка перестаёт что-либо гарантировать.</p>
+<p>Есть и тонкость с самими аннотациями. Если аннотация записана строкой
+(<code>&quot;str&quot;</code>) или включён режим отложенных аннотаций, в <code>__annotations__</code> лежит
+строка, а не тип. Чтобы получить настоящие объекты типов, используют
+<code>typing.get_type_hints</code>, который разрешает имена в текущем пространстве имён.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_type_hints</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">parse</span><span class="p">(</span><span class="n">raw</span><span class="p">:</span> <span class="s2">"str"</span><span class="p">,</span> <span class="n">base</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">base</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">parse</span><span class="o">.</span><span class="vm">__annotations__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">get_type_hints</span><span class="p">(</span><span class="n">parse</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>{&#x27;raw&#x27;: &#x27;str&#x27;, &#x27;base&#x27;: &lt;class &#x27;int&#x27;&gt;, &#x27;return&#x27;: &lt;class &#x27;int&#x27;&gt;}
+{&#x27;raw&#x27;: &lt;class &#x27;str&#x27;&gt;, &#x27;base&#x27;: &lt;class &#x27;int&#x27;&gt;, &#x27;return&#x27;: &lt;class &#x27;int&#x27;&gt;}
+</code></pre>
+<p>Практический вывод: не полагайтесь на <code>__annotations__</code> как на готовые типы.
+Для библиотек, которые анализируют сигнатуры, есть <code>get_type_hints</code> и
+<code>inspect.signature</code> — они корректно обрабатывают строковые аннотации.</p>
+<h2 id="mistakes"><span class="h-number">31.7</span> Типичные ошибки</h2>
+<ol>
+<li><strong>Считать аннотацию проверкой.</strong> <code>def f(x: int)</code> не мешает передать
+строку. Без запуска mypy аннотации остаются документацией.</li>
+<li><strong>Аннотировать только часть кода.</strong> Если функция объявлена без типов, mypy
+выводит их сам и может ошибиться молча. Строгий режим начинается с
+обязательных аннотаций на публичных границах.</li>
+<li><strong>Путать <code>Optional</code> с аргументом по умолчанию.</strong> <code>x: int | None = None</code>
+означает «значение может отсутствовать»; необязательность задаёт <code>= None</code>,
+а не сам тип.</li>
+<li><strong>Игнорировать <code>None</code> в цепочках вызовов.</strong> <code>prices.get(...) + 1</code> падает,
+если ключа нет. Анализатор предупреждает об этом заранее — не подавляйте
+предупреждение.</li>
+<li><strong>Заглушать анализатор.</strong> <code># type: ignore</code> без причины скрывает реальную
+ошибку. Если подавление нужно, указывайте код правила и объясняйте
+причину комментарием.</li>
+<li><strong>Обещать больше, чем даёте.</strong> <code>-&gt; int</code> при фактическом возврате <code>None</code>
+ломает доверие к типам; лучше честный <code>int | None</code>, чем красивая, но
+ложная сигнатура.</li>
+<li><strong>Менять аннотацию вместо кода.</strong> Когда mypy сообщает о несовместимости,
+соблазн велик — расширить тип до <code>object</code> или поставить <code>Any</code>. Это
+«лечение» отчёта, а не причины: ошибка остаётся, просто становится
+невидимой.</li>
+</ol>
+<h2 id="упражнения"><span class="h-number">31.8</span> Упражнения</h2>
+<h3 id="ex-ch31-01">1. Аннотации простой функции</h3>
+<p>Напишите функцию <code>mean(a: float, b: float) -&gt; float</code>, возвращающую среднее
+двух чисел. Добавьте аннотации, вызовите функцию для <code>(3, 4)</code> и выведите
+результат. Затем выведите <code>mean.__annotations__</code> и объясните, что в нём
+лежит.</p>
+<h3 id="ex-ch31-02">2. Прогнозирование вывода</h3>
+<p>Что выведет программа и почему?</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">times</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">text</span> <span class="o">*</span> <span class="n">times</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">repeat</span><span class="p">(</span><span class="s2">"да"</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">repeat</span><span class="p">(</span><span class="s2">"да"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">))</span>
+</code></pre></div>
+<p>Запишите ответ, проверьте запуском и объясните, какую ошибку поймал бы mypy.</p>
+<h3 id="ex-ch31-03">3. Исправление Optional</h3>
+<p>Код падает на отсутствующем ключе:</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">config</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"debug"</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+<span class="n">level</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"level"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">level</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+</code></pre></div>
+<p>Перепишите его так, чтобы при отсутствии значения выводилось <code>&quot;INFO&quot;</code>, а при
+наличии — значение в верхнем регистре. Аннотируйте переменную как
+<code>str | None</code> и объясните, где именно сужается тип.</p>
+<h3 id="ex-ch31-04">4. Объединение типов</h3>
+<p>Напишите функцию <code>describe(value: int | str | None) -&gt; str</code>, которая
+возвращает: для <code>None</code> — <code>&quot;пусто&quot;</code>, для строки — <code>&quot;строка: &lt;значение&gt;&quot;</code>, для
+числа — <code>&quot;число: &lt;значение&gt;&quot;</code>. Проверьте все три ветки.</p>
+<h3 id="ex-ch31-05">5. Обобщённый минимум</h3>
+<p>Напишите обобщённую функцию <code>smallest(items: list[T]) -&gt; T</code>, которая
+возвращает первый элемент списка после сортировки копии. Используйте
+<code>TypeVar</code>. Проверьте на <code>list[int]</code> и <code>list[str]</code>.</p>
+<h3 id="ex-ch31-06">6. mypy по описанию</h3>
+<p>Не запуская mypy, перечислите все ошибки, которые он найдёт в коде:</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">total</span><span class="p">(</span><span class="n">prices</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">label</span><span class="p">(</span><span class="n">count</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">count</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">([</span><span class="s2">"10"</span><span class="p">,</span> <span class="s2">"20"</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="s2">"три"</span><span class="p">))</span>
+</code></pre></div>
+<p>Затем сверьтесь с решением и объясните каждую ошибку.</p>
+<h3 id="ex-ch31-07">7. Сужение типа</h3>
+<p>Напишите функцию <code>length(value: list[int] | str | None) -&gt; int</code>, которая
+возвращает длину значения, а для <code>None</code> — <code>0</code>. Внутри используйте <code>isinstance</code>
+и ранний возврат. Покажите, что все три случая работают.</p>
+<h3 id="ex-ch31-08">8. Проверка на границе</h3>
+<p>Функция принимает <code>age: int</code>, но данные пришли из JSON, где возраст может быть
+строкой. Напишите функцию <code>parse_age(raw: object) -&gt; int</code>, которая проверяет
+тип через <code>isinstance</code>, преобразует строку в число и поднимает <code>TypeError</code> с
+понятным сообщением для остальных случаев. Проверьте три варианта.</p>
+<h3 id="ex-ch31-09">9. Аннотации и реальность</h3>
+<p>Объясните текстом (5–7 предложений), почему этот код не падает при запуске,
+но должен вызвать ошибку mypy:</p>
+<div class="highlight"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">tag</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"#</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">"</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">tag</span><span class="p">(</span><span class="s2">"десять"</span><span class="p">))</span>
+</code></pre></div>
+<h3 id="ex-ch31-10">10. Мини-проект: контракт функции</h3>
+<p>Спроектируйте сигнатуру функции <code>apply_discount(price: float, percent: float, *, minimum: float = 0.0) -&gt; float</code>. Опишите словами контракт:
+допустимые значения, что происходит при отрицательной цене или проценте,
+что возвращается при скидке больше 100 %. Реализуйте функцию с проверками и
+аннотациями, проверьте граничные случаи.</p>
+<h2 id="проверка-понимания"><span class="h-number">31.9</span> Проверка понимания</h2>
+<ol>
+<li>Чем аннотация отличается от аннотации типа в формулировке этой главы?</li>
+<li>Что именно проверяет mypy и почему он не заменяет запуск программы?</li>
+<li>Почему <code>str | None</code> требует явной обработки <code>None</code>, а <code>str</code> — нет?</li>
+<li>Зачем нужен <code>TypeVar</code>, если можно написать <code>list[object] -&gt; object</code>?</li>
+<li>Где <code>__annotations__</code> содержит строки, а где типы? Как получить типы
+надёжно?</li>
+<li>В чём разница между «аннотация не проверяется» и «проверка невозможна»?</li>
+<li>Какую ошибку допускает программист, считающий <code>Optional</code> синонимом
+аргумента по умолчанию?</li>
+</ol>
+<h2 id="что-дальше"><span class="h-number">31.10</span> Что дальше</h2>
+<p>Аннотации и mypy сужают пространство ошибок до запуска, но не подтверждают,
+что программа делает правильные вещи. Следующая глава посвящена проверкам во
+время выполнения — тестам: они фиксируют ожидаемое поведение на конкретных
+данных и защищают от регрессий. Вместе получаются две линии защиты:
+анализатор ловит несоответствия типов, тесты — неверное поведение.</p>
+<p>Полезно помнить, откуда пришли эти инструменты. Сигнатуры функций, значения
+по умолчанию и возврат результата разобраны в
+<a href="ch-07-functions.html">главе 7</a>; протоколы, на которых держится структурная
+типизация, — в <a href="ch-29-dataclasses-protocols.html">главе 29</a>. Тесты, которые
+проверяют поведение функций, ждут в <a href="ch-32-testing.html">главе 32</a>, а о том, как
+интерпретатор исполняет аннотированный код на уровне байткода, — в главе 42.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-30-oop-design.html"><span class="pager-label">← Назад</span><span class="pager-title">Проектирование классов и API</span></a><a class="pager-card next" rel="next" href="ch-32-testing.html"><span class="pager-label">Далее:</span><span class="pager-title">Тестирование: pytest и TDD</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

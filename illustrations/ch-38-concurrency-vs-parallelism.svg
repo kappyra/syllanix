@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 430" role="img"
+     aria-labelledby="t38cp d38cp" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="t38cp">Конкурентность и параллелизм на временной шкале</title>
+  <desc id="d38cp">Верхняя шкала показывает конкурентность: на одном исполнителе задачи A и B чередуются, перекрываясь по времени, но никогда не выполняясь одновременно. Нижняя схема показывает параллелизм: задача A на первом ядре и задача B на втором выполняются в один и тот же момент. Для ожидания ввода-вывода достаточно конкурентности, для вычислений нужен параллелизм.</desc>
+
+  <text x="24" y="30" font-size="17" font-weight="bold" fill="#1d3550">Конкурентность и параллелизм: в чём разница</text>
+
+  <text x="40" y="66" font-size="13.5" font-weight="bold" fill="#1d3550">Конкурентность: один исполнитель, задачи чередуются</text>
+  <line x1="60" y1="120" x2="720" y2="120" stroke="#c9c2b4" stroke-width="1.5"/>
+  <rect x="60" y="92" width="110" height="34" rx="6" fill="#eef4fb" stroke="#33557a" stroke-width="1.5"/>
+  <text x="115" y="114" text-anchor="middle" font-size="12.5" fill="#1d3550">A</text>
+  <rect x="170" y="92" width="110" height="34" rx="6" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="1.5"/>
+  <text x="225" y="114" text-anchor="middle" font-size="12.5" fill="#4b3a16">B</text>
+  <rect x="280" y="92" width="110" height="34" rx="6" fill="#eef4fb" stroke="#33557a" stroke-width="1.5"/>
+  <text x="335" y="114" text-anchor="middle" font-size="12.5" fill="#1d3550">A</text>
+  <rect x="390" y="92" width="110" height="34" rx="6" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="1.5"/>
+  <text x="445" y="114" text-anchor="middle" font-size="12.5" fill="#4b3a16">B</text>
+  <rect x="500" y="92" width="110" height="34" rx="6" fill="#eef4fb" stroke="#33557a" stroke-width="1.5"/>
+  <text x="555" y="114" text-anchor="middle" font-size="12.5" fill="#1d3550">A</text>
+  <rect x="610" y="92" width="110" height="34" rx="6" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="1.5"/>
+  <text x="665" y="114" text-anchor="middle" font-size="12.5" fill="#4b3a16">B</text>
+  <text x="60" y="152" font-size="12" fill="#33557a">время →</text>
+  <text x="720" y="152" text-anchor="end" font-size="12" fill="#33557a">в каждый момент работает только одна задача</text>
+
+  <line x1="40" y1="176" x2="740" y2="176" stroke="#c9c2b4" stroke-width="1.2"/>
+
+  <text x="40" y="206" font-size="13.5" font-weight="bold" fill="#1d3550">Параллелизм: два ядра, задачи идут одновременно</text>
+  <text x="40" y="250" font-size="12.5" fill="#33557a">ядро 1</text>
+  <line x1="110" y1="246" x2="720" y2="246" stroke="#c9c2b4" stroke-width="1.5"/>
+  <rect x="110" y="228" width="220" height="34" rx="6" fill="#eef4fb" stroke="#33557a" stroke-width="1.5"/>
+  <text x="220" y="250" text-anchor="middle" font-size="12.5" fill="#1d3550">A</text>
+  <text x="40" y="298" font-size="12.5" fill="#33557a">ядро 2</text>
+  <line x1="110" y1="294" x2="720" y2="294" stroke="#c9c2b4" stroke-width="1.5"/>
+  <rect x="110" y="276" width="220" height="34" rx="6" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="1.5"/>
+  <text x="220" y="298" text-anchor="middle" font-size="12.5" fill="#4b3a16">B</text>
+  
+
+  <text x="110" y="332" font-size="12" fill="#33557a">A и B выполняются в один момент</text>
+  <text x="390" y="360" text-anchor="middle" font-size="12.5" fill="#33557a">Ожидание ввода-вывода: достаточно конкурентности — пока задача ждёт, работает другая</text>
+  <text x="390" y="380" text-anchor="middle" font-size="12.5" fill="#33557a">Вычисления: нужен параллелизм — каждое ядро считает свою часть независимо</text>
+  <text x="390" y="408" text-anchor="middle" font-size="12" fill="#4b3a16">Конкурентность — про организацию работы, параллелизм — про одновременность исполнения</text>
+</svg>

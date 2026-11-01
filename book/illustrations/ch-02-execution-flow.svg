@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 440" role="img"
+     aria-labelledby="ttl desc" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl">Как исполняется программа на Python</title>
+  <desc id="desc">Исходный код в файле попадает в интерпретатор Python, который разбирает код, превращает его в байткод и исполняет. Результат появляется в терминале. Ошибка разбора даёт SyntaxError, ошибка во время исполнения — исключение.</desc>
+
+  <!-- исходный код -->
+  <rect x="20" y="70" width="210" height="112" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="125" y="100" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3550">Файл program.py</text>
+  <text x="125" y="124" text-anchor="middle" font-size="13" fill="#1d3550">исходный код</text>
+  <text x="125" y="145" text-anchor="middle" font-size="13" fill="#1d3550">на языке Python</text>
+  <text x="125" y="167" text-anchor="middle" font-size="12" fill="#33557a">текст для человека</text>
+
+  <!-- стрелка запуск -->
+  <line x1="232" y1="126" x2="294" y2="126" stroke="#33557a" stroke-width="2.5"/>
+  <polygon points="296,126 284,119 284,133" fill="#33557a"/>
+  <text x="265" y="114" text-anchor="middle" font-size="12" fill="#33557a">запуск</text>
+
+  <!-- интерпретатор -->
+  <rect x="300" y="36" width="280" height="250" rx="12" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="440" y="66" text-anchor="middle" font-size="16" font-weight="bold" fill="#4b3a16">Интерпретатор Python</text>
+
+  <rect x="322" y="84" width="236" height="42" rx="7" fill="#fffdf7" stroke="#8a6a2f" stroke-width="1.5"/>
+  <text x="440" y="111" text-anchor="middle" font-size="14" fill="#4b3a16">1. Разбор кода (синтаксис)</text>
+
+  <line x1="440" y1="126" x2="440" y2="142" stroke="#8a6a2f" stroke-width="2"/>
+  <polygon points="440,144 433,134 447,134" fill="#8a6a2f"/>
+
+  <rect x="322" y="146" width="236" height="42" rx="7" fill="#fffdf7" stroke="#8a6a2f" stroke-width="1.5"/>
+  <text x="440" y="173" text-anchor="middle" font-size="14" fill="#4b3a16">2. Байткод</text>
+
+  <line x1="440" y1="188" x2="440" y2="204" stroke="#8a6a2f" stroke-width="2"/>
+  <polygon points="440,206 433,196 447,196" fill="#8a6a2f"/>
+
+  <rect x="322" y="208" width="236" height="42" rx="7" fill="#fffdf7" stroke="#8a6a2f" stroke-width="1.5"/>
+  <text x="440" y="235" text-anchor="middle" font-size="14" fill="#4b3a16">3. Исполнение инструкций</text>
+
+  <!-- результат -->
+  <line x1="582" y1="166" x2="648" y2="166" stroke="#33557a" stroke-width="2.5"/>
+  <polygon points="650,166 638,159 638,173" fill="#33557a"/>
+  <text x="615" y="154" text-anchor="middle" font-size="12" fill="#33557a">вывод</text>
+
+  <rect x="656" y="114" width="144" height="104" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="728" y="146" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3550">Терминал</text>
+  <text x="728" y="170" text-anchor="middle" font-size="13" fill="#1d3550">то, что увидел</text>
+  <text x="728" y="191" text-anchor="middle" font-size="13" fill="#1d3550">человек</text>
+
+  <!-- ошибки -->
+  <rect x="20" y="306" width="780" height="118" rx="10" fill="#fdf1f1" stroke="#8c2f2f" stroke-width="1.8"/>
+  <text x="40" y="334" font-size="15" font-weight="bold" fill="#6b2020">Две разные ошибки — два разных места</text>
+  <text x="40" y="360" font-size="13" fill="#6b2020">Ошибка разбора (незакрытая скобка) → SyntaxError: программа не запускается.</text>
+  <text x="40" y="384" font-size="13" fill="#6b2020">Ошибка исполнения (деление на ноль) → исключение уже во время работы.</text>
+  <text x="40" y="408" font-size="12.5" fill="#8c2f2f">Подробно: глава 10 «Ошибки и исключения».</text>
+</svg>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" role="img"
+     aria-labelledby="ttl21y desc21y" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl21y">Как исполняется функция-генератор при вызовах next</title>
+  <desc id="desc21y">Вызов функции-генератора создаёт генератор, но не исполняет тело. Первый next выполняет тело до первого yield и возвращает значение, второй next продолжает с места остановки, третий выдаёт последнее значение, четвёртый получает StopIteration.</desc>
+
+  <text x="32" y="34" font-size="17" font-weight="bold" fill="#1d3550">Генератор: пауза и продолжение на каждом next</text>
+
+  <rect x="32" y="60" width="300" height="56" rx="9" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="182" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#1d3550">вызов countdown(3)</text>
+  <text x="182" y="104" text-anchor="middle" font-size="12" fill="#33557a">тело ещё не исполнялось</text>
+
+  <line x1="332" y1="88" x2="392" y2="88" stroke="#33557a" stroke-width="2"/>
+  <polygon points="392,88 381,82 381,94" fill="#33557a"/>
+
+  <rect x="396" y="60" width="332" height="56" rx="9" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="562" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#4b3a16">генератор &lt;generator object&gt;</text>
+  <text x="562" y="104" text-anchor="middle" font-size="12" fill="#6b5a34">хранит функцию, позицию и локальные имена</text>
+
+  <!-- таблица шагов -->
+  <rect x="32" y="136" width="696" height="40" rx="8" fill="#e9eef4" stroke="#5a6b7d" stroke-width="1.5"/>
+  <text x="52" y="161" font-size="12" font-weight="bold" fill="#1d3550">вызов</text>
+  <text x="200" y="161" font-size="12" font-weight="bold" fill="#1d3550">что делает функция</text>
+  <text x="560" y="161" font-size="12" font-weight="bold" fill="#1d3550">результат</text>
+
+  <rect x="32" y="182" width="696" height="44" rx="8" fill="#ffffff" stroke="#c9d6e3" stroke-width="1.5"/>
+  <text x="52" y="209" font-size="13" fill="#1d3550">next(gen)</text>
+  <text x="200" y="209" font-size="12" fill="#33557a">исполняется до первого yield</text>
+  <text x="560" y="209" font-size="13" font-weight="bold" fill="#2f6b3f">3</text>
+
+  <rect x="32" y="232" width="696" height="44" rx="8" fill="#ffffff" stroke="#c9d6e3" stroke-width="1.5"/>
+  <text x="52" y="259" font-size="13" fill="#1d3550">next(gen)</text>
+  <text x="200" y="259" font-size="12" fill="#33557a">продолжает после yield, до следующего yield</text>
+  <text x="560" y="259" font-size="13" font-weight="bold" fill="#2f6b3f">2</text>
+
+  <rect x="32" y="282" width="696" height="44" rx="8" fill="#ffffff" stroke="#c9d6e3" stroke-width="1.5"/>
+  <text x="52" y="309" font-size="13" fill="#1d3550">next(gen)</text>
+  <text x="200" y="309" font-size="12" fill="#33557a">продолжает, выдаёт последнее значение</text>
+  <text x="560" y="309" font-size="13" font-weight="bold" fill="#2f6b3f">1</text>
+
+  <rect x="32" y="332" width="696" height="44" rx="8" fill="#fdf3f1" stroke="#8a3030" stroke-width="1.5"/>
+  <text x="52" y="359" font-size="13" fill="#8a3030">next(gen)</text>
+  <text x="200" y="359" font-size="12" fill="#8a3030">тело закончилось</text>
+  <text x="560" y="359" font-size="13" font-weight="bold" fill="#8a3030">StopIteration</text>
+
+  <text x="32" y="406" font-size="12" fill="#5a6b7d">Цикл for сам вызывает next и сам ловит StopIteration — поэтому в нём пауза выглядит как обычный перебор.</text>
+</svg>

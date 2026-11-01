@@ -1,0 +1,6 @@
+source_url: https://github.com/hieulouisdev/learn-python
+commit: ee677ada3288bba81479bcba7a4af5a7317225bd
+commit_date: 2026-08-04
+verified_at: 2026-11-01
+file: LICENSE sha256=ed8e31aa9b52c1000db1711a63ffaadf99e8138cc0f748d992b69d52a75a63cb
+file: METADATA.txt sha256=a4bf32ddd14b7198c08cba0380d59c590211bb59751164dd7b8db1651ac10365

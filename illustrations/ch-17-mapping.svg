@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" role="img"
+     aria-labelledby="ttl17m desc17m" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl17m">Словарь как отображение: ключи и связанные с ними значения</title>
+  <desc id="desc17m">Слева три ключа словаря в порядке вставки: яблоко, банан, вишня. Справа значения: 90, 120, 350. Стрелка показывает соответствие «ключ — значение». Внизу три свойства: ключи уникальны, порядок вставки сохраняется, ключ должен быть хешируемым.</desc>
+
+  <text x="32" y="34" font-size="17" font-weight="bold" fill="#1d3550">Словарь: у каждого ключа ровно одно значение</text>
+
+  <text x="124" y="68" text-anchor="middle" font-size="13" font-weight="bold" fill="#33557a">ключи (уникальные)</text>
+  <text x="636" y="68" text-anchor="middle" font-size="13" font-weight="bold" fill="#33557a">значения (любые)</text>
+
+  <!-- строка 1 -->
+  <rect x="36" y="84" width="176" height="52" rx="9" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="52" y="117" font-size="15" fill="#1d3550">1. яблоко</text>
+  <rect x="548" y="84" width="176" height="52" rx="9" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="636" y="117" text-anchor="middle" font-size="16" fill="#4b3a16">90</text>
+  <line x1="212" y1="110" x2="536" y2="110" stroke="#33557a" stroke-width="2"/>
+  <polygon points="536,110 524,104 524,116" fill="#33557a"/>
+
+  <!-- строка 2 -->
+  <rect x="36" y="150" width="176" height="52" rx="9" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="52" y="183" font-size="15" fill="#1d3550">2. банан</text>
+  <rect x="548" y="150" width="176" height="52" rx="9" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="636" y="183" text-anchor="middle" font-size="16" fill="#4b3a16">120</text>
+  <line x1="212" y1="176" x2="536" y2="176" stroke="#33557a" stroke-width="2"/>
+  <polygon points="536,176 524,170 524,182" fill="#33557a"/>
+
+  <!-- строка 3 -->
+  <rect x="36" y="216" width="176" height="52" rx="9" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="52" y="249" font-size="15" fill="#1d3550">3. вишня</text>
+  <rect x="548" y="216" width="176" height="52" rx="9" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="636" y="249" text-anchor="middle" font-size="16" fill="#4b3a16">350</text>
+  <line x1="212" y1="242" x2="536" y2="242" stroke="#33557a" stroke-width="2"/>
+  <polygon points="536,242 524,236 524,248" fill="#33557a"/>
+
+  <text x="380" y="74" text-anchor="middle" font-size="12" fill="#5a6b7d">соответствие</text>
+
+  <!-- свойства -->
+  <rect x="36" y="292" width="220" height="86" rx="9" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="52" y="318" font-size="13" font-weight="bold" fill="#1d3550">ключи уникальны</text>
+  <text x="52" y="340" font-size="12" fill="#33557a">повтор ключа заменяет</text>
+  <text x="52" y="358" font-size="12" fill="#33557a">значение, но не ключ</text>
+
+  <rect x="270" y="292" width="220" height="86" rx="9" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="286" y="318" font-size="13" font-weight="bold" fill="#1d3550">порядок вставки</text>
+  <text x="286" y="340" font-size="12" fill="#33557a">перебор идёт в порядке</text>
+  <text x="286" y="358" font-size="12" fill="#33557a">появления: 1, 2, 3</text>
+
+  <rect x="504" y="292" width="220" height="86" rx="9" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="520" y="318" font-size="13" font-weight="bold" fill="#1d3550">хешируемый ключ</text>
+  <text x="520" y="340" font-size="12" fill="#33557a">подходят str, int, tuple;</text>
+  <text x="520" y="358" font-size="12" fill="#33557a">список ключом не бывает</text>
+</svg>

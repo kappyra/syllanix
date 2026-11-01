@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 440" role="img"
+     aria-labelledby="t55el d55el" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="t55el">Цикл событий интерфейса: ожидание, определение виджета, обработчик, обновление</title>
+  <desc id="d55el">mainloop повторяет четыре шага, пока окно открыто: ждёт событие от пользователя, определяет, какой виджет его получил, вызывает зарегистрированный обработчик и обновляет экран. Затем цикл возвращается к ожиданию. Если обработчик долго не возвращает управление, цикл не может обработать новые события, и окно замирает.</desc>
+  <defs>
+    <marker id="arr55b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#33557a"/>
+    </marker>
+  </defs>
+
+  <text x="24" y="30" font-size="17" font-weight="bold" fill="#1d3550">Цикл событий интерфейса: четыре шага по кругу</text>
+
+  <rect x="90" y="66" width="230" height="76" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="205" y="94" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#1d3550">1. Ожидание события</text>
+  <text x="205" y="116" text-anchor="middle" font-size="12" fill="#33557a">нажатие, ввод, закрытие</text>
+  <text x="205" y="132" text-anchor="middle" font-size="11.5" fill="#4b3a16">окно открыто — цикл жив</text>
+
+  <rect x="460" y="66" width="230" height="76" rx="10" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="575" y="94" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#1d3550">2. Определение виджета</text>
+  <text x="575" y="116" text-anchor="middle" font-size="12" fill="#33557a">кто получил событие</text>
+  <text x="575" y="132" text-anchor="middle" font-size="11.5" fill="#4b3a16">и какое именно</text>
+
+  <rect x="460" y="248" width="230" height="76" rx="10" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="575" y="276" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#1d3550">3. Вызов callback</text>
+  <text x="575" y="298" text-anchor="middle" font-size="12" fill="#33557a">обработчик меняет</text>
+  <text x="575" y="314" text-anchor="middle" font-size="12" fill="#33557a">состояние приложения</text>
+
+  <rect x="90" y="248" width="230" height="76" rx="10" fill="#e8f5ec" stroke="#2f7a45" stroke-width="2"/>
+  <text x="205" y="276" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#1f5c33">4. Обновление экрана</text>
+  <text x="205" y="298" text-anchor="middle" font-size="12" fill="#1f5c33">Tk перерисовывает</text>
+  <text x="205" y="314" text-anchor="middle" font-size="12" fill="#1f5c33">изменённые виджеты</text>
+
+  <line x1="320" y1="104" x2="456" y2="104" stroke="#33557a" stroke-width="2.5" marker-end="url(#arr55b)"/>
+  <line x1="575" y1="142" x2="575" y2="244" stroke="#33557a" stroke-width="2.5" marker-end="url(#arr55b)"/>
+  <line x1="460" y1="286" x2="324" y2="286" stroke="#33557a" stroke-width="2.5" marker-end="url(#arr55b)"/>
+  <line x1="205" y1="248" x2="205" y2="146" stroke="#33557a" stroke-width="2.5" marker-end="url(#arr55b)"/>
+
+  <rect x="280" y="166" width="220" height="60" rx="10" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="390" y="192" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#4b3a16">mainloop()</text>
+  <text x="390" y="214" text-anchor="middle" font-size="12" fill="#4b3a16">повторяет, пока окно открыто</text>
+
+  <text x="390" y="356" text-anchor="middle" font-size="12.5" fill="#7a2b20">Если callback выполняется долго, шаги 1–2 не наступают: окно «замирает»</text>
+  <text x="390" y="380" text-anchor="middle" font-size="12.5" fill="#33557a">Поэтому sleep, сеть и тяжёлые вычисления не делают в обработчике</text>
+  <text x="390" y="406" text-anchor="middle" font-size="12" fill="#4b3a16">Отложенные действия планируют через root.after, длительные — через поток и очередь</text>
+</svg>

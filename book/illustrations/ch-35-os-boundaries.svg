@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 440" role="img"
+     aria-labelledby="t35ob d35ob" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="t35ob">Четыре границы процесса Python: окружение, дочерний процесс, файлы и сеть</title>
+  <desc id="d35ob">Четыре границы процесса Python. Процесс читает переменные окружения, запускает дочерние процессы через subprocess и обменивается HTTP-запросами с сервером API. Файловая система доступна через open и pathlib. Каждая граница — источник ошибок: отсутствующая переменная, ненулевой код возврата, таймаут сети, отсутствие прав на файл. Поэтому на каждой границе нужны таймауты, проверка кодов и понятные исключения.</desc>
+  <defs>
+    <marker id="arr35a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#33557a"/>
+    </marker>
+  </defs>
+
+  <text x="24" y="30" font-size="17" font-weight="bold" fill="#1d3550">Четыре границы процесса: окружение, запуск, файлы и сеть</text>
+
+  <rect x="272" y="152" width="236" height="120" rx="12" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="390" y="182" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3550">Процесс Python</text>
+  <text x="390" y="206" text-anchor="middle" font-size="12.5" fill="#33557a">ваш код, память,</text>
+  <text x="390" y="226" text-anchor="middle" font-size="12.5" fill="#33557a">открытые файлы</text>
+  <text x="390" y="252" text-anchor="middle" font-size="12" fill="#4b3a16">точка, где всё сходится</text>
+
+  <rect x="30" y="58" width="230" height="76" rx="10" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="46" y="84" font-size="13" font-weight="bold" fill="#4b3a16">Переменные окружения</text>
+  <text x="46" y="106" font-size="12" fill="#4b3a16">пары имя=значение</text>
+  <text x="46" y="124" font-size="12" fill="#4b3a16">os.environ, os.getenv</text>
+  <line x1="250" y1="134" x2="284" y2="176" stroke="#8a6a2f" stroke-width="2" marker-end="url(#arr35a)"/>
+  <text x="152" y="162" font-size="11.5" fill="#4b3a16">чтение при старте</text>
+
+  <rect x="550" y="58" width="200" height="76" rx="10" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="566" y="84" font-size="13" font-weight="bold" fill="#1d3550">Дочерний процесс</text>
+  <text x="566" y="106" font-size="12" fill="#33557a">git, ffmpeg, скрипт</text>
+  <text x="566" y="124" font-size="12" fill="#33557a">subprocess.run</text>
+  <path d="M 508 172 C 540 160 550 140 550 136" fill="none" stroke="#33557a" stroke-width="2" marker-end="url(#arr35a)"/>
+  <text x="470" y="150" font-size="11.5" fill="#33557a">запуск</text>
+
+  <rect x="30" y="288" width="200" height="76" rx="10" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="46" y="314" font-size="13" font-weight="bold" fill="#1d3550">Файловая система</text>
+  <text x="46" y="336" font-size="12" fill="#33557a">open, pathlib</text>
+  <text x="46" y="354" font-size="12" fill="#33557a">чтение и запись</text>
+  <line x1="230" y1="314" x2="276" y2="270" stroke="#33557a" stroke-width="2" marker-end="url(#arr35a)"/>
+  <text x="234" y="336" font-size="11.5" fill="#33557a">файлы</text>
+
+  <rect x="550" y="288" width="200" height="76" rx="10" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="566" y="314" font-size="13" font-weight="bold" fill="#4b3a16">Сервер API</text>
+  <text x="566" y="336" font-size="12" fill="#4b3a16">HTTP-запрос и ответ</text>
+  <text x="566" y="354" font-size="12" fill="#4b3a16">таймаут обязателен</text>
+  <line x1="508" y1="252" x2="554" y2="286" stroke="#8a6a2f" stroke-width="2" marker-end="url(#arr35a)"/>
+  <line x1="554" y1="300" x2="512" y2="266" stroke="#8a6a2f" stroke-width="2" marker-end="url(#arr35a)"/>
+
+  <text x="390" y="400" text-anchor="middle" font-size="12.5" fill="#33557a">На каждой границе свои отказы: нет переменной, ненулевой код возврата, таймаут, нет прав на файл</text>
+  <text x="390" y="424" text-anchor="middle" font-size="12.5" fill="#33557a">Поэтому таймауты, проверка кодов и понятные исключения — часть контракта, а не украшение</text>
+</svg>

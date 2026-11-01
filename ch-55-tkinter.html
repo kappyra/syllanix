@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Графический интерфейс на tkinter — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-55-tkinter.html" aria-current="page">55. Графический интерфейс на tkinter</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-55-tkinter.html#что-вы-сможете-после-этой-главы">55.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-55-tkinter.html#when">55.2. Зачем нужен GUI и когда он не нужен</a></li>
+<li><a href="ch-55-tkinter.html#window">55.3. Минимальное окно</a></li>
+<li><a href="ch-55-tkinter.html#widgets">55.4. Виджеты</a></li>
+<li><a href="ch-55-tkinter.html#layout">55.5. Компоновка</a></li>
+<li><a href="ch-55-tkinter.html#events">55.6. События и обработчики</a></li>
+<li><a href="ch-55-tkinter.html#model">55.7. Состояние приложения: модель отдельно от интерфейса</a></li>
+<li><a href="ch-55-tkinter.html#converter">55.8. Пример: конвертер единиц</a></li>
+<li><a href="ch-55-tkinter.html#mistakes">55.9. Типичные ошибки</a></li>
+<li><a href="ch-55-tkinter.html#testing">55.10. Как тестировать GUI-логику без окна</a></li>
+<li><a href="ch-55-tkinter.html#упражнения">55.11. Упражнения</a></li>
+<li><a href="ch-55-tkinter.html#проверка-понимания">55.12. Проверка понимания</a></li>
+<li><a href="ch-55-tkinter.html#что-дальше">55.13. Что дальше</a></li>
+</ol></details></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 11. Профессиональная практика и прикладные темы</span><span class="sep">›</span><span>Глава 55</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Профессиональная практика и прикладные темы · глава 55</p>
+<h1 id="графический-интерфейс-на-tkinter">Графический интерфейс на tkinter</h1>
+<p class="chapter-summary">Окна, виджеты, компоновка, события и первое настольное приложение на стандартной библиотеке.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#что-вы-сможете-после-этой-главы"><span class="toc-number">55.1</span> Что вы сможете после этой главы</a></li>
+<li class="level-2"><a href="#when"><span class="toc-number">55.2</span> Зачем нужен GUI и когда он не нужен</a></li>
+<li class="level-2"><a href="#window"><span class="toc-number">55.3</span> Минимальное окно</a></li>
+<li class="level-2"><a href="#widgets"><span class="toc-number">55.4</span> Виджеты</a></li>
+<li class="level-2"><a href="#layout"><span class="toc-number">55.5</span> Компоновка</a></li>
+<li class="level-2"><a href="#events"><span class="toc-number">55.6</span> События и обработчики</a></li>
+<li class="level-2"><a href="#model"><span class="toc-number">55.7</span> Состояние приложения: модель отдельно от интерфейса</a></li>
+<li class="level-2"><a href="#converter"><span class="toc-number">55.8</span> Пример: конвертер единиц</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">55.9</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#testing"><span class="toc-number">55.10</span> Как тестировать GUI-логику без окна</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">55.11</span> Упражнения</a></li>
+<li class="level-2"><a href="#проверка-понимания"><span class="toc-number">55.12</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#что-дальше"><span class="toc-number">55.13</span> Что дальше</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#списки-и-многострочный-текст">Списки и многострочный текст</a></li>
+<li class="level-3"><a href="#переменные-интерфейса">Переменные интерфейса</a></li>
+<li class="level-3"><a href="#как-grid-переживает-изменение-размера">Как grid переживает изменение размера</a></li>
+<li class="level-3"><a href="#закрытие-окна-и-диалоги">Закрытие окна и диалоги</a></li>
+<li class="level-3"><a href="#правило-не-блокировать-цикл-событий">Правило: не блокировать цикл событий</a></li>
+<li class="level-3"><a href="#ex-ch55-01">1. Минимальное окно</a></li>
+<li class="level-3"><a href="#ex-ch55-02">2. Витрина виджетов</a></li>
+<li class="level-3"><a href="#ex-ch55-03">3. Модель счётчика</a></li>
+<li class="level-3"><a href="#ex-ch55-04">4. Форма на grid</a></li>
+<li class="level-3"><a href="#ex-ch55-05">5. Обработчик и событие</a></li>
+<li class="level-3"><a href="#ex-ch55-06">6. Валидация ввода</a></li>
+<li class="level-3"><a href="#ex-ch55-07">7. Модель списка задач</a></li>
+<li class="level-3"><a href="#ex-ch55-08">8. Не блокировать цикл</a></li>
+<li class="level-3"><a href="#ex-ch55-09">9. Конвертер температуры</a></li>
+<li class="level-3"><a href="#ex-ch55-10">10. Мини-проект: приложение «Заметки»</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>До сих пор программы общались с человеком через терминал: напечатал команду —
+получил строку. Это удобно для инструментов и автоматизации, но не для
+приложений, которыми пользуются обычные люди. Им нужны окна, кнопки, поля
+ввода и мгновенная реакция на действия.</p>
+<p><strong>Приложение с графическим интерфейсом</strong> — программа, которая
+взаимодействует с человеком через окна, кнопки и другие элементы управления, а
+не через терминал. В Python такой интерфейс можно собрать без установки
+сторонних библиотек: <strong>tkinter</strong> входит в стандартную библиотеку. Это не самый
+современный инструмент, зато доступный сразу, кроссплатформенный и достаточный
+для учебных и служебных приложений.</p>
+<h2 id="что-вы-сможете-после-этой-главы"><span class="h-number">55.1</span> Что вы сможете после этой главы</h2>
+<p>К концу главы вы соберёте небольшое настольное приложение и поймёте, как оно
+устроено внутри. Вы сможете:</p>
+<ul>
+<li>открывать окно и размещать в нём элементы управления;</li>
+<li>выбирать <strong>виджет</strong> под задачу и связывать его с данными;</li>
+<li>раскладывать интерфейс через <strong>менеджер компоновки</strong> и объяснять, как он
+ведёт себя при изменении размера окна;</li>
+<li>подписываться на события и писать <strong>обработчик события (callback)</strong>;</li>
+<li>отделять логику от интерфейса, чтобы её можно было тестировать без окна.</li>
+</ul>
+<h2 id="when"><span class="h-number">55.2</span> Зачем нужен GUI и когда он не нужен</h2>
+<p>Графический интерфейс нужен, когда пользователь работает с программой
+интерактивно и многократно: вводит данные, видит результат, меняет настройки.
+Консоль остаётся лучше для автоматизации, скриптов и серверных задач: там нет
+человека, который нажимает кнопки.</p>
+<p>У tkinter есть сильные и слабые стороны. Он входит в стандартную библиотеку,
+работает на Windows, macOS и Linux, не требует сборки и хорошо подходит для
+прототипов, внутренних инструментов и учебных проектов. При этом внешний вид
+зависит от системы, сложные анимации и современный дизайн делать неудобно, а
+для больших интерфейсов чаще выбирают другие библиотеки. Для первой настольной
+программы tkinter — разумный старт: те же идеи (виджеты, компоновка, события)
+есть и в других фреймворках.</p>
+<p>Отдельно стоит сказать про веб-интерфейсы: они удобны, когда программой
+пользуются с разных устройств и её нужно обновлять централизованно. Настольное
+приложение выигрывает, когда нужен доступ к локальным файлам, оборудованию или
+работа без сети. Выбор между ними — вопрос условий эксплуатации, а не моды.</p>
+<h2 id="window"><span class="h-number">55.3</span> Минимальное окно</h2>
+<p>Любая программа на tkinter начинается с корневого окна. Затем задаются
+заголовок и размер, добавляются элементы, и запускается <strong>цикл событий
+интерфейса</strong> — цикл, который ждёт действий пользователя и вызывает
+зарегистрированные обработчики, пока окно открыто.</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Первое окно"</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s2">"320x200"</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</code></pre></div>
+<p>Разберём строки. <code>Tk()</code> создаёт корневое окно и связанный с ним интерпретатор
+Tk. <code>title</code> задаёт заголовок, <code>geometry</code> — размер в пикселях. <code>mainloop</code>
+передаёт управление циклу событий: программа не завершается, пока окно не
+закрыто. Без <code>mainloop</code> окно может появиться на мгновение и исчезнуть —
+типичная ошибка новичка.</p>
+<pre class="text"><code>$ python app.py
+</code></pre>
+<p>Команда запускает приложение; окно открывается, и терминал «замирает», пока
+цикл событий работает. Это нормально: программа ждёт действий пользователя, а
+не бездействует.</p>
+<p><figure class="figure"><img src="illustrations/ch-55-event-loop.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h2 id="widgets"><span class="h-number">55.4</span> Виджеты</h2>
+<p><strong>Виджет</strong> — элемент интерфейса: кнопка, поле ввода, метка, список, холст;
+имеет состояние и реагирует на события. Все виджеты создаются как дочерние
+элементы окна или контейнера и настраиваются параметрами.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Виджет</th>
+<th>Для чего</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Label</code></td>
+<td>показать текст или изображение</td>
+</tr>
+<tr>
+<td><code>Button</code></td>
+<td>выполнить действие по нажатию</td>
+</tr>
+<tr>
+<td><code>Entry</code></td>
+<td>ввести одну строку</td>
+</tr>
+<tr>
+<td><code>Text</code></td>
+<td>ввести и показать многострочный текст</td>
+</tr>
+<tr>
+<td><code>Listbox</code></td>
+<td>выбрать элемент из списка</td>
+</tr>
+<tr>
+<td><code>Checkbutton</code></td>
+<td>включить или выключить признак</td>
+</tr>
+<tr>
+<td><code>Radiobutton</code></td>
+<td>выбрать один вариант из нескольких</td>
+</tr>
+<tr>
+<td><code>Scale</code></td>
+<td>выбрать число ползунком</td>
+</tr>
+<tr>
+<td><code>Frame</code></td>
+<td>сгруппировать другие виджеты</td>
+</tr>
+</tbody>
+</table>
+</div><div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Витрина виджетов"</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Введите имя:"</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">anchor</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="n">name</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">"x"</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Checkbutton</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Запомнить меня"</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">anchor</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">from_</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">"horizontal"</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">"x"</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">"both"</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">listbox</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Listbox</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"первый"</span><span class="p">,</span> <span class="s2">"второй"</span><span class="p">,</span> <span class="s2">"третий"</span><span class="p">):</span>
+    <span class="n">listbox</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"end"</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+<span class="n">listbox</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">"both"</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Готово"</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">root</span><span class="o">.</span><span class="n">destroy</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</code></pre></div>
+<p>Обратите внимание на <code>command=root.destroy</code>: кнопка закрывает окно и
+завершает цикл событий. Это минимальный, но полноценный интерфейс.</p>
+<h3 id="списки-и-многострочный-текст">Списки и многострочный текст</h3>
+<p><code>Listbox</code> хранит набор строк, а не отдельные виджеты. Элементы добавляют
+методом <code>insert</code>, удаляют по индексу, а выбранный индекс получают через
+<code>curselection</code>. Если нужен выбор нескольких элементов, включают
+<code>selectmode=&quot;extended&quot;</code>.</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">listbox</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Listbox</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">selectmode</span><span class="o">=</span><span class="s2">"extended"</span><span class="p">)</span>
+<span class="n">listbox</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"end"</span><span class="p">,</span> <span class="s2">"первая задача"</span><span class="p">)</span>
+<span class="n">listbox</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"end"</span><span class="p">,</span> <span class="s2">"вторая задача"</span><span class="p">)</span>
+<span class="n">selected</span> <span class="o">=</span> <span class="n">listbox</span><span class="o">.</span><span class="n">curselection</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">selected</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">listbox</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">index</span><span class="p">))</span>
+</code></pre></div>
+<p><code>Text</code> устроен сложнее: это не просто строка, а документ с индексами вида
+<code>&quot;1.0&quot;</code> (строка и символ). Чтение всего содержимого — <code>text.get(&quot;1.0&quot;, &quot;end-1c&quot;)</code>,
+вставка — <code>text.insert(&quot;end&quot;, &quot;новая запись&quot;)</code>. Индекс <code>end-1c</code> означает «конец
+без последнего перевода строки», который Tk добавляет автоматически.</p>
+<h3 id="переменные-интерфейса">Переменные интерфейса</h3>
+<p>Значения полей удобно хранить не в самом виджете, а в переменной Tkinter:
+<code>StringVar</code>, <code>IntVar</code>, <code>BooleanVar</code>, <code>DoubleVar</code>. Виджет связывается с ней
+через <code>textvariable</code>, а программа читает и меняет значение через переменную.</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">status</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s2">"готово"</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="n">status</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+<span class="n">status</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">"выполняется"</span><span class="p">)</span>
+</code></pre></div>
+<p>Такой подход разделяет данные и представление: логика работает со значениями,
+а интерфейс сам обновляется при изменении переменной. Для полей ввода это
+избавляет от ручного чтения <code>entry.get()</code> в каждом обработчике.</p>
+<h2 id="layout"><span class="h-number">55.5</span> Компоновка</h2>
+<p>Создать виджет мало — нужно указать, где он находится. <strong>Менеджер компоновки</strong> —
+механизм размещения виджетов в окне: <code>pack</code>, <code>grid</code>, <code>place</code>; определяет, как
+интерфейс переживает изменение размера.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Менеджер</th>
+<th>Как работает</th>
+<th>Когда удобен</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pack</code></td>
+<td>укладывает виджеты друг за другом по стороне</td>
+<td>простые панели, вертикальные списки</td>
+</tr>
+<tr>
+<td><code>grid</code></td>
+<td>ставит в ячейки таблицы (строка, столбец)</td>
+<td>формы, сетки кнопок, почти весь интерфейс</td>
+</tr>
+<tr>
+<td><code>place</code></td>
+<td>задаёт абсолютные координаты и размер</td>
+<td>редкие случаи точного позиционирования</td>
+</tr>
+</tbody>
+</table>
+</div><p><code>grid</code> обычно лучше: он описывает структуру, а не координаты. При изменении
+размера окна ячейки растягиваются по правилам <code>weight</code>, а виджеты
+прижимаются к краям через <code>sticky</code>.</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Форма на grid"</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">columnconfigure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Имя:"</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">root</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"ew"</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Город:"</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">root</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"ew"</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Отправить"</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="как-grid-переживает-изменение-размера">Как grid переживает изменение размера</h3>
+<p>Правила растяжения задаются для строк и столбцов, а не для отдельных
+виджетов. <code>columnconfigure(1, weight=1)</code> говорит: лишнее место отдаётся
+второму столбцу, поэтому поля ввода растягиваются, а подписи остаются
+компактными. Аналогично <code>rowconfigure</code> распределяет лишнюю высоту.</p>
+<p><code>sticky</code> управляет положением виджета внутри ячейки: <code>&quot;w&quot;</code> прижимает влево,
+<code>&quot;ew&quot;</code> растягивает по горизонтали, <code>&quot;nsew&quot;</code> — по обеим осям. <code>padx</code> и <code>pady</code>
+добавляют внешние отступы, а <code>ipadx</code> и <code>ipady</code> — внутренние. Без <code>weight</code>
+окно при растяжении оставит всё содержимое в углу: свободное место просто не
+распределяется.
+<code>sticky=&quot;ew&quot;</code> растягивает виджет по горизонтали, <code>columnspan=2</code> объединяет
+ячейки. Смешивать <code>pack</code> и <code>grid</code> в одном контейнере нельзя: Tkinter не сможет
+согласовать их правила — интерфейс зависнет или выдаст ошибку.</p>
+<p><figure class="figure"><img src="illustrations/ch-55-widget-tree.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h2 id="events"><span class="h-number">55.6</span> События и обработчики</h2>
+<p>Интерфейс реагирует на события: нажатие кнопки, ввод текста, движение мыши,
+закрытие окна. <strong>Обработчик события (callback)</strong> — функция, которую интерфейс
+вызывает при событии; не должна блокировать цикл событий надолго.</p>
+<p>Есть два способа подписки. <code>command</code> связывает действие с кнопкой или
+командым виджетом и вызывает функцию без аргументов. <code>bind</code> подписывает на
+конкретное событие и передаёт объект <code>event</code>.</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"События"</span><span class="p">)</span>
+
+<span class="n">status</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s2">"нажмите кнопку"</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">on_click</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">status</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">"кнопка нажата"</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">on_key</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Event</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">status</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="sa">f</span><span class="s2">"нажата клавиша </span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">keysym</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
+
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="n">status</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">padx</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Нажми"</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">on_click</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">"&lt;Key&gt;"</span><span class="p">,</span> <span class="n">on_key</span><span class="p">)</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</code></pre></div>
+<p>У объекта события есть полезные поля: <code>widget</code> (кто получил событие), <code>char</code>
+(введённый символ), <code>keysym</code> (имя клавиши), <code>x</code> и <code>y</code> (координаты указателя).
+Через <code>bind</code> строят горячие клавиши, обработку <code>&lt;Return&gt;</code>, <code>&lt;Escape&gt;</code> и
+движения мыши.</p>
+<h3 id="закрытие-окна-и-диалоги">Закрытие окна и диалоги</h3>
+<p>Когда пользователь нажимает крестик, Tk генерирует событие закрытия. Его
+можно перехватить и, например, спросить подтверждение или сохранить данные:
+<code>root.protocol(&quot;WM_DELETE_WINDOW&quot;, on_close)</code>. Обработчик сам решает, вызвать
+ли <code>root.destroy()</code>.</p>
+<p>Стандартная библиотека даёт готовые диалоги: <code>tkinter.messagebox</code> для
+сообщений и подтверждений, <code>tkinter.filedialog</code> для выбора файлов,
+<code>tkinter.simpledialog</code> для ввода значения. Они не требуют отдельных
+зависимостей, но выглядят по-разному на разных системах.</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="kn">import</span> <span class="n">filedialog</span><span class="p">,</span> <span class="n">messagebox</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">choose_file</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">filedialog</span><span class="o">.</span><span class="n">askopenfilename</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">"Выберите файл"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">path</span><span class="p">:</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s2">"Выбрано"</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+</code></pre></div>
+<p>Диалоги блокируют вызывающий код до ответа пользователя, но не цикл событий:
+Tk продолжает обрабатывать события, пока окно диалога открыто.</p>
+<h3 id="правило-не-блокировать-цикл-событий">Правило: не блокировать цикл событий</h3>
+<p>Цикл событий однопоточный: пока выполняется обработчик, окно не перерисовывается
+и не реагирует на ввод. Поэтому в обработчике нельзя делать долгие операции:
+<code>time.sleep</code>, сетевые запросы, тяжёлые вычисления. Окно «зависнет» — не потому,
+что программа сломалась, а потому, что цикл занят.</p>
+<div class="highlight"><pre><code class="language-python"><span class="c1"># Плохо: окно замрёт на пять секунд</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">on_slow_click</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+
+<span class="c1"># Лучше: отложенное действие через after</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">on_click</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">status</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">"подождите…"</span><span class="p">)</span>
+    <span class="n">root</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">status</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">"готово"</span><span class="p">))</span>
+</code></pre></div>
+<p><code>root.after(мс, функция)</code> планирует вызов в цикле событий, не блокируя его.
+Для длительной работы с сетью или файлами используют отдельный поток, но
+виджеты обновляют только в главном потоке: Tkinter не потокобезопасен.
+Рабочий шаблон — поток складывает результат в <code>queue.Queue</code>, а главный поток
+периодически проверяет очередь через <code>after</code>.</p>
+<h2 id="model"><span class="h-number">55.7</span> Состояние приложения: модель отдельно от интерфейса</h2>
+<p>Самая полезная привычка при работе с GUI — не смешивать правила предметной
+области с кнопками. Модель ничего не знает про окна: это обычные функции и
+классы, которые можно запустить и проверить в терминале. Интерфейс лишь
+вызывает модель и показывает результат.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">KM_PER_MILE</span> <span class="o">=</span> <span class="mf">1.609344</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">km_to_miles</span><span class="p">(</span><span class="n">kilometers</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">kilometers</span> <span class="o">/</span> <span class="n">KM_PER_MILE</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">miles_to_km</span><span class="p">(</span><span class="n">miles</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">miles</span> <span class="o">*</span> <span class="n">KM_PER_MILE</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">format_distance</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">digits</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">value</span><span class="si">:</span><span class="s2">.</span><span class="si">{</span><span class="n">digits</span><span class="si">}</span><span class="s2">f</span><span class="si">}</span><span class="s2">"</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">format_distance</span><span class="p">(</span><span class="n">km_to_miles</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">format_distance</span><span class="p">(</span><span class="n">miles_to_km</span><span class="p">(</span><span class="mf">26.2</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="k">assert</span> <span class="n">km_to_miles</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="nb">round</span><span class="p">(</span><span class="n">km_to_miles</span><span class="p">(</span><span class="mf">1.609344</span><span class="p">),</span> <span class="mi">6</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="k">assert</span> <span class="nb">round</span><span class="p">(</span><span class="n">miles_to_km</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="mi">6</span><span class="p">)</span> <span class="o">==</span> <span class="mf">1.609344</span>
+<span class="k">assert</span> <span class="n">format_distance</span><span class="p">(</span><span class="mf">1.005</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"1.00"</span> <span class="ow">or</span> <span class="n">format_distance</span><span class="p">(</span><span class="mf">1.005</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"1.01"</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"тесты модели прошли"</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>6.21
+42.2
+тесты модели прошли
+</code></pre>
+<p>Последняя проверка намеренно осторожна: поведение округления чисел с плавающей
+точкой зависит от двоичного представления, и опираться на конкретную цифру в
+учебном тесте не стоит. Проверять нужно то, что действительно входит в
+контракт функции.</p>
+<h2 id="converter"><span class="h-number">55.8</span> Пример: конвертер единиц</h2>
+<p>Соберём приложение целиком: поле ввода, переключатель направления, кнопка и
+результат. Модель — уже написанные функции; интерфейс — тонкая оболочка.</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+
+<span class="n">KM_PER_MILE</span> <span class="o">=</span> <span class="mf">1.609344</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">km_to_miles</span><span class="p">(</span><span class="n">kilometers</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">kilometers</span> <span class="o">/</span> <span class="n">KM_PER_MILE</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">miles_to_km</span><span class="p">(</span><span class="n">miles</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">miles</span> <span class="o">*</span> <span class="n">KM_PER_MILE</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">parse_distance</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="n">cleaned</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">","</span><span class="p">,</span> <span class="s2">"."</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">cleaned</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"введите расстояние"</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">cleaned</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"не число: </span><span class="si">{</span><span class="n">text</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"расстояние не может быть отрицательным"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">value</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ConverterApp</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s2">"km_to_miles"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_text</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">result_text</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s2">"—"</span><span class="p">)</span>
+
+        <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Расстояние:"</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+        <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">input_text</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"ew"</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">6</span>
+        <span class="p">)</span>
+
+        <span class="n">tk</span><span class="o">.</span><span class="n">Radiobutton</span><span class="p">(</span>
+            <span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"километры → мили"</span><span class="p">,</span> <span class="n">variable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
+            <span class="n">value</span><span class="o">=</span><span class="s2">"km_to_miles"</span><span class="p">,</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+        <span class="n">tk</span><span class="o">.</span><span class="n">Radiobutton</span><span class="p">(</span>
+            <span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"мили → километры"</span><span class="p">,</span> <span class="n">variable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
+            <span class="n">value</span><span class="o">=</span><span class="s2">"miles_to_km"</span><span class="p">,</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+        <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Перевести"</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">convert</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">8</span>
+        <span class="p">)</span>
+        <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">result_text</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+            <span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">6</span>
+        <span class="p">)</span>
+        <span class="n">root</span><span class="o">.</span><span class="n">columnconfigure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">convert</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">parse_distance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_text</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">result_text</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Ошибка: </span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> <span class="o">==</span> <span class="s2">"km_to_miles"</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">result_text</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">km_to_miles</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> мили"</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">result_text</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">miles_to_km</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> км"</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+    <span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Конвертер расстояний"</span><span class="p">)</span>
+    <span class="n">ConverterApp</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+    <span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+<p>Здесь важно всё, о чём говорилось выше: модель (<code>km_to_miles</code>, <code>parse_distance</code>)
+не зависит от Tkinter и тестируется отдельно; <code>StringVar</code> связывает данные
+с полями; <code>grid</code> задаёт форму; <code>command</code> подписывает кнопку на метод, а не на
+голую функцию — так у обработчика есть доступ к состоянию приложения.
+Проверка ошибок стоит в обработчике, потому что она относится к вводу
+пользователя, а не к математике.</p>
+<h2 id="mistakes"><span class="h-number">55.9</span> Типичные ошибки</h2>
+<ol>
+<li><strong>Не вызван <code>mainloop</code>.</strong> Окно появляется и сразу исчезает; программа
+завершается, не дождавшись действий пользователя.</li>
+<li><strong>Забыт менеджер компоновки.</strong> Виджет создан, но не показан: без <code>pack</code>,
+<code>grid</code> или <code>place</code> он не попадает в окно.</li>
+<li><strong>Смешаны <code>pack</code> и <code>grid</code> в одном контейнере.</strong> Tkinter не может
+согласовать правила; интерфейс зависает или падает с ошибкой.</li>
+<li><strong>Блокирующий обработчик.</strong> <code>sleep</code>, долгий запрос или тяжёлый цикл в
+callback замораживают окно: цикл событий не может обработать следующий
+ввод.</li>
+<li><strong>Работа с виджетами из другого потока.</strong> Tkinter не потокобезопасен;
+обновлять интерфейс должен главный поток, а фоновый — передавать данные
+через очередь.</li>
+<li><strong>Логика внутри обработчиков.</strong> Когда правила предметной области размазаны
+по <code>command</code>-функциям, их нельзя протестировать и трудно менять.</li>
+<li><strong>Абсолютные координаты через <code>place</code>.</strong> Интерфейс ломается при другом
+размере шрифта или окна; <code>grid</code> и <code>pack</code> переживают изменения лучше.</li>
+</ol>
+<h2 id="testing"><span class="h-number">55.10</span> Как тестировать GUI-логику без окна</h2>
+<p>Главный приём — вынести правила в чистые функции и классы, как в конвертере.
+Тогда тесты не открывают окно и работают в обычном терминале.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">parse_distance</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="n">cleaned</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">","</span><span class="p">,</span> <span class="s2">"."</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">cleaned</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"введите расстояние"</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">cleaned</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"не число: </span><span class="si">{</span><span class="n">text</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"расстояние не может быть отрицательным"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">value</span>
+
+
+<span class="k">for</span> <span class="n">raw</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"10"</span><span class="p">,</span> <span class="s2">" 2,5 "</span><span class="p">,</span> <span class="s2">"-1"</span><span class="p">,</span> <span class="s2">"abc"</span><span class="p">]:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">raw</span><span class="p">),</span> <span class="s2">"→"</span><span class="p">,</span> <span class="n">parse_distance</span><span class="p">(</span><span class="n">raw</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">raw</span><span class="p">),</span> <span class="s2">"→ ошибка:"</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>&#x27;10&#x27; → 10.0
+&#x27; 2,5 &#x27; → 2.5
+&#x27;-1&#x27; → ошибка: расстояние не может быть отрицательным
+&#x27;abc&#x27; → ошибка: не число: &#x27;abc&#x27;
+</code></pre>
+<p>Если нужно проверить сам интерфейс, используют <code>root.update()</code> и проверяют
+состояние виджетов без <code>mainloop</code>. Но такие тесты медленные и хрупкие; их
+держат отдельно и в небольшом количестве. Основная масса проверок должна
+относиться к модели.</p>
+<p>Есть и практическая причина: на сервере без графической среды окно не
+создаётся вовсе, и тест падает с ошибкой подключения к дисплею. Поэтому
+GUI-тесты помечают и пропускают, если дисплей недоступен, а логику проверяют
+всегда. Хороший признак архитектуры — возможность запустить 90 % тестов, не
+открывая ни одного окна.</p>
+<h2 id="упражнения"><span class="h-number">55.11</span> Упражнения</h2>
+<h3 id="ex-ch55-01">1. Минимальное окно</h3>
+<p>Напишите программу, которая открывает окно 400×300 с заголовком «Мой первый
+GUI», добавляет метку «Привет» и кнопку «Закрыть», завершающую приложение.
+Объясните, что произойдёт, если убрать <code>mainloop()</code>.</p>
+<h3 id="ex-ch55-02">2. Витрина виджетов</h3>
+<p>Создайте окно с <code>Label</code>, <code>Entry</code>, <code>Checkbutton</code> и <code>Button</code>. По нажатию кнопки
+метка показывает текст из поля ввода. Опишите, какие параметры виджетов
+понадобились и зачем.</p>
+<h3 id="ex-ch55-03">3. Модель счётчика</h3>
+<p>Реализуйте класс <code>CounterModel</code> с методами <code>increment()</code>, <code>decrement()</code> и
+<code>reset()</code>. Значение не должно уходить ниже нуля. Проверьте поведение в
+терминале, без окна.</p>
+<h3 id="ex-ch55-04">4. Форма на grid</h3>
+<p>Соберите форму «Имя — Email — Кнопка» через <code>grid</code>. Подписи прижаты к левому
+краю, поля растягиваются. Объясните, что делает <code>columnconfigure</code> и
+<code>sticky</code>.</p>
+<h3 id="ex-ch55-05">5. Обработчик и событие</h3>
+<p>Подпишите окно на событие <code>&lt;Return&gt;</code> и на нажатие кнопки. Оба обработчика
+должны менять одну и ту же переменную <code>StringVar</code>. Опишите разницу между
+<code>command</code> и <code>bind</code>.</p>
+<h3 id="ex-ch55-06">6. Валидация ввода</h3>
+<p>Реализуйте функцию <code>parse_percent(text: str) -&gt; float</code>, которая принимает
+число от 0 до 100, понимает запятую как разделитель и поднимает <code>ValueError</code>
+с понятным сообщением для остальных случаев. Проверьте пять вариантов ввода.</p>
+<h3 id="ex-ch55-07">7. Модель списка задач</h3>
+<p>Реализуйте класс <code>TaskList</code> с методами <code>add(title)</code>, <code>toggle(index)</code> и
+<code>visible()</code>. Пустой заголовок — ошибка; неверный индекс — <code>IndexError</code>.
+Проверьте сценарий из трёх задач.</p>
+<h3 id="ex-ch55-08">8. Не блокировать цикл</h3>
+<p>Дан обработчик, который вызывает <code>time.sleep(3)</code> и обновляет метку.
+Объясните, что увидит пользователь, и перепишите обработчик так, чтобы окно
+не замирало. Используйте <code>after</code>.</p>
+<h3 id="ex-ch55-09">9. Конвертер температуры</h3>
+<p>Реализуйте чистые функции <code>celsius_to_fahrenheit</code> и <code>fahrenheit_to_celsius</code>,
+а затем опишите, как подключить их к окну с полем ввода и переключателем.
+Проверьте функции тестами, включая точку −40.</p>
+<h3 id="ex-ch55-10">10. Мини-проект: приложение «Заметки»</h3>
+<p>Спроектируйте приложение: поле ввода, кнопка «Добавить», список заметок и
+кнопка «Удалить выбранную». Разделите модель и интерфейс: модель — класс с
+методами <code>add</code>, <code>remove</code>, <code>items</code>; интерфейс — окно, виджеты и обработчики.
+Реализуйте и протестируйте модель в терминале, а интерфейс опишите кодом в
+неисполняемом блоке.</p>
+<h2 id="проверка-понимания"><span class="h-number">55.12</span> Проверка понимания</h2>
+<ol>
+<li>Чем приложение с графическим интерфейсом отличается от консольной
+программы и когда каждое уместно?</li>
+<li>Что делает <code>mainloop</code> и почему без него окно не живёт?</li>
+<li>Чем <code>pack</code>, <code>grid</code> и <code>place</code> отличаются и почему <code>grid</code> чаще выбирают?</li>
+<li>Чем <code>command</code> отличается от <code>bind</code>?</li>
+<li>Почему долгий обработчик «подвешивает» окно и как этого избежать?</li>
+<li>Зачем разделять модель и интерфейс?</li>
+<li>Почему Tkinter нельзя обновлять из фонового потока и какой шаблон
+используют вместо этого?</li>
+</ol>
+<h2 id="что-дальше"><span class="h-number">55.13</span> Что дальше</h2>
+<p>Настольное приложение готово, но данные в нём пока живут только в памяти.
+Следующая глава — о визуализации данных: как превращать числа в понятные
+графики и не обманывать читателя. О стандартной библиотеке говорилось в
+<a href="ch-34-stdlib.html">главе 34</a>, о файлах и сохранении данных — в
+<a href="ch-19-files-formats.html">главе 19</a>, о тестах модели — в
+<a href="ch-32-testing.html">главе 32</a>.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-54-practice.html"><span class="pager-label">← Назад</span><span class="pager-title">Практикум: классические задачи и разбор решений</span></a><a class="pager-card next" rel="next" href="ch-56-dataviz.html"><span class="pager-label">Далее:</span><span class="pager-title">Визуализация данных</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

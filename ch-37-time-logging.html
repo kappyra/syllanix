@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Время, даты и логирование — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-37-time-logging.html" aria-current="page">37. Время, даты и логирование</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-37-time-logging.html#что-вы-сможете-после-этой-главы">37.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-37-time-logging.html#datetime">37.2. datetime: даты, время и интервалы</a></li>
+<li><a href="ch-37-time-logging.html#timezone">37.3. Часовые пояса</a></li>
+<li><a href="ch-37-time-logging.html#timestamp">37.4. Отметки времени и ISO 8601</a></li>
+<li><a href="ch-37-time-logging.html#logging">37.5. Модуль logging: уровни и обработчики</a></li>
+<li><a href="ch-37-time-logging.html#structured">37.6. Структурированное логирование</a></li>
+<li><a href="ch-37-time-logging.html#mistakes">37.7. Типичные ошибки</a></li>
+<li><a href="ch-37-time-logging.html#упражнения">37.8. Упражнения</a></li>
+<li><a href="ch-37-time-logging.html#проверка-понимания">37.9. Проверка понимания</a></li>
+<li><a href="ch-37-time-logging.html#что-дальше">37.10. Что дальше</a></li>
+</ol></details></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 7. Практическая разработка</span><span class="sep">›</span><span>Глава 37</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Практическая разработка · глава 37</p>
+<h1 id="время-даты-и-логирование">Время, даты и логирование</h1>
+<p class="chapter-summary">Как корректно работать со временем и часовыми поясами и как вести журнал, пригодный для разбора сбоев.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#что-вы-сможете-после-этой-главы"><span class="toc-number">37.1</span> Что вы сможете после этой главы</a></li>
+<li class="level-2"><a href="#datetime"><span class="toc-number">37.2</span> datetime: даты, время и интервалы</a></li>
+<li class="level-2"><a href="#timezone"><span class="toc-number">37.3</span> Часовые пояса</a></li>
+<li class="level-2"><a href="#timestamp"><span class="toc-number">37.4</span> Отметки времени и ISO 8601</a></li>
+<li class="level-2"><a href="#logging"><span class="toc-number">37.5</span> Модуль logging: уровни и обработчики</a></li>
+<li class="level-2"><a href="#structured"><span class="toc-number">37.6</span> Структурированное логирование</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">37.7</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">37.8</span> Упражнения</a></li>
+<li class="level-2"><a href="#проверка-понимания"><span class="toc-number">37.9</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#что-дальше"><span class="toc-number">37.10</span> Что дальше</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#арифметика-дат">Арифметика дат</a></li>
+<li class="level-3"><a href="#неоднозначный-час-и-fold">Неоднозначный час и fold</a></li>
+<li class="level-3"><a href="#форматирование-для-человека">Форматирование для человека</a></li>
+<li class="level-3"><a href="#обработчики-и-уровни">Обработчики и уровни</a></li>
+<li class="level-3"><a href="#время-в-тестах">Время в тестах</a></li>
+<li class="level-3"><a href="#именование-событий">Именование событий</a></li>
+<li class="level-3"><a href="#что-писать-и-чего-избегать">Что писать и чего избегать</a></li>
+<li class="level-3"><a href="#журнал-в-файл-и-его-пределы">Журнал в файл и его пределы</a></li>
+<li class="level-3"><a href="#ex-ch37-01">1. Наивное и осведомлённое</a></li>
+<li class="level-3"><a href="#ex-ch37-02">2. Перевод между поясами</a></li>
+<li class="level-3"><a href="#ex-ch37-03">3. Интервалы</a></li>
+<li class="level-3"><a href="#ex-ch37-04">4. Отметка времени</a></li>
+<li class="level-3"><a href="#ex-ch37-05">5. Переход на летнее время</a></li>
+<li class="level-3"><a href="#ex-ch37-06">6. Настройка логирования</a></li>
+<li class="level-3"><a href="#ex-ch37-07">7. Разбор журнала</a></li>
+<li class="level-3"><a href="#ex-ch37-08">8. Структурированная запись</a></li>
+<li class="level-3"><a href="#ex-ch37-09">9. Секреты в логах</a></li>
+<li class="level-3"><a href="#ex-ch37-10">10. Мини-проект: журнал запросов</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>Две вещи ломают программы тихо и больно: время и журналы. Время кажется
+простым, пока не появляются часовые пояса, переход на летнее время и серверы в
+других регионах. Журналы кажутся скучными, пока не нужно понять, почему
+заказ не прошёл в три часа ночи.</p>
+<p>В этой главе вы научитесь различать «наивное» и «осведомлённое» время,
+хранить <strong>отметки времени</strong> в UTC и показывать их в нужном <strong>часовом поясе</strong>,
+а также настраивать <strong>модуль logging</strong> так, чтобы записи были единообразными,
+безопасными и пригодными для машинного разбора.</p>
+<h2 id="что-вы-сможете-после-этой-главы"><span class="h-number">37.1</span> Что вы сможете после этой главы</h2>
+<ul>
+<li>создавать даты и интервалы, складывать и вычитать время;</li>
+<li>отличать наивный <code>datetime</code> от осведомлённого и объяснять, почему это
+важно;</li>
+<li>переводить моменты между часовыми поясами и хранить их в UTC;</li>
+<li>записывать и разбирать даты по стандарту ISO 8601;</li>
+<li>настраивать уровни, обработчики логов и формат записей;</li>
+<li>вести структурированное логирование в JSON и не утекать секретами.</li>
+</ul>
+<h2 id="datetime"><span class="h-number">37.2</span> datetime: даты, время и интервалы</h2>
+<p><strong>datetime</strong> — тип даты и времени; бывает «наивным» (без зоны) и
+«осведомлённым» (с часовым поясом). Наивный объект знает числа года, месяца,
+дня, часа и минуты, но не знает, к какому поясу они относятся. Осведомлённый
+дополнительно хранит смещение и правило перехода на летнее время.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">,</span> <span class="n">timezone</span>
+
+<span class="n">naive</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">aware</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">naive</span><span class="o">.</span><span class="n">tzinfo</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">aware</span><span class="o">.</span><span class="n">tzinfo</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">naive</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">aware</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>None
+UTC
+2026-11-01 15:00:00
+2026-11-01 15:00:00+00:00
+</code></pre>
+<p><code>timedelta</code> — интервал времени. Сложение и вычитание работают и для дат, и для
+интервалов. Обратите внимание: результат для наивного времени не содержит
+смещения, а для осведомлённого содержит <code>+00:00</code>. Это не косметика:
+порядковое сравнение наивного и осведомлённого времени Python запрещает и
+поднимает <code>TypeError</code>, а равенство <code>==</code> всегда даёт <code>False</code> — моменты
+несравнимы, пока неизвестен пояс.</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
+
+<span class="n">naive</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">aware</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">naive</span> <span class="o">&lt;</span> <span class="n">aware</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>TypeError: can&#x27;t compare offset-naive and offset-aware datetimes
+</code></pre>
+<p>Текущий момент получают функцией <code>datetime.now(timezone.utc)</code>: она возвращает
+осведомлённое время в UTC. Вызов <code>datetime.now()</code> без аргумента даёт наивное
+локальное время — его нельзя однозначно сопоставить с моментом.</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
+
+<span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">now</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(</span><span class="n">timespec</span><span class="o">=</span><span class="s2">"seconds"</span><span class="p">))</span>  <span class="c1"># 2026-11-01T12:00:00+00:00</span>
+</code></pre></div>
+<h3 id="арифметика-дат">Арифметика дат</h3>
+<p>С датами и интервалами нужно обращаться осторожно: месяц и год имеют разную
+длину, а переход на летнее время добавляет или убирает час. <code>timedelta</code>
+складывает фиксированные интервалы — дни, часы, минуты. Если нужно «через
+месяц», одного <code>timedelta</code> недостаточно: длина месяца зависит от календаря.
+Для таких вычислений используют специализированные библиотеки или явно
+определяют правило в бизнес-логике.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+<span class="n">finish</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+<span class="n">delta</span> <span class="o">=</span> <span class="n">finish</span> <span class="o">-</span> <span class="n">start</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">delta</span><span class="o">.</span><span class="n">days</span><span class="p">,</span> <span class="n">delta</span><span class="o">.</span><span class="n">seconds</span> <span class="o">//</span> <span class="mi">3600</span><span class="p">,</span> <span class="p">(</span><span class="n">delta</span><span class="o">.</span><span class="n">seconds</span> <span class="o">%</span> <span class="mi">3600</span><span class="p">)</span> <span class="o">//</span> <span class="mi">60</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>245 12 30
+</code></pre>
+<p>Разница между осведомлёнными временами корректна, потому что оба момента
+заданы в UTC. Если бы одно из времён было наивным, Python отказался бы
+выполнять вычитание: <code>TypeError: can't subtract offset-naive and offset-aware datetimes</code> — пояс второго операнда неизвестен, и результат был бы произвольным.</p>
+<p>Правило рабочего проекта: внутри программы и в базе храните только
+осведомлённое время в UTC, а в человекочитаемый вид переводите на границе —
+при показе пользователю или формировании отчёта.</p>
+<h2 id="timezone"><span class="h-number">37.3</span> Часовые пояса</h2>
+<p><strong>Часовой пояс</strong> — правило смещения времени относительно UTC; обязательно для
+корректной работы с датами. Смещение — не константа: в разных странах оно
+разное, а переход на летнее время меняет его дважды в год.</p>
+<p>Модуль <code>zoneinfo</code> из стандартной библиотеки знает правила поясов:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">zoneinfo</span><span class="w"> </span><span class="kn">import</span> <span class="n">ZoneInfo</span>
+
+<span class="n">instant</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">instant</span><span class="o">.</span><span class="n">isoformat</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">instant</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">ZoneInfo</span><span class="p">(</span><span class="s2">"Europe/Moscow"</span><span class="p">))</span><span class="o">.</span><span class="n">isoformat</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">instant</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">ZoneInfo</span><span class="p">(</span><span class="s2">"Asia/Tokyo"</span><span class="p">))</span><span class="o">.</span><span class="n">isoformat</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>2026-11-01T12:00:00+00:00
+2026-11-01T15:00:00+03:00
+2026-11-01T21:00:00+09:00
+</code></pre>
+<p>Это один и тот же момент времени, показанный в трёх поясах. <code>astimezone</code> не
+меняет момент, а меняет представление. Сравнение осведомлённых времён работает
+по моменту, а не по цифрам на циферблате:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">zoneinfo</span><span class="w"> </span><span class="kn">import</span> <span class="n">ZoneInfo</span>
+
+<span class="n">moscow</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">ZoneInfo</span><span class="p">(</span><span class="s2">"Europe/Moscow"</span><span class="p">))</span>
+<span class="n">tokyo</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">ZoneInfo</span><span class="p">(</span><span class="s2">"Asia/Tokyo"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">moscow</span> <span class="o">==</span> <span class="n">tokyo</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">moscow</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">ZoneInfo</span><span class="p">(</span><span class="s2">"UTC"</span><span class="p">))</span><span class="o">.</span><span class="n">isoformat</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>True
+2026-11-01T12:00:00+00:00
+</code></pre>
+<p><figure class="figure"><img src="illustrations/ch-37-timezones.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Часовой пояс не равен смещению. Смещение — конкретное число часов в конкретный
+момент; пояс — правило, по которому это число вычисляется. Поэтому хранить
+<code>datetime</code> со смещением <code>+03:00</code> недостаточно, если затем нужно применить
+правила другого региона: используйте имя пояса (<code>Europe/Moscow</code>) и <code>zoneinfo</code>.</p>
+<h3 id="неоднозначный-час-и-fold">Неоднозначный час и fold</h3>
+<p>При обратном переводе часов локальное время повторяется. В ночь на 25 октября
+2026 года Берлин возвращается с летнего времени на зимнее: 02:30 случается
+дважды. Атрибут <code>fold</code> указывает, какое вхождение имеется в виду: <code>fold=0</code> —
+первое, ещё летнее (<code>+02:00</code>), <code>fold=1</code> — второе, уже зимнее (<code>+01:00</code>).</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">zoneinfo</span><span class="w"> </span><span class="kn">import</span> <span class="n">ZoneInfo</span>
+
+<span class="n">berlin</span> <span class="o">=</span> <span class="n">ZoneInfo</span><span class="p">(</span><span class="s2">"Europe/Berlin"</span><span class="p">)</span>
+<span class="n">first</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">berlin</span><span class="p">,</span> <span class="n">fold</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">second</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">berlin</span><span class="p">,</span> <span class="n">fold</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">first</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(),</span> <span class="n">first</span><span class="o">.</span><span class="n">utcoffset</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">second</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(),</span> <span class="n">second</span><span class="o">.</span><span class="n">utcoffset</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">first</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span> <span class="o">-</span> <span class="n">second</span><span class="o">.</span><span class="n">timestamp</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>2026-10-25T02:30:00+02:00 2:00:00
+2026-10-25T02:30:00+01:00 1:00:00
+-3600.0
+</code></pre>
+<p>Цифры на циферблате одинаковые, а моменты различаются на час. Без <code>fold</code>
+интерпретатор берёт значение по умолчанию <code>0</code>, и второе вхождение теряется:
+два разных момента дают одну и ту же строку. Поэтому локальное время из
+внешнего источника разбирают с оговоркой о вхождении, а хранят всё равно UTC.
+Обратный случай — пропущенный час при переходе на летнее время: такого
+локального времени не существует. <code>fold</code> и здесь выбирает смещение — до
+перехода или после, поэтому один и тот же набор цифр может означать разные
+моменты.</p>
+<h2 id="timestamp"><span class="h-number">37.4</span> Отметки времени и ISO 8601</h2>
+<p><strong>Отметка времени</strong> — момент времени, обычно представленный числом секунд от
+эпохи Unix. Число не зависит от пояса и удобно для сортировки, хранения и
+сравнения.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
+
+<span class="n">moment</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+<span class="n">stamp</span> <span class="o">=</span> <span class="n">moment</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">stamp</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">stamp</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span><span class="o">.</span><span class="n">isoformat</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>1793534400
+2026-11-01T12:00:00+00:00
+</code></pre>
+<p><strong>ISO 8601</strong> — стандартная текстовая запись даты и времени:
+<code>2026-11-01T12:00:00+03:00</code>. Формат однозначен, сортируется как строка (при
+одинаковом смещении) и понимается большинством языков и баз данных.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s2">"2026-11-01T12:00:00+03:00"</span>
+<span class="n">parsed</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">parsed</span><span class="o">.</span><span class="n">utcoffset</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">parsed</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span><span class="o">.</span><span class="n">isoformat</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>3:00:00
+2026-11-01T09:00:00+00:00
+</code></pre>
+<h3 id="форматирование-для-человека">Форматирование для человека</h3>
+<p>ISO 8601 хорош для обмена, но не всегда удобен для чтения. Для вывода
+пользователю применяют <code>strftime</code> с явным шаблоном и явным поясом.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">zoneinfo</span><span class="w"> </span><span class="kn">import</span> <span class="n">ZoneInfo</span>
+
+<span class="n">moment</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+<span class="n">local</span> <span class="o">=</span> <span class="n">moment</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">ZoneInfo</span><span class="p">(</span><span class="s2">"Europe/Moscow"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">local</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"</span><span class="si">%d</span><span class="s2">.%m.%Y %H:%M"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">local</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"</span><span class="si">%d</span><span class="s2"> %B %Y"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>01.11.2026 15:00
+01 November 2026
+</code></pre>
+<p>Названия месяцев зависят от локали, поэтому для русских подписей нужна
+настройка локали или собственная таблица. В книгах и отчётах безопаснее
+числовой формат: он одинаково читается на любой машине. Для хранения и
+передачи всегда используйте ISO 8601, а <code>strftime</code> — только для показа.</p>
+<p>Для хранения выбирайте одно представление и следуйте ему везде: либо целые
+секунды UTC, либо ISO-строка с явным смещением. Смешивать форматы в одной
+таблице — верный способ получить «сегодня» и «вчера» в одном отчёте. Если
+значения приходят без смещения, считайте их неполными: наивное время нельзя
+однозначно перевести в момент.</p>
+<h2 id="logging"><span class="h-number">37.5</span> Модуль logging: уровни и обработчики</h2>
+<p><strong>Модуль logging</strong> — модуль стандартной библиотеки для управляемого
+журналирования событий. Он разделяет три роли: регистратор (<code>Logger</code>) решает,
+что записать; <strong>обработчик логов</strong> (<code>Handler</code>) решает, куда; форматтер —
+как именно.</p>
+<p>Уровни важности (<code>DEBUG</code>, <code>INFO</code>, <code>WARNING</code>, <code>ERROR</code>, <code>CRITICAL</code>) задают порог.
+Если регистратор настроен на <code>INFO</code>, сообщения <code>DEBUG</code> не попадут в вывод.
+Журнал — не замена <code>print</code>: записи имеют уровень, время, источник и
+настраиваемый приёмник.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">StringIO</span>
+
+<span class="n">stream</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">()</span>
+<span class="n">handler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
+<span class="n">handler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s2">"</span><span class="si">%(levelname)s</span><span class="s2">:</span><span class="si">%(name)s</span><span class="s2">:</span><span class="si">%(message)s</span><span class="s2">"</span><span class="p">))</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">"demo"</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">handlers</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">propagate</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
+
+<span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">"отладка"</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"задача </span><span class="si">%d</span><span class="s2"> запущена"</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">"файл </span><span class="si">%s</span><span class="s2"> не найден"</span><span class="p">,</span> <span class="s2">"config.toml"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stream</span><span class="o">.</span><span class="n">getvalue</span><span class="p">(),</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>DEBUG:demo:отладка
+INFO:demo:задача 7 запущена
+WARNING:demo:файл config.toml не найден
+</code></pre>
+<p>В примере формат намеренно не содержит времени: иначе вывод зависел бы от
+запуска. В рабочем журнале время обязательно, обычно в UTC и ISO 8601.
+<figure class="figure"><img src="illustrations/ch-37-logging-pipeline.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Параметры <code>%s</code> и <code>%d</code> подставляются лениво: строка форматируется, только
+если запись действительно пройдёт фильтр по уровню. Поэтому f-строка в
+вызове <code>logger.info</code> тратит работу впустую. От утечки секретов ленивое
+форматирование не защищает: если значение попало в запись, оно окажется в
+журнале в обоих случаях — маскируйте данные до логирования.</p>
+<h3 id="обработчики-и-уровни">Обработчики и уровни</h3>
+<p>Один регистратор может писать в несколько мест: в консоль для разработчика, в
+файл для разбора и во внешнюю систему для мониторинга. Обработчики
+настраиваются независимо, у каждого свой уровень и формат.</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">logging.handlers</span><span class="w"> </span><span class="kn">import</span> <span class="n">RotatingFileHandler</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">"app"</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+<span class="n">console</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">()</span>
+<span class="n">console</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+
+<span class="n">file_handler</span> <span class="o">=</span> <span class="n">RotatingFileHandler</span><span class="p">(</span><span class="s2">"app.log"</span><span class="p">,</span> <span class="n">maxBytes</span><span class="o">=</span><span class="mi">1_000_000</span><span class="p">,</span> <span class="n">backupCount</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">file_handler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+<span class="n">formatter</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s2">"</span><span class="si">%(asctime)s</span><span class="s2"> </span><span class="si">%(levelname)s</span><span class="s2"> </span><span class="si">%(name)s</span><span class="s2"> </span><span class="si">%(message)s</span><span class="s2">"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">handler</span> <span class="ow">in</span> <span class="p">(</span><span class="n">console</span><span class="p">,</span> <span class="n">file_handler</span><span class="p">):</span>
+    <span class="n">handler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
+</code></pre></div>
+<p><code>RotatingFileHandler</code> ограничивает размер файла и хранит несколько копий:
+журнал не растёт бесконечно. В production журнал обычно пишут в стандартный
+поток, а сбором занимается инфраструктура; это упрощает контейнеры и
+централизованный поиск.</p>
+<h3 id="время-в-тестах">Время в тестах</h3>
+<p>Код, который читает текущее время напрямую, трудно проверять: результат
+зависит от запуска. Правильный приём — передавать время как зависимость.
+Функция принимает «сейчас» параметром или получает часы извне, а тест
+подставляет фиксированный момент.</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">greeting</span><span class="p">(</span><span class="n">now</span><span class="p">:</span> <span class="n">datetime</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">now</span><span class="o">.</span><span class="n">hour</span> <span class="o">&lt;</span> <span class="mi">12</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">"Доброе утро"</span>
+    <span class="k">return</span> <span class="s2">"Добрый день"</span>
+</code></pre></div>
+<p>Такой код детерминирован: тест передаёт <code>datetime(2026, 11, 1, 9, 0)</code> и
+проверяет утреннее приветствие без ожидания реального утра. В рабочем коде
+функцию вызывают с текущим временем, полученным в одном месте программы.</p>
+<h2 id="structured"><span class="h-number">37.6</span> Структурированное логирование</h2>
+<p><strong>Структурированное логирование</strong> — запись логов как структурированных данных
+(JSON, поля), пригодных для машинного анализа. Строка «что-то пошло не так»
+бесполезна для поиска; запись с полями <code>event</code>, <code>order_id</code>, <code>duration_ms</code>,
+<code>status</code> позволяет фильтровать и агрегировать.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">StringIO</span>
+
+<span class="n">stream</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">()</span>
+<span class="n">handler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">"app"</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">handlers</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">propagate</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">log_event</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">fields</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"event"</span><span class="p">:</span> <span class="n">event</span><span class="p">,</span> <span class="o">**</span><span class="n">fields</span><span class="p">}</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+
+<span class="n">log_event</span><span class="p">(</span><span class="s2">"order_created"</span><span class="p">,</span> <span class="n">order_id</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">amount</span><span class="o">=</span><span class="mi">900</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stream</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>{&quot;amount&quot;: 900, &quot;event&quot;: &quot;order_created&quot;, &quot;order_id&quot;: 42}
+</code></pre>
+<h3 id="именование-событий">Именование событий</h3>
+<p>Поле <code>event</code> — это короткое имя в змеином регистре: <code>order_created</code>,
+<code>payment_failed</code>, <code>request_finished</code>. Единый словарь событий позволяет
+строить графики и оповещения по имени, не разбирая текст сообщения. Если
+каждый разработчик придумывает своё имя, журнал превращается в набор
+уникальных строк, и машинный анализ становится невозможен.</p>
+<p>Имена событий и наборы полей стоит зафиксировать в документации проекта.
+Тогда новая запись либо вписывается в существующую схему, либо осознанно её
+расширяет, а не добавляет очередной формат. Проверка схемы записи в тестах
+ловит опечатки в именах полей до того, как журнал попадёт в систему поиска.</p>
+<p><code>sort_keys=True</code> делает порядок полей предсказуемым, <code>ensure_ascii=False</code>
+сохраняет читаемую кириллицу. Каждая строка — самостоятельный JSON-объект, его
+называют JSON Lines. Такие логи легко читать построчно и загружать в системы
+поиска.</p>
+<h3 id="что-писать-и-чего-избегать">Что писать и чего избегать</h3>
+<p>Уровни помогают читателю журнала: <code>DEBUG</code> — подробности для разработки,
+<code>INFO</code> — значимые события, <code>WARNING</code> — неожиданное, но не сломавшее работу,
+<code>ERROR</code> — операция не выполнена, <code>CRITICAL</code> — система не может продолжать.
+Не пишите <code>ERROR</code> для ожидаемых ситуаций: если пользователь ввёл неверный
+пароль, это <code>INFO</code> или <code>WARNING</code>, иначе журнал ошибок перестаёт быть сигналом.</p>
+<p>Сообщение должно отвечать на вопрос «что произошло и с чем», а не «что-то не
+так». «Не удалось создать заказ» лучше, чем «ошибка», а «не удалось создать
+заказ order_id=42» лучше обоих. Но идентификаторы, персональные данные и
+секреты требуют осторожности.</p>
+<p>Что попадает в структурированную запись: идентификатор запроса или
+пользователя, название события, длительность, результат, код ошибки. Чего там
+быть не должно: паролей, токенов, номеров карт и полных персональных данных.
+Маскируйте чувствительные поля до записи, а не после. Простое правило: если
+значение нельзя показать в тикете поддержки, его нельзя и логировать.</p>
+<h3 id="журнал-в-файл-и-его-пределы">Журнал в файл и его пределы</h3>
+<p>Файл журнала растёт: за день работы сервис может записать миллионы строк. Без
+ограничения диск заполнится, и упадёт уже не приложение, а вся машина.
+<code>RotatingFileHandler</code> ограничивает размер, <code>TimedRotatingFileHandler</code> — срок
+хранения: старые файлы удаляются автоматически. Политику хранения выбирают по
+требованиям: для отладки достаточно недели, для аудита — месяцы, но аудит
+обычно требует отдельного защищённого хранилища.</p>
+<p>Журнал не заменяет метрики. По логам можно найти причину сбоя, но нельзя
+быстро понять, что сбоев стало больше: для этого нужны счётчики и графики.
+Логи, метрики и трассировки дополняют друг друга, и в зрелой системе есть все
+три инструмента. Начинать достаточно с логов, но по мере роста нагрузки
+счётчики и распределённая трассировка становятся необходимостью.</p>
+<h2 id="mistakes"><span class="h-number">37.7</span> Типичные ошибки</h2>
+<ol>
+<li><strong>Хранить наивное время.</strong> Без пояса невозможно восстановить момент;
+сервер переехал в другой регион — и отчёты сломались.</li>
+<li><strong>Хранить локальное время вместо UTC.</strong> Переход на летнее время создаёт
+дубликаты и пропуски; UTC избавляет от них.</li>
+<li><strong>Считать смещение часовым поясом.</strong> <code>+03:00</code> не описывает правила
+перехода; для конверсий нужно имя пояса.</li>
+<li><strong>Сравнивать наивное и осведомлённое время.</strong> Python поднимает
+<code>TypeError</code>, а в языках без такой проверки ошибка проходит молча.</li>
+<li><strong>Писать в лог секреты и персональные данные.</strong> Журналы копируются,
+индексируются и хранятся дольше, чем кажется.</li>
+<li><strong>Использовать <code>print</code> вместо логирования.</strong> Нет уровней, времени и
+возможности отключить вывод без правки кода.</li>
+<li><strong>Собирать сообщение f-строкой с данными.</strong> Это дороже и повышает риск
+утечки; передавайте параметры в <code>logger.info(&quot;...&quot;, value)</code>.</li>
+<li><strong>Логировать в библиотеке без настроек.</strong> Библиотека должна создавать
+регистратор и не настраивать глобальный вывод: это дело приложения.</li>
+<li><strong>Забывать про локаль и формат дат в логах.</strong> Смешение форматов мешает
+сравнивать записи между сервисами; фиксируйте UTC и ISO 8601.</li>
+</ol>
+<h2 id="упражнения"><span class="h-number">37.8</span> Упражнения</h2>
+<h3 id="ex-ch37-01">1. Наивное и осведомлённое</h3>
+<p>Создайте наивный <code>datetime</code> на 1 ноября 2026 года, 12:00 и осведомлённый с
+<code>timezone.utc</code>. Попробуйте сравнить их и объясните ошибку. Затем переведите
+осведомлённое время в <code>Europe/Moscow</code>.</p>
+<h3 id="ex-ch37-02">2. Перевод между поясами</h3>
+<p>Дан момент <code>2026-11-01T12:00:00+00:00</code>. Покажите его в Москве, Токио и
+Нью-Йорке. Убедитесь, что все три значения обозначают один момент.</p>
+<h3 id="ex-ch37-03">3. Интервалы</h3>
+<p>Вычислите, сколько дней, часов и минут прошло между
+<code>2026-03-01T00:00:00+00:00</code> и <code>2026-11-01T12:30:00+00:00</code>. Используйте
+<code>timedelta</code>.</p>
+<h3 id="ex-ch37-04">4. Отметка времени</h3>
+<p>Преобразуйте момент <code>2026-11-01T15:00:00+03:00</code> в число секунд от эпохи и
+обратно в ISO-строку UTC. Убедитесь, что момент сохранился.</p>
+<h3 id="ex-ch37-05">5. Переход на летнее время</h3>
+<p>В ночь на 25 октября 2026 года Берлин возвращается на зимнее время, и 02:30
+случается дважды. Создайте два <code>datetime</code> с <code>ZoneInfo(&quot;Europe/Berlin&quot;)</code> и
+<code>fold=0</code>/<code>fold=1</code>, сравните их смещения и объясните, почему без <code>fold</code> второй
+момент теряется. Затем переведите <code>2026-03-29T01:30:00+00:00</code> в Берлин и
+Москву и объясните, почему результаты отличаются.</p>
+<h3 id="ex-ch37-06">6. Настройка логирования</h3>
+<p>Настройте регистратор так, чтобы в консоль попадали только <code>WARNING</code> и выше,
+а в файл — всё начиная с <code>INFO</code>. Запишите три сообщения разных уровней и
+объясните, где какое оказалось.</p>
+<h3 id="ex-ch37-07">7. Разбор журнала</h3>
+<p>Дан список строк вида <code>&quot;INFO:start&quot;</code>, <code>&quot;ERROR:fail&quot;</code>. Разберите их в список
+словарей <code>{&quot;level&quot;: ..., &quot;message&quot;: ...}</code> и посчитайте, сколько записей
+каждого уровня.</p>
+<h3 id="ex-ch37-08">8. Структурированная запись</h3>
+<p>Напишите функцию <code>log_request(request_id: str, path: str, status: int, duration_ms: int)</code>, которая пишет одну JSON-запись. Проверьте, что JSON
+разбирается обратно и содержит все поля.</p>
+<h3 id="ex-ch37-09">9. Секреты в логах</h3>
+<p>Дан код, который пишет в лог полный словарь запроса, включая заголовок
+<code>Authorization</code>. Объясните, чем это опасно, и перепишите код с маскированием.
+Опишите, какие поля нужно скрывать.</p>
+<h3 id="ex-ch37-10">10. Мини-проект: журнал запросов</h3>
+<p>Соберите функцию, которая принимает список событий с фиксированными моментами
+времени и печатает структурированные записи в формате JSON Lines. Каждая
+запись содержит <code>timestamp</code> в UTC, <code>event</code>, <code>path</code>, <code>status</code>. Проверьте вывод
+и разберите его обратно в список словарей.</p>
+<h2 id="проверка-понимания"><span class="h-number">37.9</span> Проверка понимания</h2>
+<ol>
+<li>Чем наивное время отличается от осведомлённого?</li>
+<li>Почему в базе хранят UTC, а не локальное время?</li>
+<li>Чем смещение отличается от часового пояса?</li>
+<li>Что означает ISO 8601 и почему этот формат удобен?</li>
+<li>Как связаны регистратор, обработчик и форматтер?</li>
+<li>Зачем нужно структурированное логирование?</li>
+<li>Какие сведения нельзя писать в журнал и почему?</li>
+</ol>
+<h2 id="что-дальше"><span class="h-number">37.10</span> Что дальше</h2>
+<p>Время и журналы сопровождают программу в работе, а работа редко бывает
+последовательной: сервер обслуживает много запросов одновременно. Логи с
+отметками времени помогают восстановить порядок событий, когда несколько
+потоков пишут в один журнал. Следующая
+глава — о конкурентности, потоках, процессах и GIL. О модуле <code>datetime</code> в
+контексте файлов говорилось в <a href="ch-19-files-formats.html">главе 19</a>, об уровне
+логирования — в <a href="ch-11-debugging.html">главе 11</a>.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-36-data-storage.html"><span class="pager-label">← Назад</span><span class="pager-title">Данные: SQLite, SQL и сериализация</span></a><a class="pager-card next" rel="next" href="ch-38-concurrency.html"><span class="pager-label">Далее:</span><span class="pager-title">Конкурентность: потоки, процессы и GIL</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

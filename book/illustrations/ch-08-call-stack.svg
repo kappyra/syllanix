@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 556" role="img"
+     aria-labelledby="ttl8a desc8a" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl8a">Стек вызовов на примере factorial(4): кадры добавляются и снимаются</title>
+  <desc id="desc8a">Четыре кадра стека для рекурсивного вызова factorial(4). Первым внизу стоит кадр factorial(4), выше добавляются кадры factorial(3), factorial(2) и factorial(1); верхний кадр — самый последний вызов. В нём срабатывает базовый случай, и вызов возвращает 1. Затем кадры снимаются сверху вниз, и на каждом шаге вычисляется произведение: 2, затем 6, затем 24. Стек растёт при новых вызовах и уменьшается при возвратах.</desc>
+
+  <text x="30" y="28" font-size="16" font-weight="bold" fill="#1d3550">Стек вызовов на примере factorial(4)</text>
+  <text x="30" y="50" font-size="13" fill="#4a5a6a">верхний кадр — текущий вызов, нижний — самый первый; в кадре видно, чего он ждёт</text>
+
+  <!-- стрелка вызовов (вверх) -->
+  <line x1="556" y1="404" x2="556" y2="150" stroke="#8a6a2f" stroke-width="2"/>
+  <path d="M 549 158 L 556 144 L 563 158" fill="none" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="632" y="236" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#4b3a16">вызовы</text>
+  <text x="632" y="256" text-anchor="middle" font-size="13" fill="#4b3a16">добавляются</text>
+  <text x="632" y="276" text-anchor="middle" font-size="13" fill="#4b3a16">4 → 3 → 2 → 1</text>
+
+  <!-- стрелка возвратов (вниз) -->
+  <line x1="192" y1="150" x2="192" y2="404" stroke="#3f6b3f" stroke-width="2"/>
+  <path d="M 185 396 L 192 410 L 199 396" fill="none" stroke="#3f6b3f" stroke-width="2"/>
+  <text x="120" y="236" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#264a26">возвраты</text>
+  <text x="120" y="256" text-anchor="middle" font-size="13" fill="#264a26">снимаются</text>
+  <text x="120" y="276" text-anchor="middle" font-size="13" fill="#264a26">1 → 2 → 6 → 24</text>
+
+  <!-- кадр: последний вызов, базовый случай -->
+  <rect x="228" y="152" width="292" height="58" rx="8" fill="#eef7ee" stroke="#3f6b3f" stroke-width="2"/>
+  <text x="246" y="176" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" fill="#264a26">factorial(1)</text>
+  <text x="246" y="198" font-size="13" fill="#264a26">базовый случай: return 1</text>
+  <text x="504" y="176" text-anchor="end" font-size="14" font-weight="bold" fill="#264a26">= 1</text>
+
+  <!-- кадр 3 -->
+  <rect x="228" y="218" width="292" height="58" rx="8" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="246" y="242" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" fill="#1d3550">factorial(2)</text>
+  <text x="246" y="264" font-size="13" fill="#4a5a6a">ждёт: 2 * результат(1)</text>
+  <text x="504" y="242" text-anchor="end" font-size="14" font-weight="bold" fill="#264a26">= 2</text>
+
+  <!-- кадр 2 -->
+  <rect x="228" y="284" width="292" height="58" rx="8" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="246" y="308" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" fill="#1d3550">factorial(3)</text>
+  <text x="246" y="330" font-size="13" fill="#4a5a6a">ждёт: 3 * результат(2)</text>
+  <text x="504" y="308" text-anchor="end" font-size="14" font-weight="bold" fill="#264a26">= 6</text>
+
+  <!-- кадр: первый вызов -->
+  <rect x="228" y="350" width="292" height="58" rx="8" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="246" y="374" font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" fill="#1d3550">factorial(4)</text>
+  <text x="246" y="396" font-size="13" fill="#4a5a6a">ждёт: 4 * результат(3)</text>
+  <text x="504" y="374" text-anchor="end" font-size="14" font-weight="bold" fill="#264a26">= 24</text>
+
+  <!-- результат -->
+  <line x1="374" y1="408" x2="374" y2="432" stroke="#3f6b3f" stroke-width="2"/>
+  <path d="M 367 426 L 374 438 L 381 426" fill="none" stroke="#3f6b3f" stroke-width="2"/>
+  <rect x="249" y="442" width="250" height="44" rx="9" fill="#eef7ee" stroke="#3f6b3f" stroke-width="2"/>
+  <text x="374" y="470" text-anchor="middle" font-size="15" fill="#264a26">ответ: 24</text>
+
+  <text x="30" y="512" font-size="14" fill="#1d3550">Базовый случай остановил рост стека: factorial(1) вернула 1, не порождая нового вызова.</text>
+  <text x="30" y="536" font-size="14" font-weight="bold" fill="#1d3550">Глубина стека равна числу активных вызовов в данный момент.</text>
+</svg>

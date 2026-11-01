@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" role="img"
+     aria-labelledby="ttl20s desc20s" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl20s">Состояния итератора: позиция сдвигается при каждом next</title>
+  <desc id="desc20s">Итератор по списку из трёх чисел хранит позицию. Сразу после iter позиция у первого элемента. После первого next выдано число 10, позиция у второго. После третьего next все элементы выданы, следующий вызов даёт StopIteration.</desc>
+
+  <text x="32" y="34" font-size="17" font-weight="bold" fill="#1d3550">Итератор по списку [10, 20, 30]: позиция обхода</text>
+
+  <!-- состояние 0 -->
+  <rect x="30" y="58" width="330" height="146" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="46" y="82" font-size="13" font-weight="bold" fill="#1d3550">сразу после iter(numbers)</text>
+  <rect x="52" y="102" width="76" height="40" rx="6" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="90" y="128" text-anchor="middle" font-size="15" fill="#1d3550">10</text>
+  <rect x="144" y="102" width="76" height="40" rx="6" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="182" y="128" text-anchor="middle" font-size="15" fill="#1d3550">20</text>
+  <rect x="236" y="102" width="76" height="40" rx="6" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="274" y="128" text-anchor="middle" font-size="15" fill="#1d3550">30</text>
+  <polygon points="90,94 84,102 96,102" fill="#2f6b3f"/>
+  <text x="46" y="170" font-size="12" fill="#33557a">выдано: 0 элементов</text>
+  <text x="46" y="190" font-size="12" fill="#33557a">следующий next вернёт 10</text>
+
+  <!-- состояние после 1 -->
+  <rect x="400" y="58" width="330" height="146" rx="10" fill="#f5f8fc" stroke="#33557a" stroke-width="2"/>
+  <text x="416" y="82" font-size="13" font-weight="bold" fill="#1d3550">после next(it) → 10</text>
+  <rect x="422" y="102" width="76" height="40" rx="6" fill="#d8dde3" stroke="#7a8794" stroke-width="2"/>
+  <text x="460" y="128" text-anchor="middle" font-size="15" fill="#5a6b7d">10</text>
+  <rect x="514" y="102" width="76" height="40" rx="6" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="552" y="128" text-anchor="middle" font-size="15" fill="#1d3550">20</text>
+  <rect x="606" y="102" width="76" height="40" rx="6" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="644" y="128" text-anchor="middle" font-size="15" fill="#1d3550">30</text>
+  <polygon points="552,94 546,102 558,102" fill="#2f6b3f"/>
+  <text x="416" y="170" font-size="12" fill="#33557a">выдано: 1 элемент (10)</text>
+  <text x="416" y="190" font-size="12" fill="#33557a">следующий next вернёт 20</text>
+
+  <!-- состояние после 2 -->
+  <rect x="30" y="224" width="330" height="146" rx="10" fill="#f5f8fc" stroke="#33557a" stroke-width="2"/>
+  <text x="46" y="248" font-size="13" font-weight="bold" fill="#1d3550">после ещё одного next(it) → 20</text>
+  <rect x="52" y="268" width="76" height="40" rx="6" fill="#d8dde3" stroke="#7a8794" stroke-width="2"/>
+  <text x="90" y="294" text-anchor="middle" font-size="15" fill="#5a6b7d">10</text>
+  <rect x="144" y="268" width="76" height="40" rx="6" fill="#d8dde3" stroke="#7a8794" stroke-width="2"/>
+  <text x="182" y="294" text-anchor="middle" font-size="15" fill="#5a6b7d">20</text>
+  <rect x="236" y="268" width="76" height="40" rx="6" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="274" y="294" text-anchor="middle" font-size="15" fill="#1d3550">30</text>
+  <polygon points="274,260 268,268 280,268" fill="#2f6b3f"/>
+  <text x="46" y="336" font-size="12" fill="#33557a">выдано: 2 элемента (10, 20)</text>
+  <text x="46" y="356" font-size="12" fill="#33557a">следующий next вернёт 30</text>
+
+  <!-- исчерпание -->
+  <rect x="400" y="224" width="330" height="146" rx="10" fill="#fdf3f1" stroke="#8a3030" stroke-width="2"/>
+  <text x="416" y="248" font-size="13" font-weight="bold" fill="#8a3030">после next(it) → 30</text>
+  <rect x="422" y="268" width="76" height="40" rx="6" fill="#d8dde3" stroke="#7a8794" stroke-width="2"/>
+  <text x="460" y="294" text-anchor="middle" font-size="15" fill="#5a6b7d">10</text>
+  <rect x="514" y="268" width="76" height="40" rx="6" fill="#d8dde3" stroke="#7a8794" stroke-width="2"/>
+  <text x="552" y="294" text-anchor="middle" font-size="15" fill="#5a6b7d">20</text>
+  <rect x="606" y="268" width="76" height="40" rx="6" fill="#d8dde3" stroke="#7a8794" stroke-width="2"/>
+  <text x="644" y="294" text-anchor="middle" font-size="15" fill="#5a6b7d">30</text>
+  <text x="416" y="336" font-size="12" fill="#8a3030">выдано: 3 элемента — исчерпан</text>
+  <text x="416" y="356" font-size="12" font-weight="bold" fill="#8a3030">следующий next → StopIteration</text>
+
+  <text x="32" y="404" font-size="12" fill="#5a6b7d">Позиция только движется вперёд: вернуться к началу тот же итератор не может — нужен новый iter(numbers).</text>
+</svg>

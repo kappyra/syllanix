@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Асинхронность: asyncio — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-39-asyncio.html" aria-current="page">39. Асинхронность: asyncio</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-39-asyncio.html#что-вы-сможете-после-этой-главы">39.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-39-asyncio.html#why">39.2. Задача, которую решает асинхронность</a></li>
+<li><a href="ch-39-asyncio.html#task-model">39.3. Модель выполнения задач</a></li>
+<li><a href="ch-39-asyncio.html#coroutines">39.4. Корутины и await</a></li>
+<li><a href="ch-39-asyncio.html#awaitable">39.5. Awaitable-объекты</a></li>
+<li><a href="ch-39-asyncio.html#event-loop">39.6. Цикл событий</a></li>
+<li><a href="ch-39-asyncio.html#tasks">39.7. Задачи</a></li>
+<li><a href="ch-39-asyncio.html#concurrency">39.8. Конкурентность и порядок выполнения</a></li>
+<li><a href="ch-39-asyncio.html#taskgroup">39.9. Структурная конкурентность: TaskGroup</a></li>
+<li><a href="ch-39-asyncio.html#cancellation">39.10. Отмена задачи</a></li>
+<li><a href="ch-39-asyncio.html#timeouts">39.11. Таймауты</a></li>
+<li><a href="ch-39-asyncio.html#async-context-manager">39.12. Асинхронные контекстные менеджеры</a></li>
+<li><a href="ch-39-asyncio.html#blocking">39.13. Блокирующие вызовы</a></li>
+<li><a href="ch-39-asyncio.html#mistakes">39.14. Типичные ошибки</a></li>
+<li><a href="ch-39-asyncio.html#упражнения">39.15. Упражнения</a></li>
+<li><a href="ch-39-asyncio.html#check">39.16. Проверка понимания</a></li>
+<li><a href="ch-39-asyncio.html#links">39.17. Связи</a></li>
+</ol></details></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 7. Практическая разработка</span><span class="sep">›</span><span>Глава 39</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Практическая разработка · глава 39</p>
+<h1 id="асинхронность-asyncio">Асинхронность: asyncio</h1>
+<p class="chapter-summary">Модель задач, корутины, await, отмена и типичные ошибки асинхронного кода.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#что-вы-сможете-после-этой-главы"><span class="toc-number">39.1</span> Что вы сможете после этой главы</a></li>
+<li class="level-2"><a href="#why"><span class="toc-number">39.2</span> Задача, которую решает асинхронность</a></li>
+<li class="level-2"><a href="#task-model"><span class="toc-number">39.3</span> Модель выполнения задач</a></li>
+<li class="level-2"><a href="#coroutines"><span class="toc-number">39.4</span> Корутины и await</a></li>
+<li class="level-2"><a href="#awaitable"><span class="toc-number">39.5</span> Awaitable-объекты</a></li>
+<li class="level-2"><a href="#event-loop"><span class="toc-number">39.6</span> Цикл событий</a></li>
+<li class="level-2"><a href="#tasks"><span class="toc-number">39.7</span> Задачи</a></li>
+<li class="level-2"><a href="#concurrency"><span class="toc-number">39.8</span> Конкурентность и порядок выполнения</a></li>
+<li class="level-2"><a href="#taskgroup"><span class="toc-number">39.9</span> Структурная конкурентность: TaskGroup</a></li>
+<li class="level-2"><a href="#cancellation"><span class="toc-number">39.10</span> Отмена задачи</a></li>
+<li class="level-2"><a href="#timeouts"><span class="toc-number">39.11</span> Таймауты</a></li>
+<li class="level-2"><a href="#async-context-manager"><span class="toc-number">39.12</span> Асинхронные контекстные менеджеры</a></li>
+<li class="level-2"><a href="#blocking"><span class="toc-number">39.13</span> Блокирующие вызовы</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">39.14</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">39.15</span> Упражнения</a></li>
+<li class="level-2"><a href="#check"><span class="toc-number">39.16</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#links"><span class="toc-number">39.17</span> Связи</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#углубление-почему-корутину-нельзя-запустить-дважды">Углубление: почему корутину нельзя запустить дважды</a></li>
+<li class="level-3"><a href="#углубление-что-можно-и-что-нельзя-ожидать">Углубление: что можно и что нельзя ожидать</a></li>
+<li class="level-3"><a href="#углубление-цикл-и-потоки">Углубление: цикл и потоки</a></li>
+<li class="level-3"><a href="#углубление-задача-без-владельца">Углубление: задача без владельца</a></li>
+<li class="level-3"><a href="#углубление-какие-вызовы-блокируют">Углубление: какие вызовы блокируют</a></li>
+<li class="level-3"><a href="#ex-ch39-01">1. Порядок строк</a></li>
+<li class="level-3"><a href="#ex-ch39-02">2. Последовательное и конкурентное ожидание</a></li>
+<li class="level-3"><a href="#ex-ch39-03">3. Исправление ошибки</a></li>
+<li class="level-3"><a href="#ex-ch39-04">4. Блокирующий вызов</a></li>
+<li class="level-3"><a href="#ex-ch39-05">5. Отмена задачи</a></li>
+<li class="level-3"><a href="#ex-ch39-06">6. Таймаут</a></li>
+<li class="level-3"><a href="#ex-ch39-07">7. Асинхронный контекстный менеджер</a></li>
+<li class="level-3"><a href="#ex-ch39-08">8. Задача как объект</a></li>
+<li class="level-3"><a href="#ex-ch39-09">9. Модель выполнения</a></li>
+<li class="level-3"><a href="#ex-ch39-10">10. Мини-задача: конкурентная загрузка</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>Сервер принимает запрос, идёт в базу данных за ответом и в это время не может
+обслуживать другие запросы — так выглядит типичная программа, которая ждёт.
+Ожидание занимает почти всё время работы: сеть отвечает за миллисекунды,
+которые для процессора равны вечности. Асинхронность — способ не простаивать
+в это время. В этой главе мы сначала разберём модель выполнения задач, а уже
+потом посмотрим, как её реализует модуль <code>asyncio</code> из стандартной библиотеки.
+Такой порядок важен: <code>async</code> и <code>await</code> — синтаксис, а модель задач — причина,
+по которой этот синтаксис существует.</p>
+<h2 id="что-вы-сможете-после-этой-главы"><span class="h-number">39.1</span> Что вы сможете после этой главы</h2>
+<ul>
+<li>объяснять, чем задача отличается от потока и почему асинхронность не даёт
+параллелизма;</li>
+<li>писать корутины, запускать их и понимать, когда именно начинается исполнение;</li>
+<li>строить конкурентные вычисления через <code>asyncio.gather</code> и <code>asyncio.TaskGroup</code>;</li>
+<li>корректно отменять задачи и освобождать ресурсы;</li>
+<li>находить в асинхронном коде блокирующие вызовы и убирать их.</li>
+</ul>
+<h2 id="why"><span class="h-number">39.2</span> Задача, которую решает асинхронность</h2>
+<p>В главе 38 мы разделили работу на две категории. Задачи, ограниченные
+процессором (CPU-bound), ускоряются процессами: каждому процессу достаётся
+свой интерпретатор и свой GIL. Задачи, ограниченные вводом-выводом
+(I/O-bound), упираются не в вычисления, а в ожидание внешнего мира: ответа
+сети, диска, базы данных.</p>
+<p>Для ожидания потоки подходят, но у них есть цена: каждый поток резервирует
+стек, переключение между потоками делает операционная система, а совместно
+используемые данные требуют блокировок, иначе возникает состояние гонки.
+Если в программе тысяча одновременных соединений, тысяча потоков — это
+дорого, а тысяча блокировок — это источник дефектов, которые трудно
+воспроизвести.</p>
+<p>Асинхронный подход меняет саму единицу работы. Вместо «поток, который ждёт»
+появляется <strong>задача</strong> — единица работы, которую можно приостановить в
+известной точке и позже продолжить с того же места. Пока задача ждёт ответа,
+исполнитель занимается другими задачами. Один поток способен вести тысячи
+задач, потому что ожидание не занимает поток: оно зарегистрировано как
+«сообщите, когда будет готово».</p>
+<h2 id="task-model"><span class="h-number">39.3</span> Модель выполнения задач</h2>
+<p>Прежде чем говорить о Python, опишем модель, которая годится для любой
+асинхронной системы — от планировщика операционной системы до сервера
+приложений.</p>
+<p><strong>Задача</strong> — это работа, у которой есть начало, конец и промежуточные точки
+приостановки. В каждый момент задача находится в одном из состояний:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Состояние</th>
+<th>Что означает</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>готова</td>
+<td>может выполняться, ждёт своей очереди</td>
+</tr>
+<tr>
+<td>выполняется</td>
+<td>прямо сейчас занимает исполнителя</td>
+</tr>
+<tr>
+<td>ждёт</td>
+<td>приостановлена до внешнего события (данные пришли, таймер сработал)</td>
+</tr>
+<tr>
+<td>завершена</td>
+<td>вернула результат или завершилась ошибкой (в том числе отменой)</td>
+</tr>
+</tbody>
+</table>
+</div><p>Состояния и переходы между ними показаны на рисунке.</p>
+<p><figure class="figure"><img src="illustrations/ch-39-task-model.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Ключевое свойство модели: между точками приостановки задача выполняется
+целиком, без переключений. Такую схему называют <strong>кооперативной
+многозадачностью</strong> (cooperative multitasking): задача сама отдаёт управление,
+и никто не может прервать её посреди вычисления. В этом её сила и её слабость.
+Сила — не нужны блокировки для защиты данных между точками приостановки:
+пока задача работает, её никто не прервёт. Слабость — если задача не
+приостанавливается, она блокирует всех остальных: у планировщика нет
+возможности её вытеснить.</p>
+<p>Из модели следуют три правила, которые объясняют почти все ошибки
+асинхронного кода.</p>
+<ol>
+<li><strong>Исполнитель один.</strong> В один момент времени выполняется ровно одна задача.
+Асинхронность — это конкурентность, а не параллелизм: ускорения вычислений
+она не даёт.</li>
+<li><strong>Приостановка только в явных точках.</strong> Пока код не встретил <code>await</code>,
+он владеет исполнителем безраздельно.</li>
+<li><strong>Ожидание должно быть асинхронным.</strong> Если задача ждёт, занимая поток,
+планировщик не может запустить других.</li>
+</ol>
+<p>Теперь посмотрим, как эта модель выглядит в Python.</p>
+<h2 id="coroutines"><span class="h-number">39.4</span> Корутины и await</h2>
+<p><strong>Корутина</strong> — функция, объявленная через <code>async def</code>. Её особенность в том,
+что при вызове она не исполняет тело, а возвращает объект-корутину, который
+можно приостанавливать и возобновлять.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">greet</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"корутина начала работу"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">"привет"</span>
+
+<span class="n">coro</span> <span class="o">=</span> <span class="n">greet</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"после вызова корутины ничего не напечаталось"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">coro</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>после вызова корутины ничего не напечаталось
+корутина начала работу
+привет
+</code></pre>
+<p>Обратите внимание на порядок строк: вызов <code>greet()</code> не напечатал ничего.
+Тело корутины начинает исполняться только тогда, когда её кто-то запустил —
+здесь это сделала функция <code>asyncio.run</code>. Корутина похожа на генератор из
+главы 21: оба объекта хранят приостановленное исполнение. Разница в том, что
+генератор отдаёт значения через <code>yield</code> по требованию цикла <code>for</code>, а корутина
+приостанавливается на <code>await</code> и возвращает ровно один результат.</p>
+<p><strong><code>async</code> / <code>await</code></strong> — синтаксис асинхронного кода: <code>async def</code> объявляет
+корутину, <code>await</code> приостанавливает её до завершения ожидаемого объекта.
+Внутри <code>await</code> исполнитель свободен и может заняться другой готовой задачей.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">fetch</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> готов"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">value</span> <span class="o">*</span> <span class="mi">2</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">fetch</span><span class="p">(</span><span class="s2">"one"</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">fetch</span><span class="p">(</span><span class="s2">"two"</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">fetch</span><span class="p">(</span><span class="s2">"three"</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>one готов
+two готов
+three готов
+[2, 4, 6]
+</code></pre>
+<p>Порядок здесь не случаен: <code>gather</code> запускает три корутины как задачи, каждая
+доходит до <code>await asyncio.sleep(0)</code> — это точка приостановки, которая сразу
+возвращает управление планировщику, — и только потом все три печатают
+результат. <code>asyncio.sleep(0)</code> не ждёт времени: он уступает очередь.</p>
+<h3 id="углубление-почему-корутину-нельзя-запустить-дважды">Углубление: почему корутину нельзя запустить дважды</h3>
+<p>Корутина — это одноразовый объект с состоянием. После завершения она
+закрыта, и повторный <code>await</code> поднимает исключение.</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">"привет"</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">coro</span> <span class="o">=</span> <span class="n">hello</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="k">await</span> <span class="n">coro</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="k">await</span> <span class="n">coro</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>RuntimeError: cannot reuse already awaited coroutine
+</code></pre>
+<h2 id="awaitable"><span class="h-number">39.5</span> Awaitable-объекты</h2>
+<p><strong>Awaitable-объект</strong> — объект, который можно передать в <code>await</code>. В Python это
+любой объект, реализующий метод <code>__await__</code>; проще запомнить три частых вида:</p>
+<ul>
+<li><strong>корутина</strong> — результат вызова <code>async def</code>-функции;</li>
+<li><strong>задача</strong> (<code>asyncio.Task</code>) — корутина, поставленная в план исполнения;</li>
+<li><strong>future</strong> (<code>asyncio.Future</code>) — низкоуровневый контейнер будущего
+результата, которым управляет код, а не планировщик.</li>
+</ul>
+<p>Различие удобно проверить функцией <code>inspect.isawaitable</code>.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">"привет"</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">coro</span> <span class="o">=</span> <span class="n">hello</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"корутина:"</span><span class="p">,</span> <span class="n">inspect</span><span class="o">.</span><span class="n">isawaitable</span><span class="p">(</span><span class="n">coro</span><span class="p">))</span>
+    <span class="n">coro</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">hello</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"задача:"</span><span class="p">,</span> <span class="n">inspect</span><span class="o">.</span><span class="n">isawaitable</span><span class="p">(</span><span class="n">task</span><span class="p">))</span>
+    <span class="k">await</span> <span class="n">task</span>
+    <span class="n">future</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span><span class="o">.</span><span class="n">create_future</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"future:"</span><span class="p">,</span> <span class="n">inspect</span><span class="o">.</span><span class="n">isawaitable</span><span class="p">(</span><span class="n">future</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"число:"</span><span class="p">,</span> <span class="n">inspect</span><span class="o">.</span><span class="n">isawaitable</span><span class="p">(</span><span class="mi">42</span><span class="p">))</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>корутина: True
+задача: True
+future: True
+число: False
+</code></pre>
+<p><code>await</code> работает с любым из этих объектов, но смысл разный: <code>await</code> корутины
+запускает её прямо в текущей задаче, а <code>await</code> задачи означает «подожди, пока
+другая задача закончит». Второй вариант позволяет получить конкурентность.</p>
+<h3 id="углубление-что-можно-и-что-нельзя-ожидать">Углубление: что можно и что нельзя ожидать</h3>
+<p><code>await</code> применим только к awaitable-объектам. Число, строка или обычная
+функция не умеют приостанавливать исполнение, поэтому попытка их ожидать —
+ошибка типа, а не «пустое ожидание».</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="k">await</span> <span class="mi">42</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>TypeError: &#x27;int&#x27; object can&#x27;t be awaited
+</code></pre>
+<h2 id="event-loop"><span class="h-number">39.6</span> Цикл событий</h2>
+<p>Кто-то должен решать, какую готовую задачу запустить следующей, и следить за
+тем, чьё ожидание закончилось. Этот компонент называют <strong>циклом событий</strong>
+(event loop): планировщик, который в одном потоке по очереди запускает
+готовые задачи, переключается между ними в точках приостановки и переводит
+задачи из ожидания в готовность, когда наступает внешнее событие.</p>
+<p><figure class="figure"><img src="illustrations/ch-39-event-loop.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>У цикла событий две очереди работы. Первая — готовые задачи: их можно
+запускать немедленно. Вторая — ожидающие события: таймеры, готовность сокета,
+завершение операции ввода-вывода. Цикл забирает задачу из первой очереди,
+исполняет её до <code>await</code>, а затем смотрит, не наступило ли чьё-то событие, и
+переводит соответствующую задачу обратно в готовые. Такой цикл повторяется,
+пока есть работа.</p>
+<p>В <code>asyncio</code> цикл создаётся и запускается функцией <code>asyncio.run</code>. Она делает
+три вещи: создаёт новый цикл событий, запускает переданную корутину как
+задачу и закрывает цикл, когда задача завершилась. Именно поэтому точкой
+входа асинхронной программы служит <code>asyncio.run(main())</code>, а не вызов
+корутины напрямую.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"цикл запущен:"</span><span class="p">,</span> <span class="n">loop</span><span class="o">.</span><span class="n">is_running</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"текущая задача существует:"</span><span class="p">,</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">current_task</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>цикл запущен: True
+текущая задача существует: True
+</code></pre>
+<p>Важная деталь: <code>asyncio.run</code> не допускает вызов из уже работающего цикла.
+Попытка запустить второй цикл внутри корутины поднимает <code>RuntimeError</code>, и это
+правильно: два цикла в одном потоке конкурировали бы за одни и те же события.</p>
+<h3 id="углубление-цикл-и-потоки">Углубление: цикл и потоки</h3>
+<p>Цикл событий живёт в одном потоке и не потокобезопасен: трогать
+задачи и цикл из другого потока напрямую нельзя. Если синхронный код в
+отдельном потоке должен вернуть результат в цикл, используют
+<code>loop.call_soon_threadsafe</code> или <code>asyncio.run_coroutine_threadsafe</code>. На практике
+чаще достаточно <code>asyncio.to_thread</code>, который сам заботится о передаче
+результата обратно в цикл.</p>
+<h2 id="tasks"><span class="h-number">39.7</span> Задачи</h2>
+<p><strong>Задача</strong> (<code>task</code>) — корутина, поставленная в план исполнения циклом
+событий. Задачу создаёт функция <code>asyncio.create_task</code>: она оборачивает
+корутину в объект, который цикл будет двигать самостоятельно, и возвращает
+его. С этого момента задача живёт своей жизнью: её не нужно ожидать, чтобы
+она начала выполняться, — но результат нужно забрать.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">task</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: шаг 1"</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: шаг 2"</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">first</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">task</span><span class="p">(</span><span class="s2">"A"</span><span class="p">))</span>
+    <span class="n">second</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">task</span><span class="p">(</span><span class="s2">"B"</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"main: обе задачи запущены"</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>main: обе задачи запущены
+A: шаг 1
+B: шаг 1
+A: шаг 2
+B: шаг 2
+</code></pre>
+<p>Разбор по шагам. <code>create_task</code> создаёт две задачи и ставит их в очередь.
+<code>main</code> доходит до <code>gather</code> и приостанавливается. Цикл берёт первую задачу,
+та печатает «шаг 1» и уступает на <code>sleep(0)</code>; затем вторая делает то же.
+Теперь обе ждут, очередь пуста, но <code>sleep(0)</code> уже готов к возобновлению,
+поэтому задачи возвращаются в неё в том же порядке. Затем каждая печатает
+«шаг 2» и завершается. Порядок строк здесь определяется моделью, а не
+случайностью.</p>
+<p>Задача хранит своё состояние. У неё есть методы <code>done()</code>, <code>cancelled()</code>,
+<code>result()</code> и <code>exception()</code>. Если задача завершилась ошибкой, исключение
+поднимется в том месте, где результат забирают.</p>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">fail</span><span class="p">():</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"задача сломалась"</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">fail</span><span class="p">())</span>
+    <span class="k">await</span> <span class="n">task</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>ValueError: задача сломалась
+</code></pre>
+<h3 id="углубление-задача-без-владельца">Углубление: задача без владельца</h3>
+<p>Если создать задачу и не сохранить ссылку, сборщик мусора может уничтожить её
+до завершения, а цикл событий — сообщить, что исключение задачи не было
+получено. Правило простое: у каждой задачи должен быть владелец, который
+дождётся её результата. <code>asyncio.TaskGroup</code> и <code>asyncio.gather</code> делают это
+автоматически.</p>
+<h2 id="concurrency"><span class="h-number">39.8</span> Конкурентность и порядок выполнения</h2>
+<p>Главная ошибка новичка — писать <code>await</code> подряд там, где нужна
+конкурентность. Посмотрите на разницу.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">job</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: шаг 1"</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: шаг 2"</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">sequential</span><span class="p">():</span>
+    <span class="k">await</span> <span class="n">job</span><span class="p">(</span><span class="s2">"A"</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">job</span><span class="p">(</span><span class="s2">"B"</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">concurrent</span><span class="p">():</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">job</span><span class="p">(</span><span class="s2">"A"</span><span class="p">),</span> <span class="n">job</span><span class="p">(</span><span class="s2">"B"</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"последовательно"</span><span class="p">)</span>
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">sequential</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"конкурентно"</span><span class="p">)</span>
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">concurrent</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>последовательно
+A: шаг 1
+A: шаг 2
+B: шаг 1
+B: шаг 2
+конкурентно
+A: шаг 1
+B: шаг 1
+A: шаг 2
+B: шаг 2
+</code></pre>
+<p>В последовательном варианте каждая работа ждёт полного завершения предыдущей:
+пока <code>A</code> спит, <code>B</code> даже не началась. В конкурентном обе доходят до точки
+ожидания, и пока <code>A</code> ждёт, <code>B</code> успевает сделать первый шаг. Для операций
+ввода-вывода это разница между суммой времён и максимумом времён.</p>
+<h2 id="taskgroup"><span class="h-number">39.9</span> Структурная конкурентность: TaskGroup</h2>
+<p>Собирать задачи вручную и следить за их исключениями утомительно. Начиная с
+Python 3.11 в стандартной библиотеке есть <code>asyncio.TaskGroup</code> — асинхронный
+контекстный менеджер, который создаёт задачи, ждёт их все и корректно
+обрабатывает ошибки.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">ok</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> завершилась"</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">fail</span><span class="p">():</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"сломалось"</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">async</span> <span class="k">with</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">TaskGroup</span><span class="p">()</span> <span class="k">as</span> <span class="n">group</span><span class="p">:</span>
+            <span class="n">group</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">ok</span><span class="p">(</span><span class="s2">"первая"</span><span class="p">))</span>
+            <span class="n">group</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">fail</span><span class="p">())</span>
+            <span class="n">group</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">ok</span><span class="p">(</span><span class="s2">"вторая"</span><span class="p">))</span>
+    <span class="k">except</span><span class="o">*</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">errors</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"перехвачено:"</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">errors</span><span class="o">.</span><span class="n">exceptions</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">errors</span><span class="o">.</span><span class="n">exceptions</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>первая завершилась
+вторая завершилась
+перехвачено: ValueError сломалось
+</code></pre>
+<p>Слово «структурная» здесь означает: группа живёт внутри блока <code>async with</code>,
+и выйти из блока раньше, чем завершатся все её задачи, нельзя. Ошибка одной
+задачи не теряется: она приходит как <code>ExceptionGroup</code>, который разбирают
+конструкцией <code>except*</code>. Так исключения не «пропадают в фоне», а попадают
+туда, где задачу создали.</p>
+<h2 id="cancellation"><span class="h-number">39.10</span> Отмена задачи</h2>
+<p><strong>Отмена задачи</strong> — механизм, который прекращает её работу. Вызванный
+<code>task.cancel()</code> не убивает корутину мгновенно: он просит цикл событий
+возбудить <code>asyncio.CancelledError</code> в ближайшей точке <code>await</code>. Задача успевает
+выполнить <code>finally</code> и освободить ресурсы, а затем завершается в состоянии
+«отменена».</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">long_job</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"начали работу"</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">CancelledError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"получили отмену, убираем за собой"</span><span class="p">)</span>
+        <span class="k">raise</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"блок finally выполнен"</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">long_job</span><span class="p">())</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">task</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">await</span> <span class="n">task</span>
+    <span class="k">except</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">CancelledError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"задача отменена:"</span><span class="p">,</span> <span class="n">task</span><span class="o">.</span><span class="n">cancelled</span><span class="p">())</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>начали работу
+получили отмену, убираем за собой
+блок finally выполнен
+задача отменена: True
+</code></pre>
+<p>Три правила отмены. Первое: <code>CancelledError</code> нужно пробрасывать дальше или
+поднимать заново после уборки — иначе отмена «проглатывается» и задача
+продолжает работу, о которой её никто не просил. Второе: точка отмены — это
+<code>await</code>; код между точками приостановки выполнится до конца. Третье: если
+задача уже завершена, <code>cancel()</code> вернёт <code>False</code> и ничего не сделает.</p>
+<h2 id="timeouts"><span class="h-number">39.11</span> Таймауты</h2>
+<p>Ожидание без ограничения — это зависание при первой же проблеме. Для
+ограничения времени в <code>asyncio</code> есть <code>asyncio.timeout</code> (Python 3.11+):
+асинхронный контекстный менеджер, который отменяет задачу, если блок не
+успел завершиться.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">slow</span><span class="p">():</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">"готово"</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">async</span> <span class="k">with</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="mf">0.01</span><span class="p">):</span>
+            <span class="k">await</span> <span class="n">slow</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">TimeoutError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"не успели за отведённое время"</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>не успели за отведённое время
+</code></pre>
+<p>Внутри <code>asyncio.timeout</code> поднимается <code>TimeoutError</code> — встроенное исключение,
+которое в асинхронном контексте означает именно истечение срока. Старый
+способ <code>asyncio.wait_for(coro, timeout)</code> делает то же самое, но требует
+оборачивать каждую операцию отдельно.</p>
+<h2 id="async-context-manager"><span class="h-number">39.12</span> Асинхронные контекстные менеджеры</h2>
+<p><strong>Асинхронный контекстный менеджер</strong> — объект, у которого есть методы
+<code>__aenter__</code> и <code>__aexit__</code>; он используется в инструкции <code>async with</code>.
+Устройство то же, что у обычного <code>with</code> из главы 19, но вход и выход могут
+приостанавливать задачу: открыть соединение, дождаться закрытия, освободить
+ресурс.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">AsyncResource</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="fm">__aenter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: открыт"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="fm">__aexit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc</span><span class="p">,</span> <span class="n">tb</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: закрыт"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">AsyncResource</span><span class="p">(</span><span class="s2">"ресурс"</span><span class="p">)</span> <span class="k">as</span> <span class="n">resource</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"работаем с </span><span class="si">{</span><span class="n">resource</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">async</span> <span class="k">with</span> <span class="n">AsyncResource</span><span class="p">(</span><span class="s2">"второй"</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"ошибка внутри блока"</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"поймали:"</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>ресурс: открыт
+работаем с ресурс
+ресурс: закрыт
+второй: открыт
+второй: закрыт
+поймали: ошибка внутри блока
+</code></pre>
+<p><code>__aexit__</code> вызывается всегда — и при нормальном выходе, и при исключении.
+Возвращённое <code>False</code> означает «исключение не подавлено», поэтому оно
+поднимается дальше и ловится снаружи. Это ровно та же семантика, что у
+обычного контекстного менеджера.</p>
+<h2 id="blocking"><span class="h-number">39.13</span> Блокирующие вызовы</h2>
+<p><strong>Блокирующий вызов</strong> — вызов, который занимает поток на всё время операции и
+не отдаёт управление циклу событий. Пока он выполняется, все остальные задачи
+стоят.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">blocking_work</span><span class="p">():</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">300_000</span><span class="p">):</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">number</span>
+    <span class="k">return</span> <span class="n">total</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">blocking_task</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"A: начало тяжёлой работы"</span><span class="p">)</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">blocking_work</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"A: работа закончена"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">total</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">light_task</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"B: хочу выполниться"</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">first</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">blocking_task</span><span class="p">())</span>
+    <span class="n">second</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">light_task</span><span class="p">())</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">second</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"main: после B"</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">first</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>A: начало тяжёлой работы
+A: работа закончена
+B: хочу выполниться
+main: после B
+</code></pre>
+<p>Задача <code>B</code> получила управление только после того, как <code>A</code> закончила: внутри
+<code>blocking_work</code> нет ни одной точки приостановки. Лечится это вынесением
+блокирующей работы в отдельный поток через <code>asyncio.to_thread</code>.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">blocking_work</span><span class="p">():</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">300_000</span><span class="p">):</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">number</span>
+    <span class="k">return</span> <span class="n">total</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">blocking_task</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"A: начало тяжёлой работы"</span><span class="p">)</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">to_thread</span><span class="p">(</span><span class="n">blocking_work</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"A: работа закончена"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">total</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">light_task</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"B: хочу выполниться"</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">first</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">blocking_task</span><span class="p">())</span>
+    <span class="n">second</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">light_task</span><span class="p">())</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">second</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"main: после B"</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">first</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>A: начало тяжёлой работы
+B: хочу выполниться
+main: после B
+A: работа закончена
+</code></pre>
+<p>Теперь <code>B</code> выполняется, пока <code>blocking_work</code> считает в другом потоке.</p>
+<h3 id="углубление-какие-вызовы-блокируют">Углубление: какие вызовы блокируют</h3>
+<p>Блокируют почти все привычные операции: <code>time.sleep</code>, чтение файла, <code>requests</code>
+из главы 35, <code>sqlite3</code> из главы 36, любой цикл с тяжёлыми вычислениями. Для
+каждой из них есть асинхронная альтернатива или способ вынести работу в
+поток. Правило: в корутине допустимы только операции, которые
+приостанавливают задачу, а не занимают поток.</p>
+<h2 id="mistakes"><span class="h-number">39.14</span> Типичные ошибки</h2>
+<ol>
+<li><strong>Забыть <code>await</code>.</strong> Вызов корутины без <code>await</code> создаёт объект и ничего не
+делает; Python предупреждает об этом при сборке мусора. Проверяйте, что
+каждая корутина где-то awaited.</li>
+<li><strong>Ждать по очереди вместо конкурентности.</strong> Цепочка <code>await</code> подряд
+выполняет операции последовательно. Если операции независимы, нужны
+<code>gather</code> или <code>TaskGroup</code>.</li>
+<li><strong>Блокировать цикл событий.</strong> <code>time.sleep</code>, синхронный HTTP-клиент и
+тяжёлые вычисления останавливают все задачи. Используйте <code>asyncio.sleep</code>,
+асинхронные библиотеки и <code>asyncio.to_thread</code>.</li>
+<li><strong>Терять задачи.</strong> Задача без владельца может быть уничтожена сборщиком
+мусора, а её ошибка — потеряна. Дожидайтесь задач в <code>TaskGroup</code>.</li>
+<li><strong>Проглатывать <code>CancelledError</code>.</strong> Если поймать отмену и не пробросить её
+дальше, задача продолжит работу, хотя её отменили.</li>
+<li><strong>Отменять без уборки.</strong> Ресурсы освобождайте в <code>finally</code> или в
+<code>__aexit__</code>: отмена не гарантирует, что код после <code>await</code> выполнится.</li>
+<li><strong>Запускать <code>asyncio.run</code> внутри корутины.</strong> Вложенный цикл запрещён;
+<code>asyncio.to_thread</code> не обходит этот запрет, а решает другую задачу — вызов
+синхронного кода из асинхронного.</li>
+</ol>
+<h2 id="упражнения"><span class="h-number">39.15</span> Упражнения</h2>
+<h3 id="ex-ch39-01">1. Порядок строк</h3>
+<p>Не запуская код, предскажите порядок вывода, затем проверьте:</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">one</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"один"</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"один после паузы"</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">two</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"два"</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">one</span><span class="p">(),</span> <span class="n">two</span><span class="p">())</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+<p>Объясните, почему строки идут именно так.</p>
+<h3 id="ex-ch39-02">2. Последовательное и конкурентное ожидание</h3>
+<p>Даны три корутины, каждая печатает своё имя и делает <code>await asyncio.sleep(0)</code>.
+Напишите две функции: одну, которая запускает их последовательно, и вторую —
+конкурентно через <code>gather</code>. Сравните порядок вывода.</p>
+<h3 id="ex-ch39-03">3. Исправление ошибки</h3>
+<p>Корутина не выполняется, программа завершается без вывода — только с
+предупреждением <code>RuntimeWarning</code> о корутине, которую так и не дождались:</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">report</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"отчёт готов"</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">report</span><span class="p">()</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+<p>Найдите причину, исправьте код и объясните, почему Python не поднимает
+исключение сразу.</p>
+<h3 id="ex-ch39-04">4. Блокирующий вызов</h3>
+<p>В асинхронной программе вызывается <code>time.sleep(1)</code> внутри корутины. Опишите,
+что при этом происходит с остальными задачами, и предложите два исправления
+(одно для ожидания, одно для вычислений).</p>
+<h3 id="ex-ch39-05">5. Отмена задачи</h3>
+<p>Напишите корутину, которая в цикле каждые <code>await asyncio.sleep(0)</code> увеличивает
+счётчик, и отмените её через две итерации. В <code>finally</code> выведите итоговое
+значение счётчика. Обеспечьте, чтобы отмена не проглатывалась.</p>
+<h3 id="ex-ch39-06">6. Таймаут</h3>
+<p>Напишите функцию <code>run_with_limit(coro, seconds)</code>, которая запускает корутину и
+возвращает её результат, но не дольше указанного времени. При истечении срока
+верните строку <code>&quot;таймаут&quot;</code>, не пробрасывая исключение.</p>
+<h3 id="ex-ch39-07">7. Асинхронный контекстный менеджер</h3>
+<p>Реализуйте класс-счётчик, который в <code>__aenter__</code> печатает «начало», а в
+<code>__aexit__</code> — «конец», и используйте его в <code>async with</code>. Проверьте, что
+«конец» печатается и при исключении внутри блока.</p>
+<h3 id="ex-ch39-08">8. Задача как объект</h3>
+<p>Создайте задачу, дождитесь её завершения и выведите значения <code>task.done()</code>,
+<code>task.cancelled()</code> и результат <code>task.result()</code>. Объясните, что означает
+каждое значение.</p>
+<h3 id="ex-ch39-09">9. Модель выполнения</h3>
+<p>В одном потоке запущены две задачи. Первая считает сумму чисел от 0 до
+1 000 000 без единого <code>await</code>. Вторая должна напечатать сообщение. Объясните,
+когда напечатается сообщение второй задачи и почему. Как изменить программу,
+чтобы сообщение появилось раньше?</p>
+<h3 id="ex-ch39-10">10. Мини-задача: конкурентная загрузка</h3>
+<p>Напишите асинхронную функцию <code>load_all(sources)</code>, где <code>sources</code> — список
+кортежей <code>(имя, значение)</code>. Функция запускает для каждого элемента задачу,
+которая «загружает» данные через <code>await asyncio.sleep(0)</code> и возвращает
+<code>f&quot;{имя}: {значение}&quot;</code>. Соберите результаты в список в порядке исходных
+элементов и обработайте случай, когда одна из задач завершается ошибкой
+<code>ValueError</code>, не теряя остальные результаты.</p>
+<h2 id="check"><span class="h-number">39.16</span> Проверка понимания</h2>
+<ol>
+<li>Чем задача отличается от потока? Что у них общего?</li>
+<li>Почему асинхронность не ускоряет вычисления на одном ядре?</li>
+<li>Когда начинает исполняться корутина: при вызове или при <code>await</code>?</li>
+<li>Что делает <code>asyncio.sleep(0)</code> и зачем он нужен?</li>
+<li>Чем <code>asyncio.gather</code> отличается от двух последовательных <code>await</code>?</li>
+<li>Почему <code>time.sleep</code> в корутине — ошибка?</li>
+<li>Что произойдёт, если поймать <code>CancelledError</code> и не пробросить его дальше?</li>
+<li>Как <code>TaskGroup</code> гарантирует, что ошибка задачи не потеряется?</li>
+</ol>
+<h2 id="links"><span class="h-number">39.17</span> Связи</h2>
+<p>Асинхронность продолжает разговор о конкурентности из главы 38: там были
+потоки, процессы и GIL, здесь — задачи и цикл событий. Корутины выросли из
+генераторов главы 21, а <code>async with</code> повторяет контекстные менеджеры главы 19.
+Отмена и таймауты опираются на исключения главы 10 и трассировку главы 11.</p>
+<p>Дальше — <a href="ch-40-performance.html">производительность и профилирование</a>: мы научимся
+измерять, где программа тратит время, и отличать настоящую оптимизацию от
+переписывания. А в главе 48 асинхронность пригодится в проекте — конкурентном
+сборщике данных.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-38-concurrency.html"><span class="pager-label">← Назад</span><span class="pager-title">Конкурентность: потоки, процессы и GIL</span></a><a class="pager-card next" rel="next" href="ch-40-performance.html"><span class="pager-label">Далее:</span><span class="pager-title">Производительность и профилирование</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

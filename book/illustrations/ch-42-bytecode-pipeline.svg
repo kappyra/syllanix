@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 420" role="img"
+     aria-labelledby="pipeline-title pipeline-desc"
+     font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="pipeline-title">Путь программы от исходного кода до результата</title>
+  <desc id="pipeline-desc">Исходный код разбирается в дерево, компилируется в код-объект с байткодом и исполняется циклом интерпретатора, который работает со стеком значений. Результат исполнения гарантирован языком, а конкретный байткод, имена инструкций и устройство цикла — детали CPython, которые меняются между версиями.</desc>
+
+  <text x="30" y="32" font-size="18" font-weight="bold" fill="#1d3550">От текста до результата</text>
+  <text x="30" y="56" font-size="13" fill="#33557a">Каждый шаг можно увидеть инструментами: ast, dis, код-объекты.</text>
+
+  <!-- 1 исходный код -->
+  <rect x="30" y="86" width="170" height="90" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="115" y="114" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3550">1. код</text>
+  <text x="115" y="136" text-anchor="middle" font-size="13" fill="#1d3550">program.py</text>
+  <text x="115" y="156" text-anchor="middle" font-size="12" fill="#33557a">текст для человека</text>
+
+  <!-- 2 разбор -->
+  <rect x="224" y="86" width="170" height="90" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="309" y="114" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d3550">2. разбор</text>
+  <text x="309" y="136" text-anchor="middle" font-size="13" fill="#1d3550">дерево (AST)</text>
+  <text x="309" y="156" text-anchor="middle" font-size="12" fill="#33557a">структура программы</text>
+
+  <!-- 3 байткод -->
+  <rect x="418" y="86" width="170" height="90" rx="10" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="503" y="114" text-anchor="middle" font-size="15" font-weight="bold" fill="#4b3a16">3. компиляция</text>
+  <text x="503" y="136" text-anchor="middle" font-size="13" fill="#4b3a16">код-объект</text>
+  <text x="503" y="156" text-anchor="middle" font-size="12" fill="#8a6a2f">байткод</text>
+
+  <!-- 4 цикл -->
+  <rect x="612" y="86" width="170" height="90" rx="10" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="697" y="114" text-anchor="middle" font-size="15" font-weight="bold" fill="#4b3a16">4. исполнение</text>
+  <text x="697" y="136" text-anchor="middle" font-size="13" fill="#4b3a16">цикл</text>
+  <text x="697" y="156" text-anchor="middle" font-size="12" fill="#8a6a2f">инструкции и стек</text>
+
+  <!-- 5 результат -->
+  <rect x="592" y="240" width="200" height="86" rx="10" fill="#f2f6ee" stroke="#4a6b35" stroke-width="2"/>
+  <text x="692" y="268" text-anchor="middle" font-size="15" font-weight="bold" fill="#2f4a20">5. результат</text>
+  <text x="692" y="290" text-anchor="middle" font-size="13" fill="#2f4a20">значения и эффекты,</text>
+  <text x="692" y="310" text-anchor="middle" font-size="13" fill="#2f4a20">их видит программа</text>
+
+  <!-- стрелки -->
+  <line x1="202" y1="131" x2="218" y2="131" stroke="#33557a" stroke-width="2.5"/>
+  <polygon points="222,131 212,125 212,137" fill="#33557a"/>
+  <line x1="396" y1="131" x2="412" y2="131" stroke="#8a6a2f" stroke-width="2.5"/>
+  <polygon points="416,131 406,125 406,137" fill="#8a6a2f"/>
+  <line x1="590" y1="131" x2="606" y2="131" stroke="#8a6a2f" stroke-width="2.5"/>
+  <polygon points="610,131 600,125 600,137" fill="#8a6a2f"/>
+  <line x1="692" y1="180" x2="692" y2="232" stroke="#4a6b35" stroke-width="2.5"/>
+  <polygon points="692,236 685,226 699,226" fill="#4a6b35"/>
+
+  <rect x="60" y="236" width="470" height="90" rx="10" fill="#f7f8fa" stroke="#c9c2b4" stroke-width="1.4"/>
+  <text x="78" y="262" font-size="13" font-weight="bold" fill="#1d3550">Что делает цикл интерпретатора</text>
+  <text x="78" y="286" font-size="13" fill="#33557a">Берёт инструкцию, выполняет её со стеком значений</text>
+  <text x="78" y="308" font-size="13" fill="#33557a">и переходит к следующей. Отсюда накладные расходы.</text>
+
+  <!-- пояснение про уровни -->
+  <rect x="30" y="344" width="800" height="56" rx="10" fill="#ffffff" stroke="#9aa7b5" stroke-width="1.5"/>
+  <text x="48" y="368" font-size="13" fill="#8c2f2f">Деталь CPython: байткод, имена инструкций и устройство цикла меняются между версиями.</text>
+  <text x="48" y="390" font-size="13" fill="#2f4a20">Гарантия языка: наблюдаемый результат исполнения и порядок вычисления выражений.</text>
+</svg>

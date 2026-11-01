@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Регулярные выражения — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-51-regex.html" aria-current="page">51. Регулярные выражения</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-51-regex.html#что-вы-сможете-после-этой-главы">51.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-51-regex.html#why">51.2. Зачем нужны регулярные выражения</a></li>
+<li><a href="ch-51-regex.html#first-pattern">51.3. Первый шаблон: поиск по структуре</a></li>
+<li><a href="ch-51-regex.html#classes">51.4. Классы символов</a></li>
+<li><a href="ch-51-regex.html#quantifiers">51.5. Квантификаторы</a></li>
+<li><a href="ch-51-regex.html#anchors">51.6. Якоря и границы</a></li>
+<li><a href="ch-51-regex.html#groups">51.7. Группы и альтернативы</a></li>
+<li><a href="ch-51-regex.html#greedy">51.8. Жадность и ленивость</a></li>
+<li><a href="ch-51-regex.html#flags">51.9. Флаги</a></li>
+<li><a href="ch-51-regex.html#re-module">51.10. Модуль re: основные функции</a></li>
+<li><a href="ch-51-regex.html#practice">51.11. Практика: проверки, логи, замены</a></li>
+<li><a href="ch-51-regex.html#limits">51.12. Когда регулярные выражения — плохой выбор</a></li>
+<li><a href="ch-51-regex.html#mistakes">51.13. Типичные ошибки</a></li>
+<li><a href="ch-51-regex.html#упражнения">51.14. Упражнения</a></li>
+<li><a href="ch-51-regex.html#проверка-понимания">51.15. Проверка понимания</a></li>
+<li><a href="ch-51-regex.html#что-дальше">51.16. Что дальше</a></li>
+</ol></details></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 11. Профессиональная практика и прикладные темы</span><span class="sep">›</span><span>Глава 51</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Профессиональная практика и прикладные темы · глава 51</p>
+<h1 id="регулярные-выражения">Регулярные выражения</h1>
+<p class="chapter-summary">Синтаксис, классы символов, квантификаторы, группы, жадность, флаги и практическая обработка текста средствами модуля re.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#что-вы-сможете-после-этой-главы"><span class="toc-number">51.1</span> Что вы сможете после этой главы</a></li>
+<li class="level-2"><a href="#why"><span class="toc-number">51.2</span> Зачем нужны регулярные выражения</a></li>
+<li class="level-2"><a href="#first-pattern"><span class="toc-number">51.3</span> Первый шаблон: поиск по структуре</a></li>
+<li class="level-2"><a href="#classes"><span class="toc-number">51.4</span> Классы символов</a></li>
+<li class="level-2"><a href="#quantifiers"><span class="toc-number">51.5</span> Квантификаторы</a></li>
+<li class="level-2"><a href="#anchors"><span class="toc-number">51.6</span> Якоря и границы</a></li>
+<li class="level-2"><a href="#groups"><span class="toc-number">51.7</span> Группы и альтернативы</a></li>
+<li class="level-2"><a href="#greedy"><span class="toc-number">51.8</span> Жадность и ленивость</a></li>
+<li class="level-2"><a href="#flags"><span class="toc-number">51.9</span> Флаги</a></li>
+<li class="level-2"><a href="#re-module"><span class="toc-number">51.10</span> Модуль re: основные функции</a></li>
+<li class="level-2"><a href="#practice"><span class="toc-number">51.11</span> Практика: проверки, логи, замены</a></li>
+<li class="level-2"><a href="#limits"><span class="toc-number">51.12</span> Когда регулярные выражения — плохой выбор</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">51.13</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">51.14</span> Упражнения</a></li>
+<li class="level-2"><a href="#проверка-понимания"><span class="toc-number">51.15</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#что-дальше"><span class="toc-number">51.16</span> Что дальше</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#ex-ch51-01">1. Прогнозирование вывода</a></li>
+<li class="level-3"><a href="#ex-ch51-02">2. Первый шаблон</a></li>
+<li class="level-3"><a href="#ex-ch51-03">3. Классы символов</a></li>
+<li class="level-3"><a href="#ex-ch51-04">4. Проверка формата</a></li>
+<li class="level-3"><a href="#ex-ch51-05">5. Группы и дата</a></li>
+<li class="level-3"><a href="#ex-ch51-06">6. Жадность</a></li>
+<li class="level-3"><a href="#ex-ch51-07">7. Флаги</a></li>
+<li class="level-3"><a href="#ex-ch51-08">8. Замена по шаблону</a></li>
+<li class="level-3"><a href="#ex-ch51-09">9. Мини-проект: разбор журнала</a></li>
+<li class="level-3"><a href="#ex-ch51-10">10. Когда шаблон лишний</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>До сих пор работа с текстом опиралась на точные подстроки и методы строк:
+найти <code>&quot;error&quot;</code>, разбить по запятой, заменить слово. Этого достаточно, пока
+известно точное содержимое. Но часто нужна не подстрока, а <strong>структура</strong>:
+дата в формате «четыре цифры, дефис, две цифры, дефис, две цифры», номер
+телефона, артикул из двух букв и четырёх цифр, строка журнала, начинающаяся
+с отметки времени. Для таких задач и придуманы <strong>регулярные выражения
+(regex)</strong> — шаблоны, описывающие не конкретный текст, а его форму.</p>
+<p>Регулярные выражения — мощный инструмент и одновременно источник трудно
+читаемого кода. Поэтому в главе мы будем не только разбирать синтаксис, но и
+учиться вовремя останавливаться: если задачу решают строковые методы, лучше
+взять их.</p>
+<h2 id="что-вы-сможете-после-этой-главы"><span class="h-number">51.1</span> Что вы сможете после этой главы</h2>
+<ul>
+<li>писать шаблоны с классами символов, квантификаторами и якорями;</li>
+<li>извлекать части совпадения через группы, в том числе именованные;</li>
+<li>понимать разницу между жадным и ленивым сопоставлением;</li>
+<li>пользоваться функциями модуля <code>re</code> и объектом <code>Match</code>;</li>
+<li>включать нужные флаги и объяснять, что они меняют;</li>
+<li>проверять форматы, разбирать строки журнала и делать замены по шаблону;</li>
+<li>узнавать задачи, где регулярные выражения — плохой выбор.</li>
+</ul>
+<h2 id="why"><span class="h-number">51.2</span> Зачем нужны регулярные выражения</h2>
+<p>Сравним две задачи. Первая — найти в тексте слово «кот». Здесь хватает
+строкового метода. Вторая — найти все даты в формате <code>2026-05-17</code>, где цифры
+могут быть любыми. Перебирать все возможные даты бессмысленно: их слишком
+много, а нужен шаблон «четыре цифры, дефис, две цифры, дефис, две цифры».</p>
+<p>Регулярное выражение задаёт именно такой шаблон. В Python его компилирует и
+исполняет модуль стандартной библиотеки <code>re</code>; сами шаблоны записывают
+строками, обычно «сырыми» — о них ниже.</p>
+<p>Правило выбора простое. Точная подстрока, фиксированный префикс или суффикс,
+разбиение по одному символу — это строковые методы: <code>in</code>, <code>startswith</code>,
+<code>endswith</code>, <code>split</code>, <code>replace</code>. Регулярное выражение нужно, когда важна
+структура: повторы, классы символов, необязательные части, группы.
+Начинающих обычно тянет решать шаблоном всё подряд; опытные разработчики
+сначала спрашивают, хватит ли <code>str</code>.</p>
+<h2 id="first-pattern"><span class="h-number">51.3</span> Первый шаблон: поиск по структуре</h2>
+<p>Самая частая операция — найти первое совпадение. Функция <code>re.search</code>
+возвращает объект <code>Match</code> или <code>None</code>.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s2">"заказ 42 от 2026-05-17"</span>
+<span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">"\d+"</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">start</span><span class="p">(),</span> <span class="n">match</span><span class="o">.</span><span class="n">end</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>42
+6 8
+</code></pre>
+<p>Шаблон <code>\d+</code> означает «одна или более цифр». <code>search</code> ищет совпадение в любом
+месте строки, а <code>Match</code> хранит найденный фрагмент и его позицию: <code>start</code> и
+<code>end</code> — индексы начала и конца. Метод <code>group()</code> возвращает сам текст
+совпадения.</p>
+<p>Обратите внимание на <code>r</code> перед строкой: <code>r&quot;\d+&quot;</code> — «сырая» строка, в которой
+обратная косая черта не начинает escape-последовательность. Без <code>r</code> пришлось
+бы писать <code>&quot;\\d+&quot;</code>, и легко ошибиться. Сравните длину двух строк.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="s2">"</span><span class="se">\b</span><span class="s2">"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="sa">r</span><span class="s2">"\b"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>1
+2
+</code></pre>
+<p>В обычной строке <code>&quot;\b&quot;</code> — один служебный символ (забой), а в сырой
+<code>r&quot;\b&quot;</code> — два символа: обратная косая черта и <code>b</code>. Для шаблонов почти всегда
+нужна сырая строка, иначе <code>\b</code> или <code>\d</code> превратятся не в то, что задумано
+(подробнее — в главе о <a href="ch-15-strings.html">строках</a>).</p>
+<p>Три функции поиска различаются привязкой к началу строки.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">"\d+"</span><span class="p">,</span> <span class="s2">"заказ 42"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">"\d+"</span><span class="p">,</span> <span class="s2">"заказ 42"</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="sa">r</span><span class="s2">"\d</span><span class="si">{4}</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"2026"</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="sa">r</span><span class="s2">"\d</span><span class="si">{4}</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"20261"</span><span class="p">)))</span>
+</code></pre></div>
+<pre class="output"><code>None
+True
+True
+False
+</code></pre>
+<p><code>re.match</code> проверяет совпадение <strong>с начала</strong> строки, поэтому в «заказ 42» он
+ничего не находит: строка начинается с буквы. <code>re.search</code> ищет в любом месте.
+<code>re.fullmatch</code> требует, чтобы шаблон покрыл строку целиком, — это главный
+инструмент проверки формата.</p>
+<h2 id="classes"><span class="h-number">51.4</span> Классы символов</h2>
+<p><strong>Класс символов</strong> — запись набора допустимых символов: <code>[abc]</code>, <code>[0-9]</code>,
+<code>\d</code>, <code>\w</code>; внутри квадратных скобок действуют свои правила.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Запись</th>
+<th>Что означает</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[abc]</code></td>
+<td>любой из символов <code>a</code>, <code>b</code>, <code>c</code></td>
+</tr>
+<tr>
+<td><code>[a-z]</code></td>
+<td>любая строчная латинская буква</td>
+</tr>
+<tr>
+<td><code>[^0-9]</code></td>
+<td>любой символ, кроме цифры</td>
+</tr>
+<tr>
+<td><code>\d</code></td>
+<td>цифра (то же, что <code>[0-9]</code>)</td>
+</tr>
+<tr>
+<td><code>\w</code></td>
+<td>буква, цифра или подчёркивание</td>
+</tr>
+<tr>
+<td><code>\s</code></td>
+<td>пробельный символ</td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td>любой символ, кроме перевода строки</td>
+</tr>
+</tbody>
+</table>
+</div><p>Заглавные варианты <code>\D</code>, <code>\W</code>, <code>\S</code> означают дополнение: «не цифра», «не
+буква и не цифра», «не пробел».</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s2">"abc 123 _-!"</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">"\w+"</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">"\d+"</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">"\s"</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">"[^0-9]+"</span><span class="p">,</span> <span class="s2">"a1b22c"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>[&#x27;abc&#x27;, &#x27;123&#x27;, &#x27;_&#x27;]
+[&#x27;123&#x27;]
+[&#x27; &#x27;, &#x27; &#x27;]
+[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]
+</code></pre>
+<p><code>findall</code> возвращает список всех совпадений; это удобнее <code>search</code>, когда
+нужны все вхождения, а не первое. Обратите внимание: <code>\w</code> включает
+подчёркивание, поэтому <code>_</code> попало в первый результат.</p>
+<p>Внутри квадратных скобок правила особые: квантификаторы не действуют, <code>^</code>
+в начале означает отрицание, а <code>-</code> задаёт диапазон. Если дефис нужен как
+символ, его ставят в начало или конец класса.</p>
+<p>Отдельная ловушка русскоязычных текстов: диапазон <code>[а-я]</code> не включает букву
+<code>ё</code>, потому что она стоит в таблице символов отдельно.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">"[а-я]+"</span><span class="p">,</span> <span class="s2">"кот пёс"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">"[а-яё]+"</span><span class="p">,</span> <span class="s2">"кот пёс"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>[&#x27;кот&#x27;, &#x27;п&#x27;, &#x27;с&#x27;]
+[&#x27;кот&#x27;, &#x27;пёс&#x27;]
+</code></pre>
+<p>Если текст бывает с <code>ё</code>, добавляйте её в класс явно. О кодировках и Unicode
+рассказано в главе о <a href="ch-15-strings.html">строках</a>.</p>
+<h2 id="quantifiers"><span class="h-number">51.5</span> Квантификаторы</h2>
+<p><strong>Квантификатор</strong> — указание количества повторений: <code>*</code>, <code>+</code>, <code>?</code>, <code>{m,n}</code>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Квантификатор</th>
+<th>Сколько раз</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>?</code></td>
+<td>ноль или один</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>ноль или больше</td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>один или больше</td>
+</tr>
+<tr>
+<td><code>{m}</code></td>
+<td>ровно <code>m</code></td>
+</tr>
+<tr>
+<td><code>{m,}</code></td>
+<td><code>m</code> или больше</td>
+</tr>
+<tr>
+<td><code>{m,n}</code></td>
+<td>от <code>m</code> до <code>n</code></td>
+</tr>
+</tbody>
+</table>
+</div><div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">"a+"</span><span class="p">,</span> <span class="s2">"aaa aa a"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">"a</span><span class="si">{2}</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"aaa"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">"ab?c"</span><span class="p">,</span> <span class="s2">"ac abc abbc"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>[&#x27;aaa&#x27;, &#x27;aa&#x27;, &#x27;a&#x27;]
+[&#x27;aa&#x27;]
+[&#x27;ac&#x27;, &#x27;abc&#x27;]
+</code></pre>
+<p>В последней строке <code>b?</code> означает «возможно, есть <code>b</code>», поэтому шаблон находит
+<code>ac</code> и <code>abc</code>, а в <code>abbc</code> совпадением становится <code>abc</code>, начиная со второго
+символа.</p>
+<p>Квантификатор применяется к тому, что стоит перед ним: к символу, классу или
+группе. Если нужно повторить последовательность, её заключают в скобки —
+об этом <a href="#groups">следующий раздел</a>.</p>
+<h2 id="anchors"><span class="h-number">51.6</span> Якоря и границы</h2>
+<p>Якоря не потребляют символы, а задают позицию. <code>^</code> требует начала строки,
+<code>$</code> — конца, <code>\b</code> — границы слова.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s2">"строка 1</span><span class="se">\n</span><span class="s2">строка 2"</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">"^строка"</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">"^строка"</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">MULTILINE</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">"\bкот\b"</span><span class="p">,</span> <span class="s2">"кот котёнок кот"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>[&#x27;строка&#x27;]
+[&#x27;строка&#x27;, &#x27;строка&#x27;]
+[&#x27;кот&#x27;, &#x27;кот&#x27;]
+</code></pre>
+<p>Без флага <code>MULTILINE</code> якорь <code>^</code> срабатывает только в начале всей строки;
+с флагом — в начале каждой строки текста. Граница слова <code>\b</code> не даёт найти
+«кот» внутри «котёнок»: между <code>т</code> и <code>ё</code> границы нет.</p>
+<p>Для проверки формата целиком удобно сочетать якоря с <code>fullmatch</code>. Второй
+вариант — использовать <code>re.fullmatch</code>, которая привязывает шаблон к обоим
+концам автоматически.</p>
+<h2 id="groups"><span class="h-number">51.7</span> Группы и альтернативы</h2>
+<p><strong>Группа в регулярном выражении</strong> — скобочная конструкция, выделяющая часть
+шаблона: для повторения, захвата значения или выбора альтернативы. Круглые
+скобки решают сразу три задачи, и это главная причина, по которой они так
+часто встречаются.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(\d</span><span class="si">{4}</span><span class="s2">)-(\d</span><span class="si">{2}</span><span class="s2">)-(\d</span><span class="si">{2}</span><span class="s2">)"</span><span class="p">,</span> <span class="s2">"дата: 2026-05-17"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">groups</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>2026-05-17
+2026 05 17
+(&#x27;2026&#x27;, &#x27;05&#x27;, &#x27;17&#x27;)
+</code></pre>
+<p><code>group(0)</code> — всё совпадение, <code>group(1)</code> и дальше — захваченные группы по
+порядку. <code>groups()</code> возвращает кортеж всех групп. Альтернатива <code>(a|b)</code>
+выбирает один из вариантов.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">"\b(кот|пёс)\b"</span><span class="p">,</span> <span class="s2">"кот пёс кот"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>[&#x27;кот&#x27;, &#x27;пёс&#x27;, &#x27;кот&#x27;]
+</code></pre>
+<p>Именованные группы делают разбор читаемым: вместо номеров используют имена.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">"(?P&lt;year&gt;\d</span><span class="si">{4}</span><span class="s2">)-(?P&lt;month&gt;\d</span><span class="si">{2}</span><span class="s2">)-(?P&lt;day&gt;\d</span><span class="si">{2}</span><span class="s2">)"</span>
+<span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="s2">"2026-05-17"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">"year"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">groupdict</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>2026
+{&#x27;year&#x27;: &#x27;2026&#x27;, &#x27;month&#x27;: &#x27;05&#x27;, &#x27;day&#x27;: &#x27;17&#x27;}
+</code></pre>
+<p>Если группа нужна только для повторения или альтернативы, а её значение
+захватывать не нужно, применяют незахватывающую запись <code>(?:...)</code>. Разница
+видна в результатах <code>findall</code>: при наличии захватывающих групп функция
+возвращает только их.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(ab)+"</span><span class="p">,</span> <span class="s2">"ababab"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(?:ab)+"</span><span class="p">,</span> <span class="s2">"ababab"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>[&#x27;ab&#x27;]
+[&#x27;ababab&#x27;]
+</code></pre>
+<p>Оба шаблона находят одну и ту же последовательность, но первый возвращает
+содержимое группы (последнее повторение), а второй — всё совпадение. Это
+одна из самых частых причин удивления: «почему <code>findall</code> вернул не то».</p>
+<p><figure class="figure"><img src="illustrations/ch-51-pattern-anatomy.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h2 id="greedy"><span class="h-number">51.8</span> Жадность и ленивость</h2>
+<p><strong>Жадное и ленивое сопоставление</strong> — два режима квантификаторов: жадные берут
+максимум возможного, ленивые (<code>*?</code>, <code>+?</code>) — минимум, достаточный для
+совпадения. По умолчанию все квантификаторы жадные.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s2">"&lt;b&gt;жирный&lt;/b&gt; и &lt;i&gt;курсив&lt;/i&gt;"</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">"&lt;.+&gt;"</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">"&lt;.+?&gt;"</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>[&#x27;&lt;b&gt;жирный&lt;/b&gt; и &lt;i&gt;курсив&lt;/i&gt;&#x27;]
+[&#x27;&lt;b&gt;&#x27;, &#x27;&lt;/b&gt;&#x27;, &#x27;&lt;i&gt;&#x27;, &#x27;&lt;/i&gt;&#x27;]
+</code></pre>
+<p>Жадный <code>.+</code> забрал всё до последнего <code>&gt;</code>, поэтому совпадение поглотило обе
+разметки. Ленивый <code>.+?</code> останавливается на первом подходящем <code>&gt;</code>. Когда
+шаблон «съедает лишнее», почти всегда помогает добавить <code>?</code> к квантификатору.</p>
+<p><figure class="figure"><img src="illustrations/ch-51-greedy-lazy.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>У ленивости есть цена: чем больше вариантов перебирает движок, тем медленнее
+работа. Шаблоны вида <code>(a+)+$</code> на длинной строке из <code>a</code> могут вызывать
+<strong>катастрофический перебор</strong> (бэктрекинг): время растёт взрывообразно, и
+программа словно зависает. Признак опасного места — вложенные квантификаторы
+вокруг одной и той же группы. Защита проста: избегать таких конструкций,
+ограничивать длину входа и проверять шаблон на реалистичных данных (об
+измерении времени — в главе о <a href="ch-40-performance.html">производительности</a>).</p>
+<h2 id="flags"><span class="h-number">51.9</span> Флаги</h2>
+<p><strong>Флаг регулярного выражения</strong> — режим разбора: <code>re.IGNORECASE</code>,
+<code>re.MULTILINE</code>, <code>re.DOTALL</code>, <code>re.VERBOSE</code>. Флаги передают последним
+аргументом в функции модуля или вторым аргументом в <code>re.compile</code>.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">"python"</span><span class="p">,</span> <span class="s2">"Python и PYTHON"</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">))</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">"a</span><span class="se">\n</span><span class="s2">b"</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">"a.b"</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">"a.b"</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>[&#x27;Python&#x27;, &#x27;PYTHON&#x27;]
+[]
+[&#x27;a\nb&#x27;]
+</code></pre>
+<p><code>IGNORECASE</code> снимает различие регистра. <code>DOTALL</code> позволяет точке совпадать с
+переводом строки: без него <code>.</code> не переходит через конец строки. <code>MULTILINE</code>
+влияет на якоря <code>^</code> и <code>$</code>, а <code>VERBOSE</code> разрешает пробелы и комментарии внутри
+шаблона — это спасает сложные выражения от превращения в нечитаемую строку.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"""</span>
+<span class="s2">    \d</span><span class="si">{4}</span><span class="s2">   # год</span>
+<span class="s2">    -</span>
+<span class="s2">    \d</span><span class="si">{2}</span><span class="s2">   # месяц</span>
+<span class="s2">"""</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="n">pattern</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">"2026-05"</span><span class="p">)))</span>
+</code></pre></div>
+<pre class="output"><code>True
+</code></pre>
+<h2 id="re-module"><span class="h-number">51.10</span> Модуль re: основные функции</h2>
+<p><strong>Модуль re</strong> — модуль стандартной библиотеки с функциями поиска, замены и
+разбора по регулярным выражениям: <code>search</code>, <code>match</code>, <code>findall</code>, <code>sub</code>,
+<code>compile</code>. Кроме них полезны <code>fullmatch</code>, <code>finditer</code>, <code>split</code> и <code>escape</code>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Функция</th>
+<th>Что делает</th>
+<th>Что возвращает</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>search</code></td>
+<td>ищет первое совпадение в любом месте</td>
+<td><code>Match</code> или <code>None</code></td>
+</tr>
+<tr>
+<td><code>match</code></td>
+<td>ищет совпадение с начала строки</td>
+<td><code>Match</code> или <code>None</code></td>
+</tr>
+<tr>
+<td><code>fullmatch</code></td>
+<td>требует совпадения со всей строкой</td>
+<td><code>Match</code> или <code>None</code></td>
+</tr>
+<tr>
+<td><code>findall</code></td>
+<td>ищет все совпадения</td>
+<td>список строк или кортежей</td>
+</tr>
+<tr>
+<td><code>finditer</code></td>
+<td>ищет все совпадения по одному</td>
+<td>итератор <code>Match</code></td>
+</tr>
+<tr>
+<td><code>sub</code></td>
+<td>заменяет совпадения</td>
+<td>новая строка</td>
+</tr>
+<tr>
+<td><code>split</code></td>
+<td>разбивает по шаблону</td>
+<td>список частей</td>
+</tr>
+<tr>
+<td><code>compile</code></td>
+<td>компилирует шаблон</td>
+<td>объект <code>Pattern</code></td>
+</tr>
+</tbody>
+</table>
+</div><p><code>findall</code> и <code>finditer</code> различаются тем, что вернуть: список готовых значений
+или итератор объектов <code>Match</code> с позициями и группами.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s2">"a1 b2"</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">"[a-z](\d)"</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="sa">r</span><span class="s2">"[a-z](\d)"</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(),</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">match</span><span class="o">.</span><span class="n">start</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>[&#x27;1&#x27;, &#x27;2&#x27;]
+a1 1 0
+b2 2 3
+</code></pre>
+<p><code>findall</code> вернул только группы, а <code>finditer</code> даёт полный доступ к каждому
+совпадению. Если совпадений много, <code>finditer</code> экономнее: он не строит весь
+список сразу (<a href="ch-20-iterators.html">итераторы</a>).</p>
+<p>Замена выполняется функцией <code>sub</code>; в строке замены можно ссылаться на группы.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s2">"кот и котёнок"</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">"\bкот\b"</span><span class="p">,</span> <span class="s2">"пёс"</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(\d</span><span class="si">{4}</span><span class="s2">)-(\d</span><span class="si">{2}</span><span class="s2">)-(\d</span><span class="si">{2}</span><span class="s2">)"</span><span class="p">,</span> <span class="sa">r</span><span class="s2">"\3.\2.\1"</span><span class="p">,</span> <span class="s2">"2026-05-17"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s2">"[,;]\s*"</span><span class="p">,</span> <span class="s2">"яблоко, банан; вишня"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>пёс и котёнок
+17.05.2026
+[&#x27;яблоко&#x27;, &#x27;банан&#x27;, &#x27;вишня&#x27;]
+</code></pre>
+<p>Компиляция шаблона полезна, когда он используется многократно: <code>compile</code>
+разбирает выражение один раз, а найденный объект <code>Pattern</code> хранит функции
+<code>search</code>, <code>findall</code>, <code>sub</code>. Для читаемости шаблон стоит выносить в именованную
+константу.</p>
+<p>Если нужно вставить в шаблон пользовательский текст как есть, применяют
+<code>re.escape</code>: она экранирует символы, которые иначе были бы управляющими.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="s2">"1+1=2"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="s2">"."</span><span class="p">),</span> <span class="s2">"!"</span><span class="p">,</span> <span class="s2">"a.b.c"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>1\+1=2
+a!b!c
+</code></pre>
+<h2 id="practice"><span class="h-number">51.11</span> Практика: проверки, логи, замены</h2>
+<p>Проверка формата — типичная задача, но с оговоркой: регулярное выражение
+проверяет <strong>форму</strong>, а не существование и не полное соответствие стандарту.
+Для адреса электронной почты настоящее правило огромно и всё равно не
+гарантирует доставку; на практике ограничиваются разумным упрощением.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="n">email_pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"^[\w.+-]+@[a-z0-9-]+(\.[a-z0-9-]+)+$"</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">address</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"anna@example.com"</span><span class="p">,</span> <span class="s2">"anna@example"</span><span class="p">,</span> <span class="s2">"anna@exa_mple.com"</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="nb">bool</span><span class="p">(</span><span class="n">email_pattern</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="n">address</span><span class="p">)))</span>
+</code></pre></div>
+<pre class="output"><code>anna@example.com True
+anna@example False
+anna@exa_mple.com False
+</code></pre>
+<p>Такая проверка отсекает явно неверные адреса, но не обещает, что адрес
+существует. Это честная формулировка: форма проверена, доставка — нет.</p>
+<p>Разбор строк журнала — вторая частая задача. Именованные группы превращают
+строку в подобие словаря.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="s2">"2026-05-17 12:00:00 ERROR база недоступна"</span>
+<span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+    <span class="sa">r</span><span class="s2">"(?P&lt;date&gt;\d</span><span class="si">{4}</span><span class="s2">-\d</span><span class="si">{2}</span><span class="s2">-\d</span><span class="si">{2}</span><span class="s2">) "</span>
+    <span class="sa">r</span><span class="s2">"(?P&lt;time&gt;\d</span><span class="si">{2}</span><span class="s2">:\d</span><span class="si">{2}</span><span class="s2">:\d</span><span class="si">{2}</span><span class="s2">) "</span>
+    <span class="sa">r</span><span class="s2">"(?P&lt;level&gt;[A-Z]+) "</span>
+    <span class="sa">r</span><span class="s2">"(?P&lt;message&gt;.+)"</span>
+<span class="p">)</span>
+<span class="n">match</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">"date"</span><span class="p">),</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">"level"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">"message"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>2026-05-17 ERROR
+база недоступна
+</code></pre>
+<p>Такой разбор устойчивее деления строки по пробелам: сообщение может содержать
+пробелы, а формат — меняться. Именованные группы документируют, что именно
+извлечено.</p>
+<h2 id="limits"><span class="h-number">51.12</span> Когда регулярные выражения — плохой выбор</h2>
+<p>Есть задачи, которые шаблоном формально решаются, но делать этого не стоит.</p>
+<ol>
+<li><strong>HTML и XML.</strong> Разметка вложенная, а регулярное выражение не умеет
+считать вложенность надёжно. Для разметки есть парсеры; шаблон годится
+только для грубой предварительной выборки.</li>
+<li><strong>JSON и другие структурированные форматы.</strong> Их разбирают
+специализированными средствами: <code>json</code>, CSV-модуль и т. п. Шаблон не
+учитывает экранирование и вложенность.</li>
+<li><strong>Сложные проверки с множеством условий.</strong> Если выражение не помещается
+в голову, его невозможно сопровождать. Часто понятнее написать функцию с
+несколькими проверками.</li>
+<li><strong>Случаи, где хватает строковых методов.</strong> <code>str.startswith</code>,
+<code>str.split</code>, <code>str.partition</code> читаются проще и работают быстрее.</li>
+</ol>
+<p>Отдельно стоит помнить о безопасности: шаблон, построенный из
+пользовательского ввода, может стать способом атаки (подробнее — в главе о
+<a href="ch-41-security.html">безопасности</a>). Никогда не подставляйте ввод в шаблон без
+<code>re.escape</code> и ограничивайте длину проверяемого текста.</p>
+<h2 id="mistakes"><span class="h-number">51.13</span> Типичные ошибки</h2>
+<ol>
+<li><strong>Забыть сырую строку.</strong> <code>&quot;\b&quot;</code> — это служебный символ, а не граница
+слова; для шаблонов нужен <code>r&quot;\b&quot;</code>.</li>
+<li><strong>Путать <code>match</code> и <code>search</code>.</strong> <code>match</code> привязан к началу строки и часто
+возвращает <code>None</code> там, где <code>search</code> находит совпадение.</li>
+<li><strong>Забыть о жадности.</strong> <code>.*</code> забирает максимум; если нужно «до первого»,
+добавляют <code>?</code>.</li>
+<li><strong>Ждать от <code>findall</code> полных совпадений при группах.</strong> Если в шаблоне есть
+группы, <code>findall</code> вернёт их содержимое, а не весь фрагмент.</li>
+<li><strong>Проверять формат через <code>search</code>.</strong> Для проверки «строка целиком
+соответствует» нужен <code>fullmatch</code>, иначе шаблон найдёт совпадение внутри
+мусора.</li>
+<li><strong>Забыть про <code>ё</code>.</strong> Класс <code>[а-я]</code> не включает <code>ё</code>.</li>
+<li><strong>Строить шаблон из пользовательского ввода без <code>re.escape</code>.</strong> Символы
+вроде <code>.</code> или <code>+</code> начнут работать как управляющие.</li>
+<li><strong>Вкладывать квантификаторы.</strong> Конструкции вида <code>(a+)+</code> приводят к
+катастрофическому перебору на неудачных строках.</li>
+</ol>
+<p>Проверим четвёртую ошибку: шаблон с группой возвращает из <code>findall</code> только
+содержимое группы.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(кот|пёс)"</span><span class="p">,</span> <span class="s2">"кот и пёс"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">"кот|пёс"</span><span class="p">,</span> <span class="s2">"кот и пёс"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>[&#x27;кот&#x27;, &#x27;пёс&#x27;]
+[&#x27;кот&#x27;, &#x27;пёс&#x27;]
+</code></pre>
+<p>В этом примере результат совпал: группа охватывала всё совпадение. Стоит
+поменять шаблон, и различие станет заметным.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(\w+)@"</span><span class="p">,</span> <span class="s2">"anna@example.com, boris@example.org"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">"\w+@"</span><span class="p">,</span> <span class="s2">"anna@example.com, boris@example.org"</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>[&#x27;anna&#x27;, &#x27;boris&#x27;]
+[&#x27;anna@&#x27;, &#x27;boris@&#x27;]
+</code></pre>
+<h2 id="упражнения"><span class="h-number">51.14</span> Упражнения</h2>
+<h3 id="ex-ch51-01">1. Прогнозирование вывода</h3>
+<p>Не запуская код, запишите результат. Затем проверьте и объясните, почему
+списки различаются.</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">"\d+"</span><span class="p">,</span> <span class="s2">"a1 b22 c333"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">"\d"</span><span class="p">,</span> <span class="s2">"a1 b22 c333"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">"([a-z])\d+"</span><span class="p">,</span> <span class="s2">"a1 b22 c333"</span><span class="p">))</span>
+</code></pre></div>
+<h3 id="ex-ch51-02">2. Первый шаблон</h3>
+<p>Дан текст с числами, в том числе отрицательными: <code>&quot;температура -5, потом 12, затем -3&quot;</code>. Напишите шаблон, который найдёт все числа с их знаком, и выведите
+список.</p>
+<h3 id="ex-ch51-03">3. Классы символов</h3>
+<p>Из строки <code>&quot;заказ A12, B7, C345&quot;</code> извлеките коды: заглавная латинская буква и
+цифры после неё. Выведите список найденных кодов целиком, а затем только
+числовые части.</p>
+<h3 id="ex-ch51-04">4. Проверка формата</h3>
+<p>Артикул состоит из двух заглавных латинских букв и четырёх цифр, например
+<code>AB1234</code>. Напишите проверку через <code>fullmatch</code> и проверьте три значения:
+<code>AB1234</code>, <code>A1234</code>, <code>ab1234</code>. Объясните, какое правило отсекает каждое
+неверное.</p>
+<h3 id="ex-ch51-05">5. Группы и дата</h3>
+<p>Дан текст <code>&quot;срок: 2026-05-17&quot;</code>. Извлеките дату именованными группами и
+выведите её в формате <code>17.05.2026</code>, используя <code>groupdict</code> и f-строку.</p>
+<h3 id="ex-ch51-06">6. Жадность</h3>
+<p>В строке <code>&quot;&lt;a&gt;раз&lt;/a&gt;&lt;b&gt;два&lt;/b&gt;&quot;</code> найдите содержимое каждого тега: сначала
+жадным шаблоном, затем ленивым. Объясните различие результатов.</p>
+<h3 id="ex-ch51-07">7. Флаги</h3>
+<p>Дан многострочный текст с сообщениями <code>Error</code>, <code>ERROR</code>, <code>error</code>. Найдите все
+варианты без учёта регистра и выведите их. Затем найдите строки, начинающиеся
+со слова «шаг», с помощью флага <code>MULTILINE</code>.</p>
+<h3 id="ex-ch51-08">8. Замена по шаблону</h3>
+<p>Дана строка <code>&quot;12-03-2025, 05-11-2024&quot;</code> с датами в формате <code>ДД-ММ-ГГГГ</code>.
+Перепишите её в формат <code>ГГГГ.ММ.ДД</code>, используя группы и <code>re.sub</code>. Выведите
+результат.</p>
+<h3 id="ex-ch51-09">9. Мини-проект: разбор журнала</h3>
+<p>Дан многострочный журнал, где каждая строка имеет вид
+<code>2026-05-17 12:00:00 ERROR сообщение</code>. Напишите функцию <code>parse_log(text)</code>,
+которая возвращает список словарей с ключами <code>date</code>, <code>level</code>, <code>message</code>, и
+затем посчитайте, сколько записей каждого уровня. Используйте именованные
+группы и <code>finditer</code>.</p>
+<h3 id="ex-ch51-10">10. Когда шаблон лишний</h3>
+<p>Для каждой задачи определите, нужен ли шаблон, и обоснуйте ответ:</p>
+<ul>
+<li>найти все строки файла, начинающиеся с <code>DEBUG</code>;</li>
+<li>проверить, что строка состоит только из цифр;</li>
+<li>извлечь все ссылки <code>https://…</code> из текста;</li>
+<li>разобрать JSON-строку и получить значение поля.</li>
+</ul>
+<p>Для одного случая «шаблон нужен» напишите рабочий пример, для одного случая
+«шаблон не нужен» — тоже.</p>
+<h2 id="проверка-понимания"><span class="h-number">51.15</span> Проверка понимания</h2>
+<ol>
+<li>Чем задача для регулярного выражения отличается от задачи для <code>str.find</code>?</li>
+<li>Зачем нужна сырая строка при записи шаблона?</li>
+<li>Что означают <code>\d</code>, <code>\w</code>, <code>\s</code> и их заглавные варианты?</li>
+<li>Чем <code>match</code> отличается от <code>search</code> и когда нужен <code>fullmatch</code>?</li>
+<li>Как захватить часть совпадения и как обратиться к ней по имени?</li>
+<li>Чем жадный квантификатор отличается от ленивого и как получить ленивый?</li>
+<li>Что делают флаги <code>IGNORECASE</code>, <code>MULTILINE</code>, <code>DOTALL</code>, <code>VERBOSE</code>?</li>
+<li>Почему <code>findall</code> иногда возвращает не то, что ожидалось?</li>
+<li>Почему для разбора HTML регулярное выражение — плохой выбор?</li>
+</ol>
+<h2 id="что-дальше"><span class="h-number">51.16</span> Что дальше</h2>
+<p>Регулярные выражения дают точный инструмент для текста, но у него есть цена:
+время работы растёт непредсказуемо на неудачных шаблонах, а читаемость падает
+с каждым новым условием. Дальше речь пойдёт о том, как оценивать стоимость
+алгоритмов и выбирать структуры данных осознанно — в главе об
+<a href="ch-52-complexity.html">алгоритмическом мышлении</a>, чтобы отличать «работает» от
+«работает быстро и предсказуемо».</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-50-pythonic-gotchas.html"><span class="pager-label">← Назад</span><span class="pager-title">Pythonic-код и типичные ловушки</span></a><a class="pager-card next" rel="next" href="ch-52-complexity.html"><span class="pager-label">Далее:</span><span class="pager-title">Алгоритмическое мышление: сложность и выбор структур</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

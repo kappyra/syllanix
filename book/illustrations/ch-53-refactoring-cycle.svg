@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 370" role="img"
+     aria-labelledby="ttl53a desc53a" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl53a">Цикл безопасного рефакторинга под тестами</title>
+  <desc id="desc53a">Четыре шага: тесты зелёные и поведение зафиксировано, малое структурное изменение, прогон тестов и коммит. Затем шаги повторяются. Если тесты красные, изменение откатывают и разбираются в причине.</desc>
+
+  <rect x="0" y="0" width="880" height="370" fill="#ffffff"/>
+  <defs>
+    <marker id="arr53a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#33557a"/>
+    </marker>
+  </defs>
+
+  <text x="28" y="32" font-size="17" font-weight="bold" fill="#1d3550">Цикл безопасного рефакторинга</text>
+
+  <!-- шаг 1 -->
+  <rect x="36" y="68" width="176" height="96" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="1.8"/>
+  <text x="52" y="96" font-size="14" font-weight="bold" fill="#1d3550">1. тесты зелёные</text>
+  <text x="52" y="122" font-size="12" fill="#33557a">поведение</text>
+  <text x="52" y="142" font-size="12" fill="#33557a">зафиксировано</text>
+
+  <!-- шаг 2 -->
+  <rect x="248" y="68" width="176" height="96" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="1.8"/>
+  <text x="264" y="96" font-size="14" font-weight="bold" fill="#1d3550">2. малый шаг</text>
+  <text x="264" y="122" font-size="12" fill="#33557a">одна структурная</text>
+  <text x="264" y="142" font-size="12" fill="#33557a">правка</text>
+
+  <!-- шаг 3 -->
+  <rect x="460" y="68" width="176" height="96" rx="8" fill="#fdf3e3" stroke="#8a5a13" stroke-width="1.8"/>
+  <text x="476" y="96" font-size="14" font-weight="bold" fill="#1d3550">3. прогон тестов</text>
+  <text x="476" y="122" font-size="12" fill="#8a5a13">сравнение</text>
+  <text x="476" y="142" font-size="12" fill="#8a5a13">с эталоном</text>
+
+  <!-- шаг 4 -->
+  <rect x="672" y="68" width="176" height="96" rx="8" fill="#e8f5ec" stroke="#2f6b45" stroke-width="1.8"/>
+  <text x="688" y="96" font-size="14" font-weight="bold" fill="#1d3550">4. коммит</text>
+  <text x="688" y="122" font-size="12" fill="#2f6b45">работающий</text>
+  <text x="688" y="142" font-size="12" fill="#2f6b45">код</text>
+
+  <!-- стрелки вперёд -->
+  <path d="M212 116 L 240 116" fill="none" stroke="#33557a" stroke-width="2" marker-end="url(#arr53a)"/>
+  <path d="M424 116 L 452 116" fill="none" stroke="#33557a" stroke-width="2" marker-end="url(#arr53a)"/>
+  <path d="M636 116 L 664 116" fill="none" stroke="#33557a" stroke-width="2" marker-end="url(#arr53a)"/>
+
+  <!-- возврат -->
+  <path d="M760 164 L 760 240 L 124 240 L 124 172" fill="none" stroke="#33557a" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arr53a)"/>
+  <text x="440" y="264" text-anchor="middle" font-size="12" fill="#4b5563">шаги повторяются, пока структура не станет ясной</text>
+
+  <!-- откат -->
+  <rect x="36" y="288" width="812" height="58" rx="8" fill="#fdf0ee" stroke="#a33a2a" stroke-width="1.6"/>
+  <text x="52" y="314" font-size="13" font-weight="bold" fill="#8f2d1f">Тесты красные?</text>
+  <text x="52" y="336" font-size="13" fill="#8f2d1f">Откатить шаг и разобраться в причине: красный тест — сигнал, а не помеха.</text>
+</svg>

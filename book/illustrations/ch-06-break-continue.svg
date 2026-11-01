@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 500" role="img"
+     aria-labelledby="ttl6b desc6b" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl6b">Инструкции break и continue: выход из цикла и пропуск остатка итерации</title>
+  <desc id="desc6b">Схема одной итерации цикла. Условие break при истинном результате выводит управление из цикла в блок продолжения программы. При ложном результате проверяется условие continue: если оно истинно, управление возвращается к началу следующей итерации, пропуская остаток тела; если ложно, итерация завершается нормально и цикл переходит к следующей. Разница в том, что break покидает цикл совсем, а continue только пропускает часть тела.</desc>
+
+  <text x="30" y="30" font-size="16" font-weight="bold" fill="#1d3550">Одна итерация: где срабатывают break и continue</text>
+
+  <rect x="230" y="50" width="260" height="38" rx="9" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="360" y="74" text-anchor="middle" font-size="14" fill="#1d3550">начало итерации</text>
+  <line x1="360" y1="88" x2="360" y2="106" stroke="#33557a" stroke-width="2"/>
+  <path d="M 353 101 L 360 113 L 367 101" fill="none" stroke="#33557a" stroke-width="2"/>
+
+  <rect x="270" y="118" width="180" height="38" rx="9" fill="#e8f0fa" stroke="#33557a" stroke-width="2"/>
+  <text x="360" y="142" text-anchor="middle" font-size="14" fill="#1d3550">тело цикла</text>
+  <line x1="360" y1="156" x2="360" y2="174" stroke="#33557a" stroke-width="2"/>
+  <path d="M 353 169 L 360 181 L 367 169" fill="none" stroke="#33557a" stroke-width="2"/>
+
+  <!-- break -->
+  <polygon points="360,186 450,218 360,250 270,218" fill="#fdf1dc" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="360" y="223" text-anchor="middle" font-size="14" fill="#4b3a16">break?</text>
+
+  <line x1="450" y1="218" x2="512" y2="218" stroke="#a33a3a" stroke-width="2"/>
+  <path d="M 506 211 L 518 218 L 506 225" fill="none" stroke="#a33a3a" stroke-width="2"/>
+  <text x="470" y="209" text-anchor="middle" font-size="13" fill="#7a2222">да</text>
+  <rect x="524" y="194" width="146" height="48" rx="9" fill="#fff5f5" stroke="#a33a3a" stroke-width="2"/>
+  <text x="597" y="214" text-anchor="middle" font-size="13.5" fill="#7a2222">выход из цикла</text>
+  <text x="597" y="232" text-anchor="middle" font-size="13.5" fill="#7a2222">насовсем</text>
+
+  <line x1="360" y1="250" x2="360" y2="268" stroke="#33557a" stroke-width="2"/>
+  <path d="M 353 263 L 360 275 L 367 263" fill="none" stroke="#33557a" stroke-width="2"/>
+  <text x="372" y="266" font-size="13" fill="#1d3550">нет</text>
+
+  <!-- continue -->
+  <polygon points="360,280 460,312 360,344 260,312" fill="#fdf1dc" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="360" y="317" text-anchor="middle" font-size="14" fill="#4b3a16">continue?</text>
+
+  <line x1="260" y1="312" x2="120" y2="312" stroke="#3f6b3f" stroke-width="2"/>
+  <line x1="120" y1="312" x2="120" y2="69" stroke="#3f6b3f" stroke-width="2"/>
+  <line x1="120" y1="69" x2="222" y2="69" stroke="#3f6b3f" stroke-width="2"/>
+  <path d="M 216 62 L 228 69 L 216 76" fill="none" stroke="#3f6b3f" stroke-width="2"/>
+  <text x="186" y="304" text-anchor="middle" font-size="13" fill="#264a26">да</text>
+  <text x="40" y="200" font-size="13" fill="#264a26">сразу к следующей</text>
+  <text x="40" y="218" font-size="13" fill="#264a26">итерации, остаток</text>
+  <text x="40" y="236" font-size="13" fill="#264a26">тела пропущен</text>
+
+  <line x1="360" y1="344" x2="360" y2="362" stroke="#33557a" stroke-width="2"/>
+  <path d="M 353 357 L 360 369 L 367 357" fill="none" stroke="#33557a" stroke-width="2"/>
+  <text x="372" y="360" font-size="13" fill="#1d3550">нет</text>
+
+  <rect x="250" y="376" width="220" height="38" rx="9" fill="#eef7ee" stroke="#3f6b3f" stroke-width="2"/>
+  <text x="360" y="400" text-anchor="middle" font-size="14" fill="#264a26">итерация завершена</text>
+
+  <line x1="470" y1="395" x2="706" y2="395" stroke="#3f6b3f" stroke-width="2"/>
+  <line x1="706" y1="395" x2="706" y2="69" stroke="#3f6b3f" stroke-width="2"/>
+  <line x1="706" y1="69" x2="490" y2="69" stroke="#3f6b3f" stroke-width="2"/>
+  <path d="M 502 62 L 490 69 L 502 76" fill="none" stroke="#3f6b3f" stroke-width="2"/>
+  <text x="516" y="330" font-size="13" fill="#264a26">обычное продолжение</text>
+
+  <text x="30" y="452" font-size="14" font-weight="bold" fill="#1d3550">break завершает цикл целиком, continue — только текущую итерацию.</text>
+  <text x="30" y="476" font-size="14" fill="#1d3550">В обоих случаях остаток тела не выполняется, но дальнейшее поведение разное.</text>
+</svg>

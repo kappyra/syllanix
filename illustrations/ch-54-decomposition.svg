@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 470" role="img"
+     aria-labelledby="t54dc d54dc" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="t54dc">Декомпозиция задачи «частоты слов» на три подзадачи и тесты</title>
+  <desc id="d54dc">Задача «частоты слов» разбивается на три подзадачи: нормализация текста приводит буквы к нижнему регистру, подсчёт строит словарь частот, выбор топ-N упорядочивает слова по частоте и алфавиту. У каждой подзадачи свой вход, выход и отдельный тест, а внизу выполняется сквозной тест «текст — ожидаемый список». Декомпозиция делает каждую часть проверяемой отдельно.</desc>
+  <defs>
+    <marker id="arr54a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#33557a"/>
+    </marker>
+  </defs>
+
+  <text x="24" y="30" font-size="17" font-weight="bold" fill="#1d3550">Декомпозиция: одна задача — три проверяемые части</text>
+
+  <rect x="240" y="52" width="300" height="64" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="390" y="78" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3550">Задача: частоты слов</text>
+  <text x="390" y="100" text-anchor="middle" font-size="12.5" fill="#33557a">вход: текст · выход: топ-N слов</text>
+
+  <line x1="390" y1="116" x2="390" y2="140" stroke="#33557a" stroke-width="2"/>
+  <line x1="150" y1="140" x2="630" y2="140" stroke="#33557a" stroke-width="2"/>
+  <line x1="150" y1="140" x2="150" y2="158" stroke="#33557a" stroke-width="2" marker-end="url(#arr54a)"/>
+  <line x1="390" y1="140" x2="390" y2="158" stroke="#33557a" stroke-width="2" marker-end="url(#arr54a)"/>
+  <line x1="630" y1="140" x2="630" y2="158" stroke="#33557a" stroke-width="2" marker-end="url(#arr54a)"/>
+
+  <rect x="40" y="162" width="220" height="126" rx="10" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="56" y="188" font-size="13.5" font-weight="bold" fill="#1d3550">1. Нормализация</text>
+  <text x="56" y="212" font-size="12" fill="#33557a">вход: строка</text>
+  <text x="56" y="232" font-size="12" fill="#33557a">выход: буквы в нижнем</text>
+  <text x="56" y="250" font-size="12" fill="#33557a">регистре</text>
+  <text x="56" y="274" font-size="12" fill="#4b3a16">тест: пустая строка</text>
+
+  <rect x="280" y="162" width="220" height="126" rx="10" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="296" y="188" font-size="13.5" font-weight="bold" fill="#1d3550">2. Подсчёт</text>
+  <text x="296" y="212" font-size="12" fill="#33557a">вход: список слов</text>
+  <text x="296" y="232" font-size="12" fill="#33557a">выход: словарь частот</text>
+  <text x="296" y="250" font-size="12" fill="#33557a">слово → число</text>
+  <text x="296" y="274" font-size="12" fill="#4b3a16">тест: равные частоты</text>
+
+  <rect x="520" y="162" width="220" height="126" rx="10" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="536" y="188" font-size="13.5" font-weight="bold" fill="#1d3550">3. Выбор топ-N</text>
+  <text x="536" y="212" font-size="12" fill="#33557a">вход: словарь частот</text>
+  <text x="536" y="232" font-size="12" fill="#33557a">выход: N пар, порядок</text>
+  <text x="536" y="250" font-size="12" fill="#33557a">по частоте и алфавиту</text>
+  <text x="536" y="274" font-size="12" fill="#4b3a16">тест: N больше слов</text>
+
+  <line x1="150" y1="288" x2="150" y2="316" stroke="#33557a" stroke-width="2"/>
+  <line x1="630" y1="288" x2="630" y2="316" stroke="#33557a" stroke-width="2"/>
+  <line x1="150" y1="316" x2="630" y2="316" stroke="#33557a" stroke-width="2"/>
+  <line x1="390" y1="316" x2="390" y2="336" stroke="#33557a" stroke-width="2" marker-end="url(#arr54a)"/>
+
+  <rect x="210" y="340" width="360" height="66" rx="10" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="390" y="366" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#4b3a16">Сквозной тест</text>
+  <text x="390" y="388" text-anchor="middle" font-size="12" fill="#4b3a16">текст → ожидаемый топ-N: проверяет стыки частей</text>
+
+  <text x="390" y="440" text-anchor="middle" font-size="12.5" fill="#33557a">Декомпозиция задачи: у каждой части свой вход, выход и критерий проверки</text>
+  <text x="390" y="462" text-anchor="middle" font-size="12" fill="#4b3a16">Маленькую функцию проще проверить и заменить, чем один большой блок кода</text>
+</svg>

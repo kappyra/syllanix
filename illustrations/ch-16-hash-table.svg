@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 420" role="img"
+     aria-labelledby="ttl16b desc16b" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl16b">Упрощённая схема хранения множества: хеш определяет корзину, внутри корзины сравниваются значения</title>
+  <desc id="desc16b">Слева показано вычисление номера корзины для элементов множества: у 7 получается 7, у 12 — 4, у 20 — 4, у 3 — 3. Справа таблица из восьми корзин: в корзине 3 лежит число 3, в корзине 4 лежат 12 и 20, в корзине 7 лежит 7. Совпадение 12 и 20 в одной корзине называется коллизией; внутри корзины значения сравниваются по равенству. Проверка 20 in s находит корзину 4 и сравнивает значения.</desc>
+
+  <text x="30" y="32" font-size="17" font-weight="bold" fill="#1d3550">Как множество находит элемент</text>
+
+  <!-- левая панель: вычисление -->
+  <rect x="30" y="56" width="250" height="288" rx="10" fill="#f7f7f2" stroke="#b9b3a5" stroke-width="2"/>
+  <text x="46" y="82" font-size="14" font-weight="bold" fill="#1d3550">вычисление корзины</text>
+  <text x="46" y="120" font-size="13" fill="#33557a" font-family="'DejaVu Sans Mono', monospace">7  % 8 = 7</text>
+  <text x="46" y="158" font-size="13" fill="#33557a" font-family="'DejaVu Sans Mono', monospace">12 % 8 = 4</text>
+  <text x="46" y="196" font-size="13" fill="#33557a" font-family="'DejaVu Sans Mono', monospace">20 % 8 = 4</text>
+  <text x="46" y="234" font-size="13" fill="#33557a" font-family="'DejaVu Sans Mono', monospace">3  % 8 = 3</text>
+  <text x="46" y="272" font-size="12" fill="#4b3a16">номер корзины — остаток</text>
+  <text x="46" y="290" font-size="12" fill="#4b3a16">от деления хеша на размер</text>
+  <text x="46" y="308" font-size="12" fill="#4b3a16">таблицы (здесь 8)</text>
+  <text x="46" y="330" font-size="12" fill="#8a2b2b">12 и 20 дали одну корзину</text>
+
+  <!-- таблица корзин -->
+  <rect x="330" y="56" width="130" height="40" fill="#1d3550"/>
+  <text x="395" y="82" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffffff">корзина</text>
+  <rect x="460" y="56" width="290" height="40" fill="#33557a"/>
+  <text x="605" y="82" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffffff">содержимое</text>
+
+  <rect x="330" y="96" width="130" height="31" fill="#f4f4f0" stroke="#d8d3c7" stroke-width="1"/>
+  <text x="395" y="117" text-anchor="middle" font-size="13" fill="#1d3550">0</text>
+  <rect x="460" y="96" width="290" height="31" fill="#ffffff" stroke="#d8d3c7" stroke-width="1"/>
+  <text x="476" y="117" font-size="12" fill="#8b8577">—</text>
+
+  <rect x="330" y="127" width="130" height="31" fill="#f4f4f0" stroke="#d8d3c7" stroke-width="1"/>
+  <text x="395" y="148" text-anchor="middle" font-size="13" fill="#1d3550">1</text>
+  <rect x="460" y="127" width="290" height="31" fill="#ffffff" stroke="#d8d3c7" stroke-width="1"/>
+  <text x="476" y="148" font-size="12" fill="#8b8577">—</text>
+
+  <rect x="330" y="158" width="130" height="31" fill="#f4f4f0" stroke="#d8d3c7" stroke-width="1"/>
+  <text x="395" y="179" text-anchor="middle" font-size="13" fill="#1d3550">2</text>
+  <rect x="460" y="158" width="290" height="31" fill="#ffffff" stroke="#d8d3c7" stroke-width="1"/>
+  <text x="476" y="179" font-size="12" fill="#8b8577">—</text>
+
+  <rect x="330" y="189" width="130" height="31" fill="#eaf3ea" stroke="#d8d3c7" stroke-width="1"/>
+  <text x="395" y="210" text-anchor="middle" font-size="13" font-weight="bold" fill="#254a2d">3</text>
+  <rect x="460" y="189" width="290" height="31" fill="#eaf3ea" stroke="#d8d3c7" stroke-width="1"/>
+  <text x="476" y="210" font-size="13" font-weight="bold" fill="#254a2d">3</text>
+
+  <rect x="330" y="220" width="130" height="31" fill="#f7f3ea" stroke="#d8d3c7" stroke-width="1"/>
+  <text x="395" y="241" text-anchor="middle" font-size="13" font-weight="bold" fill="#4b3a16">4</text>
+  <rect x="460" y="220" width="290" height="31" fill="#f7f3ea" stroke="#d8d3c7" stroke-width="1"/>
+  <text x="476" y="241" font-size="13" font-weight="bold" fill="#4b3a16">12, 20</text>
+
+  <rect x="330" y="251" width="130" height="31" fill="#f4f4f0" stroke="#d8d3c7" stroke-width="1"/>
+  <text x="395" y="272" text-anchor="middle" font-size="13" fill="#1d3550">5</text>
+  <rect x="460" y="251" width="290" height="31" fill="#ffffff" stroke="#d8d3c7" stroke-width="1"/>
+  <text x="476" y="272" font-size="12" fill="#8b8577">—</text>
+
+  <rect x="330" y="282" width="130" height="31" fill="#f4f4f0" stroke="#d8d3c7" stroke-width="1"/>
+  <text x="395" y="303" text-anchor="middle" font-size="13" fill="#1d3550">6</text>
+  <rect x="460" y="282" width="290" height="31" fill="#ffffff" stroke="#d8d3c7" stroke-width="1"/>
+  <text x="476" y="303" font-size="12" fill="#8b8577">—</text>
+
+  <rect x="330" y="313" width="130" height="31" fill="#eef4fb" stroke="#d8d3c7" stroke-width="1"/>
+  <text x="395" y="334" text-anchor="middle" font-size="13" font-weight="bold" fill="#1d3550">7</text>
+  <rect x="460" y="313" width="290" height="31" fill="#eef4fb" stroke="#d8d3c7" stroke-width="1"/>
+  <text x="476" y="334" font-size="13" font-weight="bold" fill="#1d3550">7</text>
+
+  <line x1="30" y1="360" x2="750" y2="360" stroke="#c9c2b4" stroke-width="1.5"/>
+  <text x="30" y="384" font-size="13" fill="#4b3a16">Коллизия (12 и 20 в корзине 4) не мешает: внутри корзины значения сравниваются.</text>
+  <text x="30" y="406" font-size="13" fill="#8a2b2b">Порядок обхода зависит от корзин, поэтому он не определён.</text>
+</svg>

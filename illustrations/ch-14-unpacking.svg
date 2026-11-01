@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 380" role="img"
+     aria-labelledby="ttl14b desc14b" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl14b">Как работает обмен значений a, b = b, a: упаковка справа и распаковка слева</title>
+  <desc id="desc14b">Слева исходное состояние: a равно 10, b равно 20. Справа от знака равенства сначала создаётся кортеж из значений b и a, то есть 20 и 10. Затем этот кортеж распаковывается в имена: a получает 20, b получает 10. Промежуточная переменная не нужна, потому что старые значения уже сохранены в кортеже.</desc>
+
+  <text x="30" y="32" font-size="17" font-weight="bold" fill="#1d3550">Обмен значений через кортеж</text>
+  <text x="30" y="58" font-size="14" fill="#33557a">инструкция: a, b = b, a</text>
+
+  <!-- шаг 1 -->
+  <rect x="30" y="90" width="200" height="150" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="46" y="118" font-size="14" font-weight="bold" fill="#1d3550">до обмена</text>
+  <text x="46" y="150" font-size="15" fill="#1d3550" font-family="'DejaVu Sans Mono', monospace">a = 10</text>
+  <text x="46" y="178" font-size="15" fill="#1d3550" font-family="'DejaVu Sans Mono', monospace">b = 20</text>
+  <text x="46" y="214" font-size="12" fill="#33557a">два имени связаны</text>
+  <text x="46" y="230" font-size="12" fill="#33557a">с двумя числами</text>
+
+  <line x1="236" y1="165" x2="272" y2="165" stroke="#33557a" stroke-width="2"/>
+  <polygon points="280,165 270,160 270,170" fill="#33557a"/>
+  <text x="222" y="146" font-size="12" fill="#4b3a16">шаг 1</text>
+
+  <!-- шаг 2: кортеж -->
+  <rect x="290" y="90" width="200" height="150" rx="10" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="306" y="118" font-size="14" font-weight="bold" fill="#4b3a16">кортеж (b, a)</text>
+  <rect x="312" y="136" width="66" height="46" rx="7" fill="#ffffff" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="345" y="165" text-anchor="middle" font-size="16" font-weight="bold" fill="#4b3a16">20</text>
+  <rect x="390" y="136" width="66" height="46" rx="7" fill="#ffffff" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="423" y="165" text-anchor="middle" font-size="16" font-weight="bold" fill="#4b3a16">10</text>
+  <text x="306" y="210" font-size="12" fill="#4b3a16">сначала упаковка: старые</text>
+  <text x="306" y="226" font-size="12" fill="#4b3a16">значения сохранены</text>
+
+  <line x1="496" y1="165" x2="532" y2="165" stroke="#33557a" stroke-width="2"/>
+  <polygon points="540,165 530,160 530,170" fill="#33557a"/>
+  <text x="482" y="146" font-size="12" fill="#4b3a16">шаг 2</text>
+
+  <!-- шаг 3 -->
+  <rect x="550" y="90" width="200" height="150" rx="10" fill="#eaf3ea" stroke="#3c6b47" stroke-width="2"/>
+  <text x="566" y="118" font-size="14" font-weight="bold" fill="#254a2d">после обмена</text>
+  <text x="566" y="150" font-size="15" fill="#254a2d" font-family="'DejaVu Sans Mono', monospace">a = 20</text>
+  <text x="566" y="178" font-size="15" fill="#254a2d" font-family="'DejaVu Sans Mono', monospace">b = 10</text>
+  <text x="566" y="214" font-size="12" fill="#254a2d">теперь распаковка</text>
+  <text x="566" y="230" font-size="12" fill="#254a2d">по порядку имён</text>
+
+  <line x1="30" y1="278" x2="750" y2="278" stroke="#c9c2b4" stroke-width="1.5"/>
+  <text x="30" y="302" font-size="13" fill="#4b3a16">Порядок важен: значения справа вычисляются до присваивания, поэтому обмен</text>
+  <text x="30" y="322" font-size="13" fill="#4b3a16">работает без третьей переменной.</text>
+  <text x="30" y="352" font-size="13" fill="#8a2b2b">При несовпадении числа имён и элементов поднимается ValueError.</text>
+</svg>

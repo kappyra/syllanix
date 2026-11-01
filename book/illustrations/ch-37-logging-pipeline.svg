@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 440" role="img"
+     aria-labelledby="t37lg d37lg" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="t37lg">Путь записи журнала: регистратор, обработчики и форматы</title>
+  <desc id="d37lg">Регистратор с уровнем INFO принимает запись и передаёт её обработчикам. Каждый обработчик решает, куда писать: в консоль с уровнем WARNING и выше, в файл с полным форматом, во внешнюю систему для поиска и оповещений. Форматтер задаёт вид записи, а структурированное логирование пишет JSON-поля, пригодные для машинного разбора. Уровень отсекает лишние записи до обработчиков.</desc>
+  <defs>
+    <marker id="arr37b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#33557a"/>
+    </marker>
+  </defs>
+
+  <text x="24" y="30" font-size="17" font-weight="bold" fill="#1d3550">Путь записи журнала: от события до приёмника</text>
+
+  <rect x="36" y="168" width="190" height="104" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="52" y="196" font-size="14" font-weight="bold" fill="#1d3550">Регистратор</text>
+  <text x="52" y="220" font-size="12.5" fill="#33557a">Logger("app")</text>
+  <text x="52" y="242" font-size="12.5" fill="#33557a">уровень: INFO</text>
+  <text x="52" y="262" font-size="12" fill="#4b3a16">решает, что записать</text>
+
+  <line x1="230" y1="220" x2="266" y2="220" stroke="#33557a" stroke-width="2"/>
+  <line x1="266" y1="100" x2="266" y2="340" stroke="#33557a" stroke-width="2"/>
+  <line x1="266" y1="100" x2="306" y2="100" stroke="#33557a" stroke-width="2" marker-end="url(#arr37b)"/>
+  <line x1="266" y1="220" x2="306" y2="220" stroke="#33557a" stroke-width="2" marker-end="url(#arr37b)"/>
+  <line x1="266" y1="340" x2="306" y2="340" stroke="#33557a" stroke-width="2" marker-end="url(#arr37b)"/>
+
+  <rect x="310" y="60" width="200" height="80" rx="10" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="326" y="86" font-size="13" font-weight="bold" fill="#1d3550">Обработчик: консоль</text>
+  <text x="326" y="108" font-size="12" fill="#33557a">уровень WARNING+</text>
+  <text x="326" y="128" font-size="12" fill="#4b3a16">для разработчика</text>
+
+  <rect x="310" y="180" width="200" height="80" rx="10" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="326" y="206" font-size="13" font-weight="bold" fill="#1d3550">Обработчик: файл</text>
+  <text x="326" y="228" font-size="12" fill="#33557a">ротация по размеру</text>
+  <text x="326" y="248" font-size="12" fill="#4b3a16">полный формат с временем</text>
+
+  <rect x="310" y="300" width="200" height="80" rx="10" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="326" y="326" font-size="13" font-weight="bold" fill="#1d3550">Обработчик: внешний</text>
+  <text x="326" y="348" font-size="12" fill="#33557a">поиск и оповещения</text>
+  <text x="326" y="368" font-size="12" fill="#4b3a16">JSON Lines</text>
+
+  <line x1="514" y1="100" x2="554" y2="100" stroke="#33557a" stroke-width="2" marker-end="url(#arr37b)"/>
+  <line x1="514" y1="220" x2="554" y2="220" stroke="#33557a" stroke-width="2" marker-end="url(#arr37b)"/>
+  <line x1="514" y1="340" x2="554" y2="340" stroke="#33557a" stroke-width="2" marker-end="url(#arr37b)"/>
+
+  <rect x="558" y="60" width="190" height="80" rx="10" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="574" y="86" font-size="13" font-weight="bold" fill="#4b3a16">Формат</text>
+  <text x="574" y="108" font-size="12" fill="#4b3a16">%(levelname)s</text>
+  <text x="574" y="126" font-size="12" fill="#4b3a16">%(message)s</text>
+
+  <rect x="558" y="180" width="190" height="80" rx="10" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="574" y="206" font-size="13" font-weight="bold" fill="#4b3a16">Формат</text>
+  <text x="574" y="228" font-size="12" fill="#4b3a16">время в UTC</text>
+  <text x="574" y="248" font-size="12" fill="#4b3a16">уровень, источник, текст</text>
+
+  <rect x="558" y="300" width="190" height="80" rx="10" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="574" y="326" font-size="13" font-weight="bold" fill="#4b3a16">JSON-поля</text>
+  <text x="574" y="348" font-size="12" fill="#4b3a16">event, request_id,</text>
+  <text x="574" y="368" font-size="12" fill="#4b3a16">status, duration_ms</text>
+
+  <text x="390" y="416" text-anchor="middle" font-size="12.5" fill="#33557a">Уровень отсекает лишние записи до обработчиков; каждый обработчик сам решает, куда и как писать</text>
+</svg>

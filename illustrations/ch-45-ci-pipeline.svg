@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340" role="img"
+     aria-labelledby="cp cpd" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="cp">Конвейер непрерывной интеграции</title>
+  <desc id="cpd">После отправки коммита запускаются последовательные проверки: линтер, проверка типов, тесты, сборка артефакта. Если шаг падает, конвейер останавливается и изменение нужно исправить; после успешной сборки артефакт может быть доставлен в среду эксплуатации.</desc>
+
+  <text x="30" y="34" font-size="17" font-weight="bold" fill="#1d3550">Что происходит с каждым коммитом</text>
+
+  <!-- commit -->
+  <rect x="24" y="70" width="126" height="70" rx="9" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="87" y="100" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3550">коммит</text>
+  <text x="87" y="121" text-anchor="middle" font-size="12" fill="#33557a">git push</text>
+
+  <line x1="152" y1="105" x2="186" y2="105" stroke="#33557a" stroke-width="2.5"/>
+  <polygon points="190,105 178,98 178,112" fill="#33557a"/>
+
+  <!-- lint -->
+  <rect x="194" y="70" width="120" height="70" rx="9" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="254" y="100" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3550">линтер</text>
+  <text x="254" y="121" text-anchor="middle" font-size="12" fill="#33557a">стиль и ошибки</text>
+
+  <line x1="316" y1="105" x2="350" y2="105" stroke="#33557a" stroke-width="2.5"/>
+  <polygon points="354,105 342,98 342,112" fill="#33557a"/>
+
+  <!-- types -->
+  <rect x="358" y="70" width="120" height="70" rx="9" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="418" y="100" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3550">типы</text>
+  <text x="418" y="121" text-anchor="middle" font-size="12" fill="#33557a">mypy</text>
+
+  <line x1="480" y1="105" x2="514" y2="105" stroke="#33557a" stroke-width="2.5"/>
+  <polygon points="518,105 506,98 506,112" fill="#33557a"/>
+
+  <!-- tests -->
+  <rect x="522" y="70" width="120" height="70" rx="9" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="582" y="100" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3550">тесты</text>
+  <text x="582" y="121" text-anchor="middle" font-size="12" fill="#33557a">pytest</text>
+
+  <line x1="644" y1="105" x2="678" y2="105" stroke="#33557a" stroke-width="2.5"/>
+  <polygon points="682,105 670,98 670,112" fill="#33557a"/>
+
+  <!-- build -->
+  <rect x="686" y="70" width="120" height="70" rx="9" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="746" y="100" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3550">сборка</text>
+  <text x="746" y="121" text-anchor="middle" font-size="12" fill="#33557a">артефакт</text>
+
+  <!-- deploy -->
+  <line x1="746" y1="142" x2="746" y2="176" stroke="#2f6b3a" stroke-width="2.5"/>
+  <polygon points="746,180 739,168 753,168" fill="#2f6b3a"/>
+  <rect x="666" y="182" width="160" height="58" rx="9" fill="#eef7ef" stroke="#2f6b3a" stroke-width="2"/>
+  <text x="746" y="207" text-anchor="middle" font-size="14" font-weight="bold" fill="#204a28">доставка</text>
+  <text x="746" y="227" text-anchor="middle" font-size="12" fill="#204a28">в среду эксплуатации</text>
+
+  <!-- failure loop -->
+  <rect x="170" y="196" width="392" height="68" rx="9" fill="#fdf1f1" stroke="#8c2f2f" stroke-width="1.8"/>
+  <text x="190" y="221" font-size="13" font-weight="bold" fill="#6b2020">Шаг упал → конвейер остановлен</text>
+  <text x="190" y="244" font-size="12.5" fill="#6b2020">Исправьте изменение и отправьте коммит снова.</text>
+
+  <line x1="359" y1="196" x2="359" y2="152" stroke="#8c2f2f" stroke-width="2" stroke-dasharray="6 4"/>
+  <polygon points="359,146 352,158 366,158" fill="#8c2f2f"/>
+
+  <text x="30" y="300" font-size="13" fill="#5a6b7d">Красный конвейер — не наказание: он не пускает дефект дальше и экономит время команды.</text>
+  <text x="30" y="322" font-size="13" fill="#5a6b7d">Зелёный конвейер — условие слияния в основную ветку.</text>
+</svg>

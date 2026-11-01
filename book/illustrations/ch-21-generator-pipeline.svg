@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 486" role="img"
+     aria-labelledby="ttl21p desc21p" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl21p">Конвейер генераторов: числа, удвоение и фильтр</title>
+  <desc id="desc21p">Три этапа: источник выдаёт числа от 1 до 5, второй этап удваивает каждое, третий оставляет только значения больше 6. Показано, как каждый элемент проходит этапы по одному: 1 превращается в 2 и отбрасывается, 4 превращается в 8 и проходит. Промежуточные списки не создаются.</desc>
+
+  <text x="32" y="32" font-size="17" font-weight="bold" fill="#1d3550">Конвейер: элемент проходит этапы по одному</text>
+
+  <!-- этапы -->
+  <rect x="28" y="56" width="196" height="86" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="126" y="80" text-anchor="middle" font-size="13" font-weight="bold" fill="#1d3550">numbers(5)</text>
+  <text x="126" y="102" text-anchor="middle" font-size="12" fill="#33557a">источник: 1, 2, 3, 4, 5</text>
+  <text x="126" y="124" text-anchor="middle" font-size="11" fill="#5a6b7d">выдаёт по одному</text>
+
+  <line x1="224" y1="99" x2="270" y2="99" stroke="#33557a" stroke-width="2"/>
+  <polygon points="270,99 259,93 259,105" fill="#33557a"/>
+
+  <rect x="274" y="56" width="196" height="86" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="372" y="80" text-anchor="middle" font-size="13" font-weight="bold" fill="#1d3550">doubled</text>
+  <text x="372" y="102" text-anchor="middle" font-size="12" fill="#33557a">каждое число × 2</text>
+  <text x="372" y="124" text-anchor="middle" font-size="11" fill="#5a6b7d">2, 4, 6, 8, 10</text>
+
+  <line x1="470" y1="99" x2="516" y2="99" stroke="#33557a" stroke-width="2"/>
+  <polygon points="516,99 505,93 505,105" fill="#33557a"/>
+
+  <rect x="520" y="56" width="208" height="86" rx="10" fill="#f1f8f2" stroke="#2f6b3f" stroke-width="2"/>
+  <text x="624" y="80" text-anchor="middle" font-size="13" font-weight="bold" fill="#2f6b3f">greater_than(…, 6)</text>
+  <text x="624" y="102" text-anchor="middle" font-size="12" fill="#2f6b3f">оставляет больше 6</text>
+  <text x="624" y="124" text-anchor="middle" font-size="11" fill="#2f6b3f">результат: 8, 10</text>
+
+  <!-- трасса элементов -->
+  <rect x="28" y="168" width="700" height="40" rx="8" fill="#e9eef4" stroke="#5a6b7d" stroke-width="1.5"/>
+  <text x="48" y="193" font-size="12" font-weight="bold" fill="#1d3550">элемент</text>
+  <text x="220" y="193" font-size="12" font-weight="bold" fill="#1d3550">после первого этапа</text>
+  <text x="430" y="193" font-size="12" font-weight="bold" fill="#1d3550">после удвоения</text>
+  <text x="590" y="193" font-size="12" font-weight="bold" fill="#1d3550">итог</text>
+
+  <rect x="28" y="212" width="700" height="34" rx="6" fill="#ffffff" stroke="#d8dee6" stroke-width="1"/>
+  <text x="48" y="234" font-size="13" fill="#1d3550">первый запрос</text>
+  <text x="220" y="234" font-size="13" fill="#33557a">1</text>
+  <text x="430" y="234" font-size="13" fill="#33557a">2</text>
+  <text x="590" y="234" font-size="13" fill="#8a3030">отброшено (≤ 6)</text>
+
+  <rect x="28" y="250" width="700" height="34" rx="6" fill="#f7fafc" stroke="#d8dee6" stroke-width="1"/>
+  <text x="48" y="272" font-size="13" fill="#1d3550">второй запрос</text>
+  <text x="220" y="272" font-size="13" fill="#33557a">2</text>
+  <text x="430" y="272" font-size="13" fill="#33557a">4</text>
+  <text x="590" y="272" font-size="13" fill="#8a3030">отброшено (≤ 6)</text>
+
+  <rect x="28" y="288" width="700" height="34" rx="6" fill="#ffffff" stroke="#d8dee6" stroke-width="1"/>
+  <text x="48" y="310" font-size="13" fill="#1d3550">третий запрос</text>
+  <text x="220" y="310" font-size="13" fill="#33557a">3</text>
+  <text x="430" y="310" font-size="13" fill="#33557a">6</text>
+  <text x="590" y="310" font-size="13" fill="#8a3030">отброшено (≤ 6)</text>
+
+  <rect x="28" y="326" width="700" height="34" rx="6" fill="#f7fafc" stroke="#d8dee6" stroke-width="1"/>
+  <text x="48" y="348" font-size="13" fill="#1d3550">четвёртый запрос</text>
+  <text x="220" y="348" font-size="13" fill="#33557a">4</text>
+  <text x="430" y="348" font-size="13" fill="#33557a">8</text>
+  <text x="590" y="348" font-size="13" font-weight="bold" fill="#2f6b3f">прошло</text>
+
+  <rect x="28" y="364" width="700" height="34" rx="6" fill="#ffffff" stroke="#d8dee6" stroke-width="1"/>
+  <text x="48" y="386" font-size="13" fill="#1d3550">пятый запрос</text>
+  <text x="220" y="386" font-size="13" fill="#33557a">5</text>
+  <text x="430" y="386" font-size="13" fill="#33557a">10</text>
+  <text x="590" y="386" font-size="13" font-weight="bold" fill="#2f6b3f">прошло</text>
+
+  <text x="32" y="426" font-size="12" fill="#5a6b7d">Промежуточных списков нет: элемент продвигается по цепочке отдельно,</text>
+  <text x="32" y="446" font-size="12" fill="#5a6b7d">поэтому память не растёт с числом этапов. Если потребитель остановится</text>
+  <text x="32" y="466" font-size="12" fill="#5a6b7d">после первого прошедшего значения, остальные элементы не будут вычислены.</text>
+</svg>

@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Производительность и профилирование — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-40-performance.html" aria-current="page">40. Производительность и профилирование</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-40-performance.html#что-вы-сможете-после-этой-главы">40.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-40-performance.html#measure-first">40.2. Сначала измерение, потом изменение</a></li>
+<li><a href="ch-40-performance.html#complexity">40.3. Алгоритмическая сложность</a></li>
+<li><a href="ch-40-performance.html#profiling">40.4. Профилирование</a></li>
+<li><a href="ch-40-performance.html#bottleneck">40.5. Узкое место</a></li>
+<li><a href="ch-40-performance.html#memoization">40.6. Мемоизация</a></li>
+<li><a href="ch-40-performance.html#optimizations">40.7. Оптимизации, которые стоит знать</a></li>
+<li><a href="ch-40-performance.html#mistakes">40.8. Типичные ошибки</a></li>
+<li><a href="ch-40-performance.html#упражнения">40.9. Упражнения</a></li>
+<li><a href="ch-40-performance.html#check">40.10. Проверка понимания</a></li>
+<li><a href="ch-40-performance.html#links">40.11. Связи</a></li>
+</ol></details></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 7. Практическая разработка</span><span class="sep">›</span><span>Глава 40</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Практическая разработка · глава 40</p>
+<h1 id="производительность-и-профилирование">Производительность и профилирование</h1>
+<p class="chapter-summary">Как измерять, где узкие места, какие оптимизации оправданы.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#что-вы-сможете-после-этой-главы"><span class="toc-number">40.1</span> Что вы сможете после этой главы</a></li>
+<li class="level-2"><a href="#measure-first"><span class="toc-number">40.2</span> Сначала измерение, потом изменение</a></li>
+<li class="level-2"><a href="#complexity"><span class="toc-number">40.3</span> Алгоритмическая сложность</a></li>
+<li class="level-2"><a href="#profiling"><span class="toc-number">40.4</span> Профилирование</a></li>
+<li class="level-2"><a href="#bottleneck"><span class="toc-number">40.5</span> Узкое место</a></li>
+<li class="level-2"><a href="#memoization"><span class="toc-number">40.6</span> Мемоизация</a></li>
+<li class="level-2"><a href="#optimizations"><span class="toc-number">40.7</span> Оптимизации, которые стоит знать</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">40.8</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">40.9</span> Упражнения</a></li>
+<li class="level-2"><a href="#check"><span class="toc-number">40.10</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#links"><span class="toc-number">40.11</span> Связи</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#углубление-как-измерять-не-обманывая-себя">Углубление: как измерять, не обманывая себя</a></li>
+<li class="level-3"><a href="#углубление-сложность-в-среднем-и-в-худшем-случае">Углубление: сложность в среднем и в худшем случае</a></li>
+<li class="level-3"><a href="#как-читать-профиль">Как читать профиль</a></li>
+<li class="level-3"><a href="#углубление-у-кэша-есть-цена">Углубление: у кэша есть цена</a></li>
+<li class="level-3"><a href="#углубление-что-показывает-perf_counter">Углубление: что показывает `perf_counter`</a></li>
+<li class="level-3"><a href="#ex-ch40-01">1. Замер или догадка</a></li>
+<li class="level-3"><a href="#ex-ch40-02">2. Сложность на счётчиках</a></li>
+<li class="level-3"><a href="#ex-ch40-03">3. Исправление бенчмарка</a></li>
+<li class="level-3"><a href="#ex-ch40-04">4. Чтение профиля</a></li>
+<li class="level-3"><a href="#ex-ch40-05">5. Мемоизация своими руками</a></li>
+<li class="level-3"><a href="#ex-ch40-06">6. Хешируемость аргументов</a></li>
+<li class="level-3"><a href="#ex-ch40-07">7. Кэш с ограничением</a></li>
+<li class="level-3"><a href="#ex-ch40-08">8. Узкое место</a></li>
+<li class="level-3"><a href="#ex-ch40-09">9. Сложность в среднем</a></li>
+<li class="level-3"><a href="#ex-ch40-10">10. Мини-задача: ускорение отчёта</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>Программа работает правильно, но слишком медленно. Первое желание —
+переписать «подозрительное» место, второе — добавить кэш, третье — заменить
+цикл на включение. Обычно все три шага делают код сложнее, а время работы не
+меняют: настоящая причина в другом участке. Эта глава о том, как перестать
+угадывать. Вы научитесь измерять, строить профиль, находить узкое место и
+проверять, что изменение действительно помогло.</p>
+<h2 id="что-вы-сможете-после-этой-главы"><span class="h-number">40.1</span> Что вы сможете после этой главы</h2>
+<ul>
+<li>отличать измерение от догадки и проводить бенчмарк, которому можно верить;</li>
+<li>оценивать алгоритмическую сложность и замечать, когда дело не в коде, а в
+самом алгоритме;</li>
+<li>снимать профиль через <code>cProfile</code> и читать его без иллюзий;</li>
+<li>находить узкое место и проверять результат оптимизации повторным замером;</li>
+<li>применять мемоизацию и понимать, когда она вредит.</li>
+</ul>
+<h2 id="measure-first"><span class="h-number">40.2</span> Сначала измерение, потом изменение</h2>
+<p>Дональд Кнут писал, что преждевременная оптимизация — корень всех зол. Смысл
+не в том, что оптимизировать не нужно, а в том, что <strong>нельзя оптимизировать
+то, что вы не измерили</strong>. Интуиция о скорости кода систематически ошибается:
+дорогими оказываются не те строки, которые выглядят сложными, а те, которые
+выполняются миллионы раз, или те, что прячут за собой ожидание.</p>
+<p>Есть три величины, которые легко перепутать.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Величина</th>
+<th>Что показывает</th>
+<th>Когда важна</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>время работы (wall time)</td>
+<td>сколько прошло по часам</td>
+<td>для пользователя и таймаутов</td>
+</tr>
+<tr>
+<td>процессорное время</td>
+<td>сколько процессор работал</td>
+<td>для вычислений</td>
+</tr>
+<tr>
+<td>число операций</td>
+<td>сколько работы сделал алгоритм</td>
+<td>для оценки сложности</td>
+</tr>
+</tbody>
+</table>
+</div><p>Если программа ждёт сеть, время работы большое, а процессорное — маленькое.
+Ускорять вычисления в такой программе бессмысленно. И наоборот: если время
+работы растёт квадратично от размера данных, никакая микрооптимизация цикла
+не спасёт.</p>
+<p><strong>Бенчмарк</strong> — воспроизводимое измерение производительности по строго
+заданному сценарию: те же данные, те же условия, несколько повторов.
+Измерение «один раз в интерактивной сессии» — не бенчмарк: на
+результат влияют прогрев, фоновые процессы и состояние кэшей.</p>
+<p>Для коротких фрагментов в стандартной библиотеке есть <strong><code>timeit</code></strong> — модуль и
+одноимённая команда, которые многократно запускают код и возвращают лучшее
+время. Многократный запуск нужен, чтобы шум измерения не перекрыл разницу.
+Вот типичный сеанс; числа на вашей машине будут другими, важны порядки
+величин:</p>
+<pre class="text"><code>$ python3 -m timeit -s &quot;data = list(range(1000))&quot; &quot;999 in data&quot;
+100000 loops, best of 5: 2.89 usec per loop
+$ python3 -m timeit -s &quot;data = set(range(1000))&quot; &quot;999 in data&quot;
+10000000 loops, best of 5: 21.7 nsec per loop
+</code></pre>
+<p>Разница в сто с лишним раз объясняется не тем, что «множества быстрее
+списков», а тем, что у них разная сложность поиска: список просматривает
+элементы по одному, множество вычисляет хеш и обращается к таблице.</p>
+<h3 id="углубление-как-измерять-не-обманывая-себя">Углубление: как измерять, не обманывая себя</h3>
+<p>Пять правил, без которых бенчмарк врёт.</p>
+<ol>
+<li><strong>Измеряйте то, что оптимизируете.</strong> Замер, включающий подготовку данных,
+покажет разницу в подготовке, а не в работе.</li>
+<li><strong>Повторяйте.</strong> Один замер — это шум. Команда <code>python -m timeit</code> по
+умолчанию делает пять раундов и печатает лучший: такой результат меньше
+всего искажён помехами. В коде для этого вызывают <code>timeit.repeat</code> и берут
+<code>min</code>, потому что сам <code>timeit.timeit</code> выполняет один раунд.</li>
+<li><strong>Не смешивайте ожидание и вычисления.</strong> Ввод-вывод измеряют отдельно от
+расчётов.</li>
+<li><strong>Проверяйте одинаковость условий.</strong> Разные данные, разный прогрев,
+включённый отладчик или профилировщик меняют результат.</li>
+<li><strong>Сравнивайте с базовой линией.</strong> Оптимизация измеряется как отношение:
+было столько, стало столько, при тех же входных данных.</li>
+</ol>
+<h2 id="complexity"><span class="h-number">40.3</span> Алгоритмическая сложность</h2>
+<p><strong>Алгоритмическая сложность</strong> — оценка того, как растёт объём работы
+алгоритма при увеличении размера входа. Её записывают в O-нотации: <code>O(n)</code>
+означает, что число операций растёт пропорционально <code>n</code>, <code>O(n ** 2)</code> — что
+оно растёт как квадрат <code>n</code>. Константы и слагаемые низшего порядка при этом
+отбрасывают: они важны на малых размерах, но проигрывают росту.</p>
+<p>Посмотрите на разницу между линейным и двоичным поиском. Оба находят элемент
+в отсортированном списке, но один просматривает элементы подряд, а второй
+каждый раз отбрасывает половину.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">linear_search</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+    <span class="n">steps</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+        <span class="n">steps</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">item</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">index</span><span class="p">,</span> <span class="n">steps</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">steps</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">binary_search</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+    <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">steps</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">low</span> <span class="o">&lt;=</span> <span class="n">high</span><span class="p">:</span>
+        <span class="n">steps</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">middle</span> <span class="o">=</span> <span class="p">(</span><span class="n">low</span> <span class="o">+</span> <span class="n">high</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="k">if</span> <span class="n">items</span><span class="p">[</span><span class="n">middle</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">middle</span><span class="p">,</span> <span class="n">steps</span>
+        <span class="k">if</span> <span class="n">items</span><span class="p">[</span><span class="n">middle</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">target</span><span class="p">:</span>
+            <span class="n">low</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">high</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">steps</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"линейный поиск:"</span><span class="p">,</span> <span class="n">linear_search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mi">999</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"двоичный поиск:"</span><span class="p">,</span> <span class="n">binary_search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mi">999</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>линейный поиск: (999, 1000)
+двоичный поиск: (999, 10)
+</code></pre>
+<p>Линейный поиск сделал <code>1000</code> шагов, двоичный — <code>10</code>. Десять — это примерно
+<code>log2(1000)</code>: каждый шаг уменьшает область поиска вдвое. На тысяче элементов
+разница примерно в сто раз (<code>1000</code> шагов против <code>10</code>), а на миллионе — уже
+примерно в пятьдесят тысяч раз (<code>10**6</code> против <code>20</code>): <code>O(n)</code> против
+<code>O(log n)</code>.</p>
+<p><figure class="figure"><img src="illustrations/ch-40-complexity.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Частые классы сложности, от лучшего к худшему:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Сложность</th>
+<th>Пример операции</th>
+<th>Рост при <code>n</code> от 1000 до 2000</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>O(1)</code></td>
+<td>доступ по индексу, поиск в множестве</td>
+<td>не меняется</td>
+</tr>
+<tr>
+<td><code>O(log n)</code></td>
+<td>двоичный поиск, <code>bisect</code></td>
+<td>+1 шаг</td>
+</tr>
+<tr>
+<td><code>O(n)</code></td>
+<td>обход списка, суммирование</td>
+<td>вдвое больше работы</td>
+</tr>
+<tr>
+<td><code>O(n log n)</code></td>
+<td>сортировка слиянием, <code>sorted</code></td>
+<td>чуть больше, чем вдвое</td>
+</tr>
+<tr>
+<td><code>O(n ** 2)</code></td>
+<td>вложенный цикл по всем парам</td>
+<td>вчетверо больше работы</td>
+</tr>
+</tbody>
+</table>
+</div><p>Из таблицы следует практический вывод: <strong>смена алгоритма с <code>O(n ** 2)</code> на
+<code>O(n log n)</code> даёт больше, чем любая оптимизация констант внутри цикла</strong>. Зато
+на малых данных, где <code>n</code> равно десяти, квадратичный алгоритм вполне может
+оказаться быстрее: у него меньше накладных расходов. Сложность описывает
+рост, а не абсолютную скорость.</p>
+<h3 id="углубление-сложность-в-среднем-и-в-худшем-случае">Углубление: сложность в среднем и в худшем случае</h3>
+<p>Поиск в множестве и словаре в среднем требует <code>O(1)</code>, но в худшем случае при
+плохом хешировании вырождается в <code>O(n)</code>. Для встроенных типов с нормальными
+хешами это редкость, но для своих классов, у которых <code>__hash__</code> возвращает
+константу, — реальность. Поэтому при оценке производительности уточняйте, о
+каком случае идёт речь.</p>
+<h2 id="profiling"><span class="h-number">40.4</span> Профилирование</h2>
+<p><strong>Профилирование</strong> — измерение того, сколько времени и вызовов приходится на
+каждую функцию программы. Профиль отвечает на вопрос «где именно уходит
+время», а не «почему программа медленная вообще».</p>
+<p>Стандартная библиотека даёт два инструмента: <code>cProfile</code> и <code>profile</code>.
+<code>cProfile</code> — обёртка над профилировщиком <code>_lsprof</code>, написанным на C, поэтому
+накладные расходы у него ниже; для повседневной работы хватает его. <code>profile</code> —
+реализация на чистом Python: медленнее, зато её проще читать и расширять. Оба
+строят <strong>детерминированный</strong> профиль: подсчёт по вызовам, а не выборка по
+таймеру.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">cProfile</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="k">else</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">build</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">fib</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+
+<span class="n">profiler</span> <span class="o">=</span> <span class="n">cProfile</span><span class="o">.</span><span class="n">Profile</span><span class="p">()</span>
+<span class="n">profiler</span><span class="o">.</span><span class="n">enable</span><span class="p">()</span>
+<span class="n">build</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">profiler</span><span class="o">.</span><span class="n">disable</span><span class="p">()</span>
+
+<span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">profiler</span><span class="o">.</span><span class="n">getstats</span><span class="p">():</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">entry</span><span class="o">.</span><span class="n">code</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">continue</span>
+    <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">entry</span><span class="o">.</span><span class="n">code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">entry</span><span class="o">.</span><span class="n">callcount</span><span class="p">))</span>
+<span class="n">rows</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>build 1
+fib 276
+</code></pre>
+<p>Здесь нет случайности: профиль показывает точные счётчики. <code>build</code> вызвана
+один раз, <code>fib</code> — 276 раз. Именно такие числа, а не время, позволяют увидеть
+структуру работы. Время в профиле тоже есть, но его не стоит печатать в
+примере: оно зависит от машины.</p>
+<p><code>pstats</code> форматирует профиль в таблицу. Её столбцы: число вызовов, суммарное
+время в функции (<code>tottime</code>), время с учётом вызываемых функций (<code>cumtime</code>) и
+адрес определения функции.</p>
+<pre class="text"><code>$ python3 -m cProfile -s cumulative fib.py
+         280 function calls (14 primitive calls) in 0.001 seconds
+
+   Ordered by: cumulative time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.001    0.001 fib.py:6(build)
+   276/10    0.000    0.000    0.001    0.000 fib.py:3(fib)
+</code></pre>
+<p>Запись <code>276/10</code> означает: функция <code>fib</code> вызвана 276 раз, из них 10 — не
+рекурсивно. Большое число вызовов маленькой функции — сигнал: алгоритм
+пересчитывает одно и то же. Здесь напрашивается мемоизация.</p>
+<h3 id="как-читать-профиль">Как читать профиль</h3>
+<ol>
+<li><strong>Смотрите на <code>cumtime</code>, чтобы найти цепочку</strong> — время, включающее
+вызванные функции.</li>
+<li><strong>Смотрите на <code>tottime</code>, чтобы найти точку</strong> — время, потраченное в самой
+функции, без вызовов.</li>
+<li><strong>Смотрите на <code>ncalls</code></strong> — часто проблема не в одной медленной операции, а
+в миллионе быстрых.</li>
+<li><strong>Не оптимизируйте функции, которые не попали в верх таблицы.</strong> 80 %
+времени обычно приносит небольшая часть кода.</li>
+</ol>
+<h2 id="bottleneck"><span class="h-number">40.5</span> Узкое место</h2>
+<p><strong>Узкое место</strong> — участок, который ограничивает общую производительность:
+пока он не ускорен, оптимизация остального не даёт заметного эффекта. Это
+следует из закона Амдала: если на участок приходится половина времени,
+максимальное ускорение всей программы от его устранения — вдвое, сколько бы
+остального вы ни оптимизировали.</p>
+<p><figure class="figure"><img src="illustrations/ch-40-measure-loop.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p>Работа над производительностью — цикл, а не одноразовое действие:</p>
+<ol>
+<li><strong>Измерить.</strong> Зафиксировать базовую линию: данные, сценарий, время.</li>
+<li><strong>Профилировать.</strong> Понять, какие функции потребляют время и сколько раз
+вызываются.</li>
+<li><strong>Сформулировать гипотезу.</strong> «Время уходит на повторные вычисления
+<code>fib</code>» — конкретное утверждение, которое можно проверить.</li>
+<li><strong>Изменить одну вещь.</strong> Если менять сразу несколько, невозможно понять,
+что помогло, а что навредило.</li>
+<li><strong>Измерить снова.</strong> Сравнить с базовой линией на тех же данных.</li>
+</ol>
+<p>Шаг 5 пропускают чаще всего, и именно поэтому многие «оптимизации» живут в
+коде годами, не ускоряя ничего.</p>
+<h2 id="memoization"><span class="h-number">40.6</span> Мемоизация</h2>
+<p><strong>Мемоизация</strong> — кэширование результатов функции по её аргументам: если
+функцию вызвали с теми же аргументами повторно, результат берётся из кэша, а
+не вычисляется заново. Это обмен памяти на время, и он оправдан, если
+функция чистая — при одинаковых аргументах всегда возвращает одно и то же —
+и вызывается повторно.</p>
+<p>В стандартной библиотеке для этого есть <code>functools.lru_cache</code> и его короткая
+форма <code>functools.cache</code> (Python 3.9+).</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">lru_cache</span>
+
+<span class="n">calls</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">fib_slow</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">calls</span>
+    <span class="n">calls</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="k">else</span> <span class="n">fib_slow</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib_slow</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"без кэша:"</span><span class="p">,</span> <span class="n">fib_slow</span><span class="p">(</span><span class="mi">15</span><span class="p">),</span> <span class="s2">"вызовов:"</span><span class="p">,</span> <span class="n">calls</span><span class="p">)</span>
+
+<span class="nd">@lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">fib_fast</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="k">else</span> <span class="n">fib_fast</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib_fast</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"с кэшем:"</span><span class="p">,</span> <span class="n">fib_fast</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fib_fast</span><span class="o">.</span><span class="n">cache_info</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>без кэша: 610 вызовов: 1973
+с кэшем: 610
+CacheInfo(hits=13, misses=16, maxsize=None, currsize=16)
+</code></pre>
+<p>Без кэша <code>fib(15)</code> вызвана 1973 раза, потому что одни и те же значения
+пересчитываются заново. С кэшем достаточно 16 вычислений: остальные 13
+обращений попали в кэш. <code>cache_info</code> показывает попадания (<code>hits</code>),
+промахи (<code>misses</code>) и текущий размер кэша (<code>currsize</code>). Это готовый счётчик
+эффективности: если попаданий почти нет, кэш только тратит память.</p>
+<h3 id="углубление-у-кэша-есть-цена">Углубление: у кэша есть цена</h3>
+<p><code>lru_cache</code> хранит результаты, пока не достигнут <code>maxsize</code>; при переполнении
+вытесняется давно не использованная запись. Видно, как это работает, если
+поставить маленький размер.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">lru_cache</span>
+
+<span class="nd">@lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">square</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"вычисляем"</span><span class="p">,</span> <span class="n">number</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">number</span> <span class="o">*</span> <span class="n">number</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">square</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">square</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">square</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">square</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">square</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">square</span><span class="o">.</span><span class="n">cache_info</span><span class="p">())</span>
+</code></pre></div>
+<pre class="output"><code>вычисляем 2
+4
+вычисляем 3
+9
+4
+вычисляем 4
+16
+4
+CacheInfo(hits=2, misses=3, maxsize=2, currsize=2)
+</code></pre>
+<p>Пять вызовов, три вычисления, два попадания. Четвёртый вызов вытеснил запись
+для <code>3</code>, поэтому последний вызов <code>square(2)</code> всё ещё попадает в кэш, а
+<code>square(3)</code> пришлось бы считать заново. Размер кэша — компромисс между
+памятью и долей попаданий.</p>
+<p>Три ограничения мемоизации, о которых забывают:</p>
+<ol>
+<li><strong>Аргументы должны быть хешируемыми.</strong> Список или словарь в аргументах
+даст <code>TypeError</code>, потому что кэш устроен как словарь.</li>
+<li><strong>Функция должна быть чистой.</strong> Если результат зависит от внешнего
+состояния, кэш вернёт устаревшее значение.</li>
+<li><strong>Кэш занимает память.</strong> Для функции с миллионом разных аргументов
+<code>maxsize=None</code> — это утечка памяти, замаскированная оптимизацией.</li>
+</ol>
+<div class="highlight exec expect-error"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">lru_cache</span>
+
+<span class="nd">@lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">total</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+</code></pre></div>
+<pre class="output"><code>TypeError: unhashable type: &#x27;list&#x27;
+</code></pre>
+<p>С кортежем тот же код работает: кортеж хешируем, в отличие от списка.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">lru_cache</span>
+
+<span class="nd">@lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">total</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span>
+</code></pre></div>
+<pre class="output"><code>6
+</code></pre>
+<h2 id="optimizations"><span class="h-number">40.7</span> Оптимизации, которые стоит знать</h2>
+<p>Микрооптимизации редко решают судьбу программы, но несколько приёмов полезно
+узнавать в профиле.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Приём</th>
+<th>Почему работает</th>
+<th>Когда не помогает</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>множество или словарь вместо списка для проверки вхождения</td>
+<td>поиск <code>O(1)</code> вместо <code>O(n)</code></td>
+<td>если элементов мало и список уже построен</td>
+</tr>
+<tr>
+<td><code>str.join</code> вместо <code>+=</code> в цикле</td>
+<td>одна аллокация вместо многих</td>
+<td>если строк две</td>
+</tr>
+<tr>
+<td>списковое включение вместо <code>append</code> в цикле</td>
+<td>меньше накладных расходов Python</td>
+<td>если внутри сложная логика</td>
+</tr>
+<tr>
+<td>локальная переменная вместо глобальной</td>
+<td>короче поиск имени</td>
+<td>если функция вызывается один раз</td>
+</tr>
+<tr>
+<td>вынести повторное вычисление из цикла</td>
+<td>не делать одну и ту же работу</td>
+<td>если вычисление уже кэшировано</td>
+</tr>
+</tbody>
+</table>
+</div><p>Проверять каждый приём нужно замером: выигрыш зависит от версии Python,
+размера данных и того, где находится узкое место. Списковое включение из
+главы 23 обычно быстрее цикла с <code>append</code>, но не в сто раз — и это не повод
+переписывать весь код.</p>
+<h3 id="углубление-что-показывает-perf_counter">Углубление: что показывает <code>perf_counter</code></h3>
+<p>Для грубого замера в коде есть <code>time.perf_counter</code> — счётчик с наибольшим
+доступным разрешением. Печатать его значение бессмысленно: оно зависит от
+машины и момента запуска. Печатать имеет смысл только проверяемое
+утверждение о результате измерения.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">perf_counter</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">work</span><span class="p">(</span><span class="n">limit</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">limit</span><span class="p">))</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">perf_counter</span><span class="p">()</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">work</span><span class="p">(</span><span class="mi">100_000</span><span class="p">)</span>
+<span class="n">elapsed</span> <span class="o">=</span> <span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"результат:"</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"измерение неотрицательно:"</span><span class="p">,</span> <span class="n">elapsed</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>результат: 4999950000
+измерение неотрицательно: True
+</code></pre>
+<p>В учебном примере мы печатаем только инвариант — измеренное время не может
+быть отрицательным. В реальном бенчмарке время печатают, но всегда вместе с
+условиями: размер данных, число повторов, версия Python.</p>
+<h2 id="mistakes"><span class="h-number">40.8</span> Типичные ошибки</h2>
+<ol>
+<li><strong>Оптимизировать без замера.</strong> «Мне кажется, это место медленное» — не
+основание для изменения. Сначала профиль.</li>
+<li><strong>Мерить один раз.</strong> Один замер ловит шум, а не свойство программы.</li>
+<li><strong>Включать подготовку в замер.</strong> Создание данных в измеряемом блоке
+покажет время создания, а не работы.</li>
+<li><strong>Путать сложность с константой.</strong> Быстрый <code>O(n ** 2)</code> на десяти элементах
+не значит, что он останется быстрым на миллионе.</li>
+<li><strong>Кэшировать всё.</strong> Мемоизация функции с побочными эффектами или большим
+разнообразием аргументов вредит: память растёт, попаданий нет.</li>
+<li><strong>Оптимизировать холодный код.</strong> Функция, которая вызывается один раз при
+запуске, не влияет на общую скорость.</li>
+<li><strong>Забыть про повторный замер.</strong> Без сравнения с базовой линией
+«оптимизация» остаётся верой.</li>
+</ol>
+<h2 id="упражнения"><span class="h-number">40.9</span> Упражнения</h2>
+<h3 id="ex-ch40-01">1. Замер или догадка</h3>
+<p>Возьмите любую функцию из своих прошлых упражнений и ответьте письменно:
+какой сценарий вы измеряете, какие данные подаёте, сколько повторов делаете и
+с какой базовой линией сравниваете. Объясните, почему замер «один раз,
+в интерактивной сессии» не годится.</p>
+<h3 id="ex-ch40-02">2. Сложность на счётчиках</h3>
+<p>Напишите две функции поиска максимума: одну с сортировкой и взятием
+последнего элемента, вторую с одним проходом по списку. Обе возвращают
+найденный максимум и число выполненных шагов. Сравните шаги на списке из
+1000 элементов и объясните результат в терминах сложности.</p>
+<h3 id="ex-ch40-03">3. Исправление бенчмарка</h3>
+<p>Бенчмарк показывает, что «функция стала быстрее», хотя код не менялся:</p>
+<pre class="text"><code>start = time.perf_counter()
+data = build_data(100000)
+result = process(data)
+print(time.perf_counter() - start)
+</code></pre>
+<p>Что измеряет этот код на самом деле? Перепишите замер так, чтобы он измерял
+только <code>process</code>.</p>
+<h3 id="ex-ch40-04">4. Чтение профиля</h3>
+<p>Профиль показывает: функция <code>parse</code> вызвана 2 раза, <code>validate</code> — 500 000 раз,
+<code>render</code> — 2 раза. Суммарное время <code>parse</code> и <code>render</code> — 0.4 с, <code>validate</code> —
+0.1 с. Какой участок стоит оптимизировать в первую очередь и почему одного
+<code>tottime</code> для ответа недостаточно?</p>
+<h3 id="ex-ch40-05">5. Мемоизация своими руками</h3>
+<p>Реализуйте мемоизацию без <code>functools</code>: функция <code>memo_fib(n)</code> хранит
+вычисленные значения в словаре и возвращает их при повторном вызове.
+Выведите число фактических вычислений для <code>n = 15</code>.</p>
+<h3 id="ex-ch40-06">6. Хешируемость аргументов</h3>
+<p>Функция кэшируется через <code>lru_cache</code>, но при вызове со списком падает с
+<code>TypeError</code>. Объясните причину и предложите два исправления: преобразование
+аргумента и отказ от кэша для этого случая.</p>
+<h3 id="ex-ch40-07">7. Кэш с ограничением</h3>
+<p>Создайте кэширующую функцию с <code>maxsize=3</code> и вызовите её с пятью разными
+аргументами, затем повторите первые два вызова. Выведите <code>cache_info</code> и
+объясните, сколько было попаданий и почему.</p>
+<h3 id="ex-ch40-08">8. Узкое место</h3>
+<p>Программа тратит 0.6 с на чтение файла, 0.3 с на разбор данных и 0.1 с на
+вывод. Вы вдвое ускорили разбор. Насколько ускорится программа целиком?
+Ответьте числом и объясните через закон Амдала.</p>
+<h3 id="ex-ch40-09">9. Сложность в среднем</h3>
+<p>Объясните, почему поиск в множестве в среднем <code>O(1)</code>, но может деградировать
+до <code>O(n)</code>. Приведите пример класса, у которого это произойдёт, и напишите
+такой класс, проверив, что <code>hash()</code> у всех экземпляров одинаков, а число
+сравнений при вставке растёт квадратично.</p>
+<h3 id="ex-ch40-10">10. Мини-задача: ускорение отчёта</h3>
+<p>Дана функция, которая для списка чисел строит отчёт: сумму, минимум,
+максимум и количество уникальных значений. Напишите её наивную версию
+(несколько проходов по списку, проверка уникальности через список) и
+оптимизированную (один проход, множество). Сравните число операций на списке
+из 2000 чисел и объясните, какой алгоритм асимптотически лучше.</p>
+<h2 id="check"><span class="h-number">40.10</span> Проверка понимания</h2>
+<ol>
+<li>Чем бенчмарк отличается от однократного замера?</li>
+<li>Почему <code>python -m timeit</code> делает несколько повторов и берёт лучшее время?</li>
+<li>Что означает запись <code>O(n log n)</code> и почему она лучше <code>O(n ** 2)</code>?</li>
+<li>Что показывает <code>tottime</code>, а что <code>cumtime</code>?</li>
+<li>Как по профилю понять, что проблема в количестве вызовов, а не в одной
+медленной операции?</li>
+<li>Что такое узкое место и почему без него оптимизация остального бесполезна?</li>
+<li>В каких случаях мемоизация ухудшает программу?</li>
+<li>Почему аргументы кэшируемой функции должны быть хешируемыми?</li>
+</ol>
+<h2 id="links"><span class="h-number">40.11</span> Связи</h2>
+<p>Подробный разбор O-нотации и выбора структур данных — в главе 52.</p>
+<p>Оценка алгоритмов вводится здесь впервые. Генераторы, включения и декораторы
+из глав 21–23 нужны потому, что <code>lru_cache</code> — декоратор, а кэш устроен как
+словарь из главы 17. Модель конкурентности из главы 38 и главы 39
+объясняет, почему ожидание и вычисления измеряют по-разному.</p>
+<p>Дальше — <a href="ch-41-security.html">безопасность приложений</a>: производительность важна,
+но не ценой уязвимостей. Там мы разберём, как не открыть дверь, ускоряя код.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-39-asyncio.html"><span class="pager-label">← Назад</span><span class="pager-title">Асинхронность: asyncio</span></a><a class="pager-card next" rel="next" href="ch-41-security.html"><span class="pager-label">Далее:</span><span class="pager-title">Безопасность приложений</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+# Провенанс главы 10 «Ошибки и исключения».
+- source: src-trekhleb-learn-python
+  file: src/control_flow/test_try.py
+  commit: 5e4fad5903ce5a76cc1f90838d69a220968e1494
+  license: MIT
+  change: translated
+  blocks: ["#try-else-order:1-4"]
+  note: >-
+    Пример поведения try/except/else/finally переработан в объяснение на
+    русском языке: код переписан в исполняемом виде, добавлены таблица
+    порядка выполнения и разбор типичной ошибки (код в else не защищён
+    блоком try).

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" role="img"
+     aria-labelledby="ttl22c desc22c" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl22c">Функция первого класса: объект-функция и четыре способа её использовать</title>
+  <desc id="desc22c">Функция в Python — объект. Один и тот же объект-функцию можно связать с другим именем, положить в словарь, передать аргументом в функцию высшего порядка и вернуть из другой функции. Во всех случаях это одна и та же функция.</desc>
+
+  <text x="32" y="34" font-size="17" font-weight="bold" fill="#1d3550">Функция — объект: четыре способа её использовать</text>
+
+  <rect x="276" y="150" width="208" height="92" rx="12" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2.5"/>
+  <text x="380" y="180" text-anchor="middle" font-size="15" font-weight="bold" fill="#4b3a16">объект-функция</text>
+  <text x="380" y="204" text-anchor="middle" font-size="13" fill="#4b3a16" font-family="'DejaVu Sans Mono', monospace">def greet(name)</text>
+  <text x="380" y="226" text-anchor="middle" font-size="11" fill="#6b5a34">тип function, вызываема</text>
+
+  <!-- способ 1 -->
+  <rect x="28" y="58" width="222" height="66" rx="9" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="139" y="82" text-anchor="middle" font-size="12" font-weight="bold" fill="#1d3550">связать с именем</text>
+  <text x="139" y="104" text-anchor="middle" font-size="11" fill="#33557a" font-family="'DejaVu Sans Mono', monospace">reference = greet</text>
+  <line x1="196" y1="124" x2="310" y2="150" stroke="#33557a" stroke-width="2"/>
+  <polygon points="310,150 297,149 302,139" fill="#33557a"/>
+
+  <!-- способ 2 -->
+  <rect x="510" y="58" width="222" height="66" rx="9" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="621" y="82" text-anchor="middle" font-size="12" font-weight="bold" fill="#1d3550">положить в словарь</text>
+  <text x="621" y="104" text-anchor="middle" font-size="11" fill="#33557a" font-family="'DejaVu Sans Mono', monospace">actions["x"] = greet</text>
+  <line x1="564" y1="124" x2="450" y2="150" stroke="#33557a" stroke-width="2"/>
+  <polygon points="450,150 458,139 463,149" fill="#33557a"/>
+
+  <!-- способ 3 -->
+  <rect x="28" y="266" width="222" height="66" rx="9" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="139" y="290" text-anchor="middle" font-size="12" font-weight="bold" fill="#1d3550">передать аргументом</text>
+  <text x="139" y="312" text-anchor="middle" font-size="11" fill="#33557a" font-family="'DejaVu Sans Mono', monospace">apply(greet, value)</text>
+  <line x1="196" y1="266" x2="310" y2="242" stroke="#33557a" stroke-width="2"/>
+  <polygon points="310,242 302,252 298,241" fill="#33557a"/>
+
+  <!-- способ 4 -->
+  <rect x="510" y="266" width="222" height="66" rx="9" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="621" y="290" text-anchor="middle" font-size="12" font-weight="bold" fill="#1d3550">вернуть из функции</text>
+  <text x="621" y="312" text-anchor="middle" font-size="11" fill="#33557a" font-family="'DejaVu Sans Mono', monospace">return greet</text>
+  <line x1="564" y1="266" x2="450" y2="242" stroke="#33557a" stroke-width="2"/>
+  <polygon points="450,242 463,241 458,252" fill="#33557a"/>
+
+  <text x="32" y="380" font-size="12" fill="#5a6b7d">Во всех четырёх случаях создаётся не копия функции, а ещё одна ссылка на тот же объект:</text>
+  <text x="32" y="400" font-size="12" fill="#5a6b7d">сравнение identity через «is» подтвердит, что это одна и та же функция.</text>
+</svg>

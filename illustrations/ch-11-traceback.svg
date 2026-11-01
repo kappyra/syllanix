@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" role="img"
+     aria-labelledby="ttl11a desc11a" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl11a">Как читать трассировку: отчёт, кадры и сообщение</title>
+  <desc id="desc11a">Слева пример отчёта об ошибке из трёх кадров, справа три пояснения. Внизу отчёта тип исключения и сообщение: ZeroDivisionError, division by zero. Последний кадр перед сообщением указывает место сбоя: функция ratio, строка 4. Кадры выше показывают, кто вызвал функцию: report, затем код модуля. Читать отчёт удобно с двух концов: снизу узнаём, что случилось, по последнему кадру — где.</desc>
+
+  <text x="20" y="34" font-size="17" font-weight="bold" fill="#1d3550">Как читать трассировку</text>
+
+  <!-- панель с отчётом -->
+  <rect x="20" y="58" width="470" height="286" rx="8" fill="#f7f7f2" stroke="#b9b3a5" stroke-width="2"/>
+  <text x="36" y="86" font-size="13" fill="#1d3550" font-family="monospace">Traceback (most recent call last):</text>
+  <text x="36" y="114" font-size="13" fill="#33557a" font-family="monospace">  File "report.py", line 10, in &lt;module&gt;</text>
+  <text x="36" y="136" font-size="13" fill="#33557a" font-family="monospace">    report(10, 0)</text>
+  <text x="36" y="166" font-size="13" fill="#33557a" font-family="monospace">  File "report.py", line 7, in report</text>
+  <text x="36" y="188" font-size="13" fill="#33557a" font-family="monospace">    return f"среднее: {ratio(total, count)}"</text>
+  <text x="36" y="218" font-size="13" fill="#33557a" font-family="monospace">  File "report.py", line 4, in ratio</text>
+  <text x="36" y="240" font-size="13" fill="#33557a" font-family="monospace">    return total / count</text>
+  <text x="36" y="286" font-size="13" font-weight="bold" fill="#8a2b2b" font-family="monospace">ZeroDivisionError: division by zero</text>
+  <line x1="36" y1="302" x2="470" y2="302" stroke="#c9c2b4" stroke-width="1.5"/>
+
+  <!-- пояснения -->
+  <rect x="510" y="70" width="270" height="86" rx="8" fill="#fdf1f1" stroke="#8a2b2b" stroke-width="2"/>
+  <text x="524" y="94" font-size="14" font-weight="bold" fill="#8a2b2b">1. Что случилось</text>
+  <text x="524" y="116" font-size="12" fill="#4b3a36">Снизу: тип исключения</text>
+  <text x="524" y="134" font-size="12" fill="#4b3a36">и текст сообщения.</text>
+
+  <rect x="510" y="172" width="270" height="86" rx="8" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="524" y="196" font-size="14" font-weight="bold" fill="#1d3550">2. Где произошёл сбой</text>
+  <text x="524" y="218" font-size="12" fill="#33557a">Последний кадр: функция ratio,</text>
+  <text x="524" y="236" font-size="12" fill="#33557a">строка 4 — деление на ноль.</text>
+
+  <rect x="510" y="274" width="270" height="86" rx="8" fill="#eaf3ea" stroke="#3c6b47" stroke-width="2"/>
+  <text x="524" y="298" font-size="14" font-weight="bold" fill="#254a2d">3. Кто вызвал</text>
+  <text x="524" y="320" font-size="12" fill="#254a2d">Кадры выше: report, затем</text>
+  <text x="524" y="338" font-size="12" fill="#254a2d">код модуля (&lt;module&gt;).</text>
+
+  <text x="20" y="382" font-size="13" fill="#4b3a16">«Most recent call last» значит: последний вызов — в конце отчёта.</text>
+  <text x="20" y="404" font-size="13" fill="#4b3a16">Номера строк и имя файла берутся из конкретного запуска программы.</text>
+</svg>

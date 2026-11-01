@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Данные: SQLite, SQL и сериализация — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><a href="ch-03-values-names-objects.html">03. Значения, имена, объекты и типы</a></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details open><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-36-data-storage.html" aria-current="page">36. Данные: SQLite, SQL и сериализация</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-36-data-storage.html#что-вы-сможете-после-этой-главы">36.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-36-data-storage.html#tables">36.2. Таблицы и SQL</a></li>
+<li><a href="ch-36-data-storage.html#sqlite">36.3. sqlite3: встроенная база</a></li>
+<li><a href="ch-36-data-storage.html#injection">36.4. Параметризованные запросы</a></li>
+<li><a href="ch-36-data-storage.html#transactions">36.5. Транзакции</a></li>
+<li><a href="ch-36-data-storage.html#serialization">36.6. Сериализация: JSON и CSV</a></li>
+<li><a href="ch-36-data-storage.html#when-not-db">36.7. Когда база не нужна</a></li>
+<li><a href="ch-36-data-storage.html#orm">36.8. ORM</a></li>
+<li><a href="ch-36-data-storage.html#mistakes">36.9. Типичные ошибки</a></li>
+<li><a href="ch-36-data-storage.html#упражнения">36.10. Упражнения</a></li>
+<li><a href="ch-36-data-storage.html#проверка-понимания">36.11. Проверка понимания</a></li>
+<li><a href="ch-36-data-storage.html#что-дальше">36.12. Что дальше</a></li>
+</ol></details></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 7. Практическая разработка</span><span class="sep">›</span><span>Глава 36</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Практическая разработка · глава 36</p>
+<h1 id="данные-sqlite-sql-и-сериализация">Данные: SQLite, SQL и сериализация</h1>
+<p class="chapter-summary">Как хранить структурированные записи в базе, писать запросы, защищаться от инъекций и обмениваться данными через форматы.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#что-вы-сможете-после-этой-главы"><span class="toc-number">36.1</span> Что вы сможете после этой главы</a></li>
+<li class="level-2"><a href="#tables"><span class="toc-number">36.2</span> Таблицы и SQL</a></li>
+<li class="level-2"><a href="#sqlite"><span class="toc-number">36.3</span> sqlite3: встроенная база</a></li>
+<li class="level-2"><a href="#injection"><span class="toc-number">36.4</span> Параметризованные запросы</a></li>
+<li class="level-2"><a href="#transactions"><span class="toc-number">36.5</span> Транзакции</a></li>
+<li class="level-2"><a href="#serialization"><span class="toc-number">36.6</span> Сериализация: JSON и CSV</a></li>
+<li class="level-2"><a href="#when-not-db"><span class="toc-number">36.7</span> Когда база не нужна</a></li>
+<li class="level-2"><a href="#orm"><span class="toc-number">36.8</span> ORM</a></li>
+<li class="level-2"><a href="#mistakes"><span class="toc-number">36.9</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">36.10</span> Упражнения</a></li>
+<li class="level-2"><a href="#проверка-понимания"><span class="toc-number">36.11</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#что-дальше"><span class="toc-number">36.12</span> Что дальше</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#соединение-и-ресурсы">Соединение и ресурсы</a></li>
+<li class="level-3"><a href="#индексы">Индексы</a></li>
+<li class="level-3"><a href="#резервные-копии-и-файл-базы">Резервные копии и файл базы</a></li>
+<li class="level-3"><a href="#ex-ch36-01">1. Первая таблица</a></li>
+<li class="level-3"><a href="#ex-ch36-02">2. Выборка с условием</a></li>
+<li class="level-3"><a href="#ex-ch36-03">3. Обновление и удаление</a></li>
+<li class="level-3"><a href="#ex-ch36-04">4. Откат транзакции</a></li>
+<li class="level-3"><a href="#ex-ch36-05">5. Анализ инъекции</a></li>
+<li class="level-3"><a href="#ex-ch36-06">6. Агрегаты</a></li>
+<li class="level-3"><a href="#ex-ch36-07">7. Связь двух таблиц</a></li>
+<li class="level-3"><a href="#ex-ch36-08">8. JSON в базе</a></li>
+<li class="level-3"><a href="#ex-ch36-09">9. Жизненный цикл соединения</a></li>
+<li class="level-3"><a href="#ex-ch36-10">10. Мини-проект: хранилище заметок</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>Пока данных немного, хватает JSON-файла. Когда записей становятся тысячи,
+появляются вопросы, на которые файл не отвечает: как найти нужную строку, не
+читая всё, как обновить одну запись, не перезаписывая остальные, как
+гарантировать, что связанные изменения применятся вместе. Ответ — база данных.</p>
+<p>Python поставляется со встроенной <strong>SQLite</strong>: полноценной реляционной базой,
+которая хранится в одном файле и не требует отдельного сервера. На ней удобно
+изучать <strong>SQL-запросы</strong>, <strong>транзакции</strong> и защиту от <strong>SQL-инъекций</strong>. А
+<strong>сериализация</strong> в JSON и CSV остаётся нужна для обмена данными между
+программами и для резервных копий.</p>
+<h2 id="что-вы-сможете-после-этой-главы"><span class="h-number">36.1</span> Что вы сможете после этой главы</h2>
+<ul>
+<li>описывать записи таблицей и писать запросы на SQL;</li>
+<li>открывать соединение с базой и выполнять запросы через <code>sqlite3</code>;</li>
+<li>использовать параметризованные запросы и объяснять, почему склейка строк
+опасна;</li>
+<li>применять транзакции и понимать, что происходит при сбое;</li>
+<li>выбирать между базой, JSON и CSV и объяснять разницу;</li>
+<li>представлять, зачем нужен ORM и когда лучше обойтись SQL.</li>
+</ul>
+<h2 id="tables"><span class="h-number">36.2</span> Таблицы и SQL</h2>
+<p>Реляционная база хранит записи в <strong>таблицах</strong>. <strong>Таблица базы данных</strong> —
+именованный набор строк с фиксированным набором столбцов. Каждый столбец
+имеет тип и имя, каждая строка описывает один объект. Для заметок таблица
+может выглядеть так:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>id</th>
+<th>title</th>
+<th>done</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>купить хлеб</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>позвонить</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div><p><code>id</code> — первичный ключ: значение, которое однозначно определяет строку. В
+SQLite целочисленный первичный ключ умеет заполняться автоматически.
+<code>done</code> хранится числом <code>0</code> или <code>1</code>, потому что в SQLite нет отдельного
+логического типа; это деталь реализации, а не языка SQL.</p>
+<p><strong>SQL-запрос</strong> — декларативное описание выборки или изменения данных в
+реляционной базе. Вы описываете, что нужно получить, а не как перебирать
+строки. Четыре основные операции называют CRUD: создание (<code>INSERT</code>), чтение
+(<code>SELECT</code>), обновление (<code>UPDATE</code>) и удаление (<code>DELETE</code>).</p>
+<div class="highlight"><pre><code class="language-sql"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">notes</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">done</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">0</span>
+<span class="p">);</span>
+
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">notes</span><span class="w"> </span><span class="p">(</span><span class="n">title</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">'купить хлеб'</span><span class="p">);</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">done</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">notes</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">done</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">notes</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">done</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">notes</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+</code></pre></div>
+<p><code>NOT NULL</code> запрещает пустое значение, <code>DEFAULT</code> задаёт значение по умолчанию.
+Ограничения — часть схемы: они не дают записать бессмыслицу даже при ошибке в
+коде.</p>
+<p>Типы в SQLite гибкие: в столбец <code>INTEGER</code> технически можно записать строку,
+если не включён строгий режим. Это наследие ради совместимости, а не
+рекомендация. В новом коде полезно включать <code>STRICT</code> для таблиц или хотя бы
+проверять значения на границе приложения. Ограничения <code>CHECK</code> позволяют
+запретить бессмыслицу на уровне схемы, например отрицательную цену или
+неизвестный статус. Схема решает, какие значения допустимы. Приложение может проверять их
+дополнительно — ради понятных сообщений.</p>
+<h2 id="sqlite"><span class="h-number">36.3</span> sqlite3: встроенная база</h2>
+<p><strong>sqlite3</strong> — модуль стандартной библиотеки для встроенной базы данных SQLite
+в одном файле. Он не требует установки сервера: база — это файл, а библиотека
+входит в Python. Этого достаточно для настольных программ, прототипов и
+небольших сервисов.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">"notes.db"</span><span class="p">)</span>
+<span class="n">connection</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+    <span class="s2">"CREATE TABLE notes (id INTEGER PRIMARY KEY, title TEXT NOT NULL, done INTEGER NOT NULL DEFAULT 0)"</span>
+<span class="p">)</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"INSERT INTO notes (title) VALUES (?)"</span><span class="p">,</span> <span class="p">(</span><span class="s2">"купить хлеб"</span><span class="p">,))</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"INSERT INTO notes (title, done) VALUES (?, ?)"</span><span class="p">,</span> <span class="p">(</span><span class="s2">"позвонить"</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"SELECT id, title, done FROM notes ORDER BY id"</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+<pre class="output"><code>[(1, &#x27;купить хлеб&#x27;, 0), (2, &#x27;позвонить&#x27;, 1)]
+</code></pre>
+<p>Разберём шаги. <code>connect</code> открывает <strong>соединение с базой</strong> — объект, через
+который приложение обменивается данными с базой; его нужно корректно
+закрывать. <code>execute</code> выполняет один запрос. <code>commit</code> фиксирует изменения.
+<code>fetchall</code> возвращает все строки результата списком кортежей.</p>
+<p>SQLite создаёт файл базы, если его нет. В примере используется относительный
+путь <code>notes.db</code>: в учебной песочнице это временный каталог, а в реальной
+программе путь задают явно, обычно через переменную окружения.</p>
+<h3 id="соединение-и-ресурсы">Соединение и ресурсы</h3>
+<p>Соединение — ресурс, который нужно освобождать. Конструкция <code>with sqlite3.connect(...)</code> управляет транзакцией, но <strong>не закрывает</strong> соединение:
+после выхода объект остаётся открытым. Надёжнее комбинировать контекстные
+менеджеры.</p>
+<div class="highlight"><pre><code class="language-python"><span class="kn">from</span><span class="w"> </span><span class="nn">contextlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">closing</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+
+<span class="k">with</span> <span class="n">closing</span><span class="p">(</span><span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"notes.db"</span><span class="p">))</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">connection</span><span class="p">:</span>
+        <span class="n">connection</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"INSERT INTO notes (title) VALUES (?)"</span><span class="p">,</span> <span class="p">(</span><span class="s2">"новая"</span><span class="p">,))</span>
+</code></pre></div>
+<p>Внешний <code>closing</code> закрывает соединение гарантированно, внутренний <code>with</code>
+фиксирует транзакцию при успехе и откатывает при исключении. Такая
+комбинация — рабочий шаблон для небольших программ. В крупном приложении
+соединением управляет пул, но принцип тот же: ресурс освобождается
+детерминированно.</p>
+<h3 id="индексы">Индексы</h3>
+<p>Поиск по таблице без индекса просматривает все строки. На сотнях записей это
+незаметно, на миллионах — превращается в узкое место. Индекс — вспомогательная
+структура, ускоряющая поиск по столбцу; его создают для полей, по которым
+часто фильтруют и сортируют.</p>
+<div class="highlight"><pre><code class="language-sql"><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_notes_done</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">notes</span><span class="w"> </span><span class="p">(</span><span class="n">done</span><span class="p">);</span>
+</code></pre></div>
+<p>У индекса есть цена: он занимает место и замедляет вставку, потому что при
+каждом изменении его нужно обновлять. Поэтому индексы добавляют по результатам
+измерений, а не «на всякий случай». В SQLite посмотреть план запроса можно
+командой <code>EXPLAIN QUERY PLAN</code>: она показывает, используется ли индекс и не
+приходится ли читать всю таблицу.</p>
+<h2 id="injection"><span class="h-number">36.4</span> Параметризованные запросы</h2>
+<p><strong>Параметризованный запрос</strong> — запрос с подстановкой значений через параметры
+(<code>?</code> для позиционных и <code>:name</code> для именованных), а не конкатенацией строк.
+Значения передаются отдельно от текста запроса, поэтому база трактует их как
+значения, а не как SQL-код.</p>
+<p><strong>SQL-инъекция</strong> — атака через подстановку вредоносного SQL в пользовательский
+ввод; предотвращается параметризацией. Покажем разницу на безобидном
+примере: пользователь вводит строку, которую код вставляет в <code>WHERE</code>.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+
+<span class="n">connection</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">":memory:"</span><span class="p">)</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"CREATE TABLE users (name TEXT)"</span><span class="p">)</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span><span class="s2">"INSERT INTO users VALUES (?)"</span><span class="p">,</span> <span class="p">[(</span><span class="s2">"Аня"</span><span class="p">,),</span> <span class="p">(</span><span class="s2">"Борис"</span><span class="p">,)])</span>
+
+<span class="n">user_input</span> <span class="o">=</span> <span class="s2">"' OR '1'='1"</span>
+
+<span class="n">unsafe</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">"SELECT name FROM users WHERE name = '</span><span class="si">{</span><span class="n">user_input</span><span class="si">}</span><span class="s2">'"</span>
+<span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+<span class="n">safe</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+    <span class="s2">"SELECT name FROM users WHERE name = ?"</span><span class="p">,</span> <span class="p">(</span><span class="n">user_input</span><span class="p">,)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">unsafe</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">safe</span><span class="p">)</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+<pre class="output"><code>[(&#x27;Аня&#x27;,), (&#x27;Борис&#x27;,)]
+[]
+</code></pre>
+<p>Небезопасный запрос вернул обе строки: ввод изменил условие <code>WHERE</code> так, что
+оно стало истинным для всех записей. Параметризованный запрос искал
+пользователя с буквальным именем <code>' OR '1'='1</code> и ничего не нашёл. Выглядит
+безобидно только потому, что запрос читает записи. Если бы вместо <code>SELECT</code>
+стоял <code>DELETE</code> или <code>UPDATE</code>, тот же приём изменил бы или удалил таблицу.</p>
+<p>Правило простое: <strong>никогда</strong> не собирайте SQL строками из данных
+пользователя. Подставляйте значения только через параметры; имена таблиц и
+столбцов параметризовать нельзя, поэтому их берут из белого списка
+допустимых значений.</p>
+<p><figure class="figure"><img src="illustrations/ch-36-query-params.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h2 id="transactions"><span class="h-number">36.5</span> Транзакции</h2>
+<p><strong>Транзакция</strong> — группа изменений, применяемая целиком или не применяемая
+вовсе; обеспечивает целостность данных. Классический пример — перевод денег:
+нужно списать сумму с одного счёта и зачислить на другой. Если после списания
+произойдёт сбой, деньги исчезнут.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+
+<span class="n">connection</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">":memory:"</span><span class="p">)</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"CREATE TABLE accounts (name TEXT, balance INTEGER)"</span><span class="p">)</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span>
+    <span class="s2">"INSERT INTO accounts VALUES (?, ?)"</span><span class="p">,</span>
+    <span class="p">[(</span><span class="s2">"Аня"</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Борис"</span><span class="p">,</span> <span class="mi">50</span><span class="p">)],</span>
+<span class="p">)</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">connection</span><span class="p">:</span>
+        <span class="n">connection</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+            <span class="s2">"UPDATE accounts SET balance = balance - 30 WHERE name = 'Аня'"</span>
+        <span class="p">)</span>
+        <span class="n">connection</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+            <span class="s2">"UPDATE accounts SET balance = balance + 30 WHERE name = 'Борис'"</span>
+        <span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">"сбой между переводами"</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">RuntimeError</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">connection</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"SELECT name, balance FROM accounts ORDER BY name"</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">())</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+<pre class="output"><code>[(&#x27;Аня&#x27;, 100), (&#x27;Борис&#x27;, 50)]
+</code></pre>
+<p>Изменения откатились: баланс не изменился, хотя первое обновление уже было
+выполнено. <code>with connection</code> начинает транзакцию и фиксирует её при успешном
+выходе, а при исключении откатывает. Это и есть атомарность: наблюдатель
+видит либо состояние до всех изменений, либо после всех, но не промежуточное.
+В многопользовательских базах к этому добавляется изоляция транзакций:
+одновременные транзакции не должны видеть чужие незавершённые изменения.
+SQLite сериализует запись, поэтому в учебных примерах этим можно пренебречь,
+но в PostgreSQL уровень изоляции выбирают осознанно.</p>
+<p><figure class="figure"><img src="illustrations/ch-36-transaction.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h2 id="serialization"><span class="h-number">36.6</span> Сериализация: JSON и CSV</h2>
+<p>База хранит записи, но обмениваться ими с другими программами удобнее в
+текстовых форматах. <strong>Сериализация</strong> — преобразование объектов программы в
+формат, пригодный для хранения или передачи, и обратное чтение. JSON — формат
+для вложенных структур, CSV — для таблиц.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+<span class="n">record</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"id"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"title"</span><span class="p">:</span> <span class="s2">"купить хлеб"</span><span class="p">,</span> <span class="s2">"tags"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"дом"</span><span class="p">,</span> <span class="s2">"еда"</span><span class="p">]}</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="o">==</span> <span class="n">record</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>{&quot;id&quot;: 1, &quot;tags&quot;: [&quot;дом&quot;, &quot;еда&quot;], &quot;title&quot;: &quot;купить хлеб&quot;}
+True
+</code></pre>
+<p><code>ensure_ascii=False</code> сохраняет кириллицу читаемой, <code>sort_keys=True</code> делает
+порядок ключей предсказуемым — удобно для сравнения и тестов. Кортеж при
+сериализации становится массивом и при загрузке вернётся списком; множество
+JSON не поддерживает вовсе — <code>json.dumps({1, 2})</code> поднимет <code>TypeError</code>.
+Поэтому формат подходит для данных, а не для любого объекта Python.</p>
+<p>CSV удобен для таблиц и открывается в электронных таблицах. Его ограничение —
+плоская структура: вложенные списки и словари в одну ячейку не поместить без
+дополнительного кодирования. Выбор простой: связи и вложенность — JSON,
+однородные таблицы — CSV, запросы и обновление — база.</p>
+<h2 id="when-not-db"><span class="h-number">36.7</span> Когда база не нужна</h2>
+<p>База — не универсальный ответ. Если данных единицы и они читаются целиком,
+JSON-файл проще: его видно в редакторе, легко скопировать и сравнить. Если
+записи — это журнал событий, который только дописывается, подойдёт
+построчная запись в файл. База нужна, когда важны запросы, обновления,
+согласованность и конкурентный доступ.</p>
+<p>Практический признак: как только появляется «найди все записи, где...»,
+«обнови одну строку, не трогая остальные» или «сделай два изменения вместе»,
+начинается территория базы. До этого файла достаточно, и переход на базу
+можно отложить — при условии, что доступ к данным идёт через функции, а не
+через случайные <code>open</code> по всему проекту.</p>
+<h3 id="резервные-копии-и-файл-базы">Резервные копии и файл базы</h3>
+<p>База SQLite — это один файл, и это упрощает резервное копирование: достаточно
+скопировать файл, когда в него никто не пишет. Копировать «на ходу» опасно:
+можно получить несогласованный снимок. Правильный способ — встроенный механизм
+резервного копирования или остановка записи на время копирования. Для учебной
+программы достаточно второго варианта, для сервиса — первого.</p>
+<p>Файл базы не стоит держать в каталоге с исходным кодом и тем более в git:
+записи меняются, а история коммитов превращается в мусор. Путь задают через
+конфигурацию, а каталог данных добавляют в <code>.gitignore</code>. Тесты используют
+временный каталог, чтобы не затронуть рабочую базу.</p>
+<h2 id="orm"><span class="h-number">36.8</span> ORM</h2>
+<p><strong>ORM</strong> — слой, отображающий таблицы в классы и строки в объекты, скрывающий
+ручной SQL. Вместо <code>SELECT ... WHERE id = ?</code> вы пишете <code>session.get(Note, 1)</code>,
+а библиотека строит запрос. Крупнейший пример — SQLAlchemy; внешние ORM
+устанавливают как зависимость.</p>
+<p>У ORM есть плюсы: меньше повторяющегося кода, автоматическая параметризация,
+связи между таблицами описываются декларативно. Есть и минусы: неочевидные
+запросы, скрытые обращения к базе, сложная отладка производительности.
+Практическое правило: ORM хорош для типовых операций и больших моделей, а
+сложные аналитические запросы проще писать на SQL. Знание SQL остаётся
+обязательным: ORM не отменяет базу, а надстраивается над ней.</p>
+<h2 id="mistakes"><span class="h-number">36.9</span> Типичные ошибки</h2>
+<ol>
+<li><strong>Склеивать SQL из строк.</strong> Это открывает SQL-инъекцию и ломается на
+апострофах в данных. Используйте параметры.</li>
+<li><strong>Забывать <code>commit</code>.</strong> Без фиксации изменения теряются при закрытии
+соединения; в SQLite по умолчанию транзакция остаётся открытой.</li>
+<li><strong>Считать <code>with sqlite3.connect(...)</code> закрытием соединения.</strong> Контекст
+управляет транзакцией, а не ресурсом; добавляйте <code>closing</code>.</li>
+<li><strong>Оставлять соединение открытым.</strong> Утечка соединений исчерпывает ресурсы и
+блокирует файл базы.</li>
+<li><strong>Хранить деньги в <code>float</code>.</strong> Двоичные дроби не представляют копейки точно;
+храните целые копейки или используйте тип <code>DECIMAL</code> в полноценных базах.</li>
+<li><strong>Создавать таблицы на каждом запуске без миграций.</strong> Схема меняется, а
+записи уже есть; нужны версионированные миграции.</li>
+<li><strong>Путать <code>None</code> в Python и <code>NULL</code> в SQL.</strong> Для сравнения с <code>NULL</code>
+используется <code>IS NULL</code>, а не <code>= NULL</code>.</li>
+<li><strong>Хранить даты строками без формата.</strong> Сортировка и сравнение строк
+работают случайно; храните ISO-даты или числа и документируйте формат.</li>
+<li><strong>Игнорировать <code>PRAGMA foreign_keys</code>.</strong> В SQLite проверка внешних ключей
+выключена по умолчанию, и ссылки на несуществующие строки проходят молча.</li>
+</ol>
+<h2 id="упражнения"><span class="h-number">36.10</span> Упражнения</h2>
+<h3 id="ex-ch36-01">1. Первая таблица</h3>
+<p>Создайте в SQLite таблицу <code>books</code> с полями <code>id</code>, <code>title</code>, <code>author</code>, <code>year</code>.
+Вставьте две книги и выведите все строки, упорядоченные по году.</p>
+<h3 id="ex-ch36-02">2. Выборка с условием</h3>
+<p>Для таблицы из задания 1 получите книги, изданные после 2020 года. Используйте
+параметризованный запрос и объясните, почему год передаётся параметром, а не
+через f-строку.</p>
+<h3 id="ex-ch36-03">3. Обновление и удаление</h3>
+<p>Обновите год у одной книги и удалите другую. Проверьте результат запросом.
+Объясните, зачем выполнять оба изменения в одной транзакции.</p>
+<h3 id="ex-ch36-04">4. Откат транзакции</h3>
+<p>Воспроизведите пример с переводами между счетами, но с суммой 40. Убедитесь,
+что при искусственном сбое балансы остаются прежними, а без сбоя — меняются.</p>
+<h3 id="ex-ch36-05">5. Анализ инъекции</h3>
+<p>Дан небезопасный код:</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"SELECT * FROM users WHERE name = '</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">'"</span>
+</code></pre></div>
+<p>Объясните, что вернёт запрос при <code>name = &quot;' OR '1'='1&quot;</code>, и перепишите код
+безопасно. Проверьте оба варианта на тестовой таблице.</p>
+<h3 id="ex-ch36-06">6. Агрегаты</h3>
+<p>Для таблицы <code>orders</code> с полями <code>id</code>, <code>amount</code> посчитайте количество заказов,
+сумму и среднюю сумму. Объясните, что произойдёт со средним, если в таблице
+нет строк.</p>
+<h3 id="ex-ch36-07">7. Связь двух таблиц</h3>
+<p>Создайте таблицы <code>authors</code> и <code>books</code> со ссылкой <code>author_id</code>. Напишите запрос,
+который возвращает название книги и имя автора. Объясните, что такое внешний
+ключ.</p>
+<h3 id="ex-ch36-08">8. JSON в базе</h3>
+<p>Сохраните в таблице <code>settings</code> JSON-строку с настройками пользователя и
+прочитайте её обратно. Сравните с хранением отдельных столбцов: когда какой
+подход уместен?</p>
+<h3 id="ex-ch36-09">9. Жизненный цикл соединения</h3>
+<p>Объясните, почему <code>with sqlite3.connect(&quot;app.db&quot;) as connection:</code> не закрывает
+соединение. Напишите корректный вариант с <code>closing</code> и проверьте, что файл
+базы можно открыть повторно.</p>
+<h3 id="ex-ch36-10">10. Мини-проект: хранилище заметок</h3>
+<p>Реализуйте модуль <code>notes</code> с функциями <code>add(title)</code>, <code>list_notes()</code>,
+<code>mark_done(note_id)</code>. Используйте параметризованные запросы, транзакции для
+изменений и закрытие соединения. Проверьте полный сценарий: добавить две
+заметки, отметить одну выполненной, вывести список.</p>
+<h2 id="проверка-понимания"><span class="h-number">36.11</span> Проверка понимания</h2>
+<ol>
+<li>Что такое таблица базы данных и чем строка отличается от столбца?</li>
+<li>Зачем нужны <code>PRIMARY KEY</code> и <code>NOT NULL</code>?</li>
+<li>Почему параметризованный запрос защищает от инъекции, а f-строка — нет?</li>
+<li>Что гарантирует транзакция и как она связана с атомарностью?</li>
+<li>Чем <code>with sqlite3.connect(...)</code> отличается от <code>closing(...)</code>?</li>
+<li>Когда выбрать JSON, CSV или базу данных?</li>
+<li>Что даёт ORM и почему SQL всё равно нужно знать?</li>
+</ol>
+<h2 id="что-дальше"><span class="h-number">36.12</span> Что дальше</h2>
+<p>База хранит факты, но у каждого факта есть время: когда он появился, когда
+истекает срок, как восстановить последовательность событий. Следующая глава —
+о времени, часовых поясах и логировании. О работе с файлами и форматами
+говорилось в <a href="ch-19-files-formats.html">главе 19</a>, о контекстных менеджерах — в
+<a href="ch-34-stdlib.html">главе 34</a>. Там же разобраны приёмы, которые понадобятся для
+аккуратного закрытия соединений и файлов. Безопасная работа с ресурсами —
+общая тема, а не особенность баз данных.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-35-os-network.html"><span class="pager-label">← Назад</span><span class="pager-title">ОС, процессы, сеть и API</span></a><a class="pager-card next" rel="next" href="ch-37-time-logging.html"><span class="pager-label">Далее:</span><span class="pager-title">Время, даты и логирование</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

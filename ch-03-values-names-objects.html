@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Значения, имена, объекты и типы — Python: от нуля до профессиональной разработки</title>
+<script src="assets/theme-boot.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="chapter-page">
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="site-header">
+<div class="header-inner">
+<button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Меню книги" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text">Syllanix</span><span class="brand-short">Syl.</span></a>
+<nav class="header-nav" aria-label="Основная навигация">
+<a href="toc.html">Оглавление</a>
+<a href="map.html">Карта</a>
+<a href="glossary.html">Глоссарий</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="search-open" type="button" aria-label="Поиск по книге (клавиша /)" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></button>
+</div>
+</div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="search-dialog" id="search-dialog" role="dialog" aria-modal="true" aria-label="Поиск по книге" hidden>
+<div class="search-box">
+<label for="search-input">Поиск по книге</label>
+<div class="search-row">
+<input id="search-input" type="search" placeholder="Например: исключения" autocomplete="off" aria-controls="search-results">
+<button class="search-close" id="search-close" type="button" aria-label="Закрыть поиск">Esc</button>
+</div>
+</div>
+<ul class="search-results" id="search-results" aria-live="polite"></ul>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar" aria-label="Оглавление книги">
+<div class="drawer-head"><span>Меню книги</span><button class="drawer-close" id="drawer-close" type="button" aria-label="Закрыть меню">×</button></div>
+<nav class="sidebar-nav" aria-label="Навигация по книге">
+<p><a class="sidebar-brand" href="index.html">Python: от нуля до профессиональной разработки</a></p>
+<h2>Перед книгой</h2><ul>
+<li><a href="history.html">История и философия Python</a></li>
+<li><a href="glossary-guide.html">Словарь программиста</a></li>
+<li><a href="preface.html">Предисловие</a></li>
+<li><a href="learning-map.html">Карта обучения</a></li>
+<li><a href="acknowledgements.html">Благодарности и происхождение материалов</a></li>
+</ul>
+<h2>Содержание</h2>
+<details open><summary>
+<span>Часть 1. Начало</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-01-introduction.html">01. Зачем Python и как устроена эта книга</a></li>
+<li><a href="ch-02-first-program.html">02. Первая программа: вычисления и вывод</a></li>
+<li><details class="chapter-current" open><summary>
+<a href="ch-03-values-names-objects.html" aria-current="page">03. Значения, имена, объекты и типы</a>
+</summary>
+<ol class="sidebar-topics">
+<li><a href="ch-03-values-names-objects.html#что-вы-сможете-после-этой-главы">3.1. Что вы сможете после этой главы</a></li>
+<li><a href="ch-03-values-names-objects.html#значения-и-объекты">3.2. Значения и объекты</a></li>
+<li><a href="ch-03-values-names-objects.html#типы">3.3. Типы</a></li>
+<li><a href="ch-03-values-names-objects.html#имена-переменные-и-присваивание">3.4. Имена, переменные и присваивание</a></li>
+<li><a href="ch-03-values-names-objects.html#идентичность-и-оператор-is">3.5. Идентичность и оператор is</a></li>
+<li><a href="ch-03-values-names-objects.html#binary">3.6. Двоичное представление чисел</a></li>
+<li><a href="ch-03-values-names-objects.html#изменяемость">3.7. Изменяемость</a></li>
+<li><a href="ch-03-values-names-objects.html#типичные-ошибки">3.8. Типичные ошибки</a></li>
+<li><a href="ch-03-values-names-objects.html#упражнения">3.9. Упражнения</a></li>
+<li><a href="ch-03-values-names-objects.html#проверка-понимания">3.10. Проверка понимания</a></li>
+<li><a href="ch-03-values-names-objects.html#что-дальше">3.11. Что дальше</a></li>
+</ol></details></li>
+<li><a href="ch-04-expressions-input.html">04. Выражения, операторы и ввод данных</a></li>
+<li><a href="ch-05-control-flow.html">05. Логика и управление потоком</a></li>
+<li><a href="ch-06-loops.html">06. Циклы: while и for</a></li>
+<li><a href="ch-07-functions.html">07. Функции: параметры, аргументы и области видимости</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 2. Функции и структура программы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-08-recursion-scope.html">08. Стек вызовов, области видимости и рекурсия</a></li>
+<li><a href="ch-09-modules.html">09. Модули, пакеты и импорты</a></li>
+<li><a href="ch-10-errors-exceptions.html">10. Ошибки и исключения</a></li>
+<li><a href="ch-11-debugging.html">11. Отладка и трассировка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 3. Коллекции и данные</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-12-collections-intro.html">12. Коллекции и последовательности: введение</a></li>
+<li><a href="ch-13-lists.html">13. Списки: индексы, срезы и методы</a></li>
+<li><a href="ch-14-tuples.html">14. Кортежи, распаковка и неизменяемость</a></li>
+<li><a href="ch-15-strings.html">15. Строки: методы, форматирование и Unicode</a></li>
+<li><a href="ch-16-sets.html">16. Множества и хеширование</a></li>
+<li><a href="ch-17-dicts.html">17. Словари: отображения и структурирование данных</a></li>
+<li><a href="ch-18-references-copy.html">18. Ссылки, алиасы и копирование</a></li>
+<li><a href="ch-19-files-formats.html">19. Файлы, пути и текстовые форматы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 4. Итерация и функции высшего порядка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-20-iterators.html">20. Итераторы и протокол итерации</a></li>
+<li><a href="ch-21-generators.html">21. Генераторы и ленивые вычисления</a></li>
+<li><a href="ch-22-higher-order.html">22. Функции как объекты: замыкания и декораторы</a></li>
+<li><a href="ch-23-functional.html">23. Функциональные приёмы и включения</a></li>
+<li><a href="ch-24-signatures.html">24. Гибкие сигнатуры: *args, **kwargs и распаковка</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 5. Объектно-ориентированное программирование</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-25-objects-classes.html">25. Объекты и классы</a></li>
+<li><a href="ch-26-encapsulation.html">26. Атрибуты, свойства и инкапсуляция</a></li>
+<li><a href="ch-27-inheritance.html">27. Наследование, полиморфизм и композиция</a></li>
+<li><a href="ch-28-dunder.html">28. Модель данных: dunder-методы</a></li>
+<li><a href="ch-29-dataclasses-protocols.html">29. Dataclasses, протоколы и абстрактные классы</a></li>
+<li><a href="ch-30-oop-design.html">30. Проектирование классов и API</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 6. Типизация, тестирование и инструменты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-31-typing.html">31. Аннотации типов и статическая проверка</a></li>
+<li><a href="ch-32-testing.html">32. Тестирование: pytest и TDD</a></li>
+<li><a href="ch-33-project-tooling.html">33. Структура проекта, зависимости и инструменты</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 7. Практическая разработка</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-34-stdlib.html">34. Стандартная библиотека: collections, itertools, functools, pathlib</a></li>
+<li><a href="ch-35-os-network.html">35. ОС, процессы, сеть и API</a></li>
+<li><a href="ch-36-data-storage.html">36. Данные: SQLite, SQL и сериализация</a></li>
+<li><a href="ch-37-time-logging.html">37. Время, даты и логирование</a></li>
+<li><a href="ch-38-concurrency.html">38. Конкурентность: потоки, процессы и GIL</a></li>
+<li><a href="ch-39-asyncio.html">39. Асинхронность: asyncio</a></li>
+<li><a href="ch-40-performance.html">40. Производительность и профилирование</a></li>
+<li><a href="ch-41-security.html">41. Безопасность приложений</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 8. Внутреннее устройство</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-42-internals.html">42. Внутреннее устройство Python</a></li>
+<li><a href="ch-43-metaprogramming.html">43. Метапрограммирование и дескрипторы</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 9. Инженерия и сопровождение</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-44-architecture.html">44. Архитектура, SOLID и паттерны</a></li>
+<li><a href="ch-45-git-ci-releases.html">45. Git, CI, релизы и сопровождение</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 10. Проекты</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-46-project-cli.html">46. Проект: консольный менеджер задач</a></li>
+<li><a href="ch-47-project-api.html">47. Проект: HTTP API и база данных</a></li>
+<li><a href="ch-48-project-async.html">48. Проект: асинхронный сборщик данных</a></li>
+</ol></details>
+<details><summary>
+<span>Часть 11. Профессиональная практика и прикладные темы</span></summary>
+<ol class="chapter-list">
+<li><a href="ch-49-style-naming.html">49. Стиль, форматирование и именование кода</a></li>
+<li><a href="ch-50-pythonic-gotchas.html">50. Pythonic-код и типичные ловушки</a></li>
+<li><a href="ch-51-regex.html">51. Регулярные выражения</a></li>
+<li><a href="ch-52-complexity.html">52. Алгоритмическое мышление: сложность и выбор структур</a></li>
+<li><a href="ch-53-refactoring.html">53. Запахи кода, рефакторинг и сопровождение</a></li>
+<li><a href="ch-54-practice.html">54. Практикум: классические задачи и разбор решений</a></li>
+<li><a href="ch-55-tkinter.html">55. Графический интерфейс на tkinter</a></li>
+<li><a href="ch-56-dataviz.html">56. Визуализация данных</a></li>
+</ol></details>
+<h2>Справочники</h2><ul>
+<li><a href="map.html">Карта обучения</a></li>
+<li><a href="glossary.html">Глоссарий</a></li>
+<li><a href="sources.html">Источники и лицензии</a></li>
+</ul>
+<h2>После книги</h2><ul><li><a href="afterword.html">Что дальше: практика и проекты</a></li></ul>
+</nav>
+</aside>
+<div class="content">
+<main id="main">
+<nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span class="sep">›</span><a href="toc.html">Оглавление</a><span class="sep">›</span><span>Часть 1. Начало</span><span class="sep">›</span><span>Глава 3</span></nav>
+<article class="chapter">
+<p class="chapter-meta">Начало · глава 3</p>
+<h1 id="значения-имена-объекты-и-типы">Значения, имена, объекты и типы</h1>
+<p class="chapter-summary">Из чего состоит программа: значения, объекты, типы, имена, присваивание и идентичность.</p>
+<details class="chapter-toc-wrap">
+<summary>В этой главе</summary>
+<nav aria-label="Оглавление главы"><ul>
+<li class="level-2"><a href="#что-вы-сможете-после-этой-главы"><span class="toc-number">3.1</span> Что вы сможете после этой главы</a></li>
+<li class="level-2"><a href="#значения-и-объекты"><span class="toc-number">3.2</span> Значения и объекты</a></li>
+<li class="level-2"><a href="#типы"><span class="toc-number">3.3</span> Типы</a></li>
+<li class="level-2"><a href="#имена-переменные-и-присваивание"><span class="toc-number">3.4</span> Имена, переменные и присваивание</a></li>
+<li class="level-2"><a href="#идентичность-и-оператор-is"><span class="toc-number">3.5</span> Идентичность и оператор is</a></li>
+<li class="level-2"><a href="#binary"><span class="toc-number">3.6</span> Двоичное представление чисел</a></li>
+<li class="level-2"><a href="#изменяемость"><span class="toc-number">3.7</span> Изменяемость</a></li>
+<li class="level-2"><a href="#типичные-ошибки"><span class="toc-number">3.8</span> Типичные ошибки</a></li>
+<li class="level-2"><a href="#упражнения"><span class="toc-number">3.9</span> Упражнения</a></li>
+<li class="level-2"><a href="#проверка-понимания"><span class="toc-number">3.10</span> Проверка понимания</a></li>
+<li class="level-2"><a href="#что-дальше"><span class="toc-number">3.11</span> Что дальше</a></li>
+</ul>
+<details class="toc-sub"><summary>Показать подтемы</summary><ul>
+<li class="level-3"><a href="#int-целые-числа">int: целые числа</a></li>
+<li class="level-3"><a href="#float-числа-с-плавающей-точкой">float: числа с плавающей точкой</a></li>
+<li class="level-3"><a href="#str-строки">str: строки</a></li>
+<li class="level-3"><a href="#bool-логический-тип">bool: логический тип</a></li>
+<li class="level-3"><a href="#none-отсутствие-значения">None: отсутствие значения</a></li>
+<li class="level-3"><a href="#связывание-имени">Связывание имени</a></li>
+<li class="level-3"><a href="#динамическая-типизация">Динамическая типизация</a></li>
+<li class="level-3"><a href="#ex-ch03-01">1. Типы значений</a></li>
+<li class="level-3"><a href="#ex-ch03-02">2. Присваивание и переприсваивание</a></li>
+<li class="level-3"><a href="#ex-ch03-03">3. Присваивание не копирует</a></li>
+<li class="level-3"><a href="#ex-ch03-04">4. Динамическая типизация</a></li>
+<li class="level-3"><a href="#ex-ch03-05">5. Идентичность и равенство</a></li>
+<li class="level-3"><a href="#ex-ch03-06">6. None</a></li>
+<li class="level-3"><a href="#ex-ch03-07">7. Плавающая точка</a></li>
+<li class="level-3"><a href="#ex-ch03-08">8. Большие целые</a></li>
+<li class="level-3"><a href="#ex-ch03-09">9. Допустимые имена</a></li>
+<li class="level-3"><a href="#ex-ch03-10">10. Неизменяемость строк</a></li>
+<li class="level-3"><a href="#ex-ch03-11">11. Значение и объект</a></li>
+<li class="level-3"><a href="#ex-ch03-12">12. Один объект — два имени</a></li>
+</ul></details>
+</nav></details>
+
+
+
+<p>Во второй главе вы вычисляли и выводили значения, но не сохраняли их. Настоящая
+программа должна помнить данные: цену товара, имя пользователя, результат
+проверки. Для этого нужны имена. А чтобы понимать, что происходит с данными при
+присваивании, нужно разобраться, как Python представляет их в памяти.</p>
+<p>В этой главе мы построим рабочую модель, на которой держится всё остальное:
+<strong>значение — это объект; у объекта есть тип, идентичность и (обычно) значение;
+имя — это ссылка на объект</strong>. Модель настолько важна, что её следствия будут
+всплывать в главах о коллекциях, копировании, функциях и классах.</p>
+<h2 id="что-вы-сможете-после-этой-главы"><span class="h-number">3.1</span> Что вы сможете после этой главы</h2>
+<ul>
+<li>определять тип значения и объяснять, что тип означает;</li>
+<li>понимать, чем <code>int</code>, <code>float</code>, <code>str</code>, <code>bool</code> и <code>None</code> отличаются по смыслу и
+поведению;</li>
+<li>различать имя, объект и значение;</li>
+<li>объяснять, что делает присваивание, и почему оно не «кладёт число в коробку»;</li>
+<li>отличать идентичность (<code>is</code>) от равенства (<code>==</code>);</li>
+<li>понимать, что такое изменяемость и почему она важна.</li>
+</ul>
+<h2 id="значения-и-объекты"><span class="h-number">3.2</span> Значения и объекты</h2>
+<p><strong>Значение</strong> — то, что программа вычисляет и хранит: число <code>42</code>, текст
+<code>&quot;Python&quot;</code>, признак <code>True</code>. В Python всякое значение представлено <strong>объектом</strong>.
+У объекта есть три характеристики:</p>
+<ol>
+<li><strong>тип</strong> — определяет, что за значение и какие операции допустимы;</li>
+<li><strong>идентичность</strong> — позволяет отличить один объект от другого;</li>
+<li><strong>значение</strong> (состояние) — собственно данные; у <code>None</code> нет изменяемого
+состояния — он и есть значение.</li>
+</ol>
+<p>Полезно сразу отказаться от метафоры «переменная — это коробка, в которую
+кладут число». У неё есть следствия, которые в Python неверны. Правильная
+метафора: <strong>имя — ярлык, привязанный к объекту</strong>. Объект существует сам по
+себе; имя лишь указывает на него.</p>
+<p><figure class="figure"><img src="illustrations/ch-03-name-object.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<h2 id="типы"><span class="h-number">3.3</span> Типы</h2>
+<p>Тип — главная характеристика объекта. Узнать тип можно функцией <code>type</code>:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mi">42</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mf">3.14</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="s2">"Python"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="kc">True</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>&lt;class &#x27;int&#x27;&gt;
+&lt;class &#x27;float&#x27;&gt;
+&lt;class &#x27;str&#x27;&gt;
+&lt;class &#x27;bool&#x27;&gt;
+&lt;class &#x27;NoneType&#x27;&gt;
+</code></pre>
+<p>Запись <code>&lt;class 'int'&gt;</code> означает: «это объект класса <code>int</code>». Классы мы подробно
+разберём в части 5, а пока тип можно понимать как категорию значения.</p>
+<h3 id="int-целые-числа">int: целые числа</h3>
+<p>Тип <code>int</code> хранит целые числа. Важная особенность Python: <strong>размер целого не
+ограничен разрядностью процессора</strong> — ограничением служит только доступная
+память. В языках с фиксированными 64-битными целыми <code>2 ** 100</code> переполнило бы
+тип, а в Python это обычное число.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">100</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">100</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>1267650600228229401496703205376
+1267650600228229401496703205377
+</code></pre>
+<p>Это гарантия языка, а не особенность CPython.</p>
+<h3 id="float-числа-с-плавающей-точкой">float: числа с плавающей точкой</h3>
+<p>Тип <code>float</code> представляет приближённые вещественные числа в двоичном формате
+IEEE 754. «Приближённые» — ключевое слово: часть десятичных дробей нельзя
+записать в двоичной системе точно.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>0.30000000000000004
+0.3333333333333333
+</code></pre>
+<p>Результат <code>0.1 + 0.2</code> не равен математическим <code>0.3</code>: оба слагаемых хранятся с
+небольшой погрешностью, и погрешности складываются. Это не дефект Python, а
+свойство двоичной арифметики с плавающей точкой; с ним сталкиваются все языки,
+использующие IEEE 754. Практические следствия:</p>
+<ul>
+<li>не сравнивайте <code>float</code> на точное равенство; сравнивайте с допуском;</li>
+<li>для денежных расчётов используйте целые (копейки) или тип <code>Decimal</code> из
+стандартной библиотеки;</li>
+<li><code>float</code> подходит для измерений, научных вычислений и графики.</li>
+</ul>
+<h3 id="str-строки">str: строки</h3>
+<p>Тип <code>str</code> хранит текст — последовательность символов Unicode. Строки
+неизменяемы: после создания строку нельзя изменить, можно только создать новую.
+Строки и их методы — тема главы 15; пока достаточно уметь создавать их и
+выводить.</p>
+<h3 id="bool-логический-тип">bool: логический тип</h3>
+<p>Тип <code>bool</code> имеет ровно два значения: <code>True</code> и <code>False</code>. Он понадобится для
+условий и сравнений (главы 4–5). Небольшая, но полезная деталь: <code>bool</code>
+— подтип <code>int</code>, поэтому <code>True</code> ведёт себя как <code>1</code>, а <code>False</code> — как <code>0</code>.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="kc">True</span> <span class="o">+</span> <span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="kc">True</span><span class="p">))</span>
+</code></pre></div>
+<pre class="output"><code>2
+&lt;class &#x27;bool&#x27;&gt;
+</code></pre>
+<p>Сложение логических значений редко бывает осмысленным, но понимание подтипа
+объясняет, почему <code>True</code> можно использовать там, где ожидается число.</p>
+<h3 id="none-отсутствие-значения">None: отсутствие значения</h3>
+<p><code>None</code> — специальное значение типа <code>NoneType</code>, означающее «значения нет».
+Оно нужно, чтобы отличать «пусто» от «ноль» или «пустая строка». Функция,
+которая ничего не возвращает, возвращает именно <code>None</code> (подробнее в главе 7).</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">x</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>None
+True
+</code></pre>
+<h2 id="имена-переменные-и-присваивание"><span class="h-number">3.4</span> Имена, переменные и присваивание</h2>
+<p><strong>Имя</strong> (идентификатор) — слово, по которому программа обращается к объекту.
+Правила: буквы, цифры и подчёркивания; первый символ — не цифра; регистр
+важен (<code>age</code> и <code>Age</code> — разные имена). Стиль Python — <code>snake_case</code>:
+<code>total_price</code>, <code>user_name</code>.</p>
+<p><strong>Переменная</strong> в Python — это имя, связанное с объектом. <strong>Присваивание</strong> —
+инструкция <code>имя = выражение</code>; она вычисляет выражение и связывает имя с
+результатом. Именно связывает, а не копирует.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">x</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>1000
+1001
+</code></pre>
+<p>Разберём по шагам, потому что это ключевой пример главы:</p>
+<ol>
+<li><code>x = 1000</code> создаёт объект <code>1000</code> и связывает с ним имя <code>x</code>.</li>
+<li><code>y = x</code> связывает <code>y</code> с <strong>тем же объектом</strong>, а не с копией.</li>
+<li><code>x = x + 1</code> вычисляет <code>1000 + 1</code>, создаёт <strong>новый</strong> объект <code>1001</code> и
+связывает с ним имя <code>x</code>. Имя <code>y</code> по-прежнему указывает на <code>1000</code>.</li>
+</ol>
+<p>Отсюда видно, почему метафора «коробки» ломается: <code>y = x</code> не копирует
+содержимое, а создаёт вторую ссылку на тот же объект. А <code>x = x + 1</code> не
+изменяет старый объект, а привязывает имя к новому.</p>
+<h3 id="связывание-имени">Связывание имени</h3>
+<p>Термин <strong>связывание имени</strong> подчёркивает, что происходит именно связь
+«имя → объект». Когда имя переприсваивается, старая связь заменяется; сам
+объект остаётся в памяти, пока на него есть хотя бы одна ссылка. Когда ссылок
+не остаётся, объект освобождается — об этом в главе 42.</p>
+<h3 id="динамическая-типизация">Динамическая типизация</h3>
+<p>Python — язык с <strong>динамической типизацией</strong>: тип проверяется во время
+исполнения, и одно и то же имя может в разные моменты указывать на объекты
+разных типов.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">x</span> <span class="o">=</span> <span class="s2">"один"</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>&lt;class &#x27;int&#x27;&gt;
+&lt;class &#x27;str&#x27;&gt;
+один
+</code></pre>
+<p>Это не «отсутствие типов»: у каждого объекта тип есть всегда. Просто имя не
+привязано к типу навсегда. Обратная сторона — часть ошибок проявляется только
+при запуске; инструменты статической проверки (глава 31) помогают найти их
+заранее.</p>
+<h2 id="идентичность-и-оператор-is"><span class="h-number">3.5</span> Идентичность и оператор is</h2>
+<p><strong>Идентичность</strong> — свойство объекта быть именно этим объектом. Если два имени
+связаны с одним объектом, проверка <code>a is b</code> истинна: объект один, значит, и
+идентичность одна. Оператор <code>is</code> проверяет идентичность: <code>a is b</code> истинно,
+если <code>a</code> и <code>b</code> ссылаются на один и тот же объект.</p>
+<p>Функция <code>id</code> возвращает число, идентифицирующее объект (в CPython — его адрес);
+<code>id</code> полезна для диагностики, но в коде на неё опираться не нужно.</p>
+<p><code>is</code> следует отличать от <code>==</code>. Оператор <code>==</code> сравнивает <strong>значения</strong>
+(подробно — в главе 4), а <code>is</code> — <strong>идентичность</strong>. Для неизменяемых значений
+эти проверки часто совпадают, но для изменяемых объектов — нет.</p>
+<p><figure class="figure"><img src="illustrations/ch-03-is-vs-eq.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="ow">is</span> <span class="n">c</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>True
+False
+True
+</code></pre>
+<p>В этом примере используется список — коллекция, которую мы подробно изучим в
+главе 13; сейчас достаточно знать, что список хранит несколько значений и
+изменяем. Смысл примера:</p>
+<ul>
+<li><code>a == b</code> — значения равны (оба списка содержат <code>1</code> и <code>2</code>), поэтому <code>True</code>;</li>
+<li><code>a is b</code> — это разные объекты, поэтому <code>False</code>;</li>
+<li><code>a is c</code> — <code>c</code> связан с тем же объектом, что и <code>a</code>, поэтому <code>True</code>.</li>
+</ul>
+<p>Практическое правило: <strong><code>is</code> — для идентичности и <code>None</code>; <code>==</code> — для
+сравнения значений.</strong> Сравнивать числа или строки через <code>is</code> — ошибка, которая
+иногда «работает» из-за оптимизаций CPython и потому особенно опасна.</p>
+<h2 id="binary"><span class="h-number">3.6</span> Двоичное представление чисел</h2>
+<p>Компьютер хранит числа в двоичной системе: только нули и единицы. Для
+программиста это важно не потому, что нужно писать двоичный код, а потому что
+многие «странности» вычислений объясняются именно представлением.</p>
+<p>Целое число в двоичной записи — сумма степеней двойки. Например, <code>13</code> — это
+<code>1101</code>: <code>8 + 4 + 1</code>. Python умеет показывать двоичную запись:</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="mi">13</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">8</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mb">0b1101</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>0b1101
+0b0
+256
+13
+</code></pre>
+<p>Префикс <code>0b</code> означает «двоичный литерал»; <code>0b1101</code> — то же число, что <code>13</code>.
+Кроме двоичной записи Python поддерживает восьмеричную (<code>0o17</code>) и
+шестнадцатеричную (<code>0x1f</code>) — они удобны для флагов и цветов.</p>
+<p>Двоичное представление объясняет две вещи, с которыми вы уже встречались:</p>
+<ul>
+<li><strong><code>float</code> приблизителен</strong>, потому что дробные числа хранятся в двоичном
+формате с фиксированным числом разрядов: <code>0.1</code> не представимо точно, как
+<code>1/3</code> нельзя записать конечной десятичной дробью;</li>
+<li><strong><code>int</code> не переполняется</strong>, потому что размер целого в Python не фиксирован:
+число занимает столько байт, сколько нужно (детали — в главе 42).</li>
+</ul>
+<p>Полезные операции: <code>bin(x)</code> — двоичная строка, <code>int(&quot;1101&quot;, 2)</code> —
+двоичная строка в число, <code>&lt;&lt;</code> и <code>&gt;&gt;</code> — сдвиги (побитовые операции
+рассматриваются в главе 50, где разбираются ловушки представления).</p>
+<h2 id="изменяемость"><span class="h-number">3.7</span> Изменяемость</h2>
+<p><strong>Изменяемость</strong> — способность объекта менять своё состояние после создания.</p>
+<ul>
+<li><strong>Неизменяемые</strong> (<code>immutable</code>): <code>int</code>, <code>float</code>, <code>str</code>, <code>bool</code>, <code>None</code>,
+кортежи. Операции «изменения» создают новый объект.</li>
+<li><strong>Изменяемые</strong> (<code>mutable</code>): списки, словари, множества. Их состояние можно
+менять на месте, и это видят все имена, ссылающиеся на объект.</li>
+</ul>
+<p>Списки, кортежи, множества и словари подробно разбираются в главах 13, 14, 16
+и 17; здесь достаточно запомнить деление: кортеж, как и строка, после создания
+не меняется, а список, словарь и множество меняются на месте.</p>
+<p>Неизменяемость строки легко показать: <code>s = s + &quot;!&quot;</code> создаёт новую строку, а
+старая остаётся неизменной у всех, кто на неё ссылался.</p>
+<div class="highlight exec"><pre><code class="language-python"><span class="n">s</span> <span class="o">=</span> <span class="s2">"Python"</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">s</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="s2">"!"</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</code></pre></div>
+<pre class="output"><code>Python!
+Python
+</code></pre>
+<p>Почему это важно: для изменяемых объектов <code>y = x</code> означает, что изменение
+через <code>y</code> увидят все, кто смотрит на тот же объект. Это источник многих
+дефектов; подробно — в главе 18.</p>
+<h2 id="типичные-ошибки"><span class="h-number">3.8</span> Типичные ошибки</h2>
+<ol>
+<li><strong>Думать, что присваивание копирует объект.</strong> <code>y = x</code> создаёт вторую
+ссылку, а не копию.</li>
+<li><strong>Сравнивать значения через <code>is</code>.</strong> <code>x is 1000</code> может быть <code>True</code> или
+<code>False</code> в зависимости от внутренних оптимизаций; используйте <code>==</code>.</li>
+<li><strong>Сравнивать <code>None</code> через <code>==</code>.</strong> Работает, но принято <code>x is None</code>: это
+проверка идентичности единственного объекта <code>None</code>.</li>
+<li><strong>Сравнивать <code>float</code> на точное равенство.</strong> <code>0.1 + 0.2 == 0.3</code> ложно;
+используйте допуск.</li>
+<li><strong>Считать, что имя «принадлежит» типу.</strong> Одно имя может указывать на
+объекты разных типов; тип принадлежит объекту.</li>
+</ol>
+<h2 id="упражнения"><span class="h-number">3.9</span> Упражнения</h2>
+<h3 id="ex-ch03-01">1. Типы значений</h3>
+<p>Не запуская код, определите типы: <code>42</code>, <code>3.0</code>, <code>&quot;42&quot;</code>, <code>True</code>, <code>None</code>. Затем
+проверьте через <code>type</code> и объясните каждое расхождение, если оно обнаружится.</p>
+<h3 id="ex-ch03-02">2. Присваивание и переприсваивание</h3>
+<p>Что выведет программа? Объясните по шагам.</p>
+<div class="highlight"><pre><code class="language-python"><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="ex-ch03-03">3. Присваивание не копирует</h3>
+<p>Объясните, почему <code>y = x</code> не создаёт второй объект. Как это проверить с помощью
+оператора <code>is</code>? Приведите пример.</p>
+<h3 id="ex-ch03-04">4. Динамическая типизация</h3>
+<p>Можно ли в Python выполнить <code>x = 1</code>, а затем <code>x = &quot;текст&quot;</code>? Что при этом
+происходит с типами? Почему это не противоречит тому, что у каждого объекта
+есть тип?</p>
+<h3 id="ex-ch03-05">5. Идентичность и равенство</h3>
+<p>Объясните разницу между <code>==</code> и <code>is</code> на примере двух списков с одинаковым
+содержимым. Когда проверки дают разные результаты?</p>
+<h3 id="ex-ch03-06">6. None</h3>
+<p>Почему для проверки на <code>None</code> рекомендуют <code>x is None</code>, а не <code>x == None</code>?
+Сформулируйте ответ через понятие идентичности.</p>
+<h3 id="ex-ch03-07">7. Плавающая точка</h3>
+<p>Почему <code>0.1 + 0.2</code> даёт <code>0.30000000000000004</code>? Что это говорит о сравнении
+чисел с плавающей точкой? Предложите корректный способ сравнения.</p>
+<h3 id="ex-ch03-08">8. Большие целые</h3>
+<p>Вычислите <code>2 ** 200</code>. Сравните с максимальным знаковым 64-битным целым
+<code>2 ** 63 - 1</code> (для беззнакового максимум — <code>2 ** 64 - 1</code>). Что это говорит об
+ограничениях типа <code>int</code> в Python?</p>
+<h3 id="ex-ch03-09">9. Допустимые имена</h3>
+<p>Какие из имён допустимы в Python: <code>2x</code>, <code>_x</code>, <code>my-var</code>, <code>total_price</code>,
+<code>class</code>, <code>итог</code>? Для недопустимых объясните причину.</p>
+<h3 id="ex-ch03-10">10. Неизменяемость строк</h3>
+<p>Докажите примером, что строка неизменяема. Что на самом деле происходит при
+выполнении <code>s = s + &quot;!&quot;</code>?</p>
+<h3 id="ex-ch03-11">11. Значение и объект</h3>
+<p>Объясните разницу между «значение 42» и «объект типа <code>int</code> со значением 42».
+Почему в Python корректнее второе описание?</p>
+<h3 id="ex-ch03-12">12. Один объект — два имени</h3>
+<p>Создайте два имени, которые ссылаются на один объект, и докажите это оператором
+<code>is</code>. Затем переприсвойте одно из имён и объясните, почему теперь <code>is</code> даёт
+<code>False</code>.</p>
+<h2 id="проверка-понимания"><span class="h-number">3.10</span> Проверка понимания</h2>
+<ol>
+<li>Что такое объект и какие три характеристики он имеет?</li>
+<li>Чем имя отличается от объекта?</li>
+<li>Что означает «Python — язык с динамической типизацией»?</li>
+<li>Почему <code>y = x</code> не копирует объект?</li>
+<li>Чем <code>is</code> отличается от <code>==</code> и когда что применять?</li>
+<li>Какие типы изменяемы, а какие нет, и почему это важно?</li>
+<li>Почему <code>0.1 + 0.2</code> не равно <code>0.3</code>?</li>
+</ol>
+<h2 id="что-дальше"><span class="h-number">3.11</span> Что дальше</h2>
+<p>Вы умеете хранить значения в именах и знаете, как устроены объекты. В
+следующей главе появятся выражения посложнее: сравнения, логические связки,
+ввод данных и форматирование строк — всё, что нужно для первых настоящих
+программ с логикой.</p>
+
+
+</article>
+<nav class="pager" aria-label="Переходы между главами"><a class="pager-card prev" rel="prev" href="ch-02-first-program.html"><span class="pager-label">← Назад</span><span class="pager-title">Первая программа: вычисления и вывод</span></a><a class="pager-card next" rel="next" href="ch-04-expressions-input.html"><span class="pager-label">Далее:</span><span class="pager-title">Выражения, операторы и ввод данных</span></a></nav>
+<footer class="site-footer">
+<p>Syllanix · учебник собран harness из Markdown-источников. Работает без внешних ресурсов.</p>
+<p><a href="https://github.com/vutienthan/syllanix" target="_blank" rel="noopener noreferrer">GitHub проекта</a></p>
+
+</footer>
+</main>
+</div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр рисунка" hidden>
+<button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<img alt="">
+</div>
+</body>
+</html>

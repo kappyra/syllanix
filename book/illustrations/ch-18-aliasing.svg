@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" role="img"
+     aria-labelledby="ttl18a desc18a" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl18a">Алиасинг: два имени могут указывать на один объект</title>
+  <desc id="desc18a">Слева имена a и b указывают на один и тот же список, поэтому a is b истинно. Справа имена c и d указывают на два разных списка с одинаковым содержимым: c == d истинно, но c is d ложно.</desc>
+
+  <text x="32" y="34" font-size="17" font-weight="bold" fill="#1d3550">Присваивание связывает имя с объектом</text>
+
+  <!-- левая панель: один объект -->
+  <rect x="24" y="56" width="352" height="300" rx="10" fill="#f5f8fc" stroke="#33557a" stroke-width="2"/>
+  <text x="40" y="82" font-size="14" font-weight="bold" fill="#1d3550">b = a: один объект</text>
+
+  <rect x="44" y="104" width="76" height="44" rx="8" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="82" y="132" text-anchor="middle" font-size="16" fill="#1d3550">a</text>
+  <rect x="44" y="196" width="76" height="44" rx="8" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="82" y="224" text-anchor="middle" font-size="16" fill="#1d3550">b</text>
+
+  <line x1="120" y1="126" x2="236" y2="160" stroke="#33557a" stroke-width="2"/>
+  <polygon points="236,160 224,161 229,150" fill="#33557a"/>
+  <line x1="120" y1="218" x2="236" y2="184" stroke="#33557a" stroke-width="2"/>
+  <polygon points="236,184 229,194 224,183" fill="#33557a"/>
+
+  <rect x="244" y="144" width="116" height="56" rx="8" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="302" y="179" text-anchor="middle" font-size="15" fill="#4b3a16">[1, 2, 3]</text>
+
+  <text x="44" y="278" font-size="13" font-weight="bold" fill="#2f6b3f">a is b → True</text>
+  <text x="44" y="300" font-size="12" fill="#33557a">изменение через b видно через a:</text>
+  <text x="44" y="318" font-size="12" fill="#33557a">объект-список один</text>
+
+  <!-- правая панель: два объекта -->
+  <rect x="392" y="56" width="344" height="300" rx="10" fill="#fdfaf4" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="408" y="82" font-size="14" font-weight="bold" fill="#4b3a16">d = c[:] или [1, 2]: два объекта</text>
+
+  <rect x="412" y="104" width="76" height="44" rx="8" fill="#ffffff" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="450" y="132" text-anchor="middle" font-size="16" fill="#4b3a16">c</text>
+  <rect x="412" y="196" width="76" height="44" rx="8" fill="#ffffff" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="450" y="224" text-anchor="middle" font-size="16" fill="#4b3a16">d</text>
+
+  <line x1="488" y1="126" x2="586" y2="126" stroke="#8a6a2f" stroke-width="2"/>
+  <polygon points="586,126 574,120 574,132" fill="#8a6a2f"/>
+  <line x1="488" y1="218" x2="586" y2="218" stroke="#8a6a2f" stroke-width="2"/>
+  <polygon points="586,218 574,212 574,224" fill="#8a6a2f"/>
+
+  <rect x="594" y="98" width="116" height="56" rx="8" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="652" y="133" text-anchor="middle" font-size="15" fill="#4b3a16">[1, 2]</text>
+  <rect x="594" y="190" width="116" height="56" rx="8" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="652" y="225" text-anchor="middle" font-size="15" fill="#4b3a16">[1, 2]</text>
+
+  <text x="412" y="278" font-size="13" font-weight="bold" fill="#8a3030">c is d → False</text>
+  <text x="412" y="300" font-size="12" fill="#4b3a16">c == d → True: значения совпадают,</text>
+  <text x="412" y="318" font-size="12" fill="#4b3a16">но это разные объекты</text>
+
+  <text x="32" y="384" font-size="12" fill="#5a6b7d">is сравнивает идентичность объекта, == сравнивает значения.</text>
+</svg>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" role="img"
+     aria-labelledby="ap apd" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ap">Конвейер асинхронного сборщика данных</title>
+  <desc id="apd">Список адресов превращается в набор задач. Семафор ограничивает число одновременных запросов. Каждая задача выполняет запрос с повторами и экспоненциальной задержкой при сбое. Результаты собираются в общий список и сохраняются в JSON-файл; ошибки отдельных задач не останавливают остальные.</desc>
+
+  <text x="26" y="32" font-size="17" font-weight="bold" fill="#1d3550">Асинхронный сборщик: задачи, ограничения, повторы</text>
+
+  <rect x="24" y="72" width="150" height="86" rx="9" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="99" y="100" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#1d3550">список URL</text>
+  <text x="99" y="122" text-anchor="middle" font-size="11.5" fill="#33557a">N адресов</text>
+  <text x="99" y="142" text-anchor="middle" font-size="11.5" fill="#33557a">→ N задач</text>
+
+  <line x1="176" y1="115" x2="208" y2="115" stroke="#33557a" stroke-width="2.5"/>
+  <polygon points="212,115 200,108 200,122" fill="#33557a"/>
+
+  <rect x="218" y="72" width="168" height="86" rx="9" fill="#fffdf7" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="302" y="100" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#4b3a16">семафор</text>
+  <text x="302" y="122" text-anchor="middle" font-size="11.5" fill="#4b3a16">не более K</text>
+  <text x="302" y="142" text-anchor="middle" font-size="11.5" fill="#4b3a16">одновременных</text>
+
+  <line x1="388" y1="115" x2="420" y2="115" stroke="#33557a" stroke-width="2.5"/>
+  <polygon points="424,115 412,108 412,122" fill="#33557a"/>
+
+  <rect x="430" y="60" width="200" height="110" rx="9" fill="#ffffff" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="530" y="86" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#4b3a16">запрос + повторы</text>
+  <text x="530" y="108" text-anchor="middle" font-size="11.5" fill="#4b3a16">таймаут и статус</text>
+  <text x="530" y="128" text-anchor="middle" font-size="11.5" fill="#4b3a16">задержка: 1с → 2с → 4с</text>
+  <text x="530" y="150" text-anchor="middle" font-size="11.5" fill="#4b3a16">до 4 попыток, потом ошибка</text>
+
+  <line x1="632" y1="115" x2="664" y2="115" stroke="#2f6b3a" stroke-width="2.5"/>
+  <polygon points="668,115 656,108 656,122" fill="#2f6b3a"/>
+
+  <rect x="676" y="72" width="178" height="86" rx="9" fill="#eef7ef" stroke="#2f6b3a" stroke-width="2"/>
+  <text x="765" y="100" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#204a28">сохранение</text>
+  <text x="765" y="122" text-anchor="middle" font-size="11.5" fill="#204a28">успешные данные</text>
+  <text x="765" y="142" text-anchor="middle" font-size="11.5" fill="#204a28">result.json</text>
+
+  <!-- timeline -->
+  <text x="26" y="212" font-size="14" font-weight="bold" fill="#1d3550">Почему асинхронность ускоряет ожидание ввода-вывода</text>
+
+  <text x="26" y="242" font-size="12" fill="#5a6b7d">последовательно</text>
+  <rect x="150" y="228" width="110" height="18" rx="3" fill="#33557a"/>
+  <rect x="262" y="228" width="110" height="18" rx="3" fill="#33557a"/>
+  <rect x="374" y="228" width="110" height="18" rx="3" fill="#33557a"/>
+  <rect x="486" y="228" width="110" height="18" rx="3" fill="#33557a"/>
+  <text x="606" y="243" font-size="12" fill="#33557a">= сумма ожиданий</text>
+
+  <text x="26" y="292" font-size="12" fill="#5a6b7d">конкурентно</text>
+  <rect x="150" y="278" width="110" height="18" rx="3" fill="#8a6a2f"/>
+  <rect x="150" y="300" width="110" height="18" rx="3" fill="#8a6a2f"/>
+  <rect x="150" y="322" width="110" height="18" rx="3" fill="#8a6a2f"/>
+  <rect x="150" y="344" width="110" height="18" rx="3" fill="#8a6a2f"/>
+  <text x="270" y="296" font-size="12" fill="#4b3a16">4 задачи ждут одновременно:</text>
+  <text x="270" y="316" font-size="12" fill="#4b3a16">общее время ≈ одно ожидание</text>
+  <text x="270" y="344" font-size="12" fill="#4b3a16">(при достаточном лимите K)</text>
+</svg>

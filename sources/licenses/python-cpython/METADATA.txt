@@ -1,0 +1,7 @@
+source_url: https://github.com/python/cpython
+commit: 9c0cfb141c236c902954841bb6cca407f86e1eeb
+commit_date: 2026-11-01
+verified_at: 2026-11-01
+clone_mode: --depth 1 --filter=blob:none --sparse (Doc subset)
+file: LICENSE sha256=b0e25a78cffb43f4d92de8b61ccfa1f1f98ecbc22330b54b5251e7b6ba010231
+file: Doc-license.rst sha256=3741d8c611f97b985fa32d4f8ad1757aa059f45cb67ff519e8c9ac6ad8a4debb

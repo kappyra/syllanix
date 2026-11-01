@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" role="img"
+     aria-labelledby="ttl11b desc11b" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl11b">Цикл систематического поиска дефекта из шести шагов</title>
+  <desc id="desc11b">Шесть шагов поиска дефекта идут змейкой. Сначала воспроизвести дефект по команде с известными входными данными, затем сузить задачу до минимального примера, потом сформулировать проверяемую гипотезу. Ниже: проверить гипотезу с помощью print, отладчика или журнала, исправить причину, а не симптом, и закрепить результат повторным прогоном. Если гипотеза не подтвердилась, от шага проверки поиск возвращается к шагу сужения задачи.</desc>
+
+  <text x="20" y="34" font-size="17" font-weight="bold" fill="#1d3550">Цикл поиска дефекта</text>
+
+  <!-- верхний ряд -->
+  <rect x="20" y="70" width="215" height="76" rx="9" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="36" y="96" font-size="14" font-weight="bold" fill="#1d3550">1. Воспроизвести</text>
+  <text x="36" y="116" font-size="12" fill="#33557a">дефект возникает</text>
+  <text x="36" y="134" font-size="12" fill="#33557a">по команде и всегда</text>
+
+  <rect x="270" y="70" width="215" height="76" rx="9" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="286" y="96" font-size="14" font-weight="bold" fill="#1d3550">2. Сузить</text>
+  <text x="286" y="116" font-size="12" fill="#33557a">минимальный код</text>
+  <text x="286" y="134" font-size="12" fill="#33557a">и минимальные данные</text>
+
+  <rect x="520" y="70" width="215" height="76" rx="9" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="536" y="96" font-size="14" font-weight="bold" fill="#4b3a16">3. Гипотеза</text>
+  <text x="536" y="116" font-size="12" fill="#4b3a16">предсказание, которое</text>
+  <text x="536" y="134" font-size="12" fill="#4b3a16">можно проверить</text>
+
+  <!-- нижний ряд -->
+  <rect x="520" y="250" width="215" height="76" rx="9" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="536" y="276" font-size="14" font-weight="bold" fill="#4b3a16">4. Проверить</text>
+  <text x="536" y="296" font-size="12" fill="#4b3a16">print, отладчик</text>
+  <text x="536" y="314" font-size="12" fill="#4b3a16">или запись в журнал</text>
+
+  <rect x="270" y="250" width="215" height="76" rx="9" fill="#eaf3ea" stroke="#3c6b47" stroke-width="2"/>
+  <text x="286" y="276" font-size="14" font-weight="bold" fill="#254a2d">5. Исправить</text>
+  <text x="286" y="296" font-size="12" fill="#254a2d">причину, а не</text>
+  <text x="286" y="314" font-size="12" fill="#254a2d">видимый симптом</text>
+
+  <rect x="20" y="250" width="215" height="76" rx="9" fill="#eaf3ea" stroke="#3c6b47" stroke-width="2"/>
+  <text x="36" y="276" font-size="14" font-weight="bold" fill="#254a2d">6. Закрепить</text>
+  <text x="36" y="296" font-size="12" fill="#254a2d">повторный прогон</text>
+  <text x="36" y="314" font-size="12" fill="#254a2d">и проверка результата</text>
+
+  <!-- стрелки -->
+  <line x1="235" y1="108" x2="262" y2="108" stroke="#33557a" stroke-width="2"/>
+  <polygon points="270,108 260,103 260,113" fill="#33557a"/>
+  <line x1="485" y1="108" x2="512" y2="108" stroke="#33557a" stroke-width="2"/>
+  <polygon points="520,108 510,103 510,113" fill="#33557a"/>
+
+  <line x1="627" y1="146" x2="627" y2="242" stroke="#8a6a2f" stroke-width="2"/>
+  <polygon points="627,250 622,240 632,240" fill="#8a6a2f"/>
+
+  <line x1="520" y1="288" x2="493" y2="288" stroke="#8a6a2f" stroke-width="2"/>
+  <polygon points="485,288 495,283 495,293" fill="#8a6a2f"/>
+  <line x1="270" y1="288" x2="243" y2="288" stroke="#254a2d" stroke-width="2"/>
+  <polygon points="235,288 245,283 245,293" fill="#254a2d"/>
+
+  <polyline points="520,270 500,270 500,235 377,235 377,154" fill="none" stroke="#8a2b2b" stroke-width="2" stroke-dasharray="7 5"/>
+  <polygon points="377,146 372,156 382,156" fill="#8a2b2b"/>
+  <text x="272" y="210" font-size="12" fill="#8a2b2b">гипотеза не</text>
+  <text x="272" y="226" font-size="12" fill="#8a2b2b">подтвердилась</text>
+
+  <text x="420" y="200" font-size="13" fill="#4b3a16">Один проход цикла отвечает</text>
+  <text x="420" y="218" font-size="13" fill="#4b3a16">на один вопрос о дефекте.</text>
+
+  <line x1="20" y1="366" x2="735" y2="366" stroke="#c9c2b4" stroke-width="1.5"/>
+  <text x="20" y="390" font-size="13" fill="#4b3a16">Шаг проверки превращает догадку в наблюдаемый факт. Правки без</text>
+  <text x="20" y="410" font-size="13" fill="#4b3a16">проверенной гипотезы — перебор, а не поиск.</text>
+</svg>

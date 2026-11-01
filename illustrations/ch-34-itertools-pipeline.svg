@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 400" role="img"
+     aria-labelledby="t34ip d34ip" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="t34ip">Ленивый конвейер itertools: элементы проходят по одному</title>
+  <desc id="d34ip">Источник данных передаёт элементы в islice, который пропускает нужное количество и берёт только запрошенную порцию. Каждый элемент сразу обрабатывается потребителем, поэтому в памяти находится один элемент, а не весь список. Когда потребитель останавливается, источник больше не запрашивается. Материализация list превращает ленивый поток в обычный список уже в конце конвейера.</desc>
+  <defs>
+    <marker id="arr34a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#33557a"/>
+    </marker>
+  </defs>
+
+  <text x="24" y="30" font-size="17" font-weight="bold" fill="#1d3550">Ленивый конвейер: элементы идут по одному</text>
+
+  <rect x="30" y="74" width="170" height="92" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="115" y="102" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3550">Источник</text>
+  <text x="115" y="126" text-anchor="middle" font-size="12.5" fill="#33557a">range(100)</text>
+  <text x="115" y="148" text-anchor="middle" font-size="12" fill="#4b3a16">не список</text>
+
+  <line x1="204" y1="120" x2="246" y2="120" stroke="#33557a" stroke-width="2" marker-end="url(#arr34a)"/>
+
+  <rect x="250" y="74" width="170" height="92" rx="10" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="335" y="102" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3550">islice</text>
+  <text x="335" y="126" text-anchor="middle" font-size="12.5" fill="#33557a">пропустить и взять</text>
+  <text x="335" y="148" text-anchor="middle" font-size="12" fill="#4b3a16">только нужную порцию</text>
+
+  <line x1="424" y1="120" x2="466" y2="120" stroke="#33557a" stroke-width="2" marker-end="url(#arr34a)"/>
+
+  <rect x="470" y="74" width="170" height="92" rx="10" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="555" y="102" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3550">Обработка</text>
+  <text x="555" y="126" text-anchor="middle" font-size="12.5" fill="#33557a">функция или</text>
+  <text x="555" y="148" text-anchor="middle" font-size="12.5" fill="#33557a">генератор</text>
+
+  <line x1="644" y1="120" x2="686" y2="120" stroke="#33557a" stroke-width="2" marker-end="url(#arr34a)"/>
+
+  <rect x="490" y="212" width="206" height="72" rx="10" fill="#f7f3ea" stroke="#8a6a2f" stroke-width="2"/>
+  <text x="506" y="238" font-size="13" font-weight="bold" fill="#4b3a16">list(конвейер)</text>
+  <text x="506" y="260" font-size="12" fill="#4b3a16">материализация — в конце:</text>
+  <text x="506" y="278" font-size="12" fill="#4b3a16">ленивость заканчивается</text>
+  <line x1="565" y1="166" x2="565" y2="208" stroke="#8a6a2f" stroke-width="2" marker-end="url(#arr34a)"/>
+
+  <rect x="30" y="212" width="420" height="72" rx="10" fill="#e8f5ec" stroke="#2f7a45" stroke-width="2"/>
+  <text x="46" y="238" font-size="13" font-weight="bold" fill="#1f5c33">Память: один элемент, а не весь список</text>
+  <text x="46" y="260" font-size="12" fill="#1f5c33">Источник запрашивается по мере надобности,</text>
+  <text x="46" y="278" font-size="12" fill="#1f5c33">поэтому миллион чисел не создаётся сразу</text>
+
+  <text x="390" y="338" text-anchor="middle" font-size="12.5" fill="#33557a">Ленивость выгодна для больших и бесконечных потоков; для маленьких данных проще список</text>
+  <text x="390" y="364" text-anchor="middle" font-size="12.5" fill="#33557a">Итератор проходится один раз: после исчерпания он пуст</text>
+</svg>

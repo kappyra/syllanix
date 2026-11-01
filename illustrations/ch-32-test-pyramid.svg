@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 420" role="img"
+     aria-labelledby="t32py d32py" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="t32py">Пирамида тестов: много быстрых модульных и мало медленных сквозных</title>
+  <desc id="d32py">Пирамида из трёх уровней. Внизу много быстрых модульных тестов, которые точно указывают место дефекта. В середине интеграционные тесты, проверяющие взаимодействие частей. Наверху мало сквозных тестов: они медленные и хрупкие, но проверяют сценарий целиком. Чем ниже уровень, тем дешевле запуск и точнее диагностика.</desc>
+  <defs>
+    <marker id="arr32a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#33557a"/>
+    </marker>
+  </defs>
+
+  <text x="24" y="30" font-size="17" font-weight="bold" fill="#1d3550">Пирамида тестов: много быстрых, мало медленных</text>
+
+  <polygon points="250,70 302,150 198,150" fill="#e8eef7" stroke="#33557a" stroke-width="2"/>
+  <polygon points="198,150 302,150 361,240 139,240" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <polygon points="139,240 361,240 420,330 80,330" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+
+  <text x="250" y="136" text-anchor="middle" font-size="12" fill="#1d3550">E2E</text>
+  <text x="250" y="200" text-anchor="middle" font-size="13" fill="#1d3550">Интеграционные</text>
+  <text x="250" y="292" text-anchor="middle" font-size="13" font-weight="bold" fill="#1d3550">Модульные тесты</text>
+
+  <line x1="300" y1="112" x2="452" y2="112" stroke="#8a6a2f" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <line x1="356" y1="196" x2="452" y2="196" stroke="#8a6a2f" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <line x1="414" y1="286" x2="452" y2="286" stroke="#8a6a2f" stroke-width="1.5" stroke-dasharray="5 4"/>
+
+  <text x="462" y="102" font-size="13" font-weight="bold" fill="#1d3550">Сквозные сценарии</text>
+  <text x="462" y="124" font-size="12" fill="#4b3a16">мало, медленно, хрупко</text>
+  <text x="462" y="144" font-size="12" fill="#4b3a16">проверяют всё сразу</text>
+
+  <text x="462" y="186" font-size="13" font-weight="bold" fill="#1d3550">Интеграционные</text>
+  <text x="462" y="210" font-size="12" fill="#4b3a16">проверяют стыки частей</text>
+  <text x="462" y="230" font-size="12" fill="#4b3a16">дороже модульных</text>
+
+  <text x="462" y="276" font-size="13" font-weight="bold" fill="#1d3550">Модульные</text>
+  <text x="462" y="300" font-size="12" fill="#4b3a16">много, быстро, точно</text>
+  <text x="462" y="320" font-size="12" fill="#4b3a16">указывают место дефекта</text>
+
+  <line x1="80" y1="350" x2="700" y2="350" stroke="#c9c2b4" stroke-width="1.2"/>
+  <text x="390" y="376" text-anchor="middle" font-size="12.5" fill="#33557a">Внизу основание: дешёвые проверки, которые ловят большинство ошибок</text>
+  <text x="390" y="400" text-anchor="middle" font-size="12.5" fill="#33557a">Наверх поднимаются только критичные пользовательские сценарии</text>
+</svg>

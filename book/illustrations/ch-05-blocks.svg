@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 480" role="img"
+     aria-labelledby="ttl5b desc5b" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="ttl5b">Отступ как граница блока: уровни вложенности в Python</title>
+  <desc id="desc5b">Пример программы с двумя уровнями вложенности. Четыре пробела задают первый уровень: это тело внешнего условия. Ещё четыре пробела задают второй уровень: это тело вложенного условия. Строка с меньшим отступом закрывает внутренний блок, а строка без отступа закрывает оба блока и выполняется всегда. Отступ в Python определяет, какие инструкции входят в блок, поэтому это часть синтаксиса, а не оформление.</desc>
+
+  <text x="30" y="30" font-size="16" font-weight="bold" fill="#1d3550">Отступ задаёт границы блока</text>
+  <text x="30" y="52" font-size="13" fill="#4a5a6a">четыре пробела — один уровень; строка с меньшим отступом закрывает блок</text>
+
+  <!-- кодовая панель -->
+  <rect x="24" y="68" width="470" height="290" rx="10" fill="#f7fafd" stroke="#33557a" stroke-width="2"/>
+
+  <!-- рамки блоков -->
+  <rect x="64" y="150" width="414" height="96" rx="6" fill="#eef7ee" stroke="#3f6b3f" stroke-width="1.5"/>
+  <rect x="100" y="180" width="378" height="34" rx="6" fill="#fdf1dc" stroke="#8a6a2f" stroke-width="1.5"/>
+
+  <!-- направляющие отступа -->
+  <line x1="66" y1="150" x2="66" y2="246" stroke="#7f9a7f" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <line x1="102" y1="180" x2="102" y2="214" stroke="#a98a4a" stroke-width="1.5" stroke-dasharray="5 4"/>
+
+  <g font-family="'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" fill="#1d3550">
+    <text x="40" y="134">if age &gt;= 18:</text>
+    <text x="76" y="174">if age &lt;= 65:</text>
+    <text x="112" y="204">print("рабочий возраст")</text>
+    <text x="76" y="234">print("совершеннолетний")</text>
+    <text x="40" y="266">print("проверка окончена")</text>
+  </g>
+
+  <text x="40" y="298" font-size="13" fill="#3f6b3f">зелёная рамка — тело внешнего if (уровень 1)</text>
+  <text x="40" y="320" font-size="13" fill="#8a6a2f">жёлтая рамка — тело вложенного if (уровень 2)</text>
+  <text x="40" y="342" font-size="13" fill="#4a5a6a">пунктир показывает, где начинается блок</text>
+
+  <!-- пояснения справа -->
+  <text x="516" y="112" font-size="14" font-weight="bold" fill="#1d3550">Уровень 0</text>
+  <text x="516" y="134" font-size="13" fill="#1d3550">условие и строка после</text>
+  <text x="516" y="152" font-size="13" fill="#1d3550">всего блока</text>
+
+  <text x="516" y="188" font-size="14" font-weight="bold" fill="#264a26">Уровень 1</text>
+  <text x="516" y="210" font-size="13" fill="#264a26">тело внешнего if:</text>
+  <text x="516" y="228" font-size="13" fill="#264a26">выполняется, если</text>
+  <text x="516" y="246" font-size="13" fill="#264a26">age &gt;= 18</text>
+
+  <text x="516" y="288" font-size="14" font-weight="bold" fill="#4b3a16">Уровень 2</text>
+  <text x="516" y="310" font-size="13" fill="#4b3a16">тело вложенного if:</text>
+  <text x="516" y="328" font-size="13" fill="#4b3a16">выполняется при обоих</text>
+  <text x="516" y="346" font-size="13" fill="#4b3a16">условиях</text>
+
+  <!-- нижняя плашка -->
+  <rect x="24" y="378" width="692" height="88" rx="10" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="44" y="404" font-size="13.5" fill="#1d3550">Строка print("совершеннолетний") стоит на уровне 1: она входит во внешний блок,</text>
+  <text x="44" y="426" font-size="13.5" fill="#1d3550">но не во вложенный. Строка print("проверка окончена") записана без отступа,</text>
+  <text x="44" y="448" font-size="13.5" fill="#1d3550">поэтому закрывает оба блока и выполняется всегда.</text>
+</svg>

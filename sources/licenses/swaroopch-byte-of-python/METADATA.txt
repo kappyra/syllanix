@@ -1,0 +1,6 @@
+source_url: https://github.com/swaroopch/byte_of_python
+commit: 84f4dd8d6f09836fa58226eaafe922b8a7baabc6
+commit_date: 2026-10-07
+verified_at: 2026-11-01
+file: METADATA.txt sha256=1a6a0b2b354cd4d39ee37b8c8a1eeacab236f77be49ab99329db75a02bc6ad98
+file: README.md sha256=ced049f2b19dd4575d24dc7eb70fd0439097698d44745a7e0b06d617e8ada9ab

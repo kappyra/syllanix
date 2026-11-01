@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 430" role="img"
+     aria-labelledby="t37tz d37tz" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="t37tz">Один момент времени в трёх часовых поясах: UTC, Москва и Токио</title>
+  <desc id="d37tz">Один и тот же момент 12:00 UTC показан в трёх поясах: в UTC это 12:00, в Москве 15:00 со смещением плюс три часа, в Токио 21:00 со смещением плюс девять часов. Момент один, представления разные. Хранить данные следует в UTC, а показывать в поясе пользователя; часовой пояс — это правило, а смещение — конкретное число часов в конкретный момент.</desc>
+  <defs>
+    <marker id="arr37a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#33557a"/>
+    </marker>
+  </defs>
+
+  <text x="24" y="30" font-size="17" font-weight="bold" fill="#1d3550">Один момент — три представления</text>
+
+  <rect x="270" y="50" width="240" height="56" rx="10" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="390" y="76" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3550">Один момент времени</text>
+  <text x="390" y="96" text-anchor="middle" font-size="12.5" fill="#33557a">2026-11-01T12:00:00+00:00</text>
+
+  <line x1="390" y1="106" x2="390" y2="124" stroke="#33557a" stroke-width="2"/>
+  <line x1="150" y1="124" x2="630" y2="124" stroke="#33557a" stroke-width="2"/>
+  <line x1="150" y1="124" x2="150" y2="146" stroke="#33557a" stroke-width="2" marker-end="url(#arr37a)"/>
+  <line x1="390" y1="124" x2="390" y2="146" stroke="#33557a" stroke-width="2" marker-end="url(#arr37a)"/>
+  <line x1="630" y1="124" x2="630" y2="146" stroke="#33557a" stroke-width="2" marker-end="url(#arr37a)"/>
+
+  <rect x="60" y="150" width="180" height="196" rx="10" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="150" y="176" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3550">UTC</text>
+  <circle cx="150" cy="216" r="26" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <line x1="150" y1="216" x2="150" y2="197" stroke="#33557a" stroke-width="2.5"/>
+  <line x1="150" y1="216" x2="150" y2="203" stroke="#33557a" stroke-width="1.5"/>
+  <text x="150" y="272" text-anchor="middle" font-size="17" font-weight="bold" fill="#1d3550">12:00</text>
+  <text x="150" y="296" text-anchor="middle" font-size="12.5" fill="#33557a">смещение +00:00</text>
+  <text x="150" y="320" text-anchor="middle" font-size="12" fill="#4b3a16">база для хранения</text>
+
+  <rect x="300" y="150" width="180" height="196" rx="10" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="390" y="176" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3550">Москва</text>
+  <circle cx="390" cy="216" r="26" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <line x1="390" y1="216" x2="390" y2="199" stroke="#33557a" stroke-width="2.5"/>
+  <line x1="390" y1="216" x2="406" y2="216" stroke="#33557a" stroke-width="1.5"/>
+  <text x="390" y="272" text-anchor="middle" font-size="17" font-weight="bold" fill="#1d3550">15:00</text>
+  <text x="390" y="296" text-anchor="middle" font-size="12.5" fill="#33557a">смещение +03:00</text>
+  <text x="390" y="320" text-anchor="middle" font-size="12" fill="#4b3a16">Europe/Moscow</text>
+
+  <rect x="540" y="150" width="180" height="196" rx="10" fill="#ffffff" stroke="#33557a" stroke-width="2"/>
+  <text x="630" y="176" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3550">Токио</text>
+  <circle cx="630" cy="216" r="26" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <line x1="630" y1="216" x2="630" y2="199" stroke="#33557a" stroke-width="2.5"/>
+  <line x1="630" y1="216" x2="614" y2="216" stroke="#33557a" stroke-width="1.5"/>
+  <text x="630" y="272" text-anchor="middle" font-size="17" font-weight="bold" fill="#1d3550">21:00</text>
+  <text x="630" y="296" text-anchor="middle" font-size="12.5" fill="#33557a">смещение +09:00</text>
+  <text x="630" y="320" text-anchor="middle" font-size="12" fill="#4b3a16">Asia/Tokyo</text>
+
+  <text x="390" y="382" text-anchor="middle" font-size="12.5" fill="#33557a">Храните момент в UTC, показывайте его в поясе пользователя</text>
+  <text x="390" y="406" text-anchor="middle" font-size="12.5" fill="#33557a">Часовой пояс — правило, смещение — число часов в конкретный момент</text>
+</svg>

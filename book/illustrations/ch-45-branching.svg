@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 300" role="img"
+     aria-labelledby="br brd" font-family="'DejaVu Sans', 'Liberation Sans', Arial, sans-serif">
+  <title id="br">Ветки и слияние в Git</title>
+  <desc id="brd">Основная ветка main содержит коммиты. От неё ответвляется ветка feature, в которой появляются свои коммиты. Затем ветка feature сливается обратно в main, и история main продолжается дальше.</desc>
+
+  <text x="30" y="32" font-size="17" font-weight="bold" fill="#1d3550">Ветка — отдельная линия работы</text>
+
+  <!-- main line -->
+  <line x1="60" y1="170" x2="760" y2="170" stroke="#33557a" stroke-width="3"/>
+  <text x="60" y="204" font-size="13" font-weight="bold" fill="#33557a">main</text>
+
+  <circle cx="110" cy="170" r="9" fill="#33557a"/>
+  <circle cx="210" cy="170" r="9" fill="#33557a"/>
+  <circle cx="310" cy="170" r="9" fill="#33557a"/>
+  <circle cx="640" cy="170" r="9" fill="#33557a"/>
+  <circle cx="740" cy="170" r="9" fill="#33557a"/>
+
+  <text x="110" y="150" text-anchor="middle" font-size="11.5" fill="#5a6b7d">A</text>
+  <text x="210" y="150" text-anchor="middle" font-size="11.5" fill="#5a6b7d">B</text>
+  <text x="310" y="150" text-anchor="middle" font-size="11.5" fill="#5a6b7d">C</text>
+  <text x="668" y="196" text-anchor="middle" font-size="11.5" fill="#5a6b7d">G — коммит слияния</text>
+  <text x="740" y="150" text-anchor="middle" font-size="11.5" fill="#5a6b7d">H</text>
+
+  <!-- branch out -->
+  <path d="M310 170 C 360 170, 360 100, 420 100" fill="none" stroke="#8a6a2f" stroke-width="3"/>
+  <line x1="420" y1="100" x2="620" y2="100" stroke="#8a6a2f" stroke-width="3"/>
+  <text x="420" y="82" font-size="13" font-weight="bold" fill="#4b3a16">feature/validation</text>
+
+  <circle cx="470" cy="100" r="9" fill="#8a6a2f"/>
+  <circle cx="560" cy="100" r="9" fill="#8a6a2f"/>
+  <text x="470" y="126" text-anchor="middle" font-size="11.5" fill="#4b3a16">D</text>
+  <text x="560" y="126" text-anchor="middle" font-size="11.5" fill="#4b3a16">E</text>
+
+  <!-- merge back -->
+  <path d="M620 100 C 650 100, 630 170, 640 170" fill="none" stroke="#8a6a2f" stroke-width="3" stroke-dasharray="7 4"/>
+  <text x="664" y="112" font-size="12" fill="#4b3a16">слияние</text>
+
+  <!-- PR review -->
+  <rect x="540" y="206" width="256" height="64" rx="9" fill="#eef4fb" stroke="#33557a" stroke-width="2"/>
+  <text x="558" y="230" font-size="13" font-weight="bold" fill="#1d3550">Перед слиянием: ревью и CI</text>
+  <text x="558" y="252" font-size="12.5" fill="#33557a">Изменение проверяют до main.</text>
+
+  <text x="30" y="266" font-size="12.5" fill="#5a6b7d">Коммиты A, B, C уже в main; D и E появились в ветке;</text>
+  <text x="30" y="286" font-size="12.5" fill="#5a6b7d">после слияния общая история продолжается коммитами G и H.</text>
+</svg>
