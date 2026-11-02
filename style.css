@@ -466,3 +466,21 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 @media (prefers-reduced-motion: reduce) {
   .theme-select, .figure, .figure img { transition: none !important; }
 }
+
+
+/* Увеличенные технические схемы доступны клавиатурой и с мобильного экрана. */
+figure img:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+body.figure-open { overflow: hidden; }
+.lightbox.open { overflow: auto; overscroll-behavior: contain; }
+@media (max-width: 600px) {
+  .lightbox { padding: 14px; place-items: start; }
+  .lightbox.open { display: flex; align-items: flex-start; justify-content: flex-start; }
+  .lightbox img {
+    width: max(740px, calc(100vw - 28px));
+    max-width: none;
+    max-height: none;
+    height: auto;
+    margin: auto 0;
+  }
+  .lightbox-close { position: fixed; top: calc(10px + env(safe-area-inset-top, 0px)); right: 10px; z-index: 2; }
+}
