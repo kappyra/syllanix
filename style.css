@@ -519,3 +519,10 @@ main .table-wrap {
     padding: 0.5rem 0.6rem;
   }
 }
+
+
+/* За пределы текста не должны выходить даже oversized таблицы/inline-токены.
+   Собственные .table-wrap и pre остаются прокручиваемыми внутри статьи. */
+@media (max-width: 600px) {
+  main article { overflow-x: clip; }
+}

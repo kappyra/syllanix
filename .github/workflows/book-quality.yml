@@ -27,6 +27,8 @@ jobs:
           python-version: '3.14'
       - name: Audit all chapters, exercises, HTML, SVG and source image references
         run: python scripts/audit_book.py
+      - name: Execute independent pure examples with bounded subprocesses
+        run: python scripts/check_pure_examples.py
       - name: Check JavaScript syntax (UI and theme scripts)
         run: |
           node --check assets/site.js

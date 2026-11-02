@@ -4,10 +4,22 @@ on:
   push:
     branches:
       - 'improve/**'
+    paths:
+      - 'style.css'
+      - 'assets/*.js'
+      - 'scripts/check_ui.py'
+      - 'ch-*.html'
+      - '.github/workflows/responsive-ui.yml'
   pull_request:
     branches:
       - main
       - 'improve/**'
+    paths:
+      - 'style.css'
+      - 'assets/*.js'
+      - 'scripts/check_ui.py'
+      - 'ch-*.html'
+      - '.github/workflows/responsive-ui.yml'
   workflow_dispatch:
 
 permissions:

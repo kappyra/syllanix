@@ -86,13 +86,19 @@ with tempfile.TemporaryDirectory() as tmp_dir:
     malicious = "'; DROP TABLE tasks; --"
     try:
         conn.execute("SELECT * FROM tasks WHERE title = '" + malicious + "'")
-    except sqlite3.ProgrammingError as exc:
-        print("драйвер отказался выполнять несколько операторов:", exc)
+    except sqlite3.ProgrammingError:
+        print("драйвер отказался выполнять несколько операторов")
     rows = conn.execute("SELECT title FROM tasks WHERE title = ?", (malicious,)).fetchall()
     print("параметризация: найдено строк:", len(rows))
     remaining = conn.execute("SELECT COUNT(*) FROM tasks").fetchone()[0]
     print("строк в таблице после попытки:", remaining)
     conn.close()
+```
+
+```output
+драйвер отказался выполнять несколько операторов
+параметризация: найдено строк: 0
+строк в таблице после попытки: 1
 ```
 
 Драйвер `sqlite3` отказался выполнять несколько операторов в одном вызове —
@@ -126,6 +132,11 @@ with tempfile.TemporaryDirectory() as tmp_dir:
         print("сбой:", exc)
     print("задач в базе:", conn.execute("SELECT COUNT(*) FROM tasks").fetchone()[0])
     conn.close()
+```
+
+```output
+сбой: сбой после первой записи
+задач в базе: 0
 ```
 
 Внутри `with conn:` при исключении выполняется откат, поэтому частичных
