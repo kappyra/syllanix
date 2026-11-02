@@ -64,6 +64,11 @@ def main() -> None:
                 check(page.locator("h1").count() >= 1, f"{chapter.name}: heading missing")
                 check(page.locator("#theme-select").count() == 1, f"{chapter.name}: theme control missing")
                 docwidth = page.evaluate("document.documentElement.scrollWidth")
+                if docwidth > 378:
+                    offenders = page.evaluate("""() => [...document.querySelectorAll('body *')]
+                        .filter(e => { const r=e.getBoundingClientRect(); return r.width > 0 && (r.right > innerWidth + 2 || r.left < -2); })
+                        .slice(0, 12).map(e => ({tag:e.tagName, id:e.id, className:String(e.className).slice(0,70), width:e.getBoundingClientRect().width, right:e.getBoundingClientRect().right}))""")
+                    print("OVERFLOW DEBUG", chapter.name, offenders, flush=True)
                 check(docwidth <= 378, f"{chapter.name}: mobile overflow {docwidth}")
             print(f"PASS: 4 viewport/theme tests and {len(CHAPTERS)} mobile chapters; no browser overflow")
             context.close()
