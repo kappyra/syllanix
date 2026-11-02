@@ -2,7 +2,7 @@
 """Synchronize accessible SVG alt text and versioned asset URLs in static HTML.
 
 Source of truth for image descriptions is each Markdown chapter's image alt
-field. This script neither rewrites book prose nor uses generic AI captions.
+field. This script neither rewrites book prose nor uses generic AI captions.\nIt is scoped to the review branch when invoked by the publishing workflow.
 """
 from __future__ import annotations
 
