@@ -44,7 +44,15 @@ def main() -> None:
                 check(docwidth <= width + 3, f"{width}: horizontal overflow {docwidth}")
                 for img in page.locator(".figure img").all():
                     check(bool(img.get_attribute("alt")), f"{width}: image missing alt")
-                    check(img.evaluate("(el) => el.complete && el.naturalWidth > 0"), f"{width}: image did not load")
+                    # Image loading is lazy; scroll to it before checking its bytes.
+                    img.scroll_into_view_if_needed()
+                    loaded = img.evaluate("""(el) => new Promise((resolve) => {
+                        el.loading = 'eager';
+                        if (el.complete) { resolve(el.naturalWidth > 0); return; }
+                        el.addEventListener('load', () => resolve(true), {once:true});
+                        el.addEventListener('error', () => resolve(false), {once:true});
+                    })""")
+                    check(loaded, f"{width}: image did not load: {img.get_attribute('src')}")
                 page.close()
                 context.close()
 
