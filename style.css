@@ -495,3 +495,27 @@ main :not(pre) > code {
 }
 main .code-block, main .highlight, main .table-wrap { min-width: 0; max-width: 100%; }
 main pre { width: 100%; max-width: 100%; }
+
+
+/* На телефоне широкая таблица прокручивается ВНУТРИ страницы, не расширяя её.
+   Сохраняем семантику <table>, в отличие от display:block на самой таблице. */
+main article { min-width: 0; max-width: 100%; }
+main .table-wrap {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+@media (max-width: 600px) {
+  main .table-wrap table {
+    width: max-content;
+    min-width: 100%;
+  }
+  main .table-wrap th, main .table-wrap td {
+    overflow-wrap: anywhere;
+    padding: 0.5rem 0.6rem;
+  }
+}
