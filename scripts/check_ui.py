@@ -68,7 +68,12 @@ def main() -> None:
                     offenders = page.evaluate("""() => [...document.querySelectorAll('body *')]
                         .filter(e => { const r=e.getBoundingClientRect(); return r.width > 0 && (r.right > innerWidth + 2); })
                         .slice(0, 12).map(e => ({tag:e.tagName, id:e.id, className:String(e.className).slice(0,70), width:e.getBoundingClientRect().width, right:e.getBoundingClientRect().right}))""")
-                    print("OVERFLOW DEBUG", chapter.name, offenders, flush=True)
+                    details = page.evaluate("""() => {
+                        const box = (q) => {const x=document.querySelector(q); if(!x)return null;const r=x.getBoundingClientRect();return {left:r.left,right:r.right,width:r.width,clientWidth:x.clientWidth,scrollWidth:x.scrollWidth,overflowX:getComputedStyle(x).overflowX}};
+                        window.scrollTo(100,0);
+                        return {scrollX:window.scrollX, html:box('html'),body:box('body'),main:box('main'),article:box('article'),wrap:box('.table-wrap')};
+                    }""")
+                    print("OVERFLOW DEBUG", chapter.name, offenders, details, flush=True)
                 check(docwidth <= 378, f"{chapter.name}: mobile overflow {docwidth}")
             print(f"PASS: 4 viewport/theme tests and {len(CHAPTERS)} mobile chapters; no browser overflow")
             context.close()
