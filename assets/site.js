@@ -6,33 +6,42 @@
     set: function (key, value) { try { localStorage.setItem("syllanix-" + key, value); } catch (e) {} },
     del: function (key) { try { localStorage.removeItem("syllanix-" + key); } catch (e) {} }
   };
-  function prefersDark() { return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches; }
+  var validThemes = { warm: true, light: true, dark: true };
+  function getTheme() {
+    var current = store.get("theme");
+    return validThemes[current] ? current : "warm";
+  }
   function applyTheme(theme) {
-    if (theme) { root.setAttribute("data-theme", theme); } else { root.removeAttribute("data-theme"); }
-    var button = document.getElementById("theme-toggle");
-    if (button) {
-      var dark = theme === "dark" || (!theme && prefersDark());
-      button.setAttribute("aria-pressed", dark ? "true" : "false");
-      button.setAttribute("aria-label", dark ? "Включить светлую тему" : "Включить тёмную тему");
-    }
+    var normalized = validThemes[theme] ? theme : "warm";
+    root.setAttribute("data-theme", normalized);
+    var selector = document.getElementById("theme-select");
+    if (selector) { selector.value = normalized; }
   }
-  var savedTheme = store.get("theme");
-  applyTheme(savedTheme || (prefersDark() ? "dark" : "light"));
-  if (window.matchMedia) {
-    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () {
-      if (!store.get("theme")) { applyTheme(prefersDark() ? "dark" : "light"); }
-    });
-  }
+  applyTheme(getTheme());
 
-  /* ---------- Тема ---------- */
-  var themeButton = document.getElementById("theme-toggle");
-  if (themeButton) {
-    themeButton.addEventListener("click", function () {
-      var current = root.getAttribute("data-theme");
-      var dark = current ? current === "dark" : prefersDark();
-      var next = dark ? "light" : "dark";
-      store.set("theme", next);
-      applyTheme(next);
+  /* ---------- Три темы: исходная тёплая, белая, тёмная ---------- */
+  var legacyButton = document.getElementById("theme-toggle");
+  if (legacyButton) {
+    var selector = document.createElement("select");
+    selector.id = "theme-select";
+    selector.className = "theme-select";
+    selector.setAttribute("aria-label", "Тема оформления: тёплая, белая или тёмная");
+    [
+      { value: "warm", label: "☀ Тёплая" },
+      { value: "light", label: "◻ Белая" },
+      { value: "dark", label: "☾ Тёмная" }
+    ].forEach(function (item) {
+      var option = document.createElement("option");
+      option.value = item.value;
+      option.textContent = item.label;
+      selector.appendChild(option);
+    });
+    legacyButton.replaceWith(selector);
+    selector.value = getTheme();
+    selector.addEventListener("change", function () {
+      if (!validThemes[selector.value]) { return; }
+      store.set("theme", selector.value);
+      applyTheme(selector.value);
     });
   }
 
