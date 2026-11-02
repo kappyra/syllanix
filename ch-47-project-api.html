@@ -429,7 +429,7 @@ SQL-кода. Подстановка через f-строку в SQL — уче
 промышленном коде называется <strong>SQL-инъекцией</strong> (глава 36).</p>
 <p>Соберём доступ к таблице в репозиторий: HTTP-обработчики будут вызывать его
 методы, а не работать с <code>sqlite3</code> напрямую. Это тот же паттерн «репозиторий» из
-главы 44, и он же делает хранилище подменяемым в тестах.</p>
+главы 44, и он же делает хранилище подменяемым в тестах.</p><div class="callout callout-warn"><div><strong>Ограничение учебного примера:</strong> общий <code>sqlite3.Connection</code> с <code>check_same_thread=False</code> не обеспечивает сериализацию операций между потоками. Для реального FastAPI-приложения используйте управляемые соединения, атомарные транзакции и конкурентные тесты. <a href="https://docs.python.org/3/library/sqlite3.html#sqlite3.connect">Официальная документация sqlite3</a>.</div></div>
 <div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
