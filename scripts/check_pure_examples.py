@@ -15,7 +15,7 @@ import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-BLOCK = re.compile(r"^`{3}python exec(?: expect-error)?\n(.*?)^`{3}\n\s*^`{3}output\n(.*?)^`{3}", re.M | re.S)
+BLOCK = re.compile(r"^`{3}python exec\n(.*?)^`{3}\n\s*^`{3}output\n(.*?)^`{3}", re.M | re.S)
 PURE_BUILTINS = {"print", "range", "len", "int", "float", "str", "bool",
                  "list", "tuple", "dict", "set", "sum", "min", "max",
                  "abs", "round", "sorted", "enumerate", "zip", "all", "any", "type"}
