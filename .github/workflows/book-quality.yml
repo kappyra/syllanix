@@ -1,0 +1,33 @@
+name: Syllanix whole-book audit
+
+on:
+  push:
+    branches:
+      - main
+      - 'improve/**'
+  pull_request:
+    branches:
+      - main
+      - 'improve/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  book-structure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - name: Audit all chapters, exercises, HTML, SVG and source image references
+        run: python scripts/audit_book.py
+      - name: Check JavaScript syntax (UI and theme scripts)
+        run: |
+          node --check assets/site.js
+          node --check assets/theme-boot.js

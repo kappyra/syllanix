@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Время, даты и логирование — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -333,7 +333,7 @@ UTC
 <pre class="output"><code>True
 2026-11-01T12:00:00+00:00
 </code></pre>
-<p><figure class="figure"><img src="illustrations/ch-37-timezones.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-37-timezones.svg" alt="Схема одного момента времени в трёх часовых поясах: 12:00 UTC соответствует 15:00 в Москве и 21:00 в Токио; момент один, а представления разные, поэтому хранение в UTC избавляет от путаницы." loading="lazy" /><figcaption></figcaption></figure></p>
 <p>Часовой пояс не равен смещению. Смещение — конкретное число часов в конкретный
 момент; пояс — правило, по которому это число вычисляется. Поэтому хранить
 <code>datetime</code> со смещением <code>+03:00</code> недостаточно, если затем нужно применить
@@ -448,7 +448,7 @@ WARNING:demo:файл config.toml не найден
 </code></pre>
 <p>В примере формат намеренно не содержит времени: иначе вывод зависел бы от
 запуска. В рабочем журнале время обязательно, обычно в UTC и ISO 8601.
-<figure class="figure"><img src="illustrations/ch-37-logging-pipeline.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<figure class="figure"><img src="illustrations/ch-37-logging-pipeline.svg" alt="Схема журналирования: регистратор с уровнем передаёт запись обработчикам, каждый обработчик применяет свой формат и пишет в свой приёмник — консоль, файл или внешнюю систему; уровень отсекает лишние записи." loading="lazy" /><figcaption></figcaption></figure></p>
 <p>Параметры <code>%s</code> и <code>%d</code> подставляются лениво: строка форматируется, только
 если запись действительно пройдёт фильтр по уровню. Поэтому f-строка в
 вызове <code>logger.info</code> тратит работу впустую. От утечки секретов ленивое

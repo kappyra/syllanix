@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Ссылки, алиасы и копирование — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -261,7 +261,7 @@
 имён.</p>
 <p><strong>Ссылочная семантика</strong> — правило, по которому присваивание копирует ссылку
 на объект, а не сам объект. Из него следует всё остальное в этой главе.</p>
-<p><figure class="figure"><img src="illustrations/ch-18-aliasing.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-18-aliasing.svg" alt="Два имени указывают на один и тот же объект-список. Изменение объекта через любое из имён видно через оба, потому что объект один." loading="lazy" /><figcaption></figcaption></figure></p>
 <div class="highlight exec"><pre><code class="language-python"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
 <span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
@@ -426,7 +426,7 @@ True
 <p>Значение <code>True</code> в последней строке — приговор: первый внутренний список у
 копии и у оригинала один и тот же. Поверхностное копирование создало новый
 внешний список, но элементы-ссылки скопировало как есть.</p>
-<p><figure class="figure"><img src="illustrations/ch-18-shallow-deep.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-18-shallow-deep.svg" alt="Слева оригинал: внешний список и два внутренних. В центре поверхностное копирование: внешний список новый, внутренние общие. Справа глубокое копирование: все уровни новые." loading="lazy" /><figcaption></figcaption></figure></p>
 <p>Для словаря поверхностная копия делается методом <code>copy()</code> или функцией
 <code>dict()</code>; для множества — методом <code>copy()</code>. Модуль <code>copy</code> даёт общую функцию
 <code>copy.copy</code>, которая работает с любым поддерживающим копирование объектом.</p>

@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Объекты и классы — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -280,7 +280,7 @@ Point
 <p>Слово <code>pass</code> в теле означает «здесь пока ничего нет». Вызов
 класса создаёт экземпляр, даже если класс пуст: у него есть тип, но нет
 своего состояния.</p>
-<p><figure class="figure"><img src="illustrations/ch-25-class-vs-instance.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-25-class-vs-instance.svg" alt="Класс — это описание с атрибутами и методами; по нему создаются экземпляры, у каждого своё состояние." loading="lazy" /><figcaption></figcaption></figure></p>
 <h2 id="attributes"><span class="h-number">25.4</span> Атрибуты экземпляра</h2>
 <p><strong>Атрибут</strong> — именованное значение, связанное с объектом и доступное через
 точку.</p>
@@ -384,7 +384,7 @@ True
 <li>метод записывает значения в атрибуты экземпляра;</li>
 <li>готовый экземпляр возвращается как результат вызова.</li>
 </ol>
-<p><figure class="figure"><img src="illustrations/ch-25-init-flow.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-25-init-flow.svg" alt="Путь от вызова Point(3, 4) до готового экземпляра: создание объекта, автоматический вызов __init__, запись атрибутов." loading="lazy" /><figcaption></figcaption></figure></p>
 <p>Слово «конструктор» здесь стоит употреблять аккуратно. В Python конструктор —
 это вызов класса, который создаёт объект; <code>__init__</code> лишь заполняет уже
 созданный экземпляр и ничего не возвращает. Если попытаться вернуть из него

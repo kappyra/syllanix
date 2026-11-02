@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Стандартная библиотека: collections, itertools, functools, pathlib — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -311,7 +311,7 @@
 ответа с меньшим количеством кода. Выбор зависит от контекста, а не от
 принципа. Здоровый подход — сначала изучить стандартный инструмент, затем
 осознанно добавить зависимость и зафиксировать её версию.</p>
-<p><figure class="figure"><img src="illustrations/ch-34-stdlib-map.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-34-stdlib-map.svg" alt="Схема карты стандартной библиотеки: контейнеры, итераторы, функции, пути, перечисления и контекстные менеджеры сгруппированы по назначению, рядом указаны типовые задачи каждого модуля." loading="lazy" /><figcaption></figcaption></figure></p>
 <h2 id="collections"><span class="h-number">34.3</span> collections: контейнеры под задачу</h2>
 <p><strong>Модуль collections</strong> — модуль стандартной библиотеки со
 специализированными контейнерами: <code>Counter</code>, <code>deque</code>, <code>defaultdict</code>, <code>ChainMap</code>.
@@ -424,7 +424,7 @@ deque([&#x27;первый&#x27;, &#x27;второй&#x27;])
 <p>У <code>groupby</code> есть важная особенность: она группирует <strong>соседние</strong> элементы.
 Если одинаковые ключи идут не подряд, получится несколько групп. Поэтому перед
 группировкой данные сортируют по тому же ключу.</p>
-<p><figure class="figure"><img src="illustrations/ch-34-itertools-pipeline.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-34-itertools-pipeline.svg" alt="Схема ленивого конвейера itertools: источник данных проходит через islice, затем через группы и преобразование, а элементы потребляются по одному, поэтому память не растёт с размером входа." loading="lazy" /><figcaption></figcaption></figure></p>
 <h3 id="бесконечные-источники">Бесконечные источники</h3>
 <p>Некоторые функции <code>itertools</code> создают бесконечные последовательности. Сами по
 себе они опасны: <code>list(count())</code> никогда не завершится. Но вместе с <code>islice</code>

@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Наследование, полиморфизм и композиция — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -511,7 +511,7 @@ True False
 <code>C</code>, а не в <code>A</code> — вот почему получилось <code>B + C + A</code>, а не <code>B + A</code>.
 <code>super()</code> не «вызывает базовый класс» вообще, а вызывает следующий класс в
 порядке разрешения методов.</p>
-<p><figure class="figure"><img src="illustrations/ch-27-mro.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-27-mro.svg" alt="Иерархия A, B, C, D и линейный порядок разрешения методов: D, B, C, A, object." loading="lazy" /><figcaption></figcaption></figure></p>
 <p>Для одиночного наследования порядок очевиден: класс, его база, база базы.
 Множественное наследование усложняет картину, и без необходимости его лучше
 избегать: цепочка <code>super()</code> становится трудной для чтения. Если классы всё
@@ -580,7 +580,7 @@ False
 </tr>
 </tbody>
 </table>
-</div><p><figure class="figure"><img src="illustrations/ch-27-composition-vs-inheritance.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+</div><p><figure class="figure"><img src="illustrations/ch-27-composition-vs-inheritance.svg" alt="Наследование связывает классы отношением «частный случай», композиция — отношением «содержит»." loading="lazy" /><figcaption></figcaption></figure></p>
 <h2 id="inheritance-from-builtins"><span class="h-number">27.10</span> Наследование от встроенных классов: чего избегать</h2>
 <p>Соблазн велик: список уже умеет хранить элементы, значит, стек можно сделать
 наследником <code>list</code>. Проблема в том, что наследник получает все методы

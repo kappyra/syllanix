@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Логика и управление потоком — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -365,7 +365,7 @@ input возвращает строку, и человек может нажат
 сработает раньше. Это не ошибка синтаксиса — программа работает, но ведёт себя
 не так, как ожидал автор. Проверяя цепочку <code>elif</code>, читайте её сверху вниз и
 спрашивайте: может ли эта ветвь вообще выполниться?</p>
-<p><figure class="figure"><img src="illustrations/ch-05-branching.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-05-branching.svg" alt="Схема ветвления: условие проверяется сверху вниз, первая истинная ветвь исполняется и завершает цепочку; если ни одно условие не истинно, исполняется ветвь else." loading="lazy" /><figcaption></figcaption></figure></p>
 <h2 id="indentation"><span class="h-number">5.5</span> Отступы и блоки</h2>
 <p>В большинстве языков границы блока задают фигурными скобками, а отступы нужны
 только людям. В Python наоборот: <strong>отступ</strong> — ведущие пробелы в начале строки —
@@ -382,7 +382,7 @@ input возвращает строку, и человек может нажат
 <p>Рекомендация PEP 8 — четыре пробела на уровень. Это именно рекомендация стиля:
 язык принимает и два пробела, и три. Но смешивать табуляцию и пробелы нельзя —
 Python 3 считает это ошибкой.</p>
-<p><figure class="figure"><img src="illustrations/ch-05-blocks.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-05-blocks.svg" alt="Два блока: тело условия выделено отступом, а строка после блока возвращается на прежний уровень и выполняется всегда. Справа поясняются уровни отступа: каждый вложенный блок добавляет четыре пробела." loading="lazy" /><figcaption></figcaption></figure></p>
 <p>Посмотрим, что происходит, когда отступ потерян или лишний. В первом примере
 после <code>if</code> нет тела:</p>
 <div class="highlight"><pre><code class="language-python"><span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
@@ -646,8 +646,10 @@ False False
 <pre class="output"><code>Немного меньше
 </code></pre>
 <p>Обратите внимание на две детали, которые часто упускают. Во-первых, <code>int(raw)</code>
-преобразует строку в число: без этого сравнение строки с числом дало бы <code>False</code>
-всегда, а не ошибку. Во-вторых, порядок ветвей <code>elif</code> можно менять, только если
+преобразует строку в число. Без него <code>"10" == 23</code> дало бы <code>False</code>,
+но проверка порядка <code>"10" &lt; 23</code> вызвала бы <code>TypeError</code>: строку и целое число
+нельзя напрямую упорядочивать. Преобразование нужно <strong>до</strong> ветвления;
+некорректный ввод обрабатывают отдельно (см. главу 10). Во-вторых, порядок ветвей <code>elif</code> можно менять, только если
 условия не пересекаются; здесь они упорядочены по возрастанию сложности
 проверки, и каждая следующая ветвь рассматривает всё более узкий случай.</p>
 <p><em>Источник и характер изменений зафиксированы в <code>provenance/05-control-flow.yaml</code>.</em></p>

@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Функции: параметры, аргументы и области видимости — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -334,7 +334,7 @@
 <p>При вызове Python сопоставляет аргументы параметрам и создаёт для них имена
 внутри функции. <code>name</code> существует только во время этого вызова: в следующем
 вызове появится новое <code>name</code> с новым значением.</p>
-<p><figure class="figure"><img src="illustrations/ch-07-call.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-07-call.svg" alt="Аргументы 3 и 4 передаются в функцию area, где по порядку становятся значениями параметров width и height; тело вычисляет произведение, return возвращает 12, и это значение подставляется вместо вызова в выражение print." loading="lazy" /><figcaption></figcaption></figure></p>
 <p>Сопоставление по порядку работает так: первый аргумент попадает первому
 параметру, второй — второму.</p>
 <div class="highlight exec"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">power</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">exp</span><span class="p">):</span>
@@ -406,7 +406,7 @@ None
 <p>Сначала <code>print</code> вывел строку, затем вернул <code>None</code>, и этот <code>None</code> был присвоен
 имени <code>result</code>. Если бы функция должна была вернуть число, а вместо <code>return</code>
 внутри стоял <code>print</code>, снаружи получился бы <code>None</code>, а не число.</p>
-<p><figure class="figure"><img src="illustrations/ch-07-print-vs-return.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-07-print-vs-return.svg" alt="Слева функция возвращает значение: результат попадает обратно в точку вызова и может участвовать в выражении. Справа функция печатает значение: текст уходит в терминал, а вызывающему коду возвращается None." loading="lazy" /><figcaption></figcaption></figure></p>
 <p>Правило: <code>return</code> — для того, кто вызывает; <code>print</code> — для человека, который
 смотрит на экран. Обычно функция должна возвращать результат, а печатать его
 будет тот код, который отвечает за вывод.</p>

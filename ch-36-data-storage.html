@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Данные: SQLite, SQL и сериализация — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -390,7 +390,7 @@ SQLite целочисленный первичный ключ умеет зап�
 пользователя. Подставляйте значения только через параметры; имена таблиц и
 столбцов параметризовать нельзя, поэтому их берут из белого списка
 допустимых значений.</p>
-<p><figure class="figure"><img src="illustrations/ch-36-query-params.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-36-query-params.svg" alt="Схема сравнения двух запросов: при склейке строк пользовательский ввод меняет условие WHERE и возвращает все строки; при параметризованном запросе ввод передаётся как данные и не может изменить структуру запроса." loading="lazy" /><figcaption></figcaption></figure></p>
 <h2 id="transactions"><span class="h-number">36.5</span> Транзакции</h2>
 <p><strong>Транзакция</strong> — группа изменений, применяемая целиком или не применяемая
 вовсе; обеспечивает целостность данных. Классический пример — перевод денег:
@@ -431,7 +431,7 @@ SQLite целочисленный первичный ключ умеет зап�
 одновременные транзакции не должны видеть чужие незавершённые изменения.
 SQLite сериализует запись, поэтому в учебных примерах этим можно пренебречь,
 но в PostgreSQL уровень изоляции выбирают осознанно.</p>
-<p><figure class="figure"><img src="illustrations/ch-36-transaction.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-36-transaction.svg" alt="Схема транзакции: два обновления входят в одну транзакцию; при успехе фиксируется commit и видны оба изменения, при сбое выполняется rollback и видны исходные значения." loading="lazy" /><figcaption></figcaption></figure></p>
 <h2 id="serialization"><span class="h-number">36.6</span> Сериализация: JSON и CSV</h2>
 <p>База хранит записи, но обмениваться ими с другими программами удобнее в
 текстовых форматах. <strong>Сериализация</strong> — преобразование объектов программы в

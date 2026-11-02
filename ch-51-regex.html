@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Регулярные выражения — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -504,7 +504,7 @@ False
 <p>Оба шаблона находят одну и ту же последовательность, но первый возвращает
 содержимое группы (последнее повторение), а второй — всё совпадение. Это
 одна из самых частых причин удивления: «почему <code>findall</code> вернул не то».</p>
-<p><figure class="figure"><img src="illustrations/ch-51-pattern-anatomy.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-51-pattern-anatomy.svg" alt="Разбор шаблона по шагам: шаблон (\d{4})-(\d{2})-(\d{2}) против строки 2026-05-17; каждая часть шаблона потребляет свой фрагмент, а группы захватывают год, месяц и день." loading="lazy" /><figcaption></figcaption></figure></p>
 <h2 id="greedy"><span class="h-number">51.8</span> Жадность и ленивость</h2>
 <p><strong>Жадное и ленивое сопоставление</strong> — два режима квантификаторов: жадные берут
 максимум возможного, ленивые (<code>*?</code>, <code>+?</code>) — минимум, достаточный для
@@ -521,7 +521,7 @@ False
 <p>Жадный <code>.+</code> забрал всё до последнего <code>&gt;</code>, поэтому совпадение поглотило обе
 разметки. Ленивый <code>.+?</code> останавливается на первом подходящем <code>&gt;</code>. Когда
 шаблон «съедает лишнее», почти всегда помогает добавить <code>?</code> к квантификатору.</p>
-<p><figure class="figure"><img src="illustrations/ch-51-greedy-lazy.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-51-greedy-lazy.svg" alt="Жадный и ленивый квантификаторы на одной строке: жадный &lt;.+&gt; захватывает всё до последнего углового символа, ленивый &lt;.+?&gt; — по одному фрагменту до ближайшего закрывающего." loading="lazy" /><figcaption></figcaption></figure></p>
 <p>У ленивости есть цена: чем больше вариантов перебирает движок, тем медленнее
 работа. Шаблоны вида <code>(a+)+$</code> на длинной строке из <code>a</code> могут вызывать
 <strong>катастрофический перебор</strong> (бэктрекинг): время растёт взрывообразно, и

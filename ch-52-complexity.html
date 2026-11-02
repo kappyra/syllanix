@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Алгоритмическое мышление: сложность и выбор структур — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -398,7 +398,7 @@ O(n!)       3 628 800    ~10^157   ~10^2567
 превращается в <code>10^30</code>, а это больше, чем число операций, которое компьютер
 успеет сделать за время жизни Вселенной. Никакая оптимизация констант такого
 не компенсирует.</p>
-<p><figure class="figure"><img src="illustrations/ch-52-growth.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-52-growth.svg" alt="Таблица роста: для каждого порядка показано число операций при n равном 10, 100 и 1000, а также типичный пример. Экспоненциальные и факториальные алгоритмы становятся недостижимыми уже при n около ста." loading="lazy" /><figcaption></figcaption></figure></p>
 <p>Практическая граница: <code>O(n log n)</code> работает до миллионов элементов,
 <code>O(n ** 2)</code> терпим до десятков тысяч, <code>O(2 ** n)</code> — до двадцати-тридцати.
 Смена порядка — главный рычаг производительности, а не микротюнинг.</p>
@@ -466,7 +466,7 @@ $ python3 -m timeit -s &quot;data = set(range(2000))&quot; &quot;1999 in data&qu
 <h2 id="builtin"><span class="h-number">52.6</span> Сложность встроенных структур</h2>
 <p>Выбор структуры — это выбор сложности операций. В Python четыре структуры
 закрывают почти все задачи, и у каждой свой профиль.</p>
-<p><figure class="figure"><img src="illustrations/ch-52-structures.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-52-structures.svg" alt="Таблица сложности операций: список, словарь, множество и deque. Показаны поиск по значению, доступ по индексу, вставка в конец и в середину, удаление из начала. Звёздочкой отмечена амортизированная стоимость, крестиком — средний случай с оговоркой о хешировании." loading="lazy" /><figcaption></figcaption></figure></p>
 <p>Проверим главное различие на счётчиках сравнений. Список при поиске
 просматривает элементы по одному, множество вычисляет хеш и обращается к
 корзине.</p>

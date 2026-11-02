@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Внутреннее устройство Python — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -316,7 +316,7 @@ CPython: на него можно опираться в любом коде. Д�
 простых инструкций для виртуальной машины CPython. Исходный текст не
 исполняется напрямую: сначала его разбирают, затем компилируют в байткод, и
 только потом исполняют.</p>
-<p><figure class="figure"><img src="illustrations/ch-42-bytecode-pipeline.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-42-bytecode-pipeline.svg" alt="Путь программы: исходный код разбирается в дерево, компилируется в код-объект с байткодом и исполняется циклом интерпретатора. Результат исполнения — гарантия языка, а конкретный байткод — деталь CPython." loading="lazy" /><figcaption></figcaption></figure></p>
 <p>Блоки в <code>dis</code> показывают ровно эти шаги. Начнём с объектов кода: у каждого
 код-объекта есть имена, локальные переменные и константы.</p>
 <div class="highlight exec"><pre><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">dis</span>
@@ -419,7 +419,7 @@ a * b: [&#x27;RESUME&#x27;, &#x27;LOAD_NAME&#x27;, &#x27;LOAD_NAME&#x27;, &#x27;
 В ней два обязательных поля: счётчик ссылок и указатель на тип. Конкретные
 значения — число, строка, список — хранятся в структуре-расширении, которая
 начинается с <code>PyObject</code>.</p>
-<p><figure class="figure"><img src="illustrations/ch-42-pyobject.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-42-pyobject.svg" alt="Любой объект начинается со счётчика ссылок и указателя на тип; дальше идёт значение конкретного типа. Переменная хранит не значение, а ссылку на объект, поэтому две переменные могут указывать на один объект." loading="lazy" /><figcaption></figcaption></figure></p>
 <p>Отсюда два следствия, которые важны каждый день.</p>
 <ol>
 <li><strong>У каждого объекта есть тип, и он не меняется.</strong> Тип хранится в самом

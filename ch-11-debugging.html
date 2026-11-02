@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Отладка и трассировка — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -270,7 +270,7 @@ ZeroDivisionError: division by zero
 <p>Слово <code>Traceback (most recent call last)</code> переводится буквально:
 «трассировка, последний вызов в конце». Поэтому история вызовов идёт
 сверху вниз от старого к новому, а причина сбоя — в самом низу.</p>
-<p><figure class="figure"><img src="illustrations/ch-11-traceback.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-11-traceback.svg" alt="Устройство трассировки: сверху заголовок и цепочка кадров, в последнем кадре место сбоя, внизу тип исключения и сообщение. Читать удобно с двух концов: снизу узнаём, что случилось, по последнему кадру — где." loading="lazy" /><figcaption></figcaption></figure></p>
 <p>Тот же путь можно получить программно: у объекта исключения есть
 атрибут <code>__traceback__</code>, а модуль <code>traceback</code> умеет разбирать его на
 кадры.</p>
@@ -475,7 +475,7 @@ ZeroDivisionError: division by zero
 <h2 id="method"><span class="h-number">11.7</span> Систематический поиск дефекта</h2>
 <p>Дефект — это расхождение между ожидаемым и фактическим поведением.
 Искать его лучше по процедуре, а не случайными правками.</p>
-<p><figure class="figure"><img src="illustrations/ch-11-debug-loop.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-11-debug-loop.svg" alt="Цикл поиска дефекта: воспроизвести, сузить, сформулировать гипотезу, проверить, исправить, закрепить проверкой. Если гипотеза не подтвердилась, цикл возвращается к сужению задачи." loading="lazy" /><figcaption></figcaption></figure></p>
 <ol>
 <li><strong>Воспроизведите.</strong> Добейтесь, чтобы дефект возникал по команде и
 всегда, а не «иногда». Запишите входные данные. Если воспроизвести не

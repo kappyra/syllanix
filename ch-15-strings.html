@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Строки: методы, форматирование и Unicode — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -328,7 +328,7 @@ UTF-8 кодируется двумя байтами, а латинская — 
 начало символа UTF-8. Такая ошибка типична при чтении файла, записанного
 в другой кодировке. Правило простое: кодировка чтения должна совпадать с
 кодировкой записи.</p>
-<p><figure class="figure"><img src="illustrations/ch-15-unicode.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-15-unicode.svg" alt="Символ, кодовая точка и байты: строка «Ёж!» состоит из трёх символов с кодовыми точками U+0401, U+0436 и U+0021, а в кодировке UTF-8 занимает пять байтов: D0 81, D0 B6 и 21. Длина строки считается в символах, длина последовательности байтов — в байтах." loading="lazy" /><figcaption></figcaption></figure></p>
 <h2 id="escapes"><span class="h-number">15.5</span> Escape-последовательности</h2>
 <p><strong>Escape-последовательность</strong> — запись специального символа обратной
 косой чертой: <code>\n</code> — перевод строки, <code>\t</code> — табуляция, <code>\\</code> —
@@ -452,7 +452,7 @@ True
 проверять, но легко забыть, что оно означает «нет», а не «позиция
 минус один». <code>count</code> считает вхождения без перекрытий: в <code>banana</code>
 подстрока <code>na</code> встречается дважды.</p>
-<p><figure class="figure"><img src="illustrations/ch-15-string-methods.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-15-string-methods.svg" alt="Методы строки возвращают новую строку: strip убирает пробелы по краям, upper поднимает регистр, replace заменяет часть текста, а исходная строка остаётся неизменной." loading="lazy" /><figcaption></figcaption></figure></p>
 <h2 id="split-join"><span class="h-number">15.7</span> split и join</h2>
 <p><strong>split и join</strong> — пара операций, которая разбирает строку на части и
 собирает обратно. <code>split</code> возвращает список строк, <code>join</code> собирает одну

@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Запахи кода, рефакторинг и сопровождение — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -365,7 +365,7 @@
 неделю и каждый раз причиняет боль, запах указывает на реальную проблему.
 Отсюда правило: чинить стоит не то, что красиво выглядит в отчёте линтера, а
 то, что мешает работе.</p>
-<p><figure class="figure"><img src="illustrations/ch-53-refactoring-cycle.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-53-refactoring-cycle.svg" alt="Цикл безопасного рефакторинга: зелёные тесты, малое изменение, прогон тестов, коммит." loading="lazy" /><figcaption></figcaption></figure></p>
 <h2 id="refactoring"><span class="h-number">53.4</span> Рефакторинг</h2>
 <p><strong>Рефакторинг</strong> — изменение внутренней структуры кода без изменения внешнего
 поведения, выполняемое малыми проверяемыми шагами.</p>
@@ -539,7 +539,7 @@
 <p>Такая метрика не заменяет анализ, но помогает заметить рост: если вложенность
 растёт от релиза к релизу, долг накапливается. Полезнее всего смотреть на
 динамику, а не на абсолютные числа.</p>
-<p><figure class="figure"><img src="illustrations/ch-53-tech-debt-map.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-53-tech-debt-map.svg" alt="Карта технического долга: по горизонтали — как часто код меняется, по вертикали — насколько он мешает. Приоритет растёт к правому верхнему углу." loading="lazy" /><figcaption></figcaption></figure></p>
 <h3 id="when-to-pay">Когда платить долг</h3>
 <p>Долг платят не «когда-нибудь», а в конкретные моменты. Перед новой функцией —
 если без чистки её некуда встроить. При исправлении дефекта — если он возник

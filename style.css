@@ -36,13 +36,23 @@
   --shadow: 0 1px 2px rgba(0, 0, 0, .35), 0 10px 30px rgba(0, 0, 0, .25);
   color-scheme: dark;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #12171d; --bg-2: #181f27; --bg-3: #1f2731; --ink: #e6ebf1; --ink-2: #a6b2c0;
-    --line: #2c3743; --accent: #7fb2d6; --accent-2: #d0a96b; --code-bg: #0b1016;
-    --code-ink: #dbe6ef; color-scheme: dark;
-  }
+/* Три самостоятельные темы. По умолчанию сохраняем исходную тёплую.
+   Не переключаем на dark автоматически по настройкам ОС: выбор читателя важнее. */
+[data-theme="light"] {
+  --bg: #ffffff;
+  --bg-2: #ffffff;
+  --bg-3: #f2f6fa;
+  --ink: #14202c;
+  --ink-2: #465566;
+  --line: #d8e1e9;
+  --accent: #1e527f;
+  --accent-2: #755026;
+  --code-bg: #101820;
+  --code-ink: #e6edf3;
+  --shadow: 0 1px 2px rgba(20, 30, 40, .045), 0 6px 22px rgba(20, 30, 40, .05);
+  color-scheme: light;
 }
+[data-theme="warm"] { color-scheme: light; }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
@@ -422,3 +432,90 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 .highlight .vi { color: #BB60D5 } /* Name.Variable.Instance */
 .highlight .vm { color: #BB60D5 } /* Name.Variable.Magic */
 .highlight .il { color: #40A070 } /* Literal.Number.Integer.Long */
+
+/* Настройка темы: native select остаётся доступным для клавиатуры и VoiceOver. */
+.theme-select {
+  appearance: auto;
+  max-width: 144px;
+  min-width: 104px;
+  height: 40px;
+  padding: 0.42rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg-2);
+  color: var(--ink);
+  font: 600 0.82rem/1.15 var(--font-sans);
+  cursor: pointer;
+}
+.theme-select:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+[data-theme="dark"] .theme-select { color-scheme: dark; }
+.content img, .article img, article img { height: auto; }
+.figure { max-width: 100%; }
+.figure img { display: block; max-height: min(76vh, 700px); object-fit: contain; margin-inline: auto; }
+.figure:has(img[src$=".svg"]) { background: #ffffff; padding: clamp(8px, 2vw, 14px); border-radius: 12px; }
+@media (max-width: 600px) {
+  :root { --fs-body: 1rem; --lh-body: 1.62; }
+  .theme-select { min-width: 88px; max-width: 106px; padding-inline: 0.25rem; font-size: .75rem; }
+  .figure { margin-inline: 0; }
+  .figure img { width: 100%; max-height: none; }
+  .table-wrap { -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
+  pre { max-width: 100%; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; font-size: .82rem; }
+  .code-block { min-width: 0; }
+  main { width: min(100% - 1.5rem, calc(var(--measure) + 6rem)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .theme-select, .figure, .figure img { transition: none !important; }
+}
+
+
+/* Увеличенные технические схемы доступны клавиатурой и с мобильного экрана. */
+figure img:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+body.figure-open { overflow: hidden; }
+.lightbox.open { overflow: auto; overscroll-behavior: contain; }
+@media (max-width: 600px) {
+  .lightbox { padding: 14px; place-items: start; }
+  .lightbox.open { display: flex; align-items: flex-start; justify-content: flex-start; }
+  .lightbox img {
+    width: max(740px, calc(100vw - 28px));
+    max-width: none;
+    max-height: none;
+    height: auto;
+    margin: auto 0;
+  }
+  .lightbox-close { position: fixed; top: calc(10px + env(safe-area-inset-top, 0px)); right: 10px; z-index: 2; }
+}
+
+
+/* Длинные inline-идентификаторы не должны расширять весь документ на 320px.
+   Для pre сохраняем горизонтальную прокрутку, без разрыва строк кода. */
+main :not(pre) > code {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: normal;
+}
+main .code-block, main .highlight, main .table-wrap { min-width: 0; max-width: 100%; }
+main pre { width: 100%; max-width: 100%; }
+
+
+/* На телефоне широкая таблица прокручивается ВНУТРИ страницы, не расширяя её.
+   Сохраняем семантику <table>, в отличие от display:block на самой таблице. */
+main article { min-width: 0; max-width: 100%; }
+main .table-wrap {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+@media (max-width: 600px) {
+  main .table-wrap table {
+    width: max-content;
+    min-width: 100%;
+  }
+  main .table-wrap th, main .table-wrap td {
+    overflow-wrap: anywhere;
+    padding: 0.5rem 0.6rem;
+  }
+}

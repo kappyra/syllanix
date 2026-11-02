@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Проект: асинхронный сборщик данных — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -338,7 +338,7 @@
 Если сервис задаёт квоту, нужен отдельный ограничитель — пауза между запусками
 или token bucket. В этом проекте мы ограничиваем параллелизм, а частоту
 оговариваем отдельно, чтобы не путать два разных механизма.</p>
-<p><figure class="figure"><img src="illustrations/ch-48-async-pipeline.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-48-async-pipeline.svg" alt="Список адресов превращается в задачи; семафор пропускает не более K одновременно; каждая задача выполняет запрос с повторами и экспоненциальной задержкой; результаты сохраняются в JSON. Внизу показано, почему конкурентное ожидание занимает примерно столько же времени, сколько одно ожидание." loading="lazy" /><figcaption></figcaption></figure></p>
 <h2 id="политика-повторов"><span class="h-number">48.5</span> Политика повторов</h2>
 <p><strong>Политика повторов</strong> отвечает на три вопроса: что повторять, сколько раз и с
 какой задержкой.</p>
@@ -421,7 +421,7 @@
 <p><strong>Идемпотентность</strong> — свойство операции давать тот же результат при повторном
 выполнении. <code>GET</code> идемпотентен по определению: чтение не меняет состояние.
 С <code>POST</code> сложнее: повторное создание задачи создаст дубликат.</p>
-<p><figure class="figure"><img src="illustrations/ch-48-idempotency.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-48-idempotency.svg" alt="Без ключа идемпотентности повтор POST создаёт вторую задачу-дубликат. С ключом Idempotency-Key сервер распознаёт повтор и возвращает прежний результат." loading="lazy" /><figcaption></figcaption></figure></p>
 <p>Практические правила:</p>
 <ul>
 <li>для операций, которые можно повторять, используйте идемпотентные методы
