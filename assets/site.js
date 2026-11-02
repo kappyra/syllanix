@@ -231,22 +231,55 @@
     if (variant) { quote.classList.add("callout"); quote.classList.add(variant); }
   });
 
-  /* ---------- Просмотр рисунков ---------- */
+  /* ---------- Просмотр рисунков: клавиатура, экранные считыватели, мобильный масштаб ---------- */
   var lightbox = document.getElementById("lightbox");
   if (lightbox) {
     var lightboxImage = lightbox.querySelector("img");
+    var lightboxClose = document.getElementById("lightbox-close");
+    var previousFigureFocus = null;
+    function openFigure(image) {
+      previousFigureFocus = image;
+      if (lightboxImage) {
+        lightboxImage.src = image.currentSrc || image.src;
+        lightboxImage.alt = image.alt;
+      }
+      lightbox.classList.add("open");
+      lightbox.removeAttribute("hidden");
+      document.body.classList.add("figure-open");
+      if (lightboxClose) { lightboxClose.focus(); }
+    }
+    function closeFigure() {
+      lightbox.classList.remove("open");
+      lightbox.setAttribute("hidden", "");
+      document.body.classList.remove("figure-open");
+      if (previousFigureFocus) { previousFigureFocus.focus(); }
+    }
     document.querySelectorAll("figure img").forEach(function (image) {
-      image.addEventListener("click", function () {
-        if (lightboxImage) { lightboxImage.src = image.currentSrc || image.src; lightboxImage.alt = image.alt; }
-        lightbox.classList.add("open");
-        lightbox.removeAttribute("hidden");
+      image.setAttribute("tabindex", "0");
+      image.setAttribute("role", "button");
+      image.setAttribute("aria-label", "Увеличить иллюстрацию: " + (image.alt || "рисунок"));
+      image.addEventListener("click", function () { openFigure(image); });
+      image.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openFigure(image);
+        }
       });
     });
-    var closeLightbox = function () { lightbox.classList.remove("open"); lightbox.setAttribute("hidden", ""); };
-    lightbox.addEventListener("click", closeLightbox);
-    var lightboxClose = document.getElementById("lightbox-close");
-    if (lightboxClose) { lightboxClose.addEventListener("click", function (event) { event.stopPropagation(); closeLightbox(); }); }
-    document.addEventListener("keydown", function (event) { if (event.key === "Escape") { closeLightbox(); } });
+    lightbox.addEventListener("click", function (event) {
+      if (event.target === lightbox) { closeFigure(); }
+    });
+    if (lightboxClose) {
+      lightboxClose.addEventListener("click", function (event) {
+        event.stopPropagation();
+        closeFigure();
+      });
+    }
+    document.addEventListener("keydown", function (event) {
+      if (!lightbox.classList.contains("open")) { return; }
+      if (event.key === "Escape") { event.preventDefault(); closeFigure(); }
+      if (event.key === "Tab" && lightboxClose) { event.preventDefault(); lightboxClose.focus(); }
+    });
   }
 
   /* ---------- Прогресс чтения ---------- */
