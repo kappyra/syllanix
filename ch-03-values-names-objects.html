@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Значения, имена, объекты и типы — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -256,7 +256,7 @@
 кладут число». У неё есть следствия, которые в Python неверны. Правильная
 метафора: <strong>имя — ярлык, привязанный к объекту</strong>. Объект существует сам по
 себе; имя лишь указывает на него.</p>
-<p><figure class="figure"><img src="illustrations/ch-03-name-object.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-03-name-object.svg" alt="Имена a и b связаны с одним объектом целого числа 42, у которого есть тип int, идентичность и значение; имя c связано с другим объектом — строкой Python." loading="lazy" /><figcaption></figcaption></figure></p>
 <h2 id="типы"><span class="h-number">3.3</span> Типы</h2>
 <p>Тип — главная характеристика объекта. Узнать тип можно функцией <code>type</code>:</p>
 <div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mi">42</span><span class="p">))</span>
@@ -393,7 +393,7 @@ True
 <p><code>is</code> следует отличать от <code>==</code>. Оператор <code>==</code> сравнивает <strong>значения</strong>
 (подробно — в главе 4), а <code>is</code> — <strong>идентичность</strong>. Для неизменяемых значений
 эти проверки часто совпадают, но для изменяемых объектов — нет.</p>
-<p><figure class="figure"><img src="illustrations/ch-03-is-vs-eq.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-03-is-vs-eq.svg" alt="В первом случае x и y указывают на два разных объекта с одинаковым содержимым, поэтому x == y истинно, а x is y ложно. Во втором случае y = x, оба имени указывают на один объект, поэтому истинны обе проверки." loading="lazy" /><figcaption></figcaption></figure></p>
 <div class="highlight exec"><pre><code class="language-python"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 <span class="n">c</span> <span class="o">=</span> <span class="n">a</span>

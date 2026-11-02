@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Кортежи, распаковка и неизменяемость — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -353,7 +353,7 @@ False
 на него. Старый кортеж <code>(1, 2)</code> не изменился — он просто больше не связан
 с этим именем. Это то же поведение, что у строк: операции создают новые
 значения.</p>
-<p><figure class="figure"><img src="illustrations/ch-14-tuple-vs-list.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-14-tuple-vs-list.svg" alt="Сравнение списка и кортежа: у списка доступны замена элемента, append, sort и del, у кортежа этих операций нет. Оба поддерживают индексы, срезы, длину, проверку вхождения и перебор." loading="lazy" /><figcaption></figcaption></figure></p>
 <p>Неизменяемость кортежа поверхностна. Если внутри кортежа лежит список,
 сам список остаётся изменяемым.</p>
 <div class="highlight exec"><pre><code class="language-python"><span class="n">record</span> <span class="o">=</span> <span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s2">"данные"</span><span class="p">)</span>
@@ -416,7 +416,7 @@ False
 вложенной части элементов больше, чем имён, возникает
 <code>ValueError: too many values to unpack</code>; когда вложенный элемент вообще не
 последовательность (например, число) — <code>TypeError: cannot unpack non-iterable int object</code>.</p>
-<p><figure class="figure"><img src="illustrations/ch-14-unpacking.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-14-unpacking.svg" alt="Распаковка кортежа: значения (10, 20) по порядку связываются с именами a и b, затем присваивание a, b = b, a создаёт новый кортеж (20, 10) и меняет связи имён." loading="lazy" /><figcaption></figcaption></figure></p>
 <h2 id="packing"><span class="h-number">14.6</span> Упаковка кортежа</h2>
 <p><strong>Упаковка кортежа</strong> — неявное создание кортежа перечислением значений
 через запятую. Именно она делает распаковку симметричной: справа кортеж

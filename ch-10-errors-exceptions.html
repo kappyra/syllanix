@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Ошибки и исключения — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -365,7 +365,7 @@ None
 корне которого стоит <code>BaseException</code>. Перехват базового класса
 перехватывает и все его подклассы. Именно поэтому порядок ветвей except
 имеет значение.</p>
-<p><figure class="figure"><img src="illustrations/ch-10-hierarchy.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-10-hierarchy.svg" alt="Дерево исключений: в корне BaseException, ниже Exception, SystemExit и KeyboardInterrupt; от Exception ответвляются ArithmeticError, ValueError и TypeError, а от ArithmeticError — ZeroDivisionError. LookupError, IndexError и KeyError понадобятся в главах 13 и 17. Перехват родителя перехватывает всех потомков." loading="lazy" /><figcaption></figcaption></figure></p>
 <p>Проверить родство классов можно функцией <code>issubclass</code>.</p>
 <div class="highlight exec"><pre><code class="language-python"><span class="nb">print</span><span class="p">(</span><span class="nb">issubclass</span><span class="p">(</span><span class="ne">ZeroDivisionError</span><span class="p">,</span> <span class="ne">ArithmeticError</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">issubclass</span><span class="p">(</span><span class="ne">ArithmeticError</span><span class="p">,</span> <span class="ne">Exception</span><span class="p">))</span>
@@ -441,7 +441,7 @@ None
 пути, а второй — через обработку ошибки. Порядок вывода важен: finally
 идёт последней, после тела try или ветви except.</p>
 <p>Три возможных исхода удобно держать перед глазами одной схемой.</p>
-<p><figure class="figure"><img src="illustrations/ch-10-exception-flow.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-10-exception-flow.svg" alt="Три исхода одной инструкции try. Без ошибки выполняются try и finally. При пойманном исключении — try до сбоя, ветвь except и finally. При непойманном исключении — try до сбоя и finally, после чего исключение уходит вызывающему коду. Рисунок показывает форму без ветви else; с ней при отсутствии ошибки между try и finally выполняется ещё и else — см. раздел «Ветвь else и полный порядок выполнения»." loading="lazy" /><figcaption></figcaption></figure></p>
 <p>У finally есть ловушка. Если в ней стоит <code>return</code>, он перекроет результат
 try и молча отбросит исключение.</p>
 <div class="highlight"><pre><code class="language-python"><span class="k">def</span><span class="w"> </span><span class="nf">mystery</span><span class="p">():</span>

@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Файлы, пути и текстовые форматы — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -353,7 +353,7 @@ True
 </div><p><strong>Режим открытия файла</strong> — строка режима: <code>'r'</code> чтение, <code>'w'</code> запись с
 усечением, <code>'a'</code> добавление, <code>'x'</code> исключительное создание, <code>'b'</code> двоичный
 режим.</p>
-<p><figure class="figure"><img src="illustrations/ch-19-file-lifecycle.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-19-file-lifecycle.svg" alt="Жизненный цикл файла: путь ведёт к open, open возвращает файловый объект, через который идёт чтение и запись, а with гарантирует закрытие при обычном выходе и при исключении. Внизу режимы r, w, a, x." loading="lazy" /><figcaption></figcaption></figure></p>
 <p>Важно запомнить главное различие: <code>&quot;w&quot;</code> <strong>уничтожает</strong> прежнее содержимое
 файла. Это самая частая причина потери сведений у начинающих — открыть
 существующий файл на запись, чтобы «дописать», и стереть всё.</p>
@@ -672,7 +672,7 @@ JSONDecodeError
 редакторов; JSON — структура, удобная для программ. Если сведения вложены
 (заказ с позициями, пользователь с настройками), выбирайте JSON. Если это
 выгрузка строк и столбцов для таблицы, CSV проще и компактнее.</p>
-<p><figure class="figure"><img src="illustrations/ch-19-formats.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-19-formats.svg" alt="Две формы одних и тех же сведений: слева таблица CSV со строками «товар, цена», справа объект JSON с массивом записей. Стрелки показывают сериализацию при записи и восстановление при чтении." loading="lazy" /><figcaption></figcaption></figure></p>
 <h2 id="mistakes"><span class="h-number">19.9</span> Типичные ошибки</h2>
 <ol>
 <li><strong>Открыть на <code>&quot;w&quot;</code>, чтобы дописать.</strong> Режим <code>&quot;w&quot;</code> очищает файл; для

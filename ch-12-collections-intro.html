@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Коллекции и последовательности: введение — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -298,7 +298,7 @@
 начала: первый элемент стоит на нулевом расстоянии от начала, второй — на
 расстоянии один. Такая нумерация делает арифметику индексов простой:
 последний индекс последовательности длины <code>n</code> равен <code>n - 1</code>.</p>
-<p><figure class="figure"><img src="illustrations/ch-12-sequence-anatomy.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-12-sequence-anatomy.svg" alt="Последовательность range(10, 20): десять ячеек со значениями от 10 до 19, над каждой ячейкой её индекс от 0 до 9. Длина равна 10, последний индекс равен 9. Элемент с индексом 3 равен 13, проверка вхождения значения 15 даёт True." loading="lazy" /><figcaption></figcaption></figure></p>
 <p>Обращение к элементу записывается квадратными скобками.</p>
 <div class="highlight exec"><pre><code class="language-python"><span class="n">numbers</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -432,7 +432,7 @@ True
 функции: вызывающий код не сможет её испортить.</p>
 <p>Третье — <strong>уникальность</strong>. Одни коллекции допускают повторы, другие
 хранят каждый элемент не более одного раза.</p>
-<p><figure class="figure"><img src="illustrations/ch-12-three-questions.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-12-three-questions.svg" alt="Три вопроса к одной последовательности numbers = range(10, 20): сколько элементов, что стоит на позиции 3 и входит ли значение 15. Ответы: 10, 13 и True." loading="lazy" /><figcaption></figcaption></figure></p>
 <p>Конкретные сочетания этих свойств и дают четыре основных вида коллекций,
 которые ждут впереди. Пока достаточно запомнить три вопроса, на которые
 умеет отвечать любая последовательность: какова её длина, что стоит на

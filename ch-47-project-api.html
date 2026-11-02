@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Проект: HTTP API и база данных — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -312,7 +312,7 @@
 <p><strong>Конечная точка</strong> (endpoint) — сочетание пути и метода. <code>GET /tasks</code> и
 <code>POST /tasks</code> — разные конечные точки с разным поведением.</p>
 <h2 id="путь-запроса"><span class="h-number">47.4</span> Путь запроса</h2>
-<p><figure class="figure"><img src="illustrations/ch-47-request-path.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-47-request-path.svg" alt="Клиент отправляет POST /tasks с телом JSON. Маршрутизатор выбирает обработчик, валидация проверяет поля и типы, сервис применяет бизнес-правила и обращается к базе, затем формируется ответ 201 с JSON задачи. Если валидация не прошла, возвращается 400 до вызова сервиса." loading="lazy" /><figcaption></figcaption></figure></p>
 <p>Порядок обработки принципиален:</p>
 <ol>
 <li><strong>Маршрутизация</strong> — по методу и пути выбрать обработчик.</li>
@@ -325,7 +325,7 @@
 названия, если в поле <code>title</code> пришёл массив. Ранний отказ экономит работу и
 упрощает ошибки.</p>
 <h2 id="коды-состояния"><span class="h-number">47.5</span> Коды состояния</h2>
-<p><figure class="figure"><img src="illustrations/ch-47-statuses.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-47-statuses.svg" alt="Семейства кодов: 2xx успех (200, 201, 204), 4xx ошибка клиента (400, 401, 403, 404, 409), 5xx ошибка сервера (500, 502, 503)." loading="lazy" /><figcaption></figcaption></figure></p>
 <p><strong>Статус ответа</strong> (код состояния, HTTP status) — часть контракта, а не
 украшение. Правила:</p>
 <ul>

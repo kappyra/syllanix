@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Генераторы и ленивые вычисления — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -325,7 +325,7 @@ generator
 2
 1
 </code></pre>
-<p><figure class="figure"><img src="illustrations/ch-21-yield-flow.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-21-yield-flow.svg" alt="Схема выполнения функции-генератора: при вызове создаётся генератор, при первом next тело исполняется до первого yield, при следующем next — до следующего yield; после последнего значения генератор поднимает StopIteration." loading="lazy" /><figcaption></figcaption></figure></p>
 <h2 id="lazy"><span class="h-number">21.4</span> Ленивые вычисления</h2>
 <p><strong>Ленивые вычисления</strong> — вычисление значений только в момент использования;
 это экономит память и позволяет обрабатывать бесконечные последовательности.
@@ -558,7 +558,7 @@ generator
 <p>Первый <code>next</code> заставил источник выдать только первый элемент. Остальные были
 вычислены лишь при втором проходе. Это и есть смысл конвейера: каждый этап
 работает ровно столько, сколько требует потребитель.</p>
-<p><figure class="figure"><img src="illustrations/ch-21-generator-pipeline.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-21-generator-pipeline.svg" alt="Конвейер генераторов: источник выдаёт числа, следующий этап удваивает, последний фильтрует; элемент проходит все этапы по одному, промежуточные списки не создаются." loading="lazy" /><figcaption></figcaption></figure></p>
 <h2 id="files"><span class="h-number">21.9</span> Генератор для чтения файла</h2>
 <p>Самое частое практическое применение генераторов — построчная обработка
 файлов. Генератор открывает файл, читает строки по одной и выдаёт только

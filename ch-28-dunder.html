@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Модель данных: dunder-методы — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -318,7 +318,7 @@
 с двумя подчёркиваниями не нужно: они зарезервированы моделью данных, и
 интерпретатор может искать их в неожиданных местах. Для собственных операций
 используйте обычные имена.</p>
-<p><figure class="figure"><img src="illustrations/ch-28-dunder-map.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-28-dunder-map.svg" alt="Таблица соответствий: каждая встроенная операция Python вызывает свой dunder-метод." loading="lazy" /><figcaption></figcaption></figure></p>
 <h3 id="lookup-on-type">Почему методы вызывает интерпретатор</h3>
 <p>Специальные методы отличаются от обычных ещё и способом поиска. Когда вы
 пишете <code>x + y</code>, Python ищет <code>__add__</code> в типе <code>x</code>, а не в самом объекте.
@@ -484,7 +484,7 @@ True
 остался от стандартного поведения, множество будет считать равные объекты
 разными. Решение — либо объявить <code>__hash__</code>, либо осознанно оставить тип
 нехешируемым.</p>
-<p><figure class="figure"><img src="illustrations/ch-28-eq-hash-contract.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-28-eq-hash-contract.svg" alt="Контракт __eq__ и __hash__: равные объекты обязаны иметь равные хеши; иначе поиск в множестве ломается." loading="lazy" /><figcaption></figcaption></figure></p>
 <p>Второе ограничение связано с изменяемостью. Хеш вычисляется в момент
 добавления, и если после этого изменить поля, объект «переедет» в другую
 корзину, а множество продолжит искать его по старому хешу:</p>

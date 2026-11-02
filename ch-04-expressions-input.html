@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Выражения, операторы и ввод данных — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -330,7 +330,7 @@
 <p>Когда выражение становится длинным, его удобно представлять деревом: каждая
 операция — узел, её операнды — ветви. Вычисление идёт от листьев к корню, от
 самых старших операций к самым младшим.</p>
-<p><figure class="figure"><img src="illustrations/ch-04-precedence.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-04-precedence.svg" alt="Выражение 2 + 3 * 4 представлено деревом: умножение стоит ниже сложения, поэтому вычисляется первым и даёт 12, после чего сложение даёт 14. Скобки в выражении (2 + 3) * 4 поднимают сложение, и результат становится 20." loading="lazy" /><figcaption></figcaption></figure></p>
 <p>Практический вывод прост: если сомневаетесь в порядке — ставьте скобки. Они
 ничего не ломают и снимают вопрос при чтении кода.</p>
 <h2 id="comparisons"><span class="h-number">4.3</span> Сравнения и значения True и False</h2>
@@ -702,7 +702,7 @@ score=7
 <p>Обратите внимание на порядок действий: сначала ввод, затем преобразование,
 затем вычисление, в конце форматирование. Каждый шаг виден в тексте программы,
 и это главное достоинство явных преобразований.</p>
-<p><figure class="figure"><img src="illustrations/ch-04-input-pipeline.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-04-input-pipeline.svg" alt="Поток данных при вводе: функция input возвращает строку, преобразование типа делает из неё число, вычисление считает итог, f-строка собирает сообщение, print выводит его в терминал. Если преобразование не удалось, возникает ошибка ValueError." loading="lazy" /><figcaption></figcaption></figure></p>
 <h2 id="mistakes"><span class="h-number">4.11</span> Типичные ошибки</h2>
 <ol>
 <li><strong>Забыть преобразовать ввод.</strong> <code>input()</code> возвращает строку, поэтому

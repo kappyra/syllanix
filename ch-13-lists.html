@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Списки: индексы, срезы и методы — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -368,7 +368,7 @@ list
 <p><code>letters[-2:]</code> — два последних элемента, <code>letters[:-2]</code> — всё, кроме двух
 последних, а <code>letters[::-1]</code> — перевёрнутая копия. Обратите внимание:
 срез с шагом <code>-1</code> не меняет исходный список, а создаёт новый.</p>
-<p><figure class="figure"><img src="illustrations/ch-13-index-slice.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-13-index-slice.svg" alt="Список letters из шести элементов: сверху положительные индексы от 0 до 5, снизу отрицательные от −6 до −1. Срез от индекса 1 до индекса 4 выделяет элементы b, c, d, потому что правый конец не включается. Срез из двух последних элементов выделяет e и f." loading="lazy" /><figcaption></figcaption></figure></p>
 <p>Срез терпим к выходящим за границы значениям: слишком большой конец
 просто означает «до конца списка».</p>
 <div class="highlight exec"><pre><code class="language-python"><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
@@ -469,7 +469,7 @@ list
 <code>reverse</code>), возвращают <code>None</code>. <code>pop</code> — исключение: он меняет список и
 возвращает удалённый элемент, поэтому его результат можно сразу использовать,
 а результат <code>append(...)</code> — нет.</p>
-<p><figure class="figure"><img src="illustrations/ch-13-list-methods.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-13-list-methods.svg" alt="Три метода в действии. append(4) добавляет элемент в конец. insert(1, 9) вставляет 9 на позицию 1 и сдвигает остальные вправо. pop() удаляет последний элемент и возвращает его значение 3. Список меняется на месте, поэтому различаются и результат вызова, и новое состояние списка." loading="lazy" /><figcaption></figcaption></figure></p>
 <h2 id="append"><span class="h-number">13.8</span> append: добавление в конец</h2>
 <p>Метод <strong>append</strong> добавляет один элемент в конец списка, изменяет список и
 возвращает <code>None</code>.</p>

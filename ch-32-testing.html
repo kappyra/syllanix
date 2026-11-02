@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Тестирование: pytest и TDD — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -329,7 +329,7 @@ FAILED tests/test_calculator.py::test_add_positive - assert -1 == 5
 хранилище и бизнес-логику — и стоит дороже. Сквозной сценарий проходит через
 всю систему, как пользователь, и может занимать минуты. Смешивать их в одну
 кучу неудобно: набор становится медленным, а падение — неинформативным.</p>
-<p><figure class="figure"><img src="illustrations/ch-32-test-pyramid.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-32-test-pyramid.svg" alt="Пирамида тестов: внизу много быстрых модульных тестов, в середине интеграционные, наверху мало медленных сквозных сценариев; чем ниже уровень, тем дешевле проверка и точнее указано место дефекта." loading="lazy" /><figcaption></figcaption></figure></p>
 <p>Пирамида задаёт пропорцию: в основании много дешёвых модульных тестов, выше —
 меньше интеграционных, на вершине — единицы сквозных. Такое распределение даёт
 быструю обратную связь: большинство ошибок ловится за секунды и с точным
@@ -421,7 +421,7 @@ FAILED tests/test_calculator.py::test_add_positive - assert -1 == 5
 <p><strong>Разработка через тесты</strong> (TDD) — подход «красный — зелёный — рефакторинг»:
 сначала падающий тест, затем минимальная реализация, затем улучшение кода при
 зелёных тестах. Три шага короткие, и каждый имеет цель.</p>
-<p><figure class="figure"><img src="illustrations/ch-32-tdd-cycle.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-32-tdd-cycle.svg" alt="Цикл разработки через тесты: красный шаг с падающим тестом, зелёный шаг с минимальной реализацией и рефакторинг, после которого тесты остаются зелёными." loading="lazy" /><figcaption></figcaption></figure></p>
 <ol>
 <li><strong>Красный.</strong> Пишем тест на ещё не существующее поведение. Он падает — это
 доказательство, что тест действительно проверяет что-то новое.</li>

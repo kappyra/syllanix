@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>ОС, процессы, сеть и API — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -276,7 +276,7 @@ data/reports/file.csv
 <p>Ещё одно различие — кодировка имён файлов и текста. <code>pathlib</code> и <code>open</code>
 принимают <code>encoding</code> явно; полагаться на локаль по умолчанию опасно, потому
 что на разных машинах она разная.</p>
-<p><figure class="figure"><img src="illustrations/ch-35-os-boundaries.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-35-os-boundaries.svg" alt="Схема четырёх границ процесса Python: переменные окружения входят в процесс, subprocess запускает дочерний процесс, HTTP-клиент обращается к серверу API, а файлы доступны через pathlib; на каждой границе возможны свои отказы." loading="lazy" /><figcaption></figcaption></figure></p>
 <h2 id="env"><span class="h-number">35.3</span> Переменные окружения</h2>
 <p><strong>Переменная окружения</strong> — пара «имя — значение», передаваемая процессу извне;
 стандартный способ конфигурации без секретов в коде. Один и тот же код в
@@ -402,7 +402,7 @@ https://api.example.com/v1/items/42
 </tr>
 </tbody>
 </table>
-</div><p><figure class="figure"><img src="illustrations/ch-35-http-exchange.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+</div><p><figure class="figure"><img src="illustrations/ch-35-http-exchange.svg" alt="Схема HTTP-обмена: клиент отправляет метод, путь и заголовки, сервер возвращает код состояния, заголовки и тело; ниже показаны группы кодов 2xx, 4xx и 5xx и типичная реакция клиента на каждую." loading="lazy" /><figcaption></figcaption></figure></p>
 <h3 id="методы-и-повторные-запросы">Методы и повторные запросы</h3>
 <p>HTTP-метод сообщает намерение. <code>GET</code> читает записи и не меняет состояние
 сервера; <code>POST</code> создаёт ресурс; <code>PUT</code> и <code>PATCH</code> обновляют; <code>DELETE</code> удаляет.

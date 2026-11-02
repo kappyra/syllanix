@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Функциональные приёмы и включения — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -314,7 +314,7 @@ Python предлагает более короткие и выразитель�
 <p>Оба варианта дают <code>[0, 1, 4, 9, 16]</code>. Включение короче и прямо говорит, что
 строится новый список. Цикл уместнее, когда внутри нужно несколько действий,
 обработка ошибок или ранний выход.</p>
-<p><figure class="figure"><img src="illustrations/ch-23-comprehension.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-23-comprehension.svg" alt="Списковое включение: исходная коллекция проходит через фильтр (если он есть), затем каждый элемент преобразуется, и результаты складываются в новый список. Исходная коллекция не меняется." loading="lazy" /><figcaption></figcaption></figure></p>
 <h2 id="dict-set"><span class="h-number">23.3</span> Словарное и множественное включения</h2>
 <p>Включения строят не только списки. <strong>Словарное включение</strong> — выражение вида
 <code>{k: v for ...}</code>, строящее словарь. <strong>Включение множества</strong> — выражение вида
@@ -422,7 +422,7 @@ function
 аргументов. <code>map</code> и <code>filter</code> уместны, когда функция уже существует и её не
 нужно оборачивать: например, <code>map(str, items)</code> или <code>filter(bool, items)</code>.
 Когда же логика задана лямбдой, включение почти всегда яснее.</p>
-<p><figure class="figure"><img src="illustrations/ch-23-map-filter.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-23-map-filter.svg" alt="Сравнение map и filter: map преобразует каждый элемент, filter отбрасывает элементы по предикату, а включение с условием делает и то, и другое в одной записи. Все три варианта дают итератор или список на выходе." loading="lazy" /><figcaption></figcaption></figure></p>
 <h2 id="sort-key"><span class="h-number">23.6</span> Сортировка по ключу</h2>
 <p><strong>Ключ сортировки</strong> — функция, вычисляющая значение для сравнения элементов
 при сортировке. Сортировка сравнивает не сами элементы, а результаты ключа:

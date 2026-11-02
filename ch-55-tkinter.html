@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Графический интерфейс на tkinter — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -283,7 +283,7 @@ Tk. <code>title</code> задаёт заголовок, <code>geometry</code> �
 <p>Команда запускает приложение; окно открывается, и терминал «замирает», пока
 цикл событий работает. Это нормально: программа ждёт действий пользователя, а
 не бездействует.</p>
-<p><figure class="figure"><img src="illustrations/ch-55-event-loop.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-55-event-loop.svg" alt="Схема цикла событий интерфейса: mainloop ждёт событие, определяет виджет, вызывает обработчик и обновляет экран, после чего возвращается к ожиданию; блокирующий обработчик замораживает весь цикл." loading="lazy" /><figcaption></figcaption></figure></p>
 <h2 id="widgets"><span class="h-number">55.4</span> Виджеты</h2>
 <p><strong>Виджет</strong> — элемент интерфейса: кнопка, поле ввода, метка, список, холст;
 имеет состояние и реагирует на события. Все виджеты создаются как дочерние
@@ -447,7 +447,7 @@ Tk. <code>title</code> задаёт заголовок, <code>geometry</code> �
 <code>sticky=&quot;ew&quot;</code> растягивает виджет по горизонтали, <code>columnspan=2</code> объединяет
 ячейки. Смешивать <code>pack</code> и <code>grid</code> в одном контейнере нельзя: Tkinter не сможет
 согласовать их правила — интерфейс зависнет или выдаст ошибку.</p>
-<p><figure class="figure"><img src="illustrations/ch-55-widget-tree.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-55-widget-tree.svg" alt="Схема дерева виджетов: корневое окно Tk содержит панели Frame, внутри которых лежат Label, Entry и Button; показано, что grid задаёт строки и столбцы, а pack укладывает элементы по стороне." loading="lazy" /><figcaption></figcaption></figure></p>
 <h2 id="events"><span class="h-number">55.6</span> События и обработчики</h2>
 <p>Интерфейс реагирует на события: нажатие кнопки, ввод текста, движение мыши,
 закрытие окна. <strong>Обработчик события (callback)</strong> — функция, которую интерфейс

@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Метапрограммирование и дескрипторы — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -335,7 +335,7 @@ getattr по имени: 1
 <li><strong><code>__getattr__</code>.</strong> Если ничего не найдено и у класса определён
 <code>__getattr__</code>, вызывается он.</li>
 </ol>
-<p><figure class="figure"><img src="illustrations/ch-43-attribute-lookup.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-43-attribute-lookup.svg" alt="Поиск атрибута идёт по шагам: данные-дескрипторы типа, словарь экземпляра, остальные атрибуты класса, затем __getattr__. Свойство (property) побеждает значение в словаре экземпляра, а дескриптор без __set__ — уступает." loading="lazy" /><figcaption></figcaption></figure></p>
 <p>Проверим ключевое различие: дескриптор с <code>__set__</code> побеждает словарь
 экземпляра, а дескриптор без <code>__set__</code> — нет.</p>
 <div class="highlight exec"><pre><code class="language-python"><span class="k">class</span><span class="w"> </span><span class="nc">DataDescriptor</span><span class="p">:</span>
@@ -457,7 +457,7 @@ ValueError: значение должно быть положительным
 значение и кладёт его в <code>_quantity</code>. <code>__get__</code> читает оттуда же. Когда
 <code>instance is None</code>, обращение идёт через класс (<code>Order.quantity</code>), и
 дескриптор возвращает сам себя — так работают и <code>property</code>, и методы.</p>
-<p><figure class="figure"><img src="illustrations/ch-43-descriptor.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-43-descriptor.svg" alt="Дескриптор объявлен в классе, а данные хранит в экземпляре. При чтении вызывается __get__, при записи — __set__, при создании класса — __set_name__, который сообщает дескриптору его имя." loading="lazy" /><figcaption></figcaption></figure></p>
 <p><strong>Функция — тоже дескриптор.</strong> Поэтому <code>Greeter.hello</code> — функция, а
 <code>greeter.hello</code> — связанный метод: <code>__get__</code> функции возвращает метод,
 который помнит экземпляр.</p>

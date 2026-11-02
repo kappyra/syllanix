@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Множества и хеширование — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -315,7 +315,7 @@ True
 считаются равными при сравнении, поэтому их хеши тоже равны. Обратное
 неверно: одинаковый хеш не гарантирует равенство, такое совпадение
 называют коллизией, и она разрешается сравнением значений.</p>
-<p><figure class="figure"><img src="illustrations/ch-16-hash-table.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-16-hash-table.svg" alt="Упрощённая схема хранения множества: элемент превращается в хеш, хеш определяет корзину, а внутри корзины элементы сравниваются по равенству. Элементы 12 и 20 попали в одну корзину — это коллизия, которая не мешает работе." loading="lazy" /><figcaption></figcaption></figure></p>
 <p>Порядок обхода множества зависит от внутреннего расположения элементов,
 поэтому он не определён. Это плата за скорость: множество не обязано
 помнить, в каком порядке вы добавляли значения.</p>
@@ -389,7 +389,7 @@ True
 <code>b - a</code> даёт другой результат. Симметрическая разность <code>a ^ b</code> содержит
 элементы, которые есть ровно в одном из множеств, то есть всё, кроме
 общих.</p>
-<p><figure class="figure"><img src="illustrations/ch-16-sets-venn.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-16-sets-venn.svg" alt="Два пересекающихся круга A и B: область 1 — только A, область 2 — общая часть, область 3 — только B. Объединение включает все три области, пересечение — только общую, разность — первую, симметрическая разность — первую и третью." loading="lazy" /><figcaption></figcaption></figure></p>
 <p>Те же операции доступны методами, и это удобнее, когда слева не
 множество, а любой итерируемый объект.</p>
 <div class="highlight exec"><pre><code class="language-python"><span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>

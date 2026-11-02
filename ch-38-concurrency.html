@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Конкурентность: потоки, процессы и GIL — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -277,7 +277,7 @@
 <p>Если программа ждёт, конкурентность даёт выигрыш даже на одном ядре:
 пока один поток ждёт ответа, другой работает. Если программа считает, нужно
 несколько ядер — а их дают процессы.</p>
-<p><figure class="figure"><img src="illustrations/ch-38-concurrency-vs-parallelism.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-38-concurrency-vs-parallelism.svg" alt="Схема конкурентности и параллелизма: при конкурентности задачи A и B чередуются на одном исполнителе, при параллелизме выполняются одновременно на двух ядрах; для ожидания ввода-вывода достаточно первого, для вычислений нужно второе." loading="lazy" /><figcaption></figcaption></figure></p>
 <h2 id="threads"><span class="h-number">38.3</span> Потоки</h2>
 <p><strong>Поток</strong> — единица исполнения внутри процесса, разделяющая с другими
 потоками память. Потоки дешевле процессов, быстро создаются и видят одни и те
@@ -397,7 +397,7 @@
 вести себя иначе; free-threaded сборка без GIL официально поддерживается
 начиная с 3.14, хотя по умолчанию её не включают.</li>
 </ul>
-<p><figure class="figure"><img src="illustrations/ch-38-gil-threads.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-38-gil-threads.svg" alt="Схема GIL: потоки по очереди захватывают глобальную блокировку и исполняют байткод; при ожидании ввода-вывода блокировка освобождается, поэтому другие потоки успевают работать, а при вычислениях потоки просто мешают друг другу." loading="lazy" /><figcaption></figcaption></figure></p>
 <p>Важно понимать, чего GIL <strong>не</strong> делает. Он не делает код потокобезопасным:
 переключение между потоками происходит между байткодами, поэтому операция
 <code>counter += 1</code> состоит из нескольких шагов — прочитать, сложить, записать, — и

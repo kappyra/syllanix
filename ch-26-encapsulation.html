@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Атрибуты, свойства и инкапсуляция — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -285,7 +285,7 @@ Canis familiaris Canis familiaris
 базовые классы. Чтение <code>a.species</code> ищет в <code>a.__dict__</code>, не находит и
 поднимается к классу. Именно поэтому атрибут класса удобно использовать для
 значений по умолчанию, одинаковых для всех.</p>
-<p><figure class="figure"><img src="illustrations/ch-26-attribute-lookup.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-26-attribute-lookup.svg" alt="Поиск атрибута идёт от экземпляра к классу: свои значения находятся в экземпляре, общие — в классе." loading="lazy" /><figcaption></figcaption></figure></p>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -574,7 +574,7 @@ Python доверяет программисту и задаёт границы 
 сеттера нет, поэтому <code>acc.balance = 1000</code> поднимет <code>AttributeError</code>.
 Единственный путь изменить баланс — метод <code>withdraw</code>, где есть проверка.
 Граница API класса описана самим кодом, а не комментарием.</p>
-<p><figure class="figure"><img src="illustrations/ch-26-property-flow.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-26-property-flow.svg" alt="Присваивание свойству проходит через сеттер: проверка, затем запись во внутренний атрибут; при нарушении правила значение не меняется." loading="lazy" /><figcaption></figcaption></figure></p>
 <h2 id="class-api"><span class="h-number">26.7</span> Границы API класса</h2>
 <p>Инкапсуляция — это ещё и решение о том, что класс показывает наружу. У
 каждого класса есть публичная часть (то, чем пользуются снаружи) и

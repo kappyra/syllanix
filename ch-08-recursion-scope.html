@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Стек вызовов, области видимости и рекурсия — Python: от нуля до профессиональной разработки</title>
-<script src="assets/theme-boot.js?v=6c04d7e18c"></script>
-<link rel="stylesheet" href="style.css?v=60783a7c8f">
-<script src="assets/site.js?v=2801e1df67" defer></script>
+<script src="assets/theme-boot.js?v=20261102-themepack1"></script>
+<link rel="stylesheet" href="style.css?v=20261102-themepack1">
+<script src="assets/site.js?v=20261102-themepack1" defer></script>
 </head>
 <body class="chapter-page">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -314,7 +314,7 @@ ZeroDivisionError: division by zero
 <p>Отсюда важное следствие: локальные имена не «общие для функции», они общие для
 <strong>вызова</strong>. Два одновременных вызова одной функции (например, при рекурсии)
 имеют два разных кадра с разными значениями одноимённых параметров.</p>
-<p><figure class="figure"><img src="illustrations/ch-08-call-stack.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-08-call-stack.svg" alt="Стек вызовов для factorial(4): четыре кадра добавляются при спуске, пока не сработает базовый случай, а затем снимаются в обратном порядке, и результат 24 поднимается вверх по цепочке вызовов." loading="lazy" /><figcaption></figcaption></figure></p>
 <h2 id="scope"><span class="h-number">8.4</span> Области видимости</h2>
 <p><strong>Область видимости</strong> — правило, определяющее, какое имя видит код в данной
 точке: локальное, объемлющее, глобальное или встроенное. Это не «место в
@@ -377,7 +377,7 @@ ZeroDivisionError: division by zero
 Это не ошибка и не путаница: так устроен поиск. Но читаемость такого кода
 низкая, поэтому в реальных программах одинаковые имена на разных уровнях лучше
 не использовать без необходимости.</p>
-<p><figure class="figure"><img src="illustrations/ch-08-scope-lookup.svg" alt="" loading="lazy" /><figcaption></figcaption></figure></p>
+<p><figure class="figure"><img src="illustrations/ch-08-scope-lookup.svg" alt="Поиск имени идёт изнутри наружу: сначала локальная область видимости, затем объемлющая, затем глобальная, затем встроенная. Первое найденное имя используется, а если имени нет нигде — возникает NameError." loading="lazy" /><figcaption></figcaption></figure></p>
 <p><a href="ch-07-functions.html#local-scope">Локальная область видимости</a> знакома вам по
 прошлой главе: имя, созданное в функции, не видно снаружи. Новое здесь — то, что вложенная функция видит имена внешней.</p>
 <h2 id="enclosing"><span class="h-number">8.5</span> Объемлющая область видимости</h2>
