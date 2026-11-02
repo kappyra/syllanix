@@ -66,7 +66,7 @@ def main() -> None:
                 docwidth = page.evaluate("document.documentElement.scrollWidth")
                 if docwidth > 378:
                     offenders = page.evaluate("""() => [...document.querySelectorAll('body *')]
-                        .filter(e => { const r=e.getBoundingClientRect(); return r.width > 0 && (r.right > innerWidth + 2 || r.left < -2); })
+                        .filter(e => { const r=e.getBoundingClientRect(); return r.width > 0 && (r.right > innerWidth + 2); })
                         .slice(0, 12).map(e => ({tag:e.tagName, id:e.id, className:String(e.className).slice(0,70), width:e.getBoundingClientRect().width, right:e.getBoundingClientRect().right}))""")
                     print("OVERFLOW DEBUG", chapter.name, offenders, flush=True)
                 check(docwidth <= 378, f"{chapter.name}: mobile overflow {docwidth}")
