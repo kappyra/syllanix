@@ -484,3 +484,14 @@ body.figure-open { overflow: hidden; }
   }
   .lightbox-close { position: fixed; top: calc(10px + env(safe-area-inset-top, 0px)); right: 10px; z-index: 2; }
 }
+
+
+/* Длинные inline-идентификаторы не должны расширять весь документ на 320px.
+   Для pre сохраняем горизонтальную прокрутку, без разрыва строк кода. */
+main :not(pre) > code {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: normal;
+}
+main .code-block, main .highlight, main .table-wrap { min-width: 0; max-width: 100%; }
+main pre { width: 100%; max-width: 100%; }
